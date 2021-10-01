@@ -1,3 +1,55 @@
+
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+// Given the triangle of consecutive odd numbers:
+
+//              1
+//           3     5
+//        7     9    11
+//    13    15    17    19
+// 21    23    25    27    29
+// ...
+// Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+
+// 1 -->  1
+// 2 --> 3 + 5 = 8
+
+const rowSumOddNumbers = (n) => {
+    //  CALC FIRST NUMBER OF EACH ROW ICREMENTING BY (n-1)pow2
+    //  1, 3, 7, 13, 21 ... (13 = 4 + 3pow2)
+    const firstOfRow = n + Math.pow(n - 1, 2);
+    //  CALC SUBTOTAL WITHOUT INCREMENTS (1*1, 2*3, 3*7, 4*13 ...)
+    const subTotal = firstOfRow * n;
+    let increments = 0;
+    //  CALC INCREMENTS(j) AND ACCUMULATE n TIMES (0 + 2 + 4 + 6 + ...)
+    //  LOOP STOPS AT (n*2)-2 (IF n=3 INCREMENT & ACCUMULATE 0 BY 2 UNTIL j LESS/EQUAL 4)
+    for (let j = 0; j <= n * 2 - 2; j += 2) {
+      increments = increments + j;
+    }
+    total = subTotal + increments;
+    return total;
+  };
+  
+  // OTHER SOLUTIONS:
+  
+  // function rowSumOddNumbers(n) {
+  //   return Math.pow(n, 3);
+  // }
+  
+  // function rowSumOddNumbers(n) {
+  //   return n**3
+  // }
+  
+// ============================================================================
+// ============================================================================
+
 // COUNT VOWELS
 // 24/2/20
 
