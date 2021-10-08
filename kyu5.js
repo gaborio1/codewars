@@ -1,4 +1,72 @@
 
+// Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+// HH = hours, padded to 2 digits, range: 00 - 99
+// MM = minutes, padded to 2 digits, range: 00 - 59
+// SS = seconds, padded to 2 digits, range: 00 - 59
+// The maximum time never exceeds 359999 (99:59:59)
+
+const humanReadable = (seconds) => {
+  const HOUR = 3600;
+  const MINUTE = 60;
+  let hours = 0;
+  let mins = 0;
+  let secs = seconds;
+
+  while (secs >= HOUR) {
+    secs -= HOUR;
+    hours++;
+  }
+
+  while (secs >= MINUTE) {
+    secs -= MINUTE;
+    mins++;
+  }
+
+  const padToTwo = (str) => {
+    const zero = "0";
+    const numString = str.toString();
+    return numString.length < 2 ? zero.concat(numString) : numString;
+  };
+  return `${padToTwo(hours)}:${padToTwo(mins)}:${padToTwo(secs)}`;
+};
+
+// humanReadable(3661);
+// humanReadable(7261);
+
+// ========== COMMENTS ===========
+
+// const humanReadable = (seconds) => {
+//   const HOUR = 3600; // DEFINE HOUR
+//   const MINUTE = 60; // DEFINE MINUTE
+//   let hours = 0; //  INITIALISE COUNTERS
+//   let mins = 0;
+//   let secs = seconds;
+
+//   while (secs >= HOUR) {  //  COUNT HOURS IF ANY
+//     secs -= HOUR;
+//     hours++;
+//   }
+
+//   while (secs >= MINUTE) {  //  COUNT MINUTES IF ANY
+//     secs -= MINUTE;
+//     mins++;
+//   }
+
+//   const padToTwo = (str) => { //  CONVERT TO STRING AND ADD LEADING ZERO TO FORMAT
+//     const zero = "0";
+//     const numString = str.toString();
+//     return numString.length < 2 ? zero.concat(numString) : numString;
+//   };
+//   return `${padToTwo(hours)}:${padToTwo(mins)}:${padToTwo(secs)}`;
+// };
+
+
+
+// ============================================================================
+// ============================================================================
+
+
 // Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
 
 // moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
