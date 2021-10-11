@@ -1,4 +1,144 @@
 
+// !!!!!!!!!!!!!!!!! CODE TIMES OUT !!!!!!!!!!!!!!!!!!!!!
+
+// Sum of Pairs
+// Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
+
+// sum_pairs([11, 3, 7, 5],         10)
+// #              ^--^      3 + 7 = 10
+// == [3, 7]
+
+// sum_pairs([4, 3, 2, 3, 4],         6)
+// #          ^-----^         4 + 2 = 6, indices: 0, 2 *
+// #             ^-----^      3 + 3 = 6, indices: 1, 3
+// #                ^-----^   2 + 4 = 6, indices: 2, 4
+// #  * entire pair is earlier, and therefore is the correct answer
+// == [4, 2]
+
+// sum_pairs([0, 0, -2, 3], 2)
+// #  there are no pairs of values that can be added to produce 2.
+// == None/nil/undefined (Based on the language)
+
+// sum_pairs([10, 5, 2, 3, 7, 5],         10)
+// #              ^-----------^   5 + 5 = 10, indices: 1, 5
+// #                    ^--^      3 + 7 = 10, indices: 3, 4 *
+// #  * entire pair is earlier, and therefore is the correct answer
+// == [3, 7]
+// Negative numbers and duplicate numbers can and will appear.
+
+// NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.
+
+// WITH ARRAY
+
+// function sum_pairs(ints, s) {
+//   const pairs = [];
+//   for (let i = 0; i < ints.length; i++) {
+//     if (ints[i] < s) {
+//       let nextIdx = i + 1;
+//       for (let j = nextIdx; j < ints.length; j++) {
+//         if (ints[i] + ints[j] === s) {
+//           console.log(ints[i], ints[j]);
+//           pairs.push([ints[i], ints[j], j]);
+//           console.log(i, j);
+//         }
+//       }
+//     }
+//   }
+//   console.log(pairs);
+// }
+
+// THIS CODE TIMES OUT:
+
+// WITH OBJECT
+
+function sumPairs(ints, s) {
+  let pairs = {};
+  for (let i = 0; i < ints.length; i++) {
+    if (ints[i] < s) {
+      let nextIdx = i + 1;
+      for (let j = nextIdx; j < ints.length; j++) {
+        if (ints[i] + ints[j] === s) {
+          // console.log(ints[i], ints[j]);
+          pairs[j] = [ints[i], ints[j]];
+          // console.log(i, j);
+        }
+      }
+    }
+  }
+  console.log(pairs);
+  // console.log(Object.keys(pairs));
+  const indices = Object.keys(pairs);
+  const solutionIdx = Math.min(...indices).toString();
+  // console.log(pairs[solutionIdx]);
+  return pairs[solutionIdx];
+}
+
+// STOPPING LOOP AT FIRST j
+// function sumPairs(ints, s) {
+//   let endLoop = ints.length;
+//   console.log(endLoop);
+//   let pairs = {};
+//   for (let i = 0; i < endLoop; i++) {
+//     console.log("hello");
+//     // let nextIdx = i + 1;
+//     for (let j = i + 1; j < endLoop; j++) {
+//       if (ints[i] + ints[j] === s) {
+//         pairs[j] = [ints[i], ints[j]];
+//         // console.log(i, j);
+//         endLoop = endLoop - (endLoop - j);
+//         i = endLoop - 1 && console.log("end of loop:" + endLoop);
+//       }
+//     }
+//   }
+//   console.log(pairs);
+//   // console.log(Object.keys(pairs));
+//   const indices = Object.keys(pairs);
+//   const solutionIdx = Math.min(...indices).toString();
+//   // console.log(pairs[solutionIdx]);
+//   return pairs[solutionIdx];
+// }
+
+// DELETE REST OF ELEMENTS FROM j
+// NOT WORKING WITH NEGATIVES
+// const sumPairs = (ints, s) => {
+//   let pairs = {};
+//   for (let i = 0; i < ints.length; i++) {
+//     if (ints[i] < s) {
+//       let nextIdx = i + 1;
+//       for (let j = nextIdx; j < ints.length; j++) {
+//         if (ints[i] + ints[j] === s) {
+//           // console.log(ints[i], ints[j]);
+//           pairs[j] = [ints[i], ints[j]];
+//           // console.log(i, j);
+//           ints = ints.slice(0, j + 1);
+//           console.log(ints);
+//         }
+//       }
+//     }
+//   }
+//   console.log(pairs);
+//   // console.log(Object.keys(pairs));
+//   const indices = Object.keys(pairs);
+//   const solutionIdx = Math.min(...indices).toString();
+//   // console.log(pairs[solutionIdx]);
+//   return pairs[solutionIdx];
+// };
+
+// let nums = [1,2,3,4,5,6];
+// undefined
+// nums = nums.slice(4);
+// (2) [5, 6]
+
+// sumPairs([4, 3, 2, 3, 4], 6);
+// sumPairs([10, 5, 2, 3, 6, 7, 8, 5, 2, 2, 8, 1], 10);
+
+
+
+// ============================================================================
+// ============================================================================
+
+
+
 // Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
 
 // HH = hours, padded to 2 digits, range: 00 - 99
