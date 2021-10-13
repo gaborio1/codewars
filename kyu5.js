@@ -75,8 +75,6 @@ const anagrams = (word, words) => {
 // ============================================================================
 
 
-// !!!!!!!!!!!!!!!!! CODE TIMES OUT !!!!!!!!!!!!!!!!!!!!!
-
 // Sum of Pairs
 // Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
 
@@ -127,27 +125,27 @@ const anagrams = (word, words) => {
 
 // WITH OBJECT
 
-function sumPairs(ints, s) {
-  let pairs = {};
-  for (let i = 0; i < ints.length; i++) {
-    if (ints[i] < s) {
-      let nextIdx = i + 1;
-      for (let j = nextIdx; j < ints.length; j++) {
-        if (ints[i] + ints[j] === s) {
-          // console.log(ints[i], ints[j]);
-          pairs[j] = [ints[i], ints[j]];
-          // console.log(i, j);
-        }
-      }
-    }
-  }
-  console.log(pairs);
-  // console.log(Object.keys(pairs));
-  const indices = Object.keys(pairs);
-  const solutionIdx = Math.min(...indices).toString();
-  // console.log(pairs[solutionIdx]);
-  return pairs[solutionIdx];
-}
+// function sumPairs(ints, s) {
+//   let pairs = {};
+//   for (let i = 0; i < ints.length; i++) {
+//     if (ints[i] < s) {
+//       let nextIdx = i + 1;
+//       for (let j = nextIdx; j < ints.length; j++) {
+//         if (ints[i] + ints[j] === s) {
+//           // console.log(ints[i], ints[j]);
+//           pairs[j] = [ints[i], ints[j]];
+//           // console.log(i, j);
+//         }
+//       }
+//     }
+//   }
+//   console.log(pairs);
+//   // console.log(Object.keys(pairs));
+//   const indices = Object.keys(pairs);
+//   const solutionIdx = Math.min(...indices).toString();
+//   // console.log(pairs[solutionIdx]);
+//   return pairs[solutionIdx];
+// }
 
 // STOPPING LOOP AT FIRST j
 // function sumPairs(ints, s) {
@@ -207,6 +205,47 @@ function sumPairs(ints, s) {
 
 // sumPairs([4, 3, 2, 3, 4], 6);
 // sumPairs([10, 5, 2, 3, 6, 7, 8, 5, 2, 2, 8, 1], 10);
+
+// LATEST VERSION:
+// function sumPairs(ints, s) {
+//   let pairs = {};
+//   for (let i = 0; i < ints.length; i++) {
+//     let nextIdx = i + 1;
+//     for (let j = nextIdx; j < ints.length; j++) {
+//       if (ints[i] + ints[j] === s) {
+//         pairs[j] = [ints[i], ints[j]];
+//       }
+//     }
+//   }
+//   const indices = Object.keys(pairs);
+//   //   const solutionIdx = Math.min(...indices).toString();
+//   //   return pairs[solutionIdx];
+//   //   return pairs[Math.min(...indices).toString()];
+
+//   return pairs[Math.min(...Object.keys(pairs)).toString()];
+// }
+
+
+
+
+
+
+
+const sumPairs = (ints, s) => {
+  let endLoopAt = ints.length; // INITIALISE endLoopAt 
+  let pairs = {}; // EMPTY OBJECT FOR MATCHING PAIRS
+  for (let i = 0; i < endLoopAt; i++) { // OUTER LOOP TO FIND 1st ELEM OF PAIR
+    let nextIdx = i + 1; // SET START INDEX FOR INNER LOOP
+    let secondElem = s - ints[i]; // CALC VALUE OF 2nd ELEM OP PAIR
+    for (let j = nextIdx; j < endLoopAt; j++) { // INNER LOOP TO FIND 2nd ELEM
+      if (ints[j] === secondElem) { // IF FOUND,
+        pairs[j] = [ints[i], ints[j]];  // SET ITS INDEX AS key, AND PLUG IN 1st/2nd ELEM'S AS value
+        endLoopAt = j; // UPDATE endLoopAt TO PREVENT LOOP FROM RUNNING AFTER INDEX OF j
+      }
+    }
+  }
+  return pairs[Object.keys(pairs)[0]]; // RETUTN PAIR WITH THE SMALLEST INDEX OF ITS 2nd ELEM
+};
 
 
 
