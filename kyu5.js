@@ -2,7 +2,73 @@
 // ============================================================================
 // ============================================================================
 
+// The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
 
+// Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+
+// The following are examples of expected output values:
+
+// rgb(255, 255, 255) // returns FFFFFF
+// rgb(255, 255, 300) // returns FFFFFF
+// rgb(0,0,0) // returns 000000
+// rgb(148, 0, 211) // returns 9400D3
+
+function rgb(r, g, b) {
+  let solution = "";
+  const getRange = (val) => {   // VALIDATE VALUES (0-255)
+    if (val <= 0) {
+      return 0;
+    } else if (val >= 255) {
+      return 255;
+    } else {
+      return val;
+    }
+  };
+  const getHex = (rgb) => {   // CONVERT TO HEX
+    return rgb.toString(16);
+  };
+  const padToTwo = (str) => {   // PAD SINGLE DIGITS TO 2
+    const zero = "0";
+    return str.length === 1 ? zero.concat(str) : str;
+  };
+  for (el of arguments) {   // CONCAT VALUES TO STRING
+    solution += padToTwo(getHex(getRange(el)).toUpperCase());
+  }
+  console.log(solution);
+  // return solution;
+}
+
+// rgb(255, 255, 300);
+// rgb(0,0,0);
+// rgb(148, 0, 211);
+// rgb(276, 5, 9);
+
+// didn't work on the following argument array: 276,5,9: expected 'FF59' to equal 'FF0509'
+
+// STACK OVERFLOW
+// javascript: using a condition in switch case
+
+// switch (true) {
+//     case liCount == 0:
+//         setLayoutState('start');
+//         var api = $('#UploadList').data('jsp');
+//         api.reinitialise();
+//         break;
+//     case liCount<=5 && liCount>0:
+//         setLayoutState('upload1Row');
+//         var api = $('#UploadList').data('jsp');
+//         api.reinitialise();
+//         break;
+//     case liCount<=10 && liCount>5:
+//         setLayoutState('upload2Rows');
+//         var api = $('#UploadList').data('jsp');
+//         api.reinitialise();
+//         break;
+//     case liCount>10:
+//         var api = $('#UploadList').data('jsp');
+//         api.reinitialise();
+//         break;
+// }
 
 
 // ============================================================================
