@@ -1,3 +1,157 @@
+// ============================================================================
+// ============================================================================
+
+// !!! UNFINISHED !!!
+
+
+// My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because each month a list with the weights of members is published and each month he is the last on the list which means he is the heaviest.
+
+// I am the one who establishes the list so I told him: "Don't worry any more, I will modify the order of the list". It was decided to attribute a "weight" to numbers. The weight of a number will be from now on the sum of its digits.
+
+// For example 99 will have "weight" 18, 100 will have "weight" 1 so in the list 100 will come before 99.
+
+// Given a string with the weights of FFC members in normal order can you give this string ordered by "weights" of these numbers?
+
+// Example:
+// "56 65 74 100 99 68 86 180 90" ordered by numbers weights becomes:
+
+// "100 180 90 56 65 74 68 86 99"
+// When two numbers have the same "weight", let us class them as if they were strings (alphabetical ordering) and not numbers:
+
+// 180 is before 90 since, having the same "weight" (9), it comes before as a string.
+
+// All numbers in the list are positive numbers and the list can be empty.
+
+// Notes
+// it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
+// For C: The result is freed.
+
+function orderWeight(str) {
+  const numObj = {};
+  // const objArr = [];
+  //  REPLACE MULTIPLE SPACES WITH SINGLE & TRIM LEADING/TRAILING SPACE
+  const formatted = str.replace(/\s\s+/g, " ").trim();
+  console.log(formatted);
+  //  SPLIT INTO ARRAY OF STRINGS
+  const stringArr = formatted.split(" ");
+  console.log(stringArr);
+  // PARSE TO INT
+  const numArr = stringArr.map((el) => Number(el));
+  console.log(numArr);
+
+  for (let i = 0; i < numArr.length; i++) {
+    let sum = 0;
+    sum = numArr[i]
+      .toString()
+      .split("")
+      .map(Number)
+      .reduce(function (a, b) {
+        return a + b;
+      }, 0);
+    console.log(sum);
+    //  CREATE OBJECT FROM ARRAY (MIGHT NOT NEEDED)
+    numObj[numArr[i]] = { sum: sum };
+  }
+  console.log(numObj);
+  // console.log(objArr);
+
+  //  SORT NUMERICALLY BY PROPERTY VALUE (SUM)
+  const weightArr = [];
+
+  for (num in numObj) {
+    weightArr.push([num, numObj[num]["sum"]]);
+  }
+
+  weightArr.sort(function (a, b) {
+    return a[1] - b[1];
+  });
+  console.log(weightArr);
+
+  // LOOP OVER SORTABLE AND NEST ELEMENTS WITH SAME WEIGHT INTO ANOTHER ARRAY
+  let groupArr = [];
+  if ((weightArr[0][1] === weightArr[1][1])) {
+    groupArr = [[weightArr[0]]];
+  } else {
+    groupArr = [weightArr[0]];
+  }
+  // const groupArr = [weightArr[0]];
+  console.log(groupArr);
+  // a.slice(1).forEach((e, i) => {
+  //   if (e == a[i]) {
+  //     result[result.length - 1].push(e);
+  //   } else {
+  //     result.push([e]);
+  //   }
+  // });
+
+  // PUSH REPEATED ELEMENTS INTO SUB-ARRAYS WITHIN weightArr
+  weightArr.slice(1).forEach((el, i) => {
+    if (el[1] == weightArr[i][1]) {
+      groupArr[groupArr.length - 1].push(el);
+    } else {
+      groupArr.push([el]);
+    }
+  });
+  console.log(groupArr);
+
+  // FIND GROUPS AND SORT ITS ELEMENTS ALPHABETICALLY
+  for (let i = 0; i < groupArr.length; i++) {
+    console.log(groupArr[i]);
+    if (groupArr[i].length > 1) {
+      // console.log(groupArr[i].length);
+      groupArr[i].forEach((el, i) => {
+        // console.log("hello");
+      });
+    }
+  }
+}
+
+// orderWeight("  103     123 4444     99 2000 ");
+// orderWeight(" 56  65 74     100 99 68 86 180  90 ");
+orderWeight("33 24 15 77");
+
+// describe("Order Weights",function() {
+// it("Basic tests",function() {
+//     Test.assertEquals(orderWeight("103 123 4444 99 2000"), "2000 103 123 4444 99")
+//     Test.assertEquals(orderWeight("2000 10003 1234000 44444444 9999 11 11 22 123"), "11 11 2000 10003 22 123 1234000 44444444 9999")
+// })})
+
+// ==========================================================================
+
+// 1. REPLACE MULTIPLE SPACES WITH SINGLE
+
+// Given that you also want to cover tabs, newlines, etc, just replace \s\s+ with ' ':
+// string = string.replace(/\s\s+/g, ' ');
+// If you really want to cover only spaces (and thus not tabs, newlines, etc), do so:
+// string = string.replace(/  +/g, ' ');
+
+// 2. TRIM LEADING/TRAILING SPACES
+
+// let str = "       Hello World!        ";
+// str.trim()   // Returns "Hello World!"
+
+// 3.
+// var h = parseInt("10", 10)+ "<br>";
+
+// b="1,2,3,4".split`,`.map(x=>+x)
+
+// CONVERT ARRAY STRING TO ARRAY NUMBER
+// const arrStr = ["1", "3", "5", "9"];
+// const nuevo = arrStr.map((i) => Number(i));
+// console.log(nuevo);
+// [1,3,5,9];
+
+// var value = 2568,
+//     sum = value
+//         .toString()
+//         .split('')
+//         .map(Number)
+//         .reduce(function (a, b) {
+//             return a + b;
+//         }, 0);
+
+// console.log(sum);
+
 
 // ============================================================================
 // ============================================================================
@@ -140,6 +294,9 @@ const anagrams = (word, words) => {
 // ============================================================================
 // ============================================================================
 
+
+// !!! UNFINISHED !!! (EXECUTION TIMEOUT)
+// 
 
 // Sum of Pairs
 // Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
