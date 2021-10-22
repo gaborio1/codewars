@@ -8,27 +8,47 @@
 // Test.expect("grfg" == rot13("test"),
 // Test.expect("Grfg" == rot13("Test")
 
+// =============================================
+// !!! NEED TO REFACTOR WIH string.replace() ???
+// =============================================
+
 const rot13 = (str) => {
-  const strArr = str.split("");
+  // CREATE ARRAYS
+  const strArr = str.split(""); 
   const lowerC = "abcdefghijklmnopqrstuvwxyz".split("");
   const upperC = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
+  // TRACK CURRENT CHARACTER
   let currentChar;
   for (let i = 0; i < strArr.length; i++) {
     currentChar = strArr[i];
+    // GET INDEX OF CURRENT CHAR IN LETTERS ARRAYS (length: 26)
     let upperIdx = upperC.indexOf(currentChar);
     let lowerIdx = lowerC.indexOf(currentChar);
+    // UPDATE IF FOUND IN UPPERCASE
     if (upperIdx >= 0) {
       strArr[i] = upperIdx < 13 ? upperC[upperIdx + 13] : upperC[upperIdx - 13];
+      // UPDEATE IF FOUND IN LOWERCASE
     } else if (lowerIdx >= 0) {
       strArr[i] = lowerIdx < 13 ? lowerC[lowerIdx + 13] : lowerC[lowerIdx - 13];
     }
   }
+  // JOIN TO STRING 
   const solution = strArr.join("");
   return solution;
 };
 
 // rot13("test");
 rot13("A.b,C");
+
+// ========== OTHER CODEWARS SOLUTIONS ===========
+
+// function rot13(message) {
+//   var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//   var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+//   return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+// }
+
+// const rot13 = str => str.replace(/[a-z]/gi, letter => String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
 
 
 
