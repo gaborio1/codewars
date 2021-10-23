@@ -50,7 +50,19 @@ rot13("A.b,C");
 
 // const rot13 = str => str.replace(/[a-z]/gi, letter => String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
 
-
+// var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXWZ";
+// var cipher   = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXWZABCDEFGHIJKLM";
+// function rot13(message){
+//   return message.split('').map(function(c) {
+//     var i = alphabet.indexOf(c);
+//     if (i < 0) {
+//       // not in alphabet, return char
+//       return c;
+//     }
+    
+//     return cipher[i];
+//   }).join('');
+// }
 
 // ============================================================================
 // ============================================================================
@@ -278,6 +290,34 @@ function rgb(r, g, b) {
 //         break;
 // }
 
+
+// function rgb(r, g, b){
+//   return toHex(r)+toHex(g)+toHex(b);
+// }
+
+// ========== OTHER CODEWARS SOLUTIONS ===========
+
+// function toHex(d) {
+//     if(d < 0 ) {return "00";}
+//     if(d > 255 ) {return "FF";}
+//     return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
+// }
+
+
+// function rgb(r, g, b){
+//   return [r,g,b].map(function(x) {
+//     return ('0'+Math.max(0, Math.min(255, x)).toString(16)).slice(-2);
+//   }).join('').toUpperCase();
+// }
+
+// function rgb(r, g, b){
+//   function toHex(a) { 
+//     if (a <= 0) return '00';
+//     else if (a >= 255) return 'FF';
+//     else return a.toString(16).toUpperCase();
+//   }
+//   return toHex(r) + toHex(g) + toHex(b);
+// }
 
 // ============================================================================
 // ============================================================================
