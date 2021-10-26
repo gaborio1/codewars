@@ -1,3 +1,74 @@
+
+
+// ============================================================================
+// ============================================================================
+
+
+
+
+
+// ============================================================================
+// !!! Execution Timed Out !!!
+// ============================================================================
+
+
+// Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+
+// Notes:
+
+// Only lower case letters will be used (a-z). No punctuation or digits will be included.
+// Performance needs to be considered
+// Input strings s1 and s2 are null terminated.
+// Examples
+// scramble('rkqodlw', 'world') ==> True
+// scramble('cedewaraaossoqqyt', 'codewars') ==> True
+// scramble('katas', 'steak') ==> False
+
+// CHECK IF STR1 CONTAINS ALL CHARACTERS FROM STR2
+const scramble = (str1, str2) => {
+  let arr1,
+    arr2,
+    testArr = [];
+  //   SPLIT STRINGS INTO ARRAYS
+  const splitStr = (str) => {
+    return str.split("");
+  };
+  arr1 = splitStr(str1);
+  arr2 = splitStr(str2);
+
+  //   GET CURRENT CHARACTER FROM str1
+  for (let i = 0; i < arr2.length; i++) {
+    let current2 = arr2[i];
+    //  AND COMPARE WITH str2 CHARACTERS
+    for (let j = 0; j < arr1.length; j++) {
+      let current1 = arr1[j];
+      //  IF MATCH FOUND, PUSH CHAR TO testArr, DELETE CHAR AND break
+      if (current1 === current2) {
+        testArr.push(current1);
+        arr1.splice(j, 1);
+        break;
+      }
+    }
+  }
+  //   IF ALL FOUND CHARACTERS EQUAL TO WORD RETURN true OTHERWISE false
+  if (testArr.join("") === arr2.join("")) {
+    // return true;
+    console.log("true");
+  } else {
+    // return false;
+    console.log("false");
+  }
+};
+
+// scramble('rkqodlw', 'world');
+// scramble("aibici", "aabc");
+// scramble("cedewaraaossoqqyt", "codewars");
+// scramble("aaacd", "abc")
+// scramble('scriptjava','javascript')
+scramble("aabbcamaomsccdd", "commas");
+
+
+
 // ============================================================================
 // ============================================================================
 
@@ -66,8 +137,10 @@ rot13("A.b,C");
 
 // ============================================================================
 // ============================================================================
+// !!! UNSOLVED !!!
+// ============================================================================
+// ============================================================================
 
-// !!! UNFINISHED !!!
 
 
 // My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because each month a list with the weights of members is published and each month he is the last on the list which means he is the heaviest.
@@ -386,6 +459,7 @@ const anagrams = (word, words) => {
 
 
 // ============================================================================
+// !!! Execution Timed Out !!!
 // ============================================================================
 
 
