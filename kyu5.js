@@ -4,6 +4,69 @@
 // ============================================================================
 
 
+// Your job is to write a function which increments a string, to create a new string.
+
+// If the string already ends with a number, the number should be incremented by 1.
+// If the string does not end with a number. the number 1 should be appended to the new string.
+// Examples:
+
+// foo -> foo1
+
+// foobar23 -> foobar24
+
+// foo0042 -> foo0043
+
+// foo9 -> foo10
+
+// foo099 -> foo100
+
+// Attention: If the number has leading zeros the amount of digits should be considered.
+
+const incrementString = (str) => {
+  let solutionNumStr = "";
+  //   FIND
+  const matches = str.match(/(\d+)/);
+  // IF NO NUMBER FOUND, APPEND 1 TO STR
+  if (!matches) {
+    return str.concat("1");
+  }
+  // ( matches => [["000"], ["000"]] )
+  const numStr = matches[0];
+  // console.log(NumStr);
+  //   GET VALUE AND INCREMENT
+  const numVal = Number(numStr);
+  const plusOne = numVal + 1;
+  console.log(plusOne);
+  //   STORE LENGTH
+  const numLen = numStr.length;
+  // console.log(numLen);
+  // CONVERT TO STRING
+  const plusOneStr = plusOne.toString();
+  console.log(plusOneStr);
+  const plusOneStrLen = plusOneStr.length;
+  console.log(plusOneStrLen);
+
+  // ADD LEADING ZEROS
+  const leadingZeros = numLen - plusOneStrLen;
+  console.log(leadingZeros);
+  for (let i = 0; i < leadingZeros; i++) {
+    solutionNumStr += "0";
+  }
+  // ADD NUMBER
+  solutionNumStr += plusOneStr;
+  console.log(solutionNumStr);
+  // REPLACE ORIGINAL WITH INCREMENTED
+  const solution = str.replace(/(\d+)/, solutionNumStr);
+  console.log(solution);
+  return solution;
+};
+
+// incrementString("foobar000");
+// incrementString("foo");
+// incrementString("foobar001");
+// incrementString("foobar99");
+// incrementString("foobar099");
+incrementString("");
 
 
 
