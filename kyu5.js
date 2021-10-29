@@ -24,38 +24,30 @@
 
 const incrementString = (str) => {
   let solutionNumStr = "";
-  //   FIND
-  const matches = str.match(/(\d+)/);
-  // IF NO NUMBER FOUND, APPEND 1 TO STR
-  if (!matches) {
+  //   FIND NUMERIC CHARS
+  const nums = str.match(/(\d+)/);
+  //  IF NO NUMBER FOUND, APPEND 1 TO STR
+  if (!nums) {
     return str.concat("1");
   }
-  // ( matches => [["000"], ["000"]] )
-  const numStr = matches[0];
-  // console.log(NumStr);
-  //   GET VALUE AND INCREMENT
-  const numVal = Number(numStr);
-  const plusOne = numVal + 1;
-  console.log(plusOne);
-  //   STORE LENGTH
+  //  ( nums => [["000"], ["000"]] )
+  const numStr = nums[0];
+  //   GET NUMERIC VALUE AND INCREMENT
+  const plusOne = Number(numStr) + 1;
+  //   STORE ORIGINAL NUMBER'S LENGTH
   const numLen = numStr.length;
-  // console.log(numLen);
   // CONVERT TO STRING
   const plusOneStr = plusOne.toString();
-  console.log(plusOneStr);
+  //  STORE INCREMENTED NUMBER'S LENGTH
   const plusOneStrLen = plusOneStr.length;
-  console.log(plusOneStrLen);
-
-  // ADD LEADING ZEROS
+  //  ADD LEADING ZEROS
   const leadingZeros = numLen - plusOneStrLen;
-  console.log(leadingZeros);
   for (let i = 0; i < leadingZeros; i++) {
     solutionNumStr += "0";
   }
-  // ADD NUMBER
+  //  CONCAT NUMBER TO ZEROS
   solutionNumStr += plusOneStr;
-  console.log(solutionNumStr);
-  // REPLACE ORIGINAL WITH INCREMENTED
+  // REPLACE ORIGINAL NUMBER SUBSTRING WITH INCREMENTED SUBSTRING
   const solution = str.replace(/(\d+)/, solutionNumStr);
   console.log(solution);
   return solution;
@@ -67,6 +59,15 @@ const incrementString = (str) => {
 // incrementString("foobar99");
 // incrementString("foobar099");
 incrementString("");
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// const incrementString = s => s.replace(/[0-8]?9*$/, m => String(++m));
+
+// const incrementString = strng =>
+//   strng.replace(/[0-8]?9*$/, val => ++val);
+
+// const incrementString = str => str.replace(/([0-8]?)(9*)$/, num => num ? Number(num) + 1 : 1);
 
 
 
