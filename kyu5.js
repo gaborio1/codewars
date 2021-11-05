@@ -684,25 +684,45 @@ const anagrams = (word, words) => {
 
 
 
+//  SOLUTION 1:
+// NESTED LOOP AND OBJECT
 
+// const sumPairs = (ints, s) => {
+//   let endLoopAt = ints.length; // INITIALISE endLoopAt 
+//   let pairs = {}; // EMPTY OBJECT FOR MATCHING PAIRS
+//   for (let i = 0; i < endLoopAt; i++) { // OUTER LOOP TO FIND 1st ELEM OF PAIR
+//     let nextIdx = i + 1; // SET START INDEX FOR INNER LOOP
+//     let secondElem = s - ints[i]; // CALC VALUE OF 2nd ELEM OP PAIR
+//     for (let j = nextIdx; j < endLoopAt; j++) { // INNER LOOP TO FIND 2nd ELEM
+//       if (ints[j] === secondElem) { // IF FOUND,
+//         pairs[j] = [ints[i], ints[j]];  // SET ITS INDEX AS key, AND PLUG IN 1st/2nd ELEM'S AS value
+//         endLoopAt = j; // UPDATE endLoopAt TO PREVENT LOOP FROM RUNNING AFTER INDEX OF j
+//       }
+//     }
+//   }
+//   return pairs[Object.keys(pairs)[0]]; // RETUTN PAIR WITH THE SMALLEST INDEX OF ITS 2nd ELEM
+// };
+
+// SOLUTION 2:
+// SINGLE LOOP AND PARALLEL ARRAY
 
 const sumPairs = (ints, s) => {
-  let endLoopAt = ints.length; // INITIALISE endLoopAt 
-  let pairs = {}; // EMPTY OBJECT FOR MATCHING PAIRS
-  for (let i = 0; i < endLoopAt; i++) { // OUTER LOOP TO FIND 1st ELEM OF PAIR
-    let nextIdx = i + 1; // SET START INDEX FOR INNER LOOP
-    let secondElem = s - ints[i]; // CALC VALUE OF 2nd ELEM OP PAIR
-    for (let j = nextIdx; j < endLoopAt; j++) { // INNER LOOP TO FIND 2nd ELEM
-      if (ints[j] === secondElem) { // IF FOUND,
-        pairs[j] = [ints[i], ints[j]];  // SET ITS INDEX AS key, AND PLUG IN 1st/2nd ELEM'S AS value
-        endLoopAt = j; // UPDATE endLoopAt TO PREVENT LOOP FROM RUNNING AFTER INDEX OF j
-      }
-    }
+  let result = [];
+  let diff = [];
+  for (let i = 0; i < ints.length; i++) {
+    if (diff.includes(ints[i])) {
+        result.push(ints[diff.indexOf(ints[i])]);
+        result.push(ints[i]);
+        break;
+        } 
+    diff.push(s - ints[i]);
   }
-  return pairs[Object.keys(pairs)[0]]; // RETUTN PAIR WITH THE SMALLEST INDEX OF ITS 2nd ELEM
+  if (!result.length) { // if (true) = EMPTY ARRAY
+    return undefined;
+  } else {
+    return result;
+  }
 };
-
-
 
 // ============================================================================
 // ============================================================================
