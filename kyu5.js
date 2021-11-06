@@ -523,12 +523,8 @@ const anagrams = (word, words) => {
 
 
 // ============================================================================
-// !!! Execution Timed Out !!!
 // ============================================================================
 
-
-// !!! UNFINISHED !!! (EXECUTION TIMEOUT)
-// 
 
 // Sum of Pairs
 // Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
@@ -680,11 +676,9 @@ const anagrams = (word, words) => {
 //   return pairs[Math.min(...Object.keys(pairs)).toString()];
 // }
 
+// =======================================================================
 
-
-
-
-//  SOLUTION 1:
+//  SOLUTION 1: EXEC TIMEOUT !!!
 // NESTED LOOP AND OBJECT
 
 // const sumPairs = (ints, s) => {
@@ -703,26 +697,55 @@ const anagrams = (word, words) => {
 //   return pairs[Object.keys(pairs)[0]]; // RETUTN PAIR WITH THE SMALLEST INDEX OF ITS 2nd ELEM
 // };
 
-// SOLUTION 2:
+// =======================================================================
+
+// SOLUTION 2: EXEX TIMEOUT !!!
 // SINGLE LOOP AND PARALLEL ARRAY
 
-const sumPairs = (ints, s) => {
-  let result = [];
-  let diff = [];
+// const sumPairs = (ints, s) => {
+//   let result = [];
+//   let diff = [];
+//   for (let i = 0; i < ints.length; i++) {
+//     if (diff.includes(ints[i])) {
+//         result.push(ints[diff.indexOf(ints[i])]);
+//         result.push(ints[i]);
+//         break;
+//         } 
+//     diff.push(s - ints[i]);
+//   }
+//   if (!result.length) { // if (true) = EMPTY ARRAY
+//     return undefined;
+//   } else {
+//     return result;
+//   }
+// };
+
+// =======================================================================
+
+//  SOLUTION 3: SOLVED !!!
+//  SINGLE LOOP WITH Set
+
+const sumPairs = (ints, sum) => {
+  const result = [], prevNums = new Set(); // Set STORES UNIQUE VALUES
   for (let i = 0; i < ints.length; i++) {
-    if (diff.includes(ints[i])) {
-        result.push(ints[diff.indexOf(ints[i])]);
-        result.push(ints[i]);
-        break;
+    let current = ints[i], diff = sum - current;
+    if (prevNums.has(diff)) { //  IF NUMBER HAS ALREADY COME UP:
+        result.push(diff, current); //  PUSH IT INTO SOLUTION ALONG WITH ITS PAIR
+        break;  // !!!
         } 
-    diff.push(s - ints[i]);
+    prevNums.add(ints[i]);  // OTHERWISE: ADD NUMBER TO COLLECTION
   }
   if (!result.length) { // if (true) = EMPTY ARRAY
-    return undefined;
+    return undefined; // RETURN undefined FOR EMPTY ARRAY
   } else {
     return result;
   }
 };
+
+// sumPairs([4, 3, 2, 3, 4], 6);
+// sumPairs([10, 5, 2, 3, 6, 7, 8, 5, 2, 2, 8, 1], 10);
+// sumPairs([10, 5, 2, 3, 7, 5], 10);
+// sumPairs([1, 4, 8, 7, 3, 15], 8);
 
 // ============================================================================
 // ============================================================================
