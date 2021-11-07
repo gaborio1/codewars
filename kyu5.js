@@ -1,4 +1,57 @@
 
+// ============================================================================
+//  !!! REFACTOR WITHOUT REGEX !!!
+// ============================================================================
+
+// Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.
+
+// RegEx BY Mike K (stack owerflow: How to get domain name from URL)
+
+const domainName = (url) => {
+  console.log(url.replace(/.+\/\/|www.|\..+/g, ""));
+};
+
+//  .+\/\/ ONE OR MORE OF ANY CHARACTER .+ FOLLOWED BY TWO /'s => MATCHES http(s)://
+//  www. => MATCHES www.
+//  \..+  => MATCHES A "." FOLLOWED BY ONE OR MORE OF ANY CHAR  => .co.jp/gfgfg/gdfg etc...
+
+// ====================================================================
+
+// !!! FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory !!!
+
+// const domainName = (url) => {
+//   const urlArr = url.split("");
+//   const domainArr = [];
+//   for (let i = 0; i < urlArr.length; i++) {
+//     let current = urlArr[i];
+//     let prev = urlArr[i - 1];
+//     let prev3 = urlArr[i - 3];
+//     let next3 = urlArr[i + 3];
+//     if (domainArr.length > 0) {
+//       domainArr.push(current);
+//     }
+//     if ((prev3 === ":" || prev === ".") && next3 !== ".") {
+//       domainArr.push(current);
+//     }
+//   }
+//   const resultArr = [];
+//   let j = 0;
+//   while (domainArr[j] !== ".") {
+//     resultArr.push(domainArr[j]);
+//     j++;
+//   }
+//   return resultArr.join("");
+// };
+
+// ====================================================================
+
+// domainName("http://github.com/carbonfive/raygun");
+// domainName("http://www.zombie-bites.com");
+// domainName("https://www.cnet.com");
+// domainName("www.cnet-1.com");
+// domainName("http://www.codewars.com");
+
+
 
 // ============================================================================
 // ============================================================================
@@ -72,7 +125,7 @@ incrementString("");
 
 
 // ============================================================================
-// !!! Execution Timed Out !!!
+//  !!! UNSOLEVED !!! Execution Timed Out !!!
 // ============================================================================
 
 
@@ -201,7 +254,7 @@ rot13("A.b,C");
 
 // ============================================================================
 // ============================================================================
-// !!! UNSOLVED !!!
+// !!! UNSOLVED !!! Execution Timed Out !!!
 // ============================================================================
 // ============================================================================
 
