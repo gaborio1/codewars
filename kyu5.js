@@ -1,3 +1,108 @@
+// ============================================================================
+// ============================================================================
+
+// Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+// N! = 1 * 2 * 3 * ... * N
+
+// Be careful 1000! has 2568 digits...
+
+
+// https://www.purplemath.com/modules/factzero.htm
+
+// Take the number that you've been given the factorial of.
+// Divide by 5; if you get a decimal, truncate to a whole number.
+// Divide by 52 = 25; if you get a decimal, truncate to a whole number.
+// Divide by 53 = 125; if you get a decimal, truncate to a whole number.
+// Continue with ever-higher powers of 5, until your division results in a number less than 1. Once the division is less than 1, stop.
+// Sum all the whole numbers you got in your divisions. This is the number of trailing zeroes.
+
+
+const zeros = (n) => {
+  let solution = 0;   //  START COUNTER AT ZERO
+  let nthPow = 1;   //  INITIALISE EXPONENT AT 1
+  while (n / 5 ** nthPow >= 1) {  //  WHILE n CAN BE DIVIDED BY 5 TO THE nthPow
+    solution += Math.floor(n / (5 ** nthPow));  //  INCREMENT SOLUTION BY RESULT ROUNDED DOWN TO NEAREST INT
+    nthPow++;   //  INCREMENT EXPONENT BY ONE  
+  }
+  return solution;
+}
+
+//  WITH Math.pow():
+
+// const zeros = (n) => {
+//   let solution = 0;   //  START COUNTER AT ZERO
+//   let nthPow = 1;   //  INITIALISE EXP AT 1
+//   while (n / Math.pow(5, nthPow) >= 1) {  //  WHILE n CAN BE DIVIDED BY 5 TO THE nthPow
+//     solution += Math.floor(n / Math.pow(5, nthPow));  //  INCREMENT SOLUTION BY RESULT ROUNDED DOWN TO NEAREST INT
+//     nthPow++;   //  INCREMENT EXPONENT BY ONE  
+//   }
+//   return solution;
+// }
+
+// zeros(0);
+// zeros(5);
+// zeros(6);
+// zeros(30);
+
+// Exponentiation (**) 
+// The exponentiation operator (**) returns the result of raising the first operand to the power of the second operand. It is equivalent to Math.pow, except it also accepts BigInts as operands.
+// console.log(3 ** 4);
+// expected output: 81
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+// function zeros (n) {
+//   var zs = 0;
+//   while(n>0){
+//     n=Math.floor(n/5);
+//     zs+=n
+//   }
+//   return zs;
+// }
+
+// function zeros(n) {
+//   return n/5 < 1 ? 0 : Math.floor(n/5) + zeros(n/5);
+// }
+
+// function zeros (n) {
+//   var res = 0;
+//   for(var i=5; i<n; i*=5)
+//     res += Math.floor(n/i);
+//   return res;
+// }
+
+// function zeros(n){ //trailing zeroes of n!
+//    var countfives = 0,
+//        pow5 = 1,
+//        occurances;
+//    while(pow5 *= 5, occurances = Math.floor(n/pow5)) countfives += occurances;
+//    return countfives;
+// }
+
+// function zeros (n) {
+//   const kmax = Math.log(n)/Math.log(5); //Log2(n)/log2(5) = log5(n)
+//   let accum = 0;
+//   for (let k = 1; k <= kmax; k++) {
+//     accum += Math.floor(n/Math.pow(5,k));
+//   }
+//   return accum;
+// }
+
+// function zeros (n) {
+//   n = ~~(n/5);
+//   return  n + (n<5 ? 0 : zeros(n));
+// }
+
+// const zeros = n => n/5 < 1 ? 0 : Math.floor(n/5) + zeros(n/5);
+
+// function zeros(n) {
+//   for (var result = 0, i = 5; n >= i; i *= 5) result += 0 | n / i
+//   return result
+// }
+
+
 
 // ============================================================================
 //  !!! REFACTOR WITHOUT REGEX !!!
