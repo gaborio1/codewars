@@ -19,10 +19,133 @@
 
 
 
-
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // ============================================================================
+//  !!! UNSOLVED !!! NO OWN SOLUTION YET !!! LOOK INTO valueOf() !!!
 // ============================================================================
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+// 5 - kyu A Chain adding function - add(1)(2)(3); // 6
+
+// Object.prototype.valueOf()
+// The valueOf() method returns the primitive value of the specified object.
+
+// Syntax: valueOf()
+// Return value: The primitive value of the specified object.
+
+
+// Description
+// JavaScript calls the valueOf method to convert an object to a primitive value. You rarely need to invoke the valueOf method yourself; JavaScript automatically invokes it when encountering an object where a primitive value is expected.
+
+// By default, the valueOf method is inherited by every object descended from Object. Every built-in core object overrides this method to return an appropriate value. If an object has no primitive value, valueOf returns the object itself.
+
+// You can use valueOf within your own code to convert a built-in object into a primitive value. When you create a custom object, you can override Object.prototype.valueOf() to call a custom method instead of the default Object method.
+
+// function MyNumberType(n) {
+//     this.number = n;
+//   }
+  
+//   MyNumberType.prototype.valueOf = function() {
+//     return this.number;
+//   };
+  
+//   const object1 = new MyNumberType(4);
+  
+//   console.log(object1 + 3);
+  // expected output: 7
+  
+// We want to create a function that will add numbers together when called in succession.
+
+// add(1)(2);
+// // returns 3
+// We also want to be able to continue to add numbers to our chain.
+
+// add(1)(2)(3); // 6
+// add(1)(2)(3)(4); // 10
+// add(1)(2)(3)(4)(5); // 15
+// and so on.
+
+// A single call should return the number passed in.
+
+// add(1); // 1
+// We should be able to store the returned values and reuse them.
+
+// Consider a function which itself returns a function. What would it look like if you were to immediately call that returned function?
+
+// var addTwo = add(2);
+// addTwo; // 2
+// addTwo + 5; // 7
+// addTwo(3); // 5
+// addTwo(3)(5); // 10
+// We can assume any number being passed in will be valid whole number.
+
+function add(n) {}
+
+// add(1);
+// add(1)(2);
+// add(1)(2)(3);
+
+// SOURCE:
+// https://github.com/michaeltomasik/lifeOfMichaelT/blob/master/ChainAddingFunction.js
+
+function add(n) {
+  const sum = function (y) {
+    return add(n + y);
+  };
+  sum.valueOf = function () {
+    return n;
+  };
+  return sum;
+}
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// var add = function (n) {
+//   const f = (x) => add(n + x);
+//   f.valueOf = () => n;
+//   return f;
+// };
+
+// function add(n){
+//   var fn = function(x){ return add(n+x); }
+//   fn.toString = function(){ return n; }
+//   return fn;
+// }
+
+// function add(a) {
+//   var currentSum = a;
+//   function f(b) {
+//     currentSum += b;
+//     return f;
+//   }
+//   f.toString = function () {
+//     return currentSum;
+//   };
+//   return f;
+// }
+
+// const add = (n) => Object.assign((i) => add(i + n), { valueOf: () => n });
+
+// const add = n => Object.assign(num => add(num + n), { valueOf: () => n });
+
+// function add(n){
+//   var a = function(x){ return add(x + n) }
+//   a.valueOf = function(){ return n }
+//   return a
+// }
+
+// function add(n) {
+//   var next = add.bind(n += this | 0);
+//   next.valueOf = function() { return n; };
+//   return next;
+// }
+
+// GITHUB: https://github.com/rarafon/Javascript/blob/master/codewars/a%20chain%20adding%20function
+// function add(n) {
+//   var next = add.bind(n += this | 0);
+//   next.valueOf = function() { return n; };
+//   return next;
+// }
 
 
 
@@ -350,7 +473,7 @@ incrementString("");
 
 
 // ============================================================================
-//  !!! UNSOLEVED !!! Execution Timed Out !!!
+//  !!! UNSOLVED !!! Execution Timed Out !!!
 // ============================================================================
 
 
