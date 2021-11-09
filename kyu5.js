@@ -1,3 +1,96 @@
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+// 1, 246, 2, 123, 3, 82, 6, 41 are the divisors of number 246. Squaring these divisors we get: 1, 60516, 4, 15129, 9, 6724, 36, 1681. The sum of these squares is 84100 which is 290 * 290.
+
+// Task
+// Find all integers between m and n (m and n integers with 1 <= m <= n) such that the sum of their squared divisors is itself a square.
+
+// We will return an array of subarrays or of tuples (in C an array of Pair) or a string. The subarrays (or tuples or Pairs) will have two elements: first the number the squared divisors of which is a square and then the sum of the squared divisors.
+
+// Example:
+// list_squared(1, 250) --> [[1, 1], [42, 2500], [246, 84100]]
+// list_squared(42, 250) --> [[42, 2500], [246, 84100]]
+
+const sumOfSquares = (arr) => arr.reduce((a, num) => a + num ** 2, 0); // CALC SUM OF SQUARES
+
+const isSquare = (n) => Number.isInteger(Math.sqrt(n)); //  CHECK IF IN NUM IS A SQUARE NUM
+
+const getFactors = (num) => {  //  FIND ALL FACTORS OF NUM
+    const factors = [];
+    for (let divisor = 1; divisor <= num; divisor++) {  //  START DIVIDING BY 1
+      if (factors.includes(divisor)) break; // AVOID DUPLUCATES
+      if (num % divisor === 0) {  // IF FACTOR FOUND:
+        divisor === num / divisor //  AND NUM ITSELF IS A SQUARE NUM ?
+          ? factors.push(divisor) //  ONLY PUSH DIVISOR TO AVOID DUPLICATES (3*3) => 3
+          : factors.push(divisor, num / divisor); // OTHERWISE PUSH BOTH FACTORS (1*9) => 1,9
+      }
+    }
+    return factors;
+  };
+
+const listSquared = (m, n) => {
+  const minRange = m, maxRange = n, solution = [];
+  for (let i = minRange; i <= maxRange; i++) {  //  LOOP THROUGH NUMS WITHIN RANGE
+    if (isSquare(sumOfSquares(getFactors(i)))) {  //  IF SUM OF FACTORS**2 IS A SQUARE NUM
+      solution.push([i, sumOfSquares(getFactors(i))]);  // PUSH NUM AND SQUARE IN NESTED ARRAY
+    }
+  }
+  return solution;
+};
+  
+  // listSquared(1, 250);
+  // [[1, 1], [42, 2500], [246, 84100]]
+  // listSquared(42, 250);
+  // [[42, 2500], [246, 84100]]
+  // listSquared(250, 500);
+  // [[287, 84100]]
+  
+  //============= OTHER CODEWARS SOLUTIONS: =============
+
+//   function listSquared(m, n) {
+//     var arr = [];
+//     for (var i = m; i <= n; i++){
+//       var temp = 0;
+//       for (var j = 1; j <= i; j++) {
+//         if ( i % j == 0) temp += j*j;  
+//       };
+//       if ( Math.sqrt(temp) % 1 == 0) arr.push([i, temp]);
+//     };
+//     return arr;
+//   }
+
+
 // ============================================================================
 // ============================================================================
 
