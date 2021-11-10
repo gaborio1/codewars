@@ -24,36 +24,6 @@
 //  !!! UNSOLVED !!! NO OWN SOLUTION YET !!! LOOK INTO valueOf() !!!
 // ============================================================================
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// 5 - kyu A Chain adding function - add(1)(2)(3); // 6
-
-// Object.prototype.valueOf()
-// The valueOf() method returns the primitive value of the specified object.
-
-// Syntax: valueOf()
-// Return value: The primitive value of the specified object.
-
-
-// Description
-// JavaScript calls the valueOf method to convert an object to a primitive value. You rarely need to invoke the valueOf method yourself; JavaScript automatically invokes it when encountering an object where a primitive value is expected.
-
-// By default, the valueOf method is inherited by every object descended from Object. Every built-in core object overrides this method to return an appropriate value. If an object has no primitive value, valueOf returns the object itself.
-
-// You can use valueOf within your own code to convert a built-in object into a primitive value. When you create a custom object, you can override Object.prototype.valueOf() to call a custom method instead of the default Object method.
-
-// function MyNumberType(n) {
-//     this.number = n;
-//   }
-  
-//   MyNumberType.prototype.valueOf = function() {
-//     return this.number;
-//   };
-  
-//   const object1 = new MyNumberType(4);
-  
-//   console.log(object1 + 3);
-  // expected output: 7
-  
 // We want to create a function that will add numbers together when called in succession.
 
 // add(1)(2);
@@ -79,7 +49,7 @@
 // addTwo(3)(5); // 10
 // We can assume any number being passed in will be valid whole number.
 
-function add(n) {}
+// function add(n) {}
 
 // add(1);
 // add(1)(2);
@@ -87,6 +57,12 @@ function add(n) {}
 
 // SOURCE:
 // https://github.com/michaeltomasik/lifeOfMichaelT/blob/master/ChainAddingFunction.js
+
+// function add(n) {
+//   return function (y) {
+//     return n + y;
+//   };
+// }
 
 function add(n) {
   const sum = function (y) {
@@ -142,13 +118,83 @@ function add(n) {
 
 // GITHUB: https://github.com/rarafon/Javascript/blob/master/codewars/a%20chain%20adding%20function
 // function add(n) {
-//   var next = add.bind(n += this | 0);
-//   next.valueOf = function() { return n; };
+//   var next = add.bind((n += this | 0));
+//   next.valueOf = function () {
+//     return n;
+//   };
 //   return next;
 // }
 
 
+// ===============================================================================
+// ======= SIMILAR PROBLEM: https://www.youtube.com/watch?v=D5ENjfSkHY4 ==========
+// ===============================================================================
+// ============================ sum(1)(2)(3)...(n)() =============================
+// ===============================================================================
 
+// 1.
+// ===== sum(1)(2) THIS WORKS WITH 2 ARGUMENTS: =====
+
+// let sum = function(a) {
+//   return function(b) {
+//     return a + b;
+//   }
+// }
+
+// console.log(sum(1)(2));
+
+// 2.
+// ===== sum(1)(2)(3) WITH 3 ARGUMENTS: =====
+
+// let sum = function(a) {
+//   return function(b) {
+//     return function(c) {
+//       return a + b + c;
+//     }
+//   }
+// }
+
+// console.log(sum(1)(2)(3));
+
+// THERE IS A PATTERN SO WE HAVE TO CALL INNER FUNCTION RECURSIVELY TO HANDLE n NUMBER OF ARGUMENTS
+
+// 3.
+// ===== sum(1)(2)(3)(4)...(n)() WITH n ARGUMENTS: =====
+//  HAVE TO KEEP RETURNING A FUNCTION TILL THERE IS NO ARGUMENTS LEFT, THATS THE BASE POINT OF THIS RECURSION:
+
+// let sum = function(a) {
+//   return function(b) {   //  IF b (NEXT ARGUMENT) IS undefined WE SHOULD STOP
+//     return sum(a + b);
+//   }
+// }
+
+// SO, IF b EXISTS, RETURN sum(a + b), IF NOT, THEN JUST RETURN a
+
+// let sum = function (a) {
+//   return function (b) {
+//     if (b) {
+//       return sum(a + b);
+//     } else {
+//       return a;
+//     }
+//   };
+// };
+
+//  REFACTOR:
+
+// let sum = (a) => {
+//   return (b) => {
+//     return b ? sum(a + b) : a;
+//   };
+// };
+
+//  SINGLE LINE WITH NO RETURUN STATEMENT:
+
+// ******************************************
+// let sum = (a) => (b) => (b ? sum(a + b) : a);
+// ******************************************
+
+// console.log(sum(1)(2)(3)(4)());
 
 
 // ============================================================================

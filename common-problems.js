@@ -1,3 +1,90 @@
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
+// ===============================================================================
+// ============================ sum(1)(2)(3)...(n)() =============================
+// ===============================================================================
+// ============  https://www.youtube.com/watch?v=D5ENjfSkHY4 =====================
+// ===============================================================================
+
+// 1.
+// ===== sum(1)(2) THIS WORKS WITH 2 ARGUMENTS: =====
+
+// let sum = function(a) {
+//   return function(b) {
+//     return a + b;
+//   }
+// }
+
+// console.log(sum(1)(2));
+
+// 2.
+// ===== sum(1)(2)(3) WITH 3 ARGUMENTS: =====
+
+// let sum = function(a) {
+//   return function(b) {
+//     return function(c) {
+//       return a + b + c;
+//     }
+//   }
+// }
+
+// console.log(sum(1)(2)(3));
+
+// THERE IS A PATTERN SO WE HAVE TO CALL INNER FUNCTION RECURSIVELY TO HANDLE n NUMBER OF ARGUMENTS
+
+// 3.
+// ===== sum(1)(2)(3)(4)...(n)() WITH n ARGUMENTS: =====
+//  HAVE TO KEEP RETURNING A FUNCTION TILL THERE IS NO ARGUMENTS LEFT, THATS THE BASE POINT OF THIS RECURSION:
+
+// let sum = function(a) {
+//   return function(b) {   //  IF b (NEXT ARGUMENT) IS undefined WE SHOULD STOP
+//     return sum(a + b);
+//   }
+// }
+
+// SO, IF b EXISTS, RETURN sum(a + b), IF NOT, THEN JUST RETURN a
+
+// let sum = function (a) {
+//   return function (b) {
+//     if (b) {
+//       return sum(a + b);
+//     } else {
+//       return a;
+//     }
+//   };
+// };
+
+//  REFACTOR:
+
+// let sum = (a) => {
+//   return (b) => {
+//     return b ? sum(a + b) : a;
+//   };
+// };
+
+//  SINGLE LINE WITH NO RETURUN STATEMENT:
+
+// ******************************************
+let sum = (a) => (b) => (b ? sum(a + b) : a);
+// ******************************************
+
+// console.log(sum(1)(2)(3)(4)());
+
+
+
+
+
+
+// ============================================================================
+// ============================================================================
+
 const numbers = ["one", "two", "three", "four", "five", "six"]; // THIS IS REGULAR DATA[] BUT CAN ALSO BE STATIC DEFAULT PROPS
 
 // SHUFFLE AND GRAB FIRST TWO
