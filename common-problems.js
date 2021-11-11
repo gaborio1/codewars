@@ -5,7 +5,62 @@
 
 
 // ============================================================================
+// CURRYING IN JAVASCRIPT: https://www.youtube.com/watch?v=vQcCNpuaJO8&ab_channel=AkshaySaini
 // ============================================================================
+
+// ================================================================================
+// =========================== USING bind METHOD ==================================
+// ================================================================================
+
+// const multiply = function (x, y) {
+//   console.log(x * y);
+// };
+
+// 1.
+// ===== CREATE A COPY OF multiply (bind WILL NOT INVOKE IT DIRECTLY =====)
+// const multiplyByTwo = multiply.bind(this, 2);
+// AS A RESULT, IT PRE-SETS x = 2
+// LIKE THIS:
+// const multiply = function(y) {
+//  x = 2;
+//  console.log(x * y)
+// }
+
+// multiplyByTwo(5);
+// 10
+
+// 2.
+// ===== ANOTHER ARGUMENT:  x = 2 AND y = 3 NOW =====
+// IT WILL IGNORE 5 !
+// const multiplyByTwo = multiply.bind(this, 2, 3);
+
+// multiplyByTwo(5);
+// 6
+
+// 3.
+// ===== NO ARGUMENT: =====
+// ALSO WORKS WITHOUT this !!!
+// const multiplyByTwo = multiply.bind(this);
+
+// multiplyByTwo(2, 3);
+// 6
+
+// ================================================================================
+// =========================== USING FUNCTION CLOSURES ============================
+// ================================================================================
+
+// HERE, THE INNER FUNCTION HAS ACCEESS TO x EVEN AFTER IT HAS BEEN RETURNED
+const multiply = function (x) {
+  return function (y) {
+    console.log(x * y);
+  };
+};
+ 
+
+const multiplyByTwo = multiply(2);
+multiplyByTwo(3);
+
+
 
 // ===============================================================================
 // ============================ sum(1)(2)(3)...(n)() =============================
