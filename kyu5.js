@@ -1,4 +1,65 @@
 
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  First non-repeating character
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+// Write a function named first_non_repeating_letter that takes a string input, and returns the first character that is not repeated anywhere in the string.
+
+// For example, if given the input 'stress', the function should return 't', since the letter t only occurs once in the string, and occurs first in the string.
+
+// As an added challenge, upper- and lowercase letters are considered the same character, but the function should return the correct case for the initial letter. For example, the input 'sTreSS' should return 'T'.
+
+// If a string contains all repeating characters, it should return an empty string ("") or None -- see sample tests.
+
+// 1️⃣  copy NOT NEEDED !!!
+// const firstNonRepeatingLetter = (s) => {
+//     const original = s.split("");
+//     let copy = [...original],
+//         mutated;
+//     for (let i = 0; i < original.length; i++) {
+//         let current = original[i];
+//         copy.splice(i, 1);
+//         mutated = copy;
+//         let lower = current.toLowerCase(),
+//             upper = current.toUpperCase();
+//         if (!mutated.includes(lower) && !mutated.includes(upper)) {
+//             return current;
+//         }
+//         copy = [...original];
+//     }
+//     return "";
+// };
+
+// 2️⃣
+const firstNonRepeatingLetter = (s) => {                
+  let original = s.split(""),                     // ORIGINAL LETTERS ARR, MUTATED ARR
+      mutated;
+  for (let i = 0; i < original.length; i++) {
+      let current = original[i],                  // CURRENT CHARACTER
+          lower = current.toLowerCase(),          // CHECK FOR LOWER/UPPER CASE
+          upper = current.toUpperCase();
+      original.splice(i, 1);                      // DELETE CURRENT CHAR FROM WORD
+      mutated = original;                         // SAVE IT TO MUTATED ARR
+       // IF MUTATED ARRAY STILL HAS CURRENT(LOWER OR UPPER), RETURN IT AS SOLUTION
+      if (!mutated.includes(lower) && !mutated.includes(upper))  return current;   
+      original = s.split("");                     // RESET ORIGINAL, REVERT CHANGES
+  }
+  return "";                                      // IF ALL CHARS ARE DUPLICATES RETURN EMPTY STR
+};
+
+// firstNonRepeatingLetter('a')
+// 'a'
+// firstNonRepeatingLetter("sTetress");
+// 't'
+// firstNonRepeatingLetter("moonmen");
+// 'e'
+// firstNonRepeatingLetter("sTreSS");
+// "T"
+
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  Pete, the baker - cakes(recipe, available)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
