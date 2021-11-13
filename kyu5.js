@@ -1,3 +1,54 @@
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  REGEX PASSWORD VALIDATOR
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+// You need to write regex that will validate a password to make sure it meets the following criteria:
+
+// At least six characters long
+// contains a lowercase letter
+// contains an uppercase letter
+// contains a number
+
+// Valid passwords will only be alphanumeric characters.
+
+// ===== BASED ON: =====
+// (BY "Dana" Jun 28 '20 at 14:48)
+
+// ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$
+
+// At least 8 characters long;
+// One lowercase, one uppercase, one number and one special character;
+// No whitespaces.
+
+function validate(password) {
+	return /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}/.test(password);
+  }
+  
+  validate("fjd3IR9");
+
+  //============= OTHER CODEWARS SOLUTIONS: =============
+
+  // function validate(password) {
+//   return  /^[A-Za-z0-9]{6,}$/.test(password) &&
+//           /[A-Z]+/           .test(password) &&
+//           /[a-z]+/           .test(password) &&
+//           /[0-9]+/           .test(password) ;
+// }
+
+
+// function validate(password) {
+//   /**
+//   * positive lookahead is used here to ensure that at least one of each character set is available
+//   * you need to allow every character (.*) before your lookahead character set, 
+//   * except you want to ensure the expression starts with i.e. a lowercase character.
+//   * Each lookahead basically says "Is there <anything> and 1 or more of <character set> in the following expression?"
+//   * The speciality here is that lookaheads wont touch the matching group so that you can check for 6 or more
+//   * characters afterwards. The 6 or more characters will simply not match if they don't fulfill every lookahead.
+//   **/
+//   return /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)[A-Za-z0-9]{6,}$/.test(password);
+// }
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -59,6 +110,54 @@ const firstNonRepeatingLetter = (s) => {
 // firstNonRepeatingLetter("sTreSS");
 // "T"
 
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+// function firstNonRepeatingLetter(s) {
+//   for(var i in s) {
+//     if(s.match(new RegExp(s[i],"gi")).length === 1) {
+//       return s[i];
+//     }
+//   }
+//   return '';
+// }
+
+
+// function firstNonRepeatingLetter(s) {
+//   var t=s.toLowerCase();
+//   for (var x=0;x<t.length;x++)
+//     if(t.indexOf(t[x]) === t.lastIndexOf(t[x]))
+//       return s[x];
+//   return "";
+// }
+
+// function firstNonRepeatingLetter(str){
+//   return str.split('').find(e => str.match(new RegExp(`${e}`, 'gi')).length === 1) || ''
+// }
+
+
+// function firstNonRepeatingLetter(s) {
+//   let str = s.toLowerCase();
+//   for(let i = 0; i < str.length; i++) {
+//     if(str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+//       return s[i];
+//     }
+//   }
+//   return "";
+// }
+
+
+// function firstNonRepeatingLetter(s) {
+//     var search = s.toLowerCase();
+    
+//     for (var i = 0; i < search.length; ++i) {
+//         var str = search.slice(0, i) + search.slice(i + 1);
+//         if((str.indexOf(search[i]) === -1)) {
+//             return s[i];
+//         }
+//     }
+//     return '';
+// }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  Pete, the baker - cakes(recipe, available)
