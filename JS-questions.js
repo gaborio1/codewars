@@ -216,8 +216,51 @@ c = [1, 2, 3];  // TYPE ERROR: ASSIGNMENT TO CONST !!! CAN NOT ASSIGN
 // 5️⃣   WHATS THE USE OF ARROW FUNCTIONS?
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
+const profile = {
+
+    firstName: "",
+    lastName: "",
+    setName: function(name) {                   
+        let splitName = function(n) {           // REGULAR FUNCTION HAS ITS OWN this 
+            let nameArray = n.split(" ");       // THEREFORE this = window obj
+            this.firstName = nameArray[0];
+            this.lastName = nameArray[1];
+            console.log(this); 
+            // this = Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+        }
+        splitName(name);
+    }
+}
+
+profile.setName("phil collins");
+
+console.log(profile.firstName);         // undefined !!! 
+// BUT:
+console.log(window.firstName);          // phil
+console.log(firstName);                 // phil
+
+// WITH ARROW FUNCTION:
+
+const profile = {
+
+    firstName: "",
+    lastName: "",
+    setName: function(name)  {                   
+        let splitName = (n) => {              // ARROW FUNCTION DOESN'T GET ITS OWN this 
+            let nameArray = n.split(" ");     // this = profile OBJECT
+            this.firstName = nameArray[0];
+            this.lastName = nameArray[1];
+            console.log(this);  
+            // this = // {firstName: 'phil', lastName: 'collins', setName: ƒ} 
+        }
+        splitName(name);
+    }
+}
 
 
+profile.setName("phil collins");
+
+console.log(profile.firstName);        
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 // 6️⃣   
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
