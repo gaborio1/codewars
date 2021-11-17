@@ -260,12 +260,33 @@ const profile = {
 
 profile.setName("phil collins");
 
-console.log(profile.firstName);        
+console.log(profile.firstName);    
+
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-// 6️⃣   
+// 6️⃣   PROTOTYPAL INHERITANCE
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
+// OBJECTS HAVE A PROTOTYPE PROPERTY, WE CAN ATTACH PROPERTIES / METHODS TO IT 
+// WHEN WE CREATE INSTANCES OF OBJECTS, THEY INHERIT THE PROPERTIES OF THEIR PARENT 
+// AND CAN USE THOSE METHODS DESPITE THEY ARE NOT THEIR OWN
+// WHEN WE CALL A METHOD ON AN OBJ, IT FIRST LOOKS IN ITS OWN PROPERTIES. 
+// IF METHOD NOT FOUND, IT WILL LOOK FOR IN THE PARENT. ONCE FOUND IT IS EXECUTED 
 
+
+
+let car = function(model) {             // car CONSTRUCTOR OBJ
+    this.model = model;
+}
+
+car.prototype.getModel = function() {    // ATTACH getModel TO ITS PROTOTYPE
+    return this.model;
+}
+
+let bmw = new car("bmw");       // CREATE NEW car
+console.log(bmw.getModel());    // AND CALL getModel METHOD ON IT ==> bmw
+
+let chevy = new car("chevy");
+console.log(chevy.getModel());  // chevy 
 
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 // 7️⃣    
