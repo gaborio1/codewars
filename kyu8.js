@@ -62,29 +62,114 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  IS n DIVISIBLE BY x and y ?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const isDivisible = (n, x, y) => {
+  return n % x === 0 && n % y === 0;
+};
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function isDivisible(n, x, y) {
+//   return !(n%x||n%y)
+// }
+
+// function isDivisible(n, ...dividers) {
+//   return dividers.every(divider => n % divider == 0)
+// }
+
+// function isDivisible(n, x, y) {
+//   return (n % x) + (n % y) == 0;
+// }
+
+// function isDivisible(n, x, y) {
+//   return (Number.isInteger(n / x) && Number.isInteger(n / y));
+// }
+
+// isDivisible = (n, x, y) => n % x || n % y ? false : true;
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  COUNT TRUE BOOLEANS IN ARRAY  (COUNTING SHEEP)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// describe("Tests", () => {
+//   it("test", () => {
+// var array1 = [true,  true,  true,  false,
+//               true,  true,  true,  true ,
+//               true,  false, true,  false,
+//               true,  false, false, true ,
+//               true,  true,  true,  true ,
+//               false, false, true,  true ];
+
+// Test.assertEquals(countSheeps(array1), 17, "There are 17 sheeps in total")
+//   });
+// });
+
+const countSheeps = (arr) => {
+  let counter = 0;
+  for (el of arr) {
+    if (el) counter += 1;
+  }
+  return counter;
+};
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function countSheeps(arr) {
+//   return arr.filter(Boolean).length;
+// }
+
+// let countSheeps = x => x.filter( s => s ).length;
+
+// function countSheeps(arrayOfSheep) {
+//   return arrayOfSheep.reduce(function(result, current) {
+//     if (current) result++;
+//     return result;
+//   }, 0);
+// }
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SUM OF SQUARES IN ARRAY 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const squareSum = (nums) => {
+  return nums.map((n) => n * n).reduce((a, b) => a + b, 0);
+};
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function squareSum(numbers){
+//   return numbers.map(square).reduce(sum);
+// }
+
+// function square(number) {
+//   return number * number;
+// }
+
+// function sum(firstNumber, secondNumber) {
+//   return firstNumber + secondNumber;
+// }
+
+// function squareSum(numbers){
+//   var sum = 0;
+//   numbers.forEach(function(n) {
+//     sum += n * n
+//   });
+//   return sum;
+// }
+
+// const squareSum = numbers => numbers.reduce((a, b)=> a + b**2, 0)
 
 
 
