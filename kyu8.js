@@ -241,12 +241,12 @@ const solution = (str) => str.split("").reverse().join("");
 // 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
 
 var summation = function (num) {
-    // Code here
-    var result = 0;
-    for (var i = 1; i <= num; i++) {
-      result += i;
-    }
-    return result;
+  // Code here
+  var result = 0;
+  for (var i = 1; i <= num; i++) {
+    result += i;
+  }
+  return result;
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -263,16 +263,16 @@ var summation = function (num) {
 // You can assume, for the purpose of this kata, that the supplied array will not be empty.
 
 class SmallestIntegerFinder {
-    findSmallestInt(arr) {
-      var result = arr[0];
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i] < result) {
-          result = arr[i];
-        }
+  findSmallestInt(arr) {
+    var result = arr[0];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] < result) {
+        result = arr[i];
       }
-      return result;
     }
+    return result;
   }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -282,9 +282,9 @@ class SmallestIntegerFinder {
 
 // Simple, remove the spaces from the string, then return the resultant string.
 
-function noSpace(x){
-    return x.replace(/\s+/g,'')
-  }
+function noSpace(x) {
+  return x.replace(/\s+/g, '')
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -306,13 +306,13 @@ function noSpace(x){
 // Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense.
 
 function makeNegative(num) {
-    var result;
-    if (num > 0) {
-      result = -Math.abs(num);
-    } else {
-        result = num;
-    } return result;
-  }
+  var result;
+  if (num > 0) {
+    result = -Math.abs(num);
+  } else {
+    result = num;
+  } return result;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -329,20 +329,20 @@ function makeNegative(num) {
 // -34: 34
 
 function opposite(num) {
-    var result;
-    if (num > 0) {
-      result = -Math.abs(num);
-    } else {
-        result = Math.abs(num);
-    } return result;
-  }
-  
-  
-  //  SIMPLER
-  
-  // function opposite(number) {
-  //   return(-number);
-  // }
+  var result;
+  if (num > 0) {
+    result = -Math.abs(num);
+  } else {
+    result = Math.abs(num);
+  } return result;
+}
+
+
+//  SIMPLER
+
+// function opposite(number) {
+//   return(-number);
+// }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -355,15 +355,15 @@ function opposite(num) {
 // repeatStr(6, "I") // "IIIIII"
 // repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"
 
-function repeatStr (n, s) {
-    var result = "";
-    for (var i = 0; i < n; i++) {
-      result = result + s;
-  //     seperated by space below:
-  //     result = result + " " + s;
-      }
-    return result;
+function repeatStr(n, s) {
+  var result = "";
+  for (var i = 0; i < n; i++) {
+    result = result + s;
+    //     seperated by space below:
+    //     result = result + " " + s;
   }
+  return result;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -380,14 +380,14 @@ function repeatStr (n, s) {
 
 
 function positiveSum(arr) {
-    var sum = 0;
-    arr.forEach(function(i) {
-      if(i > 0) {
-        sum = sum + i;
-      }
-    })
-    return sum;
-  }
+  var sum = 0;
+  arr.forEach(function (i) {
+    if (i > 0) {
+      sum = sum + i;
+    }
+  })
+  return sum;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -397,12 +397,12 @@ function positiveSum(arr) {
 // Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
 
 function even_or_odd(number) {
-    if(Number.isInteger(number/2)){
-        return "Even";
-    } else {
-        return "Odd";
-      }
+  if (Number.isInteger(number / 2)) {
+    return "Even";
+  } else {
+    return "Odd";
   }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -413,10 +413,10 @@ function even_or_odd(number) {
 // It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
 
 
-function removeChar(str){
-    return str.slice(1, str.length-1);
-  };
-  
+function removeChar(str) {
+  return str.slice(1, str.length - 1);
+};
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -425,9 +425,9 @@ function removeChar(str){
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // multiply
 
-function multiply(a, b){
-    return a * b
-  }
+function multiply(a, b) {
+  return a * b
+}
 
 
 // ============================================================================
