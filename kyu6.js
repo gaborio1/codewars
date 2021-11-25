@@ -44,11 +44,58 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  CONVERT STRING TO CAMEL CASE / UPPER CAMEL (PASCAL)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).
+
+// Examples
+// "the-stealth-warrior" gets converted to "theStealthWarrior"
+// "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+
+const isCapitalized = (word) => {                           // IS word CAPITALIZED?
+	return word.charAt(0) === word.charAt(0).toUpperCase();
+};
+
+const capitalizeStr = (str) => {                        //  CAPITALIZE
+	return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+const toCamelCase = (str) => {
+	const strArr = str.split(/[_-]/g);                  // SPLIT ON _ AND -
+	if (isCapitalized(strArr[0])) {                     // IF FIRST WORD IS CAPITALIZED:
+		return strArr.map(capitalizeStr).join("");          // CAPITALIZE ALL
+	} else {                                            // OTHERWISE:
+		for (let i = 1; i < strArr.length; i++) {           // CAPITALIZE ALL BUT FIRST
+			strArr[i] = capitalizeStr(strArr[i]);
+		}
+		return strArr.join("");
+	}
+};
+
+// toCamelCase("the_stealth_warrior");
+// toCamelCase("The-Stealth-Warrior");
+// toCamelCase("A-B-C");
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+// function toCamelCase(str){
+//       var regExp=/[-_]\w/ig;
+//       return str.replace(regExp,function(match){
+//             return match.charAt(1).toUpperCase();
+//        });
+// }
+
+// function toCamelCase(str){
+//   return str.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
+// }
+
+// function toCamelCase(str){
+//   return str.split(/-|_/g).map((w, i) => (i > 0 ? w.charAt(0).toUpperCase() : w.charAt(0)) + w.slice(1)).join('');
+// }
 
 
 
@@ -63,28 +110,28 @@
 // Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 
 const isValidWalk = (walk) => {
-    const counter = {};
-    for (dir of walk) {
-        if (!counter[dir]) {
-            counter[dir] = 0;
-        }
-        counter[dir] += 1;
-    }
-    // for (let i = 0; i < walk.length; i++) {
-    //     if (!counter[walk[i]]) {
-    //         counter[walk[i]] = 0;
-    //     }
-    //    counter[walk[i]] += 1;
-    //  }
-    // console.log(counter);
-    return counter["e"] === counter["w"] && counter["n"] === counter["s"];
+	const counter = {};
+	for (dir of walk) {
+		if (!counter[dir]) {
+			counter[dir] = 0;
+		}
+		counter[dir] += 1;
+	}
+	// for (let i = 0; i < walk.length; i++) {
+	//     if (!counter[walk[i]]) {
+	//         counter[walk[i]] = 0;
+	//     }
+	//    counter[walk[i]] += 1;
+	//  }
+	// console.log(counter);
+	return counter["e"] === counter["w"] && counter["n"] === counter["s"];
 };
 
 // isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]);
 // isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']);
 // isValidWalk(["n", "s", "w", "e", "n", "s"]);
 
-!isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e'])
+!isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'])
 
 
 
