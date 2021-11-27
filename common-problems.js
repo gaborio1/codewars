@@ -1,4 +1,141 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  REMOVE SPACES FROM STTRING
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+function noSpace(x) {
+  return x.replace(/\s+/g, '')
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  CONVERT A NUMBER TO A STRING
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+const numberToString = (n) => n.toString();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function numberToString(num) {
+//   return String(num);
+// }
+
+// const numberToString = num => `${num}`;
+
+// const numberToString = num => num + '';
+
+// const numberToString = String
+
+// numberToString = String;
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  CAPITALIZE FIRST LETTER OF WORD
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+console.log(capitalizeFirstLetter('foo')); // Foo
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  CHECK IF FIRST LETTER OR WORD IS CAPITALIZED
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: https://stackoverflow.com/questions/8334606/check-if-first-letter-of-word-is-a-capital-letter
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+var word = "Someword";
+console.log(word[0] === word[0].toUpperCase());
+
+var word = "Someword";
+console.log(/[A-Z]/.test(word[0]));
+
+var word = "Someword";
+console.log(/^[A-Z]/.test(word));
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  REGEX PASSWORD VALIDATOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
@@ -23,14 +160,14 @@
 // No whitespaces.
 
 function validate(password) {
-	return /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}/.test(password);
-  }
-  
-  validate("fjd3IR9");
+  return /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}/.test(password);
+}
 
-  //============= OTHER CODEWARS SOLUTIONS: =============
+validate("fjd3IR9");
 
-  // function validate(password) {
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function validate(password) {
 //   return  /^[A-Za-z0-9]{6,}$/.test(password) &&
 //           /[A-Z]+/           .test(password) &&
 //           /[a-z]+/           .test(password) &&
@@ -64,7 +201,7 @@ function validate(password) {
 
 
 // const obj = function () {
-  
+
 //   this.i = 0; //  PUBLIC PROPERTY
 
 //   this.add = function (i) { // PUBLIC FUNCTION
@@ -96,7 +233,7 @@ function validate(password) {
 
 // ********************************************************************************
 // const obj = function () {
-  
+
 //   this.i = 0; //  PUBLIC PROPERTY
 
 //   this.add = function (i) { // PUBLIC FUNCTION
@@ -129,27 +266,27 @@ function validate(password) {
 //  SO WE HAVE TO RETURN THEM IN AN OBJECT
 //  NO new KEYWORD
 const obj = () => {
-  
-	let i = 0; // LOCAL VARIABLE, i IS A CLOSURE
 
-	const add = function (j) { // LOCAL FUNCTION (NO ARROW !!!)
-		i += j;
-		// console.log(this);   {add: ƒ, substract: ƒ, print: ƒ}
-		return this;
-	};
+  let i = 0; // LOCAL VARIABLE, i IS A CLOSURE
 
-	const substract = function (j) {
-		i -= j;
-		return this;
-	};
-	
+  const add = function (j) { // LOCAL FUNCTION (NO ARROW !!!)
+    i += j;
+    // console.log(this);   {add: ƒ, substract: ƒ, print: ƒ}
+    return this;
+  };
 
-	const print = function () {  // DONT NEED TO return THIS ONE AS ITS THE LAST ONE
-		console.log(i);
-	};
-	
-	// console.log(this);
-	return {add: add, substract: substract, print: print} // RETURN LOCAL FUNCTIONS IN OBJ !!!
+  const substract = function (j) {
+    i -= j;
+    return this;
+  };
+
+
+  const print = function () {  // DONT NEED TO return THIS ONE AS ITS THE LAST ONE
+    console.log(i);
+  };
+
+  // console.log(this);
+  return { add: add, substract: substract, print: print } // RETURN LOCAL FUNCTIONS IN OBJ !!!
 };
 
 const x = obj(); //  NO new KEYWORD !!!
@@ -227,11 +364,11 @@ x.add(3).substract(2).print();
 
 // HERE, THE INNER FUNCTION HAS ACCEESS TO x EVEN AFTER IT HAS BEEN RETURNED
 const multiply = function (x) {
-	return function (y) {
-		console.log(x * y);
-	};
+  return function (y) {
+    console.log(x * y);
+  };
 };
- 
+
 
 const multiplyByTwo = multiply(2);
 multiplyByTwo(3);
@@ -313,7 +450,7 @@ let sum = (a) => (b) => (b ? sum(a + b) : a);
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  PICK RANDOM ELEMENTS FROM ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -355,43 +492,43 @@ randomElByIndex(numbers);
 
 // 2.
 function padToThree(num) {          // WE NEED 3 DIGITS, LARGEST POSSIBLE IS 999
-    if (num <= 999) {                 // if num IS LESS THAN 4 DIGITS
-      return `00${num}`.slice(-3);    // IMPLICIT TYPE COERCION !!!  "number" => "string" | 00 + 23 => 0023 THEN slice(-3) RETURNS LAST 3 DIGITS
-    } else {
-        return num;                   // NO COERCION 
-    }
+  if (num <= 999) {                 // if num IS LESS THAN 4 DIGITS
+    return `00${num}`.slice(-3);    // IMPLICIT TYPE COERCION !!!  "number" => "string" | 00 + 23 => 0023 THEN slice(-3) RETURNS LAST 3 DIGITS
+  } else {
+    return num;                   // NO COERCION 
   }
-  
-  console.log(padToThree(23));          // 23
-  console.log(typeof padToThree(23));   // "string"
-  
-      
-  
-  console.log(padToThree(1000));          // 1000
-  console.log(typeof padToThree(1000));   // "number"
-  
-  
-  // COERCION EXAMPLES
-  
-  // true + false
-  // 12 / "6"
-  // "number" + 15 + 3
-  // 15 + 3 + "number"
-  // [1] > null
-  // "foo" + + "bar"
-  // 'true' == true
-  // false == 'false'
-  // null == ''
-  // !!"false" == !!"true"
-  // [‘x’] == ‘x’
-  // [] + null + 1
-  // [1,2,3] == [1,2,3]
-  // {}+[]+{}+[1]
-  // !+[]+[]+![]
-  // new Date(0) - 0
-  // new Date(0) + 0
-  
-  
+}
+
+console.log(padToThree(23));          // 23
+console.log(typeof padToThree(23));   // "string"
+
+
+
+console.log(padToThree(1000));          // 1000
+console.log(typeof padToThree(1000));   // "number"
+
+
+// COERCION EXAMPLES
+
+// true + false
+// 12 / "6"
+// "number" + 15 + 3
+// 15 + 3 + "number"
+// [1] > null
+// "foo" + + "bar"
+// 'true' == true
+// false == 'false'
+// null == ''
+// !!"false" == !!"true"
+// [‘x’] == ‘x’
+// [] + null + 1
+// [1,2,3] == [1,2,3]
+// {}+[]+{}+[1]
+// !+[]+[]+![]
+// new Date(0) - 0
+// new Date(0) + 0
+
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -401,17 +538,17 @@ function padToThree(num) {          // WE NEED 3 DIGITS, LARGEST POSSIBLE IS 999
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 function outer(a) {
-    function middle(b) {
-      function inner(c) {
-        return a + b + c;
-      }
-      return inner;
+  function middle(b) {
+    function inner(c) {
+      return a + b + c;
     }
-    return middle;
+    return inner;
   }
-  
-  // outer(1)(2)(3)
-  
+  return middle;
+}
+
+// outer(1)(2)(3)
+
 
 
 /// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -421,58 +558,58 @@ function outer(a) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 function zero(innerFunc) {
-    return innerFunc(0);
-  }
-  
-  function one(innerFunc) {
-    return innerFunc(1);
-  }
-  
-  
-  function two(innerFunc) {             // OUTER FUNCTION TAKES INNER FUNCTION AS A PARAMETER WHICH
-    // console.log(innerFunc);             // PRINT FUNCTION DEFINITION
-    // console.log(innerFunc(2));          // PRINT RESULT OF FUNCTION
-    return innerFunc(2);                // RETURN RESULT
-  }
-  
-  function three(innerFunc) {           
-    return innerFunc(3);                // !!! innerFunc(3) WILL BE times(3) !!!
-  }
-  
-  
-  
-  function times(n) {                   // INNER FUNCTION
-    return n * n;                       // RETURNS n * n
-  }
-  
-  
-  two(times);
-  
-  //=======================================================
-  
-  
-  // function add(a, b) {
-  //     return a+b;
-  // }
-  
-  // var subtract = function (a, b) {
-  //     return a-b;
-  // }
-  
-  // function handle_data(func) {
-  //     // get data from user or other external source
-  //     var a = 2;
-  //     var b = 3;
-  //     return func(a, b);
-  // }
-  
-  // console.log(handle_data(add));       // 5
-  // console.log(handle_data(subtract));  // -1
-  
+  return innerFunc(0);
+}
+
+function one(innerFunc) {
+  return innerFunc(1);
+}
+
+
+function two(innerFunc) {             // OUTER FUNCTION TAKES INNER FUNCTION AS A PARAMETER WHICH
+  // console.log(innerFunc);             // PRINT FUNCTION DEFINITION
+  // console.log(innerFunc(2));          // PRINT RESULT OF FUNCTION
+  return innerFunc(2);                // RETURN RESULT
+}
+
+function three(innerFunc) {
+  return innerFunc(3);                // !!! innerFunc(3) WILL BE times(3) !!!
+}
+
+
+
+function times(n) {                   // INNER FUNCTION
+  return n * n;                       // RETURNS n * n
+}
+
+
+two(times);
+
+//=======================================================
+
+
+// function add(a, b) {
+//     return a+b;
+// }
+
+// var subtract = function (a, b) {
+//     return a-b;
+// }
+
+// function handle_data(func) {
+//     // get data from user or other external source
+//     var a = 2;
+//     var b = 3;
+//     return func(a, b);
+// }
+
+// console.log(handle_data(add));       // 5
+// console.log(handle_data(subtract));  // -1
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  NESTED FOR LOOP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -480,43 +617,43 @@ function zero(innerFunc) {
 // 1 COMPARE WITH SECOND SOLUTION! 
 
 function nestedLoop(text, inner, outer) {                 // text=input text    inner=number of times inner loop repeats      outer=outer loop repeats
-    var o = outer;
-    for (o; o > 0; o--) {
-      console.log("outside loop " + o);
-      var i = inner;                                        // !!! HAVE TO RESET i TO ITS INITIAL VALUE OTHERWISE INNER LOOP ONLY RUNS ONCE !!!
-       for (i; i > 0; i--) {
-        console.log(" inside loop text: " + text + i);
-       }
-    } 
+  var o = outer;
+  for (o; o > 0; o--) {
+    console.log("outside loop " + o);
+    var i = inner;                                        // !!! HAVE TO RESET i TO ITS INITIAL VALUE OTHERWISE INNER LOOP ONLY RUNS ONCE !!!
+    for (i; i > 0; i--) {
+      console.log(" inside loop text: " + text + i);
+    }
   }
-    
-  // nestedLoop("repeat me ", 4, 2);
-  
-  // "outer loop 2"
-  // " inner loop text: repeat me 4"
-  // " inner loop text: repeat me 3"
-  // " inner loop text: repeat me 2"
-  // " inner loop text: repeat me 1"
-  // "outer loop 1"
-  // " inner loop text: repeat me 4"
-  // " inner loop text: repeat me 3"
-  // " inner loop text: repeat me 2"
-  // " inner loop text: repeat me 1"
-  
-  // 2
-  // ========================================== WITH  HARD CODED LOOP VARIABLES ==========================================
-  
-  // function nestedLoop(text) {                
-  //   for (o = 3; o > 0; o--) {
-  //     console.log("outside loop " + o);
-  //      for (i = 4; i > 0; i--) {
-  //       console.log(" inside loop text: " + text + i);
-  //      }
-  //   } 
-  // }
-  
-  
-  // nestedLoop()
+}
+
+// nestedLoop("repeat me ", 4, 2);
+
+// "outer loop 2"
+// " inner loop text: repeat me 4"
+// " inner loop text: repeat me 3"
+// " inner loop text: repeat me 2"
+// " inner loop text: repeat me 1"
+// "outer loop 1"
+// " inner loop text: repeat me 4"
+// " inner loop text: repeat me 3"
+// " inner loop text: repeat me 2"
+// " inner loop text: repeat me 1"
+
+// 2
+// ========================================== WITH  HARD CODED LOOP VARIABLES ==========================================
+
+// function nestedLoop(text) {                
+//   for (o = 3; o > 0; o--) {
+//     console.log("outside loop " + o);
+//      for (i = 4; i > 0; i--) {
+//       console.log(" inside loop text: " + text + i);
+//      }
+//   } 
+// }
+
+
+// nestedLoop()
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -532,74 +669,74 @@ function nestedLoop(text, inner, outer) {                 // text=input text    
 // 24/3/20
 
 function dirReduc(arr) {
-    var inputArr = arr;
-    console.log("INPUT: " + inputArr);
-    var positionArr = [];
-    var result = [];
-    var y = 0;
-    var x = 0;
-    for (var i = 0; i < inputArr.length; i++) {
-      if (inputArr[i] === "NORTH") {
-        y++;
-      } else if (inputArr[i] === "SOUTH") {
-        y--;
-      } else if (inputArr[i] === "EAST") {
-        x++;
-      } else if (inputArr[i] === "WEST") {
-        x--;
-      } else {
-        console.log("no directions");
-      }
+  var inputArr = arr;
+  console.log("INPUT: " + inputArr);
+  var positionArr = [];
+  var result = [];
+  var y = 0;
+  var x = 0;
+  for (var i = 0; i < inputArr.length; i++) {
+    if (inputArr[i] === "NORTH") {
+      y++;
+    } else if (inputArr[i] === "SOUTH") {
+      y--;
+    } else if (inputArr[i] === "EAST") {
+      x++;
+    } else if (inputArr[i] === "WEST") {
+      x--;
+    } else {
+      console.log("no directions");
     }
-    console.log("Position" + " " + " " + "(" + x + ", " + y + ")");
-    positionArr.push(x);
-    positionArr.push(y);
-    console.log(positionArr);
-  
-    // for (var i = 0; i < positionArr.length; i++) {
-    if (positionArr[0] > 0) {
-      // EAST
-      console.log("east");
-      for (var i = 0; i < positionArr[0]; i++) {
-        result.push("EAST");
-      }
-    }
-  
-    if (positionArr[0] < 0) {
-      // WEST
-      console.log("west");
-      for (var i = 0; i > positionArr[0]; i--) {
-        result.push("WEST");
-      }
-    }
-  
-    if (positionArr[1] > 0) {
-      // NORTH
-      console.log("north");
-      for (var i = 0; i < positionArr[1]; i++) {
-        result.push("NORTH");
-      }
-    }
-  
-    if (positionArr[1] < 0) {
-      // SOUTH
-      console.log("south");
-      for (var i = 0; i > positionArr[1]; i--) {
-        result.push("SOUTH");
-      }
-    }
-    console.log("Result: " + result);
-    return result;
   }
-  
-  // dirReduc(["EAST","WEST","NORTH","SOUTH","SOUTH"])
-  // dirReduc(["NORTH","NORTH","SOUTH","SOUTH","EAST"])
-  // dirReduc(["NORTH","NORTH","SOUTH","SOUTH"])
-  // dirReduc(["NORTH","SOUTH","SOUTH","EAST","WEST"])
-  // dirReduc(["SOUTH", "SOUTH", "EAST","WEST"])
-  // dirReduc(["EAST","WEST","WEST","NORTH","EAST"])
-  dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
-  
+  console.log("Position" + " " + " " + "(" + x + ", " + y + ")");
+  positionArr.push(x);
+  positionArr.push(y);
+  console.log(positionArr);
+
+  // for (var i = 0; i < positionArr.length; i++) {
+  if (positionArr[0] > 0) {
+    // EAST
+    console.log("east");
+    for (var i = 0; i < positionArr[0]; i++) {
+      result.push("EAST");
+    }
+  }
+
+  if (positionArr[0] < 0) {
+    // WEST
+    console.log("west");
+    for (var i = 0; i > positionArr[0]; i--) {
+      result.push("WEST");
+    }
+  }
+
+  if (positionArr[1] > 0) {
+    // NORTH
+    console.log("north");
+    for (var i = 0; i < positionArr[1]; i++) {
+      result.push("NORTH");
+    }
+  }
+
+  if (positionArr[1] < 0) {
+    // SOUTH
+    console.log("south");
+    for (var i = 0; i > positionArr[1]; i--) {
+      result.push("SOUTH");
+    }
+  }
+  console.log("Result: " + result);
+  return result;
+}
+
+// dirReduc(["EAST","WEST","NORTH","SOUTH","SOUTH"])
+// dirReduc(["NORTH","NORTH","SOUTH","SOUTH","EAST"])
+// dirReduc(["NORTH","NORTH","SOUTH","SOUTH"])
+// dirReduc(["NORTH","SOUTH","SOUTH","EAST","WEST"])
+// dirReduc(["SOUTH", "SOUTH", "EAST","WEST"])
+// dirReduc(["EAST","WEST","WEST","NORTH","EAST"])
+dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -610,44 +747,44 @@ function dirReduc(arr) {
 // First bit for the Sign bit and remaining bits for the Magnitude bits 1=NEGATIVE 0=POSITIVE
 // 20/3/20
 
-var integerToSignedBinary = function(n) {
-    var num = Math.abs(n);                             // CALCULATE ABSOLUTE VALUE AS LOOP CAN ONLY HANDLE POSITIVE INTEGERS
-    var placeValueArr = [1];                             // DECLARE PLACEVALUEARR FOR PLACE VALUES
-    var bitArr = [];                                     // EMPTY ARRAY FOR BINARY DIGITS
-    var placeValue = 1;                                  // SET PLACEVALUE TO 1 AS THE FIRST BASE 2 PLACE VALUE
-    while (placeValue <= num) {                          // THIS LOOP WILL GENERATE A REVERSED SEQUENCE OF PLACE VALUES (LESS OR EQUAL TO INPUT NUM)
-      placeValue = placeValue * 2;
-      placeValueArr.unshift(placeValue);                     // RESULT:[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1] ETC...
-    }
-    for (var i = 0; i < placeValueArr.length; i++) {     // THIS LOOP CONVERTS INPUT NUM TO BINARY
-      if (num - placeValueArr[i] >= 0) {                    // if PLACE VALUE CAN BE SUBTRACTED FROM NUM WITH ZERO OR POSITIVE REMAINDER 
-        num = num - placeValueArr[i];                          // SUBTRACT IT AND
-        bitArr.push(1);                                        // PUSH 1 
-      } else {                                              // if IT WOULD LEAVE A NEGATIVE REMAINDER, MOVE ON TO NEXT VALUE WITHOUT SUBTRACTING
-        bitArr.push(0);                                         // PUSH 0 
-      }                                                         // RESULT:[1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0]
-    }
-                                  // THIS CAN ONLY DO POSITIVE INTEGERS
-    // if (bitArr[0] === 0) {                               // REMOVE FIRST DIGIT IF IT IS 0
-    //   bitArr.splice(0, 1);
-    // } 
-    // console.log(bitArr);
-    if (n < 0) {                                            // if INPUT n IS NEGATIVE 
-      bitArr[0] = 1;                                        // MAKE FIRST DIGIT 1
-    }
-    console.log(bitArr);
-    return bitArr;
-  };
-  
-  
-  // integerToSignedBinary(-8);
-  
-  //SIGNED BINARY
-  // We can represent negative numbers in several ways. The simplest is to simply use the leftmost digit of the number as a special value to represent the sign of the number: 0 = positive, 1 = negative. For example, a value of positive 12 (decimal) would be written as 01100 in binary, but negative 12 (decimal) would be written as 11100. Notice that in this system, it is important to show the leading 0 (to indicate a positive value).
-  
-  //TWO'S COMPLIMENT
-  // For technical reasons, a different scheme, called "two's complement" is more often used for representing negative numbers. In this system, a positive 12 is still 01100, but -12 would be written as 10100. Notice that there is nothing instrinsically correct about one system over another. Either 11100 or 10100 can be used to represent -12, it just depends on what system of interpretation is used. That is, a human programmer chooses the meaning of the bits.
-  
+var integerToSignedBinary = function (n) {
+  var num = Math.abs(n);                             // CALCULATE ABSOLUTE VALUE AS LOOP CAN ONLY HANDLE POSITIVE INTEGERS
+  var placeValueArr = [1];                             // DECLARE PLACEVALUEARR FOR PLACE VALUES
+  var bitArr = [];                                     // EMPTY ARRAY FOR BINARY DIGITS
+  var placeValue = 1;                                  // SET PLACEVALUE TO 1 AS THE FIRST BASE 2 PLACE VALUE
+  while (placeValue <= num) {                          // THIS LOOP WILL GENERATE A REVERSED SEQUENCE OF PLACE VALUES (LESS OR EQUAL TO INPUT NUM)
+    placeValue = placeValue * 2;
+    placeValueArr.unshift(placeValue);                     // RESULT:[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1] ETC...
+  }
+  for (var i = 0; i < placeValueArr.length; i++) {     // THIS LOOP CONVERTS INPUT NUM TO BINARY
+    if (num - placeValueArr[i] >= 0) {                    // if PLACE VALUE CAN BE SUBTRACTED FROM NUM WITH ZERO OR POSITIVE REMAINDER 
+      num = num - placeValueArr[i];                          // SUBTRACT IT AND
+      bitArr.push(1);                                        // PUSH 1 
+    } else {                                              // if IT WOULD LEAVE A NEGATIVE REMAINDER, MOVE ON TO NEXT VALUE WITHOUT SUBTRACTING
+      bitArr.push(0);                                         // PUSH 0 
+    }                                                         // RESULT:[1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0]
+  }
+  // THIS CAN ONLY DO POSITIVE INTEGERS
+  // if (bitArr[0] === 0) {                               // REMOVE FIRST DIGIT IF IT IS 0
+  //   bitArr.splice(0, 1);
+  // } 
+  // console.log(bitArr);
+  if (n < 0) {                                            // if INPUT n IS NEGATIVE 
+    bitArr[0] = 1;                                        // MAKE FIRST DIGIT 1
+  }
+  console.log(bitArr);
+  return bitArr;
+};
+
+
+// integerToSignedBinary(-8);
+
+//SIGNED BINARY
+// We can represent negative numbers in several ways. The simplest is to simply use the leftmost digit of the number as a special value to represent the sign of the number: 0 = positive, 1 = negative. For example, a value of positive 12 (decimal) would be written as 01100 in binary, but negative 12 (decimal) would be written as 11100. Notice that in this system, it is important to show the leading 0 (to indicate a positive value).
+
+//TWO'S COMPLIMENT
+// For technical reasons, a different scheme, called "two's complement" is more often used for representing negative numbers. In this system, a positive 12 is still 01100, but -12 would be written as 10100. Notice that there is nothing instrinsically correct about one system over another. Either 11100 or 10100 can be used to represent -12, it just depends on what system of interpretation is used. That is, a human programmer chooses the meaning of the bits.
+
 
 
 /// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -660,16 +797,16 @@ var integerToSignedBinary = function(n) {
 // 28/2/20
 
 function factorial(num) {
-    // var num = num;
-    var result = 1;
-    for (var i = 1; i <= num; i++) {
-      result = result * i;
-    }
-    return result;
+  // var num = num;
+  var result = 1;
+  for (var i = 1; i <= num; i++) {
+    result = result * i;
   }
-  
-  
-  factorial(5);
+  return result;
+}
+
+
+factorial(5);
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -681,42 +818,42 @@ function factorial(num) {
 
 // 1. SORTED ELEMENTS
 var unique = arr.filter(function (elem, index, self) {
-    return index === self.indexOf(elem);
-  });
-  
-  // 2. ELEMENTS ALREADY ORDERED
-  var newarr = [arr[0]];
-  for (var i = 1; i < arr.length; i++) {
-    if (arr[i] != arr[i - 1]) newarr.push(arr[i]);
+  return index === self.indexOf(elem);
+});
+
+// 2. ELEMENTS ALREADY ORDERED
+var newarr = [arr[0]];
+for (var i = 1; i < arr.length; i++) {
+  if (arr[i] != arr[i - 1]) newarr.push(arr[i]);
+}
+
+// 3. ELEMENTS NOT ORDERED YET
+var newarr = (function (arr) {
+  var m = {},
+    newarr = [];
+  for (var i = 0; i < arr.length; i++) {
+    var v = arr[i];
+    if (!m[v]) {
+      newarr.push(v);
+      m[v] = true;
+    }
   }
-  
-  // 3. ELEMENTS NOT ORDERED YET
-  var newarr = (function (arr) {
-    var m = {},
-      newarr = [];
-    for (var i = 0; i < arr.length; i++) {
-      var v = arr[i];
-      if (!m[v]) {
-        newarr.push(v);
-        m[v] = true;
-      }
-    }
-    return newarr;
-  })(arr);
-  
-  // Remove duplicate items in array
-  // Note: If you are using an environment compatible with Set and Array.from(), you could use let orderedArray = Array.from(new Set(myArray)) to get an array where duplicate items have been removed.
-  
-  let myArray = ["a", "b", "a", "b", "c", "e", "e", "c", "d", "d", "d", "d"];
-  let myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
-    if (accumulator.indexOf(currentValue) === -1) {
-      accumulator.push(currentValue);
-    }
-    return accumulator;
-  }, []);
-  
-  console.log(myOrderedArray);
-  
+  return newarr;
+})(arr);
+
+// Remove duplicate items in array
+// Note: If you are using an environment compatible with Set and Array.from(), you could use let orderedArray = Array.from(new Set(myArray)) to get an array where duplicate items have been removed.
+
+let myArray = ["a", "b", "a", "b", "c", "e", "e", "c", "d", "d", "d", "d"];
+let myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
+  if (accumulator.indexOf(currentValue) === -1) {
+    accumulator.push(currentValue);
+  }
+  return accumulator;
+}, []);
+
+console.log(myOrderedArray);
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -747,24 +884,24 @@ var unique = arr.filter(function (elem, index, self) {
 
 
 function countElemOccour(arr) {
-    var numArr = arr.sort(function(a, b) { // SORT ARRAY IN ASCENDING ORDER
-     return a - b;
-    });
-    var countObj = {};                                                             // COUNT OCCOURANCES OF EACH ELEMENT IN ARRAY
-    numArr.forEach(number => (countObj[number] = (countObj[number] || 0) + 1));       // count[2]; //3 <= 2 appears 3/times
-       for (const property in countObj) {                                          // ITERATE OVER ALL ENUMERABLE PROPERTIES OF AN OBJ THAT ARE KEYED BY STRINGS
-          console.log(`${property}: ${countObj[property]}`);                            // (PRINT KEY VALUE PAIRS)
-       }
-          console.log(countObj);
+  var numArr = arr.sort(function (a, b) { // SORT ARRAY IN ASCENDING ORDER
+    return a - b;
+  });
+  var countObj = {};                                                             // COUNT OCCOURANCES OF EACH ELEMENT IN ARRAY
+  numArr.forEach(number => (countObj[number] = (countObj[number] || 0) + 1));       // count[2]; //3 <= 2 appears 3/times
+  for (const property in countObj) {                                          // ITERATE OVER ALL ENUMERABLE PROPERTIES OF AN OBJ THAT ARE KEYED BY STRINGS
+    console.log(`${property}: ${countObj[property]}`);                            // (PRINT KEY VALUE PAIRS)
   }
-  
-  countElemOccour([1, 2, 2, 1, 3, 1, 4,]);
-  
+  console.log(countObj);
+}
+
+countElemOccour([1, 2, 2, 1, 3, 1, 4,]);
+
   // ====================================================================
-  
-  
+
+
   // Don't use two arrays for the result, use an object
-  
+
   // function countElemOccour(arr) {
   //   result = { };
   //   for(var i = 0; i < arr.length; ++i) {
@@ -774,33 +911,32 @@ function countElemOccour(arr) {
   //     }
   //   console.log(result);
   // }
-  
+
   // countElemOccour([5, 5, 5, 2, 2, 2, 2, 2, 9, 4]); // Then result will look like:
-  
+
   // {
   //     2: 5,
   //     4: 1,
   //     5: 3,
   //     9: 1
   // }
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   // If you use an object, its more easy:
-  
+
   // var count = {};
   // numbers.forEach(number => count[number] = (count[number] || 0) +1);
   // So you can do
-  
+
   // count[2]; //3 <= 2 appears 3/times
   // // Or the same with a Map:
-  
+
   // var count = new Map();
   // numbers.forEach(number => count.set(count.get(number) + 1));
-  
+
   // count.get(2)
-  
