@@ -17,28 +17,155 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  RETURN NUMBERS DIGITS IN REVERSE ORDER ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+// Example:
+// 348597 => [7,9,5,8,4,3]
+
+const digitize = (n) => {
+	return n
+		.toString()
+		.split("")
+		.reverse()
+		.map((digit) => Number(digit));
+};
+
+// digitize(54321);
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function digitize(n) {
+//   return String(n).split('').map(Number).reverse()
+// }
+
+// function digitize(n) {
+//   return Array.from(String(n), Number).reverse();
+// }
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// ❗️❗️❗️  REFACTOR THIS TO ACCEPT NAMES WITH MORE SPACES ❗️❗️❗️
+// TITLE:  CONVERT NAME INTO INITIALS (CAPITALIZED)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+
+// Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+// The output should be two capital letters with a dot separating them.
+
+// It should look like this:
+
+// Sam Harris => S.H
+// patrick feeney => P.F
+
+const abbrevName = (name) => {
+	const nameArr = name.split(" ");    // SPLIT INTO ARRAY
+	const solutionArr = [];
+	nameArr.forEach((name) => {         // GRAB EACH WORD'S FIRST LETTER UPPERCASED
+		solutionArr.push(name.charAt(0).toUpperCase());
+	});
+	return solutionArr.join(".");       // JOIN ARRAY ON "."
+};
+
+// const abbrevName = (name) => {
+//     const solutionArr = [];
+//     name.split(" ").forEach((name) => {
+//         solutionArr.push(name.charAt(0).toUpperCase());
+//     });
+//     return solutionArr.join(".");
+// };
+
+abbrevName("jamon serrano");
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function abbrevName(name){
+
+//   var nameArray = name.split(" ");
+//   return (nameArray[0][0] + "." + nameArray[1][0]).toUpperCase();
+// }
+
+// function abbrevName(name){
+//   return name.split(' ').map(x => x.substr(0, 1).toUpperCase()).join('.');
+// }
+
+// function abbrevName(name){
+
+//     return name.split(' ').map(i => i[0].toUpperCase()).join('.')
+
+// }
+
+// const abbrevName = name => name.match(/\b\w/g).join('.').toUpperCase()
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  BASIC OPERATIONS - basicOp = (op, a, b) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// Your task is to create a function that does four basic mathematical operations.
+
+// The function should take three arguments - operation(string/char), value1(number), value2(number).
+// The function should return result of numbers after applying the chosen operation.
+
+// Examples(Operator, value1, value2) --> output
+// ('+', 4, 7) --> 11
+// ('-', 15, 18) --> -3
+// ('*', 5, 5) --> 25
+// ('/', 49, 7) --> 7
+
+const basicOp = (op, a, b) => {
+	switch (op) {
+		case "+":
+			return a + b;
+		case "-":
+			return a - b;
+		case "*":
+			return a * b;
+		case "/":
+			return a / b;
+	}
+};
+
+basicOp("+", 4, 8);
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// ??? USING eval ???
+
+// function basicOp(o, a, b) {
+//   return eval(a+o+b);
+// }
+
+// function basicOp(operation, value1, value2)
+// {
+//   switch(operation){
+//     case '+': return value1 + value2;
+//     case '*': return value1 * value2;
+//     case '-': return value1 - value2;
+//     case '/': return value1 / value2;
+//   }
+// }
+
+
+// const basicOperations = {
+//   '+': (a,b) => a + b,
+//   '-': (a,b) => a - b,
+//   '*': (a,b) => a * b,
+//   '/': (a,b) => a / b,
+// }
+
+// const basicOp = (op, x, y) => basicOperations[op](x, y)
 
 
 
@@ -66,14 +193,14 @@ const century = (year) => {
 	while (year >= 100) {   //  WHILE GREATER THAN 100
 		year -= 100;        //      DECREMENT BY 100
 		counter += 1;       //      INCREMENT COUNTER
-	}   
-  	return year === 0 ? counter : counter + 1; 
+	}
+	return year === 0 ? counter : counter + 1;
 };  // IF REMAINDER === 0 RETURN counter OTHERWISE counter + 1
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-const century = year => Math.ceil(year/100)
+const century = year => Math.ceil(year / 100)
 
 // century(99);
 // century(1700);
@@ -124,7 +251,7 @@ litres(1.4);
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const isDivisible = (n, x, y) => {
-  	return n % x === 0 && n % y === 0;
+	return n % x === 0 && n % y === 0;
 };
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -200,7 +327,7 @@ const countSheeps = (arr) => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const squareSum = (nums) => {
-  	return nums.map((n) => n * n).reduce((a, b) => a + b, 0);
+	return nums.map((n) => n * n).reduce((a, b) => a + b, 0);
 };
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -321,9 +448,9 @@ class SmallestIntegerFinder {
 	findSmallestInt(arr) {
 		var result = arr[0];
 		for (var i = 0; i < arr.length; i++) {
-		if (arr[i] < result) {
-			result = arr[i];
-		}
+			if (arr[i] < result) {
+				result = arr[i];
+			}
 		}
 		return result;
 	}
@@ -338,7 +465,7 @@ class SmallestIntegerFinder {
 // Simple, remove the spaces from the string, then return the resultant string.
 
 function noSpace(x) {
-  	return x.replace(/\s+/g, '')
+	return x.replace(/\s+/g, '')
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -438,7 +565,7 @@ function positiveSum(arr) {
 	var sum = 0;
 	arr.forEach(function (i) {
 		if (i > 0) {
-		sum = sum + i;
+			sum = sum + i;
 		}
 	})
 	return sum;
@@ -469,7 +596,7 @@ function even_or_odd(number) {
 
 
 function removeChar(str) {
-  	return str.slice(1, str.length - 1);
+	return str.slice(1, str.length - 1);
 };
 
 
@@ -481,7 +608,7 @@ function removeChar(str) {
 // multiply
 
 function multiply(a, b) {
-  	return a * b
+	return a * b
 }
 
 
