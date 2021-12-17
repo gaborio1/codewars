@@ -139,33 +139,66 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const removeChar = (str: string): string => {
+    return str.substring(1, str.length - 1);    // START: 1, END: length - 1
+}
+
+console.log(removeChar("aa1cbcb"));
+// removeChar("aa1cbcb");
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// function removeChar(str: string): string {
+//     return str.slice(1,-1);
+//   }
+
+// function removeChar(str: string): string {
+//     return str.replace(/^\w/, '').replace(/\w$/,'');
+//   }
+
+// function removeChar(str: string): string {
+//     const chars = str.split('')
+//     chars.shift() && chars.pop()
+//     return chars.join('')
+//   }
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  OPPOSITE NUMBER
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// Very simple, given an integer or a floating-point number, find its opposite.
+
+// export class Kata {
+//     static opposite = (n: number) => {
+//         return -n;
+//     }
+// }
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  RETURN NEGATIVE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+
+
+const makeNegative = (num: number): number => {
+    return num < 0 ? num : -num;
+};
+
+// const makeNegative = (num: number): number => num < 0 ? num : -num;
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
-
-
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
+// const makeNegative = (num: number): number => {
+//     return -Math.abs(num);
+//   };
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF POSITIVE
@@ -220,6 +253,8 @@ const positiveSum = (arr: number[]): number => {
 // function positiveSum(arr:number[]):number {
 //     return arr.reduce((sum, n) => n > 0 ? sum + n : sum, 0);
 // }
+
+// The comma operator (,) evaluates each of its operands (from left to right) and returns the value of the last operand. This lets you create a compound expression in which multiple expressions are evaluated, with the compound expression's final value being the value of the rightmost of its member expressions. This is commonly used to provide multiple parameters to a for loop.
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  EVEN OR ODD
