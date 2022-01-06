@@ -158,8 +158,52 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const squareDigits = (num: number): number => {
 
+    let solution;
+    // solution = num
+    //     .toString()
+    //     .split("")
+    //     .map((el) => Number(el))
+    //     .map((el) => Math.pow(el, 2))
+    //     .map((el) => el.toString())
+    //     .join("")
 
+    solution = num
+        .toString()
+        .split("")
+        .map((el) => Math.pow(Number(el), 2).toString())
+        .join("")
+
+    console.log(Number(solution));
+    return Number(solution);
+
+}
+
+// squareDigits(9119);
+
+  //============= OTHER CODEWARS SOLUTIONS: =============
+
+// export class Kata {
+//     static squareDigits(num: number) {
+//       return +num.toString().split('').map(i=>+i*+i).join('');
+//     }
+// }
+
+// export class Kata {
+//     static squareDigits(num: number) {
+//       return +num.toString()
+//                  .split('')
+//                  .map(n => Math.pow(+n,2))
+//                  .join('');
+//     }
+// }
+
+// export class Kata {
+//     static squareDigits(num: number): number {
+//       return +num.toString().split('').map((n)=>(+n)**2).join('')
+//     }
+// }
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
