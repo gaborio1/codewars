@@ -34,7 +34,23 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+const xo = (str) => {
+    const xS = str.toLowerCase().match(/x/g); // GET x's
+    const oS = str.toLowerCase().match(/o/g); // GET o's
+    if (xS && oS) { // IF BOTH FOUND:
+        return xS.length === oS.length; // CHECK IF THEIR LENGTHS EQUAL (bool)
+    }
+    else if (xS || oS) { // IF ONLY ONE FOUND:
+        return false; // false
+    }
+    else { // IF NEITHER FOUND
+        return true; // true
+    }
+};
 //============= OTHER CODEWARS SOLUTIONS: =============
+// export function xo(str: string) {
+// 	return str.toLowerCase().split('x').length == str.toLowerCase().split('o').length;
+//   }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IS ISOGRAM?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
