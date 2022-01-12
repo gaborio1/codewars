@@ -38,6 +38,13 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// STR -> ARR(STR) -> SORT ARR BY LENGTH OF WORDS -> GRAB LENGTH OF FIRST ELEMENT
+const findShort = (str: string): number => {
+    return str.split(" ").sort((a, b) => { return a.length - b.length })[0].length;
+}
+
+
+findShort("bitcoin take over the world maybe who knows perhaps");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -95,7 +102,7 @@ const xo = (str: string): boolean => {
 const isIsogram = (str: string): boolean => {
     const lettersSet = new Set(str.toLowerCase().split(""));
     return lettersSet.size === str.length;
-} 
+}
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -111,7 +118,7 @@ const isIsogram = (str: string): boolean => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 function isSquare(num: number): boolean {
-	return Number.isInteger(Math.sqrt(num));
+    return Number.isInteger(Math.sqrt(num));
 };
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -125,19 +132,19 @@ function isSquare(num: number): boolean {
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-const getMiddle = (str:string): string => {
+const getMiddle = (str: string): string => {
 
     const halfLength = str.length / 2;
     const isEvenLength = str.length % 2 === 0;
 
-	// console.log(isEvenLength
-	// 	? str.substring(halfLength - 1, halfLength + 1)
-	// 	: str.charAt((str.length - 1) / 2)
-	// )
+    // console.log(isEvenLength
+    // 	? str.substring(halfLength - 1, halfLength + 1)
+    // 	: str.charAt((str.length - 1) / 2)
+    // )
 
     return isEvenLength
-      	? str.substring(halfLength - 1, halfLength + 1)
-      	: str.charAt((str.length - 1) / 2)
+        ? str.substring(halfLength - 1, halfLength + 1)
+        : str.charAt((str.length - 1) / 2)
 
 }
 
@@ -156,7 +163,7 @@ const getMiddle = (str:string): string => {
 // NUM -> STR -> ARR(STR) -> ARR(NUM) -> ARR(SORTED) -> ARR(REVERSED) -> STRING -> NUM
 const descendingOrder = (n: Number): number => {
 
-	// JAVASCRIPT:
+    // JAVASCRIPT:
 
     // console.log(
     //     n
@@ -198,16 +205,16 @@ descendingOrder(123456789);
 // REPEAT index + 1 TIMES AND CAPITALIZE FIRST LETTER THEN PUSH INTO SOLUTION ARRAY
 // JOIN INTO STRING WITH "-"
 const accum = (str: string): string => {
-	const repsArr: string[] = [];
-	const letters = str.split("").map((el) => el.toLowerCase());
-	letters.forEach((letter, i) => {
-		let rep = letter
-			.repeat(i + 1)
-			.replace(letter[0], letter[0].toUpperCase());
-		repsArr.push(rep);
-	});
-	console.log(repsArr.join("-"));
-	return repsArr.join("-");
+    const repsArr: string[] = [];
+    const letters = str.split("").map((el) => el.toLowerCase());
+    letters.forEach((letter, i) => {
+        let rep = letter
+            .repeat(i + 1)
+            .replace(letter[0], letter[0].toUpperCase());
+        repsArr.push(rep);
+    });
+    console.log(repsArr.join("-"));
+    return repsArr.join("-");
 }
 
 accum("ZpglnRxqenU");
@@ -235,7 +242,7 @@ const highAndLow = (numbers: string): string => {
     const numArr = numbers.split(" ").map((num) => Number(num));
     // console.log(`${Math.max(...numArr)} ${Math.min(...numArr)}`);
     return `${Math.max(...numArr)} ${Math.min(...numArr)}`;
-    
+
 };
 
 highAndLow("1 2 3 4 -6");
@@ -249,9 +256,9 @@ highAndLow("1 2 3 4 -6");
 // 	static highAndLow(numbers: string) {
 // 	  const max = Math.max(...numbers.split(' ').map(i => +i));
 // 	  const min = Math.min(...numbers.split(' ').map(i => +i));
-	  
+
 // 	  return `${max} ${min}`;
-	 
+
 // 	}
 // }
 
@@ -279,7 +286,7 @@ highAndLow("1 2 3 4 -6");
 
 // REMOVE ALL VOWELS:
 const disemvowel = (str: string): string => {
-  	return str.replace(/[aeiou]/gi, "");
+    return str.replace(/[aeiou]/gi, "");
 }
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -293,7 +300,7 @@ const disemvowel = (str: string): string => {
 
 // export class Kata {
 //   static readonly LETTERS_LIST = new RegExp('a|e|i|o|u', 'gi');
-  
+
 //   static disemvowel(str: string) {
 //     return str.replace(Kata.LETTERS_LIST, '');
 //   }
@@ -329,7 +336,7 @@ const squareDigits = (num: number): number => {
 
 // squareDigits(9119);
 
-  //============= OTHER CODEWARS SOLUTIONS: =============
+//============= OTHER CODEWARS SOLUTIONS: =============
 
 // export class Kata {
 //     static squareDigits(num: number) {
