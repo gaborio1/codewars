@@ -28,12 +28,101 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You function receives one side of the DNA (string, except for Haskell); you need to return the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+
+// More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+
+// Example: (input --> output)
+
+// "ATTGC" --> "TAACG"
+// "GTAT" --> "CATA"
+// dnaStrand []        `shouldBe` []
+// dnaStrand [A,T,G,C] `shouldBe` [T,A,C,G]
+// dnaStrand [G,T,A,T] `shouldBe` [C,A,T,A]
+// dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
+
+const dnaStrand = (dna: string): string => {
+
+    const arr = dna.split("");
+    console.log(arr);
+    const solution = arr.map((letter) => {
+        // console.log(letter.toLowerCase());
+        // switch (letter) {
+        //     case "A":
+        //         letter = "T";
+        //     case "T":
+        //         letter = "A";
+        // }
+        if (letter === "A") {
+            console.log("found");
+            letter = "T"
+        }
+    })
+
+    console.log(solution);
+    return "hello";
+}
+
+dnaStrand("AT");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+
+// !!! UNSOLVED: TypeError: Cannot read property 'split' of undefined !!!
+//  (WORKS IN EDITOR AND IN DEV TOOLS)
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// TITLE:  JADEN CASE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+
+// Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+// Example:
+
+// Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+// Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+const toJadenCase = (str: string): string => {
+  
+    // const arr = str.split(" ");
+    // console.log(arr);
+    // arr.forEach((word) => {
+    //     console.log(
+    //         word.replace(word[0], word[0].toUpperCase())
+    //         );
+
+    // })
+    // const solution = arr.map((word) => word.replace(word[0], word[0].toUpperCase()));
+    // console.log(solution);
+
+    console.log(
+
+        str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ")
+
+    )
+
+    return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+};
+
+toJadenCase("How can mirrors be real if our eyes aren't real");
+toJadenCase("a b A B");
+// How Can Mirrors Be Real If Our Eyes Aren't Real
+// How Can Mirrors Be Real If Our Eyes Aren't Real
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  SHORTEST WORD'S LENGTH 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -49,25 +138,25 @@ findShort("bitcoin take over the world maybe who knows perhaps");
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-
-
-
+// export function findShort(s: string): number {
+//     return Math.min(...s.split(" ").map((w) => w.length));
+// }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  X's AND O's
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+// Examples input/output:
 
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// XO("ooxx") => true
+// XO("xooxx") => false
+// XO("ooxXm") => true
+// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+// XO("zzoo") => false
 
 const xo = (str: string): boolean => {
     const xS = str.toLowerCase().match(/x/g);   // GET x's
