@@ -1,4 +1,6 @@
 "use strict";
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -44,12 +46,9 @@ const dnaStrand = (dna) => {
     console.log(solution);
     return "hello";
 };
-dnaStrand("AT");
+// dnaStrand("AT");
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// !!! UNSOLVED: TypeError: Cannot read property 'split' of undefined !!!
-//  (WORKS IN EDITOR AND IN DEV TOOLS)
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // TITLE:  JADEN CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
@@ -59,24 +58,50 @@ dnaStrand("AT");
 // Example:
 // Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
 // Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+// 🟩
+// String.prototype.toJadenCase = function (str: string ): string {
+//     //  ❗️❗️❗️ TypeError: Cannot read property 'split' of undefined ❗️❗️❗️
+//     //  return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+//     // ❗️❗️❗️ USE this KEYWORD: ❗️❗️❗️
+//     return this.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+// };
+// 🟩
+// STRING -> ARR(WORDS) -> CAPITALIZE EACH WORD IN ARRAY -> JOIN INTO STRING WITH " "
 const toJadenCase = (str) => {
-    // const arr = str.split(" ");
-    // console.log(arr);
-    // arr.forEach((word) => {
-    //     console.log(
-    //         word.replace(word[0], word[0].toUpperCase())
-    //         );
-    // })
-    // const solution = arr.map((word) => word.replace(word[0], word[0].toUpperCase()));
-    // console.log(solution);
     console.log(str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" "));
+    // ❗️❗️❗️ HAVE TO USE this IN CODEWARS SOLUTION ❗️❗️❗️
     return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
 };
-toJadenCase("How can mirrors be real if our eyes aren't real");
-toJadenCase("a b A B");
-// How Can Mirrors Be Real If Our Eyes Aren't Real
-// How Can Mirrors Be Real If Our Eyes Aren't Real
+// toJadenCase("How can mirrors be real if our eyes aren't real");
+// toJadenCase("a b A B");
 //============= OTHER CODEWARS SOLUTIONS: =============
+// String.prototype.toJadenCase = function () {
+//     return this.replace(/(?:^|\s)\S/g, firstLetter => firstLetter.toUpperCase());
+// };
+// const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+// String.prototype.toJadenCase = function() {
+//   return this.split(' ').map(capitalize).join(' ')
+// }
+// String.prototype.toJadenCase = function () {
+//     return this.replace(/^.|\s./gi, $ => $.toUpperCase())
+// };
+// String.prototype.toJadenCase = function () {
+//     let temp = this;
+//     if (temp === null || temp.length === 0) {
+//       return null;
+//     }
+//     let result = '';
+//     for (let i = 0; i < temp.length; i++) {
+//       let x = temp[i];
+//       if (i === 0) {
+//         x = x.toUpperCase();
+//       } else if (temp[i - 1] === ' ') {
+//         x = x.toUpperCase();
+//       }
+//       result += x;
+//     }
+//     return result;
+//   };
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SHORTEST WORD'S LENGTH 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -212,7 +237,7 @@ const accum = (str) => {
     console.log(repsArr.join("-"));
     return repsArr.join("-");
 };
-accum("ZpglnRxqenU");
+// accum("ZpglnRxqenU");
 //============= OTHER CODEWARS SOLUTIONS: =============
 // export function accum(s: string): string {
 // 	return s.split('')
