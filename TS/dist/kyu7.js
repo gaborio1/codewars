@@ -29,25 +29,38 @@
 // dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
 const dnaStrand = (dna) => {
     const arr = dna.split("");
-    console.log(arr);
-    const solution = arr.map((letter) => {
-        // console.log(letter.toLowerCase());
-        // switch (letter) {
-        //     case "A":
-        //         letter = "T";
-        //     case "T":
-        //         letter = "A";
-        // }
-        if (letter === "A") {
-            console.log("found");
-            letter = "T";
+    arr.map((el, i) => {
+        switch (el) {
+            case "A":
+                arr[i] = "T";
+                break;
+            case "T":
+                arr[i] = "A";
+                break;
+            case "C":
+                arr[i] = "G";
+                break;
+            case "G":
+                arr[i] = "C";
         }
     });
-    console.log(solution);
-    return "hello";
+    console.log(arr.join(""));
+    return arr.join("");
 };
-// dnaStrand("AT");
+dnaStrand("ATCG");
 //============= OTHER CODEWARS SOLUTIONS: =============
+// ❗️❗️❗️
+// export class Kata {
+//     static dnaStrand(dna: string) {
+//       return dna.replace(/./g, (c)=>({A:'T',T:'A',G:'C',C:'G'})[c]);
+//     }
+// }
+// ❗️❗️❗️ if you want a replaced with x, b with y and c with z, you can do something like this:
+// var chars = {'a':'x','b':'y','c':'z'};
+// var s = '234abc567bbbbac';
+// s = s.replace(/[abc]/g, m => chars[m]);
+// console.log(s);
+// Output: 234xyz567yyyyxz
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  JADEN CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
