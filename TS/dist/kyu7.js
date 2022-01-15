@@ -61,6 +61,9 @@ dnaStrand("ATCG");
 // s = s.replace(/[abc]/g, m => chars[m]);
 // console.log(s);
 // Output: 234xyz567yyyyxz
+// ❗️❗️❗️
+// let dummyString = 'Javascript^ is$ the most popular _language';
+// newString = dummyString.replace(/[_^$]/g, charactersToReplace => ({'^': '', '_': ':', '$' : '+' })[charactersToReplace]);
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  JADEN CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
