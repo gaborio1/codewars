@@ -60,13 +60,48 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  STOP SPINNING MY WORDS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// mop / forEach
+//  STR -> ARR(STR) -> IF LENGTH >= 5{SPLIT.REV.JOIN} -> STR
+const spinWords = (words) => {
+    const arr = words.split(" ");
+    arr.map((word, i) => {
+        if (word.length >= 5) {
+            arr[i] = arr[i].split("").reverse().join("");
+        }
+    });
+    console.log(arr.join(" "));
+    return arr.join(" ");
+};
+// spinWords("Hey fellow warriors");
 //============= OTHER CODEWARS SOLUTIONS: =============
+function spinWords2(words) {
+    return words.replace(/[a-z]{5,}/ig, (s) => s.split("").reverse().join(""));
+}
+// const spinWords = (words: string): string => words.split(' ')
+//                                                         .map(m => m.length >= 5 
+//                                                              ? m.split('').reverse().join('') 
+//                                                              : m)
+//                                                         .join(' ')
+// function spinWords(words: string): string {
+//     return words.split(" ").map(word => word.length >= 5 ? [...word].reverse().join("") : word).join(" ")
+// }                                                 
+// function spinWords(words: string): string {
+//     return words.split(" ").map(word => word.length >= 5 ? [...word].reverse().join("") : word).join(" ")
+// }
+// static spinWords(words: string) {
+//     const array = words.split(" ");
+//     const spin = array.map((word) => {
+//       return word.length < 5 ? word : word.split("").reverse().join("");
+//     });
+//     return spin.join(" ");
+// }
 // ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND INT THAT APPARS ODD NUMBER OF TIMES IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: https://www.reddit.com/r/typescript/comments/hm8jbv/how_to_define_an_interface_for_objects_with/fx4szci/
