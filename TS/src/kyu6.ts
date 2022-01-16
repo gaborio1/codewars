@@ -127,32 +127,107 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+
+
+// ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  FIND INT THAT APPARS ODD NUMBER OF TIMES IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE: https://www.reddit.com/r/typescript/comments/hm8jbv/how_to_define_an_interface_for_objects_with/fx4szci/
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-const findOdd = (xs: number[]): number => {
+// ❗️❗️❗️ DEFINE INTERFACE FOR WHAT'S BEING RETURNED ❗️❗️❗️
+// TO AVOID ERROR: Element implicitly has 'any' type because expression of type 'number' can't be used to index type '{}'
 
-    const counter: object = {};
+// ❗️❗️❗️ LOOK INTO THIS: ❗️❗️❗️
 
-    // xs.forEach(number => counter[number] = (counter[number] || 0) +1);
+// A type like { [key: string]: number } is just bad and should not be used ever.
 
-    console.log(
+// Consider an example: const test: { [key: string]: number } = { a: 1 }; test.b // TS will think it’s of type number, while in fact it’s undefined.
 
-        xs.filter((el) => {
-            return el < 2;
-        })
+// A type declared like that literally says: „for each key of string type there is a number value”. Which simply is not the case. Just don’t do it. It’s as bad as using any.
 
-    );
+// If you need to use an object as a key-value mapper, do it well and either define the keys statically, or make the type of value a union with undefined.
 
-    return 0;
+
+
+// 1️⃣    WITH filter()
+
+const findOdd = (arr: number[]): number => {
+
+    interface NumCounter {
+        [key: string]: number;
+    }
+
+    const counter: NumCounter = {};
+
+    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+
+    const oddTimesArr = Object.entries(counter).filter(([key, value]) => value % 2 > 0);
+
+    // console.log(Number(oddTimesArr[0][0]));
+    return Number(oddTimesArr[0][0]);
 };
 
-findOdd([1, 2, 2]);
+
+
+// 2️⃣    WITH forEach()
+
+const findOdd2 = (arr: number[]): number => {
+
+    interface NumCounter {
+        [key: string]: number;
+    }
+
+    const counter: NumCounter = {};
+
+    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+
+    let solution: any;  // INITIALIZE ❗️❗️❗️
+
+    Object.entries(counter).forEach(([key, value]) => {
+        // value % 2 > 0 && console.log("key: ", Number(key));
+        if (value % 2 > 0) solution = Number(key) as number;    // TYPE ASSERTION ❗️❗️❗️
+    });
+
+
+    return solution;
+
+};
+
+
+// const findOdd = (arr: number[]): number => {
+
+//     // LOOK INTO THIS, SEE ABOVE:
+//     interface NumCounter {
+//         [key: string]: number;
+//     }
+
+//     const counter: NumCounter = {};
+
+//     arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+
+//     // console.log(counter);
+
+//     // !!! tsconfig.json COMPILER OPTIONS: "target": "es2018" (es2017 OR LATER) FOR Object.entries TO WORK!!!
+//     Object.entries(counter).forEach(([key, value]) => console.log(`${key}: ${value}`));
+
+
+//     Object.entries(counter).forEach(([key, value]) => {
+//         value % 2 > 0 && console.log("key: ", Number(key));
+//     });
+
+
+//     const testArr = Object.entries(counter).filter(([key, value]) => value % 2 > 0);
+//     console.log(testArr);
+//     console.log(Number(testArr[0][0]));
+
+
+//     return Number(testArr[0][0]);
+// };
+
 findOdd([1, 2, 2, 1, 2]);
-// findOdd([1, 2, 2])
+findOdd2([1, 2, 2, 1, 2]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -180,8 +255,8 @@ findOdd([1, 2, 2, 1, 2]);
 // DIVS ARRAY MUST HAVE AN INITIAL VALUE
 const solution = (num: number): number => {
     const divs = [0];
-    for(let i = 1; i < num; i++)
-        if(i % 3 === 0 || i % 5 === 0) {
+    for (let i = 1; i < num; i++)
+        if (i % 3 === 0 || i % 5 === 0) {
             divs.push(i);
         }
     console.log(num >= 0 ? divs.reduce((a, b) => a + b) : 0);
