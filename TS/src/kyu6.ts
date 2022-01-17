@@ -105,17 +105,43 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SUM OF DIGITS / DIGITAL ROOT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// Digital root is the recursive sum of all the digits in a number.
+
+// Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+
+const digitalRoot = (num: number): number => {
+
+    const digitArr = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+
+    const sum = digitArr.reduce((a, b) => a + b);
+    // console.log(num > 9 ? digitalRoot(sum) : num);
+    return num > 9 ? digitalRoot(sum) : num;
+
+};
+
+//  NUM -> STR -> ARR(STR) -> ARR(NUM)
+//  GET SUM OF DIGITS
+//  RETURN digitalRoot(SUM) OR NUM
+digitalRoot(493193); // 6
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// export function digitalRoot(n: number): number {
+//     return (n - 1) % 9 + 1;
+// }
 
-
-
+// export const digitalRoot = (n:number):number => {
+//     return n>9?digitalRoot([...(n.toString())].reduce((a,c)=>a+Number(c),0)):n;
+// };
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -126,7 +152,7 @@
 
 // mop / forEach
 //  STR -> ARR(STR) -> IF LENGTH >= 5{SPLIT.REV.JOIN} -> STR
-const spinWords = (words: string): string  => {
+const spinWords = (words: string): string => {
     const arr = words.split(" ");
     arr.map((word, i) => {
         if (word.length >= 5) {
@@ -145,7 +171,7 @@ const spinWords = (words: string): string  => {
 
 function spinWords2(words: string): string {
     return words.replace(/[a-z]{5,}/ig, (s) => s.split("").reverse().join(""))
- }
+}
 
 // const spinWords = (words: string): string => words.split(' ')
 //                                                         .map(m => m.length >= 5 
@@ -176,7 +202,7 @@ function spinWords2(words: string): string {
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
-// TITLE:  FIND INT THAT APPARS ODD NUMBER OF TIMES IN ARRAY
+// TITLE:  FIND INT THAT APPEARS ODD NUMBER OF TIMES IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: https://www.reddit.com/r/typescript/comments/hm8jbv/how_to_define_an_interface_for_objects_with/fx4szci/
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -274,11 +300,22 @@ const findOdd2 = (arr: number[]): number => {
 findOdd([1, 2, 2, 1, 2]);
 findOdd2([1, 2, 2, 1, 2]);
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+//❗️❗️❗️============= OTHER CODEWARS SOLUTIONS: =============❗️❗️❗️
 
+// https://warrenniu.medium.com/find-the-unique-number-in-an-array-using-the-xor-operator-54d35aa9e8d0
+const findOdd3 = (xs: number[]): number => {
+    return xs.reduce((a, b) => a ^ b);
+};
 
+// Bit operators work on 32 bits numbers. Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a JavaScript number.
 
-
+// Operator	Description	Example	Same as	Result	Decimal
+// &	AND	x = 5 & 1	0101 & 0001	0001	 1
+// |	OR	x = 5 | 1	0101 | 0001	0101	 5
+// ~	NOT	x = ~ 5	 ~0101	1010	 10
+// ^	XOR	x = 5 ^ 1	0101 ^ 0001	0100	 4
+// <<	Left shift	x = 5 << 1	0101 << 1	1010	 10
+// >>	Right shift	x = 5 >> 1	0101 >> 1	0010	  2
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
