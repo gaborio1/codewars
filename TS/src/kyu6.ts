@@ -77,29 +77,41 @@
 
 const countBits = (num: number): number => {
 
-    //  THIS WORKS IN CODEPEN:
-    // console.log(num ? num.toString(2).match(/1/g).length : 0);
-    
-    // console.log(num.toString(2).match((/1/g)));
+    const bitArr = num.toString(2).match(/1/g);
+    // console.log(bitArr === null ? 0 : bitArr.length);
+    return bitArr === null ? 0 : bitArr.length;
 
-    // console.log(num.toString(2).match(/1/g).length);
-    // console.log(num ? num.toString(2).match(/1/g).length : 0);
-    // return num ? num.toString(2).match(/1/g).length : 0;
-    if ( Number(num).toString(2).match((/1/g)) !== null) {
-        console.log("hellllloooo");
-        // return Number(num).toString(2).match(/1/g).length;
-        // return 0;
-    } else {
-        console.log("hey");
-        return 0;
-    }
-    return 33;
-      
 }
 
-countBits(0);
+// countBits(0);
+// countBits(1234);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+export function countBits2(n: number): number {
+    return n.toString(2).replace(/0/g, '').length;
+}
+
+
+export function countBits3(n: number) {
+    return n.toString(2).split('').filter(c => c === '1').length
+}
+
+export function countBits4(n: number) {
+    return n.toString(2)
+        .split('')
+        .map(Number)
+        .filter(Boolean)
+        .length;
+}
+
+export function countBits5(n: number) {
+    return n.toString(2).split('1').length - 1;;
+}
+
+export function countBits6(n: number) {
+    return n.toString(2).replace(/0/gi, '').length;
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

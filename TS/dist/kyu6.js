@@ -4,6 +4,8 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = void 0;
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -41,25 +43,38 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 const countBits = (num) => {
-    //  THIS WORKS IN CODEPEN:
-    // console.log(num ? num.toString(2).match(/1/g).length : 0);
-    // console.log(num.toString(2).match((/1/g)));
-    // console.log(num.toString(2).match(/1/g).length);
-    // console.log(num ? num.toString(2).match(/1/g).length : 0);
-    // return num ? num.toString(2).match(/1/g).length : 0;
-    if (Number(num).toString(2).match((/1/g)) !== null) {
-        console.log("hellllloooo");
-        // return Number(num).toString(2).match(/1/g).length;
-        // return 0;
-    }
-    else {
-        console.log("hey");
-        return 0;
-    }
-    return 33;
+    const bitArr = num.toString(2).match(/1/g);
+    // console.log(bitArr === null ? 0 : bitArr.length);
+    return bitArr === null ? 0 : bitArr.length;
 };
-countBits(0);
+// countBits(0);
+// countBits(1234);
 //============= OTHER CODEWARS SOLUTIONS: =============
+function countBits2(n) {
+    return n.toString(2).replace(/0/g, '').length;
+}
+exports.countBits2 = countBits2;
+function countBits3(n) {
+    return n.toString(2).split('').filter(c => c === '1').length;
+}
+exports.countBits3 = countBits3;
+function countBits4(n) {
+    return n.toString(2)
+        .split('')
+        .map(Number)
+        .filter(Boolean)
+        .length;
+}
+exports.countBits4 = countBits4;
+function countBits5(n) {
+    return n.toString(2).split('1').length - 1;
+    ;
+}
+exports.countBits5 = countBits5;
+function countBits6(n) {
+    return n.toString(2).replace(/0/gi, '').length;
+}
+exports.countBits6 = countBits6;
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  WHO LIKES IT?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
