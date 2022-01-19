@@ -69,13 +69,35 @@
 
 
 
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  BIT COUNTING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const countBits = (num: number): number => {
+
+    //  THIS WORKS IN CODEPEN:
+    // console.log(num ? num.toString(2).match(/1/g).length : 0);
+    
+    // console.log(num.toString(2).match((/1/g)));
+
+    // console.log(num.toString(2).match(/1/g).length);
+    // console.log(num ? num.toString(2).match(/1/g).length : 0);
+    // return num ? num.toString(2).match(/1/g).length : 0;
+    if ( Number(num).toString(2).match((/1/g)) !== null) {
+        console.log("hellllloooo");
+        // return Number(num).toString(2).match(/1/g).length;
+        // return 0;
+    } else {
+        console.log("hey");
+        return 0;
+    }
+    return 33;
+      
+}
+
+countBits(0);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
