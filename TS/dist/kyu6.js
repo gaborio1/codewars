@@ -5,7 +5,7 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -30,9 +30,30 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+// Example
+// "abcde" -> 0 # no characters repeats more than once
+// "aabbcde" -> 2 # 'a' and 'b'
+// "aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+// "indivisibility" -> 1 # 'i' occurs six times
+// "Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+// "aA11" -> 2 # 'a' and '1'
+// "ABBA" -> 2 # 'A' and 'B' each occur twice
+const duplicateCount = (text) => {
+    const counterObj = {};
+    // const strArr = text.split("").map((letter) => letter.toLowerCase());
+    text.split("").map((letter) => letter.toLowerCase()).forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
+    // strArr.forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
+    const duplicatesArr = Object.entries(counterObj).filter(([key, value]) => value > 1);
+    console.log(duplicatesArr.length);
+    return duplicatesArr.length;
+};
+duplicateCount(""); //  0
+duplicateCount("abcde"); // 0
+duplicateCount("aabbcde"); // 2
+duplicateCount("aabBcde"); // 2
+duplicateCount("Indivisibilities"); // 2
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// !!! FINAL ANSWER NOT SUBMITTED, REFACTOR !!!
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND THE PARITY OUTLIER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -52,10 +73,25 @@ const findOutlier = (ints) => {
     // console.log(odds.length > 1 ? evens[0] : odds[0])
     return odds.length > 1 ? evens[0] : odds[0];
 };
-findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]); // 11
-findOutlier([160, 3, 1719, 19, 11, 13, -21]); // 160
-findOutlier([17417968, -12150916, -135668362, -45067422, 65586444, -104088786, 74395984, 198980314, -91660877, -52541784, -49718652, -189685108, -120327066, 178679078, -31538954, 112116518, -186162190, 29923430, 180062518, 878198, -185634066, -188868404, -111266602, -123331452, -184028074, -24771054, -4052, 98231950, -91193344, -154129192, -134529020, 195427700, 187599832, -11229586, -165510592, -19725720, 180071600, -161055558, 109276994, -88809438, -149769730, -89421390, 27663208, 132490658, 118790172, -23745850, 27711836, -4950342, 32063374, 655394]); // -91660877
+// findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]);   // 11
+// findOutlier([160, 3, 1719, 19, 11, 13, -21]);   // 160
+// findOutlier([17417968, -12150916, -135668362, -45067422, 65586444, -104088786, 74395984, 198980314, -91660877, -52541784, -49718652, -189685108, -120327066, 178679078, -31538954, 112116518, -186162190, 29923430, 180062518, 878198, -185634066, -188868404, -111266602, -123331452, -184028074, -24771054, -4052, 98231950, -91193344, -154129192, -134529020, 195427700, 187599832, -11229586, -165510592, -19725720, 180071600, -161055558, 109276994, -88809438, -149769730, -89421390, 27663208, 132490658, 118790172, -23745850, 27711836, -4950342, 32063374, 655394]);   // -91660877
 //============= OTHER CODEWARS SOLUTIONS: =============
+function findOutlier2(integers) {
+    if (integers.slice(0, 3).filter(i => i % 2 !== 0).length > 1) {
+        return integers.find(v => v % 2 === 0) || 0;
+    }
+    else {
+        return integers.find(v => v % 2 !== 0) || 0;
+    }
+}
+exports.findOutlier2 = findOutlier2;
+function findOutlier3(integers) {
+    const odds = integers.filter(v => v % 2);
+    const evens = integers.filter(v => !(v % 2));
+    return odds.length === 1 ? odds[0] : evens[0];
+}
+exports.findOutlier3 = findOutlier3;
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BIT COUNTING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

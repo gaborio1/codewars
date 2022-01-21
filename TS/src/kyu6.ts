@@ -52,11 +52,73 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+// Example
+// "abcde" -> 0 # no characters repeats more than once
+// "aabbcde" -> 2 # 'a' and 'b'
+// "aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+// "indivisibility" -> 1 # 'i' occurs six times
+// "Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+// "aA11" -> 2 # 'a' and '1'
+// "ABBA" -> 2 # 'A' and 'B' each occur twice
+
+const duplicateCount = (text: string): number => {
+
+    interface Counter {
+        [key: string]: number;
+    }
+
+    const counterObj: Counter = {};
+
+    text
+        .split("")
+        .map((letter) => letter.toLowerCase())
+        .forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
+
+    const duplicatesArr = Object
+        .entries(counterObj)
+        .filter(([key, value]) => value > 1);
+
+    // console.log(duplicatesArr.length);
+    return duplicatesArr.length;
+
+}
+
+//  STR -> ARR(LETTERS) -> ARR(LOWERCASED LETTERS) -> OBJ{num: count} 
+//  FILTER OUT OBJ KEYS WITH VALUE GREATER THAN ONE INTO ARRAY
+//  RETURN LENGTH OF ARRAY
+
+duplicateCount(""); //  0
+duplicateCount("abcde");    // 0
+duplicateCount("aabbcde");  // 2
+duplicateCount("aabBcde");  // 2
+duplicateCount("Indivisibilities"); // 2
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// !!! FINAL ANSWER NOT SUBMITTED, REFACTOR !!!
+// import _ from 'lodash';
+// export function duplicateCount2(text: string): number {
+//     return _(text).countBy(_.toUpper).values().filter(x => x > 1).size();
+// }
+
+function duplicateCount3(text: string): number {
+    const values = text.toLowerCase();
+    const distinctValues = [... new Set(values)];
+    const count = (s: string) => values.split(s).length - 1 > 1;
+    return distinctValues.filter(value => count(value)).length;
+}
+
+function duplicateCount4(text: string): number {
+    let array = text.toLowerCase().split('');
+    return [...new Set(array.filter((e, i) => array.indexOf(e) !== i))].length;
+}
+
+
+function duplicateCount5(text: string): number {
+    return new Set((text.toLowerCase().match(/(.)(?=.*\1)/gi) || [])).size
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND THE PARITY OUTLIER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
