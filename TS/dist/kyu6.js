@@ -19,6 +19,8 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 //============= OTHER CODEWARS SOLUTIONS: =============
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// !!! NEED TO REFACTOR !!!
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  DUPLICATE ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -31,38 +33,56 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))((" 
 const duplicateEncode = (word) => {
-    // let solution: string = "";
-    const strArr = word.split("").map((letter) => letter.toLowerCase());
-    console.log(strArr);
-    // strArr.forEach((el, i) => {
-    //     let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
-    //     console.log(isDuplicate);
-    //     if (isDuplicate) {
-    //         strArr[i] = ")"
+    // 1️⃣  DOES NOT WORK WITH SPECIAL CHARACTERS:
+    // const strArr = word.split("");
+    // strArr.forEach((letter, i) => {
+    //     let regex = new RegExp(letter, "gi");
+    //     console.table(
+    //         {
+    //             letter: strArr[i],
+    //             matches: word.match(regex)?.length
+    //         }
+    //     );
+    //     //❗️❗️❗️ WITHOUT "?"" OBJECT IS POSSIBLY NULL ❗️❗️❗️
+    //     let counter: number | undefined = word.match(regex)?.length;
+    //     if (counter !== undefined) {
+    //         if (counter > 1) {
+    //             strArr[i] = ")";
+    //         } else {
+    //             strArr[i] = "(";
+    //         }
     //     }
     // })
-    for (let i = 0; i < strArr.length; i++) {
-        let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
-        console.log(strArr[i], isDuplicate);
-        if (isDuplicate) {
-            // strArr[i] = strArr[i].toUpperCase();
-            console.log("hello");
+    // return strArr.join("");
+    // 2️⃣  THIS WORKS:
+    const original = word.split("").map((letter) => letter.toLowerCase());
+    let copy = [...original];
+    const resultArr = [];
+    for (let i = 0; i < original.length; i++) {
+        copy.splice(i, 1);
+        if (copy.indexOf(original[i]) < 0) {
+            resultArr.push("(");
         }
+        else {
+            resultArr.push(")");
+        }
+        copy = [...original];
     }
-    console.log(strArr);
-    // for (let letter of lowerCased) {
-    // for (let i = 0; i < lowerCased.length; i++) {
-    //     // console.log(letter);
-    //     let isDuplicate = lowerCased.indexOf(lowerCased[i]) !== lowerCased.lastIndexOf(lowerCased[i]);
-    //     console.log(isDuplicate);
-    //     if (isDuplicate) {
-    //         solution = lowerCased.replace(lowerCased[i], ")");
-    //     }
-    // }
-    // console.log(solution);
-    return "hello";
+    console.log(resultArr.join(""));
+    return resultArr.join("");
 };
 duplicateEncode("recEde");
+duplicateEncode("(( @"); // "))(("  
+// ❗️❗️❗️ SyntaxError: Invalid regular expression: /(/: Unterminated group ❗️❗️❗️
+// ❗️❗️❗️ https://stackoverflow.com/questions/17885855/use-dynamic-variable-string-as-regex-pattern-in-javascript/17886301 ❗️❗️❗️
+// To create the regex from a string, you have to use JavaScript's RegExp object.
+// If you also want to match/replace more than one time, then you must add the g (global match) flag. Here's an example:
+// var stringToGoIntoTheRegex = "abc";
+// var regex = new RegExp("#" + stringToGoIntoTheRegex + "#", "g");
+// // at this point, the line above is the same as: var regex = /#abc#/g;
+// var input = "Hello this is #abc# some #abc# stuff.";
+// var output = input.replace(regex, "!!");
+// alert(output); // Hello this is !! some !! stuff.
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  COUNTING DUPLICATES
@@ -93,11 +113,7 @@ const duplicateCount = (text) => {
 //  STR -> ARR(LETTERS) -> ARR(LOWERCASED LETTERS) -> OBJ{num: count} 
 //  FILTER OUT OBJ KEYS WITH VALUE GREATER THAN ONE INTO ARRAY
 //  RETURN LENGTH OF ARRAY
-duplicateCount(""); //  0
-duplicateCount("abcde"); // 0
-duplicateCount("aabbcde"); // 2
-duplicateCount("aabBcde"); // 2
-duplicateCount("Indivisibilities"); // 2
+//  
 //============= OTHER CODEWARS SOLUTIONS: =============
 // import _ from 'lodash';
 // export function duplicateCount2(text: string): number {
