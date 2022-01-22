@@ -20,13 +20,52 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  DUPLICATE ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+const duplicateEncode = (word) => {
+    // let solution: string = "";
+    const strArr = word.split("").map((letter) => letter.toLowerCase());
+    console.log(strArr);
+    // strArr.forEach((el, i) => {
+    //     let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
+    //     console.log(isDuplicate);
+    //     if (isDuplicate) {
+    //         strArr[i] = ")"
+    //     }
+    // })
+    for (let i = 0; i < strArr.length; i++) {
+        let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
+        console.log(strArr[i], isDuplicate);
+        if (isDuplicate) {
+            // strArr[i] = strArr[i].toUpperCase();
+            console.log("hello");
+        }
+    }
+    console.log(strArr);
+    // for (let letter of lowerCased) {
+    // for (let i = 0; i < lowerCased.length; i++) {
+    //     // console.log(letter);
+    //     let isDuplicate = lowerCased.indexOf(lowerCased[i]) !== lowerCased.lastIndexOf(lowerCased[i]);
+    //     console.log(isDuplicate);
+    //     if (isDuplicate) {
+    //         solution = lowerCased.replace(lowerCased[i], ")");
+    //     }
+    // }
+    // console.log(solution);
+    return "hello";
+};
+duplicateEncode("recEde");
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  COUNTING DUPLICATES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -41,19 +80,42 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
 const duplicateCount = (text) => {
     const counterObj = {};
-    // const strArr = text.split("").map((letter) => letter.toLowerCase());
-    text.split("").map((letter) => letter.toLowerCase()).forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
-    // strArr.forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
-    const duplicatesArr = Object.entries(counterObj).filter(([key, value]) => value > 1);
-    console.log(duplicatesArr.length);
+    text
+        .split("")
+        .map((letter) => letter.toLowerCase())
+        .forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
+    const duplicatesArr = Object
+        .entries(counterObj)
+        .filter(([key, value]) => value > 1);
+    // console.log(duplicatesArr.length);
     return duplicatesArr.length;
 };
+//  STR -> ARR(LETTERS) -> ARR(LOWERCASED LETTERS) -> OBJ{num: count} 
+//  FILTER OUT OBJ KEYS WITH VALUE GREATER THAN ONE INTO ARRAY
+//  RETURN LENGTH OF ARRAY
 duplicateCount(""); //  0
 duplicateCount("abcde"); // 0
 duplicateCount("aabbcde"); // 2
 duplicateCount("aabBcde"); // 2
 duplicateCount("Indivisibilities"); // 2
 //============= OTHER CODEWARS SOLUTIONS: =============
+// import _ from 'lodash';
+// export function duplicateCount2(text: string): number {
+//     return _(text).countBy(_.toUpper).values().filter(x => x > 1).size();
+// }
+function duplicateCount3(text) {
+    const values = text.toLowerCase();
+    const distinctValues = [...new Set(values)];
+    const count = (s) => values.split(s).length - 1 > 1;
+    return distinctValues.filter(value => count(value)).length;
+}
+function duplicateCount4(text) {
+    let array = text.toLowerCase().split('');
+    return [...new Set(array.filter((e, i) => array.indexOf(e) !== i))].length;
+}
+function duplicateCount5(text) {
+    return new Set((text.toLowerCase().match(/(.)(?=.*\1)/gi) || [])).size;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND THE PARITY OUTLIER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

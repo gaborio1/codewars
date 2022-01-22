@@ -32,12 +32,63 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  DUPLICATE ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+
+const duplicateEncode = (word: string) => {
+
+    // let solution: string = "";
+    const strArr = word.split("").map((letter) => letter.toLowerCase());
+    console.log(strArr);
+
+    // strArr.forEach((el, i) => {
+    //     let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
+    //     console.log(isDuplicate);
+    //     if (isDuplicate) {
+    //         strArr[i] = ")"
+    //     }
+
+    // })
+
+    for (let i = 0; i < strArr.length; i++) {
+        let isDuplicate = strArr.indexOf(strArr[i]) !== strArr.lastIndexOf(strArr[i]);
+        console.log(strArr[i], isDuplicate);
+        if (isDuplicate) {
+            // strArr[i] = strArr[i].toUpperCase();
+            console.log("hello");
+        }
+    }
+
+
+    console.log(strArr);
+    // for (let letter of lowerCased) {
+    // for (let i = 0; i < lowerCased.length; i++) {
+    //     // console.log(letter);
+    //     let isDuplicate = lowerCased.indexOf(lowerCased[i]) !== lowerCased.lastIndexOf(lowerCased[i]);
+    //     console.log(isDuplicate);
+        
+    //     if (isDuplicate) {
+    //         solution = lowerCased.replace(lowerCased[i], ")");
+    //     }
+    // }
+
+    // console.log(solution);
+
+    return "hello";
+}
+
+duplicateEncode("recEde");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -47,7 +98,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  COUNTING DUPLICATES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
