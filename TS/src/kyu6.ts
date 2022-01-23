@@ -23,7 +23,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  TAKE A TEN MINUTE WALK
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -40,31 +40,81 @@ const isValidWalk = (directions: string[]): boolean => {
 
     const counterObj: Counter = {};
 
-    if (directions.length === 10) {
+    directions.forEach(dir => counterObj[dir] = (counterObj[dir] || 0) + 1);
 
-        directions.forEach(dir => counterObj[dir] = (counterObj[dir] || 0) + 1);
+    // console.log(
+    //     directions.length === 10 ? (counterObj.n === counterObj.s) && (counterObj.e === counterObj.w) : false
+    // );
 
-        console.log(counterObj);
+    return directions.length === 10
+        ? (counterObj.n === counterObj.s) && (counterObj.e === counterObj.w)
+        : false;
 
-        console.log((counterObj.n === counterObj.s) && (counterObj.e    === counterObj.w));
+}
 
-    } else {
-
-        console.log("not valid walk");
-
-    }
-
-
-    
+//  CREATE COUNTER OBJECT {direction: count, ...}
+//  IF TOTAL NUMBER OF DIRECTIONS IS 10
+//      RETURN NUMBER OF BOTH OPPOSITE DIRECTION PAIRS (N-S, E-W) "BOOLEAN"
+//  IF NUMBER OF DIRECTIONS IS NOT 10
+//      RETURN FALSE
 
 
+isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']);
+isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']);
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function isValidWalk2(walk: string[]) {
+    if (walk.length !== 10) return false;
+    if (walk.filter(e => e === 'n').length !== walk.filter(e => e === 's').length) return false;
+    if (walk.filter(e => e === 'e').length !== walk.filter(e => e === 'w').length) return false;
     return true;
 }
 
-isValidWalk(['n','s','n','s','n','s','n','s','n','s']);
-isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']);
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+function isValidWalk3(walk: string[]) {
+    if (walk.length !== 10) return false;
+
+    type directionValues = {
+        [key: string]: number;
+    };
+
+    const directions: directionValues = {
+        n: 0,
+        s: 0,
+        w: 0,
+        e: 0,
+    };
+
+    walk.forEach((direction: string) => {
+        directions[direction]++;
+    });
+
+    return directions.n === directions.s && directions.w === directions.e;
+}
+
+
+function isValidWalk4(walk: string[]): boolean {
+    if (walk.length !== 10) return false
+
+    const coordinates = {
+        x: 0,
+        y: 0,
+    }
+
+    for (let i = 0; i < walk.length; i++) {
+        switch (walk[i]) {
+            case 'n': coordinates.x++; break
+            case 's': coordinates.x--; break
+            case 'e': coordinates.y++; break
+            case 'w': coordinates.y--; break
+            default: break
+        }
+    }
+
+    return (!coordinates.x && !coordinates.y)
+}
+
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // !!! NEED TO REFACTOR !!!
