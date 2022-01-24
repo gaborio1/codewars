@@ -1,4 +1,34 @@
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+
+
+
+
+
+
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
@@ -39,13 +69,16 @@ const findEvenIndex = (arr: number[]): number => {
     return 0;
 }
 
-findEvenIndex([1,2,3,4,3,2,1]);
+findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  YOUR ORDER PLEASE (REARRANGE WORDS BY NUMBER FOUND IN THEM)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -63,24 +96,77 @@ findEvenIndex([1,2,3,4,3,2,1]);
 
 const order = (words: string): string => {
 
-    const strArr = words.split(" ");
-    console.log(strArr);
+    if (words.length === 0) {
+        return "";
+    } else {
+        const orderedArr: string[] = [];
+        words.split(" ").forEach((word) => {
+            let numStr: number = Number(word.match(/[1-9]/)![0]) - 1;
+            orderedArr[numStr] = word;
+        })
+        return orderedArr.join(" ");
+    }
 
-    strArr.forEach((word) => {
-        console.log(word);
-        // let numStr = word.match(/[0-9]/)[0];
-    })
-
-    return "hello";
 }
 
-order("is2 Thi1s T4est 3a");
+//  IF EMPTY STRING: RETURN ""
+//  OTHERWISE:
+//      CREATE NEW ARRAY FOR ORDERED WORDS
+//      SPLIT INTO ARRAY AND FOR EACH WORD:
+//          EXTRACT NUMERIC CHARACTER AND CONVERT TO NUMBER - 1 (INDEX)
+//          !!! "Non-null assertion operator" (!) !!!
+//          SET WORD AS NEW ELEMENT IN ARRAY AT INDEX
+//      RETURN ARRAY JOINED INTO STRING 
+
+//  !!! REASON FOR SUBSTRACTING 1 FROM NUMBER: !!!
+//  Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+//  !!! THIS IS TO PREVENT ELEMENT AT INDEX 0 FROM BEING UNDEFINED IN ORDERED ARRAY  !!!
+
+// order("is2 Thi1s T4est 3a");
+// order("");
+
+/*
+❗️❗️❗️ TS2531: Object is possibly 'null' ❗️❗️❗️
+
+https://stackoverflow.com/questions/49431880/ts2531-object-is-possibly-null
+
+You should either check for null (using an if) or use a "Non-null assertion operator" (!) if you are sure it is not null:
+
+if(nativeElement.files != null) {
+    this.photoService.upload(this.vehicleId, nativeElement.files[0])
+        .subscribe(x => console.log(x));
+}
+
+OR
+this.photoService.upload(this.vehicleId, nativeElement.files![0])
+    .subscribe(x => console.log(x));
+Note:
+
+The "Non-null assertion operator" will not perform any runtime checks, it just tells the compiler you have special information and you know nativeElement.files will not be null at runtime.
+
+If nativeElement.files is null at runtime, it will generate an error. This is not the safe navigation operator of other languages.
+*/
+
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function order2(words: String): String {
+    return words.split(' ')
+        .sort((a, b) => +a.match(/\d/) - +b.match(/\d/))
+        .join(' ')
+}
 
 
+function order3(words: String): String {
+    return words.split(' ')
+        .sort((l, r) => +/\d/.exec(l)[0] - +/\d/.exec(r)[0])
+        .join(' ');
+}
 
+
+const order4 = (words: string): string => {
+    return words.split(' ').sort((a, b) => +a.replace(/\D/g, '') - +b.replace(/\D/g, '')).join(' ');
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -641,11 +727,9 @@ function spinWords2(words: string): string {
 // }
 
 
-
-// ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-
 // TITLE:  FIND INT THAT APPEARS ODD NUMBER OF TIMES IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: https://www.reddit.com/r/typescript/comments/hm8jbv/how_to_define_an_interface_for_objects_with/fx4szci/

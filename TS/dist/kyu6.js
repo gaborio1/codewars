@@ -1,4 +1,6 @@
 "use strict";
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -6,6 +8,18 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
 // For example:
 // Let's say you are given the array {1,2,3,4,3,2,1}:
@@ -31,8 +45,8 @@ const findEvenIndex = (arr) => {
 };
 findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  YOUR ORDER PLEASE (REARRANGE WORDS BY NUMBER FOUND IN THEM)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -44,15 +58,49 @@ findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
 // "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
 // ""  -->  ""
 const order = (words) => {
-    const strArr = words.split(" ");
-    console.log(strArr);
-    strArr.forEach((word) => {
-        console.log(word);
-        // let numStr = word.match(/[0-9]/)[0];
-    });
+    console.log(words);
+    if (words.length === 0) {
+        console.log("empty string");
+        return "";
+    }
+    else {
+        console.log("valid string");
+        const strArr = words.split(" ");
+        const orderedArr = [];
+        strArr.forEach((word) => {
+            // console.log(word);
+            // let numStr = word.match(/[0-9]/)[0];
+            // if (word.match(/[0-9]/) !== null) {
+            let numStr = Number(word.match(/[0-9]/)[0]) - 1;
+            orderedArr[numStr] = word;
+            // }
+            // let numStr: number = Number(word.match(/[0-9]/)[0]) - 1;
+            // console.log(numStr);
+            // orderedArr[numStr] = word;
+        });
+        console.log(orderedArr.join(" "));
+        return orderedArr.join(" ");
+    }
+    // const strArr = words.split(" ");
+    // console.log(strArr);
+    // const orderedArr: string[] = [];
+    // strArr.forEach((word) => {
+    //     // console.log(word);
+    //     // let numStr = word.match(/[0-9]/)[0];
+    //     let numStr = Number(word.match(/[0-9]/)[0]) - 1;
+    //     // console.log(numStr);
+    //     orderedArr[numStr] = word;
+    // })
+    // // console.table({ orderedArr: orderedArr, solution: orderedArr.join(" ") });
+    // console.log(
+    //     words !== "" ? orderedArr.join(" ") : ""
+    // );
+    // // return words.length > 0 ? orderedArr.join(" ") : "";
     return "hello";
 };
 order("is2 Thi1s T4est 3a");
+// order("4of Fo1r pe6ople g3ood th5e the2");
+order("");
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  TAKE A TEN MINUTE WALK
