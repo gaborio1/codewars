@@ -29,7 +29,7 @@
 
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:  FIND EVEN INDEX 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -66,10 +66,33 @@
 
 
 const findEvenIndex = (arr: number[]): number => {
-    return 0;
+
+    const sum = arr.reduce((a, b) => a + b);
+    console.log(sum);
+    let counter: number = 0;
+    let solution: number = -1;
+
+    for (let i = 1; i < arr.length; i++) {
+        let current = arr[i];
+        let previous = arr[i - 1];
+        let sideSum = (sum - current) / 2;
+        counter += previous;
+        console.table(
+            {current: current, sideSum: sideSum, counter: counter}
+        )
+        if (sideSum === counter) {
+            console.log("solution found at idx : " , i);
+            solution = i;
+        }
+    }
+
+    return solution;
 }
 
-findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
+// findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
+// findEvenIndex([1,100,50,-51,1,1]);
+// findEvenIndex([1,8,1]);
+findEvenIndex([20,10,30,10,10,15,35]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -152,14 +175,14 @@ If nativeElement.files is null at runtime, it will generate an error. This is no
 
 function order2(words: String): String {
     return words.split(' ')
-        .sort((a, b) => +a.match(/\d/) - +b.match(/\d/))
+        .sort((a, b) => +a.match(/\d/)! - +b.match(/\d/)!)
         .join(' ')
 }
 
 
 function order3(words: String): String {
     return words.split(' ')
-        .sort((l, r) => +/\d/.exec(l)[0] - +/\d/.exec(r)[0])
+        .sort((l, r) => +/\d/.exec(l)![0] - +/\d/.exec(r)![0])
         .join(' ');
 }
 
