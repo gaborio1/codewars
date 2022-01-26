@@ -1,6 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const tribonacci = ([a, b, c], n) => {
+    if (n === 0)
+        return [];
+    if (n === 1)
+        return [a];
+    if (n === 2)
+        return [a, b];
+    if (n === 3)
+        return [a, b, c];
+    const triArr = [a, b, c];
+    for (let i = 3; i < n; i++) {
+        let length = triArr.length;
+        triArr.push(triArr[length - 1] + triArr[length - 2] + triArr[length - 3]);
+    }
+    return triArr;
+};
+function tribonacci2(s, n) {
+    for (let i = 0; s.length < n; i++)
+        s.push(s[i] + s[i + 1] + s[i + 2]);
+    return s.slice(0, n);
+}
+function tribonacci3([a, b, c], n) {
+    if (n == 0)
+        return [];
+    if (n == 1)
+        return [a];
+    if (n == 2)
+        return [a, b];
+    if (n == 3)
+        return [a, b, c];
+    var result = [a, b, c];
+    for (var i = 3; i < n; i++) {
+        result[i] = result[i - 1] + result[i - 2] + result[i - 3];
+    }
+    return result;
+}
+const tribonacci4 = ([a, b, c], n) => n < 1 ? [] : [a].concat(tribonacci([b, c, a + b + c], n - 1));
 const findEvenIndex = (arr) => {
     const sum = arr.reduce((a, b) => a + b);
     let counterLeft = 0;
