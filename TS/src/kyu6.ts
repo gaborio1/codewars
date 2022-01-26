@@ -28,8 +28,8 @@
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  FIND EVEN INDEX 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  FIND EVEN INDEX - EQUAL SIDES OF ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -68,31 +68,52 @@
 const findEvenIndex = (arr: number[]): number => {
 
     const sum = arr.reduce((a, b) => a + b);
-    console.log(sum);
-    let counter: number = 0;
+    let counterLeft: number = 0;
     let solution: number = -1;
 
-    for (let i = 1; i < arr.length; i++) {
-        let current = arr[i];
+    //     for (let i = 0; i < arr.length; i++) {
+
+    //         let current = arr[i];
+    //         let previous = arr[i - 1];
+    //         let sideSum = (sum - current) / 2;
+
+    //         counterLeft += previous ? previous : 0;
+
+    //         if (sideSum === counterLeft) {
+    //             solution = i;
+    //         }
+
+    //     }
+
+    arr.forEach((current, i) => {
         let previous = arr[i - 1];
         let sideSum = (sum - current) / 2;
-        counter += previous;
-        console.table(
-            {current: current, sideSum: sideSum, counter: counter}
-        )
-        if (sideSum === counter) {
-            console.log("solution found at idx : " , i);
+        // NO PREVIOUS FOR IDX 0 (ITS undefined) THEREFORE COUNTERLEFT IS 0
+        counterLeft += previous ? previous : 0;
+
+        if (sideSum === counterLeft) {
             solution = i;
         }
-    }
+
+        console.table(
+            { current: current, sideSum: sideSum, counter: counterLeft }
+        )
+        if (sideSum === counterLeft) {
+            console.log("solution found at idx : ", i);
+            solution = i;
+        }
+
+    })
 
     return solution;
+
 }
 
 // findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
 // findEvenIndex([1,100,50,-51,1,1]);
 // findEvenIndex([1,8,1]);
-findEvenIndex([20,10,30,10,10,15,35]);
+// findEvenIndex([20, 10, 30, 10, 10, 15, 35]);
+// findEvenIndex([20, 10, -80, 10, 10, 15, 35]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

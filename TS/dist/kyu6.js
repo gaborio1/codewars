@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
 const findEvenIndex = (arr) => {
     const sum = arr.reduce((a, b) => a + b);
-    console.log(sum);
-    let counter = 0;
+    let counterLeft = 0;
     let solution = -1;
-    for (let i = 1; i < arr.length; i++) {
-        let current = arr[i];
+    arr.forEach((current, i) => {
         let previous = arr[i - 1];
         let sideSum = (sum - current) / 2;
-        counter += previous;
-        console.table({ current: current, sideSum: sideSum, counter: counter });
-        if (sideSum === counter) {
+        counterLeft += previous ? previous : 0;
+        if (sideSum === counterLeft) {
+            solution = i;
+        }
+        console.table({ current: current, sideSum: sideSum, counter: counterLeft });
+        if (sideSum === counterLeft) {
             console.log("solution found at idx : ", i);
             solution = i;
         }
-    }
+    });
     return solution;
 };
-findEvenIndex([20, 10, 30, 10, 10, 15, 35]);
 const order = (words) => {
     if (words.length === 0) {
         return "";
