@@ -254,34 +254,67 @@ A pangram is a sentence that contains every single letter of the alphabet at lea
 Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
 */
 
-const isPangram = (phrase: string): boolean => {
+// 1️⃣ FIRST ATTEMPT:
+// const isPangram = (phrase: string): boolean => {
 
-    if (phrase.length < 26) return false;
+//     if (phrase.length < 26) return false;
     
-    const alphabet: string[] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+//     const alphabet: string[] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-    let solution: boolean = true;
+//     let solution: boolean = true;
 
-    for (let i = 0; i < alphabet.length; i++) {
-        if (phrase.toLowerCase().indexOf(alphabet[i]) < 0) {
-            solution = false;
-            break;
-        }
-    }
+//     for (let i = 0; i < alphabet.length; i++) {
+//         if (phrase.toLowerCase().indexOf(alphabet[i]) < 0) {
+//             solution = false;
+//             break;
+//         }
+//     }
 
-    return solution;
-}
+//     return solution;
+
+// }
+
 /*
 RETURN FALSE IF LENGTH IS LESS THAN ALPHABET LENGTH
 LOOP OVER ALPHABET AND CHECK IF EACH LETTER(LOWERCASED) IS FOUND IN PHRASE
     IF NOT FOUND, STOP LOOP AND RETURN SOLUTION AS FALSE
 */
 
-isPangram("The quick brown fox jumps over the lazy dog.");
-isPangram("This is not a pangram.");
+
+// 2️⃣ SECOND ATTEMPT:
+const isPangram = (phrase: string): boolean => {
+
+    const lettersArr: string[] = phrase.toLowerCase().match(/[a-z]/g)!
+    const lettersSet = new Set(lettersArr);
+    return lettersSet.size === 26;
+
+}
+/*
+MATCH ALL LETTERS(LOWERCASED) INTO ARRAY
+MAKE A SET OUT OF THE ARRAY TO REMOVE DUPLICATES
+IF SET SIZE IS 26 RETURN true, OTHERWISE false
+*/
+
+// isPangram("The quick brown fox jumps over the lazy dog.");
+// isPangram("This is not a pangram.");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const isPangram3 = (phrase: string): boolean => new Set(phrase.toLowerCase().match(/[a-z]/g)).size === 26;
+
+
+const isPangram4 = (phrase: string): boolean => ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  .every(l => phrase.toLowerCase().includes(l))
+
+
+function isPangram5(phrase: string): boolean {
+    let newString: Set<string> = new Set((phrase.replace(/\W|\d/g, '')).toLowerCase());
+    if (newString.size == 26) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
 // 

@@ -11,20 +11,22 @@ const narcissistic = (value) => {
     return true;
 };
 const isPangram = (phrase) => {
-    if (phrase.length < 26)
-        return false;
-    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    let solution = true;
-    for (let i = 0; i < alphabet.length; i++) {
-        if (phrase.toLowerCase().indexOf(alphabet[i]) < 0) {
-            solution = false;
-            break;
-        }
-    }
-    return solution;
+    const lettersArr = phrase.toLowerCase().match(/[a-z]/g);
+    const lettersSet = new Set(lettersArr);
+    return lettersSet.size === 26;
 };
-isPangram("The quick brown fox jumps over the lazy dog.");
-isPangram("This is not a pangram.");
+const isPangram3 = (phrase) => new Set(phrase.toLowerCase().match(/[a-z]/g)).size === 26;
+const isPangram4 = (phrase) => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    .every(l => phrase.toLowerCase().includes(l));
+function isPangram5(phrase) {
+    let newString = new Set((phrase.replace(/\W|\d/g, '')).toLowerCase());
+    if (newString.size == 26) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 const tribonacci = ([a, b, c], n) => {
     if (n === 0)
         return [];
