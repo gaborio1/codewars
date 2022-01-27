@@ -271,10 +271,12 @@ const findUniq = (arr: number[]): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️
 function findUniq3(arr: Array<number>): number {
     arr = arr.sort()
     return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0]
 }
+// ❗️❗️❗️
 
 // "!"
 function findUniq4(arr: Array<number>): number {
@@ -300,8 +302,8 @@ function findUniq7(arr: Array<number>): number {
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  NARCISSISTIC NUMBER
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  NARCISSISTIC NUMBER - DOES MY NUMBER LOOK BIG IN THIS?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -322,12 +324,43 @@ Your code must return true or false (not 'true' and 'false') depending upon whet
 Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
 */
 
-const narcissistic = (value: number): boolean => {
-    return true;
+const narcissistic = (num: number): boolean => {
+    const exp: number = num.toString().length;
+    const digitArr: number[] = num
+        .toString().split("")
+        .map(Number);
+    const powerSum: number = digitArr
+        .map((base) => Math.pow(base, exp))
+        .reduce((a, b) => a + b);
+    return powerSum === num;
 }
+
+//  GET EXPONENT
+//  CONVERT NUM TO ARRAY OF DIGITS(number)
+//  CALCULATE SUM OF DIGITS RAISED TO EXP
+//  COMPARE NUM AND ITS POWERSUM, RETURN boolean RESULT
+
+narcissistic(7);
+narcissistic(153);
+narcissistic(1634);
+narcissistic(16342);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function narcissistic2(value: number): boolean {
+    const str = String(value);
+    let acc = 0;
+    str.split('').forEach((x) => acc += Math.pow(+x, str.length))
+    return acc === value;
+}
+
+
+function narcissistic3(value: number): boolean {
+    const digits = String(value).split('');
+
+    return digits.reduce((acc, current) =>
+        acc + Math.pow(Number(current), digits.length), 0) === value;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IS PANGRAM

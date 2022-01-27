@@ -6,36 +6,53 @@ const findMissingLetter = (array) => {
 };
 const findUniq = (arr) => {
     const arrLength = arr.length;
-    console.log(arrLength);
     let solution = 0;
     if (arr[0] !== arr[1] && arr[0] !== arr[2]) {
-        console.log("odd one found: " + arr[0]);
         solution = arr[0];
     }
     if (arr[arrLength - 1] !== arr[arrLength - 2] && arr[arrLength - 1] !== arr[arrLength - 3]) {
-        console.log("odd one found: " + arr[arrLength - 1]);
         solution = arr[arrLength - 1];
     }
     for (let i = 1; i < arrLength - 1; i++) {
         if (arr[i] !== arr[i + 1] && arr[i] !== arr[i - 1]) {
-            console.log("odd one found: " + arr[i]);
             solution = arr[i];
             break;
         }
     }
-    console.log("solution: " + solution);
     return solution;
 };
-findUniq([2, 1, 1, 1, 1, 1]);
-findUniq([1, 2, 1, 1, 1, 1]);
-findUniq([1, 1, 2, 1, 1, 1]);
-findUniq([1, 1, 1, 2, 1, 1]);
-findUniq([1, 1, 1, 1, 2, 1]);
-findUniq([1, 1, 1, 1, 1, 2]);
-findUniq([1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1]);
+function findUniq3(arr) {
+    arr = arr.sort();
+    return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0];
+}
+function findUniq4(arr) {
+    const x = arr[arr[0] == arr[1] ? 0 : 2];
+    return arr.find(y => y != x);
+}
+function findUniq5(arr) {
+    return arr.find(n => arr.indexOf(n) === arr.lastIndexOf(n));
+}
+function findUniq6(arr) {
+    var arr = arr.sort();
+    return arr[0] == arr[1] ? arr.pop() : arr[0];
+}
+function findUniq7(arr) {
+    return arr.filter((el) => arr.indexOf(el) == arr.lastIndexOf(el))[0];
+}
 const narcissistic = (value) => {
+    const exp = value.toString().length;
+    const digitArr = value.toString().split("");
+    console.log(digitArr);
+    const powerSum = digitArr.map((digit) => Math.pow(digit, exp)).reduce((a, b) => a + b);
+    console.log(powerSum);
+    console.log(exp);
+    console.log(powerSum === value);
     return true;
 };
+narcissistic(7);
+narcissistic(153);
+narcissistic(1634);
+narcissistic(16342);
 const isPangram = (phrase) => {
     const lettersArr = phrase.toLowerCase().match(/[a-z]/g);
     const lettersSet = new Set(lettersArr);
