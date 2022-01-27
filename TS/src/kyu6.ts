@@ -162,7 +162,7 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-const findMissingLetter = (array:string[]):string => {
+const findMissingLetter = (array: string[]): string => {
     return "hello";
 }
 
@@ -184,7 +184,7 @@ Example:
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  UNUQUE NUMBER IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
@@ -200,16 +200,103 @@ It’s guaranteed that array contains at least 3 numbers.
 The tests contain some very huge arrays, so think about performance.
 */
 
+// 1️⃣  LOOP THROUGH ALL ELEMENTS:
+
+// const findUniq = (arr: number[]): number => {
+
+//     let solution: number = 0;
+
+//     for (let i = 0; i < arr.length; i++) {
+
+//         if (i < arr.length - 2) {
+//             if (arr[i] !== arr[i + 1] && arr[i] !== arr[i + 2]) {
+//                 console.log("odd one found: " + arr[i]);
+//                 solution = arr[i];
+//                 break;
+//             }
+//         } else if (i === arr.length - 2) {
+//             if (arr[i] !== arr[i + 1] && arr[i] !== arr[i - 1]) {
+//                 console.log("odd one found: " + arr[i]);
+//                 solution = arr[i];
+//                 break;
+//             }
+//         } else if (i === arr.length - 1) {
+//             if (arr[i] !== arr[i - 1] && arr[i] !== arr[i - 2]) {
+//                 console.log("odd one found: " + arr[i]);
+//                 solution = arr[i];
+//             }
+//         }
+
+//     }
+
+//     console.log("solution: " + solution);
+//     return solution;
+
+// }
+
+
+// 2️⃣  CHECK FIRST AND LAST ELEMENT FIRST
+// THEN LOOP THROUGH MIDDLE ELEMENTS 
 const findUniq = (arr: number[]): number => {
-    // Do the magic
-    return arr[0];
-  }
-  
+
+    const arrLength: number = arr.length;
+
+    let solution: number = 0;
+
+    if (arr[0] !== arr[1] && arr[0] !== arr[2]) {
+        solution = arr[0];
+    }
+
+    if (arr[arrLength - 1] !== arr[arrLength - 2] && arr[arrLength - 1] !== arr[arrLength - 3]) {
+        solution = arr[arrLength - 1];
+    }
+
+    for (let i = 1; i < arrLength - 1; i++) {
+        if (arr[i] !== arr[i + 1] && arr[i] !== arr[i - 1]) {
+            solution = arr[i];
+            break;
+        }
+    }
+
+    return solution;
+
+}
+
+// findUniq([2, 1, 1, 1, 1, 1]);
+// findUniq([1, 2, 1, 1, 1, 1]);
+// findUniq([1, 1, 2, 1, 1, 1]);
+// findUniq([1, 1, 1, 2, 1, 1]);
+// findUniq([1, 1, 1, 1, 2, 1]);
+// findUniq([1, 1, 1, 1, 1, 2]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function findUniq3(arr: Array<number>): number {
+    arr = arr.sort()
+    return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0]
+}
+
+// "!"
+function findUniq4(arr: Array<number>): number {
+    const x = arr[arr[0] == arr[1] ? 0 : 2];
+    return arr.find(y => y != x)!;
+}
+
+// "!"
+function findUniq5(arr: Array<number>): number {
+    return arr.find(n => arr.indexOf(n) === arr.lastIndexOf(n))!;
+}
+
+// "!"
+function findUniq6(arr: Array<number>): number {
+    var arr = arr.sort()
+    return arr[0] == arr[1] ? arr.pop()! : arr[0]
+}
 
 
+function findUniq7(arr: Array<number>): number {
+    return arr.filter((el) => arr.indexOf(el) == arr.lastIndexOf(el))[0];
+}
 
 
 
@@ -237,12 +324,12 @@ Error checking for text strings or other invalid inputs is not required, only va
 
 const narcissistic = (value: number): boolean => {
     return true;
-  }
+}
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IS PANGRAM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
@@ -258,7 +345,7 @@ Given a string, detect whether or not it is a pangram. Return True if it is, Fal
 // const isPangram = (phrase: string): boolean => {
 
 //     if (phrase.length < 26) return false;
-    
+
 //     const alphabet: string[] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 //     let solution: boolean = true;
@@ -303,8 +390,8 @@ IF SET SIZE IS 26 RETURN true, OTHERWISE false
 const isPangram3 = (phrase: string): boolean => new Set(phrase.toLowerCase().match(/[a-z]/g)).size === 26;
 
 
-const isPangram4 = (phrase: string): boolean => ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-  .every(l => phrase.toLowerCase().includes(l))
+const isPangram4 = (phrase: string): boolean => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    .every(l => phrase.toLowerCase().includes(l))
 
 
 function isPangram5(phrase: string): boolean {

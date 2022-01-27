@@ -5,8 +5,34 @@ const findMissingLetter = (array) => {
     return "hello";
 };
 const findUniq = (arr) => {
-    return arr[0];
+    const arrLength = arr.length;
+    console.log(arrLength);
+    let solution = 0;
+    if (arr[0] !== arr[1] && arr[0] !== arr[2]) {
+        console.log("odd one found: " + arr[0]);
+        solution = arr[0];
+    }
+    if (arr[arrLength - 1] !== arr[arrLength - 2] && arr[arrLength - 1] !== arr[arrLength - 3]) {
+        console.log("odd one found: " + arr[arrLength - 1]);
+        solution = arr[arrLength - 1];
+    }
+    for (let i = 1; i < arrLength - 1; i++) {
+        if (arr[i] !== arr[i + 1] && arr[i] !== arr[i - 1]) {
+            console.log("odd one found: " + arr[i]);
+            solution = arr[i];
+            break;
+        }
+    }
+    console.log("solution: " + solution);
+    return solution;
 };
+findUniq([2, 1, 1, 1, 1, 1]);
+findUniq([1, 2, 1, 1, 1, 1]);
+findUniq([1, 1, 2, 1, 1, 1]);
+findUniq([1, 1, 1, 2, 1, 1]);
+findUniq([1, 1, 1, 1, 2, 1]);
+findUniq([1, 1, 1, 1, 1, 2]);
+findUniq([1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1]);
 const narcissistic = (value) => {
     return true;
 };
