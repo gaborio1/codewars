@@ -1,6 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const findMissingLetter = (array) => {
+    return "hello";
+};
+const findUniq = (arr) => {
+    return arr[0];
+};
+const narcissistic = (value) => {
+    return true;
+};
+const isPangram = (phrase) => {
+    if (phrase.length < 26)
+        return false;
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let solution = true;
+    for (let i = 0; i < alphabet.length; i++) {
+        if (phrase.toLowerCase().indexOf(alphabet[i]) < 0) {
+            solution = false;
+            break;
+        }
+    }
+    return solution;
+};
+isPangram("The quick brown fox jumps over the lazy dog.");
+isPangram("This is not a pangram.");
 const tribonacci = ([a, b, c], n) => {
     if (n === 0)
         return [];
