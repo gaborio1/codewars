@@ -1,9 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
-const findMissingLetter = (array) => {
+const findMissingLetter = (arr) => {
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const startIdx = alphabet.indexOf(arr[0]);
+    for (let i = 1; i < arr.length; i++) {
+        console.log(alphabet[startIdx + i], arr[i]);
+        if (alphabet[startIdx + i] !== arr[i]) {
+            console.log("solution: ", alphabet[startIdx + i]);
+            break;
+        }
+    }
     return "hello";
 };
+findMissingLetter(['a', 'b', 'c', 'd', 'f']);
+findMissingLetter(['O', 'Q', 'R', 'S']);
 const findUniq = (arr) => {
     const arrLength = arr.length;
     let solution = 0;
@@ -39,20 +50,30 @@ function findUniq6(arr) {
 function findUniq7(arr) {
     return arr.filter((el) => arr.indexOf(el) == arr.lastIndexOf(el))[0];
 }
-const narcissistic = (value) => {
-    const exp = value.toString().length;
-    const digitArr = value.toString().split("");
-    console.log(digitArr);
-    const powerSum = digitArr.map((digit) => Math.pow(digit, exp)).reduce((a, b) => a + b);
-    console.log(powerSum);
-    console.log(exp);
-    console.log(powerSum === value);
-    return true;
+const narcissistic = (num) => {
+    const exp = num.toString().length;
+    const digitArr = num
+        .toString().split("")
+        .map(Number);
+    const powerSum = digitArr
+        .map((base) => Math.pow(base, exp))
+        .reduce((a, b) => a + b);
+    return powerSum === num;
 };
 narcissistic(7);
 narcissistic(153);
 narcissistic(1634);
 narcissistic(16342);
+function narcissistic2(value) {
+    const str = String(value);
+    let acc = 0;
+    str.split('').forEach((x) => acc += Math.pow(+x, str.length));
+    return acc === value;
+}
+function narcissistic3(value) {
+    const digits = String(value).split('');
+    return digits.reduce((acc, current) => acc + Math.pow(Number(current), digits.length), 0) === value;
+}
 const isPangram = (phrase) => {
     const lettersArr = phrase.toLowerCase().match(/[a-z]/g);
     const lettersSet = new Set(lettersArr);

@@ -156,15 +156,11 @@
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND MISSING LETTER IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-const findMissingLetter = (array: string[]): string => {
-    return "hello";
-}
 
 /*
 Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
@@ -181,7 +177,90 @@ Example:
 (Use the English alphabet with 26 letters!)
 */
 
+const findMissingLetter = (arr: string[]): string => {
+
+    let solution: string = "";
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const startIdx = alphabet.indexOf(arr[0]);
+
+    for (let i = 1; i < arr.length; i++) {
+        if (alphabet[startIdx + i] !== arr[i]) {
+            solution = alphabet[startIdx + i];
+            break;
+        }
+    }
+
+    return solution;
+}
+
+//  startIdx: THIS IS WHERE LOOP STARTS COMPARING TWO PARALLEL ARRAYS
+//  IF CURRENT ALPHABET ELEMENT !== CURRENT INPUT ARRAY ELEMENT 
+//      SAVE CURRENT ALPHABET ELEMENT AS SOLUTION AND BREAK LOOP
+//  RETURN SOLUTION
+
+findMissingLetter(['a', 'b', 'c', 'd', 'f']);
+findMissingLetter(['O', 'Q', 'R', 'S']);
+
+
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// !!! Function lacks ending return statement and return type does not include 'undefined'.ts(2366) !!!
+// function findMissingLetter2(array:string[]):string
+// {
+//     for(let i = 0; i < array.length; i++) {
+//         if(array[i].charCodeAt(0) + 1 != array[i+1].charCodeAt(0))
+//             return String.fromCharCode(array[i].charCodeAt(0) + 1);
+//     }
+// }
+
+
+function findMissingLetter3(array: string[]): string {
+    const isUpper = array[0] == array[0].toUpperCase();
+
+    let expectedLetter = '';
+    for (const letter of array) {
+        if (expectedLetter != '' && letter != expectedLetter)
+            return expectedLetter;
+
+        expectedLetter = String.fromCharCode(letter.charCodeAt(0) + 1);
+    }
+
+    throw 'Nothing missing';
+}
+
+
+function findMissingLetter4(letters: string[]): string {
+    const first = letters.shift()!.charCodeAt(0) + 1;
+    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== (i + first));
+    return String.fromCharCode(first + offset);
+}
+
+
+function findMissingLetter5(array: string[]) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return alphabet
+        .substr(alphabet.indexOf(array[0]))
+        .split('')
+        .find((curr, idx) => curr != array[idx]);
+}
+
+
+// !!! Type 'undefined' is not assignable to type 'string'.ts(2322) !!!
+// function findMissingLetter6(array:string[]):string
+// {
+//    let ret;
+//     array.map(item => item.charCodeAt(0))
+//         .reduce((prev, cur, curIndex) =>
+//         {
+//             if (cur - prev > 1) {
+//                 ret = String.fromCharCode(cur-1)
+//             }
+//             return cur
+//         })
+
+//     return ret
+// }
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
