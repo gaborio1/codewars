@@ -2,17 +2,47 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
 const towerBuilder = (nFloors) => {
-    const width = nFloors + (nFloors - 1);
-    console.log("width: ", width);
+    const absoluteWidth = nFloors + (nFloors - 1);
     const building = [];
     for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
         let floorStr = "";
-        floorStr = "*".repeat(blocks);
-        console.log(floorStr);
+        let leadTrailSpaces = (absoluteWidth - blocks) / 2;
+        floorStr = " "
+            .repeat(leadTrailSpaces)
+            + "*"
+                .repeat(blocks)
+            + " "
+                .repeat(leadTrailSpaces);
+        building.push(floorStr);
     }
-    return ["*"];
+    console.log(building);
+    return building;
 };
-towerBuilder(3);
+towerBuilder(12);
+const towerBuilder2 = (nFloors) => {
+    return Array.from({ length: nFloors }, (_, i) => `${" ".repeat(nFloors - i - 1)}${"*".repeat(2 * i + 1)}${" ".repeat(nFloors - i - 1)}`);
+};
+const towerBuilder3 = (nFloors) => {
+    return Array.from({ length: nFloors }, (_, index) => {
+        const spaces = " ".repeat(nFloors - 1 - index);
+        return `${spaces}${"*".repeat(index * 2 + 1)}${spaces}`;
+    });
+};
+const towerBuilder4 = (n) => {
+    const result = [];
+    for (let i = 1; i <= n; i++) {
+        result.push(' '.repeat(n - i)
+            + '*'.repeat(i * 2 - 1)
+            + ' '.repeat(n - i));
+    }
+    return result;
+};
+const towerBuilder5 = (n) => {
+    return new Array(n).fill("").map((_, i) => {
+        let spaces = " ".repeat(n - i - 1);
+        return spaces + '*'.repeat(2 * i + 1) + spaces;
+    });
+};
 const findMissingLetter = (arr) => {
     let solution = "";
     const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];

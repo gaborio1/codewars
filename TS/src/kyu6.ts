@@ -143,7 +143,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  BUILD TOWER
+// TITLE:  BUILD TOWER - MULTIPLE VARIABLES IN FOR LOOP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -166,40 +166,101 @@ towerBuilder(3)
 
 const towerBuilder = (nFloors: number): string[] => {
 
-    const width = nFloors + (nFloors - 1);
-    console.log("width: ", width);
-    
-    // let blocks: number = 1;
+    const absoluteWidth = nFloors + (nFloors - 1);
     const building: string[] = [];
 
     for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
+
         let floorStr: string = "";
         // console.table({floors: floors, blocks: blocks});
+        let leadTrailSpaces = (absoluteWidth - blocks) / 2;
 
-        // THIS WORKS:
-        floorStr = "*".repeat(blocks);
+        floorStr = " "
+            .repeat(leadTrailSpaces)
+            + "*"
+                .repeat(blocks)
+            + " "
+                .repeat(leadTrailSpaces);
 
-        // FIX THIS:
-        // floorStr = "-".repeat((width - 1) / 2) + "*".repeat(blocks) + "-".repeat((width - 1) / 2);
-        console.log(floorStr);
+        // console.log(floorStr);
 
-
-        
-
-
+        building.push(floorStr);
 
     }
 
-    return ["*"];
+    console.log(building);
+
+    return building;
 }
+
+/*
+
+ CALCULATE ABSOLUTE WIDTH OF PYRAMID (WIDTH OF BASE)
+ INITAILIZE ARRAY FOR BUILDING (SOLUTION)
+ 
+ LOOP OVER FLOORS WHILE KEEPING TRACK OF NUMBER OF BLOCKS IN EACH ITERATION
+    EMPTY STRING FOR EACH FLOOR STRING
+    CALCULATE LEADING/TRAILING SPACES
+    
+    BUILD COMPLETE FLOOR: LEADING SPACES + BLOCKS + TRAILING SPACES
+    
+    PUSH NEW FLOOR INTO BUILDING ARRAY
+    
+  RETURN BUILDING
+
+  [
+  '           *           ',
+  '          ***          ',
+  '         *****         ',
+  '        *******        ',
+  '       *********       ',
+  '      ***********      ',
+  '     *************     ',
+  '    ***************    ',
+  '   *****************   ',
+  '  *******************  ',
+  ' ********************* ',
+  '***********************'
+]
+  
+*/
 
 // towerBuilder(1);
 // towerBuilder(2);
-towerBuilder(3);
+towerBuilder(12);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const towerBuilder2 = (nFloors: number): string[] => {
+    return Array.from({ length: nFloors }, (_, i) => `${" ".repeat(nFloors - i - 1)}${"*".repeat(2 * i + 1)}${" ".repeat(nFloors - i - 1)}`)
+}
 
+
+const towerBuilder3 = (nFloors: number): string[] => {
+    return Array.from({ length: nFloors }, (_, index) => {
+        const spaces = " ".repeat(nFloors - 1 - index);
+        return `${spaces}${"*".repeat(index * 2 + 1)}${spaces}`;
+    });
+};
+
+
+const towerBuilder4 = (n: number): string[] => {
+    const result: string[] = [];
+    for (let i = 1; i <= n; i++) {
+        result.push(' '.repeat(n - i)
+            + '*'.repeat(i * 2 - 1)
+            + ' '.repeat(n - i));
+    }
+    return result;
+}
+
+
+const towerBuilder5 = (n: number): string[] => {
+    return new Array(n).fill("").map((_, i) => {
+        let spaces = " ".repeat(n - i - 1);
+        return spaces + '*'.repeat(2 * i + 1) + spaces
+    })
+}
 
 
 
