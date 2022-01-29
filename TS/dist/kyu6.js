@@ -1,20 +1,54 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const towerBuilder = (nFloors) => {
+    const width = nFloors + (nFloors - 1);
+    console.log("width: ", width);
+    const building = [];
+    for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
+        let floorStr = "";
+        floorStr = "*".repeat(blocks);
+        console.log(floorStr);
+    }
+    return ["*"];
+};
+towerBuilder(3);
 const findMissingLetter = (arr) => {
+    let solution = "";
     const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const startIdx = alphabet.indexOf(arr[0]);
     for (let i = 1; i < arr.length; i++) {
-        console.log(alphabet[startIdx + i], arr[i]);
         if (alphabet[startIdx + i] !== arr[i]) {
-            console.log("solution: ", alphabet[startIdx + i]);
+            solution = alphabet[startIdx + i];
             break;
         }
     }
-    return "hello";
+    return solution;
 };
 findMissingLetter(['a', 'b', 'c', 'd', 'f']);
 findMissingLetter(['O', 'Q', 'R', 'S']);
+function findMissingLetter3(array) {
+    const isUpper = array[0] == array[0].toUpperCase();
+    let expectedLetter = '';
+    for (const letter of array) {
+        if (expectedLetter != '' && letter != expectedLetter)
+            return expectedLetter;
+        expectedLetter = String.fromCharCode(letter.charCodeAt(0) + 1);
+    }
+    throw 'Nothing missing';
+}
+function findMissingLetter4(letters) {
+    const first = letters.shift().charCodeAt(0) + 1;
+    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== (i + first));
+    return String.fromCharCode(first + offset);
+}
+function findMissingLetter5(array) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return alphabet
+        .substr(alphabet.indexOf(array[0]))
+        .split('')
+        .find((curr, idx) => curr != array[idx]);
+}
 const findUniq = (arr) => {
     const arrLength = arr.length;
     let solution = 0;
@@ -79,18 +113,6 @@ const isPangram = (phrase) => {
     const lettersSet = new Set(lettersArr);
     return lettersSet.size === 26;
 };
-const isPangram3 = (phrase) => new Set(phrase.toLowerCase().match(/[a-z]/g)).size === 26;
-const isPangram4 = (phrase) => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    .every(l => phrase.toLowerCase().includes(l));
-function isPangram5(phrase) {
-    let newString = new Set((phrase.replace(/\W|\d/g, '')).toLowerCase());
-    if (newString.size == 26) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 const tribonacci = ([a, b, c], n) => {
     if (n === 0)
         return [];

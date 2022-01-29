@@ -143,11 +143,59 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  BUILD TOWER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Build Tower
+Build Tower by the following given argument:
+number of floors (integer and always greater than 0).
+
+Tower block is represented as *
+
+towerBuilder(3)
+
+[
+  '  *  ', 
+  ' *** ', 
+  '*****'
+]
+*/
+
+const towerBuilder = (nFloors: number): string[] => {
+
+    const width = nFloors + (nFloors - 1);
+    console.log("width: ", width);
+    
+    // let blocks: number = 1;
+    const building: string[] = [];
+
+    for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
+        let floorStr: string = "";
+        // console.table({floors: floors, blocks: blocks});
+
+        // THIS WORKS:
+        floorStr = "*".repeat(blocks);
+
+        // FIX THIS:
+        // floorStr = "-".repeat((width - 1) / 2) + "*".repeat(blocks) + "-".repeat((width - 1) / 2);
+        console.log(floorStr);
+
+
+        
+
+
+
+    }
+
+    return ["*"];
+}
+
+// towerBuilder(1);
+// towerBuilder(2);
+towerBuilder(3);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -496,6 +544,13 @@ IF SET SIZE IS 26 RETURN true, OTHERWISE false
 
 // isPangram("The quick brown fox jumps over the lazy dog.");
 // isPangram("This is not a pangram.");
+
+//  !!! FILTER ALL LETTERS INTO ARRAY !!!
+/* 
+let onlyLettersArray = message.split('').filter(char => /[a-zA-Z]/.test(char));
+let onlyLettersArray = message.replace(/[^a-z]+/gi, '').split('');
+let arr = "Learning is fun!  1233  ashdgahsgdh".match(/[A-Za-z]/g);
+8?
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
