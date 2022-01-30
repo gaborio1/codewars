@@ -19,7 +19,8 @@ const high = (str) => {
         counterObj[word] = getScore(word);
     });
     console.log(counterObj);
-    console.log(Object.entries(counterObj));
+    const entriesArr = Object.entries(counterObj);
+    console.log(entriesArr);
     return "hello";
 };
 high('what time are we climbing up the volcano');

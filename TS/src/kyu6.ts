@@ -186,10 +186,15 @@ const high = (str: string): string => {
     //     .entries(counterObj)
     //     .filter(([key, value]) => value > 1);
 
-    console.log(
-        // !!! THIS WILL BE AN ARRAY !!!
-        Object.entries(counterObj)
-)
+    // console.log(
+    //     // !!! THIS WILL BE AN ARRAY !!!
+    //     Object.entries(counterObj)
+    // )
+
+    const entriesArr = Object.entries(counterObj);
+
+    console.log(entriesArr);
+
 
     
 
