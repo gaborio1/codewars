@@ -1,6 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const high = (str) => {
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const wordArr = str.split(" ");
+    const getScore = (str) => {
+        let counter = 0;
+        str.split("").forEach((char) => {
+            counter += alphabet.indexOf(char) + 1;
+        });
+        console.log("word score: " + counter);
+        return counter;
+    };
+    const counterObj = {};
+    wordArr.forEach((word) => {
+        console.log(word);
+        getScore(word);
+        counterObj[word] = getScore(word);
+    });
+    console.log(counterObj);
+    console.log(Object.entries(counterObj));
+    return "hello";
+};
+high('what time are we climbing up the volcano');
 const towerBuilder = (nFloors) => {
     const absoluteWidth = nFloors + (nFloors - 1);
     const building = [];
@@ -18,7 +40,6 @@ const towerBuilder = (nFloors) => {
     console.log(building);
     return building;
 };
-towerBuilder(12);
 const towerBuilder2 = (nFloors) => {
     return Array.from({ length: nFloors }, (_, i) => `${" ".repeat(nFloors - i - 1)}${"*".repeat(2 * i + 1)}${" ".repeat(nFloors - i - 1)}`);
 };

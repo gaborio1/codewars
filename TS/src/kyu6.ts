@@ -138,7 +138,65 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a string of words, you need to find the highest scoring word.
 
+Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+
+You need to return the highest scoring word as a string.
+
+If two words score the same, return the word that appears earliest in the original string.
+
+All letters will be lowercase and all inputs will be valid.
+*/
+
+const high = (str: string): string => {
+
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+    const wordArr: string[] = str.split(" ");
+
+    const getScore = (str: string): number => {
+        let counter: number = 0;
+        str.split("").forEach((char) => {
+            counter += alphabet.indexOf(char) + 1;
+        })
+        console.log("word score: " + counter);
+        return counter;
+    }
+
+    interface Counter {
+        [key: string]: number;
+    }
+
+    const counterObj: Counter = {};
+
+    wordArr.forEach((word) => {
+        console.log(word);
+        getScore(word); 
+
+        counterObj[word] = getScore(word); 
+    })
+  
+    console.log(counterObj);
+
+
+
+    // const duplicatesArr = Object
+    //     .entries(counterObj)
+    //     .filter(([key, value]) => value > 1);
+
+    console.log(
+        // !!! THIS WILL BE AN ARRAY !!!
+        Object.entries(counterObj)
+)
+
+    
+
+    return "hello";
+}
+
+high('what time are we climbing up the volcano');
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
@@ -226,8 +284,7 @@ const towerBuilder = (nFloors: number): string[] => {
 */
 
 // towerBuilder(1);
-// towerBuilder(2);
-towerBuilder(12);
+// towerBuilder(12);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
