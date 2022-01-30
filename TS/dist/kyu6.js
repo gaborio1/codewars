@@ -3,27 +3,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
 const high = (str) => {
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const wordArr = str.split(" ");
     const getScore = (str) => {
-        let counter = 0;
+        let score = 0;
         str.split("").forEach((char) => {
-            counter += alphabet.indexOf(char) + 1;
+            score += alphabet.indexOf(char) + 1;
         });
-        console.log("word score: " + counter);
-        return counter;
+        return score;
     };
     const counterObj = {};
-    wordArr.forEach((word) => {
-        console.log(word);
-        getScore(word);
+    str.split(" ").forEach((word) => {
         counterObj[word] = getScore(word);
     });
-    console.log(counterObj);
-    const entriesArr = Object.entries(counterObj);
-    console.log(entriesArr);
-    return "hello";
+    console.log(Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0]);
+    return Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0];
 };
-high('what time are we climbing up the volcano');
+const VALUE_OFFSET = 96;
+const calcValue = (word) => {
+    return word.split('').reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
+};
+const high2 = (str) => {
+    return str.split(' ').reduce((max, word) => calcValue(word) > calcValue(max) ? word : max);
+};
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const getLetterScore = (str) => alphabet.indexOf(str) + 1;
+const getWordScore = (str) => str
+    .split('')
+    .map(getLetterScore)
+    .reduce((acc, n) => acc + n, 0);
+const high3 = (str) => str
+    .split(' ')
+    .reduce((acc, value) => getWordScore(value) > getWordScore(acc) ? value : acc);
 const towerBuilder = (nFloors) => {
     const absoluteWidth = nFloors + (nFloors - 1);
     const building = [];
