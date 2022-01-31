@@ -1,6 +1,66 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countSheeps = exports.basicOp = void 0;
+exports.countSheeps = exports.basicOp = exports.greet3 = void 0;
+const reverseSeq = (n) => {
+    const solution = [];
+    for (let i = 1; i <= n; i++) {
+        solution.push(i);
+    }
+    return solution.reverse();
+};
+const reverseSeq2 = (n) => {
+    const solution = [];
+    for (let i = 1; i <= n; i++) {
+        solution.unshift(i);
+    }
+    return solution;
+};
+const reverseSeq3 = (n) => {
+    return Array.from({ length: n }, (_, i) => n - i);
+};
+const reverseSeq4 = (n) => {
+    return Array(n).fill(0).map((e, i) => n - i);
+};
+const reverseSeq5 = (n) => {
+    return Array.from({ length: n }, (v, k) => k + 1).reverse();
+};
+const fakeBin = (str) => {
+    return str.replace(/[1-4]/g, "0").replace(/[5-9]/g, "1");
+};
+const fakeBin2 = (str) => {
+    let solution = "";
+    for (let i = 0; i < str.length; i++) {
+        if (Number(str[i]) < 5) {
+            solution += "0";
+        }
+        else {
+            solution += "1";
+        }
+    }
+    console.log(solution);
+    return solution;
+};
+const fakeBin3 = (x) => x.replace(/\d/g, n => Number(n) < 5 ? '0' : '1');
+const greet3 = () => "hello world!";
+exports.greet3 = greet3;
+const getAverage = (marks) => {
+    return Math.floor(marks.reduce((a, b) => a + b) / marks.length);
+};
+function getAverage2(marks) {
+    return (marks.reduce((a, b) => a + b) / marks.length) | 0;
+}
+const check = (a, x) => {
+    return a.includes(x);
+};
+const greet = (name) => {
+    return name === "Johnny" ? "Hello, my love!" : "Hello, " + name + "!";
+};
+const findAverage = (arr) => {
+    return arr.length ? arr.reduce((a, b) => a + b) / arr.length : 0;
+};
+const greet2 = (name) => {
+    return `Hello, ${name} how are you doing today?`;
+};
 const countPositivesSumNegatives = (input) => {
     if (input === null || input.length === 0)
         return [];
