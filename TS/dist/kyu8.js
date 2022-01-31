@@ -1,6 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = void 0;
+const bmi = (weight, height) => {
+    const bmi = weight / height ** 2;
+    switch (true) {
+        case (bmi <= 18.5):
+            return "Underweight";
+            break;
+        case (bmi <= 25.0):
+            return "Normal";
+            break;
+        case (bmi <= 30.0):
+            return "Overweight";
+            break;
+        default:
+            return "Obese";
+    }
+};
+function bmi2(weight, height) {
+    const $ = weight / height ** 2;
+    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+}
+const bmi3 = (weight, height, bmi = 0) => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
+const arrayPlusArray = (arr1, arr2) => {
+    return arr1.concat(arr2).reduce((a, b) => a + b);
+};
+const arrayPlusArray3 = (arr1, arr2) => {
+    return [...arr1, ...arr2].reduce((a, b) => a + b);
+};
 const reverseSeq = (n) => {
     const solution = [];
     for (let i = 1; i <= n; i++) {

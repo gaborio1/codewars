@@ -112,31 +112,91 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  CALCULATE BMI
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SWITCH(true) WITH LOGICAL OPERATORS, CHAINED TERNARY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Write function bmi that calculates body mass index (bmi = weight / height**2).
 
+if bmi <= 18.5 return "Underweight"
+
+if bmi <= 25.0 return "Normal"
+
+if bmi <= 30.0 return "Overweight"
+
+if bmi > 30 return "Obese"
+*/
+
+// ❗️❗️❗️ LOGICAL OPERATORS IN SWITCH ❗️❗️❗️
+const bmi = (weight: number, height: number): string => {
+
+	const bmi = weight / height ** 2;
+
+	switch (true) {
+		case (bmi <= 18.5):
+			return "Underweight";
+			break;
+		case (bmi <= 25.0):
+			return "Normal";
+			break;
+		case (bmi <= 30.0):
+			return "Overweight";
+			break;
+		default:
+			return "Obese"
+	}
+
+}
+
+// console.log(bmi(90, 1.80));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ CHAINED TERNARY ❗️❗️❗️
+function bmi2(weight: number, height: number): string {
+	const $ = weight / height ** 2;
+	return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+}
 
+const bmi3 = (weight: number, height: number, bmi: number = 0): string => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:   ARRAY PLUS ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+I'm new to coding and now I want to get the sum of two arrays...actually the sum of all their elements. I'll appreciate for your help.
 
+P.S. Each array includes only integer numbers. Output is a number too.
+*/
+
+const arrayPlusArray = (arr1: number[], arr2: number[]): number => {
+	return arr1.concat(arr2).reduce((a, b) => a + b);
+}
+
+// console.log(arrayPlusArray([1, 2, 3], [4, 5, 6]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+
+// 	!!! LOOK INTO THIS: !!!
+// import _ from 'lodash';
+// export function arrayPlusArray2(...args: number[][]): number {
+// 	return _(args).flatten().sum();
+// }
+
+
+const arrayPlusArray3 = (arr1: number[], arr2: number[]): number => {
+	return [...arr1, ...arr2].reduce((a, b) => a + b)
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
