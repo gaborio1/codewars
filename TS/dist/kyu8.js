@@ -1,6 +1,64 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = void 0;
+const countPositivesSumNegatives = (input) => {
+    if (input === null || input.length === 0)
+        return [];
+    let positiveCount = 0, negativeSum = 0;
+    input.forEach((num) => {
+        if (num > 0)
+            positiveCount += 1;
+        if (num < 0)
+            negativeSum += num;
+    });
+    return [positiveCount, negativeSum];
+};
+function countPositivesSumNegatives3(input) {
+    return input && input.length
+        ? [
+            input.filter((p) => p > 0).length,
+            input
+                .filter((n) => n < 0)
+                .reduce((a, b) => a + b, 0),
+        ]
+        : [];
+}
+function countPositivesSumNegatives4(input) {
+    if (input && input.length > 0) {
+        return [input.filter(x => x > 0).length, input.filter(x => x < 0).reduce((a, b) => a + b, 0)];
+    }
+    return [];
+}
+const reverseWords = (str) => {
+    return str
+        .split(" ")
+        .reverse()
+        .join(" ");
+};
+const past = (h, m, s) => {
+    const HOUR = 3600, MINUTE = 60, SECOND = 1;
+    return (h * HOUR + m * MINUTE + s * SECOND) * 1000;
+};
+const invert = (array) => {
+    return array.map((num) => -num);
+};
+function invert2(array) {
+    return array.map(n => -n);
+}
+const stringToNumber = (str) => {
+    return Number(str);
+};
+const stringToNumber2 = (str) => +str;
+const stringToNumber3 = (str) => parseInt(str);
+const maps = (arr) => {
+    return arr.map((num) => num * 2);
+};
+function maps2(x) {
+    return x.map(value => value * 2);
+}
+const findNeedle = (haystack) => {
+    return `found the needle at position ${haystack.indexOf("needle")}`;
+};
 const digitize = (n) => {
     return n.toString().split("").reverse().map((num) => Number(num));
 };
@@ -65,7 +123,6 @@ const boolToWord = (bool) => {
 const removeChar = (str) => {
     return str.substring(1, str.length - 1);
 };
-console.log(removeChar("aa1cbcb"));
 const makeNegative = (num) => {
     return num < 0 ? num : -num;
 };
@@ -78,10 +135,6 @@ const positiveSum = (arr) => {
 const even_or_odd = (n) => {
     return Number.isInteger(n / 2) ? "Even" : "Odd";
 };
-console.log(even_or_odd(7), even_or_odd(8));
-even_or_odd(7);
-even_or_odd(8);
 const multiply = (a, b) => {
     return a * b;
 };
-console.log(multiply(7, 7));
