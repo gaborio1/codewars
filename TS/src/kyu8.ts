@@ -42,32 +42,102 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SIMPLE MULTIPLICATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ NUM & 1 ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
 
+const simpleMultiplication = (num: number): number => {
+	return num % 2 === 0
+	? num * 8
+	: num * 9;
+}
+
+// console.log(simpleMultiplication(2));
+// console.log(simpleMultiplication(3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function simpleMultiplication2(num: number): number{
+	return num * [8, 9][num % 2];
+}
 
+
+  function simpleMultiplication3(num: number): number{
+	return num * (num % 2 ? 9 : 8);
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  HOW GOOD ARE U REALLY? BETTER THAN AVERAGE?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+You receive an array with your peers' test scores. Now calculate the average and compare your score!
 
+Return True if you're better, else False!
+
+Note:
+Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
+*/
+
+const betterThanAverage = (classPoints: number[], yourPoints: number): boolean => {
+    
+	classPoints.push(yourPoints);
+	const average = classPoints.reduce((a, b) => a + b) / classPoints.length;
+	return yourPoints > average;
+
+}
+
+// INCLUDE YOUR SCORE IN CLASSPOINTS
+// CALC AVERAGE
+// COMPARE THE TWO AND RETURN RESULT
+
+// console.log(betterThanAverage([2, 3], 5));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function betterThanAverage2(classPoints: number[], yourPoints: number) {
+	const average = classPoints.concat(yourPoints).reduce((prev, curr) => prev + curr) / (classPoints.length + 1);
+	return yourPoints > average;
+  }
 
+
+  const betterThanAverage3 = (classPoints: number[], yourPoints: number) => classPoints.reduce((acc, it) => acc + it, 0) / classPoints.length <= yourPoints;
+
+
+  function betterThanAverage4(classPoints: number[], yourPoints: number) {
+    return (classPoints.reduce((a, v) => a + v) / classPoints.length) < yourPoints;
+}
+
+
+function betterThanAverage5(classPoints: number[], yourPoints: number) {
+	return yourPoints > classPoints.reduce((a, c) => a + c) / classPoints.length;
+  }
+
+// ❗️❗️❗️ num & 1 ❗️❗️❗️
+  function simpleMultiplication6(num: number): number{
+	if(num&1){
+	  return num*9
+	}
+	return num*8;
+  }
+
+
+  function simpleMultiplication7(num: number): number{
+	if(num%2){
+	  return num*9
+	}else {
+	  return num*8
+	}
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  DNA TO RNA

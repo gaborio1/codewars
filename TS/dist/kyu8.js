@@ -1,6 +1,47 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = void 0;
+const simpleMultiplication = (num) => {
+    return num % 2 === 0
+        ? num * 8
+        : num * 9;
+};
+function simpleMultiplication2(num) {
+    return num * [8, 9][num % 2];
+}
+function simpleMultiplication3(num) {
+    return num * (num % 2 ? 9 : 8);
+}
+const betterThanAverage = (classPoints, yourPoints) => {
+    classPoints.push(yourPoints);
+    const average = classPoints.reduce((a, b) => a + b) / classPoints.length;
+    return yourPoints > average;
+};
+function betterThanAverage2(classPoints, yourPoints) {
+    const average = classPoints.concat(yourPoints).reduce((prev, curr) => prev + curr) / (classPoints.length + 1);
+    return yourPoints > average;
+}
+const betterThanAverage3 = (classPoints, yourPoints) => classPoints.reduce((acc, it) => acc + it, 0) / classPoints.length <= yourPoints;
+function betterThanAverage4(classPoints, yourPoints) {
+    return (classPoints.reduce((a, v) => a + v) / classPoints.length) < yourPoints;
+}
+function betterThanAverage5(classPoints, yourPoints) {
+    return yourPoints > classPoints.reduce((a, c) => a + c) / classPoints.length;
+}
+function simpleMultiplication6(num) {
+    if (num & 1) {
+        return num * 9;
+    }
+    return num * 8;
+}
+function simpleMultiplication7(num) {
+    if (num % 2) {
+        return num * 9;
+    }
+    else {
+        return num * 8;
+    }
+}
 const DNAtoRNA = (dna) => {
     return dna.replace(/T/g, "U");
 };
