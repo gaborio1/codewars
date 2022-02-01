@@ -70,46 +70,133 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  DNA TO RNA
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*Deoxyribonucleic acid, DNA is the primary information storage molecule in biological systems. It is composed of four nucleic acid bases Guanine ('G'), Cytosine ('C'), Adenine ('A'), and Thymine ('T').
 
+Ribonucleic acid, RNA, is the primary messenger molecule in cells. RNA differs slightly from DNA its chemical structure and contains no Thymine. In RNA Thymine is replaced by another nucleic acid Uracil ('U').
+
+Create a function which translates a given DNA string into RNA.
+
+For example:
+
+"GCAT"  =>  "GCAU"
+The input string can be of arbitrary length - in particular, it may be empty. All input is guaranteed to be valid, i.e. each input string will only ever consist of 'G', 'C', 'A' and/or 'T'.
+*/
+
+const DNAtoRNA = (dna: string): string => {
+
+	return dna.replace(/T/g, "U");
+
+	// return "";
+}
+
+// console.log(DNAtoRNA("GCAT"));
+// console.log(DNAtoRNA("TTTT"));
+// console.log(DNAtoRNA("GCACCAGAC"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const DNAtoRNA2 = ($: string): string => [...$].map(el => el === 'T' ? el = 'U' : el).join('');
 
+
+function DNAtoRNA3(dna: string): string {
+	return dna.split('').map(nab => nab == 'T' ? 'U' : nab).join('')
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  MONKEY COUNT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS: POPULATE ARR WITH INTEGERS UP TO AND INCL n, EXCL 0
+// 		❗️❗️❗️	ARRAY.FILL ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+monkeyCount(1) // --> [1]
+*/
+
+const monkeyCount = (n: number): number[] => {
+
+	const solution: number[] = [];
+
+	for (let i = 1; i <= n; i++) {
+		solution.push(i);
+	}
+	console.log(solution);
+	return solution;
+}
+
+// console.log(monkeyCount(5));
+
+/* ❗️❗️❗️
+Definition and Usage
+The fill() method fills specified elements in an array with a value.
+
+The fill() method overwrites the original array.
+
+Start and end position can be specified. If not, all elements will be filled.
+
+Syntax
+array.fill(value, start, end)
+Parameters
+Parameter	Description
+value	Required.
+The value to fill in.
+start	Optional.
+The start index (position).
+Default is 0.
+end	Optional.
+The stop index (position).
+Default is array length.
+*/
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function monkeyCount2(n: number): number[] {
+	return Array.from({length: n}, (_, i) => i + 1);
+}
 
+// ❗️❗️❗️
+function monkeyCount3(n: number) {
+	return Array(n).fill(0).map((e, i) => i + 1)
+}
+
+
+function monkeyCount4(n: number) {
+	return Array.from(Array(n), (x, ix) => ix + 1)
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:	REDUCE BUT GROW
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a non-empty array of integers, return the result of multiplying the values together in order. Example:
+[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+*/
+
+const grow = (arr: number[]): number => {
+    return arr.reduce((a, b) => a * b);
+}
+
+// console.log(grow([1, 2, 3, 4]));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CALCULATE BMI

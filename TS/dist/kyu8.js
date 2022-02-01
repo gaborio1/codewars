@@ -1,6 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = void 0;
+const DNAtoRNA = (dna) => {
+    return dna.replace(/T/g, "U");
+};
+const DNAtoRNA2 = ($) => [...$].map(el => el === 'T' ? el = 'U' : el).join('');
+function DNAtoRNA3(dna) {
+    return dna.split('').map(nab => nab == 'T' ? 'U' : nab).join('');
+}
+const monkeyCount = (n) => {
+    const solution = [];
+    for (let i = 1; i <= n; i++) {
+        solution.push(i);
+    }
+    console.log(solution);
+    return solution;
+};
+function monkeyCount2(n) {
+    return Array.from({ length: n }, (_, i) => i + 1);
+}
+function monkeyCount3(n) {
+    return Array(n).fill(0).map((e, i) => i + 1);
+}
+function monkeyCount4(n) {
+    return Array.from(Array(n), (x, ix) => ix + 1);
+}
+const grow = (arr) => {
+    return arr.reduce((a, b) => a * b);
+};
 const bmi = (weight, height) => {
     const bmi = weight / height ** 2;
     switch (true) {
