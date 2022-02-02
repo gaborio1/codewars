@@ -1,11 +1,72 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countSheeps = exports.basicOp = exports.greet3 = void 0;
+exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+function sumArray(array) {
+    if (array) {
+        const ordered = array.sort((a, b) => a - b);
+        const sliced = ordered.slice(1, -1);
+        const solution = sliced.reduce((a, b) => a + b);
+        return solution;
+    }
+    else {
+        return 0;
+    }
+}
+sumArray([6, 2, 1, 8, 10]);
+const booleanToString = (b) => {
+    return b ? "true" : "false";
+};
+const booleanToString2 = (b) => {
+    return b.toString();
+};
+const booleanToString3 = (b) => {
+    return String(b);
+};
+class Kata {
+}
+Kata.bonusTime = (salary, bonus) => {
+    return bonus
+        ? "£" + String(salary * 10)
+        : "£" + String(salary);
+};
+const hero = (bullets, dragons) => {
+    return bullets / dragons >= 2;
+};
+const paperwork = (n, m) => {
+    return (m < 0 || n < 0) ? 0 : n * m;
+};
+const min = (list) => {
+    return Math.min(...list);
+};
+const max = (list) => {
+    return Math.max(...list);
+};
+const min2 = (list) => {
+    return Math.min.apply(Math, list);
+};
+exports.min2 = min2;
+const max2 = (list) => {
+    return Math.max.apply(Math, list);
+};
+exports.max2 = max2;
+const min3 = ($) => $.sort((a, b) => a - b)[0];
+exports.min3 = min3;
+const max3 = ($) => $.sort((a, b) => b - a)[0];
+exports.max3 = max3;
 const simpleMultiplication = (num) => {
     return num % 2 === 0
         ? num * 8
         : num * 9;
 };
+function oddOrEven(x) {
+    return (x & 1) ? "odd" : "even";
+}
+function simpleMultiplication4(num) {
+    if (num & 1) {
+        return num * 9;
+    }
+    return num * 8;
+}
 function simpleMultiplication2(num) {
     return num * [8, 9][num % 2];
 }
