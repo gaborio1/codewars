@@ -1,18 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
-function sumArray(array) {
-    if (array) {
-        const ordered = array.sort((a, b) => a - b);
-        const sliced = ordered.slice(1, -1);
-        const solution = sliced.reduce((a, b) => a + b);
-        return solution;
-    }
-    else {
+const sumArray = (array) => {
+    if (array === null || array.length <= 2)
         return 0;
-    }
+    return array
+        .sort((a, b) => a - b)
+        .slice(1, -1)
+        .reduce((a, b) => a + b);
+};
+function sumArray2(array) {
+    if (!array || array.length <= 1)
+        return 0;
+    return array.sort((a, b) => a - b).slice(1, -1).reduce((p, n) => p + n, 0);
 }
-sumArray([6, 2, 1, 8, 10]);
+function sumArray3(a) {
+    return (a === null) ? 0 : a.sort((a, b) => a - b).slice(1, -1).reduce((a, b) => a + b, 0);
+}
 const booleanToString = (b) => {
     return b ? "true" : "false";
 };

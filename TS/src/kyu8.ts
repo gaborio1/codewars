@@ -299,10 +299,10 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM ARRAY WITHOUT HIGHEST AND LOWEST NUMBER 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️  CHECK FOR NULL OR EMPTY ARRY ORDER ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -320,28 +320,43 @@ Input validation
 If an empty value ( null, None, Nothing etc. ) is given instead of an array, or the given array is an empty list or a list with only 1 element, return 0.
 */
 
-function sumArray(array: number[] | null): number {
-	//   array.sort().slice(1, -1).reduce((a, b) => a + b);  
+const sumArray = (array: number[] | null): number => {
 
-	if (array) {
-		const ordered = array.sort((a, b) => a - b);
+	// ❗️❗️❗️ Object is possibly 'null'.ts(2531) ❗️❗️❗️
+	// if (array.length <= 2 || array === null) return 0; 
 
-		const sliced = ordered.slice(1, -1);
+	if (array === null || array.length <= 2) return 0;
 
-		const solution = sliced.reduce((a, b) => a + b);
-
-		return solution;
-	} else {
-		return 0;
-	}
+	return array
+		.sort((a, b) => a - b)
+		.slice(1, -1)
+		.reduce((a, b) => a + b);
 
 }
 
-sumArray([6, 2, 1, 8, 10]);
+// RETURN 0 IF ARRAY HAS 0, 1 OR 2 ELEMENTS
+// OTHERWISE:
+//    SORT NUMERICALLY
+//    SLICE OUT MIDDLE ELEMENTS
+//    GET SUM
+
+// console.log(sumArray([6, 2, 1, 8, 10]));
+// console.log(sumArray([]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+// ❗️❗️❗️ if (!array || array.length <= 1) return 0; ❗️❗️❗️
+
+function sumArray2(array: number[]): number {
+	if (!array || array.length <= 1) return 0;
+	return array.sort((a, b) => a - b).slice(1, -1).reduce((p, n) => p + n, 0);
+}
+
+
+function sumArray3(a: number[]): number {
+	return (a === null) ? 0 : a.sort((a, b) => a - b).slice(1, -1).reduce((a, b) => a + b, 0);
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CONVERT BOOLEAN TO STRING
