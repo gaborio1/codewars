@@ -1,6 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const lovefunc = (flower1, flower2) => {
+    return ((flower1 + flower2) & 1) === 1;
+};
+function lovefunc2(flower1, flower2) {
+    return (flower1 + flower2) % 2 === 1;
+}
+function lovefunc3(flower1, flower2) {
+    return flower1 % 2 != flower2 % 2;
+}
+const lovefunc4 = (f1, f2) => f1 % 2 == f2 % 2 ? false : true;
 const sumArray = (array) => {
     if (array === null || array.length <= 2)
         return 0;
