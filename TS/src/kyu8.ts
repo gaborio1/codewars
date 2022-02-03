@@ -380,12 +380,17 @@ const booleanToString2 = (b: boolean): string => {
 const booleanToString3 = (b: boolean): string => {
 	return String(b)
 };
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  DO I GET A BONUS?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// !!! SAMPLE TESTS ARE NOT EXECUTED !!! HAVE TO SKIP 
+// !!! https://github.com/Codewars/codewars.com/issues/593 !!!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -399,20 +404,15 @@ Return the total figure the individual will receive as a string prefixed with "�
 class Kata {
 	public static bonusTime = (salary: number, bonus: boolean): string => {
 		return bonus
-			//           ? "£".concat(String(salary * 10))
-			//           : "£".concat(String(salary));
-			? "£" + String(salary * 10)
-			: "£" + String(salary);
+			? `£${String(salary * 10)}`
+			: `£${String(salary)}`;
 	}
 }
 
-// assert.equal(solution.Kata.bonusTime(10000, true), '£100000');
-//     assert.equal(solution.Kata.bonusTime(10000, false), '£10000');
-//     assert.equal(solution.Kata.bonusTime(25000, true), '£250000');
-//     assert.equal(solution.Kata.bonusTime(60000, false), '£60000');
-//     assert.equal(solution.Kata.bonusTime(2, true), '£20');
-//     assert.equal(solution.Kata.bonusTime(78, false), '£78');
-//     assert.equal(solution.Kata.bonusTime(67890, true), '£678900');
+
+// console.log(Kata.bonusTime(1000, true));
+// console.log(Kata.bonusTime(1000, false));
+
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

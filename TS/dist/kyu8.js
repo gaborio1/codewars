@@ -30,8 +30,8 @@ class Kata {
 }
 Kata.bonusTime = (salary, bonus) => {
     return bonus
-        ? "£" + String(salary * 10)
-        : "£" + String(salary);
+        ? `£${String(salary * 10)}`
+        : `£${String(salary)}`;
 };
 const hero = (bullets, dragons) => {
     return bullets / dragons >= 2;
