@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const zeroFuel = (distance, mpg, fuelLeft) => {
+    return distance / mpg <= fuelLeft;
+    return true;
+};
+console.log(zeroFuel(50, 25, 2));
+console.log(zeroFuel(100, 50, 1));
 const lovefunc = (flower1, flower2) => {
     return ((flower1 + flower2) & 1) === 1;
 };
