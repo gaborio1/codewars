@@ -1,0 +1,531 @@
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// BITWISE OPERATORS
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+/*
+
+SOURCE:
+https://www.w3schools.com/jsref/jsref_operators.asp
+
+JavaScript Bitwise Operators
+Bit operators work on 32 bits numbers. Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a JavaScript number.
+
+Operator	Description	Example	Same as	Result	Decimal
+&	AND	x = 5 & 1	0101 & 0001	0001	 1
+|	OR	x = 5 | 1	0101 | 0001	0101	 5
+~	NOT	x = ~ 5	 ~0101	1010	 10
+^	XOR	x = 5 ^ 1	0101 ^ 0001	0100	 4
+<<	Left shift	x = 5 << 1	0101 << 1	1010	 10
+>>	Right shift	x = 5 >> 1	0101 >> 1	0010	  2
+
+*/
+
+// EXAMPLES:
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// "OR" / SINGLE PIPE / "|"
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// 1️⃣
+// ROUND DOWN DECIMALS: (Math.floor(3.345) => 3)
+
+// ❗️❗️❗️
+// 3.345 | 0  =>  3
+// 3 | 0  =>  3
+// ❗️❗️❗️
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// TITLE:  GET AVERAGE OF ARRAY ROUNDED DOWN
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS: SINGLE PIPE BITWISE OPERATOR "|"
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+const getAverage = (marks: number[]): number => {
+    return Math.floor(marks.reduce((a, b) => a + b) / marks.length);
+}
+
+// VS:
+
+// ❗️❗️❗️ x | 0 is x, if x is an integer. ❗️❗️❗️
+function getAverage2(marks: number[]): number {
+    return (marks.reduce((a, b) => a + b) / marks.length) | 0;
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// "AND" / "&"
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// 1️⃣  EVEN OR ODD ? (NUM % 2 === 0)
+
+// 1 & 1 => 1   RETURNS  1 IF N IS ODD
+// 2 & 1 => 0   RETURNS 0 IF N IS EVEN
+
+// ❗️❗️❗️ num & 1 ❗️❗️❗️
+function simpleMultiplication6(num: number): number {
+    if (num & 1) {
+        return num * 9
+    }
+    return num * 8;
+}
+
+
+function oddOrEven(x: number) {
+    return (x & 1) ? "odd" : "even";
+}
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// "XOR" / "^" (EXCLUSIVE OR)
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+// 1️⃣  FIND UNIQUE NUMBER IN ARRAY
+
+// https://warrenniu.medium.com/find-the-unique-number-in-an-array-using-the-xor-operator-54d35aa9e8d0
+const findOdd3 = (xs: number[]): number => {
+    return xs.reduce((a, b) => a ^ b);
+};
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// SWITCH STATEMENT
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 1️⃣  SWITCH(TRUE) WITH LOGICAL OPERATORS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+// ❗️❗️❗️ LOGICAL OPERATORS IN SWITCH ❗️❗️❗️
+const bmi = (weight: number, height: number): string => {
+
+    const bmi = weight / height ** 2;
+
+    switch (true) {
+        case (bmi <= 18.5):
+            return "Underweight";
+            break;
+        case (bmi <= 25.0):
+            return "Normal";
+            break;
+        case (bmi <= 30.0):
+            return "Overweight";
+            break;
+        default:
+            return "Obese"
+    }
+
+}
+
+// console.log(bmi(90, 1.80));
+
+//============= WITH CHAINED TERNARY: =============
+
+// ❗️❗️❗️ CHAINED TERNARY ❗️❗️❗️
+function bmi2(weight: number, height: number): string {
+    const $ = weight / height ** 2;
+    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+}
+
+const bmi3 = (weight: number, height: number, bmi: number = 0): string => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
+
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TERNARY OPERATOR
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 1️⃣  CHAINED TERNARY:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+function bmi4(weight: number, height: number): string {
+    const $ = weight / height ** 2;
+    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+}
+
+const bmi5 = (weight: number, height: number, bmi: number = 0): string => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
+
+
+
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ARRAY METHODS
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 1️⃣  PUSH():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// .PUSH().REVERSE() FASTER THAN .UNSHIFT()
+
+// 2️⃣ ☑️
+const reverseSeq = (n: number): number[] => {
+
+    const solution: number[] = [];
+
+    for (let i = 1; i <= n; i++) {
+        solution.push(i);
+    }
+
+    return solution.reverse();
+
+};
+
+// 1️⃣
+//  ❗️❗️❗️ START LOOP AT ONE AND UNSHIFT i INTO SOLUTION IS TOO SLOW: ❗️❗️❗️
+// Execution Timed Out (12000 ms)
+
+const reverseSeq2 = (n: number): number[] => {
+
+    const solution: number[] = [];
+    for (let i = 1; i <= n; i++) {
+        solution.unshift(i);			// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+    }
+    return solution;
+};
+
+// console.log(reverseSeq(50));
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 1️⃣  FILL():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+Fill all the elements with a value:
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.fill("Kiwi");
+Fill the last two elements:
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.fill("Kiwi", 2, 4);
+Definition and Usage
+The fill() method fills specified elements in an array with a value.
+
+The fill() method overwrites the original array.
+
+Start and end position can be specified. If not, all elements will be filled.
+
+Syntax
+array.fill(value, start, end)
+Parameters
+Parameter	Description
+value	Required.
+The value to fill in.
+start	Optional.
+The start index (position).
+Default is 0.
+end	Optional.
+The stop index (position).
+Default is array length.
+Return Value
+Type	Description
+An array	The filled array.
+
+*/
+
+/*
+Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+monkeyCount(1) // --> [1]
+*/
+
+const monkeyCount = (n: number): number[] => {
+
+    const solution: number[] = [];
+
+    for (let i = 1; i <= n; i++) {
+        solution.push(i);
+    }
+    console.log(solution);
+    return solution;
+}
+
+// console.log(monkeyCount(5));
+
+/* ❗️❗️❗️
+Definition and Usage
+The fill() method fills specified elements in an array with a value.
+
+The fill() method overwrites the original array.
+
+Start and end position can be specified. If not, all elements will be filled.
+
+Syntax
+array.fill(value, start, end)
+Parameters
+Parameter	Description
+value	Required.
+The value to fill in.
+start	Optional.
+The start index (position).
+Default is 0.
+end	Optional.
+The stop index (position).
+Default is array length.
+*/
+
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️
+function monkeyCount3(n: number) {
+    return Array(n).fill(0).map((e, i) => i + 1)
+}
+// ❗️❗️❗️
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 1️⃣  ARRAY.FROM():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+/*
+
+Create an array from a string:
+
+Array.from("ABCDEFG")
+Definition and Usage
+The Array.from() method returns an array from any object with a length property.
+
+The Array.from() method returns an array from any iterable object.
+
+Array.from()
+Array.from() is a static property of the JavaScript Array object.
+
+You can only use it as Array.from().
+
+Using x.from(), where x is an array will return undefined.
+
+Syntax
+Array.from(object, mapFunction, thisValue)
+Parameters
+Parameter	Description
+object	Required.
+The object to convert to an array.
+mapFunction	Optional.
+A map function to call on each item.
+thisValue	Optional.
+A value to use as thisfor the mapFunction
+Return Value
+Type	Description
+An array	The values from the iterable object.
+
+*/
+
+
+/*
+Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+monkeyCount(1) // --> [1]
+*/
+
+const monkeyCount5 = (n: number): number[] => {
+
+    const solution: number[] = [];
+
+    for (let i = 1; i <= n; i++) {
+        solution.push(i);
+    }
+    console.log(solution);
+    return solution;
+}
+
+// console.log(monkeyCount(5));
+// ❗️❗️❗️
+function monkeyCount2(n: number): number[] {
+    return Array.from({ length: n }, (_, i) => i + 1);
+}
+
+function monkeyCount4(n: number) {
+    return Array.from(Array(n), (x, ix) => ix + 1)
+}
+// ❗️❗️❗️
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// STRING METHODS
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// .REPLACE():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// Example: (input --> output)
+
+// "ATTGC" --> "TAACG"
+// "GTAT" --> "CATA"
+// dnaStrand []        `shouldBe` []
+// dnaStrand [A,T,G,C] `shouldBe` [T,A,C,G]
+// dnaStrand [G,T,A,T] `shouldBe` [C,A,T,A]
+// dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
+
+const dnaStrand = (dna: string): string => {
+
+    const arr = dna.split("");
+
+
+    arr.map((el, i) => {
+
+        switch (el) {
+            case "A":
+                arr[i] = "T"
+                break
+            case "T":
+                arr[i] = "A"
+                break
+            case "C":
+                arr[i] = "G"
+                break
+            case "G":
+                arr[i] = "C"
+        }
+    });
+
+    console.log(arr.join(""));
+    return arr.join("");
+}
+
+dnaStrand("ATCG");
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️
+function dnaStrand2(dna: string) {
+    return dna.replace(/./g, (c) => ({ A: 'T', T: 'A', G: 'C', C: 'G' })[c]);
+}
+
+
+
+// ❗️❗️❗️ if you want a replaced with x, b with y and c with z, you can do something like this:
+
+// var chars = {'a':'x','b':'y','c':'z'};
+// var s = '234abc567bbbbac';
+// s = s.replace(/[abc]/g, m => chars[m]);
+// console.log(s);
+// Output: 234xyz567yyyyxz
+
+
+// ❗️❗️❗️
+// let dummyString = 'Javascript^ is$ the most popular _language';
+// newString = dummyString.replace(/[_^$]/g, charactersToReplace => ({'^': '', '_': ':', '$' : '+' })[charactersToReplace]);
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// "THIS" KEYWORD
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// String.prototype.toJadenCase = function (str: string ): string {
+
+//     return this.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+
+//   };
+
+// ❗️❗️❗️ HAVE TO USE this IN CODEWARS SOLUTION ❗️❗️❗️
+//   return this.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+// VS:
+//  ❗️❗️❗️ TypeError: Cannot read property 'split' of undefined ❗️❗️❗️
+// return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+
+// STRING -> ARR(WORDS) -> CAPITALIZE EACH WORD IN ARRAY -> JOIN INTO STRING WITH " "
+
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// REGEX
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// ❗️❗️❗️ SyntaxError: Invalid regular expression: /(/: Unterminated group ❗️❗️❗️
+
+
+// ❗️❗️❗️ https://stackoverflow.com/questions/17885855/use-dynamic-variable-string-as-regex-pattern-in-javascript/17886301 ❗️❗️❗️
+
+// To create the regex from a string, you have to use JavaScript's RegExp object.
+
+// If you also want to match/replace more than one time, then you must add the g (global match) flag. Here's an example:
+
+// var stringToGoIntoTheRegex = "abc";
+// var regex = new RegExp("#" + stringToGoIntoTheRegex + "#", "g");
+// // at this point, the line above is the same as: var regex = /#abc#/g;
+
+// var input = "Hello this is #abc# some #abc# stuff.";
+// var output = input.replace(regex, "!!");
+// alert(output); // Hello this is !! some !! stuff.
+
+// EXAMPLE:
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+
+const duplicateEncode = (word: string): string => {
+
+
+    // 1️⃣  DOES NOT WORK WITH SPECIAL CHARACTERS:
+
+    const strArr = word.split("");
+    strArr.forEach((letter, i) => {
+        let regex = new RegExp(letter, "gi");  //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
+        console.table(
+            {
+                letter: strArr[i],
+                matches: word.match(regex)?.length
+            }
+        );
+
+        //❗️❗️❗️ WITHOUT "?" OBJECT IS POSSIBLY NULL ❗️❗️❗️
+        let counter: number | undefined = word.match(regex)?.length;
+
+        if (counter !== undefined) {
+            if (counter > 1) {
+                strArr[i] = ")";
+            } else {
+                strArr[i] = "(";
+            }
+        }
+    })
+    return strArr.join("");
+
+
+    // 2️⃣  THIS WORKS:
+    //  FIND EACH ELEMENT OF ORIGINAL ARRAY IN COPY(ORIGINAL WORD MINUS CURRENT LETTER)
+    // IF FOUND, THEN IT IS A DUPLICATE, IF NOT FOUND THEN IT IS SINGLE
+    const original = word.split("").map((letter) => letter.toLowerCase());
+    let copy = [...original];
+    const resultArr: string[] = [];
+
+    for (let i = 0; i < original.length; i++) {
+        copy.splice(i, 1);
+        if (copy.indexOf(original[i]) < 0) {
+            resultArr.push("(");
+        } else {
+            resultArr.push(")");
+        }
+        copy = [...original];
+    }
+
+    console.log(resultArr.join(""));
+    return resultArr.join("");
+}
+
+// duplicateEncode("recEde");
+// duplicateEncode("(( @");    // "))(("  

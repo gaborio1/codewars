@@ -152,12 +152,12 @@ All letters will be lowercase and all inputs will be valid.
 
 const high = (str: string): string => {
 
-    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     //  CALCULATE SCORE FOR WORD
     const getScore = (str: string): number => {
         let score: number = 0;
         str.split("").forEach((char) => {
-            score += alphabet.indexOf(char) + 1; 
+            score += alphabet.indexOf(char) + 1;
         })
         return score;
     }
@@ -169,13 +169,13 @@ const high = (str: string): string => {
     const counterObj: Counter = {};
     //  CREATE COUNTER OBJ { word: score, word: score ... }
     str.split(" ").forEach((word) => {
-        counterObj[word] = getScore(word); 
+        counterObj[word] = getScore(word);
     })
-  //  SORT OBJECT ENTRIES BY THEIR SECOND ELEMENT (INDEX 1 / VALUE)
-  //  RETURN INDEX 0 OF ELEMENT AT INDEX 0
-  //  [[ 'volcano', 82 ], [ 'climbing', 69 ], [ 'what', 52 ]... ]
-  console.log(Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0]);
-  return Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0];
+    //  SORT OBJECT ENTRIES BY THEIR SECOND ELEMENT (INDEX 1 / VALUE)
+    //  RETURN INDEX 0 OF ELEMENT AT INDEX 0
+    //  [[ 'volcano', 82 ], [ 'climbing', 69 ], [ 'what', 52 ]... ]
+    console.log(Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0]);
+    return Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0];
 
 }
 
@@ -186,7 +186,7 @@ const high = (str: string): string => {
 const VALUE_OFFSET = 96;
 const calcValue = (word: string): number => {
     return word.split('').reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
-}  
+}
 const high2 = (str: string): string => {
     return str.split(' ').reduce((max, word) => calcValue(word) > calcValue(max) ? word : max);
 }
@@ -205,7 +205,7 @@ const high3 = (str: string): string =>
         .split(' ')
         .reduce((acc, value) =>
             getWordScore(value) > getWordScore(acc) ? value : acc
-    )
+        )
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BUILD TOWER - MULTIPLE VARIABLES IN FOR LOOP
@@ -1078,8 +1078,10 @@ const duplicateEncode = (word: string): string => {
     //             matches: word.match(regex)?.length
     //         }
     //     );
-    //     //❗️❗️❗️ WITHOUT "?"" OBJECT IS POSSIBLY NULL ❗️❗️❗️
+
+    //     //❗️❗️❗️ WITHOUT "?" OBJECT IS POSSIBLY NULL ❗️❗️❗️
     //     let counter: number | undefined = word.match(regex)?.length;
+
     //     if (counter !== undefined) {
     //         if (counter > 1) {
     //             strArr[i] = ")";

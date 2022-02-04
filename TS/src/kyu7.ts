@@ -324,7 +324,7 @@ const descendingOrder = (n: Number): number => {
     //         .sort()
     //         .reverse()
     //         .map(String)
-    //         .join("") * 1		// !!! *1 NOT WORKING IN TS !!!
+    //         .join("") * 1		// ❗️❗️❗️ *1 NOT WORKING IN TS ❗️❗️❗️
     // );
 
     return Number(
