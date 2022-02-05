@@ -1,12 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const areYouPlayingBanjo = (name) => {
+    return name[0].toLowerCase() === "r"
+        ? `${name} plays banjo`
+        : `${name} does not play banjo`;
+};
+function areYouPlayingBanjo2(name) {
+    return name.startsWith("r") || name.startsWith("R") ? name + " plays banjo" : name + " does not play banjo";
+}
+function areYouPlayingBanjo3(name) {
+    return name + (/^r/i.test(name) ? " plays banjo" : " does not play banjo");
+}
+function areYouPlayingBanjo4(name) {
+    return name.charAt(0).toUpperCase() === "R"
+        ? `${name} plays banjo`
+        : `${name} does not play banjo`;
+}
 const zeroFuel = (distance, mpg, fuelLeft) => {
     return distance / mpg <= fuelLeft;
-    return true;
 };
-console.log(zeroFuel(50, 25, 2));
-console.log(zeroFuel(100, 50, 1));
 const lovefunc = (flower1, flower2) => {
     return ((flower1 + flower2) & 1) === 1;
 };

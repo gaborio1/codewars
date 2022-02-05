@@ -261,16 +261,95 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  ARE YOU PLAYING BANJO ?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  STARTSWITH() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
 
+The function takes a name as its only argument, and returns one of the following strings:
+
+name + " plays banjo" 
+name + " does not play banjo"
+Names given are always valid strings.
+*/
+
+const areYouPlayingBanjo = (name: string): string => {
+
+	return name[0].toLowerCase() === "r"
+		? `${name} plays banjo`
+		: `${name} does not play banjo`;
+
+}
+
+// console.log(areYouPlayingBanjo("Adam"));
+// console.log(areYouPlayingBanjo("adam"));
+// console.log(areYouPlayingBanjo("Ringo"));
+// console.log(areYouPlayingBanjo("ringo"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+/* 
+
+❗️❗️❗️ JavaScript String startsWith() ❗️❗️❗️
+
+Start at position 0:
+let text = "Hello world, welcome to the universe.";
+text.startsWith("Hello");
+==> true
+
+
+Start at position 6:
+let text = "Hello world, welcome to the universe.";
+text.startsWith("world", 7);
+==> false
+
+
+Definition and Usage
+The startsWith() method returns true if a string starts with a specified string.
+
+Otherwise it returns false.
+
+The startsWith() method is case sensitive.
+
+See also the endsWith() method.
+
+Syntax
+string.startsWith(searchValue, start)
+Parameters
+Parameter	Description
+searchValue	Required.
+The string to search for.
+start	Optional.
+Start position. Default is 0.
+Return Value
+Type	Description
+A boolean	Returns true if the string starts with the value.
+Otherwise it returns false.
+
+*/
+
+// ❗️❗️❗️
+function areYouPlayingBanjo2(name: string): string {
+	return name.startsWith("r") || name.startsWith("R") ? name + " plays banjo" : name + " does not play banjo"
+}
+
+
+function areYouPlayingBanjo3(name: string): string {
+	return name + (/^r/i.test(name) ? " plays banjo" : " does not play banjo");
+}
+
+
+function areYouPlayingBanjo4(name: string): string {
+	return name.charAt(0).toUpperCase() === "R"
+		? `${name} plays banjo`
+		: `${name} does not play banjo`;
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -291,8 +370,8 @@ const zeroFuel = (distance: number, mpg: number, fuelLeft: number): boolean => {
 
 };
 
-console.log(zeroFuel(50, 25, 2));
-console.log(zeroFuel(100, 50, 1));
+// console.log(zeroFuel(50, 25, 2));
+// console.log(zeroFuel(100, 50, 1));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -375,11 +454,10 @@ const sumArray = (array: number[] | null): number => {
 // OTHERWISE:
 //    SORT NUMERICALLY
 //    SLICE OUT MIDDLE ELEMENTS
-//    GET SUM
+//    GET SUM 
 
 // console.log(sumArray([6, 2, 1, 8, 10]));
 // console.log(sumArray([]));
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
