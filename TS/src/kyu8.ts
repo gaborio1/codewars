@@ -235,30 +235,174 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  ROCK PAPER SCISSORS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Rock Paper Scissors
+Let's play! You have to return which player won! In case of a draw return Draw!.
 
+Examples:
+
+rps('scissors','paper') // Player 1 won!
+rps('scissors','rock') // Player 2 won!
+rps('paper','paper') // Draw!
+*/
+
+/* ❗️❗️❗️
+const rps = (p1: string, p2: string): string => {}
+error TS2366: Function lacks ending return statement and return type does not include 'undefined'.
+FIX: const rps = (p1: string, p2: string): string | undefined => {}
+❗️❗️❗️
+*/
+
+const rps = (p1: string, p2: string): string | undefined => {
+
+	if (p1 === p2) return "Draw!";
+
+
+	if (
+		p1[0] === "r" && p2[0] === "s" ||
+		p1[0] === "s" && p2[0] === "p" ||
+		p1[0] === "p" && p2[0] === "r"
+	) {
+		return "Player 1 won!"
+	}
+
+
+	if (
+		p1[0] === "s" && p2[0] === "r" ||
+		p1[0] === "p" && p2[0] === "s" ||
+		p1[0] === "r" && p2[0] === "p"
+	) {
+		return "Player 2 won!"
+	}
+
+}
+// PLAYER 1
+// console.log(rps('rock', 'scissors'));
+// console.log(rps('scissors', 'paper'));
+// console.log(rps('paper', 'rock'));
+// PLAYER 2
+// console.log(rps('scissors', 'rock'));
+// console.log(rps('paper', 'scissors'));
+// console.log(rps('rock', 'paper'));
+// DRAW
+// console.log(rps('rock', 'rock'));
+// console.log(rps('scissors', 'scissors'));
+// console.log(rps('paper', 'paper'));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function rps2(p1: string, p2: string): string {
+	if (p1 == p2) return "Draw!";
+	let table = ["scissors", "paper", "rock"];
+	let i = (table.indexOf(p1) + 1) % 3;
+	let j = table.indexOf(p2);
+	return i == j ? "Player 1 won!" : "Player 2 won!";
+}
+
+
+
+
+const beats: { [index: string]: string } = {
+	'scissors': 'paper',
+	'paper': 'rock',
+	'rock': 'scissors',
+}
+
+function rps3(p1: string, p2: string): string {
+	if (p1 === p2) return 'Draw!'
+
+	if (beats[p1] == p2) return 'Player 1 won!'
+	return 'Player 2 won!'
+}
+
+
+
+
+type Game = {
+	[result: string]: string
+}
+
+type Result = {
+	[key: string]: Game
+}
+
+function rps4(p1: string, p2: string): string {
+	const results: Result = {
+		"rock": {
+			"rock": "Draw!",
+			"scissors": "Player 1 won!",
+			"paper": "Player 2 won!",
+		},
+		"scissors": {
+			"rock": "Player 2 won!",
+			"scissors": "Draw!",
+			"paper": "Player 1 won!"
+		},
+		"paper": {
+			"rock": "Player 1 won!",
+			"scissors": "Player 2 won!",
+			"paper": "Draw!"
+		}
+	}
+
+	return results[p1][p2]
+}
+
+
+
+function rps5(p1: string, p2: string): string {
+	let msg = '';
+	switch (true) {
+		case p1 == 'scissors' && p2 == 'paper': msg = 'Player 1 won!';
+			break;
+		case p1 == 'scissors' && p2 == 'rock': msg = 'Player 2 won!';
+			break;
+		case p1 == 'paper' && p2 == 'scissors': msg = 'Player 2 won!';
+			break;
+		case p1 == 'rock' && p2 == 'scissors': msg = 'Player 1 won!';
+			break;
+		case p1 == 'rock' && p2 == 'paper': msg = 'Player 2 won!';
+			break;
+		case p1 == 'paper' && p2 == 'rock': msg = 'Player 1 won!';
+			break;
+		default: msg = 'Draw!'
+	}
+	return msg;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SUM ARRAY OF NUM/NUMSTRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  CONVERT NUMSTRING TO NUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+	
+Return your answer as a number.
+*/
 
+const sumMix = (arr: any[]): number => {
+	// return arr.reduce((a, b) => Number(a) + Number(b));
+	return arr.reduce((a, b) => a * 1 + b * 1);
+}
+
+// console.log(sumMix([9, 3, '7', '3']));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function sumMix2(xs: (string | number)[]): number {
+	return xs.reduce<number>((a, x) => a + +x, 0);
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ARE YOU PLAYING BANJO ?
@@ -271,9 +415,9 @@
 /*
 Create a function which answers the question "Are you playing banjo?".
 If your name starts with the letter "R" or lower case "r", you are playing banjo!
-
+	
 The function takes a name as its only argument, and returns one of the following strings:
-
+	
 name + " plays banjo" 
 name + " does not play banjo"
 Names given are always valid strings.
@@ -295,30 +439,30 @@ const areYouPlayingBanjo = (name: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /* 
-
+	
 ❗️❗️❗️ JavaScript String startsWith() ❗️❗️❗️
-
+	
 Start at position 0:
 let text = "Hello world, welcome to the universe.";
 text.startsWith("Hello");
 ==> true
-
-
+	
+	
 Start at position 6:
 let text = "Hello world, welcome to the universe.";
 text.startsWith("world", 7);
 ==> false
-
-
+	
+	
 Definition and Usage
 The startsWith() method returns true if a string starts with a specified string.
-
+	
 Otherwise it returns false.
-
+	
 The startsWith() method is case sensitive.
-
+	
 See also the endsWith() method.
-
+	
 Syntax
 string.startsWith(searchValue, start)
 Parameters
@@ -331,7 +475,7 @@ Return Value
 Type	Description
 A boolean	Returns true if the string starts with the value.
 Otherwise it returns false.
-
+	
 */
 
 // ❗️❗️❗️
@@ -386,7 +530,7 @@ const zeroFuel = (distance: number, mpg: number, fuelLeft: number): boolean => {
 
 /*
 Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.
-
+	
 Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
 */
 
@@ -424,11 +568,11 @@ const lovefunc4 = (f1: number, f2: number): boolean => f1 % 2 == f2 % 2 ? false 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*Sum all the numbers of a given array ( cq. list ), except the highest and the lowest element ( by value, not by index! ).
-
+	
 The highest or lowest element respectively is a single element at each edge, even if there are more than one with the same value.
-
+	
 Mind the input validation.
-
+	
 Example
 { 6, 2, 1, 8, 10 } => 16
 { 1, 1, 11, 2, 3 } => 6
@@ -510,9 +654,9 @@ const booleanToString3 = (b: boolean): string => {
 
 /*
 Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.
-
+	
 If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.
-
+	
 Return the total figure the individual will receive as a string prefixed with "£" (= "\u00A3", JS, Go, Java and Julia), "$" (C#, C++, Ruby, Clojure, Elixir, PHP, Python, Haskell and Lua) or "¥" (Rust).
 */
 
@@ -559,9 +703,9 @@ const hero = (bullets: number, dragons: number): boolean => {
 
 /*
 Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
-
+	
 Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.
-
+	
 Example:
 n= 5, m=5: 25
 n=-5, m=5:  0
@@ -659,9 +803,9 @@ function simpleMultiplication3(num: number): number {
 
 /*
 You receive an array with your peers' test scores. Now calculate the average and compare your score!
-
+	
 Return True if you're better, else False!
-
+	
 Note:
 Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
 */
@@ -726,13 +870,13 @@ function simpleMultiplication7(num: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*Deoxyribonucleic acid, DNA is the primary information storage molecule in biological systems. It is composed of four nucleic acid bases Guanine ('G'), Cytosine ('C'), Adenine ('A'), and Thymine ('T').
-
+	
 Ribonucleic acid, RNA, is the primary messenger molecule in cells. RNA differs slightly from DNA its chemical structure and contains no Thymine. In RNA Thymine is replaced by another nucleic acid Uracil ('U').
-
+	
 Create a function which translates a given DNA string into RNA.
-
+	
 For example:
-
+	
 "GCAT"  =>  "GCAU"
 The input string can be of arbitrary length - in particular, it may be empty. All input is guaranteed to be valid, i.e. each input string will only ever consist of 'G', 'C', 'A' and/or 'T'.
 */
@@ -788,11 +932,11 @@ const monkeyCount = (n: number): number[] => {
 /* ❗️❗️❗️
 Definition and Usage
 The fill() method fills specified elements in an array with a value.
-
+	
 The fill() method overwrites the original array.
-
+	
 Start and end position can be specified. If not, all elements will be filled.
-
+	
 Syntax
 array.fill(value, start, end)
 Parameters
@@ -856,13 +1000,13 @@ const grow = (arr: number[]): number => {
 
 /*
 Write function bmi that calculates body mass index (bmi = weight / height**2).
-
+	
 if bmi <= 18.5 return "Underweight"
-
+	
 if bmi <= 25.0 return "Normal"
-
+	
 if bmi <= 30.0 return "Overweight"
-
+	
 if bmi > 30 return "Obese"
 */
 
@@ -909,7 +1053,7 @@ const bmi3 = (weight: number, height: number, bmi: number = 0): string => (bmi =
 
 /*
 I'm new to coding and now I want to get the sum of two arrays...actually the sum of all their elements. I'll appreciate for your help.
-
+	
 P.S. Each array includes only integer numbers. Output is a number too.
 */
 
@@ -1005,7 +1149,7 @@ const reverseSeq5 = (n: number): number[] => {
 
 /*
 Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
-
+	
 Note: input will never be an empty string
 */
 
@@ -1084,9 +1228,9 @@ function getAverage2(marks: number[]): number {
 
 /*
 You will be given an array a and a value x. All you need to do is check whether the provided array contains the value.
-
+	
 Array can contain numbers or strings. X can be either.
-
+	
 Return true if the array contains the value, false if not.
 */
 
@@ -1149,7 +1293,7 @@ const findAverage = (arr: number[]): number => {
 
 /*
 Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
-
+	
 [Make sure you type the exact thing I wrote or the program may not execute properly]
 */
 
@@ -1171,7 +1315,7 @@ const greet2 = (name: string): string => {
 
 /*
 Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
-
+	
 If the input array is empty or null, return an empty array.
 */
 
@@ -1237,9 +1381,9 @@ function countPositivesSumNegatives4(input: number[]) {
 
 /*
 Complete the solution so that it reverses all of the words within the string passed in.
-
+	
 Example:
-
+	
 "The greatest victory is that which requires no battle" --> "batt
 */
 
@@ -1265,17 +1409,17 @@ const reverseWords = (str: string): string => {
 
 /*
 Clock shows h hours, m minutes and s seconds after midnight.
-
+	
 Your task is to write a function which returns the time since midnight in milliseconds.
-
+	
 Example:
 h = 0
 m = 1
 s = 1
-
+	
 result = 61000
 Input constraints:
-
+	
 0 <= h <= 23
 0 <= m <= 59
 0 <= s <= 59
@@ -1301,7 +1445,7 @@ const past = (h: number, m: number, s: number): number => {
 
 /*
 Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
-
+	
 invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
 invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
 invert([]) == []
@@ -1328,9 +1472,9 @@ function invert2(array: number[]): number[] {
 
 /*
 We need a function that can transform a string into a number. What ways of achieving this do you know?
-
+	
 Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
-
+	
 Examples
 "1234" --> 1234
 "605"  --> 605
@@ -1358,9 +1502,9 @@ const stringToNumber3 = (str: string): number => parseInt(str)
 
 /*
 Given an array of integers, return a new array with each value doubled.
-
+	
 For example:
-
+	
 [1, 2, 3] --> [2, 4, 6]
 */
 
@@ -1385,11 +1529,11 @@ function maps2(x: number[]): number[] {
 
 /*
 Write a function findNeedle() that takes an array full of junk but containing one "needle"
-
+	
 After your function finds the needle it should return a message (as a string) that says:
-
+	
 "found the needle at position " plus the index it found the needle, so:
-
+	
 findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])
 should return "found the needle at position 5"
 */
@@ -1413,7 +1557,7 @@ const findNeedle = (haystack: any[]): string => {
 
 /*
 Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
-
+	
 Example:
 348597 => [7,9,5,8,4,3]
 0 => [0]
@@ -1443,13 +1587,13 @@ const digitize = (n: number): number[] => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 /*
 Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
-
+	
 The output should be two capital letters with a dot separating them.
-
+	
 It should look like this:
-
+	
 Sam Harris => S.H
-
+	
 patrick feeney => P.F
 */
 

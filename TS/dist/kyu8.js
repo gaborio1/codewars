@@ -1,6 +1,91 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const rps = (p1, p2) => {
+    if (p1 === p2)
+        return "Draw!";
+    if (p1[0] === "r" && p2[0] === "s" ||
+        p1[0] === "s" && p2[0] === "p" ||
+        p1[0] === "p" && p2[0] === "r") {
+        return "Player 1 won!";
+    }
+    if (p1[0] === "s" && p2[0] === "r" ||
+        p1[0] === "p" && p2[0] === "s" ||
+        p1[0] === "r" && p2[0] === "p") {
+        return "Player 2 won!";
+    }
+};
+function rps2(p1, p2) {
+    if (p1 == p2)
+        return "Draw!";
+    let table = ["scissors", "paper", "rock"];
+    let i = (table.indexOf(p1) + 1) % 3;
+    let j = table.indexOf(p2);
+    return i == j ? "Player 1 won!" : "Player 2 won!";
+}
+const beats = {
+    'scissors': 'paper',
+    'paper': 'rock',
+    'rock': 'scissors',
+};
+function rps3(p1, p2) {
+    if (p1 === p2)
+        return 'Draw!';
+    if (beats[p1] == p2)
+        return 'Player 1 won!';
+    return 'Player 2 won!';
+}
+function rps4(p1, p2) {
+    const results = {
+        "rock": {
+            "rock": "Draw!",
+            "scissors": "Player 1 won!",
+            "paper": "Player 2 won!",
+        },
+        "scissors": {
+            "rock": "Player 2 won!",
+            "scissors": "Draw!",
+            "paper": "Player 1 won!"
+        },
+        "paper": {
+            "rock": "Player 1 won!",
+            "scissors": "Player 2 won!",
+            "paper": "Draw!"
+        }
+    };
+    return results[p1][p2];
+}
+function rps5(p1, p2) {
+    let msg = '';
+    switch (true) {
+        case p1 == 'scissors' && p2 == 'paper':
+            msg = 'Player 1 won!';
+            break;
+        case p1 == 'scissors' && p2 == 'rock':
+            msg = 'Player 2 won!';
+            break;
+        case p1 == 'paper' && p2 == 'scissors':
+            msg = 'Player 2 won!';
+            break;
+        case p1 == 'rock' && p2 == 'scissors':
+            msg = 'Player 1 won!';
+            break;
+        case p1 == 'rock' && p2 == 'paper':
+            msg = 'Player 2 won!';
+            break;
+        case p1 == 'paper' && p2 == 'rock':
+            msg = 'Player 1 won!';
+            break;
+        default: msg = 'Draw!';
+    }
+    return msg;
+}
+const sumMix = (arr) => {
+    return arr.reduce((a, b) => a * 1 + b * 1);
+};
+function sumMix2(xs) {
+    return xs.reduce((a, x) => a + +x, 0);
+}
 const areYouPlayingBanjo = (name) => {
     return name[0].toLowerCase() === "r"
         ? `${name} plays banjo`
