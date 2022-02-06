@@ -1,6 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const isDivideBy = (number, a, b) => {
+    return number % a === 0 && number % b === 0;
+};
+function isDivideBy2(number, a, b) {
+    return !(number % a || number % b);
+}
+const isDivideBy3 = (n, a, b) => {
+    return n / a === Math.trunc(n / a) && n / b === Math.trunc(n / b);
+};
+function isDivideBy4(number, a, b) {
+    console.log(number, a, b);
+    return Number.isInteger(number / a) && Number.isInteger(number / b);
+}
+const countSheep = (num) => {
+    let solution = "";
+    for (let i = 1; i <= num; i++) {
+        solution += `${i} sheep...`;
+    }
+    return solution;
+};
+function countSheep2(num) {
+    return Array.from({ length: num }, (x, i) => `${i + 1} sheep...`).join('');
+}
+function countSheep3(num) {
+    return [...Array(num).keys()].reduce((res, cur) => res + `${cur + 1} sheep...`, '');
+}
+const firstNonConsecutive = (arr) => {
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[i - 1] + 1) {
+            return arr[i];
+        }
+    }
+    return null;
+};
+function firstNonConsecutive2(arr) {
+    return arr.find((currentValue, index, array) => { return currentValue - array[index - 1] > 1; });
+}
 const rps = (p1, p2) => {
     if (p1 === p2)
         return "Draw!";

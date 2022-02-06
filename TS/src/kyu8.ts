@@ -203,36 +203,133 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Your task is to create the functionisDivideBy (or is_divide_by) to check if an integer number is divisible by both integers a and b.
 
+A few cases:
+
+
+(-12, 2, -6)  ->  true
+(-12, 2, -5)  ->  false
+
+(45, 1, 6)    ->  false
+(45, 5, 15)   ->  true
+
+(4, 1, 4)     ->  true
+(15, -5, 3)   ->  true
+*/
+
+const isDivideBy = (number: number, a: number, b: number): boolean => {
+
+	return number % a === 0 && number % b === 0;
+
+}
+
+// console.log(isDivideBy(-12, 2, -6));
+// console.log(isDivideBy(-12, 2, -5));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function isDivideBy2(number: number, a: number, b: number): boolean {
+	return !(number % a || number % b);
+}
+
+
+
+const isDivideBy3 = (n: number, a: number, b: number): boolean => {
+	return n / a === Math.trunc(n / a) && n / b === Math.trunc(n / b)
+}
+
+
+function isDivideBy4(number: number, a: number, b: number): boolean {
+	console.log(number, a, b)
+	return Number.isInteger(number / a) && Number.isInteger(number / b)
+}
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  JUST COUNT SHEEP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+If you can't sleep, just count sheep!!
 
+Task:
+Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
+*/
+
+const countSheep = (num: number): string => {
+
+	let solution: string = "";
+
+	for (let i = 1; i <= num; i++) {
+		solution += `${i} sheep...`;
+	}
+
+	return solution;
+
+}
+
+// '1 sheep...2 sheep...3 sheep...'
+// console.log(countSheep(3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function countSheep2(num: number): string {
+	return Array.from({ length: num }, (x, i) => `${i + 1} sheep...`).join('');
+}
+
+
+function countSheep3(num: number): string {
+	return [...Array(num).keys()].reduce((res, cur) => res + `${cur + 1} sheep...`, '');
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  FIND FIRST NON CONSECUTIVE NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ARRAY.FIND()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Your task is to find the first element of an array that is not consecutive.
 
+By not consecutive we mean not exactly 1 larger than the previous element of the array.
+
+E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
+
+If the whole array is consecutive then return null2.
+
+The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
+*/
+
+const firstNonConsecutive = (arr: number[]): null | number => {
+
+	for (let i = 1; i < arr.length; i++) {
+		if (arr[i] !== arr[i - 1] + 1) {
+			return arr[i];
+		}
+	}
+
+	return null;
+}
+
+//  FIND AND RETURN SOLUTION WITH LOOP
+//  IF NO SOLUTION FOUND RETURN NULL
+
+// console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
+// console.log(firstNonConsecutive([1, 2, 3, 4, 5, 6, 7, 8]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function firstNonConsecutive2(arr: number[]): undefined | number {
+	return arr.find((currentValue, index, array) => { return currentValue - array[index - 1] > 1 });
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ROCK PAPER SCISSORS
