@@ -1,4 +1,45 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const isTriangle = (a, b, c) => {
+    return (a + b) > c && (a + c) > b && (b + c) > a;
+};
+const isTriangle2 = (a, b, c) => (a + b <= c || a + c <= b || b + c <= a) ? false : true;
+function isTriangle3(a, b, c) {
+    return a + b <= c ? false : a + c <= b ? false : b + c <= a ? false : true;
+}
+const validatePin = (pin) => {
+    return (pin.length === 4 && pin.match(/\d/g).length === 4)
+        || (pin.length === 6 && pin.match(/\d/g).length === 6);
+};
+class Kata2 {
+    static validatePin(pin) {
+        return Kata2.pinFormat.test(pin);
+    }
+}
+exports.Kata2 = Kata2;
+Kata2.pinFormat = new RegExp(/^\d{4}(\d{2})?$/);
+class Kata3 {
+    static validatePin(pin) {
+        return /^(\d{4}|\d{6})$/.test(pin);
+    }
+}
+exports.Kata3 = Kata3;
+class Kata4 {
+    static validatePin(pin) {
+        const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        if (pin.length !== 4 && pin.length !== 6) {
+            return false;
+        }
+        for (let index = 0; index < pin.length; index++) {
+            if (!digits.includes(pin[index])) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+exports.Kata4 = Kata4;
 const dnaStrand = (dna) => {
     const arr = dna.split("");
     arr.map((el, i) => {
@@ -19,7 +60,6 @@ const dnaStrand = (dna) => {
     console.log(arr.join(""));
     return arr.join("");
 };
-dnaStrand("ATCG");
 const toJadenCase = (str) => {
     console.log(str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" "));
     return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");

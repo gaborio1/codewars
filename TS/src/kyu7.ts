@@ -281,33 +281,97 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  IS THIS A TRIANGLE?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
 
+(In this case, all triangles must have surface greater than 0 to be accepted).
+*/
+
+const isTriangle = (a: number, b: number, c: number): boolean => {
+    return (a + b) > c && (a + c) > b && (b + c) > a;
+}
+
+//   SUM OF ANY TWO SIDES MUST BE GREATER THAN THIRD SIDE
+
+// console.log(isTriangle(1, 2, 2));
+// console.log(isTriangle(7, 2, 2));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const isTriangle2 = (a: number, b: number, c: number): boolean => (a + b <= c || a + c <= b || b + c <= a) ? false : true;
 
+
+function isTriangle3(a: number, b: number, c: number): boolean {
+    return a + b <= c ? false : a + c <= b ? false : b + c <= a ? false : true;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  REGEX VALIDATE PIN CODE (4 OR 6 DIGITS)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REGEX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const validatePin = (pin: string): boolean => {
+
+    // if (pin.length === 4 && pin.match(/\d/g)!.length === 4) return true;
+    // if (pin.length === 6 && pin.match(/\d/g)!.length === 6) return true;
+    // return false;
+
+    return (pin.length === 4 && pin.match(/\d/g)!.length === 4)
+        || (pin.length === 6 && pin.match(/\d/g)!.length === 6);
+
+}
+
+// console.log(validatePin("12345654yw"));
+// console.log(validatePin("123456"));
+// console.log(validatePin("12345a"));
+// console.log(validatePin("1234"));
+// console.log(validatePin("-1234"));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+export class Kata2 {
+    static pinFormat: RegExp = new RegExp(/^\d{4}(\d{2})?$/);
 
+    static validatePin(pin: string): boolean {
+        return Kata2.pinFormat.test(pin);
+    }
+}
+
+
+export class Kata3 {
+    static validatePin(pin: string) {
+        return /^(\d{4}|\d{6})$/.test(pin);
+    }
+}
+
+
+export class Kata4 {
+    static validatePin(pin: string): boolean {
+        const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        if (pin.length !== 4 && pin.length !== 6) {
+            return false
+        }
+
+        for (let index = 0; index < pin.length; index++) {
+            if (!digits.includes(pin[index])) {
+                return false
+            }
+        }
+        return true
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -354,7 +418,7 @@ const dnaStrand = (dna: string): string => {
     return arr.join("");
 }
 
-dnaStrand("ATCG");
+// dnaStrand("ATCG");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
