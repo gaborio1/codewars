@@ -1,6 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+function stringToArray(s) {
+    return s.split(" ");
+}
+function stringToArray2(s) {
+    return s.split(/\s/);
+}
+function stringToArray3(s) {
+    return [...s.split(' ')];
+}
+const smash = (words) => {
+    return words.join(" ");
+};
+console.log((smash(["this", "is", "a", "really", "long", "sentence"])));
+const feast = (beast, dish) => {
+    return beast[0] === dish[0] && beast.slice(-1) === dish.slice(-1);
+};
+console.log(feast("great blue heron", "garlic naan"));
+console.log(feast("brown bear", "bear claw"));
+function feast2(beast, dish) {
+    return beast.startsWith(dish.charAt(0)) && beast.endsWith(dish.charAt(dish.length - 1));
+}
 const isDivideBy = (number, a, b) => {
     return number % a === 0 && number % b === 0;
 };
