@@ -1,6 +1,51 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const SeriesSum = (num) => {
+    let sum = 0;
+    for (let i = 0, denominator = 1; i < num; i++, denominator += 3) {
+        sum += 1 / denominator;
+    }
+    return String(sum.toFixed(2));
+};
+console.log(SeriesSum(1));
+console.log(SeriesSum(2));
+console.log(SeriesSum(3));
+const solution = (str, ending) => {
+    return str.endsWith(ending);
+};
+function solution2(str, ending) {
+    return !ending.length || str.slice(-ending.length) === ending;
+}
+function solution3(str, ending) {
+    const strSubstring = str.slice(str.length - ending.length);
+    return strSubstring === ending;
+}
+const oddOrEven = (array) => {
+    return array.length > 0
+        ? array.reduce((a, b) => a + b) & 1
+            ? "odd"
+            : "even"
+        : "even";
+};
+function oddOrEven2(array) {
+    return array.reduce((acc, it) => acc + it, 0) % 2 ? "odd" : "even";
+}
+const oddOrEven3 = (array) => array.reduce((acc, curr) => acc += curr, 0) % 2 === 0 ? 'even' : 'odd';
+const number = (busStops) => {
+    let counter = 0;
+    busStops.forEach((stop) => {
+        counter += stop[0];
+        counter -= stop[1];
+    });
+    return counter;
+};
+function number2(busStops) {
+    return busStops.reduce((rem, [on, off]) => rem + (on - off), 0);
+}
+function rowSumOddNumbers(n) {
+    return Math.pow(n, 3);
+}
 const isTriangle = (a, b, c) => {
     return (a + b) > c && (a + c) > b && (b + c) > a;
 };

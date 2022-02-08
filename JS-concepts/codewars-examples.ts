@@ -77,6 +77,8 @@ function oddOrEven(x: number) {
     return (x & 1) ? "odd" : "even";
 }
 
+function isOdd(num: number): number { return num % 2; }
+
 
 
 
