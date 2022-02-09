@@ -1,6 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const nbDig = (num, digit) => {
+    let counter = 0;
+    const regex = new RegExp(String(digit), "g");
+    for (let i = 0; i <= num; i++) {
+        let squareStr = String(Math.pow(i, 2));
+        const matches = squareStr.match(regex);
+        if (matches)
+            counter += matches.length;
+    }
+    return counter;
+};
+const breakChocolate = (n, m) => {
+    return n * m > 1
+        ? n * m - 1
+        : 0;
+};
+const dontGiveMeFive = (start, end) => {
+    let counter = 0;
+    for (let i = start; i <= end; i++) {
+        if (!/5/g.test(String(i))) {
+            counter++;
+        }
+    }
+    return counter;
+};
+function dontGiveMeFive2(start, end) {
+    return Array.from({ length: (end - start) + 1 }, (ix, it) => it + start).filter((it) => !(/5/.test(it + ""))).length;
+}
+;
+function dontGiveMeFive3(start, end) {
+    return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(x => !/5/.test(`${x}`)).length;
+}
+const reverseWords = (str) => {
+    return str
+        .split(" ")
+        .map((word) => word.split("").reverse().join(''))
+        .join(" ");
+};
 const SeriesSum = (num) => {
     let sum = 0;
     for (let i = 0, denominator = 1; i < num; i++, denominator += 3) {
@@ -8,9 +46,9 @@ const SeriesSum = (num) => {
     }
     return String(sum.toFixed(2));
 };
-console.log(SeriesSum(1));
-console.log(SeriesSum(2));
-console.log(SeriesSum(3));
+function SeriesSum2(n) {
+    return [...Array(n).keys()].map(k => 1 / (k * 3 + 1)).reduce((acc, n) => acc + n, 0).toFixed(2);
+}
 const solution = (str, ending) => {
     return str.endsWith(ending);
 };

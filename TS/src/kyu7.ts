@@ -141,13 +141,64 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  COUNT DIGIT APPEARING IN SQUARES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REGEXP OBJECT, MATCH()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.
+
+Square all numbers k (0 <= k <= n) between 0 and n.
+
+Count the numbers of digits d used in the writing of all the k**2.
+
+Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
+
+Examples:
+n = 10, d = 1 
+the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+We are using the digit 1 in: 1, 16, 81, 100. The total count is then 4.
+
+nb_dig(25, 1) returns 11 since
+the k*k that contain the digit 1 are:
+1, 16, 81, 100, 121, 144, 169, 196, 361, 441.
+So there are 11 digits 1 for the squares of numbers between 0 and 25
+*/
+
+const nbDig = (num: number, digit: number): number => {
+
+    let counter: number = 0;
+    const regex = new RegExp(String(digit), "g");
+
+    for (let i = 0; i <= num; i++) {
+        let squareStr = String(Math.pow(i, 2));
+        const matches = squareStr.match(regex);
+        // console.table({
+        //     square: squareStr,
+        //     digit: String(digit),
+        //     matches: matches?.length
+        // });
+        if (matches) counter += matches.length;
+
+    }
+
+    return counter;
+
+}
+
+//  CREATE JS REGEXP OBJECT FOR digit
+//  LOOP OVER INTEGERS UP TO AND ICLUDING num
+//      CALC SQUARE, CONVERT TO STRING AN SAVE TO VAR squareStr
+//      GET ARRAY OF MATCHES (matches)
+//      IF matches ARRAY IS NOT EMPTY
+//          INCREMENT counter BY matches.length
+//  RETURN counter AS RESULT
+
+// 6
+// console.log(nbDig(11, 1));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -155,42 +206,114 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  BREAKING CHOCOLEATE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable. Implement a function that will return minimum number of breaks needed.
 
+For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+
+If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+*/
+
+const breakChocolate = (n: number, m: number): number => {
+
+    return n * m > 1
+        ? n * m - 1
+        : 0;
+
+}
+
+// console.log(breakChocolate(5, 5));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  DONT GIVE ME FIVE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REGEX.TEST()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
 
+Examples:
+
+1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+The result may contain fives. ;-)
+The start number will always be smaller than the end number. Both numbers can be also negative!
+*/
+
+const dontGiveMeFive = (start: number, end: number): number => {
+
+    let counter = 0;
+
+    for (let i = start; i <= end; i++) {
+        if (!/5/g.test(String(i))) {
+            counter++;
+        }
+    }
+
+    return counter;
+}
+
+//  TEST FOR A MATCH IN STRING(NUM) FOR "5"
+//      IF NO MATCH, INCREMENT COUNTER
+//  RETURN COUNTER AS RESULT
+
+// return /^(\d{4}|\d{6})$/.test(pin);
+
+// console.log(dontGiveMeFive(1, 9));
+// console.log(dontGiveMeFive(4, 17));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function dontGiveMeFive2(start: number, end: number): number {
+    return Array.from({ length: (end - start) + 1 }, (ix, it) => it + start).filter((it) => !(/5/.test(it + ""))).length;
+};
 
+
+function dontGiveMeFive3(start: number, end: number): number {
+    return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(x => !/5/.test(`${x}`)).length;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  REVERSE WORDS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
 
+Examples
+"This is an example!" ==> "sihT si na !elpmaxe"
+"double  spaces"      ==> "elbuod  secaps"
+
+*/
+
+const reverseWords = (str: string): string => {
+
+    return str
+        .split(" ")
+        .map((word) => word.split("").reverse().join(''))
+        .join(" ");
+
+}
+
+// console.log(reverseWords('The quick brown fox jumps over the lazy dog.'));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -251,9 +374,9 @@ const SeriesSum = (num: number): string => {
 // INCREMENT SUM WITH 1 / DENOMINATOR NUM TIMES
 // ROUND DOWN TO TWO DIGITS AND CONVERT NO STRING
 
-console.log(SeriesSum(1));
-console.log(SeriesSum(2));
-console.log(SeriesSum(3));
+// console.log(SeriesSum(1));
+// console.log(SeriesSum(2));
+// console.log(SeriesSum(3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
