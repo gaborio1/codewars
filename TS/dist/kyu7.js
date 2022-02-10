@@ -1,6 +1,41 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const twoOldestAges = (ages) => {
+    return ages
+        .filter((curr, index) => ages.indexOf(curr) === index)
+        .sort((a, b) => b - a)
+        .slice(0, 2)
+        .reverse();
+};
+console.log(twoOldestAges([1, 5, 87, 45, 8, 8]));
+const divisors = (num) => {
+    if (num === 1)
+        return 1;
+    const divisors = [];
+    for (let i = 1; i <= num / 2; i++) {
+        let divisor1 = i, divisor2 = num / i;
+        if (Number.isInteger(num / divisor1)) {
+            if (!divisors.includes(divisor1)) {
+                if (divisor1 === divisor2) {
+                    divisors.push(divisor1);
+                }
+                else {
+                    divisors.push(divisor1, divisor2);
+                }
+            }
+        }
+    }
+    return divisors.length;
+};
+function divisors2(n) {
+    let steps = 0;
+    for (let i = 0; i <= n; i++) {
+        if (n % i === 0)
+            steps++;
+    }
+    return steps;
+}
 const nbDig = (num, digit) => {
     let counter = 0;
     const regex = new RegExp(String(digit), "g");

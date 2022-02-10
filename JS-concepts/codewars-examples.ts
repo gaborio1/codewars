@@ -165,6 +165,30 @@ const bmi5 = (weight: number, height: number, bmi: number = 0): string => (bmi =
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// FILTER():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+// 1️⃣ REMOVE DUPLICATES FROM ARRAY:
+const twoOldestAges = (ages: number[]): number[] => {
+
+    return ages
+        .filter((curr, index) => ages.indexOf(curr) === index)
+        .sort((a, b) => b - a)
+        .slice(0, 2)
+        .reverse();
+
+}
+
+//  FILTER WILL REMOVE DUPLICATES IF NEEDED
+// SORT ARRAY DESCENDING NUMERICALLY
+// GET FIRST TWO ELEMENTS
+// REVERSE
+
+// console.log(twoOldestAges([1, 5, 87, 45, 8, 8, 87]));
+// console.log(twoOldestAges([1, 5, 87, 45, 8, 8]));
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  PUSH():

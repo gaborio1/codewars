@@ -113,32 +113,121 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  GET TWO LARGEST NUMBERS OF ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  FILTER() TO REMOVE DUPLICATES, SORT() NUMERICALLY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
+
+The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
+
+For example:
+
+two_oldest_ages( 4, {1, 2, 10, 8}, result) // should fill result array with {8, 10}
+*/
+
+const twoOldestAges = (ages: number[]): number[] => {
+
+    return ages
+        // .filter((curr, index) => ages.indexOf(curr) === index)
+        .sort((a, b) => b - a)
+        .slice(0, 2)
+        .reverse();
+
+}
+
+//  FILTER WILL REMOVE DUPLICATES IF NEEDED
+// SORT ARRAY DESCENDING NUMERICALLY
+// GET FIRST TWO ELEMENTS
+// REVERSE
+
+// console.log(twoOldestAges([1, 5, 87, 45, 8, 8, 87]));
+// console.log(twoOldestAges([1, 5, 87, 45, 8, 8]));
 
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+const twoOldestAges2 = (ages: any) => ages.sort((a: any, b: any) => a - b).slice(ages.length - 2)
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  COUNT NUMBER OF DIVISORS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Count the number of divisors of a positive integer n.
 
+Random tests go up to n = 500000.
+
+Examples (input --> output)
+4 --> 3 (1, 2, 4)
+5 --> 2 (1, 5)
+12 --> 6 (1, 2, 3, 4, 6, 12)
+30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
+*/
+
+const divisors = (num: number): number => {
+
+    if (num === 1) return 1;
+
+    const divisors: number[] = [];
+
+    for (let i = 1; i <= num / 2; i++) {
+
+        let divisor1: number = i, divisor2: number = num / i;
+
+        if (Number.isInteger(num / divisor1)) {
+            // console.table({ divisor1: i, divisor2: num / i });
+
+            if (!divisors.includes(divisor1)) {
+                if (divisor1 === divisor2) {
+                    divisors.push(divisor1);
+                } else {
+                    divisors.push(divisor1, divisor2);
+                }
+            }
+
+        }
+    }
+
+    // console.log(divisors, divisors.length);
+    return divisors.length;
+
+}
+
+//  LOOP OVER INTEGERS UP TO num / 2
+//     IF num CAN BE DIVIDED BY divisor1
+//        IF divisors ARRAY DOES NOT INCLUDE divisor1
+//            IF divisor1 EQUALS divisor2
+//                ONLY PUSH divisor1 TO AVOID DUPLICATES (8*8=64)
+//            OTHERWISE
+//                PUSH BOTH DIVISORS
+
+//  RETURN LENGTH OF ARRAY AS RESULT
+
+// console.log(divisors(1));
+// console.log(divisors(64));
+// console.log(divisors(4));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function divisors2(n: number) {
+    let steps = 0;
 
+    for (let i = 0; i <= n; i++) {
+        if (n % i === 0) steps++;
+    }
+
+    return steps;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  COUNT DIGIT APPEARING IN SQUARES
