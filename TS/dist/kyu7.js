@@ -1,14 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const sumDigits = (num) => {
+    return Math.abs(num)
+        .toString()
+        .split("")
+        .map((digit) => Number(digit))
+        .reduce((a, b) => a + b);
+};
+function sumDigits2(number) {
+    return Math.abs(number).toString().split('').reduce((acc, digit) => parseInt(digit) + acc, 0);
+}
+const maxMultiple = (divisor, bound) => {
+    let solution = 0;
+    for (let num = bound; num > 0; num--) {
+        if (num % divisor === 0) {
+            solution = num;
+            break;
+        }
+    }
+    return solution;
+};
+function maxMultiple2(divisor, bound) {
+    return bound - bound % divisor;
+}
+function maxMultiple3(divisor, bound) {
+    return Math.floor(bound / divisor) * divisor;
+}
+function maxMultiple4(divisor, bound) {
+    for (let n = bound; n > 0; n -= 1)
+        if (n % divisor === 0)
+            return n;
+}
 const twoOldestAges = (ages) => {
     return ages
-        .filter((curr, index) => ages.indexOf(curr) === index)
         .sort((a, b) => b - a)
         .slice(0, 2)
         .reverse();
 };
-console.log(twoOldestAges([1, 5, 87, 45, 8, 8]));
+const twoOldestAges2 = (ages) => ages.sort((a, b) => a - b).slice(ages.length - 2);
 const divisors = (num) => {
     if (num === 1)
         return 1;

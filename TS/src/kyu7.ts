@@ -85,32 +85,112 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SUM DIGITS OF NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
 
+For example: (Input --> Output)
+
+10 --> 1
+99 --> 18
+-32 --> 5
+Let's assume that all numbers in the input will be integer values.
+*/
+
+const sumDigits = (num: number): number => {
+
+    return Math.abs(num)
+        .toString()
+        .split("")
+        .map((digit) => Number(digit))
+        .reduce((a, b) => a + b);
+
+}
+
+//  GET ABSOLUTE VALUE
+//  CONVERT TO STRING
+//  SPLIT INTO ARRAY OF STRINGS
+//  CONVERT TO ARRAY OF NUMBERS
+//  GET SUM 
+
+// console.log(sumDigits(453));
+// console.log(sumDigits(-32));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+function sumDigits2(number: number): number {
+    return Math.abs(number).toString().split('').reduce((acc, digit) => parseInt(digit) + acc, 0)
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  GIVEN A DIVISOR AND BOUND FOUND LARGEST INT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a Divisor and a Bound , Find the largest integer N , Such That ,
 
+Conditions :
+N is divisible by divisor
+
+N is less than or equal to bound
+
+N is greater than 0.
+
+Notes
+The parameters (divisor, bound) passed to the function are only positive values .
+It's guaranteed that a divisor is Found .
+Input >> Output Examples
+maxMultiple (2,7) ==> return (6)
+Explanation:
+(6) is divisible by (2) , (6) is less than or equal to bound (7) , and (6) is > 0
+*/
+
+const maxMultiple = (divisor: number, bound: number): number => {
+
+    let solution: number = 0;
+
+    for (let num = bound; num > 0; num--) {
+        if (num % divisor === 0) {
+            solution = num;
+            break;
+        }
+    }
+
+    return solution;
+}
+
+//  START LOOP AT bound, DECREMENT BY 1
+//  RETURN FIRST num THAT IS DIVISIBLE BY divisor
+
+
+// console.log(maxMultiple(37, 200));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️
+function maxMultiple2(divisor: number, bound: number) {
+    return bound - bound % divisor;
+}
 
+
+function maxMultiple3(divisor: number, bound: number) {
+    return Math.floor(bound / divisor) * divisor
+}
+
+
+function maxMultiple4(divisor: number, bound: number) {
+    for (let n = bound; n > 0; n -= 1) if (n % divisor === 0) return n;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GET TWO LARGEST NUMBERS OF ARRAY
