@@ -57,32 +57,115 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SMALL ENOUGH?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  EVERY()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
 
+You can assume all values in the array are numbers.
+*/
+
+const smallEnough = (arr: number[], limit: number): boolean => {
+
+    // const checkLimit = (num: number) => num <= limit;
+
+    // return arr.every(checkLimit);
+
+    return arr.every((num: number) => num <= limit);
+
+}
+
+// console.log(smallEnough([101, 45, 75, 105, 99, 107], 107));
+// console.log(smallEnough([78, 117, 110, 99, 104, 117, 107, 115], 100));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  CHECK THE EXAM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SWITCH(), NESTED TERNARY, CONTINUE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
 
+The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+
+If the score < 0, return 0.
+
+For example:
+
+checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
+*/
+
+const checkExam = (array1: string[], array2: string[]): number => {
+
+    let score: number = 0;
+
+    for (let i = 0; i < array2.length; i++) {
+
+        switch (array2[i]) {
+            case "":
+                score += 0;
+                break;
+            case array1[i]:
+                score += 4;
+                break;
+            default:
+                score += -1;
+        }
+
+    }
+
+    return score < 0 ? 0 : score;
+
+}
+
+
+// console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]));
+// console.log(checkExam(["a", "a", "c", "b"], ["a", "a", "b", ""]));
+// console.log(checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]));
+// console.log(checkExam(["b", "c", "b", "(a"], ["", "a", "a", "c"]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function checkExam2(array1: string[], array2: string[]): number {
+    let result = 0;
 
+    array2.forEach((item, index) => {
+        item === array1[index] ? result += 4 : item === '' ? result += 0 : result -= 1
+    });
+
+    return Math.max(result, 0);
+}
+
+
+function checkExam3(array1: string[], array2: string[]): number {
+    let score = 0;
+    for (let i = 0; i < array1.length; i++) {
+        if (array2[i] === "") continue;
+        else if (array1[i] === array2[i]) score += 4;
+        else score--;
+    }
+    return score > 0 ? score : 0;
+}
+
+
+function checkExam4(array1: string[], array2: string[]): number {
+    return Math.max(0, array2.reduce((a, b, i) => a + (b == "" ? 0 : b === array1[i] ? 4 : -1), 0))
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM DIGITS OF NUMBER
