@@ -452,6 +452,24 @@ function dnaStrand2(dna: string) {
 // newString = dummyString.replace(/[_^$]/g, charactersToReplace => ({'^': '', '_': ':', '$' : '+' })[charactersToReplace]);
 
 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+//  PADSTART(), PADEND():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+JavaScript String Padding
+ECMAScript 2017 added two String methods: padStart and padEnd to support padding at the beginning and at the end of a string.
+
+Example
+let str = "5";
+str = str.padStart(4,0);
+// result is 0005
+Example
+let str = "5";
+str = str.padEnd(4,0);
+// result is 5000
+*/
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // "THIS" KEYWORD
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -474,7 +492,11 @@ function dnaStrand2(dna: string) {
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // REGEX
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+//  JS REGEXP OBJECT:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // ❗️❗️❗️ SyntaxError: Invalid regular expression: /(/: Unterminated group ❗️❗️❗️
 
@@ -555,3 +577,36 @@ const duplicateEncode = (word: string): string => {
 
 // duplicateEncode("recEde");
 // duplicateEncode("(( @");    // "))(("  
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// MATCH VALID WORDS, PUNCUATION:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// VALID WORD: const validWord = /[a-z]+/gi
+// PUNCTUATION: const punctuation = /[?!\.]/g;
+
+const pigIt = (str: string): string => {
+
+    // 1️⃣
+    return str.replace(/[a-z]+/gi, (word) => `${word.slice(1)}${word.charAt(0)}ay`);
+
+    // 2️⃣
+    // const validWord = /[a-z]+/gi
+
+    // return str.replace(validWord, (word) => {
+    //     return `${word.slice(1)}${word.charAt(0)}ay`
+    // });
+
+}
+
+console.log(pigIt('pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg . cQFYCExtQFgytIxTj HWEqmZ qFiJOYxcqIObSWjSlJL lg  !  mGJtNrQ iINNKiOohUuMAk dwwOYRmL'));
+
+// pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg . cQFYCExtQFgytIxTj HWEqmZ qFiJOYxcqIObSWjSlJL lg  !  mGJtNrQ iINNKiOohUuMAk dwwOYRmL
+
+// EXPECTED THIS:
+// dNWGEbnnAYBqpay ay KDVJqay rMerdBgTDjFZYaHXdpay Xiay ! xBwJkSVppxWray ghay . QFYCExtQFgytIxTjcay WEqmZHay FiJOYxcqIObSWjSlJLqay glay ay ! ay GJtNrQmay INNKiOohUuMAkiay wwOYRmLday
+
+// TO EQUAL:
+// dNWGEbnnAYBqpay  KDVJqay rMerdBgTDjFZYaHXdpay Xiay ! xBwJkSVppxWray ghay . QFYCExtQFgytIxTjcay WEqmZHay FiJOYxcqIObSWjSlJLqay glay  !  GJtNrQmay INNKiOohUuMAkiay wwOYRmLday
+
