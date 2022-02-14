@@ -2,16 +2,62 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = void 0;
 const dirReduc = (arr) => {
-    let counter = [arr[0]];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] === "SOUTH" && counter.includes("NORTH")) {
-            arr = arr.splice(i, 1);
+    for (let i = 0; i < arr.length; i++) {
+        if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH")
+            || (arr[i] === "SOUTH" && arr[i + 1] === "NORTH")
+            || (arr[i] === "EAST" && arr[i + 1] === "WEST")
+            || (arr[i] === "WEST" && arr[i + 1] === "EAST")) {
+            arr.splice(i, 2);
+            i -= 2;
         }
     }
-    console.log(counter, arr);
-    return ["hello"];
+    console.log(arr);
+    return arr;
 };
-console.log(dirReduc(["NORTH", "SOUTH", "WEST"]));
+console.log(dirReduc(["NORTH", "SOUTH", "EAST", "WEST"]));
+function dirReduc2(arr) {
+    var pat = /(NORTHSOUTH|SOUTHNORTH|EASTWEST|WESTEAST)/;
+    var way = arr.join('');
+    while (pat.test(way))
+        way = way.replace(pat, '');
+    return way.match(/(NORTH|SOUTH|EAST|WEST)/g) || [];
+}
+const dirReduc3 = (arr) => {
+    const opposites = [
+        ['NORTH', 'SOUTH'],
+        ['EAST', 'WEST'],
+    ];
+    return arr.reduce((acc, curr) => {
+        const opposite = opposites
+            .find((el) => el.includes(curr))
+            .filter((el) => el !== curr)[0];
+        const idx = acc.length - 1;
+        return acc.length && acc[idx] === opposite
+            ? acc.slice(0, idx)
+            : acc.concat(curr);
+    }, []);
+};
+function dirReduc4(arr) {
+    let str = arr.join(':');
+    while (str.match(/NORTH:*SOUTH/) || str.match(/SOUTH:*NORTH/) || str.match(/EAST:*WEST/) || str.match(/WEST:*EAST/)) {
+        str = str.replace(/NORTH:*SOUTH/g, '').replace(/SOUTH:*NORTH/g, '').replace(/EAST:*WEST/g, '').replace(/WEST:*EAST/g, '');
+    }
+    return str.split(':').filter(Boolean);
+}
+function dirReduc5(arr) {
+    arr = arr.map(dir => dir.toUpperCase());
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "NORTH" && arr[i + 1] === "SOUTH" ||
+            arr[i] === "SOUTH" && arr[i + 1] === "NORTH" ||
+            arr[i] === "WEST" && arr[i + 1] === "EAST" ||
+            arr[i] === "EAST" && arr[i + 1] === "WEST") {
+            arr.splice(i, 2);
+            return dirReduc(arr);
+        }
+    }
+    return arr;
+}
 const humanReadable = (secInput) => {
     const HOUR = 3600, MINUTE = 60;
     let secondsLeft = secInput;

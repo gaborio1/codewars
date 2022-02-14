@@ -493,67 +493,54 @@ Notes
 Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] is not reducible. "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
 */
 
+
+
 // const dirReduc = (arr: string[]): string[] => {
 
-//     let x: number = 0, y: number = 0;
 
-//     arr.forEach((dir) => {
-//         // console.log(dir, x, y);
-//         // switch (dir) {
-//         //     case "NORTH":
-//         //         y++;
-//         //     case "SOUTH":
-//         //         y--;
-//         //     case "EAST":
-//         //         x++;
-//         //     case "WEST":
-//         //         x--;
-//         // }
-
-//         if (dir === "NORTH") y++;
-//         if (dir === "SOUTH") y--;
-//         if (dir === "EAST") x++;
-//         if (dir === "WEST") x--;
-
-//         console.log(dir, x, y);
-//     })
-
-//     console.table({ x: x, y: y });
-
-//     const calcDirections = (horizontal: number, vertical: number) => {
-//         if (!horizontal && !vertical) return [];
-
-//         if (x < 0) {
-
-//         }
-
-//         return [``]
+//     while ((arr.includes("NORTH") && arr.includes("SOUTH"))) {
+//         arr.splice(arr.indexOf("NORTH"), 1);
+//         arr.splice(arr.indexOf("SOUTH"), 1);
 //     }
 
-//     calcDirections(x, y);
+//     while ((arr.includes("EAST") && arr.includes("WEST"))) {
+//         arr.splice(arr.indexOf("EAST"), 1);
+//         arr.splice(arr.indexOf("WEST"), 1);
+//     }
 
-//     return calcDirections(x, y);
+//     console.log(arr);
+
+//     return arr;
+
 // }
+
 
 const dirReduc = (arr: string[]): string[] => {
 
-    let counter: string[] = [arr[0]]
+    for (let i = 0; i < arr.length; i++) {
 
-    for (let i = 1; i < arr.length; i++) {
-
-        if (arr[i] === "SOUTH" && counter.includes("NORTH")) {
-            arr = arr.splice(i, 1);
-            // counter = counter.splice(counter.indexOf("NORTH"), 1)
+        if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH")
+            || (arr[i] === "SOUTH" && arr[i + 1] === "NORTH")
+            || (arr[i] === "EAST" && arr[i + 1] === "WEST")
+            || (arr[i] === "WEST" && arr[i + 1] === "EAST")
+        ) {
+            arr.splice(i, 2);
+            i -= 2;
         }
 
     }
 
-    console.log(counter, arr);
+    // console.log(arr);
 
-    return ["hello"];
+    return arr;
+
 }
 
-console.log(dirReduc(["NORTH", "SOUTH", "WEST"]));
+//  IF PAIR OF OPPOSITES IS FOUND
+//      DELETE PAIR
+//      RESET LOOP
+
+// console.log(dirReduc(["NORTH", "SOUTH", "NORTH", "SOUTH"]));
 // [WEST]
 // console.log(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]));
 // []
@@ -563,7 +550,64 @@ console.log(dirReduc(["NORTH", "SOUTH", "WEST"]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function dirReduc2(arr: string[]): string[] {
+    var pat = /(NORTHSOUTH|SOUTHNORTH|EASTWEST|WESTEAST)/;
+    var way = arr.join('');
+    while (pat.test(way)) way = way.replace(pat, '');
+    return way.match(/(NORTH|SOUTH|EAST|WEST)/g) || [];
+}
 
+
+
+const dirReduc3 = (arr: string[]): string[] => {
+    const opposites = [
+        ['NORTH', 'SOUTH'],
+        ['EAST', 'WEST'],
+    ];
+
+    return arr.reduce((acc: string[], curr: string) => {
+        const opposite = opposites
+            .find((el) => el.includes(curr))!
+            .filter((el) => el !== curr)[0];
+
+        const idx = acc.length - 1;
+
+        return acc.length && acc[idx] === opposite
+            ? acc.slice(0, idx)
+            : acc.concat(curr);
+    }, []);
+};
+
+
+
+function dirReduc4(arr: string[]): string[] {
+    let str = arr.join(':');
+
+    while (str.match(/NORTH:*SOUTH/) || str.match(/SOUTH:*NORTH/) || str.match(/EAST:*WEST/) || str.match(/WEST:*EAST/)) {
+        str = str.replace(/NORTH:*SOUTH/g, '').replace(/SOUTH:*NORTH/g, '').replace(/EAST:*WEST/g, '').replace(/WEST:*EAST/g, '');
+    }
+
+    return str.split(':').filter(Boolean);
+}
+
+
+
+function dirReduc5(arr: string[]): string[] {
+    arr = arr.map(dir => dir.toUpperCase());
+
+    console.log(arr)
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "NORTH" && arr[i + 1] === "SOUTH" ||
+            arr[i] === "SOUTH" && arr[i + 1] === "NORTH" ||
+            arr[i] === "WEST" && arr[i + 1] === "EAST" ||
+            arr[i] === "EAST" && arr[i + 1] === "WEST") {
+            arr.splice(i, 2);
+            return dirReduc(arr);
+        }
+    }
+
+    return arr;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HUMAN READABLE TIME
