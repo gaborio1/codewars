@@ -144,14 +144,33 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  KM/HOUR TO CM/SECOND
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
 
+For example:
+
+1.08 --> 30
+Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer.
+*/
+
+const cockroachSpeed = (s: number): number => {
+
+	// return Math.floor(s * 27.777778);
+	return Math.floor(s * 1000 / 36);
+
+}
+
+//  1 km/hour = 1000/3600 (0.27777778) m/sec = 1000/3600*100 (27.777778) cm/sec
+
+console.log(cockroachSpeed(1.08));
+console.log(cockroachSpeed(1.09));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -218,8 +237,8 @@ const feast = (beast: string, dish: string): boolean => {
 	return beast[0] === dish[0] && beast.slice(-1) === dish.slice(-1);
 }
 
-console.log(feast("great blue heron", "garlic naan"));
-console.log(feast("brown bear", "bear claw"));
+// console.log(feast("great blue heron", "garlic naan"));
+// console.log(feast("brown bear", "bear claw"));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============

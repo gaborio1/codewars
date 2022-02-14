@@ -1,12 +1,21 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.humanReadable2 = void 0;
+const dirReduc = (arr) => {
+    let counter = [arr[0]];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] === "SOUTH" && counter.includes("NORTH")) {
+            arr = arr.splice(i, 1);
+        }
+    }
+    console.log(counter, arr);
+    return ["hello"];
+};
+console.log(dirReduc(["NORTH", "SOUTH", "WEST"]));
 const humanReadable = (secInput) => {
-    const HOUR = 3600;
-    const MINUTE = 60;
-    const SECOND = 1;
+    const HOUR = 3600, MINUTE = 60;
     let secondsLeft = secInput;
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
+    let hours = 0, minutes = 0, seconds = 0;
     const padToTwo = (num) => {
         return num < 10 ? `0${String(num)}` : `${String(num)}`;
     };
@@ -15,10 +24,22 @@ const humanReadable = (secInput) => {
     minutes = Math.floor(secondsLeft / MINUTE);
     secondsLeft = secondsLeft % MINUTE;
     seconds = secondsLeft;
-    console.table({ hours: hours, minutes: minutes, seconds: seconds });
     return `${padToTwo(hours)}:${padToTwo(minutes)}:${padToTwo(seconds)}`;
 };
-console.log(humanReadable(3661));
+const format = (n) => String(Math.floor(n)).padStart(2, "00");
+function humanReadable2(seconds) {
+    const h = seconds / 3600;
+    const m = seconds % 3600 / 60;
+    const s = seconds % 3600 % 60;
+    return [h, m, s].map(format).join(":");
+}
+exports.humanReadable2 = humanReadable2;
+function humanReadable3(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor(seconds / 60) % 60;
+    const pad = (n) => `${n}`.padStart(2, '0');
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds % 60)}`;
+}
 const pigIt = (str) => {
     return str.replace(/[a-z]+/gi, (word) => `${word.slice(1)}${word.charAt(0)}ay`);
 };

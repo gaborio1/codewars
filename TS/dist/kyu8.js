@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const cockroachSpeed = (s) => {
+    return Math.floor(s * 1000 / 36);
+};
+console.log(cockroachSpeed(1.08));
+console.log(cockroachSpeed(1.09));
 function stringToArray(s) {
     return s.split(" ");
 }
@@ -17,8 +22,6 @@ console.log((smash(["this", "is", "a", "really", "long", "sentence"])));
 const feast = (beast, dish) => {
     return beast[0] === dish[0] && beast.slice(-1) === dish.slice(-1);
 };
-console.log(feast("great blue heron", "garlic naan"));
-console.log(feast("brown bear", "bear claw"));
 function feast2(beast, dish) {
     return beast.startsWith(dish.charAt(0)) && beast.endsWith(dish.charAt(dish.length - 1));
 }

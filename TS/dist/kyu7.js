@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const minValue = (values) => {
+    return Number(Array.from(new Set(values)).sort().join(""));
+};
+const minValue2 = (values) => {
+    return +[...new Set(values)].sort().join("");
+};
 const smallEnough = (arr, limit) => {
     return arr.every((num) => num <= limit);
 };

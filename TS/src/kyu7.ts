@@ -43,18 +43,67 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  FORM THE MINIMUM (SMALLEST NUMBER WITHOUT DUPLICATION)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SET(), ARRAY.FROM()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
 
+Notes:
+Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
+Input >> Output Examples
+minValue ({1, 3, 1})  ==> return (13)
+Explanation:
+(13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+
+minValue({5, 7, 5, 9, 7})  ==> return (579)
+Explanation:
+(579) is the minimum number could be formed from {5, 7, 5, 9, 7} , Without duplications
+
+minValue({1, 9, 3, 1, 7, 4, 6, 6, 7}) return  ==> (134679)
+Explanation:
+(134679) is the minimum number could be formed from {1, 9, 3, 1, 7, 4, 6, 6, 7} , Without duplications
+*/
+
+const minValue = (values: number[]): number => {
+
+    //1️⃣
+    // const uniques = new Set(values);
+    // const incrOrder = Array.from(uniques).sort();
+    // let numStr = "";
+    // incrOrder.forEach((digit) => {
+    //     numStr += digit;
+    // })
+    // return Number(numStr);
+
+
+    // 2️⃣
+    // const uniques = new Set(values);
+    // return Number(Array.from(uniques).sort().join(""));
+
+    // 3️⃣
+    return Number(Array.from(new Set(values)).sort().join(""));
+
+};
+
+//  REMOVE DUPLICATES USING Set
+//  MAKE ARRAY FROM UNUQUE VALUES
+//  SORT ARRAY IN ASCENDING ORDER
+//  JOIN INTO STRING
+//  CONVERT TO NUMBER
+
+// console.log(minValue([4, 7, 5, 7]));
+// console.log(minValue([6, 7, 8, 7, 6, 6]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+const minValue2 = (values: Array<number>): number => {
+    return +[...new Set(values)].sort().join("");
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SMALL ENOUGH?
