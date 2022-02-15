@@ -119,18 +119,98 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  VALID BRACES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// KEYWORDS: REGEXP, WHILE(), REPLACE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
+
+This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
+
+All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+What is considered Valid?
+A string of braces is considered valid if all braces are matched with the correct brace.
+
+Examples
+"(){}[]"   =>  True
+"([{}])"   =>  True
+"(}"       =>  False
+"[(])"     =>  False
+"[({})](]" =>  False
+*/
+
+// /\(\)|\[\]|\{\}/g
+
+const validBraces = (braces: string): boolean => {
+
+    if (braces.length % 2 > 0) return false;
+
+    const bracePair = /\(\)|\[\]|\{\}/;
+
+    let str: string = braces;
+
+    while (bracePair.test(str)) {
+        str = str.replace(bracePair, "");
+    }
+
+    console.log("str: " + str);
+
+    return str.length === 0;
+
+}
+
+//  RETURN FALSE IF UNVALID INPUT LENGTH
+//  SAVE MATCHING PAIRS TO VAR bracePair
+//  COPY braces TO str
+//  WHILE MATCH IS FOUND (ANY OF THE THREE)
+//      REMOVE PAIR FROM str
+//  IF str CAN BE REDUCED TO EMPTY STRING, RETURN true, OTHERWISE false
+
+// console.log(validBraces("()[]{}"));
+// console.log(validBraces("({[{}]})"));
+console.log(validBraces("[(])"));
+// console.log(validBraces("[(])"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function validBraces2(braces: string): boolean {
+    if (braces.length % 2 !== 0) return false;
+    let count = braces.length;
+    braces = braces.replace('()', '');
+    braces = braces.replace('[]', '');
+    braces = braces.replace('{}', '');
+    if (braces.length === 0) return true;
+    if (braces.length === count) return false;
+    return validBraces(braces);
+}
 
 
 
+function validBraces3(braces: string): boolean {
+    let tempBraces = braces;
+    for (let i = 0; i <= braces.length / 2; i++) {
+        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, '');
+    }
+    return !tempBraces
+}
 
+
+
+function validBrace4(braces: string): boolean {
+    [...braces].forEach(() => braces = braces.replace('()', '').replace('{}', '').replace('[]', ''))
+    return !braces;
+}
+
+
+const validBraces5 = (braces: string): boolean => {
+    const s = braces.replace(/\(\)|\[\]|\{\}/g, "");
+    if (s.length === 0) return true;
+    else if (s === braces) return false;
+    else return validBraces(s);
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -140,13 +220,13 @@
 
 /*
 Given a string of words, you need to find the highest scoring word.
-
+ 
 Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
-
+ 
 You need to return the highest scoring word as a string.
-
+ 
 If two words score the same, return the word that appears earliest in the original string.
-
+ 
 All letters will be lowercase and all inputs will be valid.
 */
 
@@ -217,11 +297,11 @@ const high3 = (str: string): string =>
 Build Tower
 Build Tower by the following given argument:
 number of floors (integer and always greater than 0).
-
+ 
 Tower block is represented as *
-
+ 
 towerBuilder(3)
-
+ 
 [
   '  *  ', 
   ' *** ', 
@@ -259,7 +339,7 @@ const towerBuilder = (nFloors: number): string[] => {
 }
 
 /*
-
+ 
  CALCULATE ABSOLUTE WIDTH OF PYRAMID (WIDTH OF BASE)
  INITAILIZE ARRAY FOR BUILDING (SOLUTION)
  
@@ -272,7 +352,7 @@ const towerBuilder = (nFloors: number): string[] => {
     PUSH NEW FLOOR INTO BUILDING ARRAY
     
   RETURN BUILDING
-
+ 
   [
   '           *           ',
   '          ***          ',
@@ -337,14 +417,14 @@ const towerBuilder5 = (n: number): string[] => {
 
 /*
 Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
-
+ 
 You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
 The array will always contain letters in only one case.
-
+ 
 Example:
-
+ 
 ['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
-
+ 
 ["a","b","c","d","f"] -> "e"
 ["O","Q","R","S"] -> "P"
 (Use the English alphabet with 26 letters!)
@@ -444,11 +524,11 @@ function findMissingLetter5(array: string[]) {
 
 /*
 There is an array with some numbers. All numbers are equal except for one. Try to find it!
-
+ 
 findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
 findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
 It’s guaranteed that array contains at least 3 numbers.
-
+ 
 The tests contain some very huge arrays, so think about performance.
 */
 
@@ -562,17 +642,17 @@ function findUniq7(arr: Array<number>): number {
 
 /*
 A Narcissistic Number is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
-
+ 
 For example, take 153 (3 digits), which is narcisstic:
-
+ 
     1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
 and 1652 (4 digits), which isn't:
-
+ 
     1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
 The Challenge:
-
+ 
 Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10. This may be True and False in your language, e.g. PHP.
-
+ 
 Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
 */
 
@@ -622,7 +702,7 @@ function narcissistic3(value: number): boolean {
 
 /*
 A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
-
+ 
 Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
 */
 
@@ -676,16 +756,16 @@ let onlyLettersArray = message.split('').filter(char => /[a-zA-Z]/.test(char));
 let onlyLettersArray = message.replace(/[^a-z]+/gi, '').split('');
 let arr = "Learning is fun!  1233  ashdgahsgdh".match(/[A-Za-z]/g);
 8?
-
+ 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
+ 
 const isPangram3 = (phrase: string): boolean => new Set(phrase.toLowerCase().match(/[a-z]/g)).size === 26;
-
-
+ 
+ 
 const isPangram4 = (phrase: string): boolean => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     .every(l => phrase.toLowerCase().includes(l))
-
-
+ 
+ 
 function isPangram5(phrase: string): boolean {
     let newString: Set<string> = new Set((phrase.replace(/\W|\d/g, '')).toLowerCase());
     if (newString.size == 26) {
@@ -694,19 +774,19 @@ function isPangram5(phrase: string): boolean {
         return false;
     }
 }
-
-
+ 
+ 
 // 
-
+ 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIRST N ELEMENTS OF TRIBONACCI SEQUENCE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
+ 
 /*
 As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
-
+ 
     So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
     
     [1, 1 ,1, 3, 5, 9, 17, 31, ...]
@@ -912,23 +992,23 @@ const order = (words: string): string => {
 
 /*
 ❗️❗️❗️ TS2531: Object is possibly 'null' ❗️❗️❗️
-
+ 
 https://stackoverflow.com/questions/49431880/ts2531-object-is-possibly-null
-
+ 
 You should either check for null (using an if) or use a "Non-null assertion operator" (!) if you are sure it is not null:
-
+ 
 if(nativeElement.files != null) {
     this.photoService.upload(this.vehicleId, nativeElement.files[0])
         .subscribe(x => console.log(x));
 }
-
+ 
 OR
 this.photoService.upload(this.vehicleId, nativeElement.files![0])
     .subscribe(x => console.log(x));
 Note:
-
+ 
 The "Non-null assertion operator" will not perform any runtime checks, it just tells the compiler you have special information and you know nativeElement.files will not be null at runtime.
-
+ 
 If nativeElement.files is null at runtime, it will generate an error. This is not the safe navigation operator of other languages.
 */
 

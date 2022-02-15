@@ -1,11 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const greetTwo = (name, owner) => {
+    return `Hello ${name === owner ? "boss" : "guest"}`;
+};
+function greetTwo2(name, owner) {
+    return 'Hello ' + (name == owner ? 'boss' : 'guest');
+}
+const rentalCarCost = (days) => {
+    return days < 3 ? days * 40 : days < 7 ? days * 40 - 20 : days * 40 - 50;
+};
+function rentalCarCost2(d) {
+    let total = d * 40;
+    if (d >= 3 && d < 7)
+        total -= 20;
+    if (d >= 7)
+        total -= 50;
+    return total;
+}
+const rentalCarCost3 = (d) => d * 40 - (d >= 7 ? 50 : d >= 3 ? 20 : 0);
 const cockroachSpeed = (s) => {
     return Math.floor(s * 1000 / 36);
 };
-console.log(cockroachSpeed(1.08));
-console.log(cockroachSpeed(1.09));
 function stringToArray(s) {
     return s.split(" ");
 }

@@ -11,10 +11,8 @@ const dirReduc = (arr) => {
             i -= 2;
         }
     }
-    console.log(arr);
     return arr;
 };
-console.log(dirReduc(["NORTH", "SOUTH", "EAST", "WEST"]));
 function dirReduc2(arr) {
     var pat = /(NORTHSOUTH|SOUTHNORTH|EASTWEST|WESTEAST)/;
     var way = arr.join('');

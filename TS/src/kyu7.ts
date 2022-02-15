@@ -36,11 +36,80 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
 
+make as few changes as possible.
+if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+For example:
+
+solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+More examples in test cases. Good luck!
+*/
+
+// 1️⃣  ❗️❗️❗️ THIS WORKS IN IDE BUT THROWS ERROR IN CODEWARS ❗️❗️❗️
+// (OBJECT IS POSSIBLY NULL)
+
+// const solve = (str: string) => {
+
+//     const capitals: number | undefined = str.match(/[A-Z]/g)?.length;
+
+//     if (capitals) {
+//         return capitals > str.length / 2 ? str.toUpperCase() : str.toLowerCase();
+//     } else {
+//         return str.toLowerCase();
+//     }
+
+// }
+
+
+// 2️⃣ ✅ SOLVED WITH DIFFERENT LOGIC:
+const solve = (str: string) => {
+
+    let upperC: number = 0;
+
+    for (const letter of str) {
+        if (/[A-Z]/.test(letter)) upperC++;
+    }
+
+    return upperC > str.length / 2
+        ? str.toUpperCase()
+        : str.toLowerCase();
+
+}
+
+
+
+
+// console.log(solve("code"));
+// console.log(solve("CODe"));
+// console.log(solve("COde"));
+// console.log(solve("Code"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function solve2(s: string) {
+    let uppercaseCount = s.split('').filter(letter => letter === letter.toUpperCase()).length;
+    return uppercaseCount > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+}
 
+// ❗️❗️❗️ MATCH(REGEX || []) ❗️❗️❗️
+function solve3(s: string): string {
+    return (s.match(/[a-z]/g) || []).length >= s.length / 2 ? s.toLowerCase() : s.toUpperCase()
+}
+
+
+const solve4 = (s: string) => {
+    const upperCs = s.split("").filter(x => x == x.toUpperCase())
+    return upperCs.length > s.length / 2 ? s.toUpperCase() : s.toLowerCase()
+}
+
+
+function solve5(s: string) {
+    return s.replace(/[a-z]/g, '').length > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FORM THE MINIMUM (SMALLEST NUMBER WITHOUT DUPLICATION)

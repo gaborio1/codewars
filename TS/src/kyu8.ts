@@ -118,30 +118,86 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  PERSONALIZED MESSAGE - GREET BOSS/GUEST
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  TERNARY IN STRING TEMPLATE 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
 
+Use conditionals to return the proper message:
+
+case	return
+name equals owner	'Hello boss'
+otherwise	'Hello guest'
+*/
+
+const greetTwo = (name: string, owner: string): string => {
+
+	return `Hello ${name === owner ? "boss" : "guest"}`;
+
+}
+
+// console.log(greetTwo('Daniel', 'Daniel'));
+// console.log(greetTwo('Greg', 'Daniel'));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function greetTwo2(name: string, owner: string): string {
+	return 'Hello ' + (name == owner ? 'boss' : 'guest');
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  TRANSPORTATION ON VACATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  CHAINED TERNARY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+After a hard quarter in the office you decide to get some rest on a vacation. So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
 
+You will need a rental car in order for you to get around in your vacation. The manager of the car rental makes you some good offers.
+
+Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+
+Write a code that gives out the total amount for different days(d).
+*/
+
+const rentalCarCost = (days: number): number => {
+
+	return days < 3 ? days * 40 : days < 7 ? days * 40 - 20 : days * 40 - 50;
+
+	// return days < 3
+	// 	? days * 40
+	// 	: days < 7
+	// 		? days * 40 - 20
+	// 		: days * 40 - 50;
+
+}
+
+// console.log(rentalCarCost(1));
+// console.log(rentalCarCost(2));
+// console.log(rentalCarCost(3));
+// console.log(rentalCarCost(4));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function rentalCarCost2(d: number): number {
+	let total = d * 40
+	if (d >= 3 && d < 7) total -= 20
+	if (d >= 7) total -= 50
+
+	return total
+}
+
+
+
+const rentalCarCost3 = (d: number) => d * 40 - (d >= 7 ? 50 : d >= 3 ? 20 : 0)
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  KM/HOUR TO CM/SECOND
@@ -169,8 +225,8 @@ const cockroachSpeed = (s: number): number => {
 
 //  1 km/hour = 1000/3600 (0.27777778) m/sec = 1000/3600*100 (27.777778) cm/sec
 
-console.log(cockroachSpeed(1.08));
-console.log(cockroachSpeed(1.09));
+// console.log(cockroachSpeed(1.08));
+// console.log(cockroachSpeed(1.09));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

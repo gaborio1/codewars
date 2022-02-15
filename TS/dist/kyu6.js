@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const validBraces = (braces) => {
+    if (braces.length % 2 > 0)
+        return false;
+    const bracePair = /\(\)|\[\]|\{\}/;
+    let str = braces;
+    while (bracePair.test(str)) {
+        str = str.replace(bracePair, "");
+    }
+    console.log("str: " + str);
+    return str.length === 0;
+};
+console.log(validBraces("[(])"));
 const high = (str) => {
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const getScore = (str) => {

@@ -1,6 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const solve = (str) => {
+    let upperC = 0;
+    for (const letter of str) {
+        if (/[A-Z]/.test(letter))
+            upperC++;
+    }
+    return upperC > str.length / 2
+        ? str.toUpperCase()
+        : str.toLowerCase();
+};
+function solve2(s) {
+    let uppercaseCount = s.split('').filter(letter => letter === letter.toUpperCase()).length;
+    return uppercaseCount > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+}
+function solve3(s) {
+    return (s.match(/[a-z]/g) || []).length >= s.length / 2 ? s.toLowerCase() : s.toUpperCase();
+}
+const solve4 = (s) => {
+    const upperCs = s.split("").filter(x => x == x.toUpperCase());
+    return upperCs.length > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+};
+function solve5(s) {
+    return s.replace(/[a-z]/g, '').length > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+}
 const minValue = (values) => {
     return Number(Array.from(new Set(values)).sort().join(""));
 };
