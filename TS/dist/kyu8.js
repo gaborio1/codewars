@@ -1,6 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const enough = (cap, on, wait) => {
+    return cap < (on + wait)
+        ? (on + wait) - cap
+        : 0;
+};
+const enough2 = (cap, on, wait) => Math.max(on + wait - cap, 0);
+const setAlarm = (employed, vacation) => {
+    return employed && !vacation;
+};
+const setAlarm2 = (employed, vacation) => employed && !vacation;
 const greetTwo = (name, owner) => {
     return `Hello ${name === owner ? "boss" : "guest"}`;
 };
@@ -34,7 +44,6 @@ function stringToArray3(s) {
 const smash = (words) => {
     return words.join(" ");
 };
-console.log((smash(["this", "is", "a", "really", "long", "sentence"])));
 const feast = (beast, dish) => {
     return beast[0] === dish[0] && beast.slice(-1) === dish.slice(-1);
 };

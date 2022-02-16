@@ -1,6 +1,61 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+class G964 {
+}
+G964.mxdiflg = (a1, a2) => {
+    const shortest1 = Math.min(...a1.map((word) => word.length));
+    const longest1 = Math.max(...a1.map((word) => word.length));
+    const shortest2 = Math.min(...a2.map((word) => word.length));
+    const longest2 = Math.max(...a2.map((word) => word.length));
+    return Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2));
+};
+G964.mxdiflg2 = (a1, a2) => {
+    if (!a1.length || !a2.length)
+        return -1;
+    const getShortest = (arr) => Math.min(...arr.map((word) => word.length));
+    const getLongest = (arr) => Math.max(...arr.map((word) => word.length));
+    const shortest1 = getShortest(a1);
+    const longest1 = getLongest(a1);
+    const shortest2 = getShortest(a2);
+    const longest2 = getLongest(a2);
+    return Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2));
+};
+G964.mxdiflg3 = (a1, a2) => {
+    if (!a1.length || !a2.length)
+        return -1;
+    const getMinMax = (arr, output) => {
+        return output === "min"
+            ? Math.min(...arr.map((word) => word.length))
+            : Math.max(...arr.map((word) => word.length));
+    };
+    const shortest1 = getMinMax(a1, "min");
+    const longest1 = getMinMax(a1, "max");
+    const shortest2 = getMinMax(a2, "min");
+    const longest2 = getMinMax(a2, "max");
+    return Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2));
+};
+G964.mxdiflg4 = (a1, a2) => {
+    const getMinMax = (arr, output) => {
+        return output === "min"
+            ? Math.min(...arr.map((word) => word.length))
+            : Math.max(...arr.map((word) => word.length));
+    };
+    const shortest1 = getMinMax(a1, "min");
+    const longest1 = getMinMax(a1, "max");
+    const shortest2 = getMinMax(a2, "min");
+    const longest2 = getMinMax(a2, "max");
+    return (!a1.length || !a2.length)
+        ? -1
+        : Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2));
+};
+const s1 = ['ejjjjmmtthh',
+    'zxxuueeg',
+    'aanlljrrrxx',
+    'dqqqaaabbb',
+    'oocccffuucccjjjkkkjyyyeehh'];
+const s2 = ['bbbaaayddqbbrrrv'];
+console.log(G964.mxdiflg(s1, s2));
 const solve = (str) => {
     let upperC = 0;
     for (const letter of str) {

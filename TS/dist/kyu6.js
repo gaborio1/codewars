@@ -12,7 +12,39 @@ const validBraces = (braces) => {
     console.log("str: " + str);
     return str.length === 0;
 };
-console.log(validBraces("[(])"));
+function validBraces2(braces) {
+    if (braces.length % 2 !== 0)
+        return false;
+    let count = braces.length;
+    braces = braces.replace('()', '');
+    braces = braces.replace('[]', '');
+    braces = braces.replace('{}', '');
+    if (braces.length === 0)
+        return true;
+    if (braces.length === count)
+        return false;
+    return validBraces(braces);
+}
+function validBraces3(braces) {
+    let tempBraces = braces;
+    for (let i = 0; i <= braces.length / 2; i++) {
+        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, '');
+    }
+    return !tempBraces;
+}
+function validBrace4(braces) {
+    [...braces].forEach(() => braces = braces.replace('()', '').replace('{}', '').replace('[]', ''));
+    return !braces;
+}
+const validBraces5 = (braces) => {
+    const s = braces.replace(/\(\)|\[\]|\{\}/g, "");
+    if (s.length === 0)
+        return true;
+    else if (s === braces)
+        return false;
+    else
+        return validBraces(s);
+};
 const high = (str) => {
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const getScore = (str) => {
