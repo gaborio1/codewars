@@ -534,15 +534,15 @@ class G964 {
 // var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
 // var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
 
-const s1 = ['ejjjjmmtthh',
-    'zxxuueeg',
-    'aanlljrrrxx',
-    'dqqqaaabbb',
-    'oocccffuucccjjjkkkjyyyeehh']
+// const s1 = ['ejjjjmmtthh',
+//     'zxxuueeg',
+//     'aanlljrrrxx',
+//     'dqqqaaabbb',
+//     'oocccffuucccjjjkkkjyyyeehh']
 
-const s2 = ['bbbaaayddqbbrrrv']
+// const s2 = ['bbbaaayddqbbrrrv']
 
-console.log(G964.mxdiflg(s1, s2));
+// console.log(G964.mxdiflg(s1, s2));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

@@ -4,6 +4,8 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
 class G964 {
 }
 G964.mxdiflg = (a1, a2) => {
+    if (!a1.length || !a2.length)
+        return -1;
     const shortest1 = Math.min(...a1.map((word) => word.length));
     const longest1 = Math.max(...a1.map((word) => word.length));
     const shortest2 = Math.min(...a2.map((word) => word.length));
@@ -45,17 +47,10 @@ G964.mxdiflg4 = (a1, a2) => {
     const longest1 = getMinMax(a1, "max");
     const shortest2 = getMinMax(a2, "min");
     const longest2 = getMinMax(a2, "max");
-    return (!a1.length || !a2.length)
-        ? -1
-        : Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2));
+    return a1.length && a2.length
+        ? Math.max(Math.abs(shortest1 - longest2), Math.abs(longest1 - shortest2))
+        : -1;
 };
-const s1 = ['ejjjjmmtthh',
-    'zxxuueeg',
-    'aanlljrrrxx',
-    'dqqqaaabbb',
-    'oocccffuucccjjjkkkjyyyeehh'];
-const s2 = ['bbbaaayddqbbrrrv'];
-console.log(G964.mxdiflg(s1, s2));
 const solve = (str) => {
     let upperC = 0;
     for (const letter of str) {
