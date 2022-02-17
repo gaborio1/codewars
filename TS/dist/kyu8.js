@@ -1,6 +1,57 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const doubleChar = (str) => {
+    let solution = "";
+    for (const letter of str) {
+        solution += letter.repeat(2);
+    }
+    return solution;
+};
+console.log(doubleChar("abcd"));
+function doubleChar5(str) {
+    return str.replace(/./g, e => e + e);
+}
+const doubleChar2 = ($) => [...$].reduce((ac, e) => ac + e + e, '');
+const doubleChar3 = (str) => str
+    .split('')
+    .map(c => c.repeat(2))
+    .join('');
+function doubleChar4(str) {
+    return [...str].map(c => c + c).join('');
+}
+function doubleChar6(str) {
+    return str.replace(/(.)/g, '$1$1');
+}
+const getGrade = (a, b, c) => {
+    const average = (a + b + c) / 3;
+    switch (true) {
+        case average >= 90:
+            return "A";
+        case average >= 80:
+            return "B";
+        case average >= 70:
+            return "C";
+        case average >= 60:
+            return "D";
+        default:
+            return "F";
+    }
+};
+function getGrade2(a, b, c) {
+    let avg = (a + b + c) / 3;
+    return avg < 60 ? "F" : avg < 70 ? "D" : avg < 80 ? "C" : avg < 90 ? "B" : "A";
+}
+function getGrade3(a, b, c) {
+    switch ((a + b + c) / 30 | 0) {
+        case 10: return 'A';
+        case 9: return 'A';
+        case 8: return 'B';
+        case 7: return 'C';
+        case 6: return 'D';
+        default: return 'F';
+    }
+}
 const enough = (cap, on, wait) => {
     return cap < (on + wait)
         ? (on + wait) - cap
