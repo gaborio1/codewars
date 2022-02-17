@@ -1,6 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+class G964 {
+}
+G964.digPow = (num, pow) => {
+    const digitArr = String(num).split("").map((Number));
+    let sum = 0;
+    digitArr.forEach((digit, idx) => {
+        sum += Math.pow(digit, idx + pow);
+    });
+    console.log("sum: " + sum);
+    return sum % num === 0
+        ? sum / num
+        : -1;
+};
 const validBraces = (braces) => {
     if (braces.length % 2 > 0)
         return false;

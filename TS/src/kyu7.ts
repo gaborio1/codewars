@@ -402,16 +402,85 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  ALTERNATE CAPITALIZATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
 
+For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+The input will be a lowercase string with no spaces.
+*/
+
+const capitalize = (str: string): string[] => {
+
+    let odds: string = "", evens: string = "";
+
+    for (let i = 0; i < str.length; i++) {
+        evens += i % 2 === 0 ? str[i].toUpperCase() : str[i];
+        odds += i % 2 > 0 ? str[i].toUpperCase() : str[i];
+    }
+
+    return [evens, odds];
+
+}
+
+//  INITIALIZE EMPTY STRINGS FOR BOTH WORDS
+//  LOOP OVER str
+//      BUILD evens
+//      BUILD odds
+// RETURN SOLUTION AS ARRAY OF STRINGS
+
+console.log(capitalize("abcdef"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const capitalize2 = (s: string) => [
+    [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
+    [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),
+];
+
+
+
+function capitalize3(s: string) {
+    const output = ["", ""];
+    s.split("").forEach((letter, index) => {
+        output[0] += index % 2 ? letter : letter.toUpperCase();
+        output[1] += !(index % 2) ? letter : letter.toUpperCase();
+    });
+    return output;
+}
+
+
+
+function capitalize4(s: string) {
+    return [...s].reduce((acc, curr, indx) => {
+        const isEven = indx % 2 == 0;
+        acc[0] += curr[isEven ? "toUpperCase" : "toLowerCase"]();
+        acc[1] += curr[!isEven ? "toUpperCase" : "toLowerCase"]();
+        return acc;
+    }, ["", ""])
+}
+
+
+
+function capitalize5(s: string): Array<string> {
+    return [
+        s
+            .split('')
+            .map((letter, i) => i % 2 === 0 ? letter.toUpperCase() : letter.toLowerCase())
+            .join(''),
+        s
+            .split('')
+            .map((letter, i) => i % 2 !== 0 ? letter.toUpperCase() : letter.toLowerCase())
+            .join('')
+    ];
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

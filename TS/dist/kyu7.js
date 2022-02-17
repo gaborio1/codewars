@@ -1,6 +1,47 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const capitalize = (str) => {
+    let odds = "", evens = "";
+    for (let i = 0; i < str.length; i++) {
+        evens += i % 2 === 0 ? str[i].toUpperCase() : str[i];
+        odds += i % 2 > 0 ? str[i].toUpperCase() : str[i];
+    }
+    return [evens, odds];
+};
+console.log(capitalize("abcdef"));
+const capitalize2 = (s) => [
+    [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
+    [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),
+];
+function capitalize3(s) {
+    const output = ["", ""];
+    s.split("").forEach((letter, index) => {
+        output[0] += index % 2 ? letter : letter.toUpperCase();
+        output[1] += !(index % 2) ? letter : letter.toUpperCase();
+    });
+    return output;
+}
+function capitalize4(s) {
+    return [...s].reduce((acc, curr, indx) => {
+        const isEven = indx % 2 == 0;
+        acc[0] += curr[isEven ? "toUpperCase" : "toLowerCase"]();
+        acc[1] += curr[!isEven ? "toUpperCase" : "toLowerCase"]();
+        return acc;
+    }, ["", ""]);
+}
+function capitalize5(s) {
+    return [
+        s
+            .split('')
+            .map((letter, i) => i % 2 === 0 ? letter.toUpperCase() : letter.toLowerCase())
+            .join(''),
+        s
+            .split('')
+            .map((letter, i) => i % 2 !== 0 ? letter.toUpperCase() : letter.toLowerCase())
+            .join('')
+    ];
+}
 class G964 {
 }
 G964.mxdiflg = (a1, a2) => {
