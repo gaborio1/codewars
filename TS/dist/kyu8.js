@@ -1,6 +1,88 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const toAlternatingCase = (str) => {
+    const alterCase = (char) => {
+        return char === char.toUpperCase()
+            ? char.toLowerCase()
+            : char.toUpperCase();
+    };
+    return str.replace(/[a-z]/gi, (letter) => alterCase(letter));
+};
+function toAlternatingCase2(s) {
+    return s.split("").map(a => a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()).join('');
+}
+function toAlternatingCase3(s) {
+    return s.split('')
+        .map((e) => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase())
+        .join('');
+}
+const flipCharAlphaCase = (code) => code >= 65 && code <= 90 ? code + 32 :
+    code >= 97 && code <= 122 ? code - 32 : code;
+const toAlternatingCase4 = (s) => String.fromCharCode(...s.split("").map(char => char.charCodeAt(0)).map(flipCharAlphaCase));
+const updateLight = (current) => {
+    const sequence = ["green", "yellow", "red"];
+    const next = sequence.indexOf(current) + 1;
+    return sequence[next]
+        ? sequence[next]
+        : sequence[0];
+};
+function updateLight2(current) {
+    const L = ['green', 'yellow', 'red', 'green'];
+    return L[L.indexOf(current) + 1];
+}
+const updateLight3 = ($) => $ === 'green' ? 'yellow' : $ === 'yellow' ? 'red' : $ === 'red' ? 'green' : 'error';
+function updateLight5(current) {
+    switch (current) {
+        case "green":
+            return "yellow";
+            break;
+        case "yellow":
+            return "red";
+            break;
+        case "red":
+            return "green";
+            break;
+    }
+    return current;
+}
+function updateLight6(current) {
+    return '' + { 'green': 'yellow', 'yellow': 'red', 'red': 'green' }[current];
+}
+const correct = (str) => {
+    const errors = { "5": "S", "0": "O", "1": "I" };
+    return str.replace(/[015]/g, (char) => errors[char]);
+};
+function correct2(s) {
+    return s.replace(/\d/g, e => {
+        if (e == '5')
+            return 'S';
+        if (e == '0')
+            return 'O';
+        return 'I';
+    });
+}
+function correct3(s) {
+    return s.replace(/1/g, 'I').replace(/5/g, 'S').replace(/0/g, 'O');
+}
+function correct4(s) {
+    return s.replace(/\d/g, n => n == '5' ? 'S' : n == '0' ? 'O' : 'I');
+}
+function correct5(s) {
+    const result = s.split('').map((item) => {
+        switch (item) {
+            case "5": return "S";
+            case "0": return "O";
+            case "1": return "I";
+            default: return item;
+        }
+    });
+    return result.join('');
+}
+function correct6(s) {
+    return s.replace(/[105]/g, x => x == "1" ? "I" : x == "0" ? "O" : "S");
+}
+const correct7 = (s) => s.replace(/\d/g, d => 'OIZEASGTBG'[+d]);
 const doubleChar = (str) => {
     let solution = "";
     for (const letter of str) {
@@ -8,7 +90,6 @@ const doubleChar = (str) => {
     }
     return solution;
 };
-console.log(doubleChar("abcd"));
 function doubleChar5(str) {
     return str.replace(/./g, e => e + e);
 }

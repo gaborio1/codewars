@@ -564,45 +564,238 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  ALTERNATING CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REPLACE() WITH ALTERNATE CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+altERnaTIng cAsE <=> ALTerNAtiNG CaSe
+Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase. For example:
 
+toAlternatingCase("hello world") === "HELLO WORLD"
+toAlternatingCase("HELLO WORLD") === "hello world"
+toAlternatingCase("hello WORLD") === "HELLO world"
+toAlternatingCase("HeLLo WoRLD") === "hEllO wOrld"
+toAlternatingCase("12345") === "12345" // Non-alphabetical characters are unaffected
+toAlternatingCase("1a2b3c4d5e") === "1A2B3C4D5E"
+toAlternatingCase("String.prototype.toAlternatingCase") === "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+As usual, your function/method should be pure, i.e. it should not mutate the original string.
+*/
+
+const toAlternatingCase = (str: string): string => {
+
+	const alterCase = (char: string): string => {
+		return char === char.toUpperCase()
+			? char.toLowerCase()
+			: char.toUpperCase();
+
+	}
+
+	return str.replace(/[a-z]/gi, (letter) => alterCase(letter));
+
+}
+
+//  swapCase WILL CHANGE LETTER CASING OF LETTER PASSED IN
+//  CALL replace() ON str, MATCH [a-z] CHARACTERS AND PASS THEM TO swapCase()
+
+// console.log(toAlternatingCase("hello world"));
+// console.log(toAlternatingCase("HeLLo WoRLD"));
+// console.log(toAlternatingCase("1a1A1b1B"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+function toAlternatingCase2(s: string): string {
+	return s.split("").map(a => a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()).join('')
+}
 
+
+
+function toAlternatingCase3(s: string): string {
+	return s.split('')
+		.map((e: string) => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase())
+		.join('');
+}
+
+
+
+
+const flipCharAlphaCase = (code: number): number =>
+	code >= 65 && code <= 90 ? code + 32 :
+		code >= 97 && code <= 122 ? code - 32 : code;
+
+const toAlternatingCase4 = (s: string): string =>
+	String.fromCharCode(...s.split("").map(char => char.charCodeAt(0)).map(flipCharAlphaCase));
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  NEXT TRAFFIC LIGTH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SEQUENCE ARRAY, TERNARY, INDEXOF()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
 
+Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
+
+For example, update_light('green') should return 'yellow'.
+
+*/
+
+const updateLight = (current: string): string => {
+
+	const sequence: string[] = ["green", "yellow", "red"];
+	const next = sequence.indexOf(current) + 1;
+
+	return sequence[next]
+		? sequence[next]
+		: sequence[0];
+
+}
+
+//  SAVE NEXT COLOR TO next
+//  CHECK IF NEXT COLOR EXISTS (NOT UNDEFINED)
+//      IF SO, RETURN IN AS SOLUTION
+//      OTHERWISE, NEXT COLOR IS THE FIRST ELEMENT
+
+
+// console.log(updateLight("green"));
+// console.log(updateLight("yellow"));
+// console.log(updateLight("red"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ FULL SEQUENCE, NO NEED FOR ARRAY[0] ❗️❗️❗️
+function updateLight2(current: string): string {
+	const L = ['green', 'yellow', 'red', 'green']
+	return L[L.indexOf(current) + 1]
+}
 
+
+const updateLight3 = ($: string) => $ === 'green' ? 'yellow' : $ === 'yellow' ? 'red' : $ === 'red' ? 'green' : 'error';
+
+
+/*
+const lights = {
+	green: 'yellow',
+	yellow: 'red',
+	red: 'green',
+};
+
+export const updateLight4 = (current: string): string => {
+	return lights[current];
+};
+*/
+
+
+function updateLight5(current: string): string {
+	switch (current) {
+		case "green":
+			return "yellow";
+			break;
+		case "yellow":
+			return "red";
+			break;
+		case "red":
+			return "green";
+			break;
+	}
+	return current;
+}
+
+
+
+function updateLight6(current: string): string {
+	return '' + { 'green': 'yellow', 'yellow': 'red', 'red': 'green' }[current];
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  CHARACTER RECOGNITION MISTAKES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REGEX, REPLACE MULTIPLE CHARACTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
 
+When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+
+Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+
+S is misinterpreted as 5
+O is misinterpreted as 0
+I is misinterpreted as 1
+The test cases contain numbers only by mistake.
+*/
+
+const correct = (str: string): string => {
+
+	interface Errors {
+		[key: string]: string;
+	}
+
+	const errors: Errors = { "5": "S", "0": "O", "1": "I" };
+
+	return str.replace(/[015]/g, (char) => errors[char]);
+
+}
+
+// console.log(correct("L0ND0N"));
+// console.log(correct("DUBL1N"));
+// console.log(correct("BUDAPE5T"));
+// console.log(correct("PAR15"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function correct2(s: string): string {
+	return s.replace(/\d/g, e => {
+		if (e == '5') return 'S'
+		if (e == '0') return 'O'
+		return 'I'
+	})
+}
+
+
+
+function correct3(s: string): string {
+	return s.replace(/1/g, 'I').replace(/5/g, 'S').replace(/0/g, 'O')
+}
+
+
+
+function correct4(s: string): string {
+	return s.replace(/\d/g, n => n == '5' ? 'S' : n == '0' ? 'O' : 'I');
+}
+
+
+
+function correct5(s: string): string {
+	const result = s.split('').map((item) => {
+		switch (item) {
+			case "5": return "S";
+			case "0": return "O";
+			case "1": return "I";
+			default: return item;
+		}
+	});
+	return result.join('');
+}
+
+
+
+function correct6(s: string): string {
+	return s.replace(/[105]/g, x => x == "1" ? "I" : x == "0" ? "O" : "S")
+}
+
+// ❗️❗️❗️ ❓❓❓
+const correct7 = (s: string) => s.replace(/\d/g, d => 'OIZEASGTBG'[+d]);
 
 
 
@@ -638,7 +831,7 @@ const doubleChar = (str: string): string => {
 
 }
 
-console.log(doubleChar("abcd"));
+// console.log(doubleChar("abcd"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

@@ -460,6 +460,34 @@ const dnaStrand = (dna: string): string => {
 
 dnaStrand("ATCG");
 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+const correct = (str: string): string => {
+
+    interface Errors {
+        [key: string]: string;
+    }
+
+    const errors: Errors = { "5": "S", "0": "O", "1": "I" };
+
+    return str.replace(/[015]/g, (char) => errors[char]);
+
+}
+
+// console.log(correct("L0ND0N"));
+// console.log(correct("DUBL1N"));
+// console.log(correct("BUDAPE5T"));
+// console.log(correct("PAR15"));
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+// ❗️❗️❗️
+function doubleChar5(str: string): string {
+    return str.replace(/./g, e => e + e)
+}
+
+
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️
