@@ -1,6 +1,62 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const twiceAsOld = (dad, son) => {
+    return Math.abs(dad - son * 2);
+};
+function twiceAsOld2(dadYearsOld, sonYearsOld) {
+    if ((sonYearsOld - (dadYearsOld - sonYearsOld)) > 0) {
+        return sonYearsOld - (dadYearsOld - sonYearsOld);
+    }
+    else {
+        return Math.abs(sonYearsOld - (dadYearsOld - sonYearsOld));
+    }
+}
+function twiceAsOld3(dadYearsOld, sonYearsOld) {
+    let yearsAgo = 0;
+    let flag = true;
+    while (flag) {
+        if ((dadYearsOld - yearsAgo === 2 * (sonYearsOld - yearsAgo))
+            || (dadYearsOld + yearsAgo === 2 * (sonYearsOld + yearsAgo))) {
+            flag = false;
+            break;
+        }
+        yearsAgo++;
+    }
+    return yearsAgo;
+}
+function twiceAsOld4(dadYearsOld, sonYearsOld) {
+    let dad = dadYearsOld;
+    let son = sonYearsOld;
+    let i = 0;
+    do {
+        if (dad / son === 2) {
+            return i;
+        }
+        i++;
+        dad--;
+        son--;
+    } while (son > 0);
+    dad = dadYearsOld;
+    son = sonYearsOld;
+    i = 0;
+    while (1) {
+        if (dad / son === 2) {
+            return i;
+        }
+        i++;
+        dad++;
+        son++;
+    }
+    return 0;
+}
+function twiceAsOld5(dadYearsOld, sonYearsOld) {
+    let rest = dadYearsOld - (sonYearsOld * 2);
+    return rest < 0 ? rest * -1 : rest;
+}
+const otherAngle = (a, b) => {
+    return 180 - (a + b);
+};
 const toAlternatingCase = (str) => {
     const alterCase = (char) => {
         return char === char.toUpperCase()

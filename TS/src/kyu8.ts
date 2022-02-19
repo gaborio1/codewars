@@ -1,3 +1,4 @@
+// ❗️❗️❗️ ✅  ❓❓❓
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -534,34 +535,156 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  WHEN IS DAD TWICE AS OLD AS SON
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  MATH.ABS()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+ Your function takes two arguments:
 
+current father's age (years)
+current age of his son (years)
+Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
+*/
+
+const twiceAsOld = (dad: number, son: number): number => {
+
+	return Math.abs(dad - son * 2);
+
+}
+
+/*
+
+DAD = 36
+SON = 7
+
+DAD WAS 36 - 7 = 29 AT BIRTH SO IT WILL BE 29 YEARS FORM THEN
+
+7 YEARS HAVE PASSED BY NOW SO CURRENT REMAINING YEARS 29 - 7 = 22
+
+YEARS = DAD - SON - SON = DAD - 2 * SON
+
+IF RESULT IS NEGATIVE, THEY ALREADY PASSED THAT MATH.ABS(-YEARS) AGO
+
+*/
+
+// console.log(twiceAsOld(36, 7));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function twiceAsOld2(dadYearsOld: number, sonYearsOld: number): number {
+	if ((sonYearsOld - (dadYearsOld - sonYearsOld)) > 0) {
+		return sonYearsOld - (dadYearsOld - sonYearsOld);
+	}
+	else {
+		return Math.abs(sonYearsOld - (dadYearsOld - sonYearsOld));
+	}
+
+}
 
 
+
+function twiceAsOld3(dadYearsOld: number, sonYearsOld: number): number {
+	let yearsAgo = 0;
+	let flag = true;
+
+	while (flag) {
+		if ((dadYearsOld - yearsAgo === 2 * (sonYearsOld - yearsAgo))
+			|| (dadYearsOld + yearsAgo === 2 * (sonYearsOld + yearsAgo))) {
+			flag = false;
+			break;
+		}
+		yearsAgo++;
+	}
+
+	return yearsAgo;
+}
+
+
+
+function twiceAsOld4(dadYearsOld: number, sonYearsOld: number): number {
+	let dad: number = dadYearsOld;
+	let son: number = sonYearsOld;
+	let i: number = 0;
+	do {
+		if (dad / son === 2) {
+			return i;
+		}
+		i++;
+		dad--;
+		son--;
+	} while (son > 0);
+
+
+	dad = dadYearsOld;
+	son = sonYearsOld;
+	i = 0;
+
+	while (1) {
+		if (dad / son === 2) {
+			return i;
+		}
+		i++;
+		dad++;
+		son++;
+	}
+	return 0;
+}
+
+
+
+function twiceAsOld5(dadYearsOld: number, sonYearsOld: number): number {
+	let rest = dadYearsOld - (sonYearsOld * 2);
+	return rest < 0 ? rest * -1 : rest
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  THIRD ANGLE OF TRIANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+You are given two interior angles (in degrees) of a triangle.
 
+Write a function to return the 3rd.
+
+Note: only positive integers will be tested.
+*/
+
+const otherAngle = (a: number, b: number): number => {
+
+	return 180 - (a + b);
+
+}
+
+// console.log(otherAngle(30, 60));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+/*
+
+const otherAngle2 = (a, b) => 180 - a - b;
 
 
+const otherAngle3 = (a, b) => {
+	if (a < 0 || b < 0)
+		return 0;
+	return 180 - (a + b);
+}
+
+
+const otherAngle4 = (a, b) => {
+	let c;
+	return c = 180 - (a + b);
+}
+
+*/
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ALTERNATING CASE
