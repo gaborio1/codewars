@@ -1,31 +1,56 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G964 = void 0;
+exports.humanReadable2 = exports.G9642 = void 0;
 class G964 {
 }
-exports.G964 = G964;
-G964.productFib = (prod) => {
-    const fibonacciNth = (n) => {
-        if (n === 1)
-            return 0;
-        if (n === 2)
-            return 1;
-        const sequence = [0, 1];
-        const products = [];
-        for (let i = 1; i < n - 1; i++) {
-            let next = sequence[i] + sequence[i - 1];
-            sequence.push(next);
-            let product = sequence[i] * sequence[i - 1];
-            products.push(product);
+G964.productFib = (num) => {
+    let solution = [];
+    const sequence = [0, 1];
+    const products = [];
+    let current = 0;
+    while (current <= num) {
+        let next = sequence[current] + sequence[current + 1];
+        sequence.push(next);
+        let product = sequence[current + 1] * sequence[current + 2];
+        products.push(product);
+        if (product === num) {
+            solution = [sequence[current + 1], sequence[current + 2], true];
+            break;
         }
-        console.log(sequence[n - 1]);
-        console.log(products);
-        return sequence[n - 1];
-    };
-    fibonacciNth(2);
-    return [1, 2, true];
+        else if (product > num) {
+            solution = [sequence[current + 1], sequence[current + 2], false];
+            break;
+        }
+        current++;
+    }
+    return solution;
 };
-console.log(G964.productFib(714));
+class G9642 {
+}
+exports.G9642 = G9642;
+G9642.productFib = (num) => {
+    let solution = [];
+    const sequence = [0, 1];
+    const products = [];
+    const fibMax = 15;
+    for (let i = 0; i <= fibMax; i++) {
+        let next = sequence[i] + sequence[i + 1];
+        sequence.push(next);
+        let product = sequence[i + 1] * sequence[i + 2];
+        products.push(product);
+        if (product === num) {
+            console.log(`found: ${sequence[i + 1]} and ${sequence[i + 2]}`);
+            solution = [sequence[i + 1], sequence[i + 2], true];
+            break;
+        }
+        else if (product > num) {
+            console.log("stop the loop: " + product);
+            solution = [sequence[i + 1], sequence[i + 2], false];
+            break;
+        }
+    }
+    return solution;
+};
 const dirReduc = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH")

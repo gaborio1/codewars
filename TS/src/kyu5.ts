@@ -432,8 +432,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ REFACTOR THIS AND MAKE A FIBONACCI(n) FOR COMMON PROBLEMS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PRODUCT OF CONSECUTIVE FIBONACCI NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -483,38 +483,116 @@ productFib(714) # should return {21, 34, true},
 productFib(800) # should return {34, 55, false}, 
 */
 
-export class G964 {
+// 1️⃣ ✅     WHILE LOOP
+class G964 {
 
-    public static productFib = (prod: number): (number | boolean)[] => {
+    public static productFib = (num: number): (number | boolean)[] => {
 
-        const fibonacciNth = (n: number): number => {
-            if (n === 1) return 0;
-            if (n === 2) return 1;
-            const sequence: number[] = [0, 1];
-            const products: number[] = [];
-            for (let i = 1; i < n - 1; i++) {
-                let next = sequence[i] + sequence[i - 1];
-                sequence.push(next);
-                let product = sequence[i] * sequence[i - 1];
-                products.push(product);
+        let solution: (number | boolean)[] = [];
+        const sequence: number[] = [0, 1];
+        const products: number[] = [];
+
+        let current: number = 0;
+
+        // ❗️❗️❗️ REFACTOR LOOP ❗️❗️❗️
+        while (current <= num) {
+            let next = sequence[current] + sequence[current + 1];
+            sequence.push(next);
+            let product = sequence[current + 1] * sequence[current + 2];
+            products.push(product);
+            if (product === num) {
+                solution = [sequence[current + 1], sequence[current + 2], true];
+                break;
+            } else if (product > num) {
+                solution = [sequence[current + 1], sequence[current + 2], false];
+                break;
             }
-            console.log(sequence[n - 1]);
-            console.log(products);
-            return sequence[n - 1];
-        };
+            current++;
+        }
 
-        fibonacciNth(2);
+        return solution;
 
-        return [1, 2, true];
+    }
 
+}
+
+//  INITIALIZE solution / FIBONACCI sequence AND products ARRAYS
+
+//  INITIALIZE current AT 0
+
+//  LOOP OVER INTEGERS UP TO num
+//      CALC next ITEM BY ADDING current TO current + 1
+//      PUSH next TO sequence
+//      CALC CURRENT PRODUCT BY MULTIPLYING current AND current + 1
+//      PUSH product INTO products
+//      IF product === num
+//          solution = [FACTORS OF product , true]
+//          BREAK LOOP
+//      ELSE IF product > num
+//          solution = [FACTORS OF product, false]
+//          BREAK LOOP
+//      INCREMENT current BY ONE
+
+//      RETURN SOLUTION
+
+// 2️⃣ ✅     FOR LOOP WITH fibMax VARIABLE TO LIMIT MAX LENGHT OF SEQUENCE
+export class G9642 {
+
+    public static productFib = (num: number): (number | boolean)[] => {
+
+        let solution: (number | boolean)[] = [];
+
+        const sequence: number[] = [0, 1];
+        const products: number[] = [];
+        const fibMax = 15;
+
+        for (let i = 0; i <= fibMax; i++) {
+            let next = sequence[i] + sequence[i + 1];
+            sequence.push(next);
+            let product = sequence[i + 1] * sequence[i + 2];
+            products.push(product);
+            if (product === num) {
+                console.log(`found: ${sequence[i + 1]} and ${sequence[i + 2]}`);
+                solution = [sequence[i + 1], sequence[i + 2], true];
+                break;
+            } else if (product > num) {
+                console.log("stop the loop: " + product);
+                solution = [sequence[i + 1], sequence[i + 2], false];
+                break;
+            }
+        }
+
+        return solution;
+
+    }
+
+}
+
+
+// console.log(G964.productFib(105));
+// console.log(G964.productFib(800));
+// console.log(G964.productFib(714));
+// console.log(G964.productFib(4895));
+// console.log(G964.productFib(5895));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+/*
+export class G964 {
+    public static productFib = (prod:number) => {
+      let p1:number = 1, p2:number = 1;
+      while (p1 * p2 < prod) [p1, p2] = [p2, p1+p2];
+      return [p1 , p2, (p1 * p2 == prod)]; 
     }
 }
 
 
-console.log(G964.productFib(714));
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+export class G964 {
 
+    public static productFib = (prod, f0 = 0, f1 = 1) => (f0 * f1 < prod) ? G964.productFib(prod, f1, f0+f1) : [f0,f1,(f0 * f1) === prod]
+}
+*/
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  DIRECTIONS REDUCTION
