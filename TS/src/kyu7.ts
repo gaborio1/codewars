@@ -402,6 +402,226 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  ROW WEIGHTS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  REDUCE()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Scenario
+Several people are standing in a row divided into two teams.
+The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
+
+Task
+Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+
+Notes
+Array size is at least 1.
+All numbers will be positive.
+Input >> Output Examples
+rowWeights([13, 27, 49])  ==>  return (62, 27)
+Explanation:
+The first element 62 is the total weight of team 1, and the second element 27 is the total weight of team 2.
+
+rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
+Explanation:
+The first element 120 is the total weight of team 1, and the second element 140 is the total weight of team 2.
+
+rowWeights([80])  ==>  return (80, 0)
+Explanation:
+The first element 80 is the total weight of team 1, and the second element 0 is the total weight of team 2.
+*/
+
+const rowWeights = (arr: number[]): number[] => {
+
+    let arr1: number[] = [], arr2: number[] = [];
+
+    arr.forEach((num, idx) => {
+        idx & 1
+            ? arr1.push(num)
+            : arr2.push(num);
+    });
+
+    return [arr2.reduce((a, b) => a + b), arr1.reduce((a, b) => a + b)];
+
+}
+
+//  INITIALIZE ARRAYS WITH 0 IN CASE arr HAS ONLY ONE ELEMENT
+//  LOOP THROUGH INPUT arr
+//      CHECK IF idx IS ODD (!!! idx & 1 RETURNS 1 IF idx IS ODD !!!)
+//          IF SO, PUSH num TO arr1
+//          OTHERWISE, PUSH num TO arr2
+//  RETURN [SUM OF BOTH arr1 AND arr2]
+
+
+// console.log(rowWeights([50, 60, 70, 80]));
+
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function rowWeights2(arr: number[]) {
+    return arr.reduce((r, e, i) => (r[i % 2] += e, r), [0, 0])
+}
+
+
+
+function rowWeights3(arr: number[]): [number, number] {
+    let even: number = arr.reduce((sum, x, i) => sum + (!(i % 2) ? x : 0), 0);
+    let odd: number = arr.reduce((sum, x, i) => sum + (i % 2 ? x : 0), 0);
+    return [even, odd]
+}
+
+
+
+function rowWeights4(arr: number[]) {
+    return arr.reduce((a: number[], c: number, i: number) => i % 2 ? [a[0], a[1] + c] : [a[0] + c, a[1]], [0, 0]);
+}
+
+
+
+function rowWeights5(arr: number[]): number[] {
+    return arr.reduce((sumOfWeights, weight, i) => {
+        sumOfWeights[i % 2] += weight;
+        return sumOfWeights;
+    }, [0, 0]);
+}
+
+
+
+function rowWeights6(arr: number[]) {
+    const res = [0, 0];
+
+    arr.forEach((x, i) => {
+        if (i % 2 === 0) {
+            res[0] += x;
+        } else {
+            res[1] += x;
+        }
+    });
+
+    return res;
+}
+
+
+
+function rowWeights7(arr: number[]) {
+    let arr1 = 0;
+    let arr2 = 0;
+    arr.forEach((value, index) => index % 2 ? arr2 += value : arr1 += value);
+    return [arr1, arr2];
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  SORT ARRAY NUMERICALLY
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  SORT()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
+
+For example:
+
+solution([1, 2, 10, 50, 5]); // should return [1, 2, 5, 10, 50]
+solution([]); // should return []
+*/
+
+const sortNumbers = (numsArr: number[]): number[] => {
+
+    return numsArr.sort((a, b) => a - b);
+
+}
+
+// console.log(sortNumbers([1, 2, 10, 50, 5]));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function sortNumbers2(nums: number[]): number[] {
+    return nums ? nums.sort((a, b) => a - b) : [];
+}
+
+
+function sortNumbers3(nums: number[]): number[] {
+    return nums === null ? [] : nums.sort((left, right) => left - right)
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  	REMOVE DUPLICATES FROM STRING
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  REDUCE(), FILTER(), SET(), ARRAY.FROM()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
+
+Example:
+
+Input:
+
+'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+
+Output:
+
+'alpha beta gamma delta'
+*/
+
+// ❗️❗️❗️ .reduce((acc: string[], curr) SPECIFY TYPE FOR acc ❗️❗️❗️
+const removeDuplicateWords = (str: string): string => {
+
+    return str
+        .split(" ")
+        .reduce((acc: string[], curr) => acc.includes(curr) ? acc : [...acc, curr], [])
+        .join(" ");
+
+}
+
+// console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'))
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function removeDuplicateWords2(s: string): string {
+    return Array.from(new Set(s.split(' '))).join(' ');
+}
+
+
+function removeDuplicateWords3(s: string): string {
+    return s.split(' ').filter((v, i, a) => a.indexOf(v) === i).join(' ');
+}
+
+
+function removeDuplicateWords4(s: string): string {
+    return [...new Set(s.match(/[a-z]+/ig) || [])].join(" ")
+}
+
+
+function removeDuplicateWords5(s: string): string {
+    const wordArray = s.split(" ")
+    const wordSet = new Set(wordArray)
+    const result = Array.from(wordSet).join(" ")
+    return result;
+}
+
+
+function removeDuplicateWords6(s: string): string {
+    let result: string[] = [];
+    s.split(' ').forEach((string, index) => {
+        if (result.indexOf(string) === -1) {
+            result.push(string)
+        }
+    })
+    return result.join(' ');
+}
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ALTERNATE CAPITALIZATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
