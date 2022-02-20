@@ -1,6 +1,41 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const findNb = (num) => {
+    let total = num;
+    let base = 1;
+    while (total > 0) {
+        total -= Math.pow(base, 3);
+        base++;
+    }
+    return total < 0
+        ? -1
+        : base - 1;
+};
+function findNb2(m) {
+    var n = 0;
+    while (m > 0)
+        m -= Math.pow(++n, 3);
+    return m ? -1 : n;
+}
+function findNb3(m) {
+    let sum = 0;
+    let i = 1;
+    for (; sum < m; i++) {
+        sum += Math.pow(i, 3);
+    }
+    return sum === m ? (i - 1) : -1;
+}
+function findNb4(m) {
+    let n = 1;
+    while (m > 0) {
+        m = m - n ** 3;
+        if (m === 0)
+            return n;
+        n++;
+    }
+    return -1;
+}
 class G964 {
 }
 G964.digPow = (num, pow) => {

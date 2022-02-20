@@ -363,17 +363,89 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  BUILD PILE OF CUBES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// KEYWORDS: WHILE()  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Your task is to construct a building which will be a pile of n cubes. The cube at the bottom will have a volume of n^3, the cube above will have volume of (n-1)^3 and so on until the top which will have a volume of 1^3.
+
+You are given the total volume m of the building. Being given m can you find the number n of cubes you will have to build?
+
+The parameter of the function findNb (find_nb, find-nb, findNb, ...) will be an integer m and you have to return the integer n such as n^3 + (n-1)^3 + ... + 1^3 = m if such a n exists or -1 if there is no such n.
+
+Examples:
+findNb(1071225) --> 45
+
+findNb(91716553919377) --> -1
+*/
+
+const findNb = (num: number): number => {
+
+    let total: number = num;
+    let base: number = 1;
+
+    while (total > 0) {
+        total -= Math.pow(base, 3);
+        base++;
+    }
+
+    return total < 0
+        ? - 1
+        : base - 1;
+
+}
+
+//  SET total TO BE INPUT NUMBER num
+//  START OFF base(ACTS AS A COUNTER) AT 1
+//  WHILE total IS GREATER THAN 0
+//      DECREMENT BY base(COUNTER) CUBED
+//      INCREMENT base BY 1
+// CHECK IF TOTAL HAS GONE BELOW 0
+//      IF SO, RETURN -1 
+//      OTHERWISE RETURN base - 1
+
+
+// console.log(findNb(100));
+// 2022
+// console.log(findNb(4183059834009));
+// -1
+// console.log(findNb(24723578342962))
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function findNb2(m: number): number {
+    var n = 0;
+    while (m > 0) m -= Math.pow(++n, 3);
+    return m ? -1 : n
+}
 
 
 
+function findNb3(m: number): number {
+    let sum = 0;
+    let i = 1;
+
+    for (; sum < m; i++) {
+        sum += Math.pow(i, 3);
+    }
+
+    return sum === m ? (i - 1) : -1;
+}
+
+
+
+function findNb4(m: number): number {
+    let n = 1;
+    while (m > 0) {
+        m = m - n ** 3;
+        if (m === 0)
+            return n
+        n++;
+    }
+    return -1;
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
