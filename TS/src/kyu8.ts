@@ -447,43 +447,180 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  QUATER OF THE YEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Given a month as an integer from 1 to 12, return to which quarter of the year it belongs as an integer number.
 
+For example: month 2 (February), is part of the first quarter; month 6 (June), is part of the second quarter; and month 11 (November), is part of the fourth quarter.
+*/
+
+const quarterOf = (month: number): number | string => {
+
+
+	if (month < 1) {
+		return "invalid input";
+	} else if (month < 4) {
+		return 1;
+	} else if (month < 7) {
+		return 2;
+	} else if (month < 10) {
+		return 3;
+	} else if (month < 13) {
+		return 4
+	} else {
+		return "invalid input";
+	}
+
+}
+
+console.log(quarterOf(0));
+console.log(quarterOf(2));
+console.log(quarterOf(4));
+console.log(quarterOf(7));
+console.log(quarterOf(10));
+console.log(quarterOf(13));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+const quarterOf2 = (month: number): number => Math.ceil(month / 3);
+
+
+
+function quarterOf3(month: number): number {
+	return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1 )
+}
+
+
+function quarterOf4(month: number): number {
+	return Math.ceil(month*4/12)
+}
+
+
+
+function quarterOf5(month: number): number {
+	switch(month){
+		case 1:
+		return 1
+		break;
+		   case 2:
+		return 1 
+		break;
+		   case 3:
+		return 1
+		break;
+		   case 4:
+		return 2
+		break;
+		   case 5:
+		return 2
+		break;
+		   case 6:
+	  return 2
+		break;
+		   case 7:
+		return 3
+		break;
+		   case 8:
+		 return 3
+		break;
+		   case 9:
+		 return 3
+		break;
+		   case 10:
+		return 4
+		break;
+		   case 11:
+	   return 4
+		break;
+		   case 12:
+		return 4
+		break;
+		
+	}
+	return month
+}
+
+// FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  COUNT ODD NUMBERS BELOW num
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Given a number n, return the number of positive odd numbers below n, EASY!
+
+oddCount(7) //=> 3, i.e [1, 3, 5]
+oddCount(15) //=> 7, i.e [1, 3, 5, 7, 9, 11, 13]
+Expect large Inputs!
+*/
+
+const oddCount = (num: number): number => {
+
+	/*
+
+	❗️❗️❗️ SLOW ❗️❗️❗️
+	FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
+
+	let oddsArr: number[] = [];
+
+	for (let i = 0; i < num; i++) {
+		if (i & 1) {
+			oddsArr.push(i);
+		}
+	}
+
+	return oddsArr.length;
+
+	*/
+
+	
+}
+
+// console.log(oddCount(7));
+// console.log(oddCount(15));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
 
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  KEEP UP THE HOOP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Alex just got a new hula hoop, he loves it but feels discouraged because his little brother is better than him
 
+Write a program where Alex can input (n) how many times the hoop goes round and it will return him an encouraging message :)
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+If Alex gets 10 or more hoops, return the string "Great, now move on to tricks".
+If he doesn't get 10 hoops, return the string "Keep at it until you get it".
 
+*/
 
+const hoopCount = (num: number): string => {
 
+	return num >= 10 
+		? "Great, now move on to tricks"
+		: "Keep at it until you get it";
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+}
 
-
+// console.log(hoopCount(10));
+// console.log(hoopCount(7));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

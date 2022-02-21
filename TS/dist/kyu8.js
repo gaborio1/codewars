@@ -1,6 +1,87 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const quarterOf = (month) => {
+    if (month < 1) {
+        return "invalid input";
+    }
+    else if (month < 4) {
+        return 1;
+    }
+    else if (month < 7) {
+        return 2;
+    }
+    else if (month < 10) {
+        return 3;
+    }
+    else if (month < 13) {
+        return 4;
+    }
+    else {
+        return "invalid input";
+    }
+};
+console.log(quarterOf(0));
+console.log(quarterOf(2));
+console.log(quarterOf(4));
+console.log(quarterOf(7));
+console.log(quarterOf(10));
+console.log(quarterOf(13));
+const quarterOf2 = (month) => Math.ceil(month / 3);
+function quarterOf3(month) {
+    return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1);
+}
+function quarterOf4(month) {
+    return Math.ceil(month * 4 / 12);
+}
+function quarterOf5(month) {
+    switch (month) {
+        case 1:
+            return 1;
+            break;
+        case 2:
+            return 1;
+            break;
+        case 3:
+            return 1;
+            break;
+        case 4:
+            return 2;
+            break;
+        case 5:
+            return 2;
+            break;
+        case 6:
+            return 2;
+            break;
+        case 7:
+            return 3;
+            break;
+        case 8:
+            return 3;
+            break;
+        case 9:
+            return 3;
+            break;
+        case 10:
+            return 4;
+            break;
+        case 11:
+            return 4;
+            break;
+        case 12:
+            return 4;
+            break;
+    }
+    return month;
+}
+const oddCount = (num) => {
+};
+const hoopCount = (num) => {
+    return num >= 10
+        ? "Great, now move on to tricks"
+        : "Keep at it until you get it";
+};
 const twiceAsOld = (dad, son) => {
     return Math.abs(dad - son * 2);
 };
