@@ -21,12 +21,6 @@ const quarterOf = (month) => {
         return "invalid input";
     }
 };
-console.log(quarterOf(0));
-console.log(quarterOf(2));
-console.log(quarterOf(4));
-console.log(quarterOf(7));
-console.log(quarterOf(10));
-console.log(quarterOf(13));
 const quarterOf2 = (month) => Math.ceil(month / 3);
 function quarterOf3(month) {
     return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1);
@@ -76,7 +70,11 @@ function quarterOf5(month) {
     return month;
 }
 const oddCount = (num) => {
+    return num & 1
+        ? (num - 1) / 2
+        : num / 2;
 };
+const oddCount2 = (n) => Math.floor(n / 2);
 const hoopCount = (num) => {
     return num >= 10
         ? "Great, now move on to tricks"

@@ -449,7 +449,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  QUATER OF THE YEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  MATH.CEIL(), SWITCH()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -479,12 +479,12 @@ const quarterOf = (month: number): number | string => {
 
 }
 
-console.log(quarterOf(0));
-console.log(quarterOf(2));
-console.log(quarterOf(4));
-console.log(quarterOf(7));
-console.log(quarterOf(10));
-console.log(quarterOf(13));
+// console.log(quarterOf(0));
+// console.log(quarterOf(2));
+// console.log(quarterOf(4));
+// console.log(quarterOf(7));
+// console.log(quarterOf(10));
+// console.log(quarterOf(13));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -493,64 +493,63 @@ const quarterOf2 = (month: number): number => Math.ceil(month / 3);
 
 
 function quarterOf3(month: number): number {
-	return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1 )
+	return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1)
 }
 
 
 function quarterOf4(month: number): number {
-	return Math.ceil(month*4/12)
+	return Math.ceil(month * 4 / 12)
 }
 
 
 
 function quarterOf5(month: number): number {
-	switch(month){
+	switch (month) {
 		case 1:
-		return 1
-		break;
-		   case 2:
-		return 1 
-		break;
-		   case 3:
-		return 1
-		break;
-		   case 4:
-		return 2
-		break;
-		   case 5:
-		return 2
-		break;
-		   case 6:
-	  return 2
-		break;
-		   case 7:
-		return 3
-		break;
-		   case 8:
-		 return 3
-		break;
-		   case 9:
-		 return 3
-		break;
-		   case 10:
-		return 4
-		break;
-		   case 11:
-	   return 4
-		break;
-		   case 12:
-		return 4
-		break;
-		
+			return 1
+			break;
+		case 2:
+			return 1
+			break;
+		case 3:
+			return 1
+			break;
+		case 4:
+			return 2
+			break;
+		case 5:
+			return 2
+			break;
+		case 6:
+			return 2
+			break;
+		case 7:
+			return 3
+			break;
+		case 8:
+			return 3
+			break;
+		case 9:
+			return 3
+			break;
+		case 10:
+			return 4
+			break;
+		case 11:
+			return 4
+			break;
+		case 12:
+			return 4
+			break;
+
 	}
 	return month
 }
 
-// FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  COUNT ODD NUMBERS BELOW num
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  BITWISE "AND", MATH.FLOOR()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -564,6 +563,11 @@ Expect large Inputs!
 */
 
 const oddCount = (num: number): number => {
+
+	return num & 1
+		? (num - 1) / 2
+		: num / 2;
+
 
 	/*
 
@@ -582,15 +586,27 @@ const oddCount = (num: number): number => {
 
 	*/
 
-	
 }
+
+/*
+
+ 2   (1)         => 1
+ 3   (1)         => 1
+ 4   (1, 3)      => 2
+ 5   (1, 3)      => 2
+ 6   (1, 3, 5)   => 3
+
+num is even => num / 2
+num is odd  => (num - 1) / 2
+
+*/
 
 // console.log(oddCount(7));
 // console.log(oddCount(15));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+const oddCount2 = (n: number) => Math.floor(n / 2);
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -613,7 +629,7 @@ If he doesn't get 10 hoops, return the string "Keep at it until you get it".
 
 const hoopCount = (num: number): string => {
 
-	return num >= 10 
+	return num >= 10
 		? "Great, now move on to tricks"
 		: "Keep at it until you get it";
 
