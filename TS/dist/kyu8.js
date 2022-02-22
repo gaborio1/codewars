@@ -1,6 +1,45 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const twoSort = (strArr) => {
+    let solution = "";
+    const lettersArr = strArr.sort()[0].split("");
+    console.log(lettersArr);
+    lettersArr.forEach((char, idx) => {
+        console.log(lettersArr.length, char, idx);
+        idx < lettersArr.length - 1
+            ? solution += char + "***"
+            : solution += char;
+    });
+    return solution;
+};
+function twoSort2(s) {
+    return s
+        .sort()[0]
+        .split("")
+        .join("***");
+}
+function twoSort3(s) {
+    return [...s.sort()[0]].join("***");
+}
+function twoSort4(strings) {
+    return strings.sort((a, b) => a.charCodeAt(0) > b.charCodeAt(0) ? 1 : -1)[0]
+        .split('')
+        .join('***');
+}
+function twoSort5(s) {
+    const ret = s
+        .sort()[0]
+        .split("")
+        .map(x => x + "***")
+        .join("")
+        .slice(0, -3);
+    return ret;
+}
+function twoSort7(s) {
+    s.sort((a, b) => { return (a > b) ? 1 : -1; });
+    return s[0].replace(/./g, (match => { return match + '***'; })).slice(0, -3);
+}
 const switchItUp = (intNumber) => {
     const numbers = {
         0: "Zero",
@@ -11,16 +50,72 @@ const switchItUp = (intNumber) => {
         5: "Five",
         6: "Six",
         7: "Seven",
-        8: "Eigth",
+        8: "Eight",
         9: "Nine"
     };
     return numbers[intNumber];
 };
-console.log(switchItUp(1));
-console.log(switchItUp(4));
-console.log(switchItUp(6));
-console.log(switchItUp(7));
-console.log(switchItUp(0));
+function switchItUp2(intNumber) {
+    let out;
+    (function (out) {
+        out[out["Zero"] = 0] = "Zero";
+        out[out["One"] = 1] = "One";
+        out[out["Two"] = 2] = "Two";
+        out[out["Three"] = 3] = "Three";
+        out[out["Four"] = 4] = "Four";
+        out[out["Five"] = 5] = "Five";
+        out[out["Six"] = 6] = "Six";
+        out[out["Seven"] = 7] = "Seven";
+        out[out["Eight"] = 8] = "Eight";
+        out[out["Nine"] = 9] = "Nine";
+        out[out["Ten"] = 10] = "Ten";
+    })(out || (out = {}));
+    ;
+    return out[intNumber];
+}
+function switchItUp3(intNumber) {
+    return ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'][intNumber];
+}
+function switchItUp4(intNumber) {
+    switch (intNumber) {
+        case 0:
+            return 'Zero';
+        case 1:
+            return 'One';
+        case 2:
+            return 'Two';
+        case 3:
+            return 'Three';
+        case 4:
+            return 'Four';
+        case 5:
+            return 'Five';
+        case 6:
+            return 'Six';
+        case 7:
+            return 'Seven';
+        case 8:
+            return 'Eight';
+        case 9:
+            return 'Nine';
+        default:
+            return "";
+    }
+}
+function switchItUp6(intNumber) {
+    var _a;
+    const map = new Map();
+    map.set(1, "One");
+    map.set(2, "Two");
+    map.set(3, "Three");
+    map.set(4, "Four");
+    map.set(5, "Five");
+    map.set(6, "Six");
+    map.set(7, "Seven");
+    map.set(8, "Eight");
+    map.set(9, "Nine");
+    return (_a = map.get(intNumber)) !== null && _a !== void 0 ? _a : "Zero";
+}
 const quarterOf = (month) => {
     if (month < 1) {
         return "invalid input";

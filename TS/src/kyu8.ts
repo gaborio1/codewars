@@ -402,12 +402,167 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SORT AND STAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+You will be given a vector of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) and then return the first value.
+
+The returned value must be a string, and have "***" between each of its letters.
+
+You should not remove or add elements from/to the array.
+*/
+
+const twoSort = (strArr: string[]): string => { 
+
+	let solution: string = "";
+
+	const lettersArr: string[] = strArr.sort()[0].split("");
+	console.log(lettersArr);
+
+	// console.log(
+
+		lettersArr.forEach((char, idx) => {
+
+			console.log(lettersArr.length, char , idx);
+
+			idx < lettersArr.length - 1
+				? solution += char + "***"
+				: solution += char;
+			
+		})
+
+		// strArr.sort()[0].replace(/\s/g, "***")
+
+		// );
+
+
+	return solution;
+}
+
+// 'b***i***t***c***o***i***n'
+// console.log(twoSort(["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]));
+
+
+
+// 'W***d***V***x***Y***y***v***yLUWZCU'
+
+// 'W***d***V***x***Y***y***v***y***L***U***W***Z***C***U'
+// console.log(twoSort([ 'WdVxYyvyLUWZCU',
+// 'XmhSIk',
+// 'eoQJliMuLQ',
+// 'gsBYWEcAhTKKwJu',
+// 'ptoYouIFg',
+// 'qpOmRg',
+// 'svSLIavbgUlsjr',
+// 'tFJFEePw',
+// 'uhRhEspk',
+// 'xmNZYKy' ]))
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ JOIN() ❗️❗️❗️
+function twoSort2(s: string[]): string {
+	return s
+	  .sort()[0]
+	  .split("")
+	  .join("***");
+}
+
+
+
+function twoSort3(s: string[]): string {
+	return [...s.sort()[0]].join("***");
+}
+
+
+
+function twoSort4(strings: string[]): string {
+	return strings.sort((a, b) => a.charCodeAt(0) > b.charCodeAt(0) ? 1 : -1)[0]
+	  .split('')
+	  .join('***');
+}
+
+
+
+function twoSort5(s: string[]): string {
+	const ret: string = s
+	  .sort()[0]
+	  .split("")
+	  .map(x => x + "***")
+	  .join("")
+	  .slice(0, -3);
+  
+	return ret;
+}
+
+
+//  ❗️❗️❗️
+// function twoSort6(ss: string[]): string {
+// 	return join(min(ss), '***');
+// }
+
+
+
+function twoSort7(s: string[]): string {
+	s.sort((a,b)=>{return (a> b)? 1:-1})
+	return s[0].replace(/./g,(match=>{return match+'***'})).slice(0,-3)
+}
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  EXPRESSIONS MATTER
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Task
+Given three integers a ,b ,c, return the largest number obtained after inserting the following operators and brackets: +, *, ()
+In other words , try every combination of a,b,c with [*+()] , and return the Maximum Obtained
+Consider an Example :
+With the numbers are 1, 2 and 3 , here are some ways of placing signs and brackets:
+
+1 * (2 + 3) = 5
+1 * 2 * 3 = 6
+1 + 2 * 3 = 7
+(1 + 2) * 3 = 9
+So the maximum value that you can obtain is 9.
+
+Notes
+The numbers are always positive.
+The numbers are in the range (1  ≤  a, b, c  ≤  10).
+You can use the same operation more than once.
+It's not necessary to place all the signs and brackets.
+Repetition in numbers may occur .
+You cannot swap the operands. For instance, in the given example you cannot get expression (1 + 3) * 2 = 8.
+Input >> Output Examples:
+expressionsMatter(1,2,3)  ==>  return 9
+Explanation:
+After placing signs and brackets, the Maximum value obtained from the expression (1+2) * 3 = 9.
+
+expressionsMatter(1,1,1)  ==>  return 3
+Explanation:
+After placing signs, the Maximum value obtained from the expression is 1 + 1 + 1 = 3.
+
+expressionsMatter(9,1,1)  ==>  return 18
+Explanation:
+After placing signs and brackets, the Maximum value obtained from the expression is 9 * (1+1) = 18.
+*/
+
+
+
+// const expressionsMatter = (a: number, b: number, c: number): number => {
+// 	return // highest achievable result
+// }
+
+// // 6
+// console.log(expressionsMatter(2, 1, 2));
 
 
 
@@ -415,22 +570,7 @@
 
 
 
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-
-
-
+// ❗️❗️❗️ INCLUDE THIS IN TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SWITCH IT UP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -474,11 +614,11 @@ const switchItUp = (intNumber:number):string => {
 }
 
 
-console.log(switchItUp(1));
-console.log(switchItUp(4));
-console.log(switchItUp(6));
-console.log(switchItUp(7));
-console.log(switchItUp(0));
+// console.log(switchItUp(1));
+// console.log(switchItUp(4));
+// console.log(switchItUp(6));
+// console.log(switchItUp(7));
+// console.log(switchItUp(0));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
