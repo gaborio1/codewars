@@ -432,22 +432,132 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SWITCH IT UP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ INTERFACE, ENUM, MAP.SET ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+When provided with a number between 0-9, return it in words.
 
+Input :: 1
+
+Output :: "One".
+
+If your language supports it, try using a switch statement.
+*/
+
+const switchItUp = (intNumber:number):string => {
+
+
+	interface KeyType {
+		[key: string]: string;
+	}
+
+
+	const numbers: KeyType = {
+		0: "Zero",
+		1: "One",
+		2: "Two",
+		3: "Three",
+		4: "Four",
+		5: "Five",
+		6: "Six",
+		7: "Seven",
+		8: "Eight",
+		9: "Nine"
+	}
+
+	return numbers[intNumber];
+}
+
+
+console.log(switchItUp(1));
+console.log(switchItUp(4));
+console.log(switchItUp(6));
+console.log(switchItUp(7));
+console.log(switchItUp(0));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ ENUM ❗️❗️❗️
+function switchItUp2(intNumber:number):string {
+	enum out{ Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten};
+	return out[intNumber];
+}
+
+
+
+ function switchItUp3(intNumber:number):string {
+	return ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine'][intNumber];
+}
+
+function switchItUp4(intNumber:number):string {
+	switch(intNumber){
+	  case 0:
+		return 'Zero';
+	  case 1:
+		return 'One';
+	  case 2:
+		return 'Two';
+	  case 3:
+		return 'Three';
+	  case 4:
+		return 'Four';
+	  case 5:
+		return 'Five';
+	  case 6:
+		return 'Six';
+	  case 7:
+		return 'Seven';
+	  case 8:
+		return 'Eight';
+	  case 9:
+		return 'Nine';
+	  default:
+		return "";
+	}
+}
+
+
+
+// ❗️❗️❗️ MAP.SET ❗️❗️❗️
+function switchItUp6(intNumber:number):string {
+	const map = new Map();
+	map.set(1, "One");
+	map.set(2, "Two");
+	map.set(3, "Three");
+	map.set(4, "Four");
+	map.set(5, "Five");
+	map.set(6, "Six");
+	map.set(7, "Seven");
+	map.set(8, "Eight");
+	map.set(9, "Nine");
+	
+	return map.get(intNumber) ?? "Zero";
+}
+
+
+// const switchItUp5 = (digit: number): string => ({
+// 	0: 'Zero',
+// 	1: 'One',
+// 	2: 'Two',
+// 	3: 'Three',
+// 	4: 'Four',
+// 	5: 'Five',
+// 	6: 'Six',
+// 	7: 'Seven',
+// 	8: 'Eight',
+// 	9: 'Nine',
+//   })[digit % 10];
 
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  QUATER OF THE YEAR
+// TITLE:  QUARTER OF THE YEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  MATH.CEIL(), SWITCH()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -456,7 +566,6 @@
 
 /*
 Given a month as an integer from 1 to 12, return to which quarter of the year it belongs as an integer number.
-
 For example: month 2 (February), is part of the first quarter; month 6 (June), is part of the second quarter; and month 11 (November), is part of the fourth quarter.
 */
 
@@ -556,7 +665,6 @@ function quarterOf5(month: number): number {
 
 /*
 Given a number n, return the number of positive odd numbers below n, EASY!
-
 oddCount(7) //=> 3, i.e [1, 3, 5]
 oddCount(15) //=> 7, i.e [1, 3, 5, 7, 9, 11, 13]
 Expect large Inputs!
@@ -570,35 +678,27 @@ const oddCount = (num: number): number => {
 
 
 	/*
-
 	❗️❗️❗️ SLOW ❗️❗️❗️
 	FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
-
 	let oddsArr: number[] = [];
-
 	for (let i = 0; i < num; i++) {
 		if (i & 1) {
 			oddsArr.push(i);
 		}
 	}
-
 	return oddsArr.length;
-
 	*/
 
 }
 
 /*
-
  2   (1)         => 1
  3   (1)         => 1
  4   (1, 3)      => 2
  5   (1, 3)      => 2
  6   (1, 3, 5)   => 3
-
 num is even => num / 2
 num is odd  => (num - 1) / 2
-
 */
 
 // console.log(oddCount(7));
@@ -619,12 +719,9 @@ const oddCount2 = (n: number) => Math.floor(n / 2);
 
 /*
 Alex just got a new hula hoop, he loves it but feels discouraged because his little brother is better than him
-
 Write a program where Alex can input (n) how many times the hoop goes round and it will return him an encouraging message :)
-
 If Alex gets 10 or more hoops, return the string "Great, now move on to tricks".
 If he doesn't get 10 hoops, return the string "Keep at it until you get it".
-
 */
 
 const hoopCount = (num: number): string => {
@@ -639,6 +736,8 @@ const hoopCount = (num: number): string => {
 // console.log(hoopCount(7));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+
 
 
 

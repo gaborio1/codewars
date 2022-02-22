@@ -1,6 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+const switchItUp = (intNumber) => {
+    const numbers = {
+        0: "Zero",
+        1: "One",
+        2: "Two",
+        3: "Three",
+        4: "Four",
+        5: "Five",
+        6: "Six",
+        7: "Seven",
+        8: "Eigth",
+        9: "Nine"
+    };
+    return numbers[intNumber];
+};
+console.log(switchItUp(1));
+console.log(switchItUp(4));
+console.log(switchItUp(6));
+console.log(switchItUp(7));
+console.log(switchItUp(0));
 const quarterOf = (month) => {
     if (month < 1) {
         return "invalid input";
