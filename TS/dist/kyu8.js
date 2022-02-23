@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = void 0;
+exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
 const twoSort = (strArr) => {
     let solution = "";
     const lettersArr = strArr.sort()[0].split("");
@@ -39,6 +39,52 @@ function twoSort5(s) {
 function twoSort7(s) {
     s.sort((a, b) => { return (a > b) ? 1 : -1; });
     return s[0].replace(/./g, (match => { return match + '***'; })).slice(0, -3);
+}
+const expressionsMatter = (a, b, c) => {
+    return Math.max((a + b + c), ((a + b) * c), (a * (b + c)), (a * b * c));
+};
+function expressionsMatter2(a, b, c) {
+    let one = a * (b + c);
+    let two = a * b * c;
+    let three = (a + b) * c;
+    let four = a + b + c;
+    return Math.max(one, two, three, four);
+}
+function expressionsMatter3(a, b, c) {
+    return [a * b * c, (a + b) * c, a * (b + c), a + b + c].sort((a, b) => a - b)[3];
+}
+function expressionsMatter4(a, b, c) {
+    let calculated = [];
+    calculated.push(a + b + c);
+    calculated.push((a + b) * c);
+    calculated.push(a * (b + c));
+    calculated.push(a * b * c);
+    return Math.max(...calculated);
+}
+function expressionsMatter5(a, b, c) {
+    const case1 = a * (b + c);
+    const case2 = a * b * c;
+    const case3 = a + b * c;
+    const case4 = (a + b) * c;
+    const case5 = a + b + c;
+    const arr = [case1, case2, case3, case4, case5];
+    const sorted = arr.sort((a, b) => a - b);
+    return sorted[arr.length - 1];
+}
+const getHighestResult = (a, b) => Math.max(a + b, a * b);
+function expressionsMatter6(a, b, c) {
+    return Math.max(getHighestResult(getHighestResult(a, b), c), getHighestResult(a, getHighestResult(b, c)));
+}
+exports.expressionsMatter6 = expressionsMatter6;
+function expressionsMatter7(a, b, c) {
+    const results = [];
+    results.push(a + b + c);
+    results.push(a * b * c);
+    results.push(a + b * c);
+    results.push(a * b + c);
+    results.push((a + b) * c);
+    results.push(a * (b + c));
+    return Math.max(...results);
 }
 const switchItUp = (intNumber) => {
     const numbers = {

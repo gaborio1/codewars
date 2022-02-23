@@ -404,7 +404,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SORT AND STAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  JOIN(), CHARCODEAT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -417,7 +417,7 @@ The returned value must be a string, and have "***" between each of its letters.
 You should not remove or add elements from/to the array.
 */
 
-const twoSort = (strArr: string[]): string => { 
+const twoSort = (strArr: string[]): string => {
 
 	let solution: string = "";
 
@@ -426,19 +426,19 @@ const twoSort = (strArr: string[]): string => {
 
 	// console.log(
 
-		lettersArr.forEach((char, idx) => {
+	lettersArr.forEach((char, idx) => {
 
-			console.log(lettersArr.length, char , idx);
+		console.log(lettersArr.length, char, idx);
 
-			idx < lettersArr.length - 1
-				? solution += char + "***"
-				: solution += char;
-			
-		})
+		idx < lettersArr.length - 1
+			? solution += char + "***"
+			: solution += char;
 
-		// strArr.sort()[0].replace(/\s/g, "***")
+	})
 
-		// );
+	// strArr.sort()[0].replace(/\s/g, "***")
+
+	// );
 
 
 	return solution;
@@ -468,9 +468,9 @@ const twoSort = (strArr: string[]): string => {
 // ❗️❗️❗️ JOIN() ❗️❗️❗️
 function twoSort2(s: string[]): string {
 	return s
-	  .sort()[0]
-	  .split("")
-	  .join("***");
+		.sort()[0]
+		.split("")
+		.join("***");
 }
 
 
@@ -483,20 +483,20 @@ function twoSort3(s: string[]): string {
 
 function twoSort4(strings: string[]): string {
 	return strings.sort((a, b) => a.charCodeAt(0) > b.charCodeAt(0) ? 1 : -1)[0]
-	  .split('')
-	  .join('***');
+		.split('')
+		.join('***');
 }
 
 
 
 function twoSort5(s: string[]): string {
 	const ret: string = s
-	  .sort()[0]
-	  .split("")
-	  .map(x => x + "***")
-	  .join("")
-	  .slice(0, -3);
-  
+		.sort()[0]
+		.split("")
+		.map(x => x + "***")
+		.join("")
+		.slice(0, -3);
+
 	return ret;
 }
 
@@ -509,14 +509,14 @@ function twoSort5(s: string[]): string {
 
 
 function twoSort7(s: string[]): string {
-	s.sort((a,b)=>{return (a> b)? 1:-1})
-	return s[0].replace(/./g,(match=>{return match+'***'})).slice(0,-3)
+	s.sort((a, b) => { return (a > b) ? 1 : -1 })
+	return s[0].replace(/./g, (match => { return match + '***' })).slice(0, -3)
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  EXPRESSIONS MATTER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  MATH.MAX(), SORT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -555,22 +555,136 @@ Explanation:
 After placing signs and brackets, the Maximum value obtained from the expression is 9 * (1+1) = 18.
 */
 
+//   ❗️❗️❗️ numbers cant change places. ❗️❗️❗️
+
+const expressionsMatter = (a: number, b: number, c: number): number => {
+
+	return Math.max(
+		(a + b + c),
+		((a + b) * c),
+		(a * (b + c)),
+		(a * b * c)
+	)
+
+}
+
+/*
+const expressionsMatter = (a: number, b: number, c: number): number => {
+
+	let result: number = 0;
+
+	const ascArr: number[] = [a, b, c].sort((a, b) => a - b);
+	console.log(ascArr);
+
+	// THREE ONES
+	if (a + b + c === 3) {
+		console.log("hello");
+		return 3;
+	}
+
+	if (ascArr[0] === 1) {
+		// if (ascArr[1] > 1) {
+		result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
+		// if (ascArr[2] > 1) {
+		// 	result = (ascArr[0] + ascArr[1]) * ascArr[2];
+		// }
+		// } else {
+		// 	result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
+		// }
+		// }
 
 
-// const expressionsMatter = (a: number, b: number, c: number): number => {
-// 	return // highest achievable result
-// }
+	} else {
+		result = a * b * c;
+	}
 
-// // 6
-// console.log(expressionsMatter(2, 1, 2));
+	return result;  // highest achievable result
+
+}
+*/
+
+
+// 6
+// console.log(expressionsMatter(1, 1, 1));
+// console.log(expressionsMatter(1, 2, 1));
+// console.log(expressionsMatter(2, 2, 1));
+// console.log(expressionsMatter(2, 2, 2));
+// console.log(expressionsMatter(1, 3, 1));
 
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function expressionsMatter2(a: number, b: number, c: number): number {
+
+	let one = a * (b + c);
+	let two = a * b * c;
+	let three = (a + b) * c;
+	let four = a + b + c;
+
+	return Math.max(one, two, three, four);
+}
 
 
-// ❗️❗️❗️ INCLUDE THIS IN TYPESCRIPT ❗️❗️❗️
+
+function expressionsMatter3(a: number, b: number, c: number): number {
+	return [a * b * c, (a + b) * c, a * (b + c), a + b + c].sort((a, b) => a - b)[3];
+}
+
+
+
+function expressionsMatter4(a: number, b: number, c: number): number {
+	let calculated: number[] = [];
+	calculated.push(a + b + c);
+	calculated.push((a + b) * c);
+	calculated.push(a * (b + c));
+	calculated.push(a * b * c);
+
+	return Math.max(...calculated);
+}
+
+
+
+function expressionsMatter5(a: number, b: number, c: number): number {
+	const case1 = a * (b + c);
+	const case2 = a * b * c;
+	const case3 = a + b * c;
+	const case4 = (a + b) * c;
+	const case5 = a + b + c;
+	const arr = [case1, case2, case3, case4, case5];
+	const sorted = arr.sort((a, b) => a - b);
+	return sorted[arr.length - 1];
+}
+
+
+
+
+const getHighestResult = (a: number, b: number): number => Math.max(a + b, a * b);
+
+export function expressionsMatter6(a: number, b: number, c: number): number {
+	return Math.max(
+		getHighestResult(getHighestResult(a, b), c),
+		getHighestResult(a, getHighestResult(b, c))
+	);
+}
+
+
+
+
+function expressionsMatter7(a: number, b: number, c: number): number {
+	const results = [];
+	results.push(a + b + c);
+	results.push(a * b * c);
+	results.push(a + b * c);
+	results.push(a * b + c);
+	results.push((a + b) * c);
+	results.push(a * (b + c));
+
+	return Math.max(...results);
+}
+
+
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SWITCH IT UP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -581,15 +695,15 @@ After placing signs and brackets, the Maximum value obtained from the expression
 
 /*
 When provided with a number between 0-9, return it in words.
-
+	
 Input :: 1
-
+	
 Output :: "One".
-
+	
 If your language supports it, try using a switch statement.
 */
 
-const switchItUp = (intNumber:number):string => {
+const switchItUp = (intNumber: number): string => {
 
 
 	interface KeyType {
@@ -623,48 +737,48 @@ const switchItUp = (intNumber:number):string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️ ENUM ❗️❗️❗️
-function switchItUp2(intNumber:number):string {
-	enum out{ Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten};
+function switchItUp2(intNumber: number): string {
+	enum out { Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten };
 	return out[intNumber];
 }
 
 
 
- function switchItUp3(intNumber:number):string {
-	return ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine'][intNumber];
+function switchItUp3(intNumber: number): string {
+	return ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'][intNumber];
 }
 
-function switchItUp4(intNumber:number):string {
-	switch(intNumber){
-	  case 0:
-		return 'Zero';
-	  case 1:
-		return 'One';
-	  case 2:
-		return 'Two';
-	  case 3:
-		return 'Three';
-	  case 4:
-		return 'Four';
-	  case 5:
-		return 'Five';
-	  case 6:
-		return 'Six';
-	  case 7:
-		return 'Seven';
-	  case 8:
-		return 'Eight';
-	  case 9:
-		return 'Nine';
-	  default:
-		return "";
+function switchItUp4(intNumber: number): string {
+	switch (intNumber) {
+		case 0:
+			return 'Zero';
+		case 1:
+			return 'One';
+		case 2:
+			return 'Two';
+		case 3:
+			return 'Three';
+		case 4:
+			return 'Four';
+		case 5:
+			return 'Five';
+		case 6:
+			return 'Six';
+		case 7:
+			return 'Seven';
+		case 8:
+			return 'Eight';
+		case 9:
+			return 'Nine';
+		default:
+			return "";
 	}
 }
 
 
 
 // ❗️❗️❗️ MAP.SET ❗️❗️❗️
-function switchItUp6(intNumber:number):string {
+function switchItUp6(intNumber: number): string {
 	const map = new Map();
 	map.set(1, "One");
 	map.set(2, "Two");
@@ -675,7 +789,7 @@ function switchItUp6(intNumber:number):string {
 	map.set(7, "Seven");
 	map.set(8, "Eight");
 	map.set(9, "Nine");
-	
+
 	return map.get(intNumber) ?? "Zero";
 }
 
@@ -893,7 +1007,7 @@ const hoopCount = (num: number): string => {
 
 /*
  Your function takes two arguments:
-
+	
 current father's age (years)
 current age of his son (years)
 Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
@@ -906,18 +1020,18 @@ const twiceAsOld = (dad: number, son: number): number => {
 }
 
 /*
-
+	
 DAD = 36
 SON = 7
-
+	
 DAD WAS 36 - 7 = 29 AT BIRTH SO IT WILL BE 29 YEARS FORM THEN
-
+	
 7 YEARS HAVE PASSED BY NOW SO CURRENT REMAINING YEARS 29 - 7 = 22
-
+	
 YEARS = DAD - SON - SON = DAD - 2 * SON
-
+	
 IF RESULT IS NEGATIVE, THEY ALREADY PASSED THAT MATH.ABS(-YEARS) AGO
-
+	
 */
 
 // console.log(twiceAsOld(36, 7));
@@ -1000,9 +1114,9 @@ function twiceAsOld5(dadYearsOld: number, sonYearsOld: number): number {
 
 /*
 You are given two interior angles (in degrees) of a triangle.
-
+	
 Write a function to return the 3rd.
-
+	
 Note: only positive integers will be tested.
 */
 
@@ -1017,22 +1131,22 @@ const otherAngle = (a: number, b: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
-
+	
 const otherAngle2 = (a, b) => 180 - a - b;
-
-
+	
+	
 const otherAngle3 = (a, b) => {
 	if (a < 0 || b < 0)
 		return 0;
 	return 180 - (a + b);
 }
-
-
+	
+	
 const otherAngle4 = (a, b) => {
 	let c;
 	return c = 180 - (a + b);
 }
-
+	
 */
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1046,7 +1160,7 @@ const otherAngle4 = (a, b) => {
 /*
 altERnaTIng cAsE <=> ALTerNAtiNG CaSe
 Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase. For example:
-
+	
 toAlternatingCase("hello world") === "HELLO WORLD"
 toAlternatingCase("HELLO WORLD") === "hello world"
 toAlternatingCase("hello WORLD") === "HELLO world"
@@ -1112,11 +1226,11 @@ const toAlternatingCase4 = (s: string): string =>
 
 /*
 You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
-
+	
 Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
-
+	
 For example, update_light('green') should return 'yellow'.
-
+	
 */
 
 const updateLight = (current: string): string => {
@@ -1158,7 +1272,7 @@ const lights = {
 	yellow: 'red',
 	red: 'green',
 };
-
+	
 export const updateLight4 = (current: string): string => {
 	return lights[current];
 };
@@ -1196,11 +1310,11 @@ function updateLight6(current: string): string {
 
 /*
 Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
-
+	
 When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
-
+	
 Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
-
+	
 S is misinterpreted as 5
 O is misinterpreted as 0
 I is misinterpreted as 1
@@ -1282,13 +1396,13 @@ const correct7 = (s: string) => s.replace(/\d/g, d => 'OIZEASGTBG'[+d]);
 
 /*
 Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
-
+	
 double_char("String") ==> "SSttrriinngg"
-
+	
 double_char("Hello World") ==> "HHeelllloo  WWoorrlldd"
-
+	
 double_char("1234!_ ") ==> "11223344!!__  "
-
+	
 */
 
 const doubleChar = (str: string): string => {
@@ -1343,7 +1457,7 @@ function doubleChar6(str: string): string {
 /*
 Grade book
 Complete the function so that it finds the average of the three scores passed to it and returns the letter value associated with that grade.
-
+	
 Numerical Score	Letter Grade
 90 <= score <= 100	'A'
 80 <= score < 90	'B'
@@ -1405,15 +1519,15 @@ function getGrade3(a: number, b: number, c: number): string {
 
 /*
 Bob is working as a bus driver. However, he has become extremely popular amongst the city's residents. With so many passengers wanting to get aboard his bus, he sometimes has to face the problem of not enough space left on the bus! He wants you to write a simple program telling him if he will be able to fit all the passengers.
-
+	
 Task Overview:
 You have to write a function that accepts three parameters:
-
+	
 cap is the amount of people the bus can hold excluding the driver.
 on is the number of people on the bus excluding the driver.
 wait is the number of people waiting to get on to the bus excluding the driver.
 If there is enough space, return 0, and if there isn't, return the number of passengers he can't take.
-
+	
 Usage Examples:
 cap = 10, on = 5, wait = 5 --> 0 # He can fit all 5 passengers
 cap = 100, on = 60, wait = 50 --> 10 # He can't fit 10 of the 50 waiting
@@ -1445,9 +1559,9 @@ const enough2 = (cap: number, on: number, wait: number): number => Math.max(on +
 
 /*
 Write a function named setAlarm which receives two parameters. The first parameter, employed, is true whenever you are employed and the second parameter, vacation is true whenever you are on vacation.
-
+	
 The function should return true if you are employed and not on vacation (because these are the circumstances under which you need to set an alarm). It should return false otherwise. Examples:
-
+	
 setAlarm(true, true) -> false
 setAlarm(false, true) -> false
 setAlarm(false, false) -> false
@@ -1477,9 +1591,9 @@ const setAlarm2 = (employed: boolean, vacation: boolean) => employed && !vacatio
 
 /*
 Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
-
+	
 Use conditionals to return the proper message:
-
+	
 case	return
 name equals owner	'Hello boss'
 otherwise	'Hello guest'
@@ -1510,11 +1624,11 @@ function greetTwo2(name: string, owner: string): string {
 
 /*
 After a hard quarter in the office you decide to get some rest on a vacation. So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
-
+	
 You will need a rental car in order for you to get around in your vacation. The manager of the car rental makes you some good offers.
-
+	
 Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
-
+	
 Write a code that gives out the total amount for different days(d).
 */
 
@@ -1559,9 +1673,9 @@ const rentalCarCost3 = (d: number) => d * 40 - (d >= 7 ? 50 : d >= 3 ? 20 : 0)
 
 /*
 The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
-
+	
 For example:
-
+	
 1.08 --> 30
 Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer.
 */
@@ -1614,7 +1728,7 @@ function stringToArray3(s: string): string[] {
 
 /*
 Write a function that takes an array of words and smashes them together into a sentence and returns the sentence. You can ignore any need to sanitize words or add punctuation, but you should add spaces between each word. Be careful, there shouldn't be a space at the beginning or the end of the sentence!
-
+	
 Example
 ['hello', 'world', 'this', 'is', 'great']  =>  'hello world th*/
 
@@ -1663,16 +1777,16 @@ function feast2(beast: string, dish: string): boolean {
 
 /*
 Your task is to create the functionisDivideBy (or is_divide_by) to check if an integer number is divisible by both integers a and b.
-
+	
 A few cases:
-
-
+	
+	
 (-12, 2, -6)  ->  true
 (-12, 2, -5)  ->  false
-
+	
 (45, 1, 6)    ->  false
 (45, 5, 15)   ->  true
-
+	
 (4, 1, 4)     ->  true
 (15, -5, 3)   ->  true
 */
@@ -1715,7 +1829,7 @@ function isDivideBy4(number: number, a: number, b: number): boolean {
 
 /*
 If you can't sleep, just count sheep!!
-
+	
 Task:
 Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
 */
@@ -1756,13 +1870,13 @@ function countSheep3(num: number): string {
 
 /*
 Your task is to find the first element of an array that is not consecutive.
-
+	
 By not consecutive we mean not exactly 1 larger than the previous element of the array.
-
+	
 E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
-
+	
 If the whole array is consecutive then return null2.
-
+	
 The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
 */
 
@@ -1800,9 +1914,9 @@ function firstNonConsecutive2(arr: number[]): undefined | number {
 /*
 Rock Paper Scissors
 Let's play! You have to return which player won! In case of a draw return Draw!.
-
+	
 Examples:
-
+	
 rps('scissors','paper') // Player 1 won!
 rps('scissors','rock') // Player 2 won!
 rps('paper','paper') // Draw!

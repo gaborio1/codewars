@@ -1,6 +1,103 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const flattenAndSort = (inputArray) => {
+    return inputArray
+        .reduce((acc, curr) => acc.concat(curr), [])
+        .sort((a, b) => a - b);
+};
+function flattenAndSort2(inputArray) {
+    return inputArray.flat().sort((a, b) => a - b);
+}
+function flattenAndSort4($) {
+    return $.toString().split(',').filter(e => e).map(Number).sort((a, b) => a - b);
+}
+function flattenAndSort5(inputArray) {
+    let numbers = [];
+    for (const tuple of inputArray) {
+        numbers = [
+            ...tuple,
+            ...numbers,
+        ];
+    }
+    return numbers.sort((a, b) => a - b);
+}
+const checkCoupon = (usrCode, validCode, currDate, expDate) => {
+    const isValidCode = usrCode === validCode;
+    let isValidDate = true;
+    let months;
+    (function (months) {
+        months[months["January"] = 1] = "January";
+        months[months["February"] = 2] = "February";
+        months[months["March"] = 3] = "March";
+        months[months["April"] = 4] = "April";
+        months[months["May"] = 5] = "May";
+        months[months["June"] = 6] = "June";
+        months[months["July"] = 7] = "July";
+        months[months["August"] = 8] = "August";
+        months[months["September"] = 9] = "September";
+        months[months["October"] = 10] = "October";
+        months[months["November"] = 11] = "November";
+        months[months["December"] = 12] = "December";
+    })(months || (months = {}));
+    const extractDate = (date) => {
+        return date.replace(/,/g, "").split(" ");
+    };
+    const currYear = Number(extractDate(currDate)[2]);
+    const expYear = Number(extractDate(expDate)[2]);
+    const currMonth = extractDate(currDate)[0];
+    const currMonthIdx = months[currMonth];
+    const expMonth = extractDate(expDate)[0];
+    const expMonthIdx = months[expMonth];
+    const currDay = Number(extractDate(currDate)[1]);
+    const expDay = Number(extractDate(expDate)[1]);
+    console.table({
+        currYear: currYear,
+        expYear: expYear,
+        currMonth: currMonth,
+        currMonthIdx: currMonthIdx,
+        expMonth: expMonth,
+        expMonthIdx: expMonthIdx,
+        currDay: currDay,
+        expDay: expDay
+    });
+    if (expYear > currYear) {
+        isValidDate = true;
+    }
+    else if (expYear === currYear) {
+        if (expMonthIdx > currMonthIdx) {
+            isValidDate = true;
+        }
+        else if (expMonthIdx === currMonthIdx) {
+            if (expDay >= currDay) {
+                isValidDate = true;
+            }
+            else {
+                isValidDate = false;
+            }
+        }
+        else {
+            isValidDate = false;
+        }
+    }
+    else {
+        isValidDate = false;
+    }
+    return isValidCode && isValidDate;
+};
+function checkCoupon2(enteredCode, correctCode, currentDate, expirationDate) {
+    return enteredCode === correctCode && Date.parse(currentDate) <= Date.parse(expirationDate);
+}
+function checkCoupon3(enteredCode, correctCode, currentDate, expirationDate) {
+    let cDate = new Date(currentDate);
+    let expDate = new Date(expirationDate);
+    return ((enteredCode === correctCode) && (cDate <= expDate)) ? true : false;
+}
+function checkCoupon4(enteredCode, correctCode, currentDate, expirationDate) {
+    const isValidCode = enteredCode === correctCode;
+    const isValidDate = new Date(currentDate) <= new Date(expirationDate);
+    return isValidCode && isValidDate;
+}
 const rowWeights = (arr) => {
     let arr1 = [], arr2 = [];
     arr.forEach((num, idx) => {
@@ -92,7 +189,6 @@ const capitalize = (str) => {
     }
     return [evens, odds];
 };
-console.log(capitalize("abcdef"));
 const capitalize2 = (s) => [
     [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
     [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),

@@ -371,36 +371,222 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  FLATTEN AND SORT AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-
-
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  TWO DIMENSIONAL ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+//  ❗️❗️❗️ HAD TO CHANGE TARGET PROPERTY IN COMPILER OPTIONS TO "es2019" OR LATER  FOR flat() ❗️❗️❗️
+/*
+Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+
+Example:
+
+Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+*/
+
+const flattenAndSort = (inputArray: number[][]): number[] => {
+
+    // 1️⃣  ❗️❗️❗️ THIS IS NOT WORKING IN CODEWARS ❗️❗️❗️
+    // return inputArray
+    //     .flat()
+    //     .sort((a, b) => a - b);
+
+    // 2️⃣
+    return inputArray
+        .reduce((acc, curr) => acc.concat(curr), [])
+        .sort((a, b) => a - b);
+
+}
+
+// console.log(flattenAndSort([]));
+// console.log(flattenAndSort([[], []]));
+// console.log(flattenAndSort([[], [1]]));
+// console.log(flattenAndSort([[3, 2, 1], [7, 9, 8], [6, 4, 5]]));
+// console.log(flattenAndSort([[1, 3, 5], [100], [2, 4, 6]]));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function flattenAndSort2(inputArray: number[][]): number[] {
+    return inputArray.flat().sort((a, b) => a - b);
+}
+
+
+
+// const flattenAndSort3 = (a: number[][]): number[] => [].concat(...a).sort((a, b) => a - b);
+
+
+
+function flattenAndSort4($: number[][]): number[] {
+    return $.toString().split(',').filter(e => e).map(Number).sort((a, b) => a - b)
+}
+
+
+function flattenAndSort5(inputArray: number[][]): number[] {
+
+    let numbers: number[] = [];
+    for (const tuple of inputArray) {
+        numbers = [
+            ...tuple,
+            ...numbers,
+        ]
+    }
+
+    return numbers.sort((a, b) => a - b);
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  CHECK COUPON - STRING DATE 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  ENUM, DATE.PARSE(), NEW DATE()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Story
+Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
+
+Task
+Your mission:
+Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+
+A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+
+Examples:
+checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+*/
+
+const checkCoupon = (usrCode: string, validCode: string, currDate: string, expDate: string): boolean => {
+
+    const isValidCode: boolean = usrCode === validCode;
+    let isValidDate: boolean = true;
+
+    enum months {
+        January = 1,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December
+    }
+
+
+    const extractDate = (date: string): string[] => {
+        return date.replace(/,/g, "").split(" ");
+    }
+
+    const currYear: number = Number(extractDate(currDate)[2]);
+    const expYear: number = Number(extractDate(expDate)[2]);
+
+    // ❗️❗️❗️ HAVE TO USE ANY, string WILL THROW AN ERROR WHEN ACCESSING VALUE BY KEY (months[currMonth]) ❗️❗️❗️
+    const currMonth: any = extractDate(currDate)[0];
+    const currMonthIdx: any = months[currMonth];
+    const expMonth: any = extractDate(expDate)[0];
+    const expMonthIdx: any = months[expMonth];
+
+    const currDay: number = Number(extractDate(currDate)[1]);
+    const expDay: number = Number(extractDate(expDate)[1]);
+
+    console.table(
+        {
+            currYear: currYear,
+            expYear: expYear,
+            currMonth: currMonth,
+            currMonthIdx: currMonthIdx,
+            expMonth: expMonth,
+            expMonthIdx: expMonthIdx,
+            currDay: currDay,
+            expDay: expDay
+        }
+    )
+
+    //  YEAR PLUS
+    if (expYear > currYear) {
+        isValidDate = true;
+        //  YEAR SAME
+    } else if (expYear === currYear) {
+        if (expMonthIdx > currMonthIdx) {
+            isValidDate = true;
+        } else if (expMonthIdx === currMonthIdx) {
+            if (expDay >= currDay) {
+                isValidDate = true;
+            } else {
+                isValidDate = false;
+            }
+        } else {
+            isValidDate = false;
+        }
+        //  YEAR INVALID
+    } else {
+        isValidDate = false
+    }
+
+    return isValidCode && isValidDate;
+
+}
+
+
+/*
+
+isvalidCode WILL CHECK IF CODES MATCH
+INITIALIZE isValidDate
+ASSIGN NUMERIC VALUES TO MONTHS FOR COMPARISON
+extractDate WILL CONVERT STRING TO ARRAY ["September", "5", "2015"]
+STORE YEAR, MONTH INDEX AND DAY IN VARIABLES (CONVERTED TO NUMBER)
+┌──────────────┬───────────┐
+│   (index)    │  Values   │
+├──────────────┼───────────┤
+│   currYear   │   2014    │
+│   expYear    │   2014    │
+│  currMonth   │ 'January' │
+│ currMonthIdx │     1     │
+│   expMonth   │ 'January' │
+│ expMonthIdx  │     1     │
+│   currDay    │     5     │
+│    expDay    │     1     │
+└──────────────┴───────────┘
+if BLOCK DETERMINES IF DATE IS VALID
+RETURN TRUE IF BOTH CODE AND DATE ARE VALID, OTHERWISE FALSE
+
+*/
+
+// console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));
+// console.log(checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014'));
+// console.log(checkCoupon('12abcd3', '12abcd3', 'January 5, 2014', 'January 1, 2014'));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function checkCoupon2(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+    return enteredCode === correctCode && Date.parse(currentDate) <= Date.parse(expirationDate);
+}
 
 
 
+function checkCoupon3(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+    let cDate = new Date(currentDate);
+    let expDate = new Date(expirationDate);
+    return ((enteredCode === correctCode) && (cDate <= expDate)) ? true : false
+}
+
+
+
+function checkCoupon4(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+    const isValidCode = enteredCode === correctCode;
+    const isValidDate = new Date(currentDate) <= new Date(expirationDate);
+    return isValidCode && isValidDate;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ROW WEIGHTS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -656,7 +842,7 @@ const capitalize = (str: string): string[] => {
 //      BUILD odds
 // RETURN SOLUTION AS ARRAY OF STRINGS
 
-console.log(capitalize("abcdef"));
+// console.log(capitalize("abcdef"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
