@@ -1,6 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const findDifference = (a, b) => {
+};
+const get_age = (age) => {
+    return Number(age.match(/\d+/g)[0]);
+};
+function get_age2(age) {
+    return parseInt(age);
+}
+var get_age3 = (age) => { return +age.charAt(0); };
+function get_age4(age) {
+    return parseInt(age.match(/^\d+/)[0], 10);
+}
+const howMuchILoveYou = (petals) => {
+};
 const twoSort = (strArr) => {
     let solution = "";
     const lettersArr = strArr.sort()[0].split("");

@@ -365,11 +365,76 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+In this simple exercise, you will create a program that will take two lists of integers, a and b. Each list will consist of 3 positive integers above 0, representing the dimensions of cuboids a and b. You must find the difference of the cuboids' volumes regardless of which is bigger.
 
+For example, if the parameters passed are ([2, 2, 3], [5, 4, 1]), the volume of a is 12 and the volume of b is 20. Therefore, the function should return 8.
+
+Your function will be tested with pre-made examples as well as random ones.
+
+If you can, try writing it in one line of code.
+*/
+
+const findDifference = (a: [number, number, number], b: [number, number, number]): number => {
+	// your code here
+}
+
+// console.log(findDifference([3, 2, 5], [1, 4, 4]));
+// console.log(findDifference([9, 7, 2], [5, 2, 2]));
+// console.log(findDifference([11, 2, 5], [1, 10, 8]));
+// console.log(findDifference([4, 4, 7], [3, 9, 3]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  PARSE NUMBER FROM STRING
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  NUMBER(), REGEXP, MATCH(), PARSEINT()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Ask a small girl - "How old are you?". She always says strange things... Lets help her!
+
+For correct answer program should return int from 0 to 9.
+
+Assume test input string always valid and may look like "1 year old" or "5 years old", etc.. The first char is number only.
+
+*/
+
+const get_age = (age: string): number => {
+
+	// console.log(/\d+/.test(age));
+
+	// ❗️❗️❗️ WITHOUT "!" OBJECT IS POSSIBLY NULL ❗️❗️❗️
+	return Number(age.match(/\d+/g)![0]);
+}
+
+//  FIND ONE OR MORE NUMERIC DIGITS, CONVERT TO NUMBER
+
+// console.log(get_age("2 years old"));
+// console.log(get_age("5 years old"));
+// console.log(get_age("23 years old"));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function get_age2(age: string): number {
+	return parseInt(age);
+}
+
+
+// ❓❓❓
+var get_age3 = (age) => {return +age.charAt(0)}
+
+
+
+function get_age4(age: string): number {
+	return parseInt(age.match(/^\d+/)![0], 10)
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -380,22 +445,33 @@
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+
+I love you
+a little
+a lot
+passionately
+madly
+not at all
+When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+
+Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0.
+*/
+
+const howMuchILoveYou = (petals: number): string => {
+	//Let's pick a flower...
+}
 
 
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-
-
-
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-
+// console.log(howMuchILoveYou(1));
+// console.log(howMuchILoveYou(2));
+// console.log(howMuchILoveYou(3));
+// console.log(howMuchILoveYou(4));
+// console.log(howMuchILoveYou(5));
+// console.log(howMuchILoveYou(6));
+// console.log(howMuchILoveYou(7));
+// console.log(howMuchILoveYou(10));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
