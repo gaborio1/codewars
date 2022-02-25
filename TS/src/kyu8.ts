@@ -358,9 +358,9 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  FIND DIFFERENCE OF VOLUMES OF CUBOIDS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  REDUCE(), MATH.ABS()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -375,8 +375,17 @@ Your function will be tested with pre-made examples as well as random ones.
 If you can, try writing it in one line of code.
 */
 
-const findDifference = (a: [number, number, number], b: [number, number, number]): number => {
-	// your code here
+const findDifference = (
+	a: [number, number, number],
+	b: [number, number, number]
+): number => {
+
+	const getVolume = (arr: number[]): number => {
+		return arr.reduce((acc: number, curr: number): number => acc * curr);
+	}
+
+	return Math.abs(getVolume(a) - getVolume(b));
+
 }
 
 // console.log(findDifference([3, 2, 5], [1, 4, 4]));
@@ -386,8 +395,26 @@ const findDifference = (a: [number, number, number], b: [number, number, number]
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function findDifference2(a: [number, number, number], b: [number, number, number]): number {
+	return Math.abs(a.reduce((x, y) => x * y) - b.reduce((x, y) => x * y))
+}
 
 
+function findDifference3([a, b, c]: [number, number, number], [d, e, f]: [number, number, number]): number {
+	return Math.abs(a * b * c - d * e * f);
+}
+
+
+
+function findDifference4(a: [number, number, number], b: [number, number, number]): number {
+	let volA = a[0] * a[1] * a[2];
+	let volB = b[0] * b[1] * b[2];
+
+	if (volA > volB)
+		return volA - volB;
+	else
+		return volB - volA;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PARSE NUMBER FROM STRING
@@ -428,7 +455,7 @@ function get_age2(age: string): number {
 
 
 // ❓❓❓
-var get_age3 = (age) => {return +age.charAt(0)}
+// var get_age3 = (age) => { return +age.charAt(0) }
 
 
 
@@ -438,9 +465,9 @@ function get_age4(age: string): number {
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  I LOVE YOU
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ENUM{}, MODULO, SWITCH(), 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -460,22 +487,100 @@ Your goal in this kata is to determine which phrase the girls would say for a fl
 */
 
 const howMuchILoveYou = (petals: number): string => {
-	//Let's pick a flower...
+
+	enum phrases {
+		"I love you" = 1,
+		"a little",
+		"a lot",
+		"passionately",
+		"madly",
+		"not at all"
+	}
+
+	if (petals <= 6) return phrases[petals];
+	if (petals > 6 && petals % 6) return phrases[petals % 6];
+	return phrases[6];
 }
 
+//  CHANGE DEFAULT VALUE TO 1
+//  1-6: CORRESPONDING KEY 
+//  GREATER THAN 6 AND NOT DIVISIBLE BY 6: KEY = REMAINDER 
+//  OTHERWISE, IF DIVISIBLE BY 6: KEY = 6
 
-// console.log(howMuchILoveYou(1));
-// console.log(howMuchILoveYou(2));
-// console.log(howMuchILoveYou(3));
+// console.log(howMuchILoveYou(1)); 
 // console.log(howMuchILoveYou(4));
-// console.log(howMuchILoveYou(5));
 // console.log(howMuchILoveYou(6));
 // console.log(howMuchILoveYou(7));
-// console.log(howMuchILoveYou(10));
+// console.log(howMuchILoveYou(12));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function howMuchILoveYou2(nbPetals: number): string {
+	return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all'][nbPetals % 6]
+}
 
+
+function howMuchILoveYou3(petals: number): string {
+	return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][(petals - 1) % 6];
+}
+
+
+
+function howMuchILoveYou4(petals: number): string {
+	switch ((petals - 1) % 6) {
+		case 1:
+			return "a little";
+		case 2:
+			return "a lot";
+		case 3:
+			return "passionately";
+		case 4:
+			return "madly";
+		case 5:
+			return "not at all";
+		default:
+			return "I love you";
+	}
+}
+
+
+
+function howMuchILoveYou5(petals: number): string {
+	while (petals > 6) {
+		petals -= 6;
+	}
+	switch (petals) {
+		case 1:
+			return 'I love you';
+		case 2:
+			return 'a little';
+		case 3:
+			return 'a lot';
+		case 4:
+			return 'passionately';
+		case 5:
+			return 'madly';
+		case 6:
+			return 'not at all';
+		default:
+			return '';
+	}
+}
+
+
+
+function howMuchILoveYou6(petals: number): string {
+	if (petals > 6) petals %= 6;
+	switch (petals) {
+		case 1: return 'I love you';
+		case 2: return 'a little';
+		case 3: return 'a lot';
+		case 4: return 'passionately';
+		case 5: return 'madly';
+		case 6: return 'not at all';
+		default: return 'not at all';
+	}
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SORT AND STAR

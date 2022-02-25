@@ -2,19 +2,106 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
 const findDifference = (a, b) => {
+    const getVolume = (arr) => {
+        return arr.reduce((acc, curr) => acc * curr);
+    };
+    return Math.abs(getVolume(a) - getVolume(b));
 };
+function findDifference2(a, b) {
+    return Math.abs(a.reduce((x, y) => x * y) - b.reduce((x, y) => x * y));
+}
+function findDifference3([a, b, c], [d, e, f]) {
+    return Math.abs(a * b * c - d * e * f);
+}
+function findDifference4(a, b) {
+    let volA = a[0] * a[1] * a[2];
+    let volB = b[0] * b[1] * b[2];
+    if (volA > volB)
+        return volA - volB;
+    else
+        return volB - volA;
+}
 const get_age = (age) => {
     return Number(age.match(/\d+/g)[0]);
 };
 function get_age2(age) {
     return parseInt(age);
 }
-var get_age3 = (age) => { return +age.charAt(0); };
 function get_age4(age) {
     return parseInt(age.match(/^\d+/)[0], 10);
 }
 const howMuchILoveYou = (petals) => {
+    let phrases;
+    (function (phrases) {
+        phrases[phrases["I love you"] = 1] = "I love you";
+        phrases[phrases["a little"] = 2] = "a little";
+        phrases[phrases["a lot"] = 3] = "a lot";
+        phrases[phrases["passionately"] = 4] = "passionately";
+        phrases[phrases["madly"] = 5] = "madly";
+        phrases[phrases["not at all"] = 6] = "not at all";
+    })(phrases || (phrases = {}));
+    if (petals <= 6)
+        return phrases[petals];
+    if (petals > 6 && petals % 6)
+        return phrases[petals % 6];
+    return phrases[6];
 };
+function howMuchILoveYou2(nbPetals) {
+    return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all'][nbPetals % 6];
+}
+function howMuchILoveYou3(petals) {
+    return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][(petals - 1) % 6];
+}
+function howMuchILoveYou4(petals) {
+    switch ((petals - 1) % 6) {
+        case 1:
+            return "a little";
+        case 2:
+            return "a lot";
+        case 3:
+            return "passionately";
+        case 4:
+            return "madly";
+        case 5:
+            return "not at all";
+        default:
+            return "I love you";
+    }
+}
+function howMuchILoveYou5(petals) {
+    while (petals > 6) {
+        petals -= 6;
+    }
+    switch (petals) {
+        case 1:
+            return 'I love you';
+        case 2:
+            return 'a little';
+        case 3:
+            return 'a lot';
+        case 4:
+            return 'passionately';
+        case 5:
+            return 'madly';
+        case 6:
+            return 'not at all';
+        default:
+            return '';
+    }
+}
+function howMuchILoveYou6(petals) {
+    if (petals > 6)
+        petals %= 6;
+    switch (petals) {
+        case 1: return 'I love you';
+        case 2: return 'a little';
+        case 3: return 'a lot';
+        case 4: return 'passionately';
+        case 5: return 'madly';
+        case 6: return 'not at all';
+        default: return 'not at all';
+    }
+}
 const twoSort = (strArr) => {
     let solution = "";
     const lettersArr = strArr.sort()[0].split("");
