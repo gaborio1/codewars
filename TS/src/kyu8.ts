@@ -355,7 +355,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  WELL OF IDEAS - EASY VERSION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ FILTER() TO COUNT OCCURANCES OF ELEMENT IN ARRAY ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -366,20 +366,80 @@ For every good kata idea there seem to be quite a few bad ones!
 In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
 */
 
-const well = (x: string[]): string => {
-	return ""
+const well = (strArr: string[]): string => {
+
+	if(strArr.indexOf("good") < 0) return "Fail!";
+
+	return strArr.join("").match(/good/g)!.length < 3
+		? "Publish!"
+		: "I smell a series!"
+	
   }
 
 
-  console.log(well(['bad', 'bad', 'bad']));
-  console.log(well(['good', 'bad', 'bad', 'bad', 'bad']));
-  console.log(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']));
+//   console.log(well(['bad', 'bad', 'bad']));
+//   console.log(well(['good', 'bad', 'bad', 'bad', 'bad']));
+//   console.log(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
+// ❗️❗️❗️ FILTER() ❗️❗️❗️
+function well2(x: string[]): string{
+	let num: number = x.filter(a => a === 'good').length
+	return num > 2? 'I smell a series!': num >= 1? 'Publish!': 'Fail!'
+}
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+
+
+
+interface IdeasCount{
+	goodIdeas: number;
+	badIdeas: number
+  }
+  
+function well3(x: string[]): string{
+	const ideasCount: IdeasCount = {
+	  goodIdeas: 0,
+	  badIdeas: 0
+	}
+	
+	x.forEach((item) => {
+	  item === 'bad' ? ideasCount.badIdeas += 1 : ideasCount.goodIdeas +=1
+	});
+	  
+	if(ideasCount.goodIdeas > 2) {
+	  return 'I smell a series!'
+	} else if(ideasCount.goodIdeas <= 2 && ideasCount.goodIdeas !== 0) {
+	  return 'Publish!'
+	} else {
+	  return 'Fail!'
+	}
+}
+
+
+
+
+function well4(x: string[]): string{
+	const number = x.filter((i) => i === "good").length;
+  
+	if (!number) {
+	  return "Fail!";
+	}
+	
+	if (number < 3) {
+	  return "Publish!";
+	}
+	
+	return "I smell a series!";
+}
+
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ Property 'includes' does not exist on type 'string[]'. (2339) ❗️❗️❗️
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  FILTER OUT THE GEESE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -402,16 +462,30 @@ Your function would return the following array:
 The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
 */
 
+
+// ❗️❗️❗️ REFACTOR WITH FILTER() ❗️❗️❗️
 const gooseFilter = (birds: string[]): string[] => {
-	const geese: [string] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-	// return an array containing all of the strings in the input array except those that match strings in geese
+
+	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+
+	let filteredArr: string[] = [];
+
+	birds.forEach((bird) => {
+		if (!geese.includes(bird)) {
+		// if (geese.indexOf(bird) < 0) {
+			filteredArr.push(bird);
+		}
+	})
+
+	return filteredArr;
+	
   }
 
 
 
-console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]));
-console.log(gooseFilter(["Mallard", "Barbary", "Hook Bill", "Blue Swedish", "Crested"]));
-console.log(gooseFilter(["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]));
+// console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]));
+// console.log(gooseFilter(["Mallard", "Barbary", "Hook Bill", "Blue Swedish", "Crested"]));
+// console.log(gooseFilter(["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]));
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -422,7 +496,7 @@ console.log(gooseFilter(["African", "Roman Tufted", "Toulouse", "Pilgrim", "Stei
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CHECK FOR FACTOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  MODULO, OBJECT.IS()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -445,17 +519,33 @@ Note: base is a non-negative number, factor is a positive number.
 */
 
 const checkForFactor = (base: number, factor: number) => {
-	// your code here
+	
+	return base % factor === 0;
+
   }
 
 
-console.log(checkForFactor(10, 2));
-console.log(checkForFactor(63, 7));
-console.log(checkForFactor(653, 7));
-console.log(checkForFactor(9, 2));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const checkForFactor2 = (base: number, factor: number) : boolean => !(base % factor);
+
+
+function checkForFactor3(base: number, factor: number) {
+	return (base % factor === 0) ? true : false
+}
+
+// ❓❓❓ OBJECT.IS() ❓❓❓
+function checkForFactor4(base: number, factor: number): boolean {
+	const reminder: number = base % factor;
+	return Number.isInteger(reminder) && Object.is(reminder, 0);
+}
+
+
+
+function checkForFactor5(base: number, factor: number) {
+	return base % factor > 0 ? false : true;
+}
 
 
 

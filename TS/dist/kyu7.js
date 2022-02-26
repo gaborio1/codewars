@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const evaporator = (content, evapPerDay, threshold) => {
+};
+console.log(evaporator(10, 10, 10));
+console.log(evaporator(10, 10, 5));
 const flattenAndSort = (inputArray) => {
     return inputArray
         .reduce((acc, curr) => acc.concat(curr), [])

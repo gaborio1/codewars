@@ -1,6 +1,69 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const well = (strArr) => {
+    if (strArr.indexOf("good") < 0)
+        return "Fail!";
+    return strArr.join("").match(/good/g).length < 3
+        ? "Publish!"
+        : "I smell a series!";
+};
+function well2(x) {
+    let num = x.filter(a => a === 'good').length;
+    return num > 2 ? 'I smell a series!' : num >= 1 ? 'Publish!' : 'Fail!';
+}
+function well3(x) {
+    const ideasCount = {
+        goodIdeas: 0,
+        badIdeas: 0
+    };
+    x.forEach((item) => {
+        item === 'bad' ? ideasCount.badIdeas += 1 : ideasCount.goodIdeas += 1;
+    });
+    if (ideasCount.goodIdeas > 2) {
+        return 'I smell a series!';
+    }
+    else if (ideasCount.goodIdeas <= 2 && ideasCount.goodIdeas !== 0) {
+        return 'Publish!';
+    }
+    else {
+        return 'Fail!';
+    }
+}
+function well4(x) {
+    const number = x.filter((i) => i === "good").length;
+    if (!number) {
+        return "Fail!";
+    }
+    if (number < 3) {
+        return "Publish!";
+    }
+    return "I smell a series!";
+}
+const gooseFilter = (birds) => {
+    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    let filteredArr = [];
+    birds.forEach((bird) => {
+        if (!geese.includes(bird)) {
+            filteredArr.push(bird);
+        }
+    });
+    return filteredArr;
+};
+const checkForFactor = (base, factor) => {
+    return base % factor === 0;
+};
+const checkForFactor2 = (base, factor) => !(base % factor);
+function checkForFactor3(base, factor) {
+    return (base % factor === 0) ? true : false;
+}
+function checkForFactor4(base, factor) {
+    const reminder = base % factor;
+    return Number.isInteger(reminder) && Object.is(reminder, 0);
+}
+function checkForFactor5(base, factor) {
+    return base % factor > 0 ? false : true;
+}
 const findDifference = (a, b) => {
     const getVolume = (arr) => {
         return arr.reduce((acc, curr) => acc * curr);
