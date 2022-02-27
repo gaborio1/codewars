@@ -1,6 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const finalGrade = (exam, pro) => {
+    let solution = 0;
+    if (exam > 90 || pro > 10) {
+        solution = 100;
+    }
+    else if (exam > 75 && pro >= 5) {
+        solution = 90;
+    }
+    else if (exam > 50 && pro >= 2) {
+        solution = 75;
+    }
+    return solution;
+};
+console.log(finalGrade(100, 12));
+console.log(finalGrade(85, 5));
 const well = (strArr) => {
     if (strArr.indexOf("good") < 0)
         return "Fail!";
@@ -42,14 +57,46 @@ function well4(x) {
 }
 const gooseFilter = (birds) => {
     const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    return birds.filter((bird) => geese.indexOf(bird) < 0);
+    return birds.filter((bird) => !geese.includes(bird));
     let filteredArr = [];
     birds.forEach((bird) => {
         if (!geese.includes(bird)) {
             filteredArr.push(bird);
         }
     });
-    return filteredArr;
 };
+function gooseFilter2(birds) {
+    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    return birds.filter(bird => !geese.includes(bird));
+}
+function gooseFilter3(birds) {
+    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    const geeseIndex = geese.reduce((acc, birdName) => {
+        acc[birdName] = true;
+        return acc;
+    }, {});
+    return birds.filter((bird) => !(bird in geeseIndex));
+}
+function gooseFilter4(birds) {
+    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    var j = 0, result = [];
+    for (let i = 0; i < birds.length; i++) {
+        if (birds[i] == "African" || birds[i] == "Toulouse" || birds[i] == "Roman Tufted" || birds[i] == "Pilgrim" || birds[i] == "Steinbacher") {
+            delete birds[i];
+        }
+        if (birds[i] != undefined) {
+            result[j] = birds[i];
+            j++;
+        }
+    }
+    return result;
+}
+function gooseFilter5(birds) {
+    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    return birds.filter(bird => geese.find(gee => gee == bird) === undefined);
+}
+const gooseFilter6 = (birds) => birds.filter(x => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(x) === -1);
 const checkForFactor = (base, factor) => {
     return base % factor === 0;
 };

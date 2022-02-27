@@ -325,7 +325,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  STUDENT'S FINAL GRADE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -333,13 +333,51 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Create a function finalGrade, which calculates the final grade of a student depending on two parameters: a grade for the exam and a number of completed projects.
 
+This function should take two arguments: exam - grade for exam (from 0 to 100); projects - number of completed projects (from 0 and above);
+
+This function should return a number (final grade). There are four types of final grades:
+
+100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
+90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
+75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
+0, in other cases
+Examples(Inputs-->Output):
+
+100, 12 --> 100
+99, 0 --> 100
+10, 15 --> 100
+
+85, 5 --> 90
+
+55, 3 --> 75
+
+55, 0 --> 0
+20, 2 --> 0
+*Use Comparison and Logical Operators.
 */
 
+const finalGrade = (exam: number, pro: number): number => {
 
+	let grade: number = 0;
 
-// console.log();
-// console.log();
+	if (exam > 90 || pro > 10) {
+		grade = 100;
+	} else if (exam > 75 && pro >= 5) {
+		grade = 90;
+	} else if (exam > 50 && pro >= 2) {
+		grade = 75;
+	} 
+
+	return grade;
+
+  }
+
+// 100
+console.log(finalGrade(100, 12));
+// 90
+console.log(finalGrade(85, 5));
 // console.log();
 // console.log();
 
@@ -437,9 +475,8 @@ function well4(x: string[]): string{
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Property 'includes' does not exist on type 'string[]'. (2339) ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FILTER OUT THE GEESE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -463,11 +500,19 @@ The elements in the returned array should be in the same order as in the initial
 */
 
 
-// ❗️❗️❗️ REFACTOR WITH FILTER() ❗️❗️❗️
 const gooseFilter = (birds: string[]): string[] => {
 
 	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 
+	// 1️⃣ FILTER(), INDEXOF()
+	return birds.filter((bird) => geese.indexOf(bird) < 0);
+
+	// 2️⃣❗️❗️❗️  FILTER(),INCLUDES ❗️❗️❗️ DOES NOT PASS CODEWARS TESTS ❗️❗️❗️ 
+	// Property 'includes' does not exist on type 'string[]'. (2339)
+	return birds.filter((bird) => !geese.includes(bird));
+
+
+	// 3️⃣	FOREACH()
 	let filteredArr: string[] = [];
 
 	birds.forEach((bird) => {
@@ -477,7 +522,7 @@ const gooseFilter = (birds: string[]): string[] => {
 		}
 	})
 
-	return filteredArr;
+	// return filteredArr;
 	
   }
 
@@ -490,7 +535,62 @@ const gooseFilter = (birds: string[]): string[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ SAME AS MY SOLUTION ❗️❗️❗️ 
+function gooseFilter2 (birds: string[]): string[] {
+	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+	// return an array containing all of the strings in the input array except those that match strings in geese
+	return birds.filter(bird => !geese.includes(bird));
+  }
 
+
+
+
+interface GeeseIndex {
+    [key: string]: boolean;
+}
+
+function gooseFilter3 (birds: string[]): string[] {
+    const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+
+    // avoid O(n) look-ups
+    const geeseIndex = geese.reduce((acc: GeeseIndex, birdName: string) => {
+        acc[birdName] = true;
+        return acc;
+    }, {});
+
+    return birds.filter((bird: string) => !(bird in geeseIndex));
+}
+
+
+
+
+function gooseFilter4 (birds: string[]): string[] {
+	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+	var j = 0, result = [];
+	for (let i = 0; i < birds.length; i++) {
+	  if (birds[i] == "African" || birds[i] == "Toulouse" || birds[i] == "Roman Tufted" || birds[i] == "Pilgrim" || birds[i] == "Steinbacher") {
+		  delete birds[i];
+		} 
+		if (birds[i] != undefined) {
+			result[j] = birds[i];
+			j++;
+		}
+	}
+	return result;
+}
+
+
+
+
+function gooseFilter5 (birds: string[]): string[] {
+	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+	return birds.filter(bird => geese.find(gee => gee == bird) === undefined)
+  }
+
+
+
+
+  const gooseFilter6 = (birds: string[]): string[] => birds.filter(x => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(x) === -1);
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
