@@ -1,10 +1,47 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
-const evaporator = (content, evapPerDay, threshold) => {
+const factorial = (num) => {
+    let nthFact = 1;
+    for (let i = 1; i <= num; i++) {
+        nthFact *= i;
+    }
+    return nthFact;
 };
-console.log(evaporator(10, 10, 10));
-console.log(evaporator(10, 10, 5));
+console.log(factorial(4));
+console.log(factorial(0));
+console.log(factorial(7));
+function factorial2(n) {
+    if (n <= 1)
+        return 1;
+    return n * factorial(n - 1);
+}
+const evaporator = (cont, dayEvap, thresH) => {
+    let contentLeft = cont;
+    const minQuantity = cont * (thresH / 100);
+    let daysLeft = 0;
+    while (contentLeft >= minQuantity) {
+        contentLeft -= contentLeft * (dayEvap / 100);
+        daysLeft++;
+    }
+    return daysLeft;
+};
+function evaporator2(content, evap_per_day, threshold) {
+    return Math.ceil(Math.log(threshold / 100) / Math.log(1 - evap_per_day / 100));
+}
+function evaporator3(content, evapPerDay, threshold) {
+    const reverseFactor = 1 / (1 - evapPerDay / 100);
+    return Math.ceil(-Math.log(threshold / 100) / Math.log(reverseFactor));
+}
+function evaporator4(content, evapPerDay, threshold) {
+    const full = content;
+    let days = 0;
+    do {
+        content -= content / 100 * evapPerDay;
+        days++;
+    } while (content > full / 100 * threshold);
+    return days;
+}
 const flattenAndSort = (inputArray) => {
     return inputArray
         .reduce((acc, curr) => acc.concat(curr), [])

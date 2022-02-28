@@ -1,8 +1,57 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
-const longestConsec = (strarr, k) => {
+const longestConsec = (strArr, numWords) => {
+    if (strArr.length === 0
+        || numWords < 1
+        || numWords > strArr.length) {
+        return "";
+    }
+    let concatArr = [];
+    for (let i = 0; i < strArr.length - numWords + 1; i++) {
+        let concatWord = "";
+        for (let j = 0; j < numWords; j++) {
+            let nextWord = strArr[i + j];
+            concatWord += nextWord;
+        }
+        concatArr.push(concatWord);
+    }
+    const concatArrCopy = [...concatArr];
+    const sortedArr = concatArrCopy.sort((a, b) => b.length - a.length);
+    const longest = sortedArr[0].length;
+    let solution = "";
+    for (let i = 0; i < concatArr.length; i++) {
+        if (concatArr[i].length === longest) {
+            solution = concatArr[i];
+            break;
+        }
+    }
+    return solution;
 };
+function longestConsec2(strarr, k) {
+    if (strarr.length === 0 || k > strarr.length || k <= 0)
+        return "";
+    return strarr.map((currentValue, index, array) => array.slice(index, index + k).join(''))
+        .reduce((acc, cur) => cur.length > acc.length ? cur : acc);
+}
+function longestConsec3(strarr, k) {
+    if (!(strarr && strarr.length) || k <= 0 || strarr.length < k) {
+        return "";
+    }
+    return strarr.reduce((acc, cur, i, arr) => {
+        let concatinated = arr.slice(i, i + k).join("");
+        return acc.length < concatinated.length ? concatinated : acc;
+    }, "");
+}
+function longestConsec4(strarr, k) {
+    let max = '';
+    const n = strarr.length;
+    for (let i = 0; i <= n - k && k > 0 && k <= n; i++) {
+        const newStr = strarr.slice(i, i + k).join('');
+        max = max.length >= newStr.length ? max : newStr;
+    }
+    return max;
+}
 const findNb = (num) => {
     let total = num;
     let base = 1;

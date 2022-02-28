@@ -211,7 +211,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CONSECUTIVE STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  NESTED FOR(), ❗️❗️❗️ SORT(), REDUCE() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -238,20 +238,112 @@ In the same way:
 longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
 */
 
-const longestConsec = (strarr: string[], k: number): string => {
+const longestConsec = (strArr: string[], numWords: number): string => {
+
+    if (
+        strArr.length === 0
+        || numWords < 1
+        || numWords > strArr.length
+    ) {
+        return "";
+    }
+
+    let concatArr: string[] = [];
+
+    for (let i = 0; i < strArr.length - numWords + 1; i++) {
+
+        let concatWord: string = "";
+
+        for (let j = 0; j < numWords; j++) {
+            let nextWord = strArr[i + j];
+            concatWord += nextWord;
+        }
+
+        concatArr.push(concatWord);
+    }
+
+    // ❗️❗️❗️  concatArrCopy.sort WILL MUTATE ORIGINAL ARRAY SO HAVE TO COPY IT ❗️❗️❗️
+    const concatArrCopy = [...concatArr];
+    const sortedArr = concatArrCopy.sort((a, b) => b.length - a.length);
+    const longest = sortedArr[0].length;
+    let solution = "";
+
+    for (let i = 0; i < concatArr.length; i++) {
+        if (concatArr[i].length === longest) {
+            solution = concatArr[i];
+            break;
+        }
+    }
+
+    return solution;
+
 }
+
+/*
+  RETURN EMPTY STRING IF n = 0 or k > n or k <= 0
+  PUSH ALL CONCATENATED STRINGS INTO concatArr (OUTER LOOP WILL STOP AT LAST IDX - numWords)
+  MAKE A COPY OF concatArr
+  SORT concatArrCopy BY LENGTH OF ELEMENTS (DESCENDING, LONGEST TO SHORTEST)
+  GET LENGTH OF LONGEST (FIRST) ELEMENT - longest
+  LOOP THROUGH ORIGINAL concatArr AND FIND FIRST STRING THAT HAS THE LENGTH OF longest
+  RETURN IT AS SOLUTION
+*/
+
+/*
+❗️❗️❗️
+You need to copy the array before you sort it. One way with es6:
+
+const sorted = [...arr].sort();
+The spread-syntax as array literal (copied from mdn):
+
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+❗️❗️❗️
+*/
 
 // "abigailtheta"
 // console.log(longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2));
 // "ixoyx3452zzzzzzzzzzzz"
-// console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 3));
+// console.log(longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 3));
 // "oocccffuucccjjjkkkjyyyeehh"
 // console.log(longestConsec(["ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"], 1));
-// console.log();
+// console.log(longestConsec(["ac", "c", "aaa", "aaa", "hg", "abc", "def", "sd", "abc", "abc"], 2));
+// console.log(longestConsec([], 2));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function longestConsec2(strarr: string[], k: number): string {
+    if (strarr.length === 0 || k > strarr.length || k <= 0) return "";
+    // ❗️❗️❗️ REDUCE() ❗️❗️❗️
+    return strarr.map((currentValue, index, array) => array.slice(index, index + k).join(''))
+        .reduce((acc, cur) => cur.length > acc.length ? cur : acc)
+}
 
+
+
+function longestConsec3(strarr: string[], k: number): string {
+    if (!(strarr && strarr.length) || k <= 0 || strarr.length < k) {
+        return "";
+    }
+    // ❗️❗️❗️ REDUCE() ❗️❗️❗️
+    return strarr.reduce((acc, cur, i, arr) => {
+        let concatinated = arr.slice(i, i + k).join("");
+        return acc.length < concatinated.length ? concatinated : acc;
+    }, "");
+}
+
+
+
+function longestConsec4(strarr: string[], k: number): string {
+    let max = '';
+    const n = strarr.length;
+
+    for (let i = 0; i <= n - k && k > 0 && k <= n; i++) {
+        const newStr = strarr.slice(i, i + k).join('');
+        max = max.length >= newStr.length ? max : newStr;
+    }
+    return max;
+}
 
 
 

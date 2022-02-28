@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
 const finalGrade = (exam, pro) => {
-    let solution = 0;
+    let grade = 0;
     if (exam > 90 || pro > 10) {
-        solution = 100;
+        grade = 100;
     }
     else if (exam > 75 && pro >= 5) {
-        solution = 90;
+        grade = 90;
     }
     else if (exam > 50 && pro >= 2) {
-        solution = 75;
+        grade = 75;
     }
-    return solution;
+    return grade;
 };
 console.log(finalGrade(100, 12));
 console.log(finalGrade(85, 5));

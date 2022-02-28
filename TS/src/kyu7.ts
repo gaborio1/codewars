@@ -209,7 +209,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  FACTORIAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -220,25 +220,40 @@
 
 */
 
+const factorial = (num: number) => {
 
+    let nthFact = 1;
 
-// console.log();
-// console.log();
-// console.log();
+    for (let i = 1; i <= num; i++) {
+
+        nthFact *= i;
+
+    }
+
+    return nthFact;
+
+}
+
+console.log(factorial(4));
+console.log(factorial(0));
+console.log(factorial(7));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+function factorial2(n: number): number {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1)
+}
 
 
 
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  EVAPORATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  DO WHILE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -256,19 +271,57 @@ Note:
 Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
 */
 
-const evaporator = (content: number, evapPerDay: number, threshold: number): number => {
+const evaporator = (cont: number, dayEvap: number, thresH: number): number => {
 
+    let contentLeft = cont;
+    const minQuantity = cont * (thresH / 100);
+    let daysLeft: number = 0;
 
+    while (contentLeft >= minQuantity) {
+        contentLeft -= contentLeft * (dayEvap / 100);
+        daysLeft++;
+    }
+
+    return daysLeft;
 
 }
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+//  INITIALIZE VARIABLES
+//  KEEP DECREMENTING contentLeft WHILE IT IS GREATER OR EQUAL TO minQuantity
+//  RETURN daysLeft
+
 
 // 22
-console.log(evaporator(10, 10, 10));
+// console.log(evaporator(10, 10, 10));
 // 29
-console.log(evaporator(10, 10, 5));
+// console.log(evaporator(10, 10, 5));
 
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function evaporator2(content: number, evap_per_day: number, threshold: number): number {
+    return Math.ceil(Math.log(threshold / 100) / Math.log(1 - evap_per_day / 100));
+}
+
+
+
+function evaporator3(content: number, evapPerDay: number, threshold: number): number {
+    const reverseFactor = 1 / (1 - evapPerDay / 100);
+    return Math.ceil(-Math.log(threshold / 100) / Math.log(reverseFactor));
+}
+
+
+
+function evaporator4(content: number, evapPerDay: number, threshold: number): number {
+    const full = content;
+    let days = 0;
+
+    do {
+        content -= content / 100 * evapPerDay;
+        days++;
+    } while (content > full / 100 * threshold);
+
+    return days;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FLATTEN AND SORT AN NESTED ARRAY
