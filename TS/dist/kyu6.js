@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+const comp = (a1, a2) => {
+    return true;
+};
 const longestConsec = (strArr, numWords) => {
     if (strArr.length === 0
         || numWords < 1

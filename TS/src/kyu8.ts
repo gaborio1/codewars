@@ -278,8 +278,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  MY HEAD IS AT THE WRONG END
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -287,22 +287,55 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You're at the zoo... all the meerkats look weird. Something has gone terribly wrong - someone has gone and switched their heads and tails around!
 
+Save the animals by switching them back. You will be given an array which will have three values (tail, body, head). It is your job to re-arrange the array so that the animal is the right way round (head, body, tail).
+
+Same goes for all the other arrays/lists that you will get in the tests: you have to change the element positions with the same exact logics
+
+Simples!
 */
 
+const fixTheMeerkat = (arr: [string, string, string]): string[] => {
 
+	return arr.reverse();
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+}
+  
+
+console.log(fixTheMeerkat(['tail', 'body', 'head']));
+console.log(fixTheMeerkat(['tails', 'body', 'heads']));
+console.log(fixTheMeerkat(['bottom', 'middle', 'top']));
+console.log(fixTheMeerkat(['ground', 'rainbow', 'sky']));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function fixTheMeerkat2([tail, body, head]: string[]): string[] {
+	return [head, body, tail];
+  }
 
+
+  function fixTheMeerka2t( arr : string[]): string[] {
+	// your code here
+	let pos1 = arr[2], pos2= arr[1], pos3 = arr[0];
+	return [pos1, pos2, pos3];
+  }
+
+
+
+  function fixTheMeerka3t(arr: string[]): string[] {
+	[arr[0], arr[2]] = [arr[2], arr[0]];
+	return arr;
+  }
+
+
+
+  function fixTheMeerkat4(arr: string[]): string[] {
+	return [arr[2], arr[1], arr[0]]
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  NTH POWER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -310,17 +343,62 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+This kata is from check py.checkio.org
 
+You are given an array with positive numbers and a non-negative number N. You should find the N-th power of the element in the array with the index N. If N is outside of the array, then return -1. Don't forget that the first element has the index 0.
+
+Let's look at a few examples:
+
+array = [1, 2, 3, 4] and N = 2, then the result is 3^2 == 9;
+array = [1, 2, 3] and N = 3, but N is outside of the array, so the result is -1.
 */
 
+const index = (array: number[], numIdx: number): number => {
 
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+	// 1️⃣
+	return numIdx < array.length
+		? Math.pow(array[numIdx], numIdx)
+		: -1;
+
+
+	// 2️⃣
+    // if (numIdx === 0) return 1;
+
+	// return numIdx < array.length
+	// 	? Math.pow(array[numIdx], numIdx)
+	// 	: -1;
+
+  }
+
+//  IF numIdx FITS INTO ARRAY, RETURN numIdx-th power of the element with the index numIdx
+//  OTHERWISE RETURN -1
+
+// console.log(index([1, 2, 3, 4], 2));
+// console.log(index([1, 3, 10, 100], 3));
+// console.log(index([0, 1], 0));
+// console.log(index([1, 2], 3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const index2 = (array: number[], n: number): number => array[n] ** n || -1;
+
+
+
+function index3(array: number[], n: number): number {
+	const res = array[n] ** n;
+	return isNaN(res) ? -1 : res;
+  }
+
+
+
+  function index4(array: number[], n: number): number {
+	const val = array[n];
+	
+	if (val === undefined) return -1;
+	return Math.pow(val,n);
+  }
+
 
 
 
@@ -375,9 +453,9 @@ const finalGrade = (exam: number, pro: number): number => {
   }
 
 // 100
-console.log(finalGrade(100, 12));
+// console.log(finalGrade(100, 12));
 // 90
-console.log(finalGrade(85, 5));
+// console.log(finalGrade(85, 5));
 // console.log();
 // console.log();
 

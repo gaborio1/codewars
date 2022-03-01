@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const angle = (n) => {
+};
 const factorial = (num) => {
     let nthFact = 1;
     for (let i = 1; i <= num; i++) {

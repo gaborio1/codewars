@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
+const orderWeight = (strng) => {
+};
 class G964 {
 }
 G964.productFib = (num) => {

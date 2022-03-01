@@ -1,6 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const fixTheMeerkat = (arr) => {
+    return arr.reverse();
+};
+console.log(fixTheMeerkat(['tail', 'body', 'head']));
+console.log(fixTheMeerkat(['tails', 'body', 'heads']));
+console.log(fixTheMeerkat(['bottom', 'middle', 'top']));
+console.log(fixTheMeerkat(['ground', 'rainbow', 'sky']));
+function fixTheMeerkat2([tail, body, head]) {
+    return [head, body, tail];
+}
+function fixTheMeerka2t(arr) {
+    let pos1 = arr[2], pos2 = arr[1], pos3 = arr[0];
+    return [pos1, pos2, pos3];
+}
+function fixTheMeerka3t(arr) {
+    [arr[0], arr[2]] = [arr[2], arr[0]];
+    return arr;
+}
+function fixTheMeerkat4(arr) {
+    return [arr[2], arr[1], arr[0]];
+}
+const index = (array, numIdx) => {
+    return numIdx < array.length
+        ? Math.pow(array[numIdx], numIdx)
+        : -1;
+};
+const index2 = (array, n) => array[n] ** n || -1;
+function index3(array, n) {
+    const res = array[n] ** n;
+    return isNaN(res) ? -1 : res;
+}
+function index4(array, n) {
+    const val = array[n];
+    if (val === undefined)
+        return -1;
+    return Math.pow(val, n);
+}
 const finalGrade = (exam, pro) => {
     let grade = 0;
     if (exam > 90 || pro > 10) {
@@ -14,8 +51,6 @@ const finalGrade = (exam, pro) => {
     }
     return grade;
 };
-console.log(finalGrade(100, 12));
-console.log(finalGrade(85, 5));
 const well = (strArr) => {
     if (strArr.indexOf("good") < 0)
         return "Fail!";
