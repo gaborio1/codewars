@@ -163,7 +163,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  SORTED? YES, NO, HOW?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -171,14 +171,23 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Complete the method which accepts an array of integers, and returns one of the following:
 
+"yes, ascending" - if the numbers in the array are sorted in an ascending order
+"yes, descending" - if the numbers in the array are sorted in a descending order
+"no" - otherwise
+You can assume the array will always be valid, and there will always be one correct answer.
 */
 
+const isSortedAndHow = (arr:number[]): string => {
 
+    console.log([...arr].sort())
+    return "";
+  }
 
-// console.log();
-// console.log();
-// console.log();
+console.log(isSortedAndHow([1, 2]));
+console.log(isSortedAndHow([15, 7, 3, -8]));
+console.log(isSortedAndHow([4, 2, 30]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -195,11 +204,15 @@
 
 /*
 Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+
+If a convex polygon has n sides, then its interior angle sum is given by the following equation: S = ( n −2) × 180°.
 */
 
 const angle = (n: number): number => {
-    // your code here
-  }
+
+    return (n - 2) * 180;
+
+}
 
 // console.log(angle(3));
 // console.log(angle(4));
@@ -236,9 +249,9 @@ const factorial = (num: number) => {
 
 }
 
-console.log(factorial(4));
-console.log(factorial(0));
-console.log(factorial(7));
+// console.log(factorial(4));
+// console.log(factorial(0));
+// console.log(factorial(7));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============

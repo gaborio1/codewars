@@ -2,7 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
 const angle = (n) => {
+    return (n - 2) * 180;
 };
+console.log(angle(3));
+console.log(angle(4));
 const factorial = (num) => {
     let nthFact = 1;
     for (let i = 1; i <= num; i++) {
