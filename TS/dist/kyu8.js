@@ -1,13 +1,60 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const goals = (laLigaGoals, copaDelReyGoals, championsLeagueGoals) => {
+    return laLigaGoals + copaDelReyGoals + championsLeagueGoals;
+};
+function goals2(...args) {
+    return args.reduce((a, b) => a + b);
+}
+function goals3(...leagueGoals) {
+    return leagueGoals.reduce((total, goal) => total + goal);
+}
+const goals4 = (...args) => args.reduce((a, b) => a + b);
+function goals5(laLigaGoals, copaDelReyGoals, championsLeagueGoals) {
+    let result = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        result += arguments[i];
+    }
+    return result;
+}
+function goals6(laLigaGoals, copaDelReyGoals, championsLeagueGoals) {
+    return Object.values(arguments).reduce((a, b) => a + b);
+}
+const nthEven = (n) => {
+    return (n - 1) * 2;
+};
+function nthEven2(n) {
+    let result = 0;
+    for (let i = 0; i < n; i++) {
+        result = i * 2;
+    }
+    console.log(result);
+    return result;
+}
+function nthEven3(n) {
+    return Math.floor(n * 2 - 2);
+}
+const repeater = (str, n) => {
+    return str.repeat(n);
+};
+function repeater2(str, n) {
+    let result = '';
+    for (let i = 0; i < n; i++) {
+        result = result.concat(str.toString());
+    }
+    return result;
+}
+function repeater3(str, n) {
+    return Array(n).fill(str).join('');
+}
+function repeater4(str, n) {
+    return new Array(n + 1).join(str);
+}
+const repeater5 = Function.prototype.call.bind(String.prototype.repeat);
 const fixTheMeerkat = (arr) => {
     return arr.reverse();
 };
-console.log(fixTheMeerkat(['tail', 'body', 'head']));
-console.log(fixTheMeerkat(['tails', 'body', 'heads']));
-console.log(fixTheMeerkat(['bottom', 'middle', 'top']));
-console.log(fixTheMeerkat(['ground', 'rainbow', 'sky']));
 function fixTheMeerkat2([tail, body, head]) {
     return [head, body, tail];
 }

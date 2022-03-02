@@ -1,11 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const isSortedAndHow = (arr) => {
+    console.log([...arr].sort());
+    return "";
+};
+console.log(isSortedAndHow([1, 2]));
+console.log(isSortedAndHow([15, 7, 3, -8]));
+console.log(isSortedAndHow([4, 2, 30]));
 const angle = (n) => {
     return (n - 2) * 180;
 };
-console.log(angle(3));
-console.log(angle(4));
 const factorial = (num) => {
     let nthFact = 1;
     for (let i = 1; i <= num; i++) {
@@ -13,9 +18,6 @@ const factorial = (num) => {
     }
     return nthFact;
 };
-console.log(factorial(4));
-console.log(factorial(0));
-console.log(factorial(7));
 function factorial2(n) {
     if (n <= 1)
         return 1;

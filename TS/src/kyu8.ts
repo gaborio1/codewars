@@ -231,20 +231,40 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-
+// ❗️❗️❗️ ADD THIS TO CODEWARS EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  MESSI TOTAL GOALS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ REDUCE() ❗️❗️❗️ ARGUMENTS ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Messi goals function
+Messi is a soccer player with goals in three leagues:
 
+LaLiga
+Copa del Rey
+Champions
+Complete the function to return his total number of goals in all three leagues.
+
+Note: the input will always be valid.
+
+For example:
+
+5, 10, 2  -->  17
 */
 
+const goals = (
+	laLigaGoals:number,
+	copaDelReyGoals:number,
+	championsLeagueGoals:number
+	): number => {
 
+		return laLigaGoals + copaDelReyGoals + championsLeagueGoals;
+
+}
 
 // console.log();
 // console.log();
@@ -253,10 +273,36 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ REDUCE() ❗️❗️❗️ ARGUMENTS ❗️❗️❗️
+function goals2(...args: number[]) {
+	return args.reduce((a, b) => a + b);
+  }
+
+  function goals3(...leagueGoals: number[]): number {
+    return leagueGoals.reduce((total, goal) => total + goal);
+}
+
+const goals4 = (...args: number[]) => args.reduce((a, b) => a + b);
+
+
+function goals5 (laLigaGoals:number, copaDelReyGoals:number, championsLeagueGoals:number) {
+	let result = 0;
+  
+	for (let i = 0; i < arguments.length; i++) {
+	  result += arguments[i];
+	}
+  
+	return result;
+  }
+
+  function goals6 (laLigaGoals:number, copaDelReyGoals:number, championsLeagueGoals:number) {
+	return Object.values(arguments).reduce((a, b) => a + b);
+  }
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  GET NTH EVEN NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -264,20 +310,108 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Return the Nth Even Number
 
+Example(Input --> Output)
+
+1 --> 0 (the first even number is 0)
+3 --> 4 (the 3rd even number is 4 (0, 2, 4))
+100 --> 198
+1298734 --> 2597466
+The input will not be 0.
 */
 
+const nthEven = (n: number): number => {
 
+	return (n - 1) * 2;
 
+	
+	// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+	// let solution:number = 0;
+
+	// for (let i = 1, j = 0; i <= n; i++, j += 2) {
+	// 	console.log(i, j);
+	// 	solution = j;
+	// }
+
+	// return solution;
+
+}
+
+// console.log(nthEven(1));
+// console.log(nthEven(2));
+// console.log(nthEven(3));
 // console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+function nthEven2(n: number) {
+	let result = 0;
+	for(let i = 0; i < n; i++) {
+	  result = i * 2;
+	}
+	console.log(result);
+	return result;
+}
+
+
+
+  function nthEven3(n: number): number {
+	return Math.floor(n * 2 - 2);
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  REPEAT STRING
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  REPEAT(), CONCAT(), FILL()
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Write a function named repeater() that takes two arguments (a string and a number), and returns a new string where the input string is repeated that many times.
+
+Example: (Input1, Input2 --> Output)
+"a", 5 --> "aaaaa"
+*/
+
+const repeater = (str: string, n: number): string => {
+
+    return str.repeat(n);
+
+  }
+
+// console.log(repeater("a", 5));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function repeater2(str: string, n: number): string {
+  let result = '';
+  
+  for (let i = 0; i < n; i++) {
+    result = result.concat(str.toString());
+  }
+  return result
+}
 
 
+
+function repeater3(str: string, n: number): string {
+	return Array(n).fill(str).join('');
+}
+
+
+
+  function repeater4(str: string, n: number): string {
+	return new Array(n+1).join(str);
+}
+
+
+
+  const repeater5 = Function.prototype.call.bind(String.prototype.repeat);
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MY HEAD IS AT THE WRONG END
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -303,10 +437,10 @@ const fixTheMeerkat = (arr: [string, string, string]): string[] => {
 }
   
 
-console.log(fixTheMeerkat(['tail', 'body', 'head']));
-console.log(fixTheMeerkat(['tails', 'body', 'heads']));
-console.log(fixTheMeerkat(['bottom', 'middle', 'top']));
-console.log(fixTheMeerkat(['ground', 'rainbow', 'sky']));
+// console.log(fixTheMeerkat(['tail', 'body', 'head']));
+// console.log(fixTheMeerkat(['tails', 'body', 'heads']));
+// console.log(fixTheMeerkat(['bottom', 'middle', 'top']));
+// console.log(fixTheMeerkat(['ground', 'rainbow', 'sky']));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
