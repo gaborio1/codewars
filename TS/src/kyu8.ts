@@ -210,25 +210,84 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  WHATS THE REAL FLOOR?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  TERNARY, SWITCH(TRUE)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Americans are odd people: in their buildings, the first floor is actually the ground floor and there is no 13th floor (due to superstition).
 
+Write a function that given a floor in the american system returns the floor in the european system.
+
+With the 1st floor being replaced by the ground floor and the 13th floor being removed, the numbers move down to take their place. In case of above 13, they move down by two because there are two omitted numbers below them.
+
+Basements (negatives) stay the same as the universal level.
+
+More information here
+
+Examples
+1  =>  0 
+0  =>  0
+5  =>  4
+15  =>  13
+-3  =>  -3
 */
 
+const getRealFloor = (amFloor: number): number => {
 
+	if (amFloor < 1) {
+		return amFloor;
+	} else if (amFloor < 13) {
+		return amFloor - 1;
+	} 
 
-// console.log();
-// console.log();
-// console.log();
+	return amFloor - 2;
+	
+}
+
+//  BELOW 1: SAME
+//  BELOW 13: ONE LESS
+//  13 AND ABOVE: TWO LESS
+
+// console.log(getRealFloor(1));
+// console.log(getRealFloor(5)); 
+// console.log(getRealFloor(15));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function getRealFloor2(n: number): number {
+	let floor: number;
+	if (n < 1) {
+	  floor = n;
+	} else if (n < 13) {
+	  floor = n - 1;
+	} else {
+	  floor = n - 2;
+	}
+	return floor;
+  }
+
+
+
+  function getRealFloor3(n: number): number{
+	return n <= 0 ? n : n <= 13 ? n-1 : n-2}
+
+
+
+function getRealFloor4(n: number): number {
+		switch (true) {
+		  case n < 1: return n
+		  case n < 13: return n-1
+		  default: return n-2
+		}
+}
+
+
+
 
 
 // ❗️❗️❗️ ADD THIS TO CODEWARS EXAMPLES ❗️❗️❗️
