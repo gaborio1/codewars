@@ -2,8 +2,32 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
 const isSortedAndHow = (arr) => {
-    console.log([...arr].sort());
-    return "";
+    const copyArr = [...arr];
+    const ascArr = copyArr.sort((a, b) => a - b);
+    const descArr = copyArr.sort((a, b) => b - a);
+    console.log(copyArr);
+    console.log(ascArr);
+    console.log(descArr);
+    let solution = "";
+    arr.forEach((el, idx) => {
+        if (el === copyArr.sort((a, b) => b - a)[idx]) {
+            solution = "yes, descending";
+        }
+        else {
+            solution = "no";
+        }
+        ;
+    });
+    arr.forEach((el, idx) => {
+        if (el === copyArr.sort((a, b) => a - b)[idx]) {
+            solution = "yes, ascending";
+        }
+        else {
+            solution = "no";
+        }
+        ;
+    });
+    return solution;
 };
 console.log(isSortedAndHow([1, 2]));
 console.log(isSortedAndHow([15, 7, 3, -8]));

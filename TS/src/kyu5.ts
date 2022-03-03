@@ -239,9 +239,8 @@ Notes
 it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
 */
 
-const orderWeight = (strng: string): string => {
-    // Your code
-  }
+// const orderWeight = (strng: string): string => {
+//   }
 
 
 // console.log(orderWeight("103 123 4444 99 2000"));

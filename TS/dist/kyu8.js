@@ -1,6 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const squareOrSquareRoot = (array) => {
+    return array.map((num) => {
+        return Number.isInteger(Math.sqrt(num))
+            ? Math.sqrt(num)
+            : Math.pow(num, 2);
+    });
+};
+function squareOrSquareRoot2(array) {
+    return array.map(a => Math.sqrt(a) % 1 == 0 ? Math.sqrt(a) : (a * a));
+}
+function squareOrSquareRoot3(array) {
+    return array.map(x => !(Math.sqrt(x) % 1) ? Math.sqrt(x) : x * x);
+}
 const getRealFloor = (amFloor) => {
     if (amFloor < 1) {
         return amFloor;
@@ -8,13 +21,31 @@ const getRealFloor = (amFloor) => {
     else if (amFloor < 13) {
         return amFloor - 1;
     }
-    else {
-        return amFloor - 2;
-    }
+    return amFloor - 2;
 };
-console.log(getRealFloor(1));
-console.log(getRealFloor(5));
-console.log(getRealFloor(15));
+function getRealFloor2(n) {
+    let floor;
+    if (n < 1) {
+        floor = n;
+    }
+    else if (n < 13) {
+        floor = n - 1;
+    }
+    else {
+        floor = n - 2;
+    }
+    return floor;
+}
+function getRealFloor3(n) {
+    return n <= 0 ? n : n <= 13 ? n - 1 : n - 2;
+}
+function getRealFloor4(n) {
+    switch (true) {
+        case n < 1: return n;
+        case n < 13: return n - 1;
+        default: return n - 2;
+    }
+}
 const goals = (laLigaGoals, copaDelReyGoals, championsLeagueGoals) => {
     return laLigaGoals + copaDelReyGoals + championsLeagueGoals;
 };

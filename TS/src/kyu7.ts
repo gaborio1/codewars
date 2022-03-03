@@ -162,8 +162,38 @@ You can assume the array will always be valid, and there will always be one corr
 
 const isSortedAndHow = (arr:number[]): string => {
 
-    console.log([...arr].sort())
-    return "";
+    const copyArr = [...arr];
+    const ascArr = copyArr.sort((a, b) => a - b);
+    const descArr = copyArr.sort((a, b) => b - a);
+    console.log(copyArr);
+    console.log(ascArr);
+    console.log(descArr);
+
+    let solution: string = "";
+
+    arr.forEach((el, idx) => {
+        if (el === copyArr.sort((a, b) => b - a)[idx]) {
+            solution = "yes, descending"
+        } else {
+            solution = "no"
+        };
+        
+    
+    });
+
+    arr.forEach((el, idx) => {
+        if (el === copyArr.sort((a, b) => a - b)[idx]) {
+            solution = "yes, ascending"
+        } else {
+            solution = "no"
+        };
+    
+    });
+
+   
+    return solution;
+
+   
   }
 
 console.log(isSortedAndHow([1, 2]));
