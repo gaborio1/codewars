@@ -195,6 +195,57 @@ const greetTwo = (name: string, owner: string): string => {
 // ARRAY METHODS
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// COMPARING ARRAYS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// DETERMINE IF ARRAY IS SORTED(ASC/DESC), OR RANDOM
+
+// 1️⃣ LOOP
+const isSortedAndHow = (arr: number[]): string => {
+
+    let isAscending: boolean = false;
+    let isDescending: boolean = false;
+    let solution: string = "no";
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] >= arr[i - 1]) {
+            isAscending = true;
+        } else {
+            break;
+        }
+        if (i === arr.length - 1 && isAscending) {
+            solution = "yes, ascending";
+        }
+    }
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] <= arr[i - 1]) {
+            isDescending = true;
+        } else {
+            break;
+        }
+        if (i === arr.length - 1 && isDescending) {
+            solution = "yes, descending";
+        }
+    }
+
+    return solution;
+}
+
+// 2️⃣ CONVERT TO STRING AND THEN COMPARE 
+function isSortedAndHow6(array: number[]): string {
+    const asc: number[] = [...array].sort((a, b) => a - b);
+    const dsc: number[] = [...array].sort((a, b) => b - a);
+    switch (array.toString()) {
+        case asc.toString():
+            return 'yes, ascending';
+        case dsc.toString():
+            return 'yes, descending';
+        default:
+            return 'no';
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // FILTER():
@@ -479,6 +530,28 @@ const flattenAndSort = (inputArray: number[][]): number[] => {
 
 }
 
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// .SORT():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+❗️❗️❗️ SORT WILL MUTATE ORIGINAL ARRAY ❗️❗️❗️
+You need to copy the array before you sort it. One way with es6:
+
+const sorted = [...arr].sort();
+The spread-syntax as array literal (copied from mdn):
+
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+❗️❗️❗️
+
+const ascArr = [...arr].sort((a, b) => a - b);
+   
+
+const descArr = [...arr].sort((a, b) => b - a);
+    
+*/
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // STRING METHODS

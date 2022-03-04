@@ -144,9 +144,9 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  SORTED? YES, NO, HOW?
+// TITLE:  SORTED? YES, NO, HOW? ASCENDING/DESCENDING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SORT(), 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -160,49 +160,114 @@ Complete the method which accepts an array of integers, and returns one of the f
 You can assume the array will always be valid, and there will always be one correct answer.
 */
 
-const isSortedAndHow = (arr:number[]): string => {
+const isSortedAndHow = (arr: number[]): string => {
 
-    const copyArr = [...arr];
-    const ascArr = copyArr.sort((a, b) => a - b);
-    const descArr = copyArr.sort((a, b) => b - a);
-    console.log(copyArr);
-    console.log(ascArr);
-    console.log(descArr);
+    let isAscending: boolean = false;
+    let isDescending: boolean = false;
+    let solution: string = "no";
 
-    let solution: string = "";
-
-    arr.forEach((el, idx) => {
-        if (el === copyArr.sort((a, b) => b - a)[idx]) {
-            solution = "yes, descending"
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] >= arr[i - 1]) {
+            isAscending = true;
         } else {
-            solution = "no"
-        };
-        
-    
-    });
+            break;
+        }
+        if (i === arr.length - 1 && isAscending) {
+            solution = "yes, ascending";
+        }
+    }
 
-    arr.forEach((el, idx) => {
-        if (el === copyArr.sort((a, b) => a - b)[idx]) {
-            solution = "yes, ascending"
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] <= arr[i - 1]) {
+            isDescending = true;
         } else {
-            solution = "no"
-        };
-    
-    });
+            break;
+        }
+        if (i === arr.length - 1 && isDescending) {
+            solution = "yes, descending";
+        }
+    }
 
-   
     return solution;
+}
 
-   
-  }
-
-console.log(isSortedAndHow([1, 2]));
-console.log(isSortedAndHow([15, 7, 3, -8]));
-console.log(isSortedAndHow([4, 2, 30]));
+// console.log(isSortedAndHow([1, 2]));
+// console.log(isSortedAndHow([15, 7, 3, -8]));
+// console.log(isSortedAndHow([4, 2, 30]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function isSortedAndHow2(array: number[]): string {
+    let ascending = true, descending = true;
+    for (var i = 1; i < array.length; i++) {
+        if (array[i - 1] < array[i]) descending = false;
+        if (array[i - 1] > array[i]) ascending = false;
+        if (!ascending && !descending) return "no";
+    }
+    if (ascending) return "yes, ascending";
+    return "yes, descending";
+}
+
+
+
+function isSortedAndHow3(array: number[]): string {
+    if (array.every((x, i, a) => i === 0 || a[i - 1] <= x)) return "yes, ascending";
+    if (array.every((x, i, a) => i === 0 || a[i - 1] >= x)) return "yes, descending";
+    return "no";
+}
+
+
+
+function isSortedAndHow4(array: number[]): string {
+    return [...array].sort((a, b) => a - b).join('') === array.join('') ? 'yes, ascending' : ([...array].sort((a, b) => a - b).reverse().join('') === array.join('') ? 'yes, descending' : 'no');
+}
+
+
+
+function isSortedAndHow5(array: number[]): string {
+    let isAsc: boolean = true;
+    let isDesc: boolean = true;
+    let i: number = 0;
+
+    while (i + 1 < array.length) {
+        if (array[i] > array[i + 1]) isAsc = false;
+        if (array[i] < array[i + 1]) isDesc = false;
+
+        i++;
+    }
+
+    if (isAsc) return "yes, ascending"
+    else if (isDesc) return "yes, descending"
+    else return "no";
+
+}
+
+
+
+function isSortedAndHow6(array: number[]): string {
+    const asc: number[] = [...array].sort((a, b) => a - b);
+    const dsc: number[] = [...array].sort((a, b) => b - a);
+    switch (array.toString()) {
+        case asc.toString():
+            return 'yes, ascending';
+        case dsc.toString():
+            return 'yes, descending';
+        default:
+            return 'no';
+    }
+}
+
+
+function isSortedAndHow7(array: number[]): string {
+    if ([...array].sort((a, b) => a - b).join('') === array.join('')) {
+        return 'yes, ascending';
+    } else if ([...array].sort((a, b) => b - a).join('') === array.join('')) {
+        return 'yes, descending';
+    } else {
+        return 'no';
+    }
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
