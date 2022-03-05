@@ -1,6 +1,46 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const saleHotdogs = (n) => {
+    if (n < 5)
+        return n * 100;
+    if (n < 10)
+        return n * 95;
+    return n * 90;
+};
+console.log(saleHotdogs(3));
+console.log(saleHotdogs(8));
+console.log(saleHotdogs(10));
+const move = (pos, roll) => {
+    return pos + roll * 2;
+};
+const isUpperCase = (str) => {
+    return str === str.toUpperCase();
+};
+function isUpperCase2(str) {
+    return str.match(/[a-z]/) === null;
+}
+function isUpperCase3(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122)
+            return false;
+    }
+    return true;
+}
+function isUpperCase4(str) {
+    return /^[A-Z\s]+$/.test(str);
+}
+function isUpperCase5(str) {
+    return str.split("").every(c => c === c.toUpperCase());
+}
+function isUpperCase6(str) {
+    for (const letter of str) {
+        if (letter !== letter.toUpperCase()) {
+            return false;
+        }
+    }
+    return true;
+}
 const squareOrSquareRoot = (array) => {
     return array.map((num) => {
         return Number.isInteger(Math.sqrt(num))

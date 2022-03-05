@@ -1,4 +1,5 @@
 // ❗️❗️❗️ ✅  ❓❓❓
+// throw new Error("The method or operation is not implemented.");
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -118,7 +119,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  IF, ELSE, TERNARY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -126,19 +127,52 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task:
+Complete function saleHotdogs/SaleHotDogs/sale_hotdogs, function accept 1 parameters:n, n is the number of customers to buy hotdogs, different numbers have different prices (refer to the following table), return a number that the customer need to pay how much money.
 
+number	price (cents)
+n < 5	100
+n >= 5 and n < 10	95
+n >= 10	90
+You can use if..else or ternary operator to complete it.
+
+When you have finished the work, click "Run Tests" to see if your code is working properly.
+
+In the end, click "Submit" to submit your code pass this kata.
 */
 
+const saleHotdogs = (n: number): number => {
+	
+	if (n < 5) return n * 100;
+	if (n < 10) return n * 95;
+	return n * 90;
 
+}
 
-// console.log();
-// console.log();
-// console.log();
+console.log(saleHotdogs(3));
+console.log(saleHotdogs(8));
+console.log(saleHotdogs(10));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function saleHotdogs2(n: number): number {
+	if(n == null){ 
+	  	throw new Error("The method or operation is not implemented.");
+	}
+	return n * (n < 5 ? 100 : (n >=5 && n < 10 ? 95  : 90 ) )
+}
 
+
+
+
+const saleHotdogs3 = ($: number): number => $ * ($ < 5 ? 100 : $ >= 10 ? 90 : 95)
+
+
+
+function saleHotdogs4(n: number): number {
+	return ((n >= 10) ? 90 : (n >= 5) ? 95 : 100) * n
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -149,14 +183,27 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Terminal game move function
+In this game, the hero moves from left to right. The player rolls the die and moves the number of spaces indicated by the die two times.
 
+Create a function for the terminal game that takes the current position of the hero and the roll (1-6) and return the new position.
+
+Example:
+move(3, 6) should equal 15
 */
 
+const move = (pos: number, roll: number): number => {
+	
+	return pos + roll * 2;
 
+  }
 
-// console.log();
-// console.log();
-// console.log();
+//  8
+// console.log(move(0, 4);
+// 15
+// console.log(move(3, 6));
+// 12
+// console.log(move(2, 5));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -164,27 +211,76 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  IS STRING UPPERCASE?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  charCodeAt(), MATCH(), TEST(), REGEX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Is the string uppercase?
+Task
+Create a method isUpperCase to see whether the string is ALL CAPS. For example:
 
+isUpperCase('c') == false
+isUpperCase('C') == true
+isUpperCase('hello I AM DONALD') == false
+isUpperCase('HELLO I AM DONALD') == true
+isUpperCase('ACSKLDFJSgSKLDFJSKLDFJ') == false
+isUpperCase('ACSKLDFJSGSKLDFJSKLDFJ') == true
+In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
 */
 
+const isUpperCase = (str: string): boolean =>{
+	
+	return str === str.toUpperCase();	
 
+}
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+// console.log(isUpperCase('c'));
+// console.log(isUpperCase('C'));
+// console.log((isUpperCase('hello I AM DONALD'));
+// console.log(isUpperCase('HELLO I AM DONALD'));
+// console.log(isUpperCase(''));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function isUpperCase2(str: string) {
+    return str.match(/[a-z]/)  === null; 
+}
 
+
+
+function isUpperCase3(str: string) {
+	for(let i=0;i<str.length;i++){
+	  if(str.charCodeAt(i)>=97 && str.charCodeAt(i)<=122) return false;
+	}
+	return true;
+  }
+
+
+
+  function isUpperCase4(str: string) {
+	return /^[A-Z\s]+$/.test(str);
+  }
+
+
+
+  function isUpperCase5(str: string) {
+	return str.split("").every(c => c === c.toUpperCase());
+  }
+
+
+
+  function isUpperCase6(str: string) {
+	for(const letter of str){
+	  if(letter !== letter.toUpperCase()){
+		return false;
+	  }
+	}
+	return true;
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  TO SQUARE ROOT OR NOT TO SQUARE ROOT
