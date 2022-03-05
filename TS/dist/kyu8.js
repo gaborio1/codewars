@@ -11,6 +11,16 @@ const saleHotdogs = (n) => {
 console.log(saleHotdogs(3));
 console.log(saleHotdogs(8));
 console.log(saleHotdogs(10));
+function saleHotdogs2(n) {
+    if (n == null) {
+        throw new Error("The method or operation is not implemented.");
+    }
+    return n * (n < 5 ? 100 : (n >= 5 && n < 10 ? 95 : 90));
+}
+const saleHotdogs3 = ($) => $ * ($ < 5 ? 100 : $ >= 10 ? 90 : 95);
+function saleHotdogs4(n) {
+    return ((n >= 10) ? 90 : (n >= 5) ? 95 : 100) * n;
+}
 const move = (pos, roll) => {
     return pos + roll * 2;
 };

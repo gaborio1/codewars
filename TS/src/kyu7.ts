@@ -117,27 +117,77 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  FIND MOST DIGITS IN NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SORT(), REDUCE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Find the number with the most digits.
 
+If two numbers in the argument array have the same number of digits, return the first one in the array.
 */
 
+class Kata {
+    static findLongest(arr: number[]): number {
+
+        // 1️⃣
+        return arr.sort((a, b) => String(b).length - String(a).length)[0];
 
 
-// console.log();
+        // 2️⃣  ❗️❗️❗️    REFACTOR THIS WITH ARRAY.FIND() ❗️❗️❗️
+        let solution: number = -1;
+        const sortedArr = [...arr].sort((a, b) => b - a);
+        // console.log(arr);
+        console.log(sortedArr);
+        const maxLength: number = String(sortedArr[0]).length;
+        console.log(maxLength);
+        // const findLength = (num: number): number => {
+        //     console.table({ maxLength: maxLength, number: num });
+        //     // return String(num).length === maxLength;
+        //     console.log(String(num).length === maxLength);
+        //     // if (String(num).length === length) return num;
+        //     return String(num).length === maxLength
+        //         ? num
+        //         : -1;
+        // }
+        console.log(arr);
+        // return arr.find(function (num: number): number {
+        //     return String(num).length === maxLength
+        //         ? num
+        //         : -1;
+        // })!;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (String(arr[i]).length === maxLength) {
+                solution = arr[i];
+                break;
+            }
+        }
+        return solution;
+    }
+}
+
+
+//  SORT arr BY THE LENGTH OF ELEMENTS(CONVERTED TO STRING)
+//  RETURN FIRST ELEMENT OF SORTED-BY-LENGTH ARRAY
+
+console.log(Kata.findLongest([1, 10, 100, 400, 56, 800]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+// REDUCE()
+class Kata5 {
+    static findLongest(array: number[]): number {
+        return array
+            .reduce((a, b) => a.toString().length < b.toString().length ? b : a);
+    }
+}
 
 
 
