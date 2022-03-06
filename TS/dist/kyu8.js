@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const seatsInTheater = (nCols, nRows, col, row) => {
+    return (nCols - col + 1) * (nRows - row);
+};
+function seatsInTheater2(nCols, nRows, col, row) {
+    const width = nCols - col + 1;
+    const height = nRows - row;
+    return width * height;
+}
 const saleHotdogs = (n) => {
     if (n < 5)
         return n * 100;
@@ -8,9 +16,6 @@ const saleHotdogs = (n) => {
         return n * 95;
     return n * 90;
 };
-console.log(saleHotdogs(3));
-console.log(saleHotdogs(8));
-console.log(saleHotdogs(10));
 function saleHotdogs2(n) {
     if (n == null) {
         throw new Error("The method or operation is not implemented.");

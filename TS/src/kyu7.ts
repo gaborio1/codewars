@@ -94,27 +94,103 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  PREDICT YOUR AGE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ ARGUMENTS / SPREAD ❗️❗️❗️, MATH.TRUNC()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
 
+In honor of my grandfather's memory we will write a function using his formula!
+
+Take a list of ages when each of your great-grandparent died.
+Multiply each number by itself.
+Add them all together.
+Take the square root of the result.
+Divide by two.
+Example
+predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
+Note: the result should be rounded down to the nearest integer.
+
+Some random tests might fail due to a bug in the JavaScript implementation. Simply resubmit if that happens to you.
 */
 
+// const predictAge = (
+//     age1:number,
+//     age2:number,
+//     age3:number,
+//     age4:number,
+//     age5:number,
+//     age6:number,
+//     age7:number,
+//     age8:number
+// ): number => {
 
 
-// console.log();
-// console.log();
+
+//   return 0;
+// };
+
+const predictAge = (...args: number[]): number => {
+
+    // ❗️❗️❗️
+    // console.log(args);
+    
+    return Math.floor(Math.sqrt(args
+        .map((num) => Math.pow(num, 2))
+        .reduce((acc, curr) => acc + curr)) / 2)
+};
+
+//  GET arguments ARRAY
+//  SQUARE ALL ELEMENTS WITH map
+//  GET SUM WITH reduce
+//  DIVIDE BY 2
+
+//  GET SQUARE ROOT OF SUM
+//  ROUND DOWN TO NEAREST INTEGER
+
+// 86
+// console.log(predictAge(65,60,75,55,60,63,64,45));
+// 79
+// console.log(predictAge(32,54,76,65,34,63,64,45));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// Rest parameter 'a' implicitly has an 'any[]' type.ts(7019)
 
+// const predictAge2=(...a)=>Math.sqrt(a.reduce((b,c)=>b+c*c,0))>>1
+
+
+
+function predictAge3(...ages: number[]): number {
+    return Math.trunc(
+        Math.sqrt(
+          ages
+          .map(x => x*x)
+          .reduce((a, b) => a + b, 0)
+        ) / 2
+      );
+  };
+
+
+
+//   Cannot find name 'arguments'.ts(2304)
+// Block-scoped variable 'number' used before its declaration.ts(2448)
+
+//   predictAge4(age1:number, age2:number, age3:number,age4:number,age5:number,age6:number,age7:number,age8:number): number{
+//     let args = Array.prototype.slice.call(arguments)
+//     const sum = args.map(arg => {
+//     return arg * arg
+//     }).reduce((a,b) => a + b, 0)  
+//     const square = Math.sqrt(sum) 
+//     const total = Math.floor(square / 2)
+//     return total;
+//   };
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND MOST DIGITS IN NUMBER
@@ -174,7 +250,7 @@ class Kata {
 //  SORT arr BY THE LENGTH OF ELEMENTS(CONVERTED TO STRING)
 //  RETURN FIRST ELEMENT OF SORTED-BY-LENGTH ARRAY
 
-console.log(Kata.findLongest([1, 10, 100, 400, 56, 800]));
+// console.log(Kata.findLongest([1, 10, 100, 400, 56, 800]));
 // console.log();
 // console.log();
 // console.log();

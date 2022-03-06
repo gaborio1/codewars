@@ -1,6 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const predictAge = (...args) => {
+    return Math.floor(Math.sqrt(args
+        .map((num) => Math.pow(num, 2))
+        .reduce((acc, curr) => acc + curr)) / 2);
+};
+function predictAge3(...ages) {
+    return Math.trunc(Math.sqrt(ages
+        .map(x => x * x)
+        .reduce((a, b) => a + b, 0)) / 2);
+}
+;
 class Kata {
     static findLongest(arr) {
         return arr.sort((a, b) => String(b).length - String(a).length)[0];
@@ -19,7 +30,6 @@ class Kata {
         return solution;
     }
 }
-console.log(Kata.findLongest([1, 10, 100, 400, 56, 800]));
 class Kata5 {
     static findLongest(array) {
         return array
