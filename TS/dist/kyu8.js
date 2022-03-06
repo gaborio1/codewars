@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const testEven = (num) => {
+    return num % 2 === 0;
+};
+console.log(testEven(0));
+console.log(testEven(0.5));
+const testEven2 = (n) => {
+    return n == Math.floor(n) && !(n & 1);
+};
 const seatsInTheater = (nCols, nRows, col, row) => {
     return (nCols - col + 1) * (nRows - row);
 };

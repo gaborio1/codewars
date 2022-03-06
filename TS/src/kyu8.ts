@@ -73,7 +73,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  IS IT EVEN?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -81,19 +81,40 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+In this Kata we are passing a number (n) into a function.
+
+Your code will determine if the number passed is even (or not).
+
+The function needs to return either a true or false.
+
+Numbers may be positive or negative, integers or floats.
+
+Floats with decimal part non equal to zero are considered UNeven for this kata.
+
 
 */
 
+const testEven = (num : number): boolean => {
 
+	return num % 2 === 0;
 
-// console.log();
-// console.log();
+	// ❗️❗️❗️ BITWISE AND NOT WORKING WITH DECIMALS ❗️❗️❗️
+	// return (num & 1) 
+	// 	? false
+	// 	: true;
+
+}
+
+console.log(testEven(0));
+console.log(testEven(0.5));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+const testEven2 = (n : number) : boolean => {
+	return n==Math.floor(n)&&!(n&1)
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SEATS IN THEATER
