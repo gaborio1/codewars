@@ -138,7 +138,7 @@ const predictAge = (...args: number[]): number => {
 
     // ❗️❗️❗️
     // console.log(args);
-    
+
     return Math.floor(Math.sqrt(args
         .map((num) => Math.pow(num, 2))
         .reduce((acc, curr) => acc + curr)) / 2)
@@ -170,12 +170,12 @@ const predictAge = (...args: number[]): number => {
 function predictAge3(...ages: number[]): number {
     return Math.trunc(
         Math.sqrt(
-          ages
-          .map(x => x*x)
-          .reduce((a, b) => a + b, 0)
+            ages
+                .map(x => x * x)
+                .reduce((a, b) => a + b, 0)
         ) / 2
-      );
-  };
+    );
+};
 
 
 

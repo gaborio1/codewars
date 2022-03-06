@@ -2,8 +2,31 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
 const comp = (a1, a2) => {
-    return true;
+    return (a1 === null || a2 === null)
+        ? false
+        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2)))
+            === String([...a2].sort((a, b) => a - b));
 };
+const comp2 = (a1, a2) => {
+    if (a1 === null || a2 === null)
+        return false;
+    const ascending1 = [...a1].sort((a, b) => a - b);
+    const ascending1Squared = ascending1.map((el) => Math.pow(el, 2));
+    const ascending2 = [...a2].sort((a, b) => a - b);
+    return String(ascending1Squared) === String(ascending2);
+};
+var a1 = [121, 144, 19, 161, 19, 144, 19, 11];
+var a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
+var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+function comp3(a1, a2) {
+    if (!(a1 && a2) || a1.length !== a2.length)
+        return false;
+    return a1.map(x => x * x).sort().toString() === a2.sort().toString();
+}
+function comp4(a1, a2) {
+    return !!a1 && !!a2 && a1.map(x => x * x).sort().join() == a2.sort().join();
+}
 const longestConsec = (strArr, numWords) => {
     if (strArr.length === 0
         || numWords < 1
