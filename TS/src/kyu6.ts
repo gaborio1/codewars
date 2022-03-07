@@ -188,7 +188,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ARE THEY THE SAME?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ SPREAD(NULL) ❗️❗️❗️ ERROR: Type 'number[] | null' must have a '[Symbol.iterator]()' method that returns an iterator.ts(2488)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -224,27 +224,70 @@ Note for C
 The two arrays have the same size (> 0) given as parameter in fun
 */
 
+// 1️⃣
 const comp = (a1: number[] | null, a2: number[] | null): boolean => {
-    // your code
-    return true;
-  }
+
+    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️ 
+    return (a1 === null || a2 === null)
+        ? false
+        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2)))
+        === String([...a2].sort((a, b) => a - b));
+
+}
+
+// 2️⃣
+const comp2 = (a1: number[] | null, a2: number[] | null): boolean => {
+
+    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️ 
+    if (a1 === null || a2 === null) return false;
+
+    const ascending1: number[] = [...a1].sort((a, b) => a - b);
+    const ascending1Squared: number[] = ascending1.map((el) => Math.pow(el, 2));
+    const ascending2: number[] = [...a2].sort((a, b) => a - b);
+
+    return String(ascending1Squared) === String(ascending2);
+
+}
+
+//  RETURN FALSE IF EMPTY ARRAY
+//  OTHERWISE, SORT BOTH ARRAYS NUMERICALLY ASCENDING, SQUARE ELEMENTS IN a1
+//  CONVERT BOTH TO STRING AND COMPARE
+
+/* ❗️❗️❗️ SPREAD NULL:
+I think you cannot spread null, you should check on whether your argument is null either:
+
+before it gets into this function, and then you can change the type to string
+
+do it in the function, before you spread the argument
+❗️❗️❗️ 
+*/
+
 
 // TRUE
-//   var a1: number[] = [121, 144, 19, 161, 19, 144, 19, 11];
-//   var a2: number[] = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
-  
-// FALSE
-//   a1 = [121, 144, 19, 161, 19, 144, 19, 11];
-//   a2 = [11*21, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
+var a1: number[] = [121, 144, 19, 161, 19, 144, 19, 11];
+var a2: number[] = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
 
-// console.log();
+// FALSE
+var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
+var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+
+// console.log(comp(a1, a2));
+// console.log(comp(b1, b2));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function comp3(a1: number[] | null, a2: number[] | null): boolean {
+    if (!(a1 && a2) || a1.length !== a2.length) return false;
+    return a1.map(x => x * x).sort().toString() === a2.sort().toString();
+}
 
+
+function comp4(a1: number[] | null, a2: number[] | null): boolean {
+    return !!a1 && !!a2 && a1.map(x => x * x).sort().join() == a2.sort().join();
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CONSECUTIVE STRINGS
