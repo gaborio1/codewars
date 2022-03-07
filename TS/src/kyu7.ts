@@ -47,8 +47,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  SUM OF TRIANGULAR NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -56,13 +56,36 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
 
+Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
+
+[01]
+02 [03]
+04 05 [06]
+07 08 09 [10]
+11 12 13 14 [15]
+16 17 18 19 20 [21]
+e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+
+Triangular Numbers cannot be negative so return 0 if a negative number is given.
 */
 
+const sumTriangularNumbers = (n:number):number => {
 
+    let sum: number = 0;
 
-// console.log();
-// console.log();
+    for (let i = 1; i <= n; i++) {
+        sum += sum + 1;
+    }
+
+    return sum;
+  }
+
+//   56
+console.log(sumTriangularNumbers(1));
+// 7140
+// console.log(sumTriangularNumbers(34));
 // console.log();
 // console.log();
 
@@ -70,8 +93,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  MOVES IN SQUARED STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -79,7 +102,40 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a string of n lines, each substring being n characters long: For example:
 
+s = "abcd\nefgh\nijkl\nmnop"
+
+We will study some transformations of this square of strings.
+
+Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
+Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+ hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
+or printed:
+
+vertical mirror   |horizontal mirror   
+abcd --> dcba     |abcd --> mnop 
+efgh     hgfe     |efgh     ijkl 
+ijkl     lkji     |ijkl     efgh 
+mnop     ponm     |mnop     abcd 
+Task:
+Write these two functions
+and
+
+high-order function oper(fct, s) where
+
+fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)
+
+Examples:
+s = "abcd\nefgh\nijkl\nmnop"
+oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
+oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
+Note:
+The form of the parameter fct in oper changes according to the language. You can see each form according to the language in "Sample Tests".
+
+Bash Note:
+The input strings are separated by , instead of \n. The output strings should be separated by \r instead of \n. See "Sample Tests".
 */
 
 

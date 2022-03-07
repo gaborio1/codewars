@@ -1,11 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+const shortLongShort = (a, b) => {
+    return a.length < b.length
+        ? a + b + a
+        : b + a + b;
+};
+function shortLongShort2(a, b) {
+    let [short, long] = [a, b].sort((a, b) => a.length - b.length);
+    return `${short}${long}${short}`;
+}
+function shortLongShort3(a, b) {
+    return (a.length > b.length) ? b.concat(a, b) : a.concat(b, a);
+}
+function shortLongShort4(a, b) {
+    return a.length > b.length ? b.concat(a).concat(b) : a.concat(b).concat(a);
+}
+function shortLongShort5(a, b) {
+    return (a['length'] > b['length']) ? (b + a + b) : (a + b + a);
+}
 const testEven = (num) => {
     return num % 2 === 0;
 };
-console.log(testEven(0));
-console.log(testEven(0.5));
 const testEven2 = (n) => {
     return n == Math.floor(n) && !(n & 1);
 };

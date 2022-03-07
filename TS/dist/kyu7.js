@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+const sumTriangularNumbers = (n) => {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += sum + 1;
+    }
+    return sum;
+};
+console.log(sumTriangularNumbers(1));
 const predictAge = (...args) => {
     return Math.floor(Math.sqrt(args
         .map((num) => Math.pow(num, 2))
