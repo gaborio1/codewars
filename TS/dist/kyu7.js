@@ -2,13 +2,33 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
 const sumTriangularNumbers = (n) => {
-    let sum = 0;
+    let sum = 0, triNum = 0;
     for (let i = 1; i <= n; i++) {
-        sum += sum + 1;
+        triNum = triNum + i;
+        sum += triNum;
     }
     return sum;
 };
-console.log(sumTriangularNumbers(1));
+function sumTriangularNumbers2(n) {
+    return (n <= 0) ? 0 : (n * (n + 1) * (n + 2)) / 6;
+}
+function sumTriangularNumbers4(n) {
+    return Array.from({ "length": n }).map((value, index) => (1 + index + 1) * (index + 1) / 2).reduce((pre, current) => pre + current, 0);
+}
+function sumTriangularNumbers5(n) {
+    let result = 0;
+    for (let i = 0; i <= n; i++) {
+        result += (i * (i + 1)) / 2;
+    }
+    return result;
+}
+function sumTriangularNumbers6(n) {
+    let sum = 0;
+    for (let i = 1, j = 1; i <= n; i++, j += i) {
+        sum += j;
+    }
+    return sum;
+}
 const predictAge = (...args) => {
     return Math.floor(Math.sqrt(args
         .map((num) => Math.pow(num, 2))

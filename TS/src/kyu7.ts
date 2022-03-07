@@ -47,7 +47,7 @@
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF TRIANGULAR NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -73,17 +73,28 @@ Triangular Numbers cannot be negative so return 0 if a negative number is given.
 
 const sumTriangularNumbers = (n:number):number => {
 
-    let sum: number = 0;
+    let sum: number = 0, triNum: number = 0;
 
     for (let i = 1; i <= n; i++) {
-        sum += sum + 1;
+        triNum = triNum + i;
+        sum += triNum;
     }
 
     return sum;
+
   }
 
+
+//  START LOOP AT 1, IN EVERY ITERATION:
+//     INCREMENT triNum BY triNum + 1 (1, 3, 6, 10...)
+//     INCREMENT sum BY trinum (1, 4, 10, 20...)
+//  RETURN sum
+
 //   56
-console.log(sumTriangularNumbers(1));
+// console.log(sumTriangularNumbers(1));
+// console.log(sumTriangularNumbers(2));
+// console.log(sumTriangularNumbers(3));
+// console.log(sumTriangularNumbers(4));
 // 7140
 // console.log(sumTriangularNumbers(34));
 // console.log();
@@ -91,7 +102,49 @@ console.log(sumTriangularNumbers(1));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function sumTriangularNumbers2(n:number):number {
+    return (n <= 0 )? 0 : (n * (n+1) * (n+2))/6;
+  }
 
+
+//   Function lacks ending return statement and return type does not include 'undefined'.ts(2366)
+
+//   function sumTriangularNumbers3(n:number):number {
+
+//     if (n < 1) return 0;
+  
+//     if (n == 1)
+//       return 1;
+//     while (n > 0) {
+//       return (n * (n +1) / 2) + sumTriangularNumbers(n-1);
+//     }
+//   }
+
+
+
+  function sumTriangularNumbers4(n:number):number {
+    return Array.from({"length":n}).map((value,index)=>(1+index+1)*(index+1)/2).reduce((pre,current)=>pre+current,0)
+  }
+
+
+
+  function sumTriangularNumbers5(n:number):number {
+    let result = 0;
+    for (let i = 0; i <= n; i++) {
+      result += (i * (i+1)) / 2;
+    }
+    return result;
+  }
+
+
+
+  function sumTriangularNumbers6(n:number):number {
+    let sum = 0;
+    for (let i = 1, j = 1; i <= n; i++, j += i) {
+        sum += j;
+    }
+    return sum;
+  }
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  MOVES IN SQUARED STRINGS

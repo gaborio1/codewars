@@ -1,6 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+class G964a {
+    static inArray(a1, a2) {
+        let solution = [];
+        a1.forEach((sub) => {
+            a2.forEach((word) => {
+                if (word.indexOf(sub) > -1) {
+                    solution.push(sub);
+                }
+            });
+        });
+        return solution;
+    }
+}
+var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
+var a1 = ["arp", "live", "strong"];
+console.log(G964a.inArray(a1, a2));
 const comp = (a1, a2) => {
     return (a1 === null || a2 === null)
         ? false
@@ -15,8 +31,6 @@ const comp2 = (a1, a2) => {
     const ascending2 = [...a2].sort((a, b) => a - b);
     return String(ascending1Squared) === String(ascending2);
 };
-var a1 = [121, 144, 19, 161, 19, 144, 19, 11];
-var a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
 var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
 var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
 function comp3(a1, a2) {

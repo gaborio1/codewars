@@ -163,7 +163,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  WHICH ARE IN
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -171,12 +171,52 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
 
+Example 1:
+a1 = ["arp", "live", "strong"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns ["arp", "live", "strong"]
+
+Example 2:
+a1 = ["tarp", "mice", "bull"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns []
+
+Notes:
+Arrays are written in "general" notation. See "Your Test Cases" for examples in your language.
+In Shell bash a1 and a2 are strings. The return is a string where words are separated by commas.
+Beware: r must be without duplicates.
 */
 
+class G964a {
+    public static inArray(a1: string[], a2: string[]): string[] {
 
+        // return a1.filter((sub) => {
+        //     return a2.forEach((word) => word.indexOf(sub) > -1)
+        // })
 
-// console.log();
+        let solution: string[] = [];
+
+        a1.forEach((sub) => {
+            a2.forEach((word) => {
+                if (word.indexOf(sub) > -1) {
+                    solution.push(sub);
+                }
+            })
+        })
+        return solution;
+    }
+}
+
+  var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
+  var a1 = ["arp", "live", "strong"];
+
+console.log(G964a.inArray(a1, a2));
 // console.log();
 // console.log();
 // console.log();
@@ -264,8 +304,8 @@ do it in the function, before you spread the argument
 
 
 // TRUE
-var a1: number[] = [121, 144, 19, 161, 19, 144, 19, 11];
-var a2: number[] = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+// var a1: number[] = [121, 144, 19, 161, 19, 144, 19, 11];
+// var a2: number[] = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
 
 // FALSE
 var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
