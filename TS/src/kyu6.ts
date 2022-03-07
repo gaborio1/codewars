@@ -161,11 +161,11 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 
-
+// ❗️❗️❗️ INCLUDE THIS IN CODEWARS EXAMPLES ❗️❗️❗️ (FIND(FUNCTION))
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  WHICH ARE IN
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  FIND(FUNCTION), FILTER()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -194,36 +194,98 @@ Beware: r must be without duplicates.
 */
 
 class G964a {
-    public static inArray(a1: string[], a2: string[]): string[] {
 
-        // return a1.filter((sub) => {
-        //     return a2.forEach((word) => word.indexOf(sub) > -1)
-        // })
+    public static inArray(a1: string[], a2: string[]): string[] {
 
         let solution: string[] = [];
 
-        a1.forEach((sub) => {
-            a2.forEach((word) => {
-                if (word.indexOf(sub) > -1) {
-                    solution.push(sub);
-                }
-            })
+        a1.forEach((subStr) => {
+            const findSubStr = (word: string): boolean => word.indexOf(subStr) >= 0;
+            // ❗️❗️❗️ UNDEFINED NOT NEEDED IN CODEWARS ❗️❗️❗️ 
+            let firstMatch: string | undefined = a2.find(findSubStr);
+            if (firstMatch) solution.push(subStr);
         })
-        return solution;
+
+        return solution.sort();
+
+        /*
+                let solution: string[] = [];
+        
+                a1.forEach((sub) => {
+        
+                    const findSubStr = (word: string): boolean => {
+                        return word.indexOf(sub) >= 0;
+                    }
+        
+                    let firstMatch: string | undefined = a2.find(findSubStr);
+        
+                    if (firstMatch !== undefined) {
+                        solution.push(sub);
+                    }
+        
+                })
+        
+                return solution.sort();
+        */
     }
+
 }
 
-  var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
-  var a1 = ["arp", "live", "strong"];
+//  INITIALIZE solution AS EMPTY ARRAY
+//  LOOP THROUGH a1
+//      findSubStr RETURNS true IF WORD HAS subStr IN IT
+//      FIND firstMatch IN a2 (find() RETURNS FIRST ELEMENT THAT PASSES TEST IN findSubStr)
+//      IF THERE'S A MATCH, PUSH subStr INTO solution
+//  RETURN solution SORTED ALPHABETICALLY
 
-console.log(G964a.inArray(a1, a2));
+// var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
+// var a1 = ["arp", "live", "strong"];
+// a1 = ["xyz", "live", "strong"];
+// a1 = ["live", "strong", "arp"];
+// a1 = ["hello", "goodbye"];
+
+// console.log(G964a.inArray(a1, a2));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ FILTER() ❗️❗️❗️
+class G964a2 {
+    public static inArray(a1: string[], a2: string[]): string[] {
+        return a1.filter(a => a2.some(b => b.includes(a))).sort();
+    }
+}
 
+
+
+class G964a3 {
+    public static inArray(a1: string[], a2: string[]): string[] {
+        return a1.filter(x => a2.join().indexOf(x) > -1).sort();
+    }
+}
+
+
+
+class G964a4 {
+    public static inArray(a1: string[], a2: string[]): string[] {
+        const source = a2.join('#');
+        return a1
+            .filter((item) => source.indexOf(item) !== -1)
+            .sort();
+    }
+}
+
+
+
+class G964a5 {
+    public static inArray(a1: string[], a2: string[]): string[] {
+        return a1
+            .sort()
+            .filter(s => a2.find(s2 => s2.includes(s)));
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ARE THEY THE SAME?

@@ -4,19 +4,40 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 class G964a {
     static inArray(a1, a2) {
         let solution = [];
-        a1.forEach((sub) => {
-            a2.forEach((word) => {
-                if (word.indexOf(sub) > -1) {
-                    solution.push(sub);
-                }
-            });
+        a1.forEach((subStr) => {
+            const findSubStr = (word) => word.indexOf(subStr) >= 0;
+            let firstMatch = a2.find(findSubStr);
+            if (firstMatch)
+                solution.push(subStr);
         });
-        return solution;
+        return solution.sort();
     }
 }
-var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
-var a1 = ["arp", "live", "strong"];
-console.log(G964a.inArray(a1, a2));
+class G964a2 {
+    static inArray(a1, a2) {
+        return a1.filter(a => a2.some(b => b.includes(a))).sort();
+    }
+}
+class G964a3 {
+    static inArray(a1, a2) {
+        return a1.filter(x => a2.join().indexOf(x) > -1).sort();
+    }
+}
+class G964a4 {
+    static inArray(a1, a2) {
+        const source = a2.join('#');
+        return a1
+            .filter((item) => source.indexOf(item) !== -1)
+            .sort();
+    }
+}
+class G964a5 {
+    static inArray(a1, a2) {
+        return a1
+            .sort()
+            .filter(s => a2.find(s2 => s2.includes(s)));
+    }
+}
 const comp = (a1, a2) => {
     return (a1 === null || a2 === null)
         ? false
