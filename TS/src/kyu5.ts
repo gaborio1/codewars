@@ -162,8 +162,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  PRIME FACTOR DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -171,10 +171,58 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a positive number n > 1 find the prime factor decomposition of n. The result will be a string with the following form :
 
+ "(p1**n1)(p2**n2)...(pk**nk)"
+with the p(i) in increasing order and n(i) empty if n(i) is 1.
+
+Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
+
+A prime number is a whole number greater than 1 whose only factors are 1 and itself. A factor is a whole number that can be divided evenly into another number. The first few prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29. Numbers that have more than two factors are called composite numbers.
+
+Prime Factor Decomposition
+Quick revise
+Prime factor decomposition of a number means writing it as a product of prime factors.
+
+To factorise a number, divide it by the first possible prime number.
+Take the resulting quotient below the number.
+If it is possible, continue dividing this quotient successively by the same prime number.
+When you cannot do the division by this prime number, divide it by the next possible prime number.
+And so forth until the final quotient is 1.
+Finally write this number as a product of powers of prime factors.
+Example
+
+Find the prime factor decomposition of 36.
+
+We look at 36 and try to find numbers which we can divide it by. We can see that it divides by 2.
+
+36 = 18 × 2
+
+2 is a prime number, but 18 isn't. So we need to split 18 up into prime numbers. We can also divide 18 by 2.
+
+18 = 9 × 2
+
+and so 36 = 18 × 2 = 9 × 2 × 2
+
+But we haven't finished, because 9 is not a prime number. We know that 9 divides by 3.
+
+9 = 3 x 3.
+
+Hence 36 = 9 × 2 × 2 = 3 × 3 × 2 × 2.
+
+This is the answer, because both 2 and 3 are prime numbers.
 */
 
+class G964a6 {
 
+    public static primeFactors = (num: number): string => {
+
+        // GET PRIME NUMBERS
+
+        // DIVIDE 
+
+        return "hello";
+    }
 
 // console.log();
 // console.log();
@@ -185,7 +233,7 @@
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PERIMETER OF SQUARES IN A RECTANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  

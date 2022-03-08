@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
+class G964a6 {
+}
+G964a6.primeFactors = (num) => {
+    return "hello";
+};
 class G964a {
 }
 G964a.perimeter = (num) => {
