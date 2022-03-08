@@ -1,6 +1,63 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
+class G964a {
+}
+G964a.perimeter = (num) => {
+    const fibonacciFirstN = (num) => {
+        const fibSequence = [1, 1];
+        for (let i = 0; i < num - 1; i++) {
+            let next = fibSequence[i] + fibSequence[i + 1];
+            fibSequence.push(next);
+        }
+        return fibSequence;
+    };
+    return 4 * fibonacciFirstN(num).reduce((a, b) => a + b);
+};
+class G964a2 {
+}
+G964a2.perimeter = (n) => {
+    let numbers = [1, 1];
+    for (let i = 2; i <= n; i++) {
+        numbers.push(numbers[i - 1] + numbers[i - 2]);
+    }
+    return 4 * numbers.reduce((curr, acc) => acc + curr, 0);
+};
+class G964a3 {
+}
+G964a3.perimeter = (n) => {
+    return Array.from(Array(n + 2).keys()).map((e, i, arr) => { if (i > 0) {
+        arr[i + 1] = arr[i] + arr[i - 1];
+        return e;
+    }
+    else {
+        return 1;
+    } }).slice(1).reduce((a, b) => a + b) * 4;
+};
+class G964a5 {
+}
+G964a5.perimeter = (n) => {
+    const fibCalc = [];
+    function fibonacci(n) {
+        if (fibCalc[n] !== undefined) {
+            return fibCalc[n];
+        }
+        let calc;
+        if (n < 2) {
+            calc = n;
+        }
+        else {
+            calc = fibonacci(n - 2) + fibonacci(n - 1);
+        }
+        fibCalc.push(calc);
+        return calc;
+    }
+    let length = 0;
+    for (let i = 0; i <= n + 1; i++) {
+        length += (4 * fibonacci(i));
+    }
+    return length;
+};
 class G964 {
 }
 G964.productFib = (num) => {

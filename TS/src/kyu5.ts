@@ -185,8 +185,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  PERIMETER OF SQUARES IN A RECTANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -194,17 +194,159 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The drawing shows 6 squares the sides of which have a length of 1, 1, 2, 3, 5, 8. It's easy to see that the sum of the perimeters of these squares is : 4 * (1 + 1 + 2 + 3 + 5 + 8) = 4 * 20 = 80
 
+Could you give the sum of the perimeters of all the squares in a rectangle when there are n + 1 squares disposed in the same manner as in the drawing:
+
+alternative text
+
+Hint:
+See Fibonacci sequence
+
+Ref:
+http://oeis.org/A000045
+
+The function perimeter has for parameter n where n + 1 is the number of squares (they are numbered from 0 to n) and returns the total perimeter of all the squares.
+
+perimeter(5)  should return 80
+perimeter(7)  should return 216
 */
 
+class G964a {
 
+    public static perimeter = (num: number): number => {
+      
+        const fibonacciFirstN = (num: number): number[] => {
+            const fibSequence: number[] = [1, 1];
+            for (let i = 0; i < num - 1; i++) {
+                let next = fibSequence[i] + fibSequence[i + 1];
+                fibSequence.push(next);
+            }
+            return fibSequence;
+        }
 
-// console.log();
+        return 4 * fibonacciFirstN(num).reduce((a, b) => a + b);
+
+    }
+}
+
+// 80
+// console.log(G964a.perimeter(5));
+// 216
+// console.log(G964a.perimeter(7));
+// 
+// console.log(G964a.perimeter(3));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+class G964a2 {
+
+    public static perimeter = (n: number) => {
+      let numbers = [1, 1];
+
+      for (let i = 2; i <= n; i++) {
+        numbers.push(numbers[i - 1] + numbers[i - 2]);
+      }
+  
+      return 4 * numbers.reduce((curr, acc) => acc + curr, 0);
+    }
+}
+
+
+
+class G964a3 {
+
+    public static perimeter = (n: number) => {
+        return Array.from(Array(n+2).keys()).map((e,i,arr)=>{if (i>0){arr[i+1] = arr[i]+arr[i-1]; return e}else{return 1}}).slice(1).reduce((a,b)=>a+b)*4
+    }
+}
+
+
+
+// class G964a4 {
+
+//     private static memo = (num: number): number => {
+//       let dp = [];
+//       dp[1] = 1;
+//       dp[2] = 1;
+//       for (let i = 3; i <= num; i++) {
+//         dp[i] = dp[i-1] + dp[i-2];
+//       }
+      
+//       return dp.reduce((prev, curr) => prev + curr);
+//     }
+  
+//     public static perimeter = (n) => {
+//         return 4 * G964.memo(n+1); 
+//     }
+  
+// }
+
+
+
+class G964a5 {
+    public static perimeter = (n: number) => {
+      const fibCalc: number[] = []
+      function fibonacci(n: number): number {
+        if (fibCalc[n] !== undefined) {
+          return fibCalc[n];
+        }
+
+        let calc;
+        if (n < 2) {
+          calc = n;
+        } else {
+          calc = fibonacci(n - 2) + fibonacci(n - 1)
+        }
+        
+        fibCalc.push(calc);
+        return calc;
+      }
+      
+      let length = 0;
+      for (let i = 0; i <= n + 1; i++) {
+        length += (4 * fibonacci(i));
+      }
+      return length;
+    }
+}
+
+
+
+// class G964a6 {
+
+//     public static perimeter = (n) => {
+//         // your code
+//       var sum = 0;
+//       var first = 0;
+//       var last = 0;
+//       for(var i=1;i<=n+1;i++){
+//         var el = first+last;
+//         el = el == 0 ? 1 : el;
+//         first=last;
+//         last=el;
+//         sum+=el*4;
+//       }
+//       return sum;
+//     }
+// }
+
+
+
+// class G964a7 {
+
+//     public static perimeter = (n) => {
+//       let a = 0, b = 4, sum = 4;
+//       for (let i = 1;i <= n;i++) {
+//         const c = a + b;
+//         a = b, b = c, sum += c;
+//       }
+//       return sum;
+//     }
+// }
 
 
 
