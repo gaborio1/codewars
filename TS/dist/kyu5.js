@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
-class G964a6 {
+class G964a8 {
 }
-G964a6.primeFactors = (num) => {
+G964a8.primeFactors = (num) => {
     return "hello";
 };
 class G964a {
@@ -39,6 +39,8 @@ G964a3.perimeter = (n) => {
         return 1;
     } }).slice(1).reduce((a, b) => a + b) * 4;
 };
+class G964a4 {
+}
 class G964a5 {
 }
 G964a5.perimeter = (n) => {
@@ -62,6 +64,31 @@ G964a5.perimeter = (n) => {
         length += (4 * fibonacci(i));
     }
     return length;
+};
+class G964a6 {
+}
+G964a6.perimeter = (n) => {
+    var sum = 0;
+    var first = 0;
+    var last = 0;
+    for (var i = 1; i <= n + 1; i++) {
+        var el = first + last;
+        el = el == 0 ? 1 : el;
+        first = last;
+        last = el;
+        sum += el * 4;
+    }
+    return sum;
+};
+class G964a7 {
+}
+G964a7.perimeter = (n) => {
+    let a = 0, b = 4, sum = 4;
+    for (let i = 1; i <= n; i++) {
+        const c = a + b;
+        a = b, b = c, sum += c;
+    }
+    return sum;
 };
 class G964 {
 }
