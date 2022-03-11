@@ -415,7 +415,7 @@ Examples:
 
 function hello(name = ''): string {
 	return '';
-  }
+}
 
 // console.log(hello('johN'));
 // console.log();
@@ -445,7 +445,7 @@ arr(5) // => [0,1,2,3,4]
 Note: The parameter is optional. So you have to give it a default value.
 */
 
-const arr = (n: number): number[] => [ /* the numbers 0 to N-1 */ ];
+const arr = (n: number): number[] => [ /* the numbers 0 to N-1 */];
 
 // console.log(arr(4));
 // console.log();
@@ -475,8 +475,15 @@ b = 4
 */
 
 const between = (a: number, b: number): number[] => {
-	return [];
-  }
+
+	let solution: number[] = [];
+
+	for (let i = a; i <= b; i++) {
+		solution.push(i);
+	}
+
+	return solution;
+}
 
 // console.log(between(1, 4));
 // console.log(between(-2, 2));
@@ -485,7 +492,14 @@ const between = (a: number, b: number): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function between2(a: number, b: number): number[] {
+	return Array.from({ length: b - a + 1 }, (_, j) => j + a);
+}
 
+
+function between3(a: number, b: number): number[] {
+	return [...Array(b - a + 1)].map((n, i) => i + a)
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -506,7 +520,7 @@ This code should store "codewa.rs" as a variable called name but it's not workin
 
 // SOLUTION:
 var a = "code";
-var b ="wa.rs";
+var b = "wa.rs";
 export var name = a + b;
 
 
@@ -539,7 +553,7 @@ For example: (Input1, Input2) --> output
 ("22", "1") --> "1221"
 */
 
-const shortLongShort = (a:string, b:string) => {
+const shortLongShort = (a: string, b: string) => {
 
 	return a.length < b.length
 		? a + b + a
@@ -554,28 +568,28 @@ const shortLongShort = (a:string, b:string) => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function shortLongShort2(a:string, b:string) {
-	let [short, long] = [a,b].sort((a, b) => a.length - b.length);
+function shortLongShort2(a: string, b: string) {
+	let [short, long] = [a, b].sort((a, b) => a.length - b.length);
 	return `${short}${long}${short}`;
-  }
+}
 
 
 
-  function shortLongShort3(a:string, b:string) {
-	return (a.length>b.length)? b.concat(a, b): a.concat(b, a);
-  }
+function shortLongShort3(a: string, b: string) {
+	return (a.length > b.length) ? b.concat(a, b) : a.concat(b, a);
+}
 
 
 
-  function shortLongShort4(a:string, b:string) {
+function shortLongShort4(a: string, b: string) {
 	return a.length > b.length ? b.concat(a).concat(b) : a.concat(b).concat(a)
-  }
+}
 
 
 
-  function shortLongShort5(a:string, b:string) {
+function shortLongShort5(a: string, b: string) {
 	return (a['length'] > b['length']) ? (b + a + b) : (a + b + a)
-  }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IS IT EVEN?
@@ -599,7 +613,7 @@ Floats with decimal part non equal to zero are considered UNeven for this kata.
 
 */
 
-const testEven = (num : number): boolean => {
+const testEven = (num: number): boolean => {
 
 	return num % 2 === 0;
 
@@ -617,9 +631,9 @@ const testEven = (num : number): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-const testEven2 = (n : number) : boolean => {
-	return n==Math.floor(n)&&!(n&1)
-  }
+const testEven2 = (n: number): boolean => {
+	return n == Math.floor(n) && !(n & 1)
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SEATS IN THEATER
@@ -698,10 +712,10 @@ const seatsInTheater = (
 function seatsInTheater2(nCols: number, nRows: number, col: number, row: number) {
 	const width = nCols - col + 1;
 	const height = nRows - row;
-	
+
 	return width * height;
-	
-  }
+
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IF, ELSE, TERNARY
@@ -727,7 +741,7 @@ In the end, click "Submit" to submit your code pass this kata.
 */
 
 const saleHotdogs = (n: number): number => {
-	
+
 	if (n < 5) return n * 100;
 	if (n < 10) return n * 95;
 	return n * 90;
@@ -742,10 +756,10 @@ const saleHotdogs = (n: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function saleHotdogs2(n: number): number {
-	if(n == null){ 
-	  	throw new Error("The method or operation is not implemented.");
+	if (n == null) {
+		throw new Error("The method or operation is not implemented.");
 	}
-	return n * (n < 5 ? 100 : (n >=5 && n < 10 ? 95  : 90 ) )
+	return n * (n < 5 ? 100 : (n >= 5 && n < 10 ? 95 : 90))
 }
 
 
@@ -757,7 +771,7 @@ const saleHotdogs3 = ($: number): number => $ * ($ < 5 ? 100 : $ >= 10 ? 90 : 95
 
 function saleHotdogs4(n: number): number {
 	return ((n >= 10) ? 90 : (n >= 5) ? 95 : 100) * n
-  }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  
@@ -778,10 +792,10 @@ move(3, 6) should equal 15
 */
 
 const move = (pos: number, roll: number): number => {
-	
+
 	return pos + roll * 2;
 
-  }
+}
 
 //  8
 // console.log(move(0, 4);
@@ -817,9 +831,9 @@ isUpperCase('ACSKLDFJSGSKLDFJSKLDFJ') == true
 In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
 */
 
-const isUpperCase = (str: string): boolean =>{
-	
-	return str === str.toUpperCase();	
+const isUpperCase = (str: string): boolean => {
+
+	return str === str.toUpperCase();
 
 }
 
@@ -832,40 +846,40 @@ const isUpperCase = (str: string): boolean =>{
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function isUpperCase2(str: string) {
-    return str.match(/[a-z]/)  === null; 
+	return str.match(/[a-z]/) === null;
 }
 
 
 
 function isUpperCase3(str: string) {
-	for(let i=0;i<str.length;i++){
-	  if(str.charCodeAt(i)>=97 && str.charCodeAt(i)<=122) return false;
+	for (let i = 0; i < str.length; i++) {
+		if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) return false;
 	}
 	return true;
-  }
+}
 
 
 
-  function isUpperCase4(str: string) {
+function isUpperCase4(str: string) {
 	return /^[A-Z\s]+$/.test(str);
-  }
+}
 
 
 
-  function isUpperCase5(str: string) {
+function isUpperCase5(str: string) {
 	return str.split("").every(c => c === c.toUpperCase());
-  }
+}
 
 
 
-  function isUpperCase6(str: string) {
-	for(const letter of str){
-	  if(letter !== letter.toUpperCase()){
-		return false;
-	  }
+function isUpperCase6(str: string) {
+	for (const letter of str) {
+		if (letter !== letter.toUpperCase()) {
+			return false;
+		}
 	}
 	return true;
-  }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  TO SQUARE ROOT OR NOT TO SQUARE ROOT
@@ -893,12 +907,12 @@ Have fun coding it and please don't forget to vote and rank this kata! :-)
 I have also created other katas. Take a look if you enjoyed this kata!
 */
 
-const squareOrSquareRoot = (array:number[]): number[] => {
+const squareOrSquareRoot = (array: number[]): number[] => {
 
 	return array.map((num) => {
 		return Number.isInteger(Math.sqrt(num))
-		? Math.sqrt(num)
-		: Math.pow(num, 2);
+			? Math.sqrt(num)
+			: Math.pow(num, 2);
 	});
 
 }
@@ -915,14 +929,14 @@ const squareOrSquareRoot = (array:number[]): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function squareOrSquareRoot2(array:number[]) : number[] {
-	return array.map(a => Math.sqrt(a) % 1 == 0 ? Math.sqrt(a) : (a * a));  
-  }
+function squareOrSquareRoot2(array: number[]): number[] {
+	return array.map(a => Math.sqrt(a) % 1 == 0 ? Math.sqrt(a) : (a * a));
+}
 
 
 
-function squareOrSquareRoot3(array:number[]) : number[] {
-	return array.map(x => !(Math.sqrt(x) % 1) ? Math.sqrt(x) : x*x);
+function squareOrSquareRoot3(array: number[]): number[] {
+	return array.map(x => !(Math.sqrt(x) % 1) ? Math.sqrt(x) : x * x);
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -958,10 +972,10 @@ const getRealFloor = (amFloor: number): number => {
 		return amFloor;
 	} else if (amFloor < 13) {
 		return amFloor - 1;
-	} 
+	}
 
 	return amFloor - 2;
-	
+
 }
 
 //  BELOW 1: SAME
@@ -978,28 +992,29 @@ const getRealFloor = (amFloor: number): number => {
 function getRealFloor2(n: number): number {
 	let floor: number;
 	if (n < 1) {
-	  floor = n;
+		floor = n;
 	} else if (n < 13) {
-	  floor = n - 1;
+		floor = n - 1;
 	} else {
-	  floor = n - 2;
+		floor = n - 2;
 	}
 	return floor;
-  }
+}
 
 
 
-  function getRealFloor3(n: number): number{
-	return n <= 0 ? n : n <= 13 ? n-1 : n-2}
+function getRealFloor3(n: number): number {
+	return n <= 0 ? n : n <= 13 ? n - 1 : n - 2
+}
 
 
 
 function getRealFloor4(n: number): number {
-		switch (true) {
-		  case n < 1: return n
-		  case n < 13: return n-1
-		  default: return n-2
-		}
+	switch (true) {
+		case n < 1: return n
+		case n < 13: return n - 1
+		default: return n - 2
+	}
 }
 
 
@@ -1032,12 +1047,12 @@ For example:
 */
 
 const goals = (
-	laLigaGoals:number,
-	copaDelReyGoals:number,
-	championsLeagueGoals:number
-	): number => {
+	laLigaGoals: number,
+	copaDelReyGoals: number,
+	championsLeagueGoals: number
+): number => {
 
-		return laLigaGoals + copaDelReyGoals + championsLeagueGoals;
+	return laLigaGoals + copaDelReyGoals + championsLeagueGoals;
 
 }
 
@@ -1051,28 +1066,28 @@ const goals = (
 // ❗️❗️❗️ REDUCE() ❗️❗️❗️ ARGUMENTS ❗️❗️❗️
 function goals2(...args: number[]) {
 	return args.reduce((a, b) => a + b);
-  }
+}
 
-  function goals3(...leagueGoals: number[]): number {
-    return leagueGoals.reduce((total, goal) => total + goal);
+function goals3(...leagueGoals: number[]): number {
+	return leagueGoals.reduce((total, goal) => total + goal);
 }
 
 const goals4 = (...args: number[]) => args.reduce((a, b) => a + b);
 
 
-function goals5 (laLigaGoals:number, copaDelReyGoals:number, championsLeagueGoals:number) {
+function goals5(laLigaGoals: number, copaDelReyGoals: number, championsLeagueGoals: number) {
 	let result = 0;
-  
-	for (let i = 0; i < arguments.length; i++) {
-	  result += arguments[i];
-	}
-  
-	return result;
-  }
 
-  function goals6 (laLigaGoals:number, copaDelReyGoals:number, championsLeagueGoals:number) {
+	for (let i = 0; i < arguments.length; i++) {
+		result += arguments[i];
+	}
+
+	return result;
+}
+
+function goals6(laLigaGoals: number, copaDelReyGoals: number, championsLeagueGoals: number) {
 	return Object.values(arguments).reduce((a, b) => a + b);
-  }
+}
 
 
 
@@ -1100,7 +1115,7 @@ const nthEven = (n: number): number => {
 
 	return (n - 1) * 2;
 
-	
+
 	// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 	// let solution:number = 0;
 
@@ -1122,8 +1137,8 @@ const nthEven = (n: number): number => {
 
 function nthEven2(n: number) {
 	let result = 0;
-	for(let i = 0; i < n; i++) {
-	  result = i * 2;
+	for (let i = 0; i < n; i++) {
+		result = i * 2;
 	}
 	console.log(result);
 	return result;
@@ -1131,7 +1146,7 @@ function nthEven2(n: number) {
 
 
 
-  function nthEven3(n: number): number {
+function nthEven3(n: number): number {
 	return Math.floor(n * 2 - 2);
 }
 
@@ -1152,9 +1167,9 @@ Example: (Input1, Input2 --> Output)
 
 const repeater = (str: string, n: number): string => {
 
-    return str.repeat(n);
+	return str.repeat(n);
 
-  }
+}
 
 // console.log(repeater("a", 5));
 // console.log();
@@ -1164,12 +1179,12 @@ const repeater = (str: string, n: number): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function repeater2(str: string, n: number): string {
-  let result = '';
-  
-  for (let i = 0; i < n; i++) {
-    result = result.concat(str.toString());
-  }
-  return result
+	let result = '';
+
+	for (let i = 0; i < n; i++) {
+		result = result.concat(str.toString());
+	}
+	return result
 }
 
 
@@ -1180,13 +1195,13 @@ function repeater3(str: string, n: number): string {
 
 
 
-  function repeater4(str: string, n: number): string {
-	return new Array(n+1).join(str);
+function repeater4(str: string, n: number): string {
+	return new Array(n + 1).join(str);
 }
 
 
 
-  const repeater5 = Function.prototype.call.bind(String.prototype.repeat);
+const repeater5 = Function.prototype.call.bind(String.prototype.repeat);
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MY HEAD IS AT THE WRONG END
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1210,7 +1225,7 @@ const fixTheMeerkat = (arr: [string, string, string]): string[] => {
 	return arr.reverse();
 
 }
-  
+
 
 // console.log(fixTheMeerkat(['tail', 'body', 'head']));
 // console.log(fixTheMeerkat(['tails', 'body', 'heads']));
@@ -1221,27 +1236,27 @@ const fixTheMeerkat = (arr: [string, string, string]): string[] => {
 
 function fixTheMeerkat2([tail, body, head]: string[]): string[] {
 	return [head, body, tail];
-  }
+}
 
 
-  function fixTheMeerka2t( arr : string[]): string[] {
+function fixTheMeerka2t(arr: string[]): string[] {
 	// your code here
-	let pos1 = arr[2], pos2= arr[1], pos3 = arr[0];
+	let pos1 = arr[2], pos2 = arr[1], pos3 = arr[0];
 	return [pos1, pos2, pos3];
-  }
+}
 
 
 
-  function fixTheMeerka3t(arr: string[]): string[] {
+function fixTheMeerka3t(arr: string[]): string[] {
 	[arr[0], arr[2]] = [arr[2], arr[0]];
 	return arr;
-  }
+}
 
 
 
-  function fixTheMeerkat4(arr: string[]): string[] {
+function fixTheMeerkat4(arr: string[]): string[] {
 	return [arr[2], arr[1], arr[0]]
-  }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  NTH POWER
@@ -1272,13 +1287,13 @@ const index = (array: number[], numIdx: number): number => {
 
 
 	// 2️⃣
-    // if (numIdx === 0) return 1;
+	// if (numIdx === 0) return 1;
 
 	// return numIdx < array.length
 	// 	? Math.pow(array[numIdx], numIdx)
 	// 	: -1;
 
-  }
+}
 
 //  IF numIdx FITS INTO ARRAY, RETURN numIdx-th power of the element with the index numIdx
 //  OTHERWISE RETURN -1
@@ -1297,16 +1312,16 @@ const index2 = (array: number[], n: number): number => array[n] ** n || -1;
 function index3(array: number[], n: number): number {
 	const res = array[n] ** n;
 	return isNaN(res) ? -1 : res;
-  }
+}
 
 
 
-  function index4(array: number[], n: number): number {
+function index4(array: number[], n: number): number {
 	const val = array[n];
-	
+
 	if (val === undefined) return -1;
-	return Math.pow(val,n);
-  }
+	return Math.pow(val, n);
+}
 
 
 
@@ -1355,11 +1370,11 @@ const finalGrade = (exam: number, pro: number): number => {
 		grade = 90;
 	} else if (exam > 50 && pro >= 2) {
 		grade = 75;
-	} 
+	}
 
 	return grade;
 
-  }
+}
 
 // 100
 // console.log(finalGrade(100, 12));
@@ -1393,13 +1408,13 @@ In this kata you need to check the provided array (x) for good ideas 'good' and 
 
 const well = (strArr: string[]): string => {
 
-	if(strArr.indexOf("good") < 0) return "Fail!";
+	if (strArr.indexOf("good") < 0) return "Fail!";
 
 	return strArr.join("").match(/good/g)!.length < 3
 		? "Publish!"
 		: "I smell a series!"
-	
-  }
+
+}
 
 
 //   console.log(well(['bad', 'bad', 'bad']));
@@ -1410,53 +1425,53 @@ const well = (strArr: string[]): string => {
 
 
 // ❗️❗️❗️ FILTER() ❗️❗️❗️
-function well2(x: string[]): string{
+function well2(x: string[]): string {
 	let num: number = x.filter(a => a === 'good').length
-	return num > 2? 'I smell a series!': num >= 1? 'Publish!': 'Fail!'
+	return num > 2 ? 'I smell a series!' : num >= 1 ? 'Publish!' : 'Fail!'
 }
 
 
 
 
 
-interface IdeasCount{
+interface IdeasCount {
 	goodIdeas: number;
 	badIdeas: number
-  }
-  
-function well3(x: string[]): string{
+}
+
+function well3(x: string[]): string {
 	const ideasCount: IdeasCount = {
-	  goodIdeas: 0,
-	  badIdeas: 0
+		goodIdeas: 0,
+		badIdeas: 0
 	}
-	
+
 	x.forEach((item) => {
-	  item === 'bad' ? ideasCount.badIdeas += 1 : ideasCount.goodIdeas +=1
+		item === 'bad' ? ideasCount.badIdeas += 1 : ideasCount.goodIdeas += 1
 	});
-	  
-	if(ideasCount.goodIdeas > 2) {
-	  return 'I smell a series!'
-	} else if(ideasCount.goodIdeas <= 2 && ideasCount.goodIdeas !== 0) {
-	  return 'Publish!'
+
+	if (ideasCount.goodIdeas > 2) {
+		return 'I smell a series!'
+	} else if (ideasCount.goodIdeas <= 2 && ideasCount.goodIdeas !== 0) {
+		return 'Publish!'
 	} else {
-	  return 'Fail!'
+		return 'Fail!'
 	}
 }
 
 
 
 
-function well4(x: string[]): string{
+function well4(x: string[]): string {
 	const number = x.filter((i) => i === "good").length;
-  
+
 	if (!number) {
-	  return "Fail!";
+		return "Fail!";
 	}
-	
+
 	if (number < 3) {
-	  return "Publish!";
+		return "Publish!";
 	}
-	
+
 	return "I smell a series!";
 }
 
@@ -1504,14 +1519,14 @@ const gooseFilter = (birds: string[]): string[] => {
 
 	birds.forEach((bird) => {
 		if (!geese.includes(bird)) {
-		// if (geese.indexOf(bird) < 0) {
+			// if (geese.indexOf(bird) < 0) {
 			filteredArr.push(bird);
 		}
 	})
 
 	// return filteredArr;
-	
-  }
+
+}
 
 
 
@@ -1523,41 +1538,41 @@ const gooseFilter = (birds: string[]): string[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️ SAME AS MY SOLUTION ❗️❗️❗️ 
-function gooseFilter2 (birds: string[]): string[] {
+function gooseFilter2(birds: string[]): string[] {
 	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 	// return an array containing all of the strings in the input array except those that match strings in geese
 	return birds.filter(bird => !geese.includes(bird));
-  }
+}
 
 
 
 
 interface GeeseIndex {
-    [key: string]: boolean;
+	[key: string]: boolean;
 }
 
-function gooseFilter3 (birds: string[]): string[] {
-    const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+function gooseFilter3(birds: string[]): string[] {
+	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 
-    // avoid O(n) look-ups
-    const geeseIndex = geese.reduce((acc: GeeseIndex, birdName: string) => {
-        acc[birdName] = true;
-        return acc;
-    }, {});
+	// avoid O(n) look-ups
+	const geeseIndex = geese.reduce((acc: GeeseIndex, birdName: string) => {
+		acc[birdName] = true;
+		return acc;
+	}, {});
 
-    return birds.filter((bird: string) => !(bird in geeseIndex));
+	return birds.filter((bird: string) => !(bird in geeseIndex));
 }
 
 
 
 
-function gooseFilter4 (birds: string[]): string[] {
+function gooseFilter4(birds: string[]): string[] {
 	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 	var j = 0, result = [];
 	for (let i = 0; i < birds.length; i++) {
-	  if (birds[i] == "African" || birds[i] == "Toulouse" || birds[i] == "Roman Tufted" || birds[i] == "Pilgrim" || birds[i] == "Steinbacher") {
-		  delete birds[i];
-		} 
+		if (birds[i] == "African" || birds[i] == "Toulouse" || birds[i] == "Roman Tufted" || birds[i] == "Pilgrim" || birds[i] == "Steinbacher") {
+			delete birds[i];
+		}
 		if (birds[i] != undefined) {
 			result[j] = birds[i];
 			j++;
@@ -1569,15 +1584,15 @@ function gooseFilter4 (birds: string[]): string[] {
 
 
 
-function gooseFilter5 (birds: string[]): string[] {
+function gooseFilter5(birds: string[]): string[] {
 	const geese: string[] = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
 	return birds.filter(bird => geese.find(gee => gee == bird) === undefined)
-  }
+}
 
 
 
 
-  const gooseFilter6 = (birds: string[]): string[] => birds.filter(x => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(x) === -1);
+const gooseFilter6 = (birds: string[]): string[] => birds.filter(x => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(x) === -1);
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1606,16 +1621,16 @@ Note: base is a non-negative number, factor is a positive number.
 */
 
 const checkForFactor = (base: number, factor: number) => {
-	
+
 	return base % factor === 0;
 
-  }
+}
 
 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-const checkForFactor2 = (base: number, factor: number) : boolean => !(base % factor);
+const checkForFactor2 = (base: number, factor: number): boolean => !(base % factor);
 
 
 function checkForFactor3(base: number, factor: number) {

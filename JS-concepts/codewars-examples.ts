@@ -82,8 +82,8 @@ function getAverage2(marks: number[]): number {
 
 // 1️⃣  EVEN OR ODD ? (NUM % 2 === 0)
 
-// 1 & 1 => 1   RETURNS  1 IF N IS ODD
-// 2 & 1 => 0   RETURNS 0 IF N IS EVEN
+// (1 & 1) => 1   RETURNS  1 IF N IS ODD
+// (2 & 1) => 0   RETURNS 0 IF N IS EVEN
 
 // ❗️❗️❗️ num & 1 ❗️❗️❗️
 function simpleMultiplication6(num: number): number {
@@ -101,7 +101,14 @@ function oddOrEven(x: number) {
 function isOdd(num: number): number { return num % 2; }
 
 
+// FILTER OUT ODD NUMBERS:
+const getEvenNumbers = (numbersArray: number[]): number[] => {
 
+    return numbersArray.filter((num) => {
+        return (num & 1) === 0;
+    });
+
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // "XOR" / "^" (EXCLUSIVE OR)

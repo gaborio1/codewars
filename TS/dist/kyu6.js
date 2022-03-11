@@ -1,6 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+function solution2(number) {
+    return "hello";
+}
+function wave(str) {
+    return [];
+}
+const bouncingBall = (dropHeight, bounceRate, viewHeight) => {
+    if (dropHeight <= 0
+        || (bounceRate <= 0 || bounceRate >= 1)
+        || (viewHeight <= 0 || viewHeight >= dropHeight)) {
+        return -1;
+    }
+    let actualBounce = dropHeight * bounceRate;
+    let counter = 1;
+    while (actualBounce > viewHeight) {
+        actualBounce = actualBounce * bounceRate;
+        counter += 2;
+    }
+    return counter;
+};
+function bouncingBall2(h, bounce, window) {
+    if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {
+        return -1;
+    }
+    return 2 * Math.ceil(Math.log(window / h) / Math.log(bounce)) - 1;
+}
+function bouncingBall3(h, bounce, window) {
+    if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {
+        return -1;
+    }
+    return 2 + bouncingBall3(h * bounce, bounce, window);
+}
 class G964a {
     static inArray(a1, a2) {
         let solution = [];

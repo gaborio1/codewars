@@ -1,6 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = void 0;
+exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = void 0;
+function hello(name = '') {
+    return '';
+}
+const arr = (n) => [];
+const between = (a, b) => {
+    let solution = [];
+    for (let i = a; i <= b; i++) {
+        solution.push(i);
+    }
+    return solution;
+};
+function between2(a, b) {
+    return Array.from({ length: b - a + 1 }, (_, j) => j + a);
+}
+function between3(a, b) {
+    return [...Array(b - a + 1)].map((n, i) => i + a);
+}
+var a = "code";
+var b = "wa.rs";
+exports.name = a + b;
 const shortLongShort = (a, b) => {
     return a.length < b.length
         ? a + b + a

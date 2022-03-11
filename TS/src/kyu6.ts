@@ -285,7 +285,7 @@ Remember that there can't be more than 3 identical symbols in a row.
 
 function solution2(number: number): string {
     return "hello"
-  }
+}
 
 // console.log((solution(1444));
 // console.log();
@@ -319,9 +319,9 @@ Example
 wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
 */
 
-function wave(str: string): Array<string>{
+function wave(str: string): Array<string> {
     return []
-  }
+}
 
 // console.log(wave("hello");
 // console.log();
@@ -332,7 +332,7 @@ function wave(str: string): Array<string>{
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BOUNCING BALLS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -366,9 +366,31 @@ Examples:
 (Condition 2) not fulfilled).
 */
 
-const bouncingBall = (h: number, bounce: number, window: number): number => {
-    return 1;
-  }
+const bouncingBall = (
+    dropHeight: number,
+    bounceRate: number,
+    viewHeight: number
+): number => {
+
+    if (
+        dropHeight <= 0
+        || (bounceRate <= 0 || bounceRate >= 1)
+        || (viewHeight <= 0 || viewHeight >= dropHeight)
+    ) {
+        return -1;
+    }
+
+    let actualBounce: number = dropHeight * bounceRate;
+    let counter: number = 1;
+
+    while (actualBounce > viewHeight) {
+        actualBounce = actualBounce * bounceRate;
+        counter += 2;
+    }
+
+    return counter;
+
+}
 
 //  3 
 // console.log(bouncingBall(3.0, 0.66, 1.5));
@@ -378,9 +400,28 @@ const bouncingBall = (h: number, bounce: number, window: number): number => {
 // console.log(bouncingBall(30, 0.75, 1.5));
 // 3
 // console.log(bouncingBall(30, 0.4, 10));
+// -1
+// console.log(bouncingBall(3, 0.5, 4))
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function bouncingBall2(h: number, bounce: number, window: number): number {
+    if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {
+        return -1;
+    }
+
+    return 2 * Math.ceil(Math.log(window / h) / Math.log(bounce)) - 1;
+}
+
+
+
+function bouncingBall3(h: number, bounce: number, window: number): number {
+    if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {
+        return -1;
+    }
+
+    return 2 + bouncingBall3(h * bounce, bounce, window);
+}
 
 // ❗️❗️❗️ INCLUDE THIS IN CODEWARS EXAMPLES ❗️❗️❗️ (FIND(FUNCTION))
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

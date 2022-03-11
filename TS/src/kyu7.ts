@@ -313,9 +313,9 @@ Your car is old, it breaks easily. The shock absorbers are gone and you think it
 Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
 */
 
-function bump(x: string): string{
+function bump(x: string): string {
     return ""
-  }
+}
 
 // console.log(bump("n")V);
 // console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
@@ -358,7 +358,7 @@ The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent
 
 function adjacentElementsProduct(arr: number[]): number {
     return 1;
-  }
+}
 
 // console.log(adjacentElementsProduct([1, 5, 10, 9]));
 // console.log();
@@ -369,7 +369,7 @@ function adjacentElementsProduct(arr: number[]): number {
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  JS ARRAY FILTER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -383,20 +383,36 @@ The solution would work like the following:
 getEvenNumbers([2,4,5,6]) // should == [2,4,6]
 */
 
-const getEvenNumbers = (numbersArray : number[]) : number[] => {
-    return [];
-  }
+const getEvenNumbers = (numbersArray: number[]): number[] => {
+
+    return numbersArray.filter((num) => {
+        return (num & 1) === 0;
+    });
+
+}
 
 
-// console.log(getEvenNumbers([1,2,3,6,8,10]));
+// console.log(getEvenNumbers([1, 2, 3, 6, 8, 10]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const getEvenNumbers2 = (numbersArray: number[]): number[] => {
+    return numbersArray.filter(x => x % 2 === 0)
+}
 
 
+
+const isEven = (num: number): boolean => num % 2 == 0;
+const getEvenNumbers3 = (nums: number[]): number[] => nums.filter(isEven);
+
+
+
+const getEvenNumbers4 = (numbersArray: number[]): number[] => {
+    return numbersArray.filter(cond => 0 === cond % 2);
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF TRIANGULAR NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -421,7 +437,7 @@ e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
 Triangular Numbers cannot be negative so return 0 if a negative number is given.
 */
 
-const sumTriangularNumbers = (n:number):number => {
+const sumTriangularNumbers = (n: number): number => {
 
     let sum: number = 0, triNum: number = 0;
 
@@ -432,7 +448,7 @@ const sumTriangularNumbers = (n:number):number => {
 
     return sum;
 
-  }
+}
 
 
 //  START LOOP AT 1, IN EVERY ITERATION:
@@ -452,9 +468,9 @@ const sumTriangularNumbers = (n:number):number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function sumTriangularNumbers2(n:number):number {
-    return (n <= 0 )? 0 : (n * (n+1) * (n+2))/6;
-  }
+function sumTriangularNumbers2(n: number): number {
+    return (n <= 0) ? 0 : (n * (n + 1) * (n + 2)) / 6;
+}
 
 
 //   Function lacks ending return statement and return type does not include 'undefined'.ts(2366)
@@ -462,7 +478,7 @@ function sumTriangularNumbers2(n:number):number {
 //   function sumTriangularNumbers3(n:number):number {
 
 //     if (n < 1) return 0;
-  
+
 //     if (n == 1)
 //       return 1;
 //     while (n > 0) {
@@ -472,29 +488,29 @@ function sumTriangularNumbers2(n:number):number {
 
 
 
-  function sumTriangularNumbers4(n:number):number {
-    return Array.from({"length":n}).map((value,index)=>(1+index+1)*(index+1)/2).reduce((pre,current)=>pre+current,0)
-  }
+function sumTriangularNumbers4(n: number): number {
+    return Array.from({ "length": n }).map((value, index) => (1 + index + 1) * (index + 1) / 2).reduce((pre, current) => pre + current, 0)
+}
 
 
 
-  function sumTriangularNumbers5(n:number):number {
+function sumTriangularNumbers5(n: number): number {
     let result = 0;
     for (let i = 0; i <= n; i++) {
-      result += (i * (i+1)) / 2;
+        result += (i * (i + 1)) / 2;
     }
     return result;
-  }
+}
 
 
 
-  function sumTriangularNumbers6(n:number):number {
+function sumTriangularNumbers6(n: number): number {
     let sum = 0;
     for (let i = 1, j = 1; i <= n; i++, j += i) {
         sum += j;
     }
     return sum;
-  }
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  MOVES IN SQUARED STRINGS

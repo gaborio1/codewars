@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextBigger7 = void 0;
+class G964 {
+}
+const sumOfIntervals = (intervals) => {
+    return 1;
+};
 const nextBigger = (num) => {
     const digitsArr = String(num).split("").map((digit) => Number(digit));
     let solutionArr = [];

@@ -1,6 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+function bump(x) {
+    return "";
+}
+function adjacentElementsProduct(arr) {
+    return 1;
+}
+const getEvenNumbers = (numbersArray) => {
+    return numbersArray.filter((num) => {
+        return (num & 1) === 0;
+    });
+};
+const getEvenNumbers2 = (numbersArray) => {
+    return numbersArray.filter(x => x % 2 === 0);
+};
+const isEven = (num) => num % 2 == 0;
+const getEvenNumbers3 = (nums) => nums.filter(isEven);
+const getEvenNumbers4 = (numbersArray) => {
+    return numbersArray.filter(cond => 0 === cond % 2);
+};
 const sumTriangularNumbers = (n) => {
     let sum = 0, triNum = 0;
     for (let i = 1; i <= n; i++) {

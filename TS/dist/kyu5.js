@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
+class G964b {
+}
 class G964a8 {
 }
 G964a8.primeFactors = (num) => {
