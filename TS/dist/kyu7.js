@@ -4,15 +4,19 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
 function bump(x) {
     return "";
 }
-function adjacentElementsProduct(arr) {
+const adjacentElementsProduct = (arr) => {
     let productsArr = [];
     for (let i = 0; i < arr.length - 1; i++) {
         let adjacentProd = arr[i] * arr[i + 1];
         productsArr.push(adjacentProd);
     }
     return Math.max(...productsArr);
-}
+};
 console.log(adjacentElementsProduct([1, 5, 10, 9]));
+const adjacentElementsProduct2 = (arr) => Math.max(...arr.map((value, index) => index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]));
+function adjacentElementsProduct3(arr) {
+    return Math.max(...arr.slice(1).map((x, i) => x * arr[i]));
+}
 const getEvenNumbers = (numbersArray) => {
     return numbersArray.filter((num) => {
         return (num & 1) === 0;

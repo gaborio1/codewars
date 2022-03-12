@@ -4,9 +4,17 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 function solution2(number) {
     return "hello";
 }
-function wave(str) {
-    return [];
-}
+const wave = (str) => {
+    let solution = [];
+    str.split("").forEach((letter, idx) => {
+        console.log(letter);
+        let currentWave = str.replace(str[idx], str[idx].toUpperCase());
+        console.log(currentWave);
+        solution.push(currentWave);
+    });
+    return solution;
+};
+console.log(wave("hello"));
 const bouncingBall = (dropHeight, bounceRate, viewHeight) => {
     if (dropHeight <= 0
         || (bounceRate <= 0 || bounceRate >= 1)

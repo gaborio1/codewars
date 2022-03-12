@@ -319,11 +319,22 @@ Example
 wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
 */
 
-function wave(str: string): Array<string> {
-    return []
+// function wave(str: string): Array<string> {
+const wave = (str: string): string[] => {
+
+    let solution: string[] = [];
+
+    str.split("").forEach((letter, idx) => {
+        console.log(letter);
+        let currentWave = str.replace(str[idx], str[idx].toUpperCase());
+        console.log(currentWave);
+        solution.push(currentWave);
+    });
+
+    return solution;
 }
 
-// console.log(wave("hello");
+console.log(wave("hello"));
 // console.log();
 // console.log();
 // console.log();
