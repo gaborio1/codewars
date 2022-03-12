@@ -4,7 +4,33 @@ exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.
 function hello(name = '') {
     return '';
 }
-const arr = (n) => [];
+const arr = (n) => {
+    if (!n)
+        return [];
+    let solution = [];
+    for (let i = 0; i < n; i++) {
+        solution.push(i);
+    }
+    return solution;
+};
+const arr2 = (n = 0) => Array.from({ length: n }, (_, i) => i);
+const arr3 = (n = 0) => [...Array(n).keys()];
+const arr4 = (...n) => n.length === 0 ? [] : Array.from(Array(n[0]).keys());
+const arr5 = (n) => Number.isNaN(+n)
+    ? []
+    : [...Array(n).keys()];
+const arr6 = (n = 0) => {
+    return new Array(n)
+        .fill("")
+        .map((it, i) => i);
+};
+const arr7 = (n = 0) => {
+    const arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(i);
+    }
+    return arr;
+};
 const between = (a, b) => {
     let solution = [];
     for (let i = a; i <= b; i++) {

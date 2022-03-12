@@ -5,8 +5,14 @@ function bump(x) {
     return "";
 }
 function adjacentElementsProduct(arr) {
-    return 1;
+    let productsArr = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+        let adjacentProd = arr[i] * arr[i + 1];
+        productsArr.push(adjacentProd);
+    }
+    return Math.max(...productsArr);
 }
+console.log(adjacentElementsProduct([1, 5, 10, 9]));
 const getEvenNumbers = (numbersArray) => {
     return numbersArray.filter((num) => {
         return (num & 1) === 0;

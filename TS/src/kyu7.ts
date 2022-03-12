@@ -326,10 +326,10 @@ function bump(x: string): string {
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MAXIMUM PRODUCT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ SPREAD ARRAY FOR MATH.MAX() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -356,17 +356,39 @@ Explanation:
 The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
 */
 
-function adjacentElementsProduct(arr: number[]): number {
-    return 1;
+const adjacentElementsProduct = (arr: number[]): number => {
+
+    let productsArr: number[] = [];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        let adjacentProd: number = arr[i] * arr[i + 1];
+        productsArr.push(adjacentProd);
+    }
+
+    // ❗️❗️❗️ SPREAD ARRAY FOR MATH.MAX() TO AVOID ERROR: ❗️❗️❗️
+    // Argument of type 'number[]' is not assignable to parameter of type 'number'.ts(2345)
+    return Math.max(...productsArr);
 }
 
-// console.log(adjacentElementsProduct([1, 5, 10, 9]));
+console.log(adjacentElementsProduct([1, 5, 10, 9]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const adjacentElementsProduct2 = (arr: number[]): number =>
+  Math.max(
+    ...arr.map((value, index) =>
+      index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]
+    )
+  )
+
+
+
+  function adjacentElementsProduct3(arr: number[]): number {
+    return Math.max(...arr.slice(1).map((x, i) => x * arr[i]))
+  }
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -390,6 +412,7 @@ const getEvenNumbers = (numbersArray: number[]): number[] => {
     });
 
 }
+
 
 
 // console.log(getEvenNumbers([1, 2, 3, 6, 8, 10]));
