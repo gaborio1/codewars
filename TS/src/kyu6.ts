@@ -319,29 +319,131 @@ Example
 wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
 */
 
+
+// ❗️❗️❗️ BOTH WORK ❗️❗️❗️
 // function wave(str: string): Array<string> {
 const wave = (str: string): string[] => {
 
+    const strArr: string[] = str.split("");
+    // console.log(strArr);
     let solution: string[] = [];
 
-    str.split("").forEach((letter, idx) => {
-        console.log(letter);
-        let currentWave = str.replace(str[idx], str[idx].toUpperCase());
-        console.log(currentWave);
-        solution.push(currentWave);
+    strArr.forEach((letter, idx) => {
+        let currentWaveArr: string[] = [...strArr];
+        // console.table({ letter: letter, index: idx, strAtIdx: noSpaceStr[idx], upperCased: noSpaceStr[idx].toUpperCase() });
+        if (letter !== " ") {
+            currentWaveArr[idx] = currentWaveArr[idx].toUpperCase();
+            // console.log(currentWave);
+            solution.push(currentWaveArr.join(""));
+        }
+
     });
 
     return solution;
+
 }
 
-console.log(wave("hello"));
+//  SPLIT str INTO ARRAY
+//  INITIALIZE solution AS EMPTY ARR
+//  LOOP OVER strArr
+//      CURRENT WORD(WAVE) IS A COPY OF strArr
+//      IF CURRENT ELEMENT IS NOT A SPACE:
+//          CONVERT currentWaveArr[idx] TO UPPERCASE
+//          AND PUSH IT AS A STRING INTO solution
+//  RETURN SOLUTION
+
+/*
+[
+    'Two words',
+    'tWo words',
+    'twO words',
+    'two Words',
+    'two wOrds',
+    'two woRds',
+    'two worDs',
+    'two wordS'
+  ]
+  */
+
+// console.log(wave("hello"));
+// console.log(wave("two words"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// function wave2(str: string): Array<string> {
+//     return str.split("").reduce((wave, char, index) => {
+//         if (char === " ") {
+//             return wave;
+//         }
+//         wave.push(
+//             str.slice(0, index) + char.toUpperCase() + str.slice(index + 1)
+//         );
+//         return wave;
+//     }, [])
+// }
 
+
+
+function wave3(str: string): Array<string> {
+    const result = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str.charAt(i) === ' ') {
+            continue;
+        }
+        result.push(str.substring(0, i) + str.charAt(i).toUpperCase() + str.substring(i + 1));
+    }
+    return result;
+}
+
+
+
+// function wave4(str: string): Array<string> {
+//     return [...str].reduce((acc, s, i) => {
+//         if (s !== ' ') {
+//             acc.push(str.slice(0, i) + s.toUpperCase() + str.slice(i + 1));
+//         }
+//         return acc;
+//     }, []);
+// }
+
+
+
+function wave5(str: string): Array<string> {
+    let arr = [];
+    for (let i = 0; i < str.length; i++) {
+        let k = str.split("");
+        k[i] = k[i].toUpperCase();
+        if (str != k.join("")) {
+            arr.push(k.join(""));
+        }
+    }
+    return arr;
+}
+
+
+
+// function wave6(str: string): Array<string> {
+//     return str.split('').reduce((result, item, index) => {
+//         (item != ' ') && result.push(str.substr(0, index) + item.toUpperCase() + str.substr(index + 1));
+//         return result;
+//     }, []);
+// }
+
+
+
+function wave7(str: string): Array<string> {
+    let finalArray: string[] = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ') continue;
+        let letters = str.split('');
+        letters[i] = str[i].toUpperCase();
+        finalArray.push(letters.join(''));
+    }
+    return finalArray;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BOUNCING BALLS

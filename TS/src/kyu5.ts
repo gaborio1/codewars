@@ -195,9 +195,9 @@ https://en.wikipedia.org/wiki/Prime_gap
 class G964b {
 
     // public static gap = (g, m, n) => {
-        
+
     // }
-  }
+}
 
 // console.log(G964b.gap(2,100,110));
 // console.log();
@@ -209,7 +209,7 @@ class G964b {
 
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  PRIME FACTOR DECOMPOSITION
+// TITLE:  PRIMES IN NUMBERS - PRIME FACTOR DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -270,7 +270,9 @@ class G964a8 {
         return "hello";
     }
 }
-// console.log();
+
+// "(2**5)(5)(7**2)(11)"
+console.log(G964a8.primeFactors(86240));
 // console.log();
 // console.log();
 // console.log();

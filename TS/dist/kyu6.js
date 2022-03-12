@@ -5,16 +5,49 @@ function solution2(number) {
     return "hello";
 }
 const wave = (str) => {
+    const strArr = str.split("");
     let solution = [];
-    str.split("").forEach((letter, idx) => {
-        console.log(letter);
-        let currentWave = str.replace(str[idx], str[idx].toUpperCase());
-        console.log(currentWave);
-        solution.push(currentWave);
+    strArr.forEach((letter, idx) => {
+        let currentWaveArr = [...strArr];
+        if (letter !== " ") {
+            currentWaveArr[idx] = currentWaveArr[idx].toUpperCase();
+            solution.push(currentWaveArr.join(""));
+        }
     });
     return solution;
 };
-console.log(wave("hello"));
+function wave3(str) {
+    const result = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str.charAt(i) === ' ') {
+            continue;
+        }
+        result.push(str.substring(0, i) + str.charAt(i).toUpperCase() + str.substring(i + 1));
+    }
+    return result;
+}
+function wave5(str) {
+    let arr = [];
+    for (let i = 0; i < str.length; i++) {
+        let k = str.split("");
+        k[i] = k[i].toUpperCase();
+        if (str != k.join("")) {
+            arr.push(k.join(""));
+        }
+    }
+    return arr;
+}
+function wave7(str) {
+    let finalArray = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ')
+            continue;
+        let letters = str.split('');
+        letters[i] = str[i].toUpperCase();
+        finalArray.push(letters.join(''));
+    }
+    return finalArray;
+}
 const bouncingBall = (dropHeight, bounceRate, viewHeight) => {
     if (dropHeight <= 0
         || (bounceRate <= 0 || bounceRate >= 1)
