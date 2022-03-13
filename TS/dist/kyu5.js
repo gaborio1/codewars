@@ -8,6 +8,7 @@ class G964a8 {
 G964a8.primeFactors = (num) => {
     return "hello";
 };
+console.log(G964a8.primeFactors(86240));
 class G964a {
 }
 G964a.perimeter = (num) => {

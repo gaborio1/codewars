@@ -347,7 +347,7 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  EXCLUSIVE OR / XOR OPERATOR (^)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -355,47 +355,143 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Exclusive "or" (xor) Logical Operator
+Overview
+In some scripting languages like PHP, there exists a logical operator (e.g. &&, ||, and, or, etc.) called the "Exclusive Or" (hence the name of this Kata). The exclusive or evaluates two booleans. It then returns true if exactly one of the two expressions are true, false otherwise. For example:
 
+false xor false == false // since both are false
+true xor false == true // exactly one of the two expressions are true
+false xor true == true // exactly one of the two expressions are true
+true xor true == false // Both are true.  "xor" only returns true if EXACTLY one of the two expressions evaluate to true.
+Task
+Since we cannot define keywords in Javascript (well, at least I don't know how to do it), your task is to define a function xor(a, b) where a and b are the two expressions to be evaluated. Your xor function should have the behaviour described above, returning true if exactly one of the two expressions evaluate to true, false otherwise.
 */
 
 
+class XOR {
+    public static xor(a: boolean, b: boolean): boolean {
 
-// console.log();
+		// ❗️❗️❗️
+
+		return (a && !b) || (b && !a);
+
+		return a != b;
+
+		// ❗️❗️❗️
+
+    }
+}
+
+// console.log(XOR.xor(false, false));
+// console.log(XOR.xor(true, true));
+// console.log(XOR.xor(true, false));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
+class XOR2 {
+    public static xor(a:boolean, b:boolean):boolean {
+        return a != b;
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  REMOVE EXCLAMATION MARK FROM END OF STR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SLICE(), ENDSWITH(), REGEX//, 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Remove an exclamation mark from the end of a string. For a beginner kata, you can assume that the input data is always a string, no need to verify it.
 
+Examples
+remove("Hi!") === "Hi"
+remove("Hi!!!") === "Hi!!"
+remove("!Hi") === "!Hi"
+remove("!Hi!") === "!Hi"
+remove("Hi! Hi!") === "Hi! Hi"
+remove("Hi") === "Hi"
+Note
+Please don't post issue about difficulty or duplicate.
 */
 
+const remove = (str: string): string => {
+
+	const last: number = str.length - 1;
+
+	return str[last] === "!"
+		? str.slice(0, last)
+		: str;
+
+}
+
+//  CHECK IF LAST CAHAR IS A "!"
+//      IF SO, RETURN SUBSTRING(WITHOUT LAST CHAR)
+//      OTHERWISE, RETURN ORIGINAL STRING
 
 
-// console.log();
+
+// console.log(remove("Hi!!!"));
+// console.log(remove("Hi"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const remove2 = (s: string): string => s.replace(/!$/, '')
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+const remove21 = (s: string): string => s.endsWith('!') ? s.slice(0, -1) : s;
+
+
+
+function remove3(s: string): string {
+	if (s.endsWith("!")){
+	  return s.slice(0, s.length -1);
+	}
+	else{
+	  return s;
+	}
+  }
+
+
+
+  function remove4(s: string): string {
+	return s.replace(/[!]{1}$/g, '')
+  }
+
+
+
+  const remove5 = (s: string): string => s.split('!').filter((v: string, i: number, a: string[]) => !(v === '' && i === a.length-1)).join('!');
+
+
+
+  function remove6(s: string): string {
+	return s.match(/!$/) ? s.slice(0, -1) : s;
+  }
+
+
+
+  function remove7(s: string): string {
+	if (s.substr(s.length - 1) == "!") {
+	  return s.substr(0, s.length-1);
+	} else {
+	return s;
+	}
+  }
+
+
+// ❗️❗️❗️ INCLUDE DEFAULT PARAMS IN TYPESCRIPT / INDEX.JS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HELLO NAME OR WORLD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ MAKE FIRST LETTER UPPERCASE, OPTIONAL PARAMETER, DEFAULT PARAMETER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -413,18 +509,60 @@ Examples:
   or `name` = ""        => return "Hello, World!"
 */
 
-function hello(name = ''): string {
-	return '';
+// ❗️❗️❗️ OPTIONAL PARAM
+const hello = (name?: string): string => {
+
+	// ❗️❗️❗️ CHECK FOR name 
+	if (!name) {
+		return "Hello, World!";
+  }
+
+  const lowerCased = name.toLowerCase();
+  const formattedName = lowerCased.replace(lowerCased[0], lowerCased[0].toUpperCase());
+	
+return `Hello, ${formattedName}!`;
+
 }
 
 // console.log(hello('johN'));
+// console.log(hello(''));
+// console.log(hello());
+// console.log(hello('KCOkuVGU'));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ FIRST CAPITAL LETTER, ❗️❗️❗️ DEFAULT PARAMETER ❗️❗️❗️
+const hello2 = (name = ''): string => `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : 'World'}!`;
 
+
+
+function hello3(name:string = ''): string {
+	const term:string = name 
+	  ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() 
+	  : `World`;
+	
+	return `Hello, ${term}!`;
+  };
+
+
+
+  function hello4(name: string = ''): string {
+	const nameLower: string = name.toLowerCase();
+	return name ? `Hello, ${nameLower.replace(nameLower[0], nameLower[0].toUpperCase())}!` : 'Hello, World!';
+  }
+
+
+
+  function hello5(name = ''): string {
+	if (name) {
+	  return `Hello, ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`
+	} else {
+	  return 'Hello, World!'
+	}
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FILLING AN ARRAY PT. 1

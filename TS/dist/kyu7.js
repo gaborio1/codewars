@@ -1,9 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
-function bump(x) {
-    return "";
-}
+const bump = (road) => {
+    var _a;
+    const bumps = (_a = road.match(/n/g)) === null || _a === void 0 ? void 0 : _a.length;
+    return bumps > 15
+        ? "Car Dead"
+        : "Woohoo!";
+};
+console.log(bump("n"));
+console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
+console.log(bump("_"));
 const adjacentElementsProduct = (arr) => {
     let productsArr = [];
     for (let i = 0; i < arr.length - 1; i++) {
@@ -12,7 +19,6 @@ const adjacentElementsProduct = (arr) => {
     }
     return Math.max(...productsArr);
 };
-console.log(adjacentElementsProduct([1, 5, 10, 9]));
 const adjacentElementsProduct2 = (arr) => Math.max(...arr.map((value, index) => index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]));
 function adjacentElementsProduct3(arr) {
     return Math.max(...arr.slice(1).map((x, i) => x * arr[i]));

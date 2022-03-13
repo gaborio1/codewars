@@ -1,8 +1,75 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = void 0;
-function hello(name = '') {
-    return '';
+class XOR {
+    static xor(a, b) {
+        return (a && !b) || (b && !a);
+        return a != b;
+    }
+}
+class XOR2 {
+    static xor(a, b) {
+        return a != b;
+    }
+}
+const remove = (str) => {
+    const last = str.length - 1;
+    return str[last] === "!"
+        ? str.slice(0, last)
+        : str;
+};
+const remove2 = (s) => s.replace(/!$/, '');
+const remove21 = (s) => s.endsWith('!') ? s.slice(0, -1) : s;
+function remove3(s) {
+    if (s.endsWith("!")) {
+        return s.slice(0, s.length - 1);
+    }
+    else {
+        return s;
+    }
+}
+function remove4(s) {
+    return s.replace(/[!]{1}$/g, '');
+}
+const remove5 = (s) => s.split('!').filter((v, i, a) => !(v === '' && i === a.length - 1)).join('!');
+function remove6(s) {
+    return s.match(/!$/) ? s.slice(0, -1) : s;
+}
+function remove7(s) {
+    if (s.substr(s.length - 1) == "!") {
+        return s.substr(0, s.length - 1);
+    }
+    else {
+        return s;
+    }
+}
+const hello = (name) => {
+    if (!name) {
+        return "Hello, World!";
+    }
+    const lowerCased = name.toLowerCase();
+    const formattedName = lowerCased.replace(lowerCased[0], lowerCased[0].toUpperCase());
+    return `Hello, ${formattedName}!`;
+};
+const hello2 = (name = '') => `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : 'World'}!`;
+function hello3(name = '') {
+    const term = name
+        ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+        : `World`;
+    return `Hello, ${term}!`;
+}
+;
+function hello4(name = '') {
+    const nameLower = name.toLowerCase();
+    return name ? `Hello, ${nameLower.replace(nameLower[0], nameLower[0].toUpperCase())}!` : 'Hello, World!';
+}
+function hello5(name = '') {
+    if (name) {
+        return `Hello, ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`;
+    }
+    else {
+        return 'Hello, World!';
+    }
 }
 const arr = (n) => {
     if (!n)

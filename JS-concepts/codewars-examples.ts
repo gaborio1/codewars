@@ -114,6 +114,22 @@ const getEvenNumbers = (numbersArray: number[]): number[] => {
 // "XOR" / "^" (EXCLUSIVE OR)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// RETURN TRUE IF ONLY ONE IS TRUE
+
+class XOR {
+    public static xor(a: boolean, b: boolean): boolean {
+
+		// ❗️❗️❗️
+
+		return (a && !b) || (b && !a);
+
+		return a != b;
+
+		// ❗️❗️❗️
+
+    }
+}
+
 
 // 1️⃣  FIND UNIQUE NUMBER IN ARRAY
 
