@@ -279,29 +279,112 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  GRASSHOPPER DEBUG
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ MATH.ROUND() TO FIVE DECIMAL PLACES ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Debug celsius converter
+Your friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs.
 
+Find the errors in the code to get the celsius converter working properly.
+
+To convert fahrenheit to celsius:
+
+celsius = (fahrenheit - 32) * (5/9)
+Please round to 5dp (use Math.round())
+*/
+
+/*
+function weatherInfo(temp: number): string {
+	const c: convert(temp)
+	if (c > 0)
+		return (Math.round(c * 1e5) / 1e5 + " is freezing temperature")
+	else
+		return (Math.round(c * 1e5) / 1e5 + " is above freezing temperature")
+}
+
+export function convertToCelsius(temperature: number): number {
+	const celsius = Math.round(((tempertur) - 32 + (5 / 9)) * 1e5) / 1e5
+	return temperature
+}
 */
 
 
+const convertToCelsius = (temperature: number): number => {
 
-// console.log();
-// console.log();
+	return Number(((temperature - 32) * (5 / 9)).toFixed(5));
+
+	// return (7.12345).toFixed(3)
+}
+
+const weatherInfo2 = (temp: number): string => {
+
+	const convertedTemp = convertToCelsius(temp);
+
+	return convertedTemp > 0
+		? `${convertedTemp} is above freezing temperature`
+		: `${convertedTemp} is freezing temperature`;
+
+}
+
+
+//   '10 is above freezing temperature'
+console.log(weatherInfo2(50));
+// '-5 is freezing temperature'
+console.log(weatherInfo2(23));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function weatherInfo3(temp: number): string {
+	let c: number = +((temp - 32) * (5 / 9)).toFixed(5)
+	if (c < 0) {
+		return (c + " is freezing temperature")
+	}
+	else {
+		return (c + " is above freezing temperature")
+	}
+}
+
+
+
+function weatherInfo4(t: number): string {
+	// ❗️❗️❗️
+	var c = Math.round((t - 32) * (5 / 9) * 100000) / 100000
+	if (c < 0)
+		return (c + " is freezing temperature")
+	else
+		return (c + " is above freezing temperature")
+}
+
+
+
+
+
+
+function weatherInfo5(temp: number): string {
+	// ❗️❗️❗️
+	const c = Math.round(convertToCelsius(temp) * 1e5) / 1e5;
+	if (c < 0)
+		return (c + " is freezing temperature")
+	else
+		return (c + " is above freezing temperature")
+}
+
+function convertToCelsius2(temperature: number): number {
+	return (temperature - 32) * 5 / 9
+}
+
+
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  WIDE MOUTHED FROG
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -309,13 +392,27 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The wide-mouth frog is particularly interested in the eating habits of other creatures.
 
+He just can't stop asking the creatures he encounters what they like to eat. But, then he meets the alligator who just LOVES to eat wide-mouthed frogs!
+
+When he meets the alligator, it then makes a tiny mouth.
+
+Your goal in this kata is to create complete the mouth_size method this method takes one argument animal which corresponds to the animal encountered by the frog. If this one is an alligator (case-insensitive) return small otherwise return wide
 */
 
+const mouthSize = (animal: string): string => {
 
+	return animal.toLowerCase() === "alligator"
+		? "small"
+		: "wide";
 
-// console.log();
-// console.log();
+}
+
+const mouthSize2 = (animal: string): string => /alligator/i.test(animal) ? 'small' : 'wide';
+
+// console.log(mouthSize("toucan"));
+// console.log(mouthSize("Alligator"));
 // console.log();
 // console.log();
 
@@ -324,25 +421,91 @@
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:  HEX TO DECIMAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  PARSEINT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-
+Complete the function which converts hex number (given as a string) to a decimal number.
 */
 
+const hexToDec = (hexString: string): number => {
 
+	return parseInt(hexString, 16);
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+}
+
+// console.log(hexToDec("1"));
+// console.log(hexToDec("a"));
+// console.log(hexToDec("10"));
+// console.log(hexToDec("FF"));
+// console.log(hexToDec("-C"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function hexToDec2(hexString: string): number {
+	const tempHex = hexString.toLowerCase();
+	const hexToNumMap: { [key: string]: number } = {
+		a: 10,
+		b: 11,
+		c: 12,
+		d: 13,
+		e: 14,
+		f: 15,
+	};
+	let result = 0;
+	let power = 0;
+	for (let i = tempHex.length - 1; i >= 0; i--, power++) {
+		const ch = tempHex[i];
+		if (i === 0 && ch === '-') {
+			result *= -1;
+		} else if (ch in hexToNumMap) {
+			result += hexToNumMap[ch] * 16 ** power;
+		} else {
+			result += Number(ch) * 16 ** power;
+		}
+	}
+	return result;
+}
+
+
+
+function hexToDec3(hexString: string): number {
+	const hex = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+	return hexString
+		.toUpperCase()
+		.split("")
+		.reverse()
+		.map((value, index) => hex.indexOf(value) * Math.pow(16, index))
+		.reduce((sum, value) => ((value < 0) ? (-1 * sum) : (sum + value)), 0);
+}
+
+
+
+function hexToDec4(hexString: string): number {
+	return parseInt(hexString.replace(/^(-)?(.*)/, '$10x$2'))
+}
+
+
+
+
+// const hexDecCharMap = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, a: 10, b: 11, c: 12, d: 13, e: 14, f: 15 };
+
+// export function hexToDec5(hexString: string) {
+// 	let decValue = 0;
+// 	let isNegative = hexString[0] === '-';
+
+// 	for (let i = isNegative ? 1 : 0; i < hexString.length; i++) {
+// 		const decimalEquivalent = hexDecCharMap[hexString[i].toLowerCase()];
+// 		const power = hexString.length - i - (isNegative ? 1 : 1);
+// 		decValue += decimalEquivalent * Math.pow(16, power);
+// 	}
+
+// 	return isNegative ? -decValue : decValue;
+// }
 
 
 
@@ -369,7 +532,7 @@ Since we cannot define keywords in Javascript (well, at least I don't know how t
 
 
 class XOR {
-    public static xor(a: boolean, b: boolean): boolean {
+	public static xor(a: boolean, b: boolean): boolean {
 
 		// ❗️❗️❗️
 
@@ -379,7 +542,7 @@ class XOR {
 
 		// ❗️❗️❗️
 
-    }
+	}
 }
 
 // console.log(XOR.xor(false, false));
@@ -392,9 +555,9 @@ class XOR {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 class XOR2 {
-    public static xor(a:boolean, b:boolean):boolean {
-        return a != b;
-    }
+	public static xor(a: boolean, b: boolean): boolean {
+		return a != b;
+	}
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -452,39 +615,39 @@ const remove21 = (s: string): string => s.endsWith('!') ? s.slice(0, -1) : s;
 
 
 function remove3(s: string): string {
-	if (s.endsWith("!")){
-	  return s.slice(0, s.length -1);
+	if (s.endsWith("!")) {
+		return s.slice(0, s.length - 1);
 	}
-	else{
-	  return s;
+	else {
+		return s;
 	}
-  }
+}
 
 
 
-  function remove4(s: string): string {
+function remove4(s: string): string {
 	return s.replace(/[!]{1}$/g, '')
-  }
+}
 
 
 
-  const remove5 = (s: string): string => s.split('!').filter((v: string, i: number, a: string[]) => !(v === '' && i === a.length-1)).join('!');
+const remove5 = (s: string): string => s.split('!').filter((v: string, i: number, a: string[]) => !(v === '' && i === a.length - 1)).join('!');
 
 
 
-  function remove6(s: string): string {
+function remove6(s: string): string {
 	return s.match(/!$/) ? s.slice(0, -1) : s;
-  }
+}
 
 
 
-  function remove7(s: string): string {
+function remove7(s: string): string {
 	if (s.substr(s.length - 1) == "!") {
-	  return s.substr(0, s.length-1);
+		return s.substr(0, s.length - 1);
 	} else {
-	return s;
+		return s;
 	}
-  }
+}
 
 
 // ❗️❗️❗️ INCLUDE DEFAULT PARAMS IN TYPESCRIPT / INDEX.JS ❗️❗️❗️
@@ -515,12 +678,12 @@ const hello = (name?: string): string => {
 	// ❗️❗️❗️ CHECK FOR name 
 	if (!name) {
 		return "Hello, World!";
-  }
+	}
 
-  const lowerCased = name.toLowerCase();
-  const formattedName = lowerCased.replace(lowerCased[0], lowerCased[0].toUpperCase());
-	
-return `Hello, ${formattedName}!`;
+	const lowerCased = name.toLowerCase();
+	const formattedName = lowerCased.replace(lowerCased[0], lowerCased[0].toUpperCase());
+
+	return `Hello, ${formattedName}!`;
 
 }
 
@@ -539,30 +702,30 @@ const hello2 = (name = ''): string => `Hello, ${name ? name[0].toUpperCase() + n
 
 
 
-function hello3(name:string = ''): string {
-	const term:string = name 
-	  ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() 
-	  : `World`;
-	
+function hello3(name: string = ''): string {
+	const term: string = name
+		? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+		: `World`;
+
 	return `Hello, ${term}!`;
-  };
+};
 
 
 
-  function hello4(name: string = ''): string {
+function hello4(name: string = ''): string {
 	const nameLower: string = name.toLowerCase();
 	return name ? `Hello, ${nameLower.replace(nameLower[0], nameLower[0].toUpperCase())}!` : 'Hello, World!';
-  }
+}
 
 
 
-  function hello5(name = ''): string {
+function hello5(name = ''): string {
 	if (name) {
-	  return `Hello, ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`
+		return `Hello, ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`
 	} else {
-	  return 'Hello, World!'
+		return 'Hello, World!'
 	}
-  }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FILLING AN ARRAY PT. 1
@@ -583,21 +746,21 @@ arr(5) // => [0,1,2,3,4]
 Note: The parameter is optional. So you have to give it a default value.
 */
 
-	// ❗️❗️❗️ OPTIONAL PARAMETER
-	const arr = (n?: number): number[] => {
-  
-		// ❗️❗️❗️ CHECK FOR n 
-		if (!n) return [];
-	  
-		let solution: number[] = [];
-		
-		  for (let i = 0; i < n; i++) {
-				solution.push(i);
-		  }
-	
-		  return solution;
-	  
+// ❗️❗️❗️ OPTIONAL PARAMETER
+const arr = (n?: number): number[] => {
+
+	// ❗️❗️❗️ CHECK FOR n 
+	if (!n) return [];
+
+	let solution: number[] = [];
+
+	for (let i = 0; i < n; i++) {
+		solution.push(i);
 	}
+
+	return solution;
+
+}
 
 
 
@@ -608,38 +771,38 @@ Note: The parameter is optional. So you have to give it a default value.
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-const arr2 = (n = 0): number[] => Array.from({length: n}, (_, i) => i);
+const arr2 = (n = 0): number[] => Array.from({ length: n }, (_, i) => i);
 
 
 const arr3 = (n: number = 0): number[] => [...Array(n).keys()];
 
 
 const arr4 = (...n: number[]): number[] =>
-  n.length === 0 ? [] : Array.from(Array(n[0]).keys());
+	n.length === 0 ? [] : Array.from(Array(n[0]).keys());
 
 
 
-  const arr5 = (n?: any): number[] =>  Number.isNaN(+n)
-  ? []
-  : [...Array(n).keys()]
+const arr5 = (n?: any): number[] => Number.isNaN(+n)
+	? []
+	: [...Array(n).keys()]
 
 
 
-  const arr6 = (n: number = 0): number[] => {
+const arr6 = (n: number = 0): number[] => {
 	return new Array(n)
-	  .fill("")
-	  .map((it, i) => i);
-  };
+		.fill("")
+		.map((it, i) => i);
+};
 
 
 
 
-const arr7 = (n: number = 0): number[]  => {
-    const arr = []
-    for(let i = 0; i < n; i++) {
-        arr.push(i)
-    }
-    return arr
+const arr7 = (n: number = 0): number[] => {
+	const arr = []
+	for (let i = 0; i < n; i++) {
+		arr.push(i)
+	}
+	return arr
 }
 
 

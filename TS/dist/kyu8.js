@@ -1,6 +1,90 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = void 0;
+const convertToCelsius = (temperature) => {
+    return Number(((temperature - 32) * (5 / 9)).toFixed(5));
+};
+const weatherInfo2 = (temp) => {
+    const convertedTemp = convertToCelsius(temp);
+    return convertedTemp > 0
+        ? `${convertedTemp} is above freezing temperature`
+        : `${convertedTemp} is freezing temperature`;
+};
+console.log(weatherInfo2(50));
+console.log(weatherInfo2(23));
+function weatherInfo3(temp) {
+    let c = +((temp - 32) * (5 / 9)).toFixed(5);
+    if (c < 0) {
+        return (c + " is freezing temperature");
+    }
+    else {
+        return (c + " is above freezing temperature");
+    }
+}
+function weatherInfo4(t) {
+    var c = Math.round((t - 32) * (5 / 9) * 100000) / 100000;
+    if (c < 0)
+        return (c + " is freezing temperature");
+    else
+        return (c + " is above freezing temperature");
+}
+function weatherInfo5(temp) {
+    const c = Math.round(convertToCelsius(temp) * 1e5) / 1e5;
+    if (c < 0)
+        return (c + " is freezing temperature");
+    else
+        return (c + " is above freezing temperature");
+}
+function convertToCelsius2(temperature) {
+    return (temperature - 32) * 5 / 9;
+}
+const mouthSize = (animal) => {
+    return animal.toLowerCase() === "alligator"
+        ? "small"
+        : "wide";
+};
+const mouthSize2 = (animal) => /alligator/i.test(animal) ? 'small' : 'wide';
+const hexToDec = (hexString) => {
+    return parseInt(hexString, 16);
+};
+function hexToDec2(hexString) {
+    const tempHex = hexString.toLowerCase();
+    const hexToNumMap = {
+        a: 10,
+        b: 11,
+        c: 12,
+        d: 13,
+        e: 14,
+        f: 15,
+    };
+    let result = 0;
+    let power = 0;
+    for (let i = tempHex.length - 1; i >= 0; i--, power++) {
+        const ch = tempHex[i];
+        if (i === 0 && ch === '-') {
+            result *= -1;
+        }
+        else if (ch in hexToNumMap) {
+            result += hexToNumMap[ch] * 16 ** power;
+        }
+        else {
+            result += Number(ch) * 16 ** power;
+        }
+    }
+    return result;
+}
+function hexToDec3(hexString) {
+    const hex = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+    return hexString
+        .toUpperCase()
+        .split("")
+        .reverse()
+        .map((value, index) => hex.indexOf(value) * Math.pow(16, index))
+        .reduce((sum, value) => ((value < 0) ? (-1 * sum) : (sum + value)), 0);
+}
+function hexToDec4(hexString) {
+    return parseInt(hexString.replace(/^(-)?(.*)/, '$10x$2'));
+}
 class XOR {
     static xor(a, b) {
         return (a && !b) || (b && !a);
