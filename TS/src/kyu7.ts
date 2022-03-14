@@ -276,8 +276,8 @@
 
 
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:  PARTS OF A LIST
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -285,12 +285,36 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
+
+Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )
+Each part will be in a string
+Elements of a pair must be in the same order as in the original array.
+Examples of returns in different languages:
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+[["az", "toto picaro zone kiwi"], ["az toto", "picaro zone kiwi"], ["az toto picaro", "zone kiwi"], ["az toto picaro zone", "kiwi"]] 
+or
+ a = {"az", "toto", "picaro", "zone", "kiwi"} -->
+{{"az", "toto picaro zone kiwi"}, {"az toto", "picaro zone kiwi"}, {"az toto picaro", "zone kiwi"}, {"az toto picaro zone", "kiwi"}}
+or
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+or 
+a = [|"az", "toto", "picaro", "zone", "kiwi"|] -->
+[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+or
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+"(az, toto picaro zone kiwi)(az toto, picaro zone kiwi)(az toto picaro, zone kiwi)(az toto picaro zone, kiwi)"
 
 */
 
+class G964a {
+    public static partlist(arr: string[]): string[][] {
+        return [["hello"]]
+    }
+}
 
-
-// console.log();
+// console.log(.G964.partlist(["I", "wish", "I", "hadn't", "come"]));
 // console.log();
 // console.log();
 // console.log();
@@ -313,21 +337,22 @@ Your car is old, it breaks easily. The shock absorbers are gone and you think it
 Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
 */
 
-const bump = (road: string): string => {
+// const bump = (road: string): string => {
 
-    // const bumps: number = road.match(/n/g)?.length || 0;
-    const bumps: number = road.match(/n/g)?.length;
+//     // const bumps: number = road.match(/n/g)?.length || 0;
+//     const bumps: number = road.match(/n/g)?.length;
 
 
-    return bumps > 15
-        ? "Car Dead"
-        : "Woohoo!";
-        
-}
+//     return bumps > 15
+//         ? "Car Dead"
+//         : "Woohoo!";
 
-console.log(bump("n"));
-console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
-console.log(bump("_"));
+// }
+
+// console.log(bump("n"));
+// console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
+// console.log(bump("_"));
+
 // console.log();
 // console.log();
 
@@ -387,17 +412,17 @@ const adjacentElementsProduct = (arr: number[]): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const adjacentElementsProduct2 = (arr: number[]): number =>
-  Math.max(
-    ...arr.map((value, index) =>
-      index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]
+    Math.max(
+        ...arr.map((value, index) =>
+            index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]
+        )
     )
-  )
 
 
 
-  function adjacentElementsProduct3(arr: number[]): number {
+function adjacentElementsProduct3(arr: number[]): number {
     return Math.max(...arr.slice(1).map((x, i) => x * arr[i]))
-  }
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

@@ -1,16 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
-const bump = (road) => {
-    var _a;
-    const bumps = (_a = road.match(/n/g)) === null || _a === void 0 ? void 0 : _a.length;
-    return bumps > 15
-        ? "Car Dead"
-        : "Woohoo!";
-};
-console.log(bump("n"));
-console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
-console.log(bump("_"));
+class G964a {
+    static partlist(arr) {
+        return [["hello"]];
+    }
+}
 const adjacentElementsProduct = (arr) => {
     let productsArr = [];
     for (let i = 0; i < arr.length - 1; i++) {

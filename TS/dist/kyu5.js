@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = void 0;
+function chooseBestSum(t, k, ls) {
+    return 1;
+}
 class G964b {
 }
 class G964a8 {

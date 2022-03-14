@@ -1,6 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = void 0;
+function plural(n) {
+    return true;
+}
+const distinct = (a) => {
+    return a;
+};
+function getDrinkByProfession(profession) {
+}
+function position(alphabet) {
+    return "";
+}
+class Kata1 {
+    static buildString(...template) {
+        return `I like ${template}!`;
+    }
+}
+function apple(x) {
+    return '';
+}
+function findMultiples(integer, limit) {
+    return [1];
+}
+function dutyFree(normPrice, discount, hol) {
+    return 0;
+}
+const addFive = (num) => {
+    let total = num + 5;
+    return num;
+};
+function warnTheSheep(queue) {
+    return '';
+}
 const convertToCelsius = (temperature) => {
     return Number(((temperature - 32) * (5 / 9)).toFixed(5));
 };
