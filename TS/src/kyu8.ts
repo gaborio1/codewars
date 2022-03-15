@@ -369,14 +369,44 @@ Input: ["sheep", "sheep", "wolf"]
 Output: "Pls go away and stop eating my sheep"
 */
 
-function warnTheSheep(queue: string[]): string {
-	return '';
+const warnTheSheep = (queue: string[]): string => {
+
+	const revQueue = queue.reverse();
+
+	// console.log(revQueue);
+
+	let message: string = "";
+
+	// if (revQueue[0] === "wolf") {
+	// 	message = "Pls go away and stop eating my sheep";
+	// 	return message;
+	// }
+
+	for (let i = 0; i < revQueue.length - 1; i++) {
+		// console.log(queue[i]);
+
+		// let current: string = queue[i];
+		let next: string = queue[i + 1];
+
+		if (next === "wolf") {
+			message = `Oi! Sheep number ${i+ 1}! You are about to be eaten by a wolf!`
+		}
+	}
+
+	// return message;
+
+	return revQueue[0] === "wolf"
+		? "Pls go away and stop eating my sheep"
+		: message;
+
 }
 
-//   "Oi! Sheep number 2! You are about to be eaten by a wolf!"
-// console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
-// console.log();
-// console.log();
+//  "Oi! Sheep number 2! You are about to be eaten by a wolf!"
+console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
+//  "Pls go away and stop eating my sheep"
+console.log(warnTheSheep(["sheep", "sheep", "wolf"]));
+//  "Oi! Sheep number 1! You are about to be eaten by a wolf!"
+console.log(warnTheSheep(["sheep", "wolf", "sheep"]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -438,9 +468,9 @@ const weatherInfo2 = (temp: number): string => {
 
 
 //   '10 is above freezing temperature'
-console.log(weatherInfo2(50));
+// console.log(weatherInfo2(50));
 // '-5 is freezing temperature'
-console.log(weatherInfo2(23));
+// console.log(weatherInfo2(23));
 // console.log();
 // console.log();
 

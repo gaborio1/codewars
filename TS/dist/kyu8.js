@@ -30,9 +30,22 @@ const addFive = (num) => {
     let total = num + 5;
     return num;
 };
-function warnTheSheep(queue) {
-    return '';
-}
+const warnTheSheep = (queue) => {
+    const revQueue = queue.reverse();
+    let message = "";
+    for (let i = 0; i < revQueue.length - 1; i++) {
+        let next = queue[i + 1];
+        if (next === "wolf") {
+            message = `Oi! Sheep number ${i + 1}! You are about to be eaten by a wolf!`;
+        }
+    }
+    return revQueue[0] === "wolf"
+        ? "Pls go away and stop eating my sheep"
+        : message;
+};
+console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
+console.log(warnTheSheep(["sheep", "sheep", "wolf"]));
+console.log(warnTheSheep(["sheep", "wolf", "sheep"]));
 const convertToCelsius = (temperature) => {
     return Number(((temperature - 32) * (5 / 9)).toFixed(5));
 };
@@ -42,8 +55,6 @@ const weatherInfo2 = (temp) => {
         ? `${convertedTemp} is above freezing temperature`
         : `${convertedTemp} is freezing temperature`;
 };
-console.log(weatherInfo2(50));
-console.log(weatherInfo2(23));
 function weatherInfo3(temp) {
     let c = +((temp - 32) * (5 / 9)).toFixed(5);
     if (c < 0) {
