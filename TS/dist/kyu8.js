@@ -9,12 +9,34 @@ const distinct = (a) => {
 };
 function getDrinkByProfession(profession) {
 }
-function position(alphabet) {
-    return "";
-}
+const position = (char) => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    return `Position of alphabet: ${alphabet.indexOf(char.toLowerCase()) + 1}`;
+};
+console.log(position("E"));
 class Kata1 {
     static buildString(...template) {
-        return `I like ${template}!`;
+        return `I like ${template.join(", ")}!`;
+    }
+}
+class Kata1a {
+    static buildString(...template) {
+        let result = template.join(', ');
+        return `I like ${result}!`;
+    }
+}
+class Kata1b {
+    static buildString(...template) {
+        let answer = 'I like ';
+        for (var i in template) {
+            if (parseInt(i) == template.length - 1) {
+                answer += template[i] + "!";
+            }
+            else {
+                answer += template[i] + ", ";
+            }
+        }
+        return answer;
     }
 }
 const apple = (x) => {

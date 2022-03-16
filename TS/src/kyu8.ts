@@ -144,12 +144,12 @@ function getDrinkByProfession(profession: string) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND THE POSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  CHARCODEAT(), INDEXOF()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -164,23 +164,73 @@ Ouput :: "Position of alphabet: 1"
 This kata is meant for beginners. Rank and upvote to bring it out of beta
 */
 
-function position(alphabet: string): string {
-	return "";
+const position = (char: string): string => {
+
+	const abc: string = "abcdefghijklmnopqrstuvwxyz";
+
+	return `Position of alphabet: ${abc.indexOf(char.toLowerCase()) + 1}`;
+
 }
 
-// console.log(position("e"));
+console.log(position("E"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ CHARCODEAT()❗️❗️❗️
+function position2(alphabet: string): string {
+	return `Position of alphabet: ${(alphabet.charCodeAt(0) - "a".charCodeAt(0)) + 1}`;
+}
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+
+const position3 = (alphabet: string): string =>
+	`Position of alphabet: ${'abcdefghijklmnopqrstuvwxyz'.indexOf(alphabet) + 1}`
+
+
+
+
+function position4(alphabet: string): string {
+	const mapOfLetterToNumber: Map<string, number> = new Map<string, number>();
+	mapOfLetterToNumber.set('a', 1);
+	mapOfLetterToNumber.set('b', 2);
+	mapOfLetterToNumber.set('c', 3);
+	mapOfLetterToNumber.set('d', 4);
+	mapOfLetterToNumber.set('e', 5);
+	mapOfLetterToNumber.set('f', 6);
+	mapOfLetterToNumber.set('g', 7);
+	mapOfLetterToNumber.set('h', 8);
+	mapOfLetterToNumber.set('i', 9);
+	mapOfLetterToNumber.set('j', 10);
+	mapOfLetterToNumber.set('k', 11);
+	mapOfLetterToNumber.set('l', 12);
+	mapOfLetterToNumber.set('m', 13);
+	mapOfLetterToNumber.set('n', 14);
+	mapOfLetterToNumber.set('o', 15);
+	mapOfLetterToNumber.set('p', 16);
+	mapOfLetterToNumber.set('q', 17);
+	mapOfLetterToNumber.set('r', 18);
+	mapOfLetterToNumber.set('s', 19);
+	mapOfLetterToNumber.set('t', 20);
+	mapOfLetterToNumber.set('u', 21);
+	mapOfLetterToNumber.set('v', 22);
+	mapOfLetterToNumber.set('w', 23);
+	mapOfLetterToNumber.set('x', 24);
+	mapOfLetterToNumber.set('y', 25);
+	mapOfLetterToNumber.set('z', 26);
+	return `Position of alphabet: ${mapOfLetterToNumber.get(alphabet)}`;
+}
+
+
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN CODEWARS EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  STRING TEMPLATES - BUG FIXING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  SPREAD ANY NUMBER OF ARGUMENTS, JOIN(), 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -191,21 +241,45 @@ Oh no! Timmy hasn't followed instructions very carefully and forgot how to use t
 
 class Kata1 {
 	public static buildString(...template: string[]): string {
-		return `I like ${template}!`
+		return `I like ${template.join(", ")}!`
 	}
 }
 
+// ❗️❗️❗️ WITHOUT JOIN(): ❗️❗️❗️
+// I like Cheese,Milk,Chocolate!
+// WITH JOIN():
+// I like Cheese, Milk, Chocolate!
+
 // 'I like Cheese, Milk, Chocolate!'
-// console.log(Kata.buildString('Cheese','Milk','Chocolate'));
+// console.log(Kata1.buildString('Cheese', 'Milk', 'Chocolate'));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+class Kata1a {
+	public static buildString(...template: string[]): string {
+		let result: string = template.join(', ');
+		return `I like ${result}!`
+	}
+}
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+class Kata1b {
+	public static buildString(...template: string[]): string {
+		let answer = 'I like ';
+		for (var i in template) {
+			if (parseInt(i) == template.length - 1) { answer += template[i] + "!"; }
+			else { answer += template[i] + ", "; }
+		}
+		return answer;
+	}
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  APPLE TURNOVER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -235,10 +309,10 @@ X will be either a number or a string. Both are valid.
 const apple = (x: number | string): string => {
 
 	return Math.pow(Number(x), 2) > 1000
-	? 'It\'s hotter than the sun!!'
-	: 'Help yourself to a honeycomb Yorkie for the glovebox.'; 
+		? 'It\'s hotter than the sun!!'
+		: 'Help yourself to a honeycomb Yorkie for the glovebox.';
 
-  }
+}
 
 // 'It\'s hotter than the sun!!'
 // console.log(apple('50'));
@@ -251,16 +325,16 @@ const apple = (x: number | string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function apple2(x: number | string): string {
-  if (typeof x === 'string') x = parseInt(x);
-  return Math.pow(x, 2) > 1000
-    ? `It's hotter than the sun!!`
-    : `Help yourself to a honeycomb Yorkie for the glovebox.`;
+	if (typeof x === 'string') x = parseInt(x);
+	return Math.pow(x, 2) > 1000
+		? `It's hotter than the sun!!`
+		: `Help yourself to a honeycomb Yorkie for the glovebox.`;
 }
 
 
 function apple3(x: number | string): string {
-	return Math.pow(+x,2) >= 1000 ? 'It\'s hotter than the sun!!' : 'Help yourself to a honeycomb Yorkie for the glovebox.';
-  }
+	return Math.pow(+x, 2) >= 1000 ? 'It\'s hotter than the sun!!' : 'Help yourself to a honeycomb Yorkie for the glovebox.';
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND MULTIPLIES OF A NUMBER UP TO LIMIT
@@ -301,13 +375,15 @@ const findMultiples = (int: number, limit: number): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const findMultiples2 = (int: number, limit: number): number[] =>
-  [...Array(limit).keys()]
-    .map(value => value + 1)
-    .filter(value => value % int === 0)
+	[...Array(limit).keys()]
+		.map(value => value + 1)
+		.filter(value => value % int === 0)
 
 
 
-	const findMultiples3 = (integer: number, limit: number): number[] => Array.from({length: limit / integer}).map((_current, i) => (i + 1) * integer);
+const findMultiples3 = (integer: number, limit: number): number[] => Array.from({ length: limit / integer }).map((_current, i) => (i + 1) * integer);
+
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HOLIDAY VIII - DUTY FREE
@@ -346,6 +422,8 @@ const dutyFree = (normPrice: number, discount: number, hol: number): number => {
 
 const dutyFree2 = (normPrice: number, discount: number, hol: number): number => Math.floor(hol / (discount * normPrice / 100))
 
+
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRASSHOPPER - BASIC FUNCTION FIXER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -383,6 +461,8 @@ const addFive = (num: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const addFive2 = (x: number): number => x + 5
+
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  A WOLF IN SHEEP'S CLOTHING
@@ -466,24 +546,26 @@ const warnTheSheep = (queue: string[]): string => {
 function warnTheSheep2(queue: string[]): string {
 	const position = queue.reverse().indexOf('wolf');
 	return position ? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!` : 'Pls go away and stop eating my sheep';
-  }
+}
 
 
 
 function warnTheSheep3(queue: string[]): string {
-	return queue.indexOf('wolf') === (queue.length -1) 
-	  ? 'Pls go away and stop eating my sheep' 
-	  : `Oi! Sheep number ${queue.length - queue.indexOf('wolf') - 1}! You are about to be eaten by a wolf!`
-   }
+	return queue.indexOf('wolf') === (queue.length - 1)
+		? 'Pls go away and stop eating my sheep'
+		: `Oi! Sheep number ${queue.length - queue.indexOf('wolf') - 1}! You are about to be eaten by a wolf!`
+}
 
 
 
 function warnTheSheep4(queue: string[]): string {
 	const reversedArray: string[] = queue.reverse();
 	const sheepIndex: number = reversedArray.findIndex(animal => animal === 'wolf');
-	
+
 	return sheepIndex > 0 ? `Oi! Sheep number ${sheepIndex}! You are about to be eaten by a wolf!` : "Pls go away and stop eating my sheep";
-  }
+}
+
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRASSHOPPER DEBUG
@@ -856,7 +938,7 @@ function remove7(s: string): string {
 	}
 }
 
-
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE DEFAULT PARAMS IN TYPESCRIPT / INDEX.JS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HELLO NAME OR WORLD
