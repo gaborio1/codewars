@@ -232,9 +232,13 @@ X will be a valid integer number.
 X will be either a number or a string. Both are valid.
 */
 
-function apple(x: number | string): string {
-	return '';
-}
+const apple = (x: number | string): string => {
+
+	return Math.pow(Number(x), 2) > 1000
+	? 'It\'s hotter than the sun!!'
+	: 'Help yourself to a honeycomb Yorkie for the glovebox.'; 
+
+  }
 
 // 'It\'s hotter than the sun!!'
 // console.log(apple('50'));
@@ -246,7 +250,17 @@ function apple(x: number | string): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function apple2(x: number | string): string {
+  if (typeof x === 'string') x = parseInt(x);
+  return Math.pow(x, 2) > 1000
+    ? `It's hotter than the sun!!`
+    : `Help yourself to a honeycomb Yorkie for the glovebox.`;
+}
 
+
+function apple3(x: number | string): string {
+	return Math.pow(+x,2) >= 1000 ? 'It\'s hotter than the sun!!' : 'Help yourself to a honeycomb Yorkie for the glovebox.';
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND MULTIPLIES OF A NUMBER UP TO LIMIT

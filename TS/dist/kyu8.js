@@ -17,8 +17,20 @@ class Kata1 {
         return `I like ${template}!`;
     }
 }
-function apple(x) {
-    return '';
+const apple = (x) => {
+    return Math.pow(Number(x), 2) > 1000
+        ? 'It\'s hotter than the sun!!'
+        : 'Help yourself to a honeycomb Yorkie for the glovebox.';
+};
+function apple2(x) {
+    if (typeof x === 'string')
+        x = parseInt(x);
+    return Math.pow(x, 2) > 1000
+        ? `It's hotter than the sun!!`
+        : `Help yourself to a honeycomb Yorkie for the glovebox.`;
+}
+function apple3(x) {
+    return Math.pow(+x, 2) >= 1000 ? 'It\'s hotter than the sun!!' : 'Help yourself to a honeycomb Yorkie for the glovebox.';
 }
 const findMultiples = (int, limit) => {
     let solution = [];
@@ -27,7 +39,10 @@ const findMultiples = (int, limit) => {
     }
     return solution;
 };
-console.log(findMultiples(5, 25));
+const findMultiples2 = (int, limit) => [...Array(limit).keys()]
+    .map(value => value + 1)
+    .filter(value => value % int === 0);
+const findMultiples3 = (integer, limit) => Array.from({ length: limit / integer }).map((_current, i) => (i + 1) * integer);
 const dutyFree = (normPrice, discount, hol) => {
     return Math.floor(hol / (normPrice * discount / 100));
 };
