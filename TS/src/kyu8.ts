@@ -248,10 +248,10 @@ function apple(x: number | string): string {
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  FIND MULTIPLIES OF A NUMBER
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  FIND MULTIPLIES OF A NUMBER UP TO LIMIT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  POPULATE ARRAY WITH MULTIPLES, ARRAY.FROM(), KEYS(), FILTER()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -266,8 +266,15 @@ If you can, try writing it in only one line of code.
 
 */
 
-function findMultiples(integer: number, limit: number): number[] {
-	return [1]
+const findMultiples = (int: number, limit: number): number[] => {
+
+	let solution: number[] = [];
+
+	for (let i = int; i <= limit; i += int) {
+		solution.push(i);
+	}
+
+	return solution;
 }
 
 // [5, 10, 15, 20, 25]  
@@ -279,9 +286,16 @@ function findMultiples(integer: number, limit: number): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const findMultiples2 = (int: number, limit: number): number[] =>
+  [...Array(limit).keys()]
+    .map(value => value + 1)
+    .filter(value => value % int === 0)
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+	const findMultiples3 = (integer: number, limit: number): number[] => Array.from({length: limit / integer}).map((_current, i) => (i + 1) * integer);
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HOLIDAY VIII - DUTY FREE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -299,9 +313,13 @@ For example, if a bottle cost £10 normally and the discount in duty free was 10
 All inputs will be integers. Please return an integer. Round down.
 */
 
-function dutyFree(normPrice: number, discount: number, hol: number): number {
-	return 0
+const dutyFree = (normPrice: number, discount: number, hol: number): number => {
+
+	return Math.floor(hol / (normPrice * discount / 100));
+
 }
+
+// 1000 / (12 * 0.5)
 
 //   166
 // console.log(dutyFree(12, 50, 1000));
@@ -312,9 +330,9 @@ function dutyFree(normPrice: number, discount: number, hol: number): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const dutyFree2 = (normPrice: number, discount: number, hol: number): number => Math.floor(hol / (discount * normPrice / 100))
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRASSHOPPER - BASIC FUNCTION FIXER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -328,10 +346,20 @@ I created this function to add five to any number that was passed in to it and r
 Can you help me fix the function?
 */
 
+// const addFive = (num: number): number => {
+// 	let total = num + 5
+// 	return num;
+// }
+
+
 const addFive = (num: number): number => {
-	let total = num + 5
-	return num;
+
+	return num + 5;
+
 }
+
+
+
 
 // console.log(addFive(5);
 // console.log();
@@ -340,12 +368,12 @@ const addFive = (num: number): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const addFive2 = (x: number): number => x + 5
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  A WOLF IN SHEEP'S CLOTHING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  INDEXOF()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -371,47 +399,77 @@ Output: "Pls go away and stop eating my sheep"
 
 const warnTheSheep = (queue: string[]): string => {
 
-	const revQueue = queue.reverse();
+	// 1️⃣ THIS WILL LOOP REGARDLESS OF WHAT LAST ELEMENT IS
+	// const revQueue = queue.reverse();
+	// let message: string = "";
 
-	// console.log(revQueue);
 
-	let message: string = "";
-
-	// if (revQueue[0] === "wolf") {
-	// 	message = "Pls go away and stop eating my sheep";
-	// 	return message;
+	// for (let i = 0; i < revQueue.length - 1; i++) {
+	// 	let next: string = queue[i + 1];
+	// 	if (next === "wolf") {
+	// 		message = `Oi! Sheep number ${i + 1}! You are about to be eaten by a wolf!`
+	// 	}
 	// }
 
+	// return revQueue[0] === "wolf"
+	// 	? "Pls go away and stop eating my sheep"
+	// 	: message;
+
+
+	// 2️⃣ THIS ONLY LOOPS IF LAST ELEMENT IS NOT "WOLF"
+	if (queue[queue.length - 1] === "wolf") return "Pls go away and stop eating my sheep";
+
+	const revQueue = queue.reverse();
+	let message: string = "";
+
+
 	for (let i = 0; i < revQueue.length - 1; i++) {
-		// console.log(queue[i]);
-
-		// let current: string = queue[i];
 		let next: string = queue[i + 1];
-
 		if (next === "wolf") {
-			message = `Oi! Sheep number ${i+ 1}! You are about to be eaten by a wolf!`
+			message = `Oi! Sheep number ${i + 1}! You are about to be eaten by a wolf!`;
 		}
 	}
 
-	// return message;
-
-	return revQueue[0] === "wolf"
-		? "Pls go away and stop eating my sheep"
-		: message;
+	return message;
 
 }
 
+//  IF LAST ELEMENT IS "wolf", RETURN "pls go away..."
+//  REVERSE ARRAY
+//  INITIALIZE message
+//  LOOP OVER rewQueue, IF NEXT ELEMENT IS "wolf", GET CURRENT ELEMENT'S POSITION (i + 1)
+
 //  "Oi! Sheep number 2! You are about to be eaten by a wolf!"
-console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
+// console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
 //  "Pls go away and stop eating my sheep"
-console.log(warnTheSheep(["sheep", "sheep", "wolf"]));
+// console.log(warnTheSheep(["sheep", "sheep", "wolf"]));
 //  "Oi! Sheep number 1! You are about to be eaten by a wolf!"
-console.log(warnTheSheep(["sheep", "wolf", "sheep"]));
+// console.log(warnTheSheep(["sheep", "wolf", "sheep"]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function warnTheSheep2(queue: string[]): string {
+	const position = queue.reverse().indexOf('wolf');
+	return position ? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!` : 'Pls go away and stop eating my sheep';
+  }
 
+
+
+function warnTheSheep3(queue: string[]): string {
+	return queue.indexOf('wolf') === (queue.length -1) 
+	  ? 'Pls go away and stop eating my sheep' 
+	  : `Oi! Sheep number ${queue.length - queue.indexOf('wolf') - 1}! You are about to be eaten by a wolf!`
+   }
+
+
+
+function warnTheSheep4(queue: string[]): string {
+	const reversedArray: string[] = queue.reverse();
+	const sheepIndex: number = reversedArray.findIndex(animal => animal === 'wolf');
+	
+	return sheepIndex > 0 ? `Oi! Sheep number ${sheepIndex}! You are about to be eaten by a wolf!` : "Pls go away and stop eating my sheep";
+  }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRASSHOPPER DEBUG

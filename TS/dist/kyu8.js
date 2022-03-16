@@ -20,17 +20,25 @@ class Kata1 {
 function apple(x) {
     return '';
 }
-function findMultiples(integer, limit) {
-    return [1];
-}
-function dutyFree(normPrice, discount, hol) {
-    return 0;
-}
-const addFive = (num) => {
-    let total = num + 5;
-    return num;
+const findMultiples = (int, limit) => {
+    let solution = [];
+    for (let i = int; i <= limit; i += int) {
+        solution.push(i);
+    }
+    return solution;
 };
+console.log(findMultiples(5, 25));
+const dutyFree = (normPrice, discount, hol) => {
+    return Math.floor(hol / (normPrice * discount / 100));
+};
+const dutyFree2 = (normPrice, discount, hol) => Math.floor(hol / (discount * normPrice / 100));
+const addFive = (num) => {
+    return num + 5;
+};
+const addFive2 = (x) => x + 5;
 const warnTheSheep = (queue) => {
+    if (queue[queue.length - 1] === "wolf")
+        return "Pls go away and stop eating my sheep";
     const revQueue = queue.reverse();
     let message = "";
     for (let i = 0; i < revQueue.length - 1; i++) {
@@ -39,13 +47,22 @@ const warnTheSheep = (queue) => {
             message = `Oi! Sheep number ${i + 1}! You are about to be eaten by a wolf!`;
         }
     }
-    return revQueue[0] === "wolf"
-        ? "Pls go away and stop eating my sheep"
-        : message;
+    return message;
 };
-console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]));
-console.log(warnTheSheep(["sheep", "sheep", "wolf"]));
-console.log(warnTheSheep(["sheep", "wolf", "sheep"]));
+function warnTheSheep2(queue) {
+    const position = queue.reverse().indexOf('wolf');
+    return position ? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!` : 'Pls go away and stop eating my sheep';
+}
+function warnTheSheep3(queue) {
+    return queue.indexOf('wolf') === (queue.length - 1)
+        ? 'Pls go away and stop eating my sheep'
+        : `Oi! Sheep number ${queue.length - queue.indexOf('wolf') - 1}! You are about to be eaten by a wolf!`;
+}
+function warnTheSheep4(queue) {
+    const reversedArray = queue.reverse();
+    const sheepIndex = reversedArray.findIndex(animal => animal === 'wolf');
+    return sheepIndex > 0 ? `Oi! Sheep number ${sheepIndex}! You are about to be eaten by a wolf!` : "Pls go away and stop eating my sheep";
+}
 const convertToCelsius = (temperature) => {
     return Number(((temperature - 32) * (5 / 9)).toFixed(5));
 };
