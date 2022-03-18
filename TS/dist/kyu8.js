@@ -1,10 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = void 0;
-function printArray(array) {
+exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = exports.howManyLightsabersDoYouOwn5 = void 0;
+const digit = (digit) => {
+    const pattern = /\d/;
+    const isDigit = (str) => {
+        return (pattern).test(str);
+    };
+    console.log(digit.split(""));
+    return digit.split("").every(isDigit);
+};
+console.log(digit("7"));
+const a1 = "dev", b1 = "Lab";
+const name1 = a1 + b1;
+const printArray = (array) => {
+    return String(array);
+};
+const printArray2 = ($) => $.join(",");
+function printArray3(array) {
+    return array.map(el => el.toString()).join(",");
 }
-function usdcny(usd) {
-    return '';
+function printArray4(array) {
+    return array ? [...array].join(',') : '';
+}
+const usdcny = (usd) => {
+    const RATE = 6.75;
+    let cny = (usd * RATE).toFixed(2);
+    return `${cny} Chinese Yuan`;
+};
+let numNoDecimals = 1;
+let numWithDecimals = numNoDecimals.toFixed(2);
+function usdcny2(usd) {
+    return `${(usd * 6.75).toFixed(2)} Chinese Yuan`;
 }
 var sunday = [6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
     7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478, 6063,
@@ -29,26 +55,144 @@ var sunday = [6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 
     5524, 9870, 6591, 8616, 5163, 6656, 8150, 8826, 6875, 5242, 9585, 9649, 9838,
     7150, 6567, 8524, 7613, 7809, 5562, 7799, 7179, 5184, 7960, 9455, 5633, 9085];
 var stairs = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
-function stairsIn20(stairs) {
-    return 1;
+const stairsIn20 = (stairs) => {
+    let yearTotal = 0;
+    stairs.forEach((day) => {
+        let subTotal = day.reduce((prev, curr) => prev + curr);
+        yearTotal += subTotal;
+    });
+    return yearTotal * 20;
+};
+const nextId = (ids) => {
+    const sortedIds = [...new Set([...ids])].sort((a, b) => a - b);
+    if (sortedIds[0] > 0)
+        return 0;
+    let solution = 0;
+    for (let i = 0; i < sortedIds.length; i++) {
+        if (sortedIds[i] + 1 !== sortedIds[i + 1]) {
+            solution = sortedIds[i] + 1;
+            break;
+        }
+    }
+    return solution;
+};
+function nextId2(ids) {
+    let i = 0;
+    while (ids.includes(i)) {
+        i++;
+    }
+    return i;
 }
-function nextId(ids) {
+function nextId3(ids) {
+    const idsSet = new Set(ids);
+    let i = 0;
+    while (idsSet.has(i)) {
+        i += 1;
+    }
+    return i;
+}
+function nextId4(ids) {
+    for (let i = 0;; i++)
+        if (!ids.includes(i))
+            return i;
+}
+function nextId5(ids) {
+    let s = new Set(ids.sort());
+    for (let i = 0; i < s.size; i++) {
+        if (!s.has(i))
+            return i;
+    }
+    return s.size;
+}
+const remove1 = (str) => {
+    return str
+        .replace(/!/g, "")
+        .concat("!");
+};
+function remove13(s) {
+    return s.split('').filter(c => c !== '!').join('') + '!';
+}
+const remove15 = (s) => `${s.replace(/!/g, '')}!`;
+function remove16(s) {
+    let answer = s.split("!").join("");
+    return answer.concat("!");
+}
+const howManyLightsabersDoYouOwn = (name) => {
+    if (!name)
+        return 0;
+    return name === "Zach"
+        ? 18
+        : 0;
+};
+const howManyLightsabersDoYouOwn2 = (name) => name === 'Zach' ? 18 : 0;
+function howManyLightsabersDoYouOwn3(name) {
+    return (name && name == "Zach") ? 18 : 0;
+}
+function howManyLightsabersDoYouOwn4(name) {
+    if (name != null && (typeof name === "string") && name.includes('Zach')) {
+        return 18;
+    }
     return 0;
 }
-function remove1(s) {
-    return "hello";
-}
-function howManyLightsabersDoYouOwn(name) {
-    return 1;
-}
-const squareArea = (num) => {
-    return 1;
+var data = {
+    name: 'Zach',
+    AmountOfLightsabers: 18
 };
-function flip(dir, arr) {
-    return [];
+function howManyLightsabersDoYouOwn5(name) {
+    if (name == data.name) {
+        return data.AmountOfLightsabers;
+    }
+    else {
+        return 0;
+    }
 }
-console.log(flip('R', [3, 2, 1, 2]));
-console.log(flip('L', [1, 4, 5, 3, 5]));
+exports.howManyLightsabersDoYouOwn5 = howManyLightsabersDoYouOwn5;
+function howManyLightsabersDoYouOwn6(name) {
+    if (name == null || name == undefined || name.length == 0)
+        return 0;
+    if (name.length == 4 && name == "Zach")
+        return 18;
+    else
+        return 0;
+}
+function howManyLightsabersDoYouOwn7(name) {
+    return /Zach/.test(name) ? 18 : 0;
+}
+const squareArea = (fractCirc) => {
+    return Number(Math.pow(fractCirc * 2 / Math.PI, 2).toFixed(2));
+};
+const squareArea2 = (num) => {
+    let rad = (num * 2) / Math.PI;
+    return rad * rad;
+};
+const flip = (dir, arr) => {
+    return dir === "R"
+        ? arr.sort((a, b) => a - b)
+        : arr.sort((a, b) => b - a);
+};
+const flip2 = (dir, arr) => arr.sort((a, b) => dir === 'R' ? a - b : b - a);
+function flip3(dir, arr) {
+    return arr.sort(dir == 'R' ? (a, b) => a - b : (a, b) => b - a);
+}
+function flip4(dir, arr) {
+    return arr.sort((a, b) => { return dir === 'R' ? (a < b ? -1 : 1) : (a > b ? -1 : 1); });
+}
+function flip5(dir, arr) {
+    arr.sort((a, b) => a - b);
+    if (dir === "R") {
+        return arr;
+    }
+    else {
+        return arr.reverse();
+    }
+}
+function flip6(dir, arr) {
+    switch (dir) {
+        case 'R': return arr.sort((n1, n2) => n1 - n2);
+        case 'L': return arr.sort((n1, n2) => n2 - n1);
+        default: return [];
+    }
+}
 const isPalindrome = (line) => {
     const strLine = String(line);
     const strLineReverse = strLine

@@ -329,7 +329,7 @@
 
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:  REGEXP BASICS - IS IT A DIGIT?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -337,10 +337,65 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-
+Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
 */
 
+const digit = (digit: string): boolean => {
 
+	const pattern = /\d/;
+
+	const isDigit = (str: string) => {
+		// console.log(pattern.test(str));
+		return (pattern).test(str);
+	}
+
+	// isDigit(digit);
+	console.log(digit.split(""));
+	return digit.split("").every(isDigit);
+	// return isDigit(digit);
+};
+
+
+console.log(digit("7"));
+// console.log(digit(" "));
+// console.log(digit("a"));
+// console.log(digit("a1"));
+// console.log(digit("3"));
+
+// Test.assertEquals(''.digit(), false);
+// Test.assertEquals('7'.digit(), true);
+//     Test.assertEquals(' '.digit(), false);
+//     Test.assertEquals('a'.digit(), false);
+//     Test.assertEquals('a5'.digit(), false);
+//     Test.assertEquals('14'.digit(), false);
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  VARIABLE ASSIGNMENT DEBUG
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:  
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE: 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Variable assignment
+Fix the variables assigments so that this code stores the string 'devLab' in the variable name.
+*/
+
+// ORIGINAL CODE:
+// const a: string == "dev"
+// const b: string == "Lab"
+// const name: string == a + b
+
+// ❗️❗️❗️ ADD export IN CODEWARS ❗️❗️❗️
+const a1: string = "dev", b1: string = "Lab";
+const name1: string = a1 + b1;
+// console.log(name1);
 
 // console.log();
 // console.log();
@@ -351,31 +406,7 @@
 
 
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PRINTING ARRAY ELEMENTS WITH COMMA DELIMITERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -393,26 +424,41 @@ Output: String with comma delimited elements of the array in th same order.
 "h,o,l,a"
 */
 
-function printArray(array:Number[]){
-	// show me the code!
-  }
+const printArray = (array: any[]): string => {
+	// const printArray = (array: (string | number)[]): string => {
+
+	return String(array);
+
+}
 
 //  "h,o,l,a"
-// console.log(printArray(["h","o","l","a"]));
-// console.log();
+// console.log(printArray(["h", "o", "l", "a"]));
+// '2,4,5,2'
+// console.log(printArray([2, 4, 5, 2]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const printArray2 = ($: Array<any>) => $.join(",")
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function printArray3(array: any[]): string {
+	return array.map(el => el.toString()).join(",");
+}
+
+
+
+function printArray4(array: any[]): string {
+	return array ? [...array].join(',') : '';
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  USD => CNY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS: ❗️❗️❗️  FORMAT NUMBER STRING TO ALWAYS SHOW N DECIMAL PLACES ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// KEYWORDS: ❗️❗️❗️ TOFIXED() WILL CONVERT NUMBER TO STRING ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -424,22 +470,37 @@ Examples (Input -> Output)
 The conversion rate you should use is 6.75 CNY for every 1 USD. All numbers should be represented as a string with 2 decimal places. (e.g. "21.00" NOT "21.0" or "21")
 */
 
-function usdcny(usd: number): string {
-	return '';
-  }
+const usdcny = (usd: number): string => {
+
+	const RATE: number = 6.75;
+	let cny: string = (usd * RATE).toFixed(2); // ❗️❗️❗️
+
+	return `${cny} Chinese Yuan`;
+}
 
 // '101.25 Chinese Yuan'
 // console.log(usdcny(15));
+// "675.00"
+// console.log(usdcny(100));
 // console.log();
 // console.log();
 // console.log();
+
+let numNoDecimals: number = 1;							// 1
+// console.log(numNoDecimals.toFixed(2));					// "1.00"
+// console.log(numNoDecimals);								// 1
+let numWithDecimals: string = numNoDecimals.toFixed(2);
+// console.log(numWithDecimals);							// "1.00"
+
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function usdcny2(usd: number): string {
+	return `${(usd * 6.75).toFixed(2)} Chinese Yuan`
+}
 
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HOW MANY STARS WILL SUZUKI CLIMB IN TWENTY YEARS?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -468,41 +529,53 @@ Your function should return the 20 year estimate of the stairs climbed using the
 
 
 var sunday = [6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
-	7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478, 6063, 
-	5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381, 5936, 8496, 
+	7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478, 6063,
+	5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381, 5936, 8496,
 	6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032, 9871, 5990, 6309, 7825],
-monday = [9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
-6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932, 7360, 9221, 
-5702, 5252, 7041, 7287, 5185, 9139, 7187, 8855, 9310, 9105, 9769, 9679, 7842,
-7466, 7321, 6785, 8770, 8108, 7985, 5186, 9021, 9098, 6099, 5828, 7217, 9387],
-tuesday = [8646, 6945, 6364, 9563, 5627, 5068, 9157, 9439, 5681, 8674, 6379, 8292,
- 7552, 5370, 7579, 9851, 8520, 5881, 7138, 7890, 6016, 5630, 5985, 9758, 8415, 7313,
- 7761, 9853, 7937, 9268, 7888, 6589, 9366, 9867, 5093, 6684, 8793, 8116, 8493, 
- 5265, 5815, 7191, 9515, 7825, 9508, 6878, 7180, 8756, 5717, 7555, 9447, 7703],
-wednesday = [6353, 9605, 5464, 9752, 9915, 7446, 9419, 6520, 7438, 6512, 7102, 
-  5047, 6601, 8303, 9118, 5093, 8463, 7116, 7378, 9738, 9998, 7125, 6445, 6031, 8710,
-  5182, 9142, 9415, 9710, 7342, 9425, 7927, 9030, 7742, 8394, 9652, 5783, 7698, 
-  9492, 6973, 6531, 7698, 8994, 8058, 6406, 5738, 7500, 8357, 7378, 9598, 5405, 9493],
-thursday = [6149, 6439, 9899, 5897, 8589, 7627, 6348, 9625, 9490, 5502, 5723, 8197,
- 9866, 6609, 6308, 7163, 9726, 7222, 7549, 6203, 5876, 8836, 6442, 6752, 8695, 8402,
- 9638, 9925, 5508, 8636, 5226, 9941, 8936, 5047, 6445, 8063, 6083, 7383, 7548, 5066, 
- 7107, 6911, 9302, 5202, 7487, 5593, 8620, 8858, 5360, 6638, 8012, 8701],
-friday = [5000, 5642, 9143, 7731, 8477, 8000, 7411, 8813, 8288, 5637, 6244, 6589, 6362, 
-6200, 6781, 8371, 7082, 5348, 8842, 9513, 5896, 6628, 8164, 8473, 5663, 9501, 
-9177, 8384, 8229, 8781, 9160, 6955, 9407, 7443, 8934, 8072, 8942, 6859, 5617,
-5078, 8910, 6732, 9848, 8951, 9407, 6699, 9842, 7455, 8720, 5725, 6960, 5127],
-saturday = [5448, 8041, 6573, 8104, 6208, 5912, 7927, 8909, 7000, 5059, 6412, 6354, 8943, 
-5460, 9979, 5379, 8501, 6831, 7022, 7575, 5828, 5354, 5115, 9625, 7795, 7003, 
-5524, 9870, 6591, 8616, 5163, 6656, 8150, 8826, 6875, 5242, 9585, 9649, 9838, 
-7150, 6567, 8524, 7613, 7809, 5562, 7799, 7179, 5184, 7960, 9455, 5633, 9085];
+	monday = [9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
+		6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932, 7360, 9221,
+		5702, 5252, 7041, 7287, 5185, 9139, 7187, 8855, 9310, 9105, 9769, 9679, 7842,
+		7466, 7321, 6785, 8770, 8108, 7985, 5186, 9021, 9098, 6099, 5828, 7217, 9387],
+	tuesday = [8646, 6945, 6364, 9563, 5627, 5068, 9157, 9439, 5681, 8674, 6379, 8292,
+		7552, 5370, 7579, 9851, 8520, 5881, 7138, 7890, 6016, 5630, 5985, 9758, 8415, 7313,
+		7761, 9853, 7937, 9268, 7888, 6589, 9366, 9867, 5093, 6684, 8793, 8116, 8493,
+		5265, 5815, 7191, 9515, 7825, 9508, 6878, 7180, 8756, 5717, 7555, 9447, 7703],
+	wednesday = [6353, 9605, 5464, 9752, 9915, 7446, 9419, 6520, 7438, 6512, 7102,
+		5047, 6601, 8303, 9118, 5093, 8463, 7116, 7378, 9738, 9998, 7125, 6445, 6031, 8710,
+		5182, 9142, 9415, 9710, 7342, 9425, 7927, 9030, 7742, 8394, 9652, 5783, 7698,
+		9492, 6973, 6531, 7698, 8994, 8058, 6406, 5738, 7500, 8357, 7378, 9598, 5405, 9493],
+	thursday = [6149, 6439, 9899, 5897, 8589, 7627, 6348, 9625, 9490, 5502, 5723, 8197,
+		9866, 6609, 6308, 7163, 9726, 7222, 7549, 6203, 5876, 8836, 6442, 6752, 8695, 8402,
+		9638, 9925, 5508, 8636, 5226, 9941, 8936, 5047, 6445, 8063, 6083, 7383, 7548, 5066,
+		7107, 6911, 9302, 5202, 7487, 5593, 8620, 8858, 5360, 6638, 8012, 8701],
+	friday = [5000, 5642, 9143, 7731, 8477, 8000, 7411, 8813, 8288, 5637, 6244, 6589, 6362,
+		6200, 6781, 8371, 7082, 5348, 8842, 9513, 5896, 6628, 8164, 8473, 5663, 9501,
+		9177, 8384, 8229, 8781, 9160, 6955, 9407, 7443, 8934, 8072, 8942, 6859, 5617,
+		5078, 8910, 6732, 9848, 8951, 9407, 6699, 9842, 7455, 8720, 5725, 6960, 5127],
+	saturday = [5448, 8041, 6573, 8104, 6208, 5912, 7927, 8909, 7000, 5059, 6412, 6354, 8943,
+		5460, 9979, 5379, 8501, 6831, 7022, 7575, 5828, 5354, 5115, 9625, 7795, 7003,
+		5524, 9870, 6591, 8616, 5163, 6656, 8150, 8826, 6875, 5242, 9585, 9649, 9838,
+		7150, 6567, 8524, 7613, 7809, 5562, 7799, 7179, 5184, 7960, 9455, 5633, 9085];
 
-var stairs = [sunday,monday,tuesday,wednesday,thursday,friday,saturday];
+var stairs = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
 
-function stairsIn20(stairs: number[][]): number {
-	
-	return 1
+const stairsIn20 = (stairs: number[][]): number => {
 
-  }
+	let yearTotal = 0;
+
+	// for (let i = 0; i < stairs.length; i++) {
+	// 	let subTotal = stairs[i].reduce((prev, curr) => prev + curr);
+	// 	yearTotal += subTotal;
+	// }
+
+	stairs.forEach((day) => {
+		let subTotal = day.reduce((prev, curr) => prev + curr);
+		yearTotal += subTotal;
+	})
+
+	return yearTotal * 20
+
+}
 
 
 // 54636040
@@ -513,12 +586,21 @@ function stairsIn20(stairs: number[][]): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// function stairsIn201(stairs) {
+// 	return 20 * [].concat.apply([], stairs).reduce((sum, v) => sum + v, 0);
+// }
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// function stairsIn202(stairs: number[][]): number {
+// 	return [].concat(...stairs).reduce((a, b) => a + b, 0) * 20
+// }
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE SET LOOP IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SMALLEST UNUSED ID
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS: ❗️❗️❗️  SET.HAS(), LOOP OVER SET ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -531,23 +613,84 @@ Therefore you need a method, which returns the smallest unused ID for your next 
 Note: The given array of used IDs may be unsorted. For test reasons there may be duplicate IDs, but you don't have to find or remove them!
 */
 
-function nextId(ids: number[]): number {
-	//this will be awesome!
-	return 0;
-  }
+const nextId = (ids: number[]): number => {
+
+	const sortedIds = [...new Set([...ids])].sort((a, b) => a - b);
+	if (sortedIds[0] > 0) return 0;
+	let solution: number = 0;
+
+	for (let i = 0; i < sortedIds.length; i++) {
+		if (sortedIds[i] + 1 !== sortedIds[i + 1]) {
+			solution = sortedIds[i] + 1;
+			break;
+		}
+	}
+
+	return solution;
+
+}
+
+/*
+ sortedIds: DUPLICATES REMOVED AND SORTED ASCENDING
+ INIT solution AS 0
+ IF FIRST ELEMENT GREATER THAN 0, RETURN SOLUTION (0)
+ LOOP OVER sortedIds AND
+	 CHECK IF CURRENT PLUS 1 IS NOT EQUAL TO NEXT
+		 IF NOT, SOLUTION MUST BE CURRENT PLUS 1
+		 BREAK LOOP
+RETURN SOLUTION
+*/
 
 //  4
-// console.log(nextId([0,1,2,3,5]));
+// console.log(nextId([0, 1, 2, 3, 5]));
 // 11
-// console.log(nextId([0,1,2,3,4,5,6,7,8,9,10]));
-// console.log();
+// console.log(nextId([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+// 0
+// console.log(nextId([16, 9, 29, 20, 27, 15, 1, 5, 26, 29, 30, 26, 1, 4, 17]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function nextId2(ids: number[]): number {
+	let i = 0;
+
+	while (ids.includes(i)) {
+		i++
+	}
+
+	return i;
+}
+
+// ❗️❗️❗️ LOOP OVER SET ❗️❗️❗️
+function nextId3(ids: number[]): number {
+	const idsSet = new Set(ids);
+	let i = 0;
+
+	while (idsSet.has(i)) {
+		i += 1;
+	}
+
+	return i;
+}
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function nextId4(ids: number[]): number {
+	for (let i = 0; ; i++)
+		if (!ids.includes(i))
+			return i;
+}
+
+
+function nextId5(ids: number[]): number {
+	let s = new Set(ids.sort())
+	for (let i = 0; i < s.size; i++) {
+		if (!s.has(i)) return i
+	}
+	return s.size
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  REMOVE ALL EXCL MARKS BUT LAST ONE - Exclamation marks series #4
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -567,25 +710,54 @@ remove("Hi! Hi!") === "Hi Hi!"
 remove("Hi") === "Hi!"
 */
 
-function remove1(s: string): string {
-	return "hello"
+const remove1 = (str: string): string => {
+
+	return str
+		.replace(/!/g, "")
+		.concat("!");
+
 }
 
-// console.log(remove("Hi!"));
-// console.log(remove("Hi!!!"));
-// console.log(remove("!Hi"));
-// console.log(remove("Hi! Hi!"));
-// console.log(remove("Hi"));
+// REMOVE ALL THEN CONCAT ONE
+
+// console.log(remove1("Hi!"));
+// console.log(remove1("Hi!!!"));
+// console.log(remove1("!Hi"));
+// console.log(remove1("Hi! Hi!"));
+// console.log(remove1("Hi"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// const remove12 = s => s.replace(/\!/g, "") + "!";
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function remove13(s: string): string {
+	return s.split('').filter(c => c !== '!').join('') + '!';
+}
+
+
+// function remove14(s): string {
+// 	if (!s.includes("!")) return s + "!";
+
+// 	return remove(s.replace("!", ""));
+// }
+
+
+
+const remove15 = (s: string): string => `${s.replace(/!/g, '')}!`;
+
+
+
+function remove16(s: string): string {
+	let answer: string = s.split("!").join("");
+	return answer.concat("!");
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  HOW MANY LIGHTSABERS DO U OWN
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  OPTIONAL PARAMETER, TEST()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -605,29 +777,78 @@ For example(Input --> Output):
 "Zach" --> 18
 */
 
-function howManyLightsabersDoYouOwn(name?: any): number {
-    return 1
+const howManyLightsabersDoYouOwn = (name?: any): number => {
+
+	if (!name) return 0;
+
+	return name === "Zach"
+		? 18
+		: 0;
+
 }
 
 // The question mark (?) after name attribute marks it as optional.
 
 // console.log(howManyLightsabersDoYouOwn('Zach'));
 // console.log(howManyLightsabersDoYouOwn('Adam'));
+// console.log(howManyLightsabersDoYouOwn());
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const howManyLightsabersDoYouOwn2 = (name?: any): number => name === 'Zach' ? 18 : 0
+
+
+
+function howManyLightsabersDoYouOwn3(name?: any): number {
+	return (name && name == "Zach") ? 18 : 0
+}
+
+
+function howManyLightsabersDoYouOwn4(name?: any): number {
+	if (name != null && (typeof name === "string") && name.includes('Zach')) {
+		return 18;
+	}
+	return 0;
+}
 
 
 
 
+var data = {
+	name: 'Zach',
+	AmountOfLightsabers: 18
+}
+
+export function howManyLightsabersDoYouOwn5(name?: any): number {
+
+	if (name == data.name) {
+		return data.AmountOfLightsabers
+	}
+	else {
+		return 0
+	}
+}
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+function howManyLightsabersDoYouOwn6(name?: any): number {
+	if (name == null || name == undefined || name.length == 0) return 0;
+	if (name.length == 4 && name == "Zach") return 18
+	else return 0;
+}
+
+
+function howManyLightsabersDoYouOwn7(name?: any): number {
+	// So, how many?
+	return /Zach/.test(name) ? 18 : 0
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  AREA OF A SQUARE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  MATH.PI, TOFIXED() - RETURNS STRING !!!, 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -642,9 +863,21 @@ Note: use the π value provided in your language (Math::PI, M_PI, math.pi, etc)
 
 */
 
-const squareArea = (num : number) : number =>  {
-	return 1
-  }
+const squareArea = (fractCirc: number): number => {
+
+	return Number(Math.pow(fractCirc * 2 / Math.PI, 2).toFixed(2));
+
+}
+
+/*
+LENGTH OF fractCirc IS ONE QUARTER OF FULL CIRCUMFERENCE
+CIRCUMFERENCE = 4 * fractCirc
+2 * rad * PI = 4 * fractCirc
+rad = 2 * fractCirc / PI
+area = ( 2 * fractCirc / PI) ** 2
+
+toFixed RETURNS A STRING SO HAVE TO CONVERT TO NUMBER
+*/
 
 //   1.62
 // console.log(squareArea(2));
@@ -654,12 +887,15 @@ const squareArea = (num : number) : number =>  {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const squareArea2 = (num: number): number => {
+	let rad = (num * 2) / Math.PI
+	return rad * rad
+}
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRAVITY FLIP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  ❗️❗️❗️ SORT() WITH TERNARY IN COMPARE FUNCTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -688,22 +924,61 @@ flip('R', [3, 2, 1, 2])     =>  [1, 2, 2, 3]
 flip('L', [1, 4, 5, 3, 5])  =>  [5, 5, 4, 3, 1]
 */
 
-function flip(dir: string, arr: number[]): number[] {
-	// Your code here
-	return [];
-  }
+const flip = (dir: string, arr: number[]): number[] => {
+
+	return dir === "R"
+		? arr.sort((a, b) => a - b)
+		: arr.sort((a, b) => b - a);
+
+}
+
+
+// "R": IF WE COLLAPSE INITIAL CONFIGURATION TO THE LEFT, SOLUTION WILL BE ITS OWN MIRROR IMAGE TO THE RIGHT
+// "L": COLLAPSE TO RIGHT AND MIRROR TO LEFT
+
+// SORT ARRAY NUMERICALLY ASCENDING/DESCENDING
 
 //   [1, 2, 2, 3]
-console.log(flip('R', [3, 2, 1, 2]));
+// console.log(flip('R', [3, 2, 1, 2]));
 // [5, 5, 4, 3, 1]
-console.log(flip('L', [1, 4, 5, 3, 5]));
+// console.log(flip('L', [1, 4, 5, 3, 5]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ SORT WITH TERNARY IN COMPARE FUNCTION
+const flip2 = (dir: string, arr: number[]): number[] => arr.sort((a, b) => dir === 'R' ? a - b : b - a);
 
 
+function flip3(dir: string, arr: number[]): number[] {
+	return arr.sort(dir == 'R' ? (a, b) => a - b : (a, b) => b - a);
+}
+
+
+function flip4(dir: string, arr: number[]): number[] {
+	return arr.sort((a: number, b: number) => { return dir === 'R' ? (a < b ? -1 : 1) : (a > b ? -1 : 1) });
+}
+
+
+
+function flip5(dir: string, arr: number[]): number[] {
+	arr.sort((a, b) => a - b);
+	if (dir === "R") {
+		return arr;
+	} else {
+		return arr.reverse();
+	}
+}
+
+
+function flip6(dir: string, arr: number[]): number[] {
+	switch (dir) {
+		case 'R': return arr.sort((n1, n2) => n1 - n2);
+		case 'L': return arr.sort((n1, n2) => n2 - n1);
+		default: return [];
+	}
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PALINDROME STRINGS 
@@ -757,36 +1032,36 @@ const isPalindrome2 = (line: string): boolean => line === line.split('').reverse
 function isPalindrome3(line: string): boolean {
 	let result = true
 	for (let i = 0; i < line.length / 2; i++) {
-	   if (line[i] !== line[line.length - 1 - i]) {
-		 result = false
-		 break
-	   }
+		if (line[i] !== line[line.length - 1 - i]) {
+			result = false
+			break
+		}
 	}
 	return result
-  }
+}
 
 
 
-  function isPalindrome4(line: string): boolean {
+function isPalindrome4(line: string): boolean {
 	return line.split('').every((el, idx) => el === line.charAt(line.length - idx - 1));
-  }
+}
 
 
 
-  let isPalindrome5 = (line: string): boolean => line === [...line].reverse().join("")
+let isPalindrome5 = (line: string): boolean => line === [...line].reverse().join("")
 
 
 
 
-  function isPalindrome6(line: string): boolean {
+function isPalindrome6(line: string): boolean {
 	return (String(line) === String(line).split('').reverse().join(''));
-	}
+}
 
 
 
-	function isPalindrome7(line: string): boolean {
-		return line == [...line].reverse().join('');
-	  }
+function isPalindrome7(line: string): boolean {
+	return line == [...line].reverse().join('');
+}
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -808,7 +1083,7 @@ All values will be positive integers or floats, or zero.
 const plural = (n: number): boolean => {
 
 	return n !== 1;
-	
+
 }
 
 //	1 IS NOT PLURAL, EVERYTHING ELSE IS
@@ -820,18 +1095,20 @@ const plural = (n: number): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function plural2(n:number):boolean {
-	return (n===1) ? false : true;
-  }
+function plural2(n: number): boolean {
+	return (n === 1) ? false : true;
+}
 
 
 
-  function plural3(n:number):boolean {
-	if ( n !== 1) {
-	  return true; }
+function plural3(n: number): boolean {
+	if (n !== 1) {
+		return true;
+	}
 	else {
-	  return false; }
-  }
+		return false;
+	}
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GRASSHOPPER - FUNCTION SYNTAX DEBUGGING
@@ -855,7 +1132,7 @@ const main = (verb: string, noun: string): string => {
 	return verb.concat(noun);
 
 }
-  
+
 
 
 
@@ -868,20 +1145,20 @@ const main = (verb: string, noun: string): string => {
 
 function main2(verb: string, noun: string): string {
 	return verb + noun;
-  }
+}
 
 
-  const main3 = (verb: string, noun: string): string => `${verb}${noun}`;
+const main3 = (verb: string, noun: string): string => `${verb}${noun}`;
 
 
 // ❓❓❓
-  const main4 = Function.prototype.call.bind(String.prototype.concat);
+const main4 = Function.prototype.call.bind(String.prototype.concat);
 
 
 // ❗️❗️❗️ TRIM() ❗️❗️❗️
-function main5(verb: string, noun: string): string{
+function main5(verb: string, noun: string): string {
 	return `${verb.trim()} ${noun.trim()}`;
-  }
+}
 
 // ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -923,19 +1200,19 @@ const distinct2 = (ﬂ: number[]) => [...new Set(ﬂ)]
 // ❗️❗️❗️
 const distinct3 = (a: number[]): number[] => {
 	return a.filter((e, i) => a.lastIndexOf(e) === i)
-  }
+}
 
 
 
-  const distinct4 = (a: number[]): number[] => {
+const distinct4 = (a: number[]): number[] => {
 	return a.filter((el, idx) => a.indexOf(el) === a.indexOf(el, idx))
-  }
+}
 
 
 
-  const distinct5 = (a: number[]): number[] => {
+const distinct5 = (a: number[]): number[] => {
 	return [... new Set([...a])];
-  }
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  BARTENDER, DRINKS!

@@ -119,13 +119,13 @@ const getEvenNumbers = (numbersArray: number[]): number[] => {
 class XOR {
     public static xor(a: boolean, b: boolean): boolean {
 
-		// ❗️❗️❗️
+        // ❗️❗️❗️
 
-		return (a && !b) || (b && !a);
+        return (a && !b) || (b && !a);
 
-		return a != b;
+        return a != b;
 
-		// ❗️❗️❗️
+        // ❗️❗️❗️
 
     }
 }
@@ -690,6 +690,38 @@ let str = "5";
 str = str.padEnd(4,0);
 // result is 5000
 */
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// NUMBER METHODS
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// .TOFIXED():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// ❗️❗️❗️ TOFIXED WILL CONVERT NUMBER TO STRING ❗️❗️❗️
+
+// FORMAT NUMBER STRING TO ALWAYS SHOW N DECIMAL PLACES:
+const usdcny = (usd: number): string => {
+
+    const RATE: number = 6.75;
+    let cny: string = (usd * RATE).toFixed(2); // ❗️❗️❗️
+
+    return `${cny} Chinese Yuan`;
+}
+
+// '101.25 Chinese Yuan'
+// console.log(usdcny(15));
+// "675.00"
+// console.log(usdcny(100));
+
+let numNoDecimals: number = 1;							// 1
+console.log(numNoDecimals.toFixed(2));					// "1.00"
+console.log(numNoDecimals);								// 1
+let numWithDecimals: string = numNoDecimals.toFixed(2);
+console.log(numWithDecimals);							// "1.00"
+
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // "THIS" KEYWORD
