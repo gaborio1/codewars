@@ -1,6 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+function overTheRoad(address, n) {
+    return 0;
+}
+function evenNumbers(array, n) {
+    return [1, 2, 3];
+}
+class G965 {
+}
+function noOdds(values) {
+    return [1];
+}
 class G964a {
     static partlist(arr) {
         return [["hello"]];

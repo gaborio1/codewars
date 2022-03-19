@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+class G966 {
+    static sqInRect(l, w) {
+        return [1];
+    }
+}
+function camelCase(str) {
+    return str;
+}
 function solution1(roman) {
     return 1;
 }

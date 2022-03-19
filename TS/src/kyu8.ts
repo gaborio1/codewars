@@ -1277,7 +1277,7 @@ function shark(pontoonDistance: number, sharkDistance: number, youSpeed: number,
 
 
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND OUT WHETHER THE SHAPE IS A CUBE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  
@@ -1301,9 +1301,15 @@ Return false for invalid numbers too (e.g volume or side is less than or equal t
 Note: the sides must be integers
 */
 
-function cubeChecker(volume: number, side: number): boolean{
-	return true;
+const cubeChecker = (volume: number, side: number): boolean => {
+
+	console.log(volume, side);
+	  return (volume > 0 && side > 0)
+		? volume === Math.pow(side, 3)
+		: false;  
+  
   }
+  
 
 // console.log(cubeChecker(1, 1));
 // console.log(cubeChecker(27, 3));
@@ -1311,6 +1317,39 @@ function cubeChecker(volume: number, side: number): boolean{
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function cubeChecker2(volume: number, side: number): boolean {
+	return volume > 0 ? volume === side ** 3 : false;
+  }
+
+
+
+  function cubeChecker3(volume: number, side: number): boolean {
+	return volume > 0 && volume == side ** 3;
+  }
+
+
+
+  function cubeChecker4(volume: number, side: number): boolean{
+	if (Math.pow(side, 3)=== volume && volume > 0 && side > 0){
+	  return true
+	} else {
+	  return false
+	};
+  }
+
+
+
+  function cubeChecker5(volume: number, side: number): boolean{
+	return volume / (side ** 3) === 1;
+  }
+
+
+
+  function cubeChecker6(volume: number, side: number): boolean{
+	const [l,w,h] = [side,side,side];
+	return volume == l * w * h && side != 0;
+  }
 
 
 
@@ -1342,7 +1381,7 @@ const digit = (digit: string): boolean => {
 };
 
 
-console.log(digit("7"));
+// console.log(digit("7"));
 // console.log(digit(" "));
 // console.log(digit("a"));
 // console.log(digit("a1"));

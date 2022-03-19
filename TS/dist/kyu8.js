@@ -1,6 +1,73 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = exports.howManyLightsabersDoYouOwn5 = void 0;
+var var1Boolean = true;
+function arr2bin(arr) {
+    return "hello";
+}
+function htmlspecialchars(formData) {
+    return formData;
+}
+const iceBrickVolume = (radius, bottleLength, rimLength) => {
+    return 0;
+};
+function subtractSum(n) {
+    return "hello";
+}
+function SafeInteger(n) {
+    return true;
+}
+function bigToSmall(arr) {
+    return "hello";
+}
+function isReallyNaN(val) {
+    return true || false;
+}
+;
+class God {
+    static create() {
+    }
+}
+function parseF(s) {
+    return 1;
+}
+function sixToast(num) {
+    return 1;
+}
+function sakuraFall(v) {
+    return 0;
+}
+function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin) {
+    return '';
+}
+const cubeChecker = (volume, side) => {
+    console.log(volume, side);
+    return (volume > 0 && side > 0)
+        ? volume === Math.pow(side, 3)
+        : false;
+};
+function cubeChecker2(volume, side) {
+    return volume > 0 ? volume === side ** 3 : false;
+}
+function cubeChecker3(volume, side) {
+    return volume > 0 && volume == side ** 3;
+}
+function cubeChecker4(volume, side) {
+    if (Math.pow(side, 3) === volume && volume > 0 && side > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    ;
+}
+function cubeChecker5(volume, side) {
+    return volume / (side ** 3) === 1;
+}
+function cubeChecker6(volume, side) {
+    const [l, w, h] = [side, side, side];
+    return volume == l * w * h && side != 0;
+}
 const digit = (digit) => {
     const pattern = /\d/;
     const isDigit = (str) => {
@@ -9,7 +76,6 @@ const digit = (digit) => {
     console.log(digit.split(""));
     return digit.split("").every(isDigit);
 };
-console.log(digit("7"));
 const a1 = "dev", b1 = "Lab";
 const name1 = a1 + b1;
 const printArray = (array) => {
