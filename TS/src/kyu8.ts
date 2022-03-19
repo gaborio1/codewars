@@ -446,13 +446,13 @@ export class ErrorServerResult {
 
 export function getResult(result: SuccessServerResult) {
   if (result.httpCode === 200) {
-    // Returning result.resultObject if everything is OK
-    return result.resultObject;
+	// Returning result.resultObject if everything is OK
+	return result.resultObject;
   } else {
-    // Returning result.message in case of error
-    // FIXME: help TypeScript Compiler to understand that result here 
-    // is the instance of ErrorServerResult...
-    return result.message;
+	// Returning result.message in case of error
+	// FIXME: help TypeScript Compiler to understand that result here 
+	// is the instance of ErrorServerResult...
+	return result.message;
   }
 }
 Your task is to find and fix error in function getResult.
@@ -465,11 +465,11 @@ HINT: Try to use double assertion - first convert it to any and then convert it 
 //  class SuccessServerResult {
 // 	constructor (public httpCode: number, public resultObject:Object) {}
 //   }
-  
+
 //    class ErrorServerResult {
 // 	constructor (public httpCode: number, public message:string) {}
 //   }
-  
+
 //    function getResult(result: SuccessServerResult) {
 // 	if (result.httpCode === 200) {
 // 	  // Returning resultObject if everything is OK
@@ -572,7 +572,7 @@ arr2bin([]) == '0'
 This is a modification on the Kata: Array2Binary addition hope you like it
 */
 
-function arr2bin(arr: any[]): string { 
+function arr2bin(arr: any[]): string {
 	return "hello"
 }
 
@@ -613,13 +613,13 @@ The constructor taking no arguments should assign 0 to Cube's Side property.
 // 	public getSide(): number {
 // 	  return this._side;
 // 	}
-  
+
 // 	public setSide(value: number) {
 // 	  this._side = Math.abs(value);
 // 	}
-  
+
 // 	private _side: number;
-  
+
 //   }
 
 
@@ -661,7 +661,7 @@ If you are an experienced programmer, try shortening your code as much as possib
 function htmlspecialchars(formData: string): string {
 	// Insert your code here
 	return formData;
-  }
+}
 
 // console.log(htmlspecialchars('abc'));
 // console.log(htmlspecialchars("<h2>Hello World</h2>"));
@@ -710,7 +710,7 @@ volume = 1150
 
 const iceBrickVolume = (radius: number, bottleLength: number, rimLength: number): number => {
 	return 0
-  }
+}
 
 // 16
 // console.log(iceBrickVolume(1, 10, 2));
@@ -1009,7 +1009,7 @@ bigToSmall([[1,3,5],[2,4,6]]) should return "6>5>4>3>2>1"
 bigToSmall([[1,1],[1],[1,1]]) should return "1>1>1>1>1"
 */
 
-function bigToSmall(arr: number[][]): string {  
+function bigToSmall(arr: number[][]): string {
 
 	return "hello"
 
@@ -1046,7 +1046,7 @@ Any solution is acceptable!
 function isReallyNaN(val: any): boolean {
 	// return isNaN(val);  // wasn't working as planned :-(
 	return true || false;
-  };
+};
 
 // console.log(isReallyNaN(37));
 // console.log(isReallyNaN(NaN));
@@ -1107,15 +1107,15 @@ You have to do God's job. The creation method must return an array of length 2 c
 
 */
 
-class God{
+class God {
 	/**
 	 * @returns Human[]
 	 */
-	  static create(){
+	static create() {
 		// code
-	  }
 	}
-	// code
+}
+// code
 
 // console.log(God.create());
 // console.log(God.create());
@@ -1139,9 +1139,9 @@ class God{
 Write function parseFloat which takes an input and returns a number or Nothing if conversion is not possible.
 */
 
-function parseF(s:string):number {
+function parseF(s: string): number {
 	return 1;
-  }
+}
 
 // console.log(parseF("1"));
 // console.log();
@@ -1179,9 +1179,9 @@ six_toast(12) == 6
 
 */
 
-function sixToast(num:number):number {
+function sixToast(num: number): number {
 	return 1
-  }
+}
 
 // 9
 // console.log(sixToast(15));
@@ -1218,7 +1218,7 @@ If the initial velocity is non-positive, the return value should be 0
 
 function sakuraFall(v: number): number {
 	return 0;
-  }
+}
 
 // console.log(sakuraFall(5));
 // console.log(sakuraFall(10));
@@ -1264,7 +1264,7 @@ If you make it, return "Alive!", if not, return "Shark Bait!".
 
 function shark(pontoonDistance: number, sharkDistance: number, youSpeed: number, sharkSpeed: number, dolphin: boolean): string {
 	return '';
-  }
+}
 
 // ALIVE
 // console.log(shark(12, 50, 4, 8, true));
@@ -1274,7 +1274,6 @@ function shark(pontoonDistance: number, sharkDistance: number, youSpeed: number,
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
 
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1304,12 +1303,12 @@ Note: the sides must be integers
 const cubeChecker = (volume: number, side: number): boolean => {
 
 	console.log(volume, side);
-	  return (volume > 0 && side > 0)
+	return (volume > 0 && side > 0)
 		? volume === Math.pow(side, 3)
-		: false;  
-  
-  }
-  
+		: false;
+
+}
+
 
 // console.log(cubeChecker(1, 1));
 // console.log(cubeChecker(27, 3));
@@ -1320,43 +1319,44 @@ const cubeChecker = (volume: number, side: number): boolean => {
 
 function cubeChecker2(volume: number, side: number): boolean {
 	return volume > 0 ? volume === side ** 3 : false;
-  }
+}
 
 
 
-  function cubeChecker3(volume: number, side: number): boolean {
+function cubeChecker3(volume: number, side: number): boolean {
 	return volume > 0 && volume == side ** 3;
-  }
+}
 
 
 
-  function cubeChecker4(volume: number, side: number): boolean{
-	if (Math.pow(side, 3)=== volume && volume > 0 && side > 0){
-	  return true
+function cubeChecker4(volume: number, side: number): boolean {
+	if (Math.pow(side, 3) === volume && volume > 0 && side > 0) {
+		return true
 	} else {
-	  return false
+		return false
 	};
-  }
+}
 
 
 
-  function cubeChecker5(volume: number, side: number): boolean{
+function cubeChecker5(volume: number, side: number): boolean {
 	return volume / (side ** 3) === 1;
-  }
+}
 
 
 
-  function cubeChecker6(volume: number, side: number): boolean{
-	const [l,w,h] = [side,side,side];
+function cubeChecker6(volume: number, side: number): boolean {
+	const [l, w, h] = [side, side, side];
 	return volume == l * w * h && side != 0;
-  }
+}
 
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  REGEXP BASICS - IS IT A DIGIT?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:  THIS, TEST()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1365,34 +1365,72 @@ function cubeChecker2(volume: number, side: number): boolean {
 Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
 */
 
+// ORIGINAL KATA SOLUTION: CHECKS IF ENTIRE STRING IS ONE DIGIT
+
+// ❗️❗️❗️ THIS KEYWORD ❗️❗️❗️
+// String.prototype.digit = function (): boolean {
+
+// 	console.log(this);
+
+// 	const pattern = /\d/;
+
+// 	return (this === "" || this.length > 1)
+// 		? false
+// 		: pattern.test(this);
+
+// };
+
+
 const digit = (digit: string): boolean => {
 
+	// const pattern = /[0-9]/;
 	const pattern = /\d/;
 
-	const isDigit = (str: string) => {
-		// console.log(pattern.test(str));
-		return (pattern).test(str);
-	}
+	return (digit === "" || digit.length > 1)
+		? false
+		: pattern.test(digit);
 
-	// isDigit(digit);
-	console.log(digit.split(""));
-	return digit.split("").every(isDigit);
-	// return isDigit(digit);
 };
 
-
+// ❗️❗️❗️ JS THINKS THAT EMPTY STRING IS EQUAL TO NUMBER 0 ❗️❗️❗️
+// console.log(digit(""));
 // console.log(digit("7"));
 // console.log(digit(" "));
 // console.log(digit("a"));
-// console.log(digit("a1"));
-// console.log(digit("3"));
+// console.log(digit("a5"));
+// console.log(digit("14"));
 
-// Test.assertEquals(''.digit(), false);
-// Test.assertEquals('7'.digit(), true);
-//     Test.assertEquals(' '.digit(), false);
-//     Test.assertEquals('a'.digit(), false);
-//     Test.assertEquals('a5'.digit(), false);
-//     Test.assertEquals('14'.digit(), false);
+
+// 2️⃣
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// IMPROVED SOLUTION: CHECKS IF ALL CHARACTERS ARE DIGITS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS: REGEX, TEST(), ARRAY.EVERY()
+
+const isAllDigits = (digit: string): boolean => {
+
+	// ❗️❗️❗️ JS THINKS THAT EMPTY STRING IS EQUAL TO NUMBER 0 ❗️❗️❗️
+	if (digit === "") return false;
+
+	// const pattern = /[0-9]/;
+	const pattern = /\d/;
+
+	const isDigit = (str: string) => {
+		return (pattern).test(str);
+	}
+
+	return digit.split("").every(isDigit);
+
+};
+
+// ❗️❗️❗️ JS THINKS THAT EMPTY STRING IS EQUAL TO NUMBER 0 ❗️❗️❗️
+// console.log(isAllDigits(""));
+
+// console.log(isAllDigits("7"));
+// console.log(isAllDigits(" "));
+// console.log(isAllDigits("a"));
+// console.log(isAllDigits("a5"));
+// console.log(isAllDigits("14"));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

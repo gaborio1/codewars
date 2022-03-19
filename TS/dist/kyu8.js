@@ -70,10 +70,17 @@ function cubeChecker6(volume, side) {
 }
 const digit = (digit) => {
     const pattern = /\d/;
+    return (digit === "" || digit.length > 1)
+        ? false
+        : pattern.test(digit);
+};
+const isAllDigits = (digit) => {
+    if (digit === "")
+        return false;
+    const pattern = /\d/;
     const isDigit = (str) => {
         return (pattern).test(str);
     };
-    console.log(digit.split(""));
     return digit.split("").every(isDigit);
 };
 const a1 = "dev", b1 = "Lab";
