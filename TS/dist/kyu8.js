@@ -28,10 +28,25 @@ class God {
     }
 }
 const parseF = (str) => {
-    return parseFloat(str) ? parseFloat(str) : null;
+    return str[0].match(/\d/) ? parseFloat(str) : null;
 };
-console.log(parseF("1"));
-console.log(parseF("HELLO 1"));
+function parseF3(s) {
+    return isNaN(parseFloat(s)) ? null : parseFloat(s);
+}
+function parseF4(s) {
+    const number = +s;
+    if (number == null || Number.isNaN(number)) {
+        return null;
+    }
+    return +number;
+}
+function parseF5(s) {
+    let parsed = parseFloat(s);
+    return Object.is(NaN, parsed) ? null : parsed;
+}
+function parseF6(s) {
+    return +s === +s ? +s : null;
+}
 const sixToast = (numToast) => {
     const MAX_NUM_TOAST = 6;
     return Math.abs(MAX_NUM_TOAST - numToast);

@@ -1004,12 +1004,10 @@ class God {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ expected 0 to equal null ❗️❗️❗️ expected null to equal 0
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  PARSE FLOAT
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE:  MODIFY PARSE FLOAT TO RETURN NULL INSTEAD OF NAN IF NO CONVERSION IS POSSIBLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: PARSEFLOAT()
+// KEYWORDS: PARSEFLOAT(), NUMBER.ISNAN(),
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1019,25 +1017,59 @@ Write function parseFloat which takes an input and returns a number or Nothing i
 */
 
 const parseF = (str: string): number | null => {
-    return parseFloat(str) ? parseFloat(str) : null;
-    // let solution: number = 0;
-    // if (parseFloat(str)) return (solution = parseFloat(str));
-    // return parseFloat(str);
+    // 1️⃣
+    return str[0].match(/\d/) ? parseFloat(str) : null;
+
+    // 2️⃣
+    // if (str[0].match(/\d/)) {
+    //     return parseFloat(str);
+    // }
+
+    // return 0;
 };
 
-// 1
-// 123
-// 2.5
-// one
-// 0
+// IF FIRST CHAR CAN NOT BE CONVERTED, NaN IS RETURNED BY parseFloat
+// CHECK IF FIRST CHAR IS A NUMERIC DIGIT,
+//    IF SO, CALL parseFloat ON INPUT str
+//    OTHERWISE, RETURN null
 
-console.log(parseF("1"));
-console.log(parseF("HELLO 1"));
+// console.log(parseF("1"));
+// console.log(parseF("HELLO 1"));
+// console.log(parseF("one"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️ ERROR: Type 'number | null' is not assignable to type 'number'.Type 'null' is not assignable to type 'number'.ts(2322) ❗️
+
+// function parseF2(s:string):number {
+//     let float = parseFloat(s);
+
+//     return isNaN(float) ? null : float;
+//   }
+
+function parseF3(s: string): number | null {
+    return isNaN(parseFloat(s)) ? null : parseFloat(s);
+}
+
+function parseF4(s: string): number | null {
+    const number = +s;
+    if (number == null || Number.isNaN(number)) {
+        return null;
+    }
+    return +number;
+}
+
+function parseF5(s: string): number | null {
+    let parsed = parseFloat(s);
+    return Object.is(NaN, parsed) ? null : parsed;
+}
+
+function parseF6(s: string): number | null {
+    return +s === +s ? +s : null;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BASIC: MAKING SIX TOAST
