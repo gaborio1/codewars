@@ -21,8 +21,40 @@ function bigToSmall(arr) {
     return "hello";
 }
 function isReallyNaN(val) {
-    return true || false;
+    console.log(val === val);
+    return Number.isNaN(val);
 }
+const isReallyNaN2 = ($) => typeof $ === 'number' && isNaN($);
+function isReallyNaN3(val) {
+    return Object.is(NaN, val);
+}
+;
+function isReallyNaN4(val) {
+    return Number.isNaN(val);
+}
+;
+const isReallyNaN5 = (val) => String(val) == 'NaN' && typeof (val) == typeof (0);
+function isReallyNaN6(val) {
+    let answer;
+    console.log(val);
+    console.log(isNaN(val));
+    if (!isNaN(val) || val === undefined || typeof val === 'string' || typeof val !== 'number') {
+        answer = false;
+    }
+    else {
+        answer = true;
+    }
+    return answer;
+}
+;
+function isReallyNaN7(val) {
+    return isNaN(val) && typeof val == "number";
+}
+;
+function isReallyNaN8(val) {
+    return typeof val === "number" && val !== 0 && !Boolean(val);
+}
+;
 class God {
     static create() {
     }
@@ -107,53 +139,6 @@ const isAllDigits = (digit) => {
         return pattern.test(str);
     };
     return digit.split("").every(isDigit);
-};
-String.prototype.digit = function () {
-    return /^\d$/.test(this);
-};
-String.prototype.digit = function () {
-    let regex = new RegExp("^[0-9]$");
-    return regex.test(this);
-};
-String.prototype.digit = function () {
-    return new RegExp("^[0-9]$").test(String(this));
-};
-String.prototype.digit = function () {
-    return this.length < 2 && Number.isInteger(parseInt(this));
-};
-String.prototype.digit = function () {
-    return this.match(/^[0-9]$/) ? true : false;
-};
-String.prototype.digit = function () {
-    return this.length === 1 && /\d/.test(this);
-};
-String.prototype.digit = function () {
-    return this.replace(/\d/, "").length === 0 && this.length != 0;
-};
-String.prototype.digit = function () {
-    return this.search(/^\d{1}$/g) !== -1;
-};
-String.prototype.digit = function () {
-    const digits = "1234567890";
-    return digits.indexOf(this) != -1 && this != "";
-};
-String.prototype.digit = function () {
-    let e = this;
-    if (e === undefined)
-        return false;
-    return /[0-9]/.test(e) && e.length == 1;
-};
-String.prototype.digit = function () {
-    return (this == "0" ||
-        this == "1" ||
-        this == "2" ||
-        this == "3" ||
-        this == "4" ||
-        this == "5" ||
-        this == "6" ||
-        this == "7" ||
-        this == "8" ||
-        this == "9");
 };
 const a1 = "dev", b1 = "Lab";
 const name1 = a1 + b1;
