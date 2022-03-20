@@ -23,28 +23,41 @@ function bigToSmall(arr) {
 function isReallyNaN(val) {
     return true || false;
 }
-;
 class God {
     static create() {
     }
 }
-function parseF(s) {
-    return 1;
+const parseF = (str) => {
+    return parseFloat(str) ? parseFloat(str) : null;
+};
+console.log(parseF("1"));
+console.log(parseF("HELLO 1"));
+const sixToast = (numToast) => {
+    const MAX_NUM_TOAST = 6;
+    return Math.abs(MAX_NUM_TOAST - numToast);
+};
+function sixToast2(num) {
+    return Math.abs(6 - num);
 }
-function sixToast(num) {
-    return 1;
+function sixToast4(num) {
+    return num === 3 ? 3 : num - 6;
 }
-function sakuraFall(v) {
-    return 0;
-}
-function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin) {
-    return '';
-}
+const sakuraFall = (velocity) => {
+    const HEIGHT = 400;
+    return velocity <= 0 ? 0 : HEIGHT / velocity;
+};
+const shark = (pontDist, sharkDist, youSpeed, sharkSpeed, dolphin) => {
+    const yourTime = pontDist / youSpeed;
+    let sharkTime = dolphin
+        ? sharkDist / (sharkSpeed / 2)
+        : sharkDist / sharkSpeed;
+    return yourTime < sharkTime ? "Alive!" : "Shark Bait!";
+};
+const shark2 = (pD, sD, yS, sS, d) => (pD / yS < (sD / sS) * (d ? 2 : 1) ? "Alive!" : "Shark Bait!");
+const shark3 = (a, b, c, d, e) => (a / c < b / (e ? d / 2 : d) ? "Alive!" : "Shark Bait!");
 const cubeChecker = (volume, side) => {
     console.log(volume, side);
-    return (volume > 0 && side > 0)
-        ? volume === Math.pow(side, 3)
-        : false;
+    return volume > 0 && side > 0 ? volume === Math.pow(side, 3) : false;
 };
 function cubeChecker2(volume, side) {
     return volume > 0 ? volume === side ** 3 : false;
@@ -59,10 +72,9 @@ function cubeChecker4(volume, side) {
     else {
         return false;
     }
-    ;
 }
 function cubeChecker5(volume, side) {
-    return volume / (side ** 3) === 1;
+    return volume / side ** 3 === 1;
 }
 function cubeChecker6(volume, side) {
     const [l, w, h] = [side, side, side];
@@ -70,18 +82,63 @@ function cubeChecker6(volume, side) {
 }
 const digit = (digit) => {
     const pattern = /\d/;
-    return (digit === "" || digit.length > 1)
-        ? false
-        : pattern.test(digit);
+    return digit === "" || digit.length > 1 ? false : pattern.test(digit);
 };
 const isAllDigits = (digit) => {
     if (digit === "")
         return false;
     const pattern = /\d/;
     const isDigit = (str) => {
-        return (pattern).test(str);
+        return pattern.test(str);
     };
     return digit.split("").every(isDigit);
+};
+String.prototype.digit = function () {
+    return /^\d$/.test(this);
+};
+String.prototype.digit = function () {
+    let regex = new RegExp("^[0-9]$");
+    return regex.test(this);
+};
+String.prototype.digit = function () {
+    return new RegExp("^[0-9]$").test(String(this));
+};
+String.prototype.digit = function () {
+    return this.length < 2 && Number.isInteger(parseInt(this));
+};
+String.prototype.digit = function () {
+    return this.match(/^[0-9]$/) ? true : false;
+};
+String.prototype.digit = function () {
+    return this.length === 1 && /\d/.test(this);
+};
+String.prototype.digit = function () {
+    return this.replace(/\d/, "").length === 0 && this.length != 0;
+};
+String.prototype.digit = function () {
+    return this.search(/^\d{1}$/g) !== -1;
+};
+String.prototype.digit = function () {
+    const digits = "1234567890";
+    return digits.indexOf(this) != -1 && this != "";
+};
+String.prototype.digit = function () {
+    let e = this;
+    if (e === undefined)
+        return false;
+    return /[0-9]/.test(e) && e.length == 1;
+};
+String.prototype.digit = function () {
+    return (this == "0" ||
+        this == "1" ||
+        this == "2" ||
+        this == "3" ||
+        this == "4" ||
+        this == "5" ||
+        this == "6" ||
+        this == "7" ||
+        this == "8" ||
+        this == "9");
 };
 const a1 = "dev", b1 = "Lab";
 const name1 = a1 + b1;
@@ -90,10 +147,10 @@ const printArray = (array) => {
 };
 const printArray2 = ($) => $.join(",");
 function printArray3(array) {
-    return array.map(el => el.toString()).join(",");
+    return array.map((el) => el.toString()).join(",");
 }
 function printArray4(array) {
-    return array ? [...array].join(',') : '';
+    return array ? [...array].join(",") : "";
 }
 const usdcny = (usd) => {
     const RATE = 6.75;
@@ -105,28 +162,49 @@ let numWithDecimals = numNoDecimals.toFixed(2);
 function usdcny2(usd) {
     return `${(usd * 6.75).toFixed(2)} Chinese Yuan`;
 }
-var sunday = [6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
-    7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478, 6063,
-    5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381, 5936, 8496,
-    6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032, 9871, 5990, 6309, 7825], monday = [9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
-    6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932, 7360, 9221,
-    5702, 5252, 7041, 7287, 5185, 9139, 7187, 8855, 9310, 9105, 9769, 9679, 7842,
-    7466, 7321, 6785, 8770, 8108, 7985, 5186, 9021, 9098, 6099, 5828, 7217, 9387], tuesday = [8646, 6945, 6364, 9563, 5627, 5068, 9157, 9439, 5681, 8674, 6379, 8292,
-    7552, 5370, 7579, 9851, 8520, 5881, 7138, 7890, 6016, 5630, 5985, 9758, 8415, 7313,
-    7761, 9853, 7937, 9268, 7888, 6589, 9366, 9867, 5093, 6684, 8793, 8116, 8493,
-    5265, 5815, 7191, 9515, 7825, 9508, 6878, 7180, 8756, 5717, 7555, 9447, 7703], wednesday = [6353, 9605, 5464, 9752, 9915, 7446, 9419, 6520, 7438, 6512, 7102,
-    5047, 6601, 8303, 9118, 5093, 8463, 7116, 7378, 9738, 9998, 7125, 6445, 6031, 8710,
-    5182, 9142, 9415, 9710, 7342, 9425, 7927, 9030, 7742, 8394, 9652, 5783, 7698,
-    9492, 6973, 6531, 7698, 8994, 8058, 6406, 5738, 7500, 8357, 7378, 9598, 5405, 9493], thursday = [6149, 6439, 9899, 5897, 8589, 7627, 6348, 9625, 9490, 5502, 5723, 8197,
-    9866, 6609, 6308, 7163, 9726, 7222, 7549, 6203, 5876, 8836, 6442, 6752, 8695, 8402,
-    9638, 9925, 5508, 8636, 5226, 9941, 8936, 5047, 6445, 8063, 6083, 7383, 7548, 5066,
-    7107, 6911, 9302, 5202, 7487, 5593, 8620, 8858, 5360, 6638, 8012, 8701], friday = [5000, 5642, 9143, 7731, 8477, 8000, 7411, 8813, 8288, 5637, 6244, 6589, 6362,
-    6200, 6781, 8371, 7082, 5348, 8842, 9513, 5896, 6628, 8164, 8473, 5663, 9501,
-    9177, 8384, 8229, 8781, 9160, 6955, 9407, 7443, 8934, 8072, 8942, 6859, 5617,
-    5078, 8910, 6732, 9848, 8951, 9407, 6699, 9842, 7455, 8720, 5725, 6960, 5127], saturday = [5448, 8041, 6573, 8104, 6208, 5912, 7927, 8909, 7000, 5059, 6412, 6354, 8943,
-    5460, 9979, 5379, 8501, 6831, 7022, 7575, 5828, 5354, 5115, 9625, 7795, 7003,
-    5524, 9870, 6591, 8616, 5163, 6656, 8150, 8826, 6875, 5242, 9585, 9649, 9838,
-    7150, 6567, 8524, 7613, 7809, 5562, 7799, 7179, 5184, 7960, 9455, 5633, 9085];
+var sunday = [
+    6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
+    7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478,
+    6063, 5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381,
+    5936, 8496, 6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032,
+    9871, 5990, 6309, 7825,
+], monday = [
+    9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
+    6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932,
+    7360, 9221, 5702, 5252, 7041, 7287, 5185, 9139, 7187, 8855, 9310, 9105,
+    9769, 9679, 7842, 7466, 7321, 6785, 8770, 8108, 7985, 5186, 9021, 9098,
+    6099, 5828, 7217, 9387,
+], tuesday = [
+    8646, 6945, 6364, 9563, 5627, 5068, 9157, 9439, 5681, 8674, 6379, 8292,
+    7552, 5370, 7579, 9851, 8520, 5881, 7138, 7890, 6016, 5630, 5985, 9758,
+    8415, 7313, 7761, 9853, 7937, 9268, 7888, 6589, 9366, 9867, 5093, 6684,
+    8793, 8116, 8493, 5265, 5815, 7191, 9515, 7825, 9508, 6878, 7180, 8756,
+    5717, 7555, 9447, 7703,
+], wednesday = [
+    6353, 9605, 5464, 9752, 9915, 7446, 9419, 6520, 7438, 6512, 7102, 5047,
+    6601, 8303, 9118, 5093, 8463, 7116, 7378, 9738, 9998, 7125, 6445, 6031,
+    8710, 5182, 9142, 9415, 9710, 7342, 9425, 7927, 9030, 7742, 8394, 9652,
+    5783, 7698, 9492, 6973, 6531, 7698, 8994, 8058, 6406, 5738, 7500, 8357,
+    7378, 9598, 5405, 9493,
+], thursday = [
+    6149, 6439, 9899, 5897, 8589, 7627, 6348, 9625, 9490, 5502, 5723, 8197,
+    9866, 6609, 6308, 7163, 9726, 7222, 7549, 6203, 5876, 8836, 6442, 6752,
+    8695, 8402, 9638, 9925, 5508, 8636, 5226, 9941, 8936, 5047, 6445, 8063,
+    6083, 7383, 7548, 5066, 7107, 6911, 9302, 5202, 7487, 5593, 8620, 8858,
+    5360, 6638, 8012, 8701,
+], friday = [
+    5000, 5642, 9143, 7731, 8477, 8000, 7411, 8813, 8288, 5637, 6244, 6589,
+    6362, 6200, 6781, 8371, 7082, 5348, 8842, 9513, 5896, 6628, 8164, 8473,
+    5663, 9501, 9177, 8384, 8229, 8781, 9160, 6955, 9407, 7443, 8934, 8072,
+    8942, 6859, 5617, 5078, 8910, 6732, 9848, 8951, 9407, 6699, 9842, 7455,
+    8720, 5725, 6960, 5127,
+], saturday = [
+    5448, 8041, 6573, 8104, 6208, 5912, 7927, 8909, 7000, 5059, 6412, 6354,
+    8943, 5460, 9979, 5379, 8501, 6831, 7022, 7575, 5828, 5354, 5115, 9625,
+    7795, 7003, 5524, 9870, 6591, 8616, 5163, 6656, 8150, 8826, 6875, 5242,
+    9585, 9649, 9838, 7150, 6567, 8524, 7613, 7809, 5562, 7799, 7179, 5184,
+    7960, 9455, 5633, 9085,
+];
 var stairs = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
 const stairsIn20 = (stairs) => {
     let yearTotal = 0;
@@ -178,14 +256,15 @@ function nextId5(ids) {
     return s.size;
 }
 const remove1 = (str) => {
-    return str
-        .replace(/!/g, "")
-        .concat("!");
+    return str.replace(/!/g, "").concat("!");
 };
 function remove13(s) {
-    return s.split('').filter(c => c !== '!').join('') + '!';
+    return (s
+        .split("")
+        .filter((c) => c !== "!")
+        .join("") + "!");
 }
-const remove15 = (s) => `${s.replace(/!/g, '')}!`;
+const remove15 = (s) => `${s.replace(/!/g, "")}!`;
 function remove16(s) {
     let answer = s.split("!").join("");
     return answer.concat("!");
@@ -193,23 +272,21 @@ function remove16(s) {
 const howManyLightsabersDoYouOwn = (name) => {
     if (!name)
         return 0;
-    return name === "Zach"
-        ? 18
-        : 0;
+    return name === "Zach" ? 18 : 0;
 };
-const howManyLightsabersDoYouOwn2 = (name) => name === 'Zach' ? 18 : 0;
+const howManyLightsabersDoYouOwn2 = (name) => name === "Zach" ? 18 : 0;
 function howManyLightsabersDoYouOwn3(name) {
-    return (name && name == "Zach") ? 18 : 0;
+    return name && name == "Zach" ? 18 : 0;
 }
 function howManyLightsabersDoYouOwn4(name) {
-    if (name != null && (typeof name === "string") && name.includes('Zach')) {
+    if (name != null && typeof name === "string" && name.includes("Zach")) {
         return 18;
     }
     return 0;
 }
 var data = {
-    name: 'Zach',
-    AmountOfLightsabers: 18
+    name: "Zach",
+    AmountOfLightsabers: 18,
 };
 function howManyLightsabersDoYouOwn5(name) {
     if (name == data.name) {
@@ -232,23 +309,23 @@ function howManyLightsabersDoYouOwn7(name) {
     return /Zach/.test(name) ? 18 : 0;
 }
 const squareArea = (fractCirc) => {
-    return Number(Math.pow(fractCirc * 2 / Math.PI, 2).toFixed(2));
+    return Number(Math.pow((fractCirc * 2) / Math.PI, 2).toFixed(2));
 };
 const squareArea2 = (num) => {
     let rad = (num * 2) / Math.PI;
     return rad * rad;
 };
 const flip = (dir, arr) => {
-    return dir === "R"
-        ? arr.sort((a, b) => a - b)
-        : arr.sort((a, b) => b - a);
+    return dir === "R" ? arr.sort((a, b) => a - b) : arr.sort((a, b) => b - a);
 };
-const flip2 = (dir, arr) => arr.sort((a, b) => dir === 'R' ? a - b : b - a);
+const flip2 = (dir, arr) => arr.sort((a, b) => (dir === "R" ? a - b : b - a));
 function flip3(dir, arr) {
-    return arr.sort(dir == 'R' ? (a, b) => a - b : (a, b) => b - a);
+    return arr.sort(dir == "R" ? (a, b) => a - b : (a, b) => b - a);
 }
 function flip4(dir, arr) {
-    return arr.sort((a, b) => { return dir === 'R' ? (a < b ? -1 : 1) : (a > b ? -1 : 1); });
+    return arr.sort((a, b) => {
+        return dir === "R" ? (a < b ? -1 : 1) : a > b ? -1 : 1;
+    });
 }
 function flip5(dir, arr) {
     arr.sort((a, b) => a - b);
@@ -261,20 +338,20 @@ function flip5(dir, arr) {
 }
 function flip6(dir, arr) {
     switch (dir) {
-        case 'R': return arr.sort((n1, n2) => n1 - n2);
-        case 'L': return arr.sort((n1, n2) => n2 - n1);
-        default: return [];
+        case "R":
+            return arr.sort((n1, n2) => n1 - n2);
+        case "L":
+            return arr.sort((n1, n2) => n2 - n1);
+        default:
+            return [];
     }
 }
 const isPalindrome = (line) => {
     const strLine = String(line);
-    const strLineReverse = strLine
-        .split("")
-        .reverse()
-        .join("");
+    const strLineReverse = strLine.split("").reverse().join("");
     return strLine === strLineReverse;
 };
-const isPalindrome2 = (line) => line === line.split('').reverse().join('');
+const isPalindrome2 = (line) => line === line.split("").reverse().join("");
 function isPalindrome3(line) {
     let result = true;
     for (let i = 0; i < line.length / 2; i++) {
@@ -286,20 +363,22 @@ function isPalindrome3(line) {
     return result;
 }
 function isPalindrome4(line) {
-    return line.split('').every((el, idx) => el === line.charAt(line.length - idx - 1));
+    return line
+        .split("")
+        .every((el, idx) => el === line.charAt(line.length - idx - 1));
 }
 let isPalindrome5 = (line) => line === [...line].reverse().join("");
 function isPalindrome6(line) {
-    return (String(line) === String(line).split('').reverse().join(''));
+    return String(line) === String(line).split("").reverse().join("");
 }
 function isPalindrome7(line) {
-    return line == [...line].reverse().join('');
+    return line == [...line].reverse().join("");
 }
 const plural = (n) => {
     return n !== 1;
 };
 function plural2(n) {
-    return (n === 1) ? false : true;
+    return n === 1 ? false : true;
 }
 function plural3(n) {
     if (n !== 1) {
@@ -340,37 +419,37 @@ const position = (char) => {
     return `Position of alphabet: ${abc.indexOf(char.toLowerCase()) + 1}`;
 };
 function position2(alphabet) {
-    return `Position of alphabet: ${(alphabet.charCodeAt(0) - "a".charCodeAt(0)) + 1}`;
+    return `Position of alphabet: ${alphabet.charCodeAt(0) - "a".charCodeAt(0) + 1}`;
 }
-const position3 = (alphabet) => `Position of alphabet: ${'abcdefghijklmnopqrstuvwxyz'.indexOf(alphabet) + 1}`;
+const position3 = (alphabet) => `Position of alphabet: ${"abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1}`;
 function position4(alphabet) {
     const mapOfLetterToNumber = new Map();
-    mapOfLetterToNumber.set('a', 1);
-    mapOfLetterToNumber.set('b', 2);
-    mapOfLetterToNumber.set('c', 3);
-    mapOfLetterToNumber.set('d', 4);
-    mapOfLetterToNumber.set('e', 5);
-    mapOfLetterToNumber.set('f', 6);
-    mapOfLetterToNumber.set('g', 7);
-    mapOfLetterToNumber.set('h', 8);
-    mapOfLetterToNumber.set('i', 9);
-    mapOfLetterToNumber.set('j', 10);
-    mapOfLetterToNumber.set('k', 11);
-    mapOfLetterToNumber.set('l', 12);
-    mapOfLetterToNumber.set('m', 13);
-    mapOfLetterToNumber.set('n', 14);
-    mapOfLetterToNumber.set('o', 15);
-    mapOfLetterToNumber.set('p', 16);
-    mapOfLetterToNumber.set('q', 17);
-    mapOfLetterToNumber.set('r', 18);
-    mapOfLetterToNumber.set('s', 19);
-    mapOfLetterToNumber.set('t', 20);
-    mapOfLetterToNumber.set('u', 21);
-    mapOfLetterToNumber.set('v', 22);
-    mapOfLetterToNumber.set('w', 23);
-    mapOfLetterToNumber.set('x', 24);
-    mapOfLetterToNumber.set('y', 25);
-    mapOfLetterToNumber.set('z', 26);
+    mapOfLetterToNumber.set("a", 1);
+    mapOfLetterToNumber.set("b", 2);
+    mapOfLetterToNumber.set("c", 3);
+    mapOfLetterToNumber.set("d", 4);
+    mapOfLetterToNumber.set("e", 5);
+    mapOfLetterToNumber.set("f", 6);
+    mapOfLetterToNumber.set("g", 7);
+    mapOfLetterToNumber.set("h", 8);
+    mapOfLetterToNumber.set("i", 9);
+    mapOfLetterToNumber.set("j", 10);
+    mapOfLetterToNumber.set("k", 11);
+    mapOfLetterToNumber.set("l", 12);
+    mapOfLetterToNumber.set("m", 13);
+    mapOfLetterToNumber.set("n", 14);
+    mapOfLetterToNumber.set("o", 15);
+    mapOfLetterToNumber.set("p", 16);
+    mapOfLetterToNumber.set("q", 17);
+    mapOfLetterToNumber.set("r", 18);
+    mapOfLetterToNumber.set("s", 19);
+    mapOfLetterToNumber.set("t", 20);
+    mapOfLetterToNumber.set("u", 21);
+    mapOfLetterToNumber.set("v", 22);
+    mapOfLetterToNumber.set("w", 23);
+    mapOfLetterToNumber.set("x", 24);
+    mapOfLetterToNumber.set("y", 25);
+    mapOfLetterToNumber.set("z", 26);
     return `Position of alphabet: ${mapOfLetterToNumber.get(alphabet)}`;
 }
 class Kata1 {
@@ -380,13 +459,13 @@ class Kata1 {
 }
 class Kata1a {
     static buildString(...template) {
-        let result = template.join(', ');
+        let result = template.join(", ");
         return `I like ${result}!`;
     }
 }
 class Kata1b {
     static buildString(...template) {
-        let answer = 'I like ';
+        let answer = "I like ";
         for (var i in template) {
             if (parseInt(i) == template.length - 1) {
                 answer += template[i] + "!";
@@ -400,18 +479,20 @@ class Kata1b {
 }
 const apple = (x) => {
     return Math.pow(Number(x), 2) > 1000
-        ? 'It\'s hotter than the sun!!'
-        : 'Help yourself to a honeycomb Yorkie for the glovebox.';
+        ? "It's hotter than the sun!!"
+        : "Help yourself to a honeycomb Yorkie for the glovebox.";
 };
 function apple2(x) {
-    if (typeof x === 'string')
+    if (typeof x === "string")
         x = parseInt(x);
     return Math.pow(x, 2) > 1000
         ? `It's hotter than the sun!!`
         : `Help yourself to a honeycomb Yorkie for the glovebox.`;
 }
 function apple3(x) {
-    return Math.pow(+x, 2) >= 1000 ? 'It\'s hotter than the sun!!' : 'Help yourself to a honeycomb Yorkie for the glovebox.';
+    return Math.pow(+x, 2) >= 1000
+        ? "It's hotter than the sun!!"
+        : "Help yourself to a honeycomb Yorkie for the glovebox.";
 }
 const findMultiples = (int, limit) => {
     let solution = [];
@@ -421,13 +502,13 @@ const findMultiples = (int, limit) => {
     return solution;
 };
 const findMultiples2 = (int, limit) => [...Array(limit).keys()]
-    .map(value => value + 1)
-    .filter(value => value % int === 0);
+    .map((value) => value + 1)
+    .filter((value) => value % int === 0);
 const findMultiples3 = (integer, limit) => Array.from({ length: limit / integer }).map((_current, i) => (i + 1) * integer);
 const dutyFree = (normPrice, discount, hol) => {
-    return Math.floor(hol / (normPrice * discount / 100));
+    return Math.floor(hol / ((normPrice * discount) / 100));
 };
-const dutyFree2 = (normPrice, discount, hol) => Math.floor(hol / (discount * normPrice / 100));
+const dutyFree2 = (normPrice, discount, hol) => Math.floor(hol / ((discount * normPrice) / 100));
 const addFive = (num) => {
     return num + 5;
 };
@@ -446,18 +527,22 @@ const warnTheSheep = (queue) => {
     return message;
 };
 function warnTheSheep2(queue) {
-    const position = queue.reverse().indexOf('wolf');
-    return position ? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!` : 'Pls go away and stop eating my sheep';
+    const position = queue.reverse().indexOf("wolf");
+    return position
+        ? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!`
+        : "Pls go away and stop eating my sheep";
 }
 function warnTheSheep3(queue) {
-    return queue.indexOf('wolf') === (queue.length - 1)
-        ? 'Pls go away and stop eating my sheep'
-        : `Oi! Sheep number ${queue.length - queue.indexOf('wolf') - 1}! You are about to be eaten by a wolf!`;
+    return queue.indexOf("wolf") === queue.length - 1
+        ? "Pls go away and stop eating my sheep"
+        : `Oi! Sheep number ${queue.length - queue.indexOf("wolf") - 1}! You are about to be eaten by a wolf!`;
 }
 function warnTheSheep4(queue) {
     const reversedArray = queue.reverse();
-    const sheepIndex = reversedArray.findIndex(animal => animal === 'wolf');
-    return sheepIndex > 0 ? `Oi! Sheep number ${sheepIndex}! You are about to be eaten by a wolf!` : "Pls go away and stop eating my sheep";
+    const sheepIndex = reversedArray.findIndex((animal) => animal === "wolf");
+    return sheepIndex > 0
+        ? `Oi! Sheep number ${sheepIndex}! You are about to be eaten by a wolf!`
+        : "Pls go away and stop eating my sheep";
 }
 const convertToCelsius = (temperature) => {
     return Number(((temperature - 32) * (5 / 9)).toFixed(5));
@@ -471,35 +556,33 @@ const weatherInfo2 = (temp) => {
 function weatherInfo3(temp) {
     let c = +((temp - 32) * (5 / 9)).toFixed(5);
     if (c < 0) {
-        return (c + " is freezing temperature");
+        return c + " is freezing temperature";
     }
     else {
-        return (c + " is above freezing temperature");
+        return c + " is above freezing temperature";
     }
 }
 function weatherInfo4(t) {
     var c = Math.round((t - 32) * (5 / 9) * 100000) / 100000;
     if (c < 0)
-        return (c + " is freezing temperature");
+        return c + " is freezing temperature";
     else
-        return (c + " is above freezing temperature");
+        return c + " is above freezing temperature";
 }
 function weatherInfo5(temp) {
     const c = Math.round(convertToCelsius(temp) * 1e5) / 1e5;
     if (c < 0)
-        return (c + " is freezing temperature");
+        return c + " is freezing temperature";
     else
-        return (c + " is above freezing temperature");
+        return c + " is above freezing temperature";
 }
 function convertToCelsius2(temperature) {
-    return (temperature - 32) * 5 / 9;
+    return ((temperature - 32) * 5) / 9;
 }
 const mouthSize = (animal) => {
-    return animal.toLowerCase() === "alligator"
-        ? "small"
-        : "wide";
+    return animal.toLowerCase() === "alligator" ? "small" : "wide";
 };
-const mouthSize2 = (animal) => /alligator/i.test(animal) ? 'small' : 'wide';
+const mouthSize2 = (animal) => /alligator/i.test(animal) ? "small" : "wide";
 const hexToDec = (hexString) => {
     return parseInt(hexString, 16);
 };
@@ -517,7 +600,7 @@ function hexToDec2(hexString) {
     let power = 0;
     for (let i = tempHex.length - 1; i >= 0; i--, power++) {
         const ch = tempHex[i];
-        if (i === 0 && ch === '-') {
+        if (i === 0 && ch === "-") {
             result *= -1;
         }
         else if (ch in hexToNumMap) {
@@ -530,16 +613,33 @@ function hexToDec2(hexString) {
     return result;
 }
 function hexToDec3(hexString) {
-    const hex = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+    const hex = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+    ];
     return hexString
         .toUpperCase()
         .split("")
         .reverse()
         .map((value, index) => hex.indexOf(value) * Math.pow(16, index))
-        .reduce((sum, value) => ((value < 0) ? (-1 * sum) : (sum + value)), 0);
+        .reduce((sum, value) => (value < 0 ? -1 * sum : sum + value), 0);
 }
 function hexToDec4(hexString) {
-    return parseInt(hexString.replace(/^(-)?(.*)/, '$10x$2'));
+    return parseInt(hexString.replace(/^(-)?(.*)/, "$10x$2"));
 }
 class XOR {
     static xor(a, b) {
@@ -554,12 +654,10 @@ class XOR2 {
 }
 const remove = (str) => {
     const last = str.length - 1;
-    return str[last] === "!"
-        ? str.slice(0, last)
-        : str;
+    return str[last] === "!" ? str.slice(0, last) : str;
 };
-const remove2 = (s) => s.replace(/!$/, '');
-const remove21 = (s) => s.endsWith('!') ? s.slice(0, -1) : s;
+const remove2 = (s) => s.replace(/!$/, "");
+const remove21 = (s) => (s.endsWith("!") ? s.slice(0, -1) : s);
 function remove3(s) {
     if (s.endsWith("!")) {
         return s.slice(0, s.length - 1);
@@ -569,9 +667,12 @@ function remove3(s) {
     }
 }
 function remove4(s) {
-    return s.replace(/[!]{1}$/g, '');
+    return s.replace(/[!]{1}$/g, "");
 }
-const remove5 = (s) => s.split('!').filter((v, i, a) => !(v === '' && i === a.length - 1)).join('!');
+const remove5 = (s) => s
+    .split("!")
+    .filter((v, i, a) => !(v === "" && i === a.length - 1))
+    .join("!");
 function remove6(s) {
     return s.match(/!$/) ? s.slice(0, -1) : s;
 }
@@ -591,24 +692,25 @@ const hello = (name) => {
     const formattedName = lowerCased.replace(lowerCased[0], lowerCased[0].toUpperCase());
     return `Hello, ${formattedName}!`;
 };
-const hello2 = (name = '') => `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : 'World'}!`;
-function hello3(name = '') {
+const hello2 = (name = "") => `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : "World"}!`;
+function hello3(name = "") {
     const term = name
         ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
         : `World`;
     return `Hello, ${term}!`;
 }
-;
-function hello4(name = '') {
+function hello4(name = "") {
     const nameLower = name.toLowerCase();
-    return name ? `Hello, ${nameLower.replace(nameLower[0], nameLower[0].toUpperCase())}!` : 'Hello, World!';
+    return name
+        ? `Hello, ${nameLower.replace(nameLower[0], nameLower[0].toUpperCase())}!`
+        : "Hello, World!";
 }
-function hello5(name = '') {
+function hello5(name = "") {
     if (name) {
         return `Hello, ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`;
     }
     else {
-        return 'Hello, World!';
+        return "Hello, World!";
     }
 }
 const arr = (n) => {
@@ -623,13 +725,9 @@ const arr = (n) => {
 const arr2 = (n = 0) => Array.from({ length: n }, (_, i) => i);
 const arr3 = (n = 0) => [...Array(n).keys()];
 const arr4 = (...n) => n.length === 0 ? [] : Array.from(Array(n[0]).keys());
-const arr5 = (n) => Number.isNaN(+n)
-    ? []
-    : [...Array(n).keys()];
+const arr5 = (n) => Number.isNaN(+n) ? [] : [...Array(n).keys()];
 const arr6 = (n = 0) => {
-    return new Array(n)
-        .fill("")
-        .map((it, i) => i);
+    return new Array(n).fill("").map((it, i) => i);
 };
 const arr7 = (n = 0) => {
     const arr = [];
@@ -655,22 +753,20 @@ var a = "code";
 var b = "wa.rs";
 exports.name = a + b;
 const shortLongShort = (a, b) => {
-    return a.length < b.length
-        ? a + b + a
-        : b + a + b;
+    return a.length < b.length ? a + b + a : b + a + b;
 };
 function shortLongShort2(a, b) {
     let [short, long] = [a, b].sort((a, b) => a.length - b.length);
     return `${short}${long}${short}`;
 }
 function shortLongShort3(a, b) {
-    return (a.length > b.length) ? b.concat(a, b) : a.concat(b, a);
+    return a.length > b.length ? b.concat(a, b) : a.concat(b, a);
 }
 function shortLongShort4(a, b) {
     return a.length > b.length ? b.concat(a).concat(b) : a.concat(b).concat(a);
 }
 function shortLongShort5(a, b) {
-    return (a['length'] > b['length']) ? (b + a + b) : (a + b + a);
+    return a["length"] > b["length"] ? b + a + b : a + b + a;
 }
 const testEven = (num) => {
     return num % 2 === 0;
@@ -697,11 +793,11 @@ function saleHotdogs2(n) {
     if (n == null) {
         throw new Error("The method or operation is not implemented.");
     }
-    return n * (n < 5 ? 100 : (n >= 5 && n < 10 ? 95 : 90));
+    return n * (n < 5 ? 100 : n >= 5 && n < 10 ? 95 : 90);
 }
 const saleHotdogs3 = ($) => $ * ($ < 5 ? 100 : $ >= 10 ? 90 : 95);
 function saleHotdogs4(n) {
-    return ((n >= 10) ? 90 : (n >= 5) ? 95 : 100) * n;
+    return (n >= 10 ? 90 : n >= 5 ? 95 : 100) * n;
 }
 const move = (pos, roll) => {
     return pos + roll * 2;
@@ -723,7 +819,7 @@ function isUpperCase4(str) {
     return /^[A-Z\s]+$/.test(str);
 }
 function isUpperCase5(str) {
-    return str.split("").every(c => c === c.toUpperCase());
+    return str.split("").every((c) => c === c.toUpperCase());
 }
 function isUpperCase6(str) {
     for (const letter of str) {
@@ -741,10 +837,10 @@ const squareOrSquareRoot = (array) => {
     });
 };
 function squareOrSquareRoot2(array) {
-    return array.map(a => Math.sqrt(a) % 1 == 0 ? Math.sqrt(a) : (a * a));
+    return array.map((a) => (Math.sqrt(a) % 1 == 0 ? Math.sqrt(a) : a * a));
 }
 function squareOrSquareRoot3(array) {
-    return array.map(x => !(Math.sqrt(x) % 1) ? Math.sqrt(x) : x * x);
+    return array.map((x) => (!(Math.sqrt(x) % 1) ? Math.sqrt(x) : x * x));
 }
 const getRealFloor = (amFloor) => {
     if (amFloor < 1) {
@@ -773,9 +869,12 @@ function getRealFloor3(n) {
 }
 function getRealFloor4(n) {
     switch (true) {
-        case n < 1: return n;
-        case n < 13: return n - 1;
-        default: return n - 2;
+        case n < 1:
+            return n;
+        case n < 13:
+            return n - 1;
+        default:
+            return n - 2;
     }
 }
 const goals = (laLigaGoals, copaDelReyGoals, championsLeagueGoals) => {
@@ -816,14 +915,14 @@ const repeater = (str, n) => {
     return str.repeat(n);
 };
 function repeater2(str, n) {
-    let result = '';
+    let result = "";
     for (let i = 0; i < n; i++) {
         result = result.concat(str.toString());
     }
     return result;
 }
 function repeater3(str, n) {
-    return Array(n).fill(str).join('');
+    return Array(n).fill(str).join("");
 }
 function repeater4(str, n) {
     return new Array(n + 1).join(str);
@@ -847,9 +946,7 @@ function fixTheMeerkat4(arr) {
     return [arr[2], arr[1], arr[0]];
 }
 const index = (array, numIdx) => {
-    return numIdx < array.length
-        ? Math.pow(array[numIdx], numIdx)
-        : -1;
+    return numIdx < array.length ? Math.pow(array[numIdx], numIdx) : -1;
 };
 const index2 = (array, n) => array[n] ** n || -1;
 function index3(array, n) {
@@ -883,25 +980,27 @@ const well = (strArr) => {
         : "I smell a series!";
 };
 function well2(x) {
-    let num = x.filter(a => a === 'good').length;
-    return num > 2 ? 'I smell a series!' : num >= 1 ? 'Publish!' : 'Fail!';
+    let num = x.filter((a) => a === "good").length;
+    return num > 2 ? "I smell a series!" : num >= 1 ? "Publish!" : "Fail!";
 }
 function well3(x) {
     const ideasCount = {
         goodIdeas: 0,
-        badIdeas: 0
+        badIdeas: 0,
     };
     x.forEach((item) => {
-        item === 'bad' ? ideasCount.badIdeas += 1 : ideasCount.goodIdeas += 1;
+        item === "bad"
+            ? (ideasCount.badIdeas += 1)
+            : (ideasCount.goodIdeas += 1);
     });
     if (ideasCount.goodIdeas > 2) {
-        return 'I smell a series!';
+        return "I smell a series!";
     }
     else if (ideasCount.goodIdeas <= 2 && ideasCount.goodIdeas !== 0) {
-        return 'Publish!';
+        return "Publish!";
     }
     else {
-        return 'Fail!';
+        return "Fail!";
     }
 }
 function well4(x) {
@@ -915,7 +1014,13 @@ function well4(x) {
     return "I smell a series!";
 }
 const gooseFilter = (birds) => {
-    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    const geese = [
+        "African",
+        "Roman Tufted",
+        "Toulouse",
+        "Pilgrim",
+        "Steinbacher",
+    ];
     return birds.filter((bird) => geese.indexOf(bird) < 0);
     return birds.filter((bird) => !geese.includes(bird));
     let filteredArr = [];
@@ -926,11 +1031,23 @@ const gooseFilter = (birds) => {
     });
 };
 function gooseFilter2(birds) {
-    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-    return birds.filter(bird => !geese.includes(bird));
+    const geese = [
+        "African",
+        "Roman Tufted",
+        "Toulouse",
+        "Pilgrim",
+        "Steinbacher",
+    ];
+    return birds.filter((bird) => !geese.includes(bird));
 }
 function gooseFilter3(birds) {
-    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    const geese = [
+        "African",
+        "Roman Tufted",
+        "Toulouse",
+        "Pilgrim",
+        "Steinbacher",
+    ];
     const geeseIndex = geese.reduce((acc, birdName) => {
         acc[birdName] = true;
         return acc;
@@ -938,10 +1055,20 @@ function gooseFilter3(birds) {
     return birds.filter((bird) => !(bird in geeseIndex));
 }
 function gooseFilter4(birds) {
-    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    const geese = [
+        "African",
+        "Roman Tufted",
+        "Toulouse",
+        "Pilgrim",
+        "Steinbacher",
+    ];
     var j = 0, result = [];
     for (let i = 0; i < birds.length; i++) {
-        if (birds[i] == "African" || birds[i] == "Toulouse" || birds[i] == "Roman Tufted" || birds[i] == "Pilgrim" || birds[i] == "Steinbacher") {
+        if (birds[i] == "African" ||
+            birds[i] == "Toulouse" ||
+            birds[i] == "Roman Tufted" ||
+            birds[i] == "Pilgrim" ||
+            birds[i] == "Steinbacher") {
             delete birds[i];
         }
         if (birds[i] != undefined) {
@@ -952,16 +1079,28 @@ function gooseFilter4(birds) {
     return result;
 }
 function gooseFilter5(birds) {
-    const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
-    return birds.filter(bird => geese.find(gee => gee == bird) === undefined);
+    const geese = [
+        "African",
+        "Roman Tufted",
+        "Toulouse",
+        "Pilgrim",
+        "Steinbacher",
+    ];
+    return birds.filter((bird) => geese.find((gee) => gee == bird) === undefined);
 }
-const gooseFilter6 = (birds) => birds.filter(x => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(x) === -1);
+const gooseFilter6 = (birds) => birds.filter((x) => [
+    "African",
+    "Roman Tufted",
+    "Toulouse",
+    "Pilgrim",
+    "Steinbacher",
+].indexOf(x) === -1);
 const checkForFactor = (base, factor) => {
     return base % factor === 0;
 };
 const checkForFactor2 = (base, factor) => !(base % factor);
 function checkForFactor3(base, factor) {
-    return (base % factor === 0) ? true : false;
+    return base % factor === 0 ? true : false;
 }
 function checkForFactor4(base, factor) {
     const reminder = base % factor;
@@ -1016,10 +1155,25 @@ const howMuchILoveYou = (petals) => {
     return phrases[6];
 };
 function howMuchILoveYou2(nbPetals) {
-    return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all'][nbPetals % 6];
+    return [
+        "not at all",
+        "I love you",
+        "a little",
+        "a lot",
+        "passionately",
+        "madly",
+        "not at all",
+    ][nbPetals % 6];
 }
 function howMuchILoveYou3(petals) {
-    return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][(petals - 1) % 6];
+    return [
+        "I love you",
+        "a little",
+        "a lot",
+        "passionately",
+        "madly",
+        "not at all",
+    ][(petals - 1) % 6];
 }
 function howMuchILoveYou4(petals) {
     switch ((petals - 1) % 6) {
@@ -1043,32 +1197,39 @@ function howMuchILoveYou5(petals) {
     }
     switch (petals) {
         case 1:
-            return 'I love you';
+            return "I love you";
         case 2:
-            return 'a little';
+            return "a little";
         case 3:
-            return 'a lot';
+            return "a lot";
         case 4:
-            return 'passionately';
+            return "passionately";
         case 5:
-            return 'madly';
+            return "madly";
         case 6:
-            return 'not at all';
+            return "not at all";
         default:
-            return '';
+            return "";
     }
 }
 function howMuchILoveYou6(petals) {
     if (petals > 6)
         petals %= 6;
     switch (petals) {
-        case 1: return 'I love you';
-        case 2: return 'a little';
-        case 3: return 'a lot';
-        case 4: return 'passionately';
-        case 5: return 'madly';
-        case 6: return 'not at all';
-        default: return 'not at all';
+        case 1:
+            return "I love you";
+        case 2:
+            return "a little";
+        case 3:
+            return "a lot";
+        case 4:
+            return "passionately";
+        case 5:
+            return "madly";
+        case 6:
+            return "not at all";
+        default:
+            return "not at all";
     }
 }
 const twoSort = (strArr) => {
@@ -1078,40 +1239,44 @@ const twoSort = (strArr) => {
     lettersArr.forEach((char, idx) => {
         console.log(lettersArr.length, char, idx);
         idx < lettersArr.length - 1
-            ? solution += char + "***"
-            : solution += char;
+            ? (solution += char + "***")
+            : (solution += char);
     });
     return solution;
 };
 function twoSort2(s) {
-    return s
-        .sort()[0]
-        .split("")
-        .join("***");
+    return s.sort()[0].split("").join("***");
 }
 function twoSort3(s) {
     return [...s.sort()[0]].join("***");
 }
 function twoSort4(strings) {
-    return strings.sort((a, b) => a.charCodeAt(0) > b.charCodeAt(0) ? 1 : -1)[0]
-        .split('')
-        .join('***');
+    return strings
+        .sort((a, b) => (a.charCodeAt(0) > b.charCodeAt(0) ? 1 : -1))[0]
+        .split("")
+        .join("***");
 }
 function twoSort5(s) {
     const ret = s
         .sort()[0]
         .split("")
-        .map(x => x + "***")
+        .map((x) => x + "***")
         .join("")
         .slice(0, -3);
     return ret;
 }
 function twoSort7(s) {
-    s.sort((a, b) => { return (a > b) ? 1 : -1; });
-    return s[0].replace(/./g, (match => { return match + '***'; })).slice(0, -3);
+    s.sort((a, b) => {
+        return a > b ? 1 : -1;
+    });
+    return s[0]
+        .replace(/./g, (match) => {
+        return match + "***";
+    })
+        .slice(0, -3);
 }
 const expressionsMatter = (a, b, c) => {
-    return Math.max((a + b + c), ((a + b) * c), (a * (b + c)), (a * b * c));
+    return Math.max(a + b + c, (a + b) * c, a * (b + c), a * b * c);
 };
 function expressionsMatter2(a, b, c) {
     let one = a * (b + c);
@@ -1167,7 +1332,7 @@ const switchItUp = (intNumber) => {
         6: "Six",
         7: "Seven",
         8: "Eight",
-        9: "Nine"
+        9: "Nine",
     };
     return numbers[intNumber];
 };
@@ -1186,34 +1351,44 @@ function switchItUp2(intNumber) {
         out[out["Nine"] = 9] = "Nine";
         out[out["Ten"] = 10] = "Ten";
     })(out || (out = {}));
-    ;
     return out[intNumber];
 }
 function switchItUp3(intNumber) {
-    return ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'][intNumber];
+    return [
+        "Zero",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+    ][intNumber];
 }
 function switchItUp4(intNumber) {
     switch (intNumber) {
         case 0:
-            return 'Zero';
+            return "Zero";
         case 1:
-            return 'One';
+            return "One";
         case 2:
-            return 'Two';
+            return "Two";
         case 3:
-            return 'Three';
+            return "Three";
         case 4:
-            return 'Four';
+            return "Four";
         case 5:
-            return 'Five';
+            return "Five";
         case 6:
-            return 'Six';
+            return "Six";
         case 7:
-            return 'Seven';
+            return "Seven";
         case 8:
-            return 'Eight';
+            return "Eight";
         case 9:
-            return 'Nine';
+            return "Nine";
         default:
             return "";
     }
@@ -1254,10 +1429,10 @@ const quarterOf = (month) => {
 };
 const quarterOf2 = (month) => Math.ceil(month / 3);
 function quarterOf3(month) {
-    return (month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1);
+    return month >= 10 ? 4 : month >= 7 ? 3 : month >= 4 ? 2 : 1;
 }
 function quarterOf4(month) {
-    return Math.ceil(month * 4 / 12);
+    return Math.ceil((month * 4) / 12);
 }
 function quarterOf5(month) {
     switch (month) {
@@ -1301,9 +1476,7 @@ function quarterOf5(month) {
     return month;
 }
 const oddCount = (num) => {
-    return num & 1
-        ? (num - 1) / 2
-        : num / 2;
+    return num & 1 ? (num - 1) / 2 : num / 2;
 };
 const oddCount2 = (n) => Math.floor(n / 2);
 const hoopCount = (num) => {
@@ -1315,7 +1488,7 @@ const twiceAsOld = (dad, son) => {
     return Math.abs(dad - son * 2);
 };
 function twiceAsOld2(dadYearsOld, sonYearsOld) {
-    if ((sonYearsOld - (dadYearsOld - sonYearsOld)) > 0) {
+    if (sonYearsOld - (dadYearsOld - sonYearsOld) > 0) {
         return sonYearsOld - (dadYearsOld - sonYearsOld);
     }
     else {
@@ -1326,8 +1499,8 @@ function twiceAsOld3(dadYearsOld, sonYearsOld) {
     let yearsAgo = 0;
     let flag = true;
     while (flag) {
-        if ((dadYearsOld - yearsAgo === 2 * (sonYearsOld - yearsAgo))
-            || (dadYearsOld + yearsAgo === 2 * (sonYearsOld + yearsAgo))) {
+        if (dadYearsOld - yearsAgo === 2 * (sonYearsOld - yearsAgo) ||
+            dadYearsOld + yearsAgo === 2 * (sonYearsOld + yearsAgo)) {
             flag = false;
             break;
         }
@@ -1361,7 +1534,7 @@ function twiceAsOld4(dadYearsOld, sonYearsOld) {
     return 0;
 }
 function twiceAsOld5(dadYearsOld, sonYearsOld) {
-    let rest = dadYearsOld - (sonYearsOld * 2);
+    let rest = dadYearsOld - sonYearsOld * 2;
     return rest < 0 ? rest * -1 : rest;
 }
 const otherAngle = (a, b) => {
@@ -1376,28 +1549,42 @@ const toAlternatingCase = (str) => {
     return str.replace(/[a-z]/gi, (letter) => alterCase(letter));
 };
 function toAlternatingCase2(s) {
-    return s.split("").map(a => a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()).join('');
+    return s
+        .split("")
+        .map((a) => (a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()))
+        .join("");
 }
 function toAlternatingCase3(s) {
-    return s.split('')
+    return s
+        .split("")
         .map((e) => e === e.toUpperCase() ? e.toLowerCase() : e.toUpperCase())
-        .join('');
+        .join("");
 }
-const flipCharAlphaCase = (code) => code >= 65 && code <= 90 ? code + 32 :
-    code >= 97 && code <= 122 ? code - 32 : code;
-const toAlternatingCase4 = (s) => String.fromCharCode(...s.split("").map(char => char.charCodeAt(0)).map(flipCharAlphaCase));
+const flipCharAlphaCase = (code) => code >= 65 && code <= 90
+    ? code + 32
+    : code >= 97 && code <= 122
+        ? code - 32
+        : code;
+const toAlternatingCase4 = (s) => String.fromCharCode(...s
+    .split("")
+    .map((char) => char.charCodeAt(0))
+    .map(flipCharAlphaCase));
 const updateLight = (current) => {
     const sequence = ["green", "yellow", "red"];
     const next = sequence.indexOf(current) + 1;
-    return sequence[next]
-        ? sequence[next]
-        : sequence[0];
+    return sequence[next] ? sequence[next] : sequence[0];
 };
 function updateLight2(current) {
-    const L = ['green', 'yellow', 'red', 'green'];
+    const L = ["green", "yellow", "red", "green"];
     return L[L.indexOf(current) + 1];
 }
-const updateLight3 = ($) => $ === 'green' ? 'yellow' : $ === 'yellow' ? 'red' : $ === 'red' ? 'green' : 'error';
+const updateLight3 = ($) => $ === "green"
+    ? "yellow"
+    : $ === "yellow"
+        ? "red"
+        : $ === "red"
+            ? "green"
+            : "error";
 function updateLight5(current) {
     switch (current) {
         case "green":
@@ -1413,42 +1600,46 @@ function updateLight5(current) {
     return current;
 }
 function updateLight6(current) {
-    return '' + { 'green': 'yellow', 'yellow': 'red', 'red': 'green' }[current];
+    return "" + { green: "yellow", yellow: "red", red: "green" }[current];
 }
 const correct = (str) => {
     const errors = { "5": "S", "0": "O", "1": "I" };
     return str.replace(/[015]/g, (char) => errors[char]);
 };
 function correct2(s) {
-    return s.replace(/\d/g, e => {
-        if (e == '5')
-            return 'S';
-        if (e == '0')
-            return 'O';
-        return 'I';
+    return s.replace(/\d/g, (e) => {
+        if (e == "5")
+            return "S";
+        if (e == "0")
+            return "O";
+        return "I";
     });
 }
 function correct3(s) {
-    return s.replace(/1/g, 'I').replace(/5/g, 'S').replace(/0/g, 'O');
+    return s.replace(/1/g, "I").replace(/5/g, "S").replace(/0/g, "O");
 }
 function correct4(s) {
-    return s.replace(/\d/g, n => n == '5' ? 'S' : n == '0' ? 'O' : 'I');
+    return s.replace(/\d/g, (n) => (n == "5" ? "S" : n == "0" ? "O" : "I"));
 }
 function correct5(s) {
-    const result = s.split('').map((item) => {
+    const result = s.split("").map((item) => {
         switch (item) {
-            case "5": return "S";
-            case "0": return "O";
-            case "1": return "I";
-            default: return item;
+            case "5":
+                return "S";
+            case "0":
+                return "O";
+            case "1":
+                return "I";
+            default:
+                return item;
         }
     });
-    return result.join('');
+    return result.join("");
 }
 function correct6(s) {
-    return s.replace(/[105]/g, x => x == "1" ? "I" : x == "0" ? "O" : "S");
+    return s.replace(/[105]/g, (x) => (x == "1" ? "I" : x == "0" ? "O" : "S"));
 }
-const correct7 = (s) => s.replace(/\d/g, d => 'OIZEASGTBG'[+d]);
+const correct7 = (s) => s.replace(/\d/g, (d) => "OIZEASGTBG"[+d]);
 const doubleChar = (str) => {
     let solution = "";
     for (const letter of str) {
@@ -1457,18 +1648,18 @@ const doubleChar = (str) => {
     return solution;
 };
 function doubleChar5(str) {
-    return str.replace(/./g, e => e + e);
+    return str.replace(/./g, (e) => e + e);
 }
-const doubleChar2 = ($) => [...$].reduce((ac, e) => ac + e + e, '');
+const doubleChar2 = ($) => [...$].reduce((ac, e) => ac + e + e, "");
 const doubleChar3 = (str) => str
-    .split('')
-    .map(c => c.repeat(2))
-    .join('');
+    .split("")
+    .map((c) => c.repeat(2))
+    .join("");
 function doubleChar4(str) {
-    return [...str].map(c => c + c).join('');
+    return [...str].map((c) => c + c).join("");
 }
 function doubleChar6(str) {
-    return str.replace(/(.)/g, '$1$1');
+    return str.replace(/(.)/g, "$1$1");
 }
 const getGrade = (a, b, c) => {
     const average = (a + b + c) / 3;
@@ -1487,22 +1678,34 @@ const getGrade = (a, b, c) => {
 };
 function getGrade2(a, b, c) {
     let avg = (a + b + c) / 3;
-    return avg < 60 ? "F" : avg < 70 ? "D" : avg < 80 ? "C" : avg < 90 ? "B" : "A";
+    return avg < 60
+        ? "F"
+        : avg < 70
+            ? "D"
+            : avg < 80
+                ? "C"
+                : avg < 90
+                    ? "B"
+                    : "A";
 }
 function getGrade3(a, b, c) {
-    switch ((a + b + c) / 30 | 0) {
-        case 10: return 'A';
-        case 9: return 'A';
-        case 8: return 'B';
-        case 7: return 'C';
-        case 6: return 'D';
-        default: return 'F';
+    switch (((a + b + c) / 30) | 0) {
+        case 10:
+            return "A";
+        case 9:
+            return "A";
+        case 8:
+            return "B";
+        case 7:
+            return "C";
+        case 6:
+            return "D";
+        default:
+            return "F";
     }
 }
 const enough = (cap, on, wait) => {
-    return cap < (on + wait)
-        ? (on + wait) - cap
-        : 0;
+    return cap < on + wait ? on + wait - cap : 0;
 };
 const enough2 = (cap, on, wait) => Math.max(on + wait - cap, 0);
 const setAlarm = (employed, vacation) => {
@@ -1513,7 +1716,7 @@ const greetTwo = (name, owner) => {
     return `Hello ${name === owner ? "boss" : "guest"}`;
 };
 function greetTwo2(name, owner) {
-    return 'Hello ' + (name == owner ? 'boss' : 'guest');
+    return "Hello " + (name == owner ? "boss" : "guest");
 }
 const rentalCarCost = (days) => {
     return days < 3 ? days * 40 : days < 7 ? days * 40 - 20 : days * 40 - 50;
@@ -1528,7 +1731,7 @@ function rentalCarCost2(d) {
 }
 const rentalCarCost3 = (d) => d * 40 - (d >= 7 ? 50 : d >= 3 ? 20 : 0);
 const cockroachSpeed = (s) => {
-    return Math.floor(s * 1000 / 36);
+    return Math.floor((s * 1000) / 36);
 };
 function stringToArray(s) {
     return s.split(" ");
@@ -1537,7 +1740,7 @@ function stringToArray2(s) {
     return s.split(/\s/);
 }
 function stringToArray3(s) {
-    return [...s.split(' ')];
+    return [...s.split(" ")];
 }
 const smash = (words) => {
     return words.join(" ");
@@ -1546,7 +1749,8 @@ const feast = (beast, dish) => {
     return beast[0] === dish[0] && beast.slice(-1) === dish.slice(-1);
 };
 function feast2(beast, dish) {
-    return beast.startsWith(dish.charAt(0)) && beast.endsWith(dish.charAt(dish.length - 1));
+    return (beast.startsWith(dish.charAt(0)) &&
+        beast.endsWith(dish.charAt(dish.length - 1)));
 }
 const isDivideBy = (number, a, b) => {
     return number % a === 0 && number % b === 0;
@@ -1569,10 +1773,10 @@ const countSheep = (num) => {
     return solution;
 };
 function countSheep2(num) {
-    return Array.from({ length: num }, (x, i) => `${i + 1} sheep...`).join('');
+    return Array.from({ length: num }, (x, i) => `${i + 1} sheep...`).join("");
 }
 function countSheep3(num) {
-    return [...Array(num).keys()].reduce((res, cur) => res + `${cur + 1} sheep...`, '');
+    return [...Array(num).keys()].reduce((res, cur) => res + `${cur + 1} sheep...`, "");
 }
 const firstNonConsecutive = (arr) => {
     for (let i = 1; i < arr.length; i++) {
@@ -1583,19 +1787,21 @@ const firstNonConsecutive = (arr) => {
     return null;
 };
 function firstNonConsecutive2(arr) {
-    return arr.find((currentValue, index, array) => { return currentValue - array[index - 1] > 1; });
+    return arr.find((currentValue, index, array) => {
+        return currentValue - array[index - 1] > 1;
+    });
 }
 const rps = (p1, p2) => {
     if (p1 === p2)
         return "Draw!";
-    if (p1[0] === "r" && p2[0] === "s" ||
-        p1[0] === "s" && p2[0] === "p" ||
-        p1[0] === "p" && p2[0] === "r") {
+    if ((p1[0] === "r" && p2[0] === "s") ||
+        (p1[0] === "s" && p2[0] === "p") ||
+        (p1[0] === "p" && p2[0] === "r")) {
         return "Player 1 won!";
     }
-    if (p1[0] === "s" && p2[0] === "r" ||
-        p1[0] === "p" && p2[0] === "s" ||
-        p1[0] === "r" && p2[0] === "p") {
+    if ((p1[0] === "s" && p2[0] === "r") ||
+        (p1[0] === "p" && p2[0] === "s") ||
+        (p1[0] === "r" && p2[0] === "p")) {
         return "Player 2 won!";
     }
 };
@@ -1608,59 +1814,60 @@ function rps2(p1, p2) {
     return i == j ? "Player 1 won!" : "Player 2 won!";
 }
 const beats = {
-    'scissors': 'paper',
-    'paper': 'rock',
-    'rock': 'scissors',
+    scissors: "paper",
+    paper: "rock",
+    rock: "scissors",
 };
 function rps3(p1, p2) {
     if (p1 === p2)
-        return 'Draw!';
+        return "Draw!";
     if (beats[p1] == p2)
-        return 'Player 1 won!';
-    return 'Player 2 won!';
+        return "Player 1 won!";
+    return "Player 2 won!";
 }
 function rps4(p1, p2) {
     const results = {
-        "rock": {
-            "rock": "Draw!",
-            "scissors": "Player 1 won!",
-            "paper": "Player 2 won!",
+        rock: {
+            rock: "Draw!",
+            scissors: "Player 1 won!",
+            paper: "Player 2 won!",
         },
-        "scissors": {
-            "rock": "Player 2 won!",
-            "scissors": "Draw!",
-            "paper": "Player 1 won!"
+        scissors: {
+            rock: "Player 2 won!",
+            scissors: "Draw!",
+            paper: "Player 1 won!",
         },
-        "paper": {
-            "rock": "Player 1 won!",
-            "scissors": "Player 2 won!",
-            "paper": "Draw!"
-        }
+        paper: {
+            rock: "Player 1 won!",
+            scissors: "Player 2 won!",
+            paper: "Draw!",
+        },
     };
     return results[p1][p2];
 }
 function rps5(p1, p2) {
-    let msg = '';
+    let msg = "";
     switch (true) {
-        case p1 == 'scissors' && p2 == 'paper':
-            msg = 'Player 1 won!';
+        case p1 == "scissors" && p2 == "paper":
+            msg = "Player 1 won!";
             break;
-        case p1 == 'scissors' && p2 == 'rock':
-            msg = 'Player 2 won!';
+        case p1 == "scissors" && p2 == "rock":
+            msg = "Player 2 won!";
             break;
-        case p1 == 'paper' && p2 == 'scissors':
-            msg = 'Player 2 won!';
+        case p1 == "paper" && p2 == "scissors":
+            msg = "Player 2 won!";
             break;
-        case p1 == 'rock' && p2 == 'scissors':
-            msg = 'Player 1 won!';
+        case p1 == "rock" && p2 == "scissors":
+            msg = "Player 1 won!";
             break;
-        case p1 == 'rock' && p2 == 'paper':
-            msg = 'Player 2 won!';
+        case p1 == "rock" && p2 == "paper":
+            msg = "Player 2 won!";
             break;
-        case p1 == 'paper' && p2 == 'rock':
-            msg = 'Player 1 won!';
+        case p1 == "paper" && p2 == "rock":
+            msg = "Player 1 won!";
             break;
-        default: msg = 'Draw!';
+        default:
+            msg = "Draw!";
     }
     return msg;
 }
@@ -1676,7 +1883,9 @@ const areYouPlayingBanjo = (name) => {
         : `${name} does not play banjo`;
 };
 function areYouPlayingBanjo2(name) {
-    return name.startsWith("r") || name.startsWith("R") ? name + " plays banjo" : name + " does not play banjo";
+    return name.startsWith("r") || name.startsWith("R")
+        ? name + " plays banjo"
+        : name + " does not play banjo";
 }
 function areYouPlayingBanjo3(name) {
     return name + (/^r/i.test(name) ? " plays banjo" : " does not play banjo");
@@ -1710,10 +1919,18 @@ const sumArray = (array) => {
 function sumArray2(array) {
     if (!array || array.length <= 1)
         return 0;
-    return array.sort((a, b) => a - b).slice(1, -1).reduce((p, n) => p + n, 0);
+    return array
+        .sort((a, b) => a - b)
+        .slice(1, -1)
+        .reduce((p, n) => p + n, 0);
 }
 function sumArray3(a) {
-    return (a === null) ? 0 : a.sort((a, b) => a - b).slice(1, -1).reduce((a, b) => a + b, 0);
+    return a === null
+        ? 0
+        : a
+            .sort((a, b) => a - b)
+            .slice(1, -1)
+            .reduce((a, b) => a + b, 0);
 }
 const booleanToString = (b) => {
     return b ? "true" : "false";
@@ -1727,15 +1944,13 @@ const booleanToString3 = (b) => {
 class Kata {
 }
 Kata.bonusTime = (salary, bonus) => {
-    return bonus
-        ? `£${String(salary * 10)}`
-        : `£${String(salary)}`;
+    return bonus ? `£${String(salary * 10)}` : `£${String(salary)}`;
 };
 const hero = (bullets, dragons) => {
     return bullets / dragons >= 2;
 };
 const paperwork = (n, m) => {
-    return (m < 0 || n < 0) ? 0 : n * m;
+    return m < 0 || n < 0 ? 0 : n * m;
 };
 const min = (list) => {
     return Math.min(...list);
@@ -1756,12 +1971,10 @@ exports.min3 = min3;
 const max3 = ($) => $.sort((a, b) => b - a)[0];
 exports.max3 = max3;
 const simpleMultiplication = (num) => {
-    return num % 2 === 0
-        ? num * 8
-        : num * 9;
+    return num % 2 === 0 ? num * 8 : num * 9;
 };
 function oddOrEven(x) {
-    return (x & 1) ? "odd" : "even";
+    return x & 1 ? "odd" : "even";
 }
 function simpleMultiplication4(num) {
     if (num & 1) {
@@ -1781,15 +1994,17 @@ const betterThanAverage = (classPoints, yourPoints) => {
     return yourPoints > average;
 };
 function betterThanAverage2(classPoints, yourPoints) {
-    const average = classPoints.concat(yourPoints).reduce((prev, curr) => prev + curr) / (classPoints.length + 1);
+    const average = classPoints.concat(yourPoints).reduce((prev, curr) => prev + curr) /
+        (classPoints.length + 1);
     return yourPoints > average;
 }
-const betterThanAverage3 = (classPoints, yourPoints) => classPoints.reduce((acc, it) => acc + it, 0) / classPoints.length <= yourPoints;
+const betterThanAverage3 = (classPoints, yourPoints) => classPoints.reduce((acc, it) => acc + it, 0) / classPoints.length <=
+    yourPoints;
 function betterThanAverage4(classPoints, yourPoints) {
-    return (classPoints.reduce((a, v) => a + v) / classPoints.length) < yourPoints;
+    return (classPoints.reduce((a, v) => a + v) / classPoints.length < yourPoints);
 }
 function betterThanAverage5(classPoints, yourPoints) {
-    return yourPoints > classPoints.reduce((a, c) => a + c) / classPoints.length;
+    return (yourPoints > classPoints.reduce((a, c) => a + c) / classPoints.length);
 }
 function simpleMultiplication6(num) {
     if (num & 1) {
@@ -1808,9 +2023,12 @@ function simpleMultiplication7(num) {
 const DNAtoRNA = (dna) => {
     return dna.replace(/T/g, "U");
 };
-const DNAtoRNA2 = ($) => [...$].map(el => el === 'T' ? el = 'U' : el).join('');
+const DNAtoRNA2 = ($) => [...$].map((el) => (el === "T" ? (el = "U") : el)).join("");
 function DNAtoRNA3(dna) {
-    return dna.split('').map(nab => nab == 'T' ? 'U' : nab).join('');
+    return dna
+        .split("")
+        .map((nab) => (nab == "T" ? "U" : nab))
+        .join("");
 }
 const monkeyCount = (n) => {
     const solution = [];
@@ -1824,7 +2042,9 @@ function monkeyCount2(n) {
     return Array.from({ length: n }, (_, i) => i + 1);
 }
 function monkeyCount3(n) {
-    return Array(n).fill(0).map((e, i) => i + 1);
+    return Array(n)
+        .fill(0)
+        .map((e, i) => i + 1);
 }
 function monkeyCount4(n) {
     return Array.from(Array(n), (x, ix) => ix + 1);
@@ -1835,13 +2055,13 @@ const grow = (arr) => {
 const bmi = (weight, height) => {
     const bmi = weight / height ** 2;
     switch (true) {
-        case (bmi <= 18.5):
+        case bmi <= 18.5:
             return "Underweight";
             break;
-        case (bmi <= 25.0):
+        case bmi <= 25.0:
             return "Normal";
             break;
-        case (bmi <= 30.0):
+        case bmi <= 30.0:
             return "Overweight";
             break;
         default:
@@ -1850,9 +2070,21 @@ const bmi = (weight, height) => {
 };
 function bmi2(weight, height) {
     const $ = weight / height ** 2;
-    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+    return $ <= 18.5
+        ? "Underweight"
+        : $ <= 25.0
+            ? "Normal"
+            : $ <= 30.0
+                ? "Overweight"
+                : "Obese";
 }
-const bmi3 = (weight, height, bmi = 0) => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
+const bmi3 = (weight, height, bmi = 0) => (bmi = weight / height ** 2) > 18.5
+    ? bmi > 25
+        ? bmi > 30
+            ? "Obese"
+            : "Overweight"
+        : "Normal"
+    : "Underweight";
 const arrayPlusArray = (arr1, arr2) => {
     return arr1.concat(arr2).reduce((a, b) => a + b);
 };
@@ -1877,7 +2109,9 @@ const reverseSeq3 = (n) => {
     return Array.from({ length: n }, (_, i) => n - i);
 };
 const reverseSeq4 = (n) => {
-    return Array(n).fill(0).map((e, i) => n - i);
+    return Array(n)
+        .fill(0)
+        .map((e, i) => n - i);
 };
 const reverseSeq5 = (n) => {
     return Array.from({ length: n }, (v, k) => k + 1).reverse();
@@ -1898,7 +2132,7 @@ const fakeBin2 = (str) => {
     console.log(solution);
     return solution;
 };
-const fakeBin3 = (x) => x.replace(/\d/g, n => Number(n) < 5 ? '0' : '1');
+const fakeBin3 = (x) => x.replace(/\d/g, (n) => (Number(n) < 5 ? "0" : "1"));
 const greet3 = () => "hello world!";
 exports.greet3 = greet3;
 const getAverage = (marks) => {
@@ -1943,15 +2177,15 @@ function countPositivesSumNegatives3(input) {
 }
 function countPositivesSumNegatives4(input) {
     if (input && input.length > 0) {
-        return [input.filter(x => x > 0).length, input.filter(x => x < 0).reduce((a, b) => a + b, 0)];
+        return [
+            input.filter((x) => x > 0).length,
+            input.filter((x) => x < 0).reduce((a, b) => a + b, 0),
+        ];
     }
     return [];
 }
 const reverseWords = (str) => {
-    return str
-        .split(" ")
-        .reverse()
-        .join(" ");
+    return str.split(" ").reverse().join(" ");
 };
 const past = (h, m, s) => {
     const HOUR = 3600, MINUTE = 60, SECOND = 1;
@@ -1961,7 +2195,7 @@ const invert = (array) => {
     return array.map((num) => -num);
 };
 function invert2(array) {
-    return array.map(n => -n);
+    return array.map((n) => -n);
 }
 const stringToNumber = (str) => {
     return Number(str);
@@ -1972,16 +2206,23 @@ const maps = (arr) => {
     return arr.map((num) => num * 2);
 };
 function maps2(x) {
-    return x.map(value => value * 2);
+    return x.map((value) => value * 2);
 }
 const findNeedle = (haystack) => {
     return `found the needle at position ${haystack.indexOf("needle")}`;
 };
 const digitize = (n) => {
-    return n.toString().split("").reverse().map((num) => Number(num));
+    return n
+        .toString()
+        .split("")
+        .reverse()
+        .map((num) => Number(num));
 };
 const abbrevName = (name) => {
-    return name.split(" ").map((word) => word.charAt(0).toUpperCase()).join(".");
+    return name
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase())
+        .join(".");
 };
 const basicOp = (op, a, b) => {
     return eval(a + op + b);
