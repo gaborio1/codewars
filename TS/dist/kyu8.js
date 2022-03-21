@@ -9,36 +9,70 @@ function htmlspecialchars(formData) {
     return formData;
 }
 const iceBrickVolume = (radius, bottleLength, rimLength) => {
-    return 0;
+    const sqSide = Math.sqrt(Math.pow(radius, 2) * 2);
+    return Math.round(Math.pow(sqSide, 2) * (bottleLength - rimLength));
+};
+const iceBrickVolume2 = (radius, bottleLength, rimLength) => {
+    return (bottleLength - rimLength) * 2 * radius ** 2;
 };
 function subtractSum(n) {
     return "hello";
 }
-function SafeInteger(n) {
-    return true;
+const SafeInteger = (n) => {
+    return n <= Number.MAX_SAFE_INTEGER;
+};
+const SafeInteger2 = Number.isSafeInteger;
+function SafeInteger3(n) {
+    return Number.isSafeInteger(n) ? true : false;
 }
-function bigToSmall(arr) {
-    return "hello";
+function SafeInteger4(n) {
+    return n < Number.MAX_SAFE_INTEGER && n > Number.MIN_SAFE_INTEGER
+        ? true
+        : false;
 }
+const bigToSmall = (arr) => {
+    return arr
+        .reduce((acc, curr) => acc.concat(curr), [])
+        .sort((a, b) => b - a)
+        .join(">");
+};
+function bigToSmall2(arr) {
+    return []
+        .concat(...arr)
+        .sort((a, b) => b - a)
+        .join(">");
+}
+function bigToSmall3(arr) {
+    return arr
+        .flat()
+        .sort((a, b) => b - a)
+        .join(">");
+}
+const bigToSmall4 = (arr) => arr
+    .flat(1)
+    .sort((a, b) => a - b)
+    .reverse()
+    .join(">");
 function isReallyNaN(val) {
     console.log(val === val);
     return Number.isNaN(val);
 }
-const isReallyNaN2 = ($) => typeof $ === 'number' && isNaN($);
+const isReallyNaN2 = ($) => typeof $ === "number" && isNaN($);
 function isReallyNaN3(val) {
     return Object.is(NaN, val);
 }
-;
 function isReallyNaN4(val) {
     return Number.isNaN(val);
 }
-;
-const isReallyNaN5 = (val) => String(val) == 'NaN' && typeof (val) == typeof (0);
+const isReallyNaN5 = (val) => String(val) == "NaN" && typeof val == typeof 0;
 function isReallyNaN6(val) {
     let answer;
     console.log(val);
     console.log(isNaN(val));
-    if (!isNaN(val) || val === undefined || typeof val === 'string' || typeof val !== 'number') {
+    if (!isNaN(val) ||
+        val === undefined ||
+        typeof val === "string" ||
+        typeof val !== "number") {
         answer = false;
     }
     else {
@@ -46,15 +80,12 @@ function isReallyNaN6(val) {
     }
     return answer;
 }
-;
 function isReallyNaN7(val) {
     return isNaN(val) && typeof val == "number";
 }
-;
 function isReallyNaN8(val) {
     return typeof val === "number" && val !== 0 && !Boolean(val);
 }
-;
 class God {
     static create() {
     }
