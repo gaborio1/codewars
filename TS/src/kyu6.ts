@@ -2,41 +2,18 @@
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -44,22 +21,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -67,22 +40,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -90,22 +59,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -113,22 +78,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -136,22 +97,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -159,22 +116,18 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
 
 */
-
-
 
 // console.log();
 // console.log();
@@ -183,14 +136,238 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: HELP THE BOOKSELLER
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A bookseller has lots of books classified in 26 categories labeled A, B, ... Z. Each book has a code c of 3, 4, 5 or more characters. The 1st character of a code is a capital letter which defines the book category.
+
+In the bookseller's stocklist each code c is followed by a space and by a positive integer n (int n >= 0) which indicates the quantity of books of this code in stock.
+
+For example an extract of a stocklist could be:
+
+L = {"ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"}.
+or
+L = ["ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"] or ....
+You will be given a stocklist (e.g. : L) and a list of categories in capital letters e.g :
+
+M = {"A", "B", "C", "W"} 
+or
+M = ["A", "B", "C", "W"] or ...
+and your task is to find all the books of L with codes belonging to each category of M and to sum their quantity according to each category.
+
+For the lists L and M of example you have to return the string (in Haskell/Clojure/Racket a list of pairs):
+
+(A : 20) - (B : 114) - (C : 50) - (W : 0)
+where A, B, C, W are the categories, 20 is the sum of the unique book of category A, 114 the sum corresponding to "BKWRK" and "BTSQZ", 50 corresponding to "CDXEF" and 0 to category 'W' since there are no code beginning with W.
+
+If L or M are empty return string is "" (Clojure and Racket should return an empty array/list instead).
+
+Note:
+In the result codes and their values are in the same order as in M.
+*/
+
+// class G964C {
+//     public static stockList = (listOfArt, listOfCat) => {
+//         // your code
+//     };
+// }
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: REVERSE OR ROTATE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).
+
+If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.
+
+If
+
+sz is <= 0 or if str is empty return ""
+sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
+Examples:
+revrot("123456987654", 6) --> "234561876549"
+revrot("123456987653", 6) --> "234561356789"
+revrot("66443875", 4) --> "44668753"
+revrot("66443875", 8) --> "64438756"
+revrot("664438769", 8) --> "67834466"
+revrot("123456779", 8) --> "23456771"
+revrot("", 8) --> ""
+revrot("123456779", 0) --> "" 
+revrot("563000655734469485", 4) --> "0365065073456944"
+Example of a string rotated to the left by one position:
+s = "123456" gives "234561".
+*/
+
+// class G964B {
+//     public static revrot(str, sz) {
+//         // your code
+//     }
+// }
+
+// console.log(G964.revrot("1234", 0));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  RECTANGLE INTO SQUARES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -225,9 +402,7 @@ Return the string "nil" with Bash, PowerShell, Pascal and Fortran.
 
 class G966 {
     public static sqInRect(l: number, w: number): number[] {
-
-        return [1]
-
+        return [1];
     }
 }
 
@@ -238,14 +413,12 @@ class G966 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  CAMEL CASE METHOD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -260,7 +433,7 @@ camelCase("camel case word"); // => "CamelCaseWord"
 
 function camelCase(str: string): string {
     return str; // your code here
-  }
+}
 
 // console.log(camelCase(""));
 // console.log(camelCase("test case"));
@@ -269,14 +442,12 @@ function camelCase(str: string): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  ROMAN NUMERALS DECODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -301,9 +472,9 @@ Courtesy of rosettacode.org
 */
 
 function solution1(roman: string): number {
-    // complete the solution by transforming the 
-    // string roman numeral into an integer  
-    return 1
+    // complete the solution by transforming the
+    // string roman numeral into an integer
+    return 1;
 }
 
 // console.log(solution('XXI'));
@@ -313,14 +484,12 @@ function solution1(roman: string): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  ROMAN NUMERALS ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -345,7 +514,7 @@ Remember that there can't be more than 3 identical symbols in a row.
 */
 
 function solution2(number: number): string {
-    return "hello"
+    return "hello";
 }
 
 // console.log((solution(1444));
@@ -355,14 +524,12 @@ function solution2(number: number): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MEXICAN WAVE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -380,11 +547,9 @@ Example
 wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
 */
 
-
 // ❗️❗️❗️ BOTH WORK ❗️❗️❗️
 // function wave(str: string): Array<string> {
 const wave = (str: string): string[] => {
-
     const strArr: string[] = str.split("");
     // console.log(strArr);
     let solution: string[] = [];
@@ -397,12 +562,10 @@ const wave = (str: string): string[] => {
             // console.log(currentWave);
             solution.push(currentWaveArr.join(""));
         }
-
     });
 
     return solution;
-
-}
+};
 
 //  SPLIT str INTO ARRAY
 //  INITIALIZE solution AS EMPTY ARR
@@ -446,20 +609,20 @@ const wave = (str: string): string[] => {
 //     }, [])
 // }
 
-
-
 function wave3(str: string): Array<string> {
     const result = [];
     for (let i = 0; i < str.length; i++) {
-        if (str.charAt(i) === ' ') {
+        if (str.charAt(i) === " ") {
             continue;
         }
-        result.push(str.substring(0, i) + str.charAt(i).toUpperCase() + str.substring(i + 1));
+        result.push(
+            str.substring(0, i) +
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
+        );
     }
     return result;
 }
-
-
 
 // function wave4(str: string): Array<string> {
 //     return [...str].reduce((acc, s, i) => {
@@ -469,8 +632,6 @@ function wave3(str: string): Array<string> {
 //         return acc;
 //     }, []);
 // }
-
-
 
 function wave5(str: string): Array<string> {
     let arr = [];
@@ -484,8 +645,6 @@ function wave5(str: string): Array<string> {
     return arr;
 }
 
-
-
 // function wave6(str: string): Array<string> {
 //     return str.split('').reduce((result, item, index) => {
 //         (item != ' ') && result.push(str.substr(0, index) + item.toUpperCase() + str.substr(index + 1));
@@ -493,15 +652,13 @@ function wave5(str: string): Array<string> {
 //     }, []);
 // }
 
-
-
 function wave7(str: string): Array<string> {
     let finalArray: string[] = [];
     for (let i = 0; i < str.length; i++) {
-        if (str[i] === ' ') continue;
-        let letters = str.split('');
+        if (str[i] === " ") continue;
+        let letters = str.split("");
         letters[i] = str[i].toUpperCase();
-        finalArray.push(letters.join(''));
+        finalArray.push(letters.join(""));
     }
     return finalArray;
 }
@@ -509,9 +666,9 @@ function wave7(str: string): Array<string> {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BOUNCING BALLS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:  
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -545,11 +702,12 @@ const bouncingBall = (
     bounceRate: number,
     viewHeight: number
 ): number => {
-
     if (
-        dropHeight <= 0
-        || (bounceRate <= 0 || bounceRate >= 1)
-        || (viewHeight <= 0 || viewHeight >= dropHeight)
+        dropHeight <= 0 ||
+        bounceRate <= 0 ||
+        bounceRate >= 1 ||
+        viewHeight <= 0 ||
+        viewHeight >= dropHeight
     ) {
         return -1;
     }
@@ -563,10 +721,9 @@ const bouncingBall = (
     }
 
     return counter;
+};
 
-}
-
-//  3 
+//  3
 // console.log(bouncingBall(3.0, 0.66, 1.5));
 // 15
 // console.log(bouncingBall(30.0, 0.66, 1.5));
@@ -587,8 +744,6 @@ function bouncingBall2(h: number, bounce: number, window: number): number {
     return 2 * Math.ceil(Math.log(window / h) / Math.log(bounce)) - 1;
 }
 
-
-
 function bouncingBall3(h: number, bounce: number, window: number): number {
     if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {
         return -1;
@@ -603,7 +758,7 @@ function bouncingBall3(h: number, bounce: number, window: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  FIND(FUNCTION), FILTER()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -630,17 +785,16 @@ Beware: r must be without duplicates.
 */
 
 class G964a {
-
     public static inArray(a1: string[], a2: string[]): string[] {
-
         let solution: string[] = [];
 
         a1.forEach((subStr) => {
-            const findSubStr = (word: string): boolean => word.indexOf(subStr) >= 0;
-            // ❗️❗️❗️ UNDEFINED NOT NEEDED IN CODEWARS ❗️❗️❗️ 
+            const findSubStr = (word: string): boolean =>
+                word.indexOf(subStr) >= 0;
+            // ❗️❗️❗️ UNDEFINED NOT NEEDED IN CODEWARS ❗️❗️❗️
             let firstMatch: string | undefined = a2.find(findSubStr);
             if (firstMatch) solution.push(subStr);
-        })
+        });
 
         return solution.sort();
 
@@ -664,7 +818,6 @@ class G964a {
                 return solution.sort();
         */
     }
-
 }
 
 //  INITIALIZE solution AS EMPTY ARRAY
@@ -690,36 +843,26 @@ class G964a {
 // ❗️❗️❗️ FILTER() ❗️❗️❗️
 class G964a2 {
     public static inArray(a1: string[], a2: string[]): string[] {
-        return a1.filter(a => a2.some(b => b.includes(a))).sort();
+        return a1.filter((a) => a2.some((b) => b.includes(a))).sort();
     }
 }
-
-
 
 class G964a3 {
     public static inArray(a1: string[], a2: string[]): string[] {
-        return a1.filter(x => a2.join().indexOf(x) > -1).sort();
+        return a1.filter((x) => a2.join().indexOf(x) > -1).sort();
     }
 }
-
-
 
 class G964a4 {
     public static inArray(a1: string[], a2: string[]): string[] {
-        const source = a2.join('#');
-        return a1
-            .filter((item) => source.indexOf(item) !== -1)
-            .sort();
+        const source = a2.join("#");
+        return a1.filter((item) => source.indexOf(item) !== -1).sort();
     }
 }
 
-
-
 class G964a5 {
     public static inArray(a1: string[], a2: string[]): string[] {
-        return a1
-            .sort()
-            .filter(s => a2.find(s2 => s2.includes(s)));
+        return a1.sort().filter((s) => a2.find((s2) => s2.includes(s)));
     }
 }
 
@@ -728,7 +871,7 @@ class G964a5 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  ❗️❗️❗️ SPREAD(NULL) ❗️❗️❗️ ERROR: Type 'number[] | null' must have a '[Symbol.iterator]()' method that returns an iterator.ts(2488)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -764,19 +907,16 @@ The two arrays have the same size (> 0) given as parameter in fun
 
 // 1️⃣
 const comp = (a1: number[] | null, a2: number[] | null): boolean => {
-
-    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️ 
-    return (a1 === null || a2 === null)
+    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️
+    return a1 === null || a2 === null
         ? false
-        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2)))
-        === String([...a2].sort((a, b) => a - b));
-
-}
+        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
+              String([...a2].sort((a, b) => a - b));
+};
 
 // 2️⃣
 const comp2 = (a1: number[] | null, a2: number[] | null): boolean => {
-
-    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️ 
+    // ❗️❗️❗️ CHECK FOR NULL FIRST ❗️❗️❗️
     if (a1 === null || a2 === null) return false;
 
     const ascending1: number[] = [...a1].sort((a, b) => a - b);
@@ -784,8 +924,7 @@ const comp2 = (a1: number[] | null, a2: number[] | null): boolean => {
     const ascending2: number[] = [...a2].sort((a, b) => a - b);
 
     return String(ascending1Squared) === String(ascending2);
-
-}
+};
 
 //  RETURN FALSE IF EMPTY ARRAY
 //  OTHERWISE, SORT BOTH ARRAYS NUMERICALLY ASCENDING, SQUARE ELEMENTS IN a1
@@ -800,14 +939,22 @@ do it in the function, before you spread the argument
 ❗️❗️❗️ 
 */
 
-
 // TRUE
 // var a1: number[] = [121, 144, 19, 161, 19, 144, 19, 11];
 // var a2: number[] = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
 
 // FALSE
 var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
-var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+var b2 = [
+    11 * 21,
+    121 * 121,
+    144 * 144,
+    19 * 19,
+    161 * 161,
+    19 * 19,
+    144 * 144,
+    19 * 19,
+];
 
 // console.log(comp(a1, a2));
 // console.log(comp(b1, b2));
@@ -819,12 +966,23 @@ var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144,
 
 function comp3(a1: number[] | null, a2: number[] | null): boolean {
     if (!(a1 && a2) || a1.length !== a2.length) return false;
-    return a1.map(x => x * x).sort().toString() === a2.sort().toString();
+    return (
+        a1
+            .map((x) => x * x)
+            .sort()
+            .toString() === a2.sort().toString()
+    );
 }
 
-
 function comp4(a1: number[] | null, a2: number[] | null): boolean {
-    return !!a1 && !!a2 && a1.map(x => x * x).sort().join() == a2.sort().join();
+    return (
+        !!a1 &&
+        !!a2 &&
+        a1
+            .map((x) => x * x)
+            .sort()
+            .join() == a2.sort().join()
+    );
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -832,7 +990,7 @@ function comp4(a1: number[] | null, a2: number[] | null): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:  NESTED FOR(), ❗️❗️❗️ SORT(), REDUCE() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -858,19 +1016,13 @@ longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abi
 */
 
 const longestConsec = (strArr: string[], numWords: number): string => {
-
-    if (
-        strArr.length === 0
-        || numWords < 1
-        || numWords > strArr.length
-    ) {
+    if (strArr.length === 0 || numWords < 1 || numWords > strArr.length) {
         return "";
     }
 
     let concatArr: string[] = [];
 
     for (let i = 0; i < strArr.length - numWords + 1; i++) {
-
         let concatWord: string = "";
 
         for (let j = 0; j < numWords; j++) {
@@ -895,8 +1047,7 @@ const longestConsec = (strArr: string[], numWords: number): string => {
     }
 
     return solution;
-
-}
+};
 
 /*
   RETURN EMPTY STRING IF n = 0 or k > n or k <= 0
@@ -934,11 +1085,12 @@ var arr2 = [...arr]; // like arr.slice()
 function longestConsec2(strarr: string[], k: number): string {
     if (strarr.length === 0 || k > strarr.length || k <= 0) return "";
     // ❗️❗️❗️ REDUCE() ❗️❗️❗️
-    return strarr.map((currentValue, index, array) => array.slice(index, index + k).join(''))
-        .reduce((acc, cur) => cur.length > acc.length ? cur : acc)
+    return strarr
+        .map((currentValue, index, array) =>
+            array.slice(index, index + k).join("")
+        )
+        .reduce((acc, cur) => (cur.length > acc.length ? cur : acc));
 }
-
-
 
 function longestConsec3(strarr: string[], k: number): string {
     if (!(strarr && strarr.length) || k <= 0 || strarr.length < k) {
@@ -951,29 +1103,21 @@ function longestConsec3(strarr: string[], k: number): string {
     }, "");
 }
 
-
-
 function longestConsec4(strarr: string[], k: number): string {
-    let max = '';
+    let max = "";
     const n = strarr.length;
 
     for (let i = 0; i <= n - k && k > 0 && k <= n; i++) {
-        const newStr = strarr.slice(i, i + k).join('');
+        const newStr = strarr.slice(i, i + k).join("");
         max = max.length >= newStr.length ? max : newStr;
     }
     return max;
 }
 
-
-
-
-
-
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BUILD PILE OF CUBES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: WHILE()  
+// KEYWORDS: WHILE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -990,7 +1134,6 @@ findNb(91716553919377) --> -1
 */
 
 const findNb = (num: number): number => {
-
     let total: number = num;
     let base: number = 1;
 
@@ -999,11 +1142,8 @@ const findNb = (num: number): number => {
         base++;
     }
 
-    return total < 0
-        ? - 1
-        : base - 1;
-
-}
+    return total < 0 ? -1 : base - 1;
+};
 
 //  SET total TO BE INPUT NUMBER num
 //  START OFF base(ACTS AS A COUNTER) AT 1
@@ -1011,9 +1151,8 @@ const findNb = (num: number): number => {
 //      DECREMENT BY base(COUNTER) CUBED
 //      INCREMENT base BY 1
 // CHECK IF TOTAL HAS GONE BELOW 0
-//      IF SO, RETURN -1 
+//      IF SO, RETURN -1
 //      OTHERWISE RETURN base - 1
-
 
 // console.log(findNb(100));
 // 2022
@@ -1026,10 +1165,8 @@ const findNb = (num: number): number => {
 function findNb2(m: number): number {
     var n = 0;
     while (m > 0) m -= Math.pow(++n, 3);
-    return m ? -1 : n
+    return m ? -1 : n;
 }
-
-
 
 function findNb3(m: number): number {
     let sum = 0;
@@ -1039,27 +1176,23 @@ function findNb3(m: number): number {
         sum += Math.pow(i, 3);
     }
 
-    return sum === m ? (i - 1) : -1;
+    return sum === m ? i - 1 : -1;
 }
-
-
 
 function findNb4(m: number): number {
     let n = 1;
     while (m > 0) {
         m = m - n ** 3;
-        if (m === 0)
-            return n
+        if (m === 0) return n;
         n++;
     }
     return -1;
 }
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PLAYING WITH DIGITS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: 
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1089,10 +1222,8 @@ dig_pow(46288, 3) should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 236068
 */
 
 class G964 {
-
     public static digPow = (num: number, pow: number): number => {
-
-        const digitArr = String(num).split("").map((Number));
+        const digitArr = String(num).split("").map(Number);
 
         let sum = 0;
 
@@ -1102,17 +1233,13 @@ class G964 {
 
         digitArr.forEach((digit, idx) => {
             sum += Math.pow(digit, idx + pow);
-        })
+        });
 
         console.log("sum: " + sum);
 
-        return sum % num === 0
-            ? sum / num
-            : -1;
-
-    }
+        return sum % num === 0 ? sum / num : -1;
+    };
 }
-
 
 //  CONVERT num TO ARRAY OF NUMBER DIGITS
 //  INITIALIZE sum WITH VALUE OF 0
@@ -1121,7 +1248,6 @@ class G964 {
 //  CHECK IF sum CAN BE DIVIDED BY num
 //      IF SO, RETURN INTEGER sum / num AS SOLUTION
 //      OTHERWISE RETURN -1
-
 
 // console.log(G964.digPow(89, 1));
 // console.log(G964.digPow(695, 2));
@@ -1191,7 +1317,6 @@ Examples
 // /\(\)|\[\]|\{\}/g
 
 const validBraces = (braces: string): boolean => {
-
     if (braces.length % 2 > 0) return false;
 
     const bracePair = /\(\)|\[\]|\{\}/;
@@ -1205,8 +1330,7 @@ const validBraces = (braces: string): boolean => {
     console.log("str: " + str);
 
     return str.length === 0;
-
-}
+};
 
 //  RETURN FALSE IF UNVALID INPUT LENGTH
 //  SAVE MATCHING PAIRS TO VAR bracePair
@@ -1225,43 +1349,44 @@ const validBraces = (braces: string): boolean => {
 function validBraces2(braces: string): boolean {
     if (braces.length % 2 !== 0) return false;
     let count = braces.length;
-    braces = braces.replace('()', '');
-    braces = braces.replace('[]', '');
-    braces = braces.replace('{}', '');
+    braces = braces.replace("()", "");
+    braces = braces.replace("[]", "");
+    braces = braces.replace("{}", "");
     if (braces.length === 0) return true;
     if (braces.length === count) return false;
     return validBraces(braces);
 }
 
-
-
 function validBraces3(braces: string): boolean {
     let tempBraces = braces;
     for (let i = 0; i <= braces.length / 2; i++) {
-        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, '');
+        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, "");
     }
-    return !tempBraces
+    return !tempBraces;
 }
-
-
 
 function validBrace4(braces: string): boolean {
-    [...braces].forEach(() => braces = braces.replace('()', '').replace('{}', '').replace('[]', ''))
+    [...braces].forEach(
+        () =>
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
+    );
     return !braces;
 }
-
 
 const validBraces5 = (braces: string): boolean => {
     const s = braces.replace(/\(\)|\[\]|\{\}/g, "");
     if (s.length === 0) return true;
     else if (s === braces) return false;
     else return validBraces(s);
-}
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE:  
+// TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1277,16 +1402,42 @@ All letters will be lowercase and all inputs will be valid.
 */
 
 const high = (str: string): string => {
-
-    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const alphabet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
     //  CALCULATE SCORE FOR WORD
     const getScore = (str: string): number => {
         let score: number = 0;
         str.split("").forEach((char) => {
             score += alphabet.indexOf(char) + 1;
-        })
+        });
         return score;
-    }
+    };
 
     interface Counter {
         [key: string]: number;
@@ -1296,14 +1447,13 @@ const high = (str: string): string => {
     //  CREATE COUNTER OBJ { word: score, word: score ... }
     str.split(" ").forEach((word) => {
         counterObj[word] = getScore(word);
-    })
+    });
     //  SORT OBJECT ENTRIES BY THEIR SECOND ELEMENT (INDEX 1 / VALUE)
     //  RETURN INDEX 0 OF ELEMENT AT INDEX 0
     //  [[ 'volcano', 82 ], [ 'climbing', 69 ], [ 'what', 52 ]... ]
     console.log(Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0]);
     return Object.entries(counterObj).sort((a, b) => b[1] - a[1])[0][0];
-
-}
+};
 
 // high('what time are we climbing up the volcano');
 
@@ -1311,32 +1461,35 @@ const high = (str: string): string => {
 
 const VALUE_OFFSET = 96;
 const calcValue = (word: string): number => {
-    return word.split('').reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
-}
+    return word
+        .split("")
+        .reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
+};
 const high2 = (str: string): string => {
-    return str.split(' ').reduce((max, word) => calcValue(word) > calcValue(max) ? word : max);
-}
+    return str
+        .split(" ")
+        .reduce((max, word) => (calcValue(word) > calcValue(max) ? word : max));
+};
 
-
-const alphabet = 'abcdefghijklmnopqrstuvwxyz'
-const getLetterScore = (str: string): number => alphabet.indexOf(str) + 1
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const getLetterScore = (str: string): number => alphabet.indexOf(str) + 1;
 const getWordScore = (str: string): number =>
     str
-        .split('')
+        .split("")
         .map(getLetterScore)
-        .reduce((acc, n) => acc + n, 0)
+        .reduce((acc, n) => acc + n, 0);
 
 const high3 = (str: string): string =>
     str
-        .split(' ')
+        .split(" ")
         .reduce((acc, value) =>
             getWordScore(value) > getWordScore(acc) ? value : acc
-        )
+        );
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BUILD TOWER - MULTIPLE VARIABLES IN FOR LOOP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1356,33 +1509,28 @@ towerBuilder(3)
 */
 
 const towerBuilder = (nFloors: number): string[] => {
-
     const absoluteWidth = nFloors + (nFloors - 1);
     const building: string[] = [];
 
     for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
-
         let floorStr: string = "";
         // console.table({floors: floors, blocks: blocks});
         let leadTrailSpaces = (absoluteWidth - blocks) / 2;
 
-        floorStr = " "
-            .repeat(leadTrailSpaces)
-            + "*"
-                .repeat(blocks)
-            + " "
-                .repeat(leadTrailSpaces);
+        floorStr =
+            " ".repeat(leadTrailSpaces) +
+            "*".repeat(blocks) +
+            " ".repeat(leadTrailSpaces);
 
         // console.log(floorStr);
 
         building.push(floorStr);
-
     }
 
     console.log(building);
 
     return building;
-}
+};
 
 /*
  
@@ -1422,9 +1570,14 @@ const towerBuilder = (nFloors: number): string[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const towerBuilder2 = (nFloors: number): string[] => {
-    return Array.from({ length: nFloors }, (_, i) => `${" ".repeat(nFloors - i - 1)}${"*".repeat(2 * i + 1)}${" ".repeat(nFloors - i - 1)}`)
-}
-
+    return Array.from(
+        { length: nFloors },
+        (_, i) =>
+            `${" ".repeat(nFloors - i - 1)}${"*".repeat(2 * i + 1)}${" ".repeat(
+                nFloors - i - 1
+            )}`
+    );
+};
 
 const towerBuilder3 = (nFloors: number): string[] => {
     return Array.from({ length: nFloors }, (_, index) => {
@@ -1433,32 +1586,27 @@ const towerBuilder3 = (nFloors: number): string[] => {
     });
 };
 
-
 const towerBuilder4 = (n: number): string[] => {
     const result: string[] = [];
     for (let i = 1; i <= n; i++) {
-        result.push(' '.repeat(n - i)
-            + '*'.repeat(i * 2 - 1)
-            + ' '.repeat(n - i));
+        result.push(
+            " ".repeat(n - i) + "*".repeat(i * 2 - 1) + " ".repeat(n - i)
+        );
     }
     return result;
-}
-
+};
 
 const towerBuilder5 = (n: number): string[] => {
     return new Array(n).fill("").map((_, i) => {
         let spaces = " ".repeat(n - i - 1);
-        return spaces + '*'.repeat(2 * i + 1) + spaces
-    })
-}
-
-
-
+        return spaces + "*".repeat(2 * i + 1) + spaces;
+    });
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND MISSING LETTER IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1477,9 +1625,61 @@ Example:
 */
 
 const findMissingLetter = (arr: string[]): string => {
-
     let solution: string = "";
-    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const alphabet = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
     const startIdx = alphabet.indexOf(arr[0]);
 
     for (let i = 1; i < arr.length; i++) {
@@ -1490,17 +1690,15 @@ const findMissingLetter = (arr: string[]): string => {
     }
 
     return solution;
-}
+};
 
 //  startIdx: THIS IS WHERE LOOP STARTS COMPARING TWO PARALLEL ARRAYS
-//  IF CURRENT ALPHABET ELEMENT !== CURRENT INPUT ARRAY ELEMENT 
+//  IF CURRENT ALPHABET ELEMENT !== CURRENT INPUT ARRAY ELEMENT
 //      SAVE CURRENT ALPHABET ELEMENT AS SOLUTION AND BREAK LOOP
 //  RETURN SOLUTION
 
-findMissingLetter(['a', 'b', 'c', 'd', 'f']);
-findMissingLetter(['O', 'Q', 'R', 'S']);
-
-
+findMissingLetter(["a", "b", "c", "d", "f"]);
+findMissingLetter(["O", "Q", "R", "S"]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -1513,37 +1711,33 @@ findMissingLetter(['O', 'Q', 'R', 'S']);
 //     }
 // }
 
-
 function findMissingLetter3(array: string[]): string {
     const isUpper = array[0] == array[0].toUpperCase();
 
-    let expectedLetter = '';
+    let expectedLetter = "";
     for (const letter of array) {
-        if (expectedLetter != '' && letter != expectedLetter)
+        if (expectedLetter != "" && letter != expectedLetter)
             return expectedLetter;
 
         expectedLetter = String.fromCharCode(letter.charCodeAt(0) + 1);
     }
 
-    throw 'Nothing missing';
+    throw "Nothing missing";
 }
-
 
 function findMissingLetter4(letters: string[]): string {
     const first = letters.shift()!.charCodeAt(0) + 1;
-    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== (i + first));
+    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== i + first);
     return String.fromCharCode(first + offset);
 }
 
-
 function findMissingLetter5(array: string[]) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     return alphabet
         .substr(alphabet.indexOf(array[0]))
-        .split('')
+        .split("")
         .find((curr, idx) => curr != array[idx]);
 }
-
 
 // !!! Type 'undefined' is not assignable to type 'string'.ts(2322) !!!
 // function findMissingLetter6(array:string[]):string
@@ -1561,11 +1755,10 @@ function findMissingLetter5(array: string[]) {
 //     return ret
 // }
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  UNUQUE NUMBER IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1612,11 +1805,9 @@ The tests contain some very huge arrays, so think about performance.
 
 // }
 
-
 // 2️⃣  CHECK FIRST AND LAST ELEMENT FIRST
-// THEN LOOP THROUGH MIDDLE ELEMENTS 
+// THEN LOOP THROUGH MIDDLE ELEMENTS
 const findUniq = (arr: number[]): number => {
-
     const arrLength: number = arr.length;
 
     let solution: number = 0;
@@ -1625,7 +1816,10 @@ const findUniq = (arr: number[]): number => {
         solution = arr[0];
     }
 
-    if (arr[arrLength - 1] !== arr[arrLength - 2] && arr[arrLength - 1] !== arr[arrLength - 3]) {
+    if (
+        arr[arrLength - 1] !== arr[arrLength - 2] &&
+        arr[arrLength - 1] !== arr[arrLength - 3]
+    ) {
         solution = arr[arrLength - 1];
     }
 
@@ -1637,8 +1831,7 @@ const findUniq = (arr: number[]): number => {
     }
 
     return solution;
-
-}
+};
 
 // findUniq([2, 1, 1, 1, 1, 1]);
 // findUniq([1, 2, 1, 1, 1, 1]);
@@ -1651,39 +1844,36 @@ const findUniq = (arr: number[]): number => {
 
 // ❗️❗️❗️
 function findUniq3(arr: Array<number>): number {
-    arr = arr.sort()
-    return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0]
+    arr = arr.sort();
+    return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0];
 }
 // ❗️❗️❗️
 
 // "!"
 function findUniq4(arr: Array<number>): number {
     const x = arr[arr[0] == arr[1] ? 0 : 2];
-    return arr.find(y => y != x)!;
+    return arr.find((y) => y != x)!;
 }
 
 // "!"
 function findUniq5(arr: Array<number>): number {
-    return arr.find(n => arr.indexOf(n) === arr.lastIndexOf(n))!;
+    return arr.find((n) => arr.indexOf(n) === arr.lastIndexOf(n))!;
 }
 
 // "!"
 function findUniq6(arr: Array<number>): number {
-    var arr = arr.sort()
-    return arr[0] == arr[1] ? arr.pop()! : arr[0]
+    var arr = arr.sort();
+    return arr[0] == arr[1] ? arr.pop()! : arr[0];
 }
-
 
 function findUniq7(arr: Array<number>): number {
     return arr.filter((el) => arr.indexOf(el) == arr.lastIndexOf(el))[0];
 }
 
-
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  NARCISSISTIC NUMBER - DOES MY NUMBER LOOK BIG IN THIS?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1704,14 +1894,12 @@ Error checking for text strings or other invalid inputs is not required, only va
 
 const narcissistic = (num: number): boolean => {
     const exp: number = num.toString().length;
-    const digitArr: number[] = num
-        .toString().split("")
-        .map(Number);
+    const digitArr: number[] = num.toString().split("").map(Number);
     const powerSum: number = digitArr
         .map((base) => Math.pow(base, exp))
         .reduce((a, b) => a + b);
     return powerSum === num;
-}
+};
 
 //  GET EXPONENT
 //  CONVERT NUM TO ARRAY OF DIGITS(number)
@@ -1728,22 +1916,25 @@ narcissistic(16342);
 function narcissistic2(value: number): boolean {
     const str = String(value);
     let acc = 0;
-    str.split('').forEach((x) => acc += Math.pow(+x, str.length))
+    str.split("").forEach((x) => (acc += Math.pow(+x, str.length)));
     return acc === value;
 }
 
-
 function narcissistic3(value: number): boolean {
-    const digits = String(value).split('');
+    const digits = String(value).split("");
 
-    return digits.reduce((acc, current) =>
-        acc + Math.pow(Number(current), digits.length), 0) === value;
+    return (
+        digits.reduce(
+            (acc, current) => acc + Math.pow(Number(current), digits.length),
+            0
+        ) === value
+    );
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  IS PANGRAM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1778,15 +1969,12 @@ LOOP OVER ALPHABET AND CHECK IF EACH LETTER(LOWERCASED) IS FOUND IN PHRASE
     IF NOT FOUND, STOP LOOP AND RETURN SOLUTION AS FALSE
 */
 
-
 // 2️⃣ SECOND ATTEMPT:
 const isPangram = (phrase: string): boolean => {
-
-    const lettersArr: string[] = phrase.toLowerCase().match(/[a-z]/g)!
+    const lettersArr: string[] = phrase.toLowerCase().match(/[a-z]/g)!;
     const lettersSet = new Set(lettersArr);
     return lettersSet.size === 26;
-
-}
+};
 /*
 MATCH ALL LETTERS(LOWERCASED) INTO ARRAY
 MAKE A SET OUT OF THE ARRAY TO REMOVE DUPLICATES
@@ -1844,8 +2032,10 @@ As the name may already reveal, it works basically like a Fibonacci, but summing
     Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
 */
 
-const tribonacci = ([a, b, c]: [number, number, number], n: number): number[] => {
-
+const tribonacci = (
+    [a, b, c]: [number, number, number],
+    n: number
+): number[] => {
     if (n === 0) return [];
     if (n === 1) return [a];
     if (n === 2) return [a, b];
@@ -1857,11 +2047,11 @@ const tribonacci = ([a, b, c]: [number, number, number], n: number): number[] =>
         let length = triArr.length;
         triArr.push(
             triArr[length - 1] + triArr[length - 2] + triArr[length - 3]
-        )
+        );
     }
 
     return triArr;
-}
+};
 
 /*
 RETURN [], [a], [a, b] OR [a, b, c] IF n IS 0, 1, 2 OR 3
@@ -1882,23 +2072,26 @@ function tribonacci2(s: Array<number>, n: number): number[] {
 }
 
 function tribonacci3([a, b, c]: [number, number, number], n: number): number[] {
-    if (n == 0) return []
-    if (n == 1) return [a]
-    if (n == 2) return [a, b]
-    if (n == 3) return [a, b, c]
-    var result: number[] = [a, b, c]
+    if (n == 0) return [];
+    if (n == 1) return [a];
+    if (n == 2) return [a, b];
+    if (n == 3) return [a, b, c];
+    var result: number[] = [a, b, c];
     for (var i = 3; i < n; i++) {
-        result[i] = result[i - 1] + result[i - 2] + result[i - 3]
+        result[i] = result[i - 1] + result[i - 2] + result[i - 3];
     }
-    return result
+    return result;
 }
 
-const tribonacci4 = ([a, b, c]: [number, number, number], n: number): number[] => n < 1 ? [] : [a].concat(tribonacci([b, c, a + b + c], n - 1));
+const tribonacci4 = (
+    [a, b, c]: [number, number, number],
+    n: number
+): number[] => (n < 1 ? [] : [a].concat(tribonacci([b, c, a + b + c], n - 1)));
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND EVEN INDEX - EQUAL SIDES OF ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
@@ -1930,10 +2123,7 @@ const tribonacci4 = ([a, b, c]: [number, number, number], n: number): number[] =
 // Note:
 // If you are given an array with multiple answers, return the lowest correct index.
 
-
-
 const findEvenIndex = (arr: number[]): number => {
-
     const sum = arr.reduce((a, b) => a + b);
     let counterLeft: number = 0;
     let solution: number = -1;
@@ -1962,19 +2152,19 @@ const findEvenIndex = (arr: number[]): number => {
             solution = i;
         }
 
-        console.table(
-            { current: current, sideSum: sideSum, counter: counterLeft }
-        )
+        console.table({
+            current: current,
+            sideSum: sideSum,
+            counter: counterLeft,
+        });
         if (sideSum === counterLeft) {
             console.log("solution found at idx : ", i);
             solution = i;
         }
-
-    })
+    });
 
     return solution;
-
-}
+};
 
 // findEvenIndex([1, 2, 3, 4, 3, 2, 1]);
 // findEvenIndex([1,100,50,-51,1,1]);
@@ -1984,14 +2174,12 @@ const findEvenIndex = (arr: number[]): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  YOUR ORDER PLEASE (REARRANGE WORDS BY NUMBER FOUND IN THEM)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
@@ -2006,7 +2194,6 @@ const findEvenIndex = (arr: number[]): number => {
 // ""  -->  ""
 
 const order = (words: string): string => {
-
     if (words.length === 0) {
         return "";
     } else {
@@ -2014,11 +2201,10 @@ const order = (words: string): string => {
         words.split(" ").forEach((word) => {
             let numStr: number = Number(word.match(/[1-9]/)![0]) - 1;
             orderedArr[numStr] = word;
-        })
+        });
         return orderedArr.join(" ");
     }
-
-}
+};
 
 //  IF EMPTY STRING: RETURN ""
 //  OTHERWISE:
@@ -2027,7 +2213,7 @@ const order = (words: string): string => {
 //          EXTRACT NUMERIC CHARACTER AND CONVERT TO NUMBER - 1 (INDEX)
 //          !!! "Non-null assertion operator" (!) !!!
 //          SET WORD AS NEW ELEMENT IN ARRAY AT INDEX
-//      RETURN ARRAY JOINED INTO STRING 
+//      RETURN ARRAY JOINED INTO STRING
 
 //  !!! REASON FOR SUBSTRACTING 1 FROM NUMBER: !!!
 //  Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
@@ -2058,32 +2244,33 @@ The "Non-null assertion operator" will not perform any runtime checks, it just t
 If nativeElement.files is null at runtime, it will generate an error. This is not the safe navigation operator of other languages.
 */
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function order2(words: String): String {
-    return words.split(' ')
+    return words
+        .split(" ")
         .sort((a, b) => +a.match(/\d/)! - +b.match(/\d/)!)
-        .join(' ')
+        .join(" ");
 }
-
 
 function order3(words: String): String {
-    return words.split(' ')
+    return words
+        .split(" ")
         .sort((l, r) => +/\d/.exec(l)![0] - +/\d/.exec(r)![0])
-        .join(' ');
+        .join(" ");
 }
-
 
 const order4 = (words: string): string => {
-    return words.split(' ').sort((a, b) => +a.replace(/\D/g, '') - +b.replace(/\D/g, '')).join(' ');
-}
-
+    return words
+        .split(" ")
+        .sort((a, b) => +a.replace(/\D/g, "") - +b.replace(/\D/g, ""))
+        .join(" ");
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  TAKE A TEN MINUTE WALK
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // You live in the city of Cartesia where all roads are laid out in a perfect grid. You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. The city provides its citizens with a Walk Generating App on their phones -- everytime you press the button it sends you an array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block for each letter (direction) and you know it takes you one minute to traverse one city block, so create a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!) and will, of course, return you to your starting point. Return false otherwise.
@@ -2091,24 +2278,22 @@ const order4 = (words: string): string => {
 // Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 
 const isValidWalk = (directions: string[]): boolean => {
-
     interface Counter {
         [key: string]: number;
     }
 
     const counterObj: Counter = {};
 
-    directions.forEach(dir => counterObj[dir] = (counterObj[dir] || 0) + 1);
+    directions.forEach((dir) => (counterObj[dir] = (counterObj[dir] || 0) + 1));
 
     // console.log(
     //     directions.length === 10 ? (counterObj.n === counterObj.s) && (counterObj.e === counterObj.w) : false
     // );
 
     return directions.length === 10
-        ? (counterObj.n === counterObj.s) && (counterObj.e === counterObj.w)
+        ? counterObj.n === counterObj.s && counterObj.e === counterObj.w
         : false;
-
-}
+};
 
 //  CREATE COUNTER OBJECT {direction: count, ...}
 //  IF TOTAL NUMBER OF DIRECTIONS IS 10
@@ -2116,19 +2301,25 @@ const isValidWalk = (directions: string[]): boolean => {
 //  IF NUMBER OF DIRECTIONS IS NOT 10
 //      RETURN FALSE
 
-
-isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']);
-isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']);
+isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]);
+isValidWalk(["w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e"]);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function isValidWalk2(walk: string[]) {
     if (walk.length !== 10) return false;
-    if (walk.filter(e => e === 'n').length !== walk.filter(e => e === 's').length) return false;
-    if (walk.filter(e => e === 'e').length !== walk.filter(e => e === 'w').length) return false;
+    if (
+        walk.filter((e) => e === "n").length !==
+        walk.filter((e) => e === "s").length
+    )
+        return false;
+    if (
+        walk.filter((e) => e === "e").length !==
+        walk.filter((e) => e === "w").length
+    )
+        return false;
     return true;
 }
-
 
 function isValidWalk3(walk: string[]) {
     if (walk.length !== 10) return false;
@@ -2151,35 +2342,42 @@ function isValidWalk3(walk: string[]) {
     return directions.n === directions.s && directions.w === directions.e;
 }
 
-
 function isValidWalk4(walk: string[]): boolean {
-    if (walk.length !== 10) return false
+    if (walk.length !== 10) return false;
 
     const coordinates = {
         x: 0,
         y: 0,
-    }
+    };
 
     for (let i = 0; i < walk.length; i++) {
         switch (walk[i]) {
-            case 'n': coordinates.x++; break
-            case 's': coordinates.x--; break
-            case 'e': coordinates.y++; break
-            case 'w': coordinates.y--; break
-            default: break
+            case "n":
+                coordinates.x++;
+                break;
+            case "s":
+                coordinates.x--;
+                break;
+            case "e":
+                coordinates.y++;
+                break;
+            case "w":
+                coordinates.y--;
+                break;
+            default:
+                break;
         }
     }
 
-    return (!coordinates.x && !coordinates.y)
+    return !coordinates.x && !coordinates.y;
 }
-
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // !!! NEED TO REFACTOR !!!
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  DUPLICATE ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
@@ -2188,11 +2386,9 @@ function isValidWalk4(walk: string[]): boolean {
 // "din"      =>  "((("
 // "recede"   =>  "()()()"
 // "Success"  =>  ")())())"
-// "(( @"     =>  "))((" 
+// "(( @"     =>  "))(("
 
 const duplicateEncode = (word: string): string => {
-
-
     // 1️⃣  DOES NOT WORK WITH SPECIAL CHARACTERS:
 
     // const strArr = word.split("");
@@ -2218,7 +2414,6 @@ const duplicateEncode = (word: string): string => {
     // })
     // return strArr.join("");
 
-
     // 2️⃣  THIS WORKS:
     //  FIND EACH ELEMENT OF ORIGINAL ARRAY IN COPY(ORIGINAL WORD MINUS CURRENT LETTER)
     // IF FOUND, THEN IT IS A DUPLICATE, IF NOT FOUND THEN IT IS SINGLE
@@ -2238,12 +2433,11 @@ const duplicateEncode = (word: string): string => {
 
     console.log(resultArr.join(""));
     return resultArr.join("");
-}
+};
 
 // duplicateEncode("recEde");
-// duplicateEncode("(( @");    // "))(("  
+// duplicateEncode("(( @");    // "))(("
 // ❗️❗️❗️ SyntaxError: Invalid regular expression: /(/: Unterminated group ❗️❗️❗️
-
 
 // ❗️❗️❗️ https://stackoverflow.com/questions/17885855/use-dynamic-variable-string-as-regex-pattern-in-javascript/17886301 ❗️❗️❗️
 
@@ -2265,13 +2459,12 @@ function duplicateEncode2(word: string) {
     // ...
     return word
         .toLowerCase()
-        .split('')
+        .split("")
         .map((a, i, w) => {
-            return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+            return w.indexOf(a) == w.lastIndexOf(a) ? "(" : ")";
         })
-        .join('')
+        .join("");
 }
-
 
 function duplicateEncode3(word: string): string {
     word = word.toLowerCase();
@@ -2280,39 +2473,36 @@ function duplicateEncode3(word: string): string {
         let count = countObj[char] || 0;
         countObj[char] = ++count;
     }
-    let result = '';
+    let result = "";
     for (let char of word) {
-        result += countObj[char] > 1 ? ')' : '(';
+        result += countObj[char] > 1 ? ")" : "(";
     }
     return result;
 }
 
-
 function duplicateEncode4(word: string) {
     const chars = word.toLowerCase().split("");
 
-    return chars.map(char => chars.filter(c => c === char).length > 1 ? ")" : "(").join("");
+    return chars
+        .map((char) => (chars.filter((c) => c === char).length > 1 ? ")" : "("))
+        .join("");
 }
-
 
 function duplicateEncode5(word: string): string {
     return word
-        .split('')
-        .map(value =>
+        .split("")
+        .map((value) =>
             (word.match(new RegExp(`[${value}]`, "giu")) || []).length > 1
-                ? ')'
-                : '('
+                ? ")"
+                : "("
         )
-        .join('');
+        .join("");
 }
-
-
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  COUNTING DUPLICATES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
@@ -2327,32 +2517,29 @@ function duplicateEncode5(word: string): string {
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
 
 const duplicateCount = (text: string): number => {
-
     interface Counter {
         [key: string]: number;
     }
 
     const counterObj: Counter = {};
 
-    text
-        .split("")
+    text.split("")
         .map((letter) => letter.toLowerCase())
-        .forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
+        .forEach((num) => (counterObj[num] = (counterObj[num] || 0) + 1));
 
-    const duplicatesArr = Object
-        .entries(counterObj)
-        .filter(([key, value]) => value > 1);
+    const duplicatesArr = Object.entries(counterObj).filter(
+        ([key, value]) => value > 1
+    );
 
     // console.log(duplicatesArr.length);
     return duplicatesArr.length;
+};
 
-}
-
-//  STR -> ARR(LETTERS) -> ARR(LOWERCASED LETTERS) -> OBJ{num: count} 
+//  STR -> ARR(LETTERS) -> ARR(LOWERCASED LETTERS) -> OBJ{num: count}
 //  FILTER OUT OBJ KEYS WITH VALUE GREATER THAN ONE INTO ARRAY
 //  RETURN LENGTH OF ARRAY
 
-//  
+//
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -2363,25 +2550,24 @@ const duplicateCount = (text: string): number => {
 
 function duplicateCount3(text: string): number {
     const values = text.toLowerCase();
-    const distinctValues = [... new Set(values)];
+    const distinctValues = [...new Set(values)];
     const count = (s: string) => values.split(s).length - 1 > 1;
-    return distinctValues.filter(value => count(value)).length;
+    return distinctValues.filter((value) => count(value)).length;
 }
 
 function duplicateCount4(text: string): number {
-    let array = text.toLowerCase().split('');
+    let array = text.toLowerCase().split("");
     return [...new Set(array.filter((e, i) => array.indexOf(e) !== i))].length;
 }
 
-
 function duplicateCount5(text: string): number {
-    return new Set((text.toLowerCase().match(/(.)(?=.*\1)/gi) || [])).size
+    return new Set(text.toLowerCase().match(/(.)(?=.*\1)/gi) || []).size;
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIND THE PARITY OUTLIER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
@@ -2396,53 +2582,45 @@ function duplicateCount5(text: string): number {
 // CHECK IF ELEMENT'S ABSOLUT VALUE IS ODD OR EVEN, GROUP THEM IN ARRAYS
 // RETURN FIRST ELEMENT OF ARRAY WITH ONE ELEMENT
 
-
 const findOutlier = (ints: number[]): number => {
-
     const odds = ints.filter((num) => Math.abs(num) % 2 === 1);
     const evens = ints.filter((num) => Math.abs(num) % 2 === 0);
     // console.log(odds.length > 1 ? evens[0] : odds[0])
     return odds.length > 1 ? evens[0] : odds[0];
-
-}
+};
 
 // findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]);   // 11
 // findOutlier([160, 3, 1719, 19, 11, 13, -21]);   // 160
 // findOutlier([17417968, -12150916, -135668362, -45067422, 65586444, -104088786, 74395984, 198980314, -91660877, -52541784, -49718652, -189685108, -120327066, 178679078, -31538954, 112116518, -186162190, 29923430, 180062518, 878198, -185634066, -188868404, -111266602, -123331452, -184028074, -24771054, -4052, 98231950, -91193344, -154129192, -134529020, 195427700, 187599832, -11229586, -165510592, -19725720, 180071600, -161055558, 109276994, -88809438, -149769730, -89421390, 27663208, 132490658, 118790172, -23745850, 27711836, -4950342, 32063374, 655394]);   // -91660877
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 export function findOutlier2(integers: number[]): number {
-    if (integers.slice(0, 3).filter(i => i % 2 !== 0).length > 1) {
-        return integers.find(v => v % 2 === 0) || 0;
+    if (integers.slice(0, 3).filter((i) => i % 2 !== 0).length > 1) {
+        return integers.find((v) => v % 2 === 0) || 0;
     } else {
-        return integers.find(v => v % 2 !== 0) || 0;
+        return integers.find((v) => v % 2 !== 0) || 0;
     }
 }
 
 export function findOutlier3(integers: number[]): number {
-    const odds = integers.filter(v => v % 2);
-    const evens = integers.filter(v => !(v % 2));
+    const odds = integers.filter((v) => v % 2);
+    const evens = integers.filter((v) => !(v % 2));
 
     return odds.length === 1 ? odds[0] : evens[0];
 }
 
-
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BIT COUNTING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const countBits = (num: number): number => {
-
     const bitArr = num.toString(2).match(/1/g);
     // console.log(bitArr === null ? 0 : bitArr.length);
     return bitArr === null ? 0 : bitArr.length;
-
-}
+};
 
 // countBits(0);
 // countBits(1234);
@@ -2450,40 +2628,36 @@ const countBits = (num: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 export function countBits2(n: number): number {
-    return n.toString(2).replace(/0/g, '').length;
+    return n.toString(2).replace(/0/g, "").length;
 }
 
-
 export function countBits3(n: number) {
-    return n.toString(2).split('').filter(c => c === '1').length
+    return n
+        .toString(2)
+        .split("")
+        .filter((c) => c === "1").length;
 }
 
 export function countBits4(n: number) {
-    return n.toString(2)
-        .split('')
-        .map(Number)
-        .filter(Boolean)
-        .length;
+    return n.toString(2).split("").map(Number).filter(Boolean).length;
 }
 
 export function countBits5(n: number) {
-    return n.toString(2).split('1').length - 1;;
+    return n.toString(2).split("1").length - 1;
 }
 
 export function countBits6(n: number) {
-    return n.toString(2).replace(/0/gi, '').length;
+    return n.toString(2).replace(/0/gi, "").length;
 }
-
 
 export function countBits7(n: number) {
-    return n.toString(2).match(/1/g)?.length || 0
+    return n.toString(2).match(/1/g)?.length || 0;
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  WHO LIKES IT?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const likes = (names: string[]): string => {
@@ -2497,12 +2671,13 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
-//  MAKE 4+ NAMES DEFAULT 
+//  MAKE 4+ NAMES DEFAULT
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -2516,11 +2691,10 @@ const likes = (names: string[]): string => {
 //     }
 // };
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ARRAY.DIFF
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
@@ -2532,11 +2706,10 @@ const likes = (names: string[]): string => {
 
 // array_diff({1, 2, 2, 2, 3}, 5, {2}, 1, *z) == {1, 3} (z == 2)
 
-
 // RETURN ELEMENTS OF a THAT ARE NOT PRESENT IN b
 const arrayDiff = (a: number[], b: number[]): number[] => {
     return a.filter((num) => b.indexOf(num) < 0);
-}
+};
 
 arrayDiff([3, 4, 3], [3]);
 
@@ -2546,20 +2719,17 @@ arrayDiff([3, 4, 3], [3]);
 //     return a.filter(e => !b.includes(e));
 // }
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF DIGITS / DIGITAL ROOT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // Digital root is the recursive sum of all the digits in a number.
 
 // Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
 
-
 const digitalRoot = (num: number): number => {
-
     const digitArr = num
         .toString()
         .split("")
@@ -2568,7 +2738,6 @@ const digitalRoot = (num: number): number => {
     const sum = digitArr.reduce((a, b) => a + b);
     // console.log(num > 9 ? digitalRoot(sum) : num);
     return num > 9 ? digitalRoot(sum) : num;
-
 };
 
 //  NUM -> STR -> ARR(STR) -> ARR(NUM)
@@ -2586,11 +2755,10 @@ digitalRoot(493193); // 6
 //     return n>9?digitalRoot([...(n.toString())].reduce((a,c)=>a+Number(c),0)):n;
 // };
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  STOP SPINNING MY WORDS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // mop / forEach
@@ -2608,24 +2776,21 @@ const spinWords = (words: string): string => {
 
 // spinWords("Hey fellow warriors");
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 function spinWords2(words: string): string {
-    return words.replace(/[a-z]{5,}/ig, (s) => s.split("").reverse().join(""))
+    return words.replace(/[a-z]{5,}/gi, (s) => s.split("").reverse().join(""));
 }
 
 // const spinWords = (words: string): string => words.split(' ')
-//                                                         .map(m => m.length >= 5 
-//                                                              ? m.split('').reverse().join('') 
+//                                                         .map(m => m.length >= 5
+//                                                              ? m.split('').reverse().join('')
 //                                                              : m)
 //                                                         .join(' ')
 
-
 // function spinWords(words: string): string {
 //     return words.split(" ").map(word => word.length >= 5 ? [...word].reverse().join("") : word).join(" ")
-// }                                                 
+// }
 
 // function spinWords(words: string): string {
 //     return words.split(" ").map(word => word.length >= 5 ? [...word].reverse().join("") : word).join(" ")
@@ -2638,7 +2803,6 @@ function spinWords2(words: string): string {
 //     });
 //     return spin.join(" ");
 // }
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️  INCLUDE THIS IN PROJECTS/TYPESCRIPT ❗️❗️❗️
@@ -2661,52 +2825,45 @@ function spinWords2(words: string): string {
 
 // If you need to use an object as a key-value mapper, do it well and either define the keys statically, or make the type of value a union with undefined.
 
-
-
 // 1️⃣    WITH filter()
 
 const findOdd = (arr: number[]): number => {
-
     interface NumCounter {
         [key: string]: number;
     }
 
     const counter: NumCounter = {};
 
-    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+    arr.forEach((num) => (counter[num] = (counter[num] || 0) + 1));
 
-    const oddTimesArr = Object.entries(counter).filter(([key, value]) => value % 2 > 0);
+    const oddTimesArr = Object.entries(counter).filter(
+        ([key, value]) => value % 2 > 0
+    );
 
     // console.log(Number(oddTimesArr[0][0]));
     return Number(oddTimesArr[0][0]);
 };
 
-
-
 // 2️⃣    WITH forEach()
 
 const findOdd2 = (arr: number[]): number => {
-
     interface NumCounter {
         [key: string]: number;
     }
 
     const counter: NumCounter = {};
 
-    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+    arr.forEach((num) => (counter[num] = (counter[num] || 0) + 1));
 
-    let solution: any;  // INITIALIZE ❗️❗️❗️
+    let solution: any; // INITIALIZE ❗️❗️❗️
 
     Object.entries(counter).forEach(([key, value]) => {
         // value % 2 > 0 && console.log("key: ", Number(key));
-        if (value % 2 > 0) solution = Number(key) as number;    // TYPE ASSERTION ❗️❗️❗️
+        if (value % 2 > 0) solution = Number(key) as number; // TYPE ASSERTION ❗️❗️❗️
     });
 
-
     return solution;
-
 };
-
 
 // const findOdd = (arr: number[]): number => {
 
@@ -2724,16 +2881,13 @@ const findOdd2 = (arr: number[]): number => {
 //     // !!! tsconfig.json COMPILER OPTIONS: "target": "es2018" (es2017 OR LATER) FOR Object.entries TO WORK!!!
 //     Object.entries(counter).forEach(([key, value]) => console.log(`${key}: ${value}`));
 
-
 //     Object.entries(counter).forEach(([key, value]) => {
 //         value % 2 > 0 && console.log("key: ", Number(key));
 //     });
 
-
 //     const testArr = Object.entries(counter).filter(([key, value]) => value % 2 > 0);
 //     console.log(testArr);
 //     console.log(Number(testArr[0][0]));
-
 
 //     return Number(testArr[0][0]);
 // };
@@ -2758,13 +2912,12 @@ const findOdd3 = (xs: number[]): number => {
 // <<	Left shift	x = 5 << 1	0101 << 1	1010	 10
 // >>	Right shift	x = 5 >> 1	0101 >> 1	0010	  2
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TypeError: Reduce of empty array with no initial value
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MULTIPLES OF 3 OR 5
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
@@ -2772,8 +2925,6 @@ const findOdd3 = (xs: number[]): number => {
 // Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in. Additionally, if the number is negative, return 0 (for languages that do have them).
 
 // Note: If the number is a multiple of both 3 and 5, only count it once.
-
-
 
 // DIVS ARRAY MUST HAVE AN INITIAL VALUE
 const solution = (num: number): number => {
@@ -2784,7 +2935,7 @@ const solution = (num: number): number => {
         }
     console.log(num >= 0 ? divs.reduce((a, b) => a + b) : 0);
     return num >= 0 ? divs.reduce((a, b) => a + b) : 0;
-}
+};
 
 // solution(10);
 // solution(-1);

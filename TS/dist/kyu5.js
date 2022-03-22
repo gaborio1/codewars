@@ -37,13 +37,18 @@ G964a2.perimeter = (n) => {
 class G964a3 {
 }
 G964a3.perimeter = (n) => {
-    return Array.from(Array(n + 2).keys()).map((e, i, arr) => { if (i > 0) {
-        arr[i + 1] = arr[i] + arr[i - 1];
-        return e;
-    }
-    else {
-        return 1;
-    } }).slice(1).reduce((a, b) => a + b) * 4;
+    return (Array.from(Array(n + 2).keys())
+        .map((e, i, arr) => {
+        if (i > 0) {
+            arr[i + 1] = arr[i] + arr[i - 1];
+            return e;
+        }
+        else {
+            return 1;
+        }
+    })
+        .slice(1)
+        .reduce((a, b) => a + b) * 4);
 };
 class G964a4 {
 }
@@ -67,7 +72,7 @@ G964a5.perimeter = (n) => {
     }
     let length = 0;
     for (let i = 0; i <= n + 1; i++) {
-        length += (4 * fibonacci(i));
+        length += 4 * fibonacci(i);
     }
     return length;
 };
@@ -92,7 +97,7 @@ G964a7.perimeter = (n) => {
     let a = 0, b = 4, sum = 4;
     for (let i = 1; i <= n; i++) {
         const c = a + b;
-        a = b, b = c, sum += c;
+        (a = b), (b = c), (sum += c);
     }
     return sum;
 };
@@ -113,7 +118,11 @@ G964.productFib = (num) => {
             break;
         }
         else if (product > num) {
-            solution = [sequence[current + 1], sequence[current + 2], false];
+            solution = [
+                sequence[current + 1],
+                sequence[current + 2],
+                false,
+            ];
             break;
         }
         current++;
@@ -148,10 +157,10 @@ G9642.productFib = (num) => {
 };
 const dirReduc = (arr) => {
     for (let i = 0; i < arr.length; i++) {
-        if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH")
-            || (arr[i] === "SOUTH" && arr[i + 1] === "NORTH")
-            || (arr[i] === "EAST" && arr[i + 1] === "WEST")
-            || (arr[i] === "WEST" && arr[i + 1] === "EAST")) {
+        if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH") ||
+            (arr[i] === "SOUTH" && arr[i + 1] === "NORTH") ||
+            (arr[i] === "EAST" && arr[i + 1] === "WEST") ||
+            (arr[i] === "WEST" && arr[i + 1] === "EAST")) {
             arr.splice(i, 2);
             i -= 2;
         }
@@ -160,15 +169,15 @@ const dirReduc = (arr) => {
 };
 function dirReduc2(arr) {
     var pat = /(NORTHSOUTH|SOUTHNORTH|EASTWEST|WESTEAST)/;
-    var way = arr.join('');
+    var way = arr.join("");
     while (pat.test(way))
-        way = way.replace(pat, '');
+        way = way.replace(pat, "");
     return way.match(/(NORTH|SOUTH|EAST|WEST)/g) || [];
 }
 const dirReduc3 = (arr) => {
     const opposites = [
-        ['NORTH', 'SOUTH'],
-        ['EAST', 'WEST'],
+        ["NORTH", "SOUTH"],
+        ["EAST", "WEST"],
     ];
     return arr.reduce((acc, curr) => {
         const opposite = opposites
@@ -181,20 +190,27 @@ const dirReduc3 = (arr) => {
     }, []);
 };
 function dirReduc4(arr) {
-    let str = arr.join(':');
-    while (str.match(/NORTH:*SOUTH/) || str.match(/SOUTH:*NORTH/) || str.match(/EAST:*WEST/) || str.match(/WEST:*EAST/)) {
-        str = str.replace(/NORTH:*SOUTH/g, '').replace(/SOUTH:*NORTH/g, '').replace(/EAST:*WEST/g, '').replace(/WEST:*EAST/g, '');
+    let str = arr.join(":");
+    while (str.match(/NORTH:*SOUTH/) ||
+        str.match(/SOUTH:*NORTH/) ||
+        str.match(/EAST:*WEST/) ||
+        str.match(/WEST:*EAST/)) {
+        str = str
+            .replace(/NORTH:*SOUTH/g, "")
+            .replace(/SOUTH:*NORTH/g, "")
+            .replace(/EAST:*WEST/g, "")
+            .replace(/WEST:*EAST/g, "");
     }
-    return str.split(':').filter(Boolean);
+    return str.split(":").filter(Boolean);
 }
 function dirReduc5(arr) {
-    arr = arr.map(dir => dir.toUpperCase());
+    arr = arr.map((dir) => dir.toUpperCase());
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === "NORTH" && arr[i + 1] === "SOUTH" ||
-            arr[i] === "SOUTH" && arr[i + 1] === "NORTH" ||
-            arr[i] === "WEST" && arr[i + 1] === "EAST" ||
-            arr[i] === "EAST" && arr[i + 1] === "WEST") {
+        if ((arr[i] === "NORTH" && arr[i + 1] === "SOUTH") ||
+            (arr[i] === "SOUTH" && arr[i + 1] === "NORTH") ||
+            (arr[i] === "WEST" && arr[i + 1] === "EAST") ||
+            (arr[i] === "EAST" && arr[i + 1] === "WEST")) {
             arr.splice(i, 2);
             return dirReduc(arr);
         }
@@ -218,15 +234,15 @@ const humanReadable = (secInput) => {
 const format = (n) => String(Math.floor(n)).padStart(2, "00");
 function humanReadable2(seconds) {
     const h = seconds / 3600;
-    const m = seconds % 3600 / 60;
-    const s = seconds % 3600 % 60;
+    const m = (seconds % 3600) / 60;
+    const s = (seconds % 3600) % 60;
     return [h, m, s].map(format).join(":");
 }
 exports.humanReadable2 = humanReadable2;
 function humanReadable3(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor(seconds / 60) % 60;
-    const pad = (n) => `${n}`.padStart(2, '0');
+    const pad = (n) => `${n}`.padStart(2, "0");
     return `${pad(hours)}:${pad(minutes)}:${pad(seconds % 60)}`;
 }
 const pigIt = (str) => {
@@ -246,5 +262,5 @@ const pigIt2 = (str) => {
 };
 const pigIt3 = (a) => a.replace(/(\w)(\w+)*/g, "$2$1ay");
 const pigIt4 = (a) => {
-    return a.replace(/[a-z]+/ig, x => x.slice(1) + x[0] + "ay");
+    return a.replace(/[a-z]+/gi, (x) => x.slice(1) + x[0] + "ay");
 };

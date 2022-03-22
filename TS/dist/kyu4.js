@@ -7,7 +7,9 @@ const sumOfIntervals = (intervals) => {
     return 1;
 };
 const nextBigger = (num) => {
-    const digitsArr = String(num).split("").map((digit) => Number(digit));
+    const digitsArr = String(num)
+        .split("")
+        .map((digit) => Number(digit));
     let solutionArr = [];
     const numStr = String(num);
     let matchArr = [];
@@ -20,7 +22,8 @@ const nextBigger = (num) => {
             break;
         }
     }
-    if (Number(matchArr.join("")) === Number([...matchArr].sort().reverse().join("")))
+    if (Number(matchArr.join("")) ===
+        Number([...matchArr].sort().reverse().join("")))
         return -1;
     for (let i = 0; i < digitsArr.length - matchArr.length; i++) {
         solutionArr.push(digitsArr[i]);
@@ -39,7 +42,9 @@ const nextBigger = (num) => {
     return Number(solutionArr.concat(sortedMatchArr).join(""));
 };
 const nextBigger2 = (num) => {
-    const digitsArr = String(num).split("").map((digit) => Number(digit));
+    const digitsArr = String(num)
+        .split("")
+        .map((digit) => Number(digit));
     let solutionArr = [];
     const numStr = String(num);
     let matchArr = [];
@@ -52,7 +57,8 @@ const nextBigger2 = (num) => {
             break;
         }
     }
-    if (Number(matchArr.join("")) === Number([...matchArr].sort().reverse().join("")))
+    if (Number(matchArr.join("")) ===
+        Number([...matchArr].sort().reverse().join("")))
         return -1;
     for (let i = 0; i < digitsArr.length - matchArr.length; i++) {
         solutionArr.push(digitsArr[i]);
@@ -76,7 +82,8 @@ function nextBigger3(n) {
     let i = digitArray.length - 1;
     for (i; i > 0 && !swapped; i--) {
         if (digitArray[i] > digitArray[i - 1]) {
-            const j = i + findIndexOfNextBiggerDigit(digitArray.slice(i), digitArray[i - 1]);
+            const j = i +
+                findIndexOfNextBiggerDigit(digitArray.slice(i), digitArray[i - 1]);
             let temp = digitArray[j];
             digitArray[j] = digitArray[i - 1];
             digitArray[i - 1] = temp;
@@ -85,7 +92,7 @@ function nextBigger3(n) {
     }
     if (!swapped)
         return -1;
-    return Number(partialSort(digitArray, i).join(''));
+    return Number(partialSort(digitArray, i).join(""));
 }
 function findIndexOfNextBiggerDigit(arr, threshold) {
     let minDigit = arr[0];
@@ -118,7 +125,7 @@ function nextBigger4(num) {
     return nextNum;
 }
 function sortAsString(num) {
-    return num.toString().split('').sort().join('');
+    return num.toString().split("").sort().join("");
 }
 const nextBigger5 = (n) => {
     let max = maxify(n);
@@ -131,16 +138,17 @@ const nextBigger5 = (n) => {
 };
 const maxify = (n) => {
     return +[...`${n}`]
-        .map(n => +n)
+        .map((n) => +n)
         .sort((a, b) => b - a)
-        .join('')
-        .replace(/^(0+)([1-9])/, '$2$1');
+        .join("")
+        .replace(/^(0+)([1-9])/, "$2$1");
 };
 function nextBigger6(n) {
     const originalArr = ("" + n).split("").sort().join("");
     let newArr = "";
     let current = n + 1;
-    if (n.toString().split('').join('') == [...n.toString().split('')].sort().reverse().join(''))
+    if (n.toString().split("").join("") ==
+        [...n.toString().split("")].sort().reverse().join(""))
         return -1;
     while (originalArr !== newArr) {
         newArr = ("" + current).split("").sort().join("");
@@ -149,14 +157,15 @@ function nextBigger6(n) {
     return current - 1;
 }
 function sortedDigits(n) {
-    let arr = n.toString().split('');
-    arr.sort(function (a, b) { return b.localeCompare(a); });
+    let arr = n.toString().split("");
+    arr.sort(function (a, b) {
+        return b.localeCompare(a);
+    });
     return arr;
 }
-;
 function nextBigger7(n) {
     let arr = sortedDigits(n);
-    let max = parseInt(arr.join(''), 10);
+    let max = parseInt(arr.join(""), 10);
     for (let i = n + 1; i <= max; i++) {
         if (sortedDigits(i).every((x, j) => x === arr[j])) {
             return i;

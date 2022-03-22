@@ -1,6 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+function countRedBeads(n) {
+    return 0;
+}
+function inviteMoreWomen(L) {
+    return true;
+}
+function sumCubes(n) {
+    return 1;
+}
+function solveA(arr) {
+}
+function minSum(arr) {
+    return 1;
+}
+function averages(numbers) {
+    return [1];
+}
+function addLetters(...letters) {
+}
+function isPowerOfTwo(n) {
+    return false;
+}
 function overTheRoad(address, n) {
     return 0;
 }
@@ -25,7 +47,9 @@ const adjacentElementsProduct = (arr) => {
     }
     return Math.max(...productsArr);
 };
-const adjacentElementsProduct2 = (arr) => Math.max(...arr.map((value, index) => index === arr.length - 1 ? value * arr[index - 1] : value * arr[index + 1]));
+const adjacentElementsProduct2 = (arr) => Math.max(...arr.map((value, index) => index === arr.length - 1
+    ? value * arr[index - 1]
+    : value * arr[index + 1]));
 function adjacentElementsProduct3(arr) {
     return Math.max(...arr.slice(1).map((x, i) => x * arr[i]));
 }
@@ -35,12 +59,12 @@ const getEvenNumbers = (numbersArray) => {
     });
 };
 const getEvenNumbers2 = (numbersArray) => {
-    return numbersArray.filter(x => x % 2 === 0);
+    return numbersArray.filter((x) => x % 2 === 0);
 };
 const isEven = (num) => num % 2 == 0;
 const getEvenNumbers3 = (nums) => nums.filter(isEven);
 const getEvenNumbers4 = (numbersArray) => {
-    return numbersArray.filter(cond => 0 === cond % 2);
+    return numbersArray.filter((cond) => 0 === cond % 2);
 };
 const sumTriangularNumbers = (n) => {
     let sum = 0, triNum = 0;
@@ -51,10 +75,12 @@ const sumTriangularNumbers = (n) => {
     return sum;
 };
 function sumTriangularNumbers2(n) {
-    return (n <= 0) ? 0 : (n * (n + 1) * (n + 2)) / 6;
+    return n <= 0 ? 0 : (n * (n + 1) * (n + 2)) / 6;
 }
 function sumTriangularNumbers4(n) {
-    return Array.from({ "length": n }).map((value, index) => (1 + index + 1) * (index + 1) / 2).reduce((pre, current) => pre + current, 0);
+    return Array.from({ length: n })
+        .map((value, index) => ((1 + index + 1) * (index + 1)) / 2)
+        .reduce((pre, current) => pre + current, 0);
 }
 function sumTriangularNumbers5(n) {
     let result = 0;
@@ -76,11 +102,8 @@ const predictAge = (...args) => {
         .reduce((acc, curr) => acc + curr)) / 2);
 };
 function predictAge3(...ages) {
-    return Math.trunc(Math.sqrt(ages
-        .map(x => x * x)
-        .reduce((a, b) => a + b, 0)) / 2);
+    return Math.trunc(Math.sqrt(ages.map((x) => x * x).reduce((a, b) => a + b, 0)) / 2);
 }
-;
 class Kata {
     static findLongest(arr) {
         return arr.sort((a, b) => String(b).length - String(a).length)[0];
@@ -101,8 +124,7 @@ class Kata {
 }
 class Kata5 {
     static findLongest(array) {
-        return array
-            .reduce((a, b) => a.toString().length < b.toString().length ? b : a);
+        return array.reduce((a, b) => a.toString().length < b.toString().length ? b : a);
     }
 }
 const isSortedAndHow = (arr) => {
@@ -155,7 +177,14 @@ function isSortedAndHow3(array) {
     return "no";
 }
 function isSortedAndHow4(array) {
-    return [...array].sort((a, b) => a - b).join('') === array.join('') ? 'yes, ascending' : ([...array].sort((a, b) => a - b).reverse().join('') === array.join('') ? 'yes, descending' : 'no');
+    return [...array].sort((a, b) => a - b).join("") === array.join("")
+        ? "yes, ascending"
+        : [...array]
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 function isSortedAndHow5(array) {
     let isAsc = true;
@@ -180,22 +209,22 @@ function isSortedAndHow6(array) {
     const dsc = [...array].sort((a, b) => b - a);
     switch (array.toString()) {
         case asc.toString():
-            return 'yes, ascending';
+            return "yes, ascending";
         case dsc.toString():
-            return 'yes, descending';
+            return "yes, descending";
         default:
-            return 'no';
+            return "no";
     }
 }
 function isSortedAndHow7(array) {
-    if ([...array].sort((a, b) => a - b).join('') === array.join('')) {
-        return 'yes, ascending';
+    if ([...array].sort((a, b) => a - b).join("") === array.join("")) {
+        return "yes, ascending";
     }
-    else if ([...array].sort((a, b) => b - a).join('') === array.join('')) {
-        return 'yes, descending';
+    else if ([...array].sort((a, b) => b - a).join("") === array.join("")) {
+        return "yes, descending";
     }
     else {
-        return 'no';
+        return "no";
     }
 }
 const angle = (n) => {
@@ -234,9 +263,9 @@ function evaporator4(content, evapPerDay, threshold) {
     const full = content;
     let days = 0;
     do {
-        content -= content / 100 * evapPerDay;
+        content -= (content / 100) * evapPerDay;
         days++;
-    } while (content > full / 100 * threshold);
+    } while (content > (full / 100) * threshold);
     return days;
 }
 const flattenAndSort = (inputArray) => {
@@ -248,15 +277,16 @@ function flattenAndSort2(inputArray) {
     return inputArray.flat().sort((a, b) => a - b);
 }
 function flattenAndSort4($) {
-    return $.toString().split(',').filter(e => e).map(Number).sort((a, b) => a - b);
+    return $.toString()
+        .split(",")
+        .filter((e) => e)
+        .map(Number)
+        .sort((a, b) => a - b);
 }
 function flattenAndSort5(inputArray) {
     let numbers = [];
     for (const tuple of inputArray) {
-        numbers = [
-            ...tuple,
-            ...numbers,
-        ];
+        numbers = [...tuple, ...numbers];
     }
     return numbers.sort((a, b) => a - b);
 }
@@ -297,7 +327,7 @@ const checkCoupon = (usrCode, validCode, currDate, expDate) => {
         expMonth: expMonth,
         expMonthIdx: expMonthIdx,
         currDay: currDay,
-        expDay: expDay
+        expDay: expDay,
     });
     if (expYear > currYear) {
         isValidDate = true;
@@ -324,12 +354,13 @@ const checkCoupon = (usrCode, validCode, currDate, expDate) => {
     return isValidCode && isValidDate;
 };
 function checkCoupon2(enteredCode, correctCode, currentDate, expirationDate) {
-    return enteredCode === correctCode && Date.parse(currentDate) <= Date.parse(expirationDate);
+    return (enteredCode === correctCode &&
+        Date.parse(currentDate) <= Date.parse(expirationDate));
 }
 function checkCoupon3(enteredCode, correctCode, currentDate, expirationDate) {
     let cDate = new Date(currentDate);
     let expDate = new Date(expirationDate);
-    return ((enteredCode === correctCode) && (cDate <= expDate)) ? true : false;
+    return enteredCode === correctCode && cDate <= expDate ? true : false;
 }
 function checkCoupon4(enteredCode, correctCode, currentDate, expirationDate) {
     const isValidCode = enteredCode === correctCode;
@@ -339,14 +370,12 @@ function checkCoupon4(enteredCode, correctCode, currentDate, expirationDate) {
 const rowWeights = (arr) => {
     let arr1 = [], arr2 = [];
     arr.forEach((num, idx) => {
-        idx & 1
-            ? arr1.push(num)
-            : arr2.push(num);
+        idx & 1 ? arr1.push(num) : arr2.push(num);
     });
     return [arr2.reduce((a, b) => a + b), arr1.reduce((a, b) => a + b)];
 };
 function rowWeights2(arr) {
-    return arr.reduce((r, e, i) => (r[i % 2] += e, r), [0, 0]);
+    return arr.reduce((r, e, i) => ((r[i % 2] += e), r), [0, 0]);
 }
 function rowWeights3(arr) {
     let even = arr.reduce((sum, x, i) => sum + (!(i % 2) ? x : 0), 0);
@@ -377,7 +406,7 @@ function rowWeights6(arr) {
 function rowWeights7(arr) {
     let arr1 = 0;
     let arr2 = 0;
-    arr.forEach((value, index) => index % 2 ? arr2 += value : arr1 += value);
+    arr.forEach((value, index) => index % 2 ? (arr2 += value) : (arr1 += value));
     return [arr1, arr2];
 }
 const sortNumbers = (numsArr) => {
@@ -396,13 +425,16 @@ const removeDuplicateWords = (str) => {
         .join(" ");
 };
 function removeDuplicateWords2(s) {
-    return Array.from(new Set(s.split(' '))).join(' ');
+    return Array.from(new Set(s.split(" "))).join(" ");
 }
 function removeDuplicateWords3(s) {
-    return s.split(' ').filter((v, i, a) => a.indexOf(v) === i).join(' ');
+    return s
+        .split(" ")
+        .filter((v, i, a) => a.indexOf(v) === i)
+        .join(" ");
 }
 function removeDuplicateWords4(s) {
-    return [...new Set(s.match(/[a-z]+/ig) || [])].join(" ");
+    return [...new Set(s.match(/[a-z]+/gi) || [])].join(" ");
 }
 function removeDuplicateWords5(s) {
     const wordArray = s.split(" ");
@@ -412,12 +444,12 @@ function removeDuplicateWords5(s) {
 }
 function removeDuplicateWords6(s) {
     let result = [];
-    s.split(' ').forEach((string, index) => {
+    s.split(" ").forEach((string, index) => {
         if (result.indexOf(string) === -1) {
             result.push(string);
         }
     });
-    return result.join(' ');
+    return result.join(" ");
 }
 const capitalize = (str) => {
     let odds = "", evens = "";
@@ -428,8 +460,8 @@ const capitalize = (str) => {
     return [evens, odds];
 };
 const capitalize2 = (s) => [
-    [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
-    [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),
+    [...s].map((l, i) => (i % 2 ? l : l.toUpperCase())).join(""),
+    [...s].map((l, i) => (i % 2 ? l.toUpperCase() : l)).join(""),
 ];
 function capitalize3(s) {
     const output = ["", ""];
@@ -450,13 +482,13 @@ function capitalize4(s) {
 function capitalize5(s) {
     return [
         s
-            .split('')
+            .split("")
             .map((letter, i) => i % 2 === 0 ? letter.toUpperCase() : letter.toLowerCase())
-            .join(''),
+            .join(""),
         s
-            .split('')
+            .split("")
             .map((letter, i) => i % 2 !== 0 ? letter.toUpperCase() : letter.toLowerCase())
-            .join('')
+            .join(""),
     ];
 }
 class G964 {
@@ -515,23 +547,27 @@ const solve = (str) => {
         if (/[A-Z]/.test(letter))
             upperC++;
     }
-    return upperC > str.length / 2
-        ? str.toUpperCase()
-        : str.toLowerCase();
+    return upperC > str.length / 2 ? str.toUpperCase() : str.toLowerCase();
 };
 function solve2(s) {
-    let uppercaseCount = s.split('').filter(letter => letter === letter.toUpperCase()).length;
+    let uppercaseCount = s
+        .split("")
+        .filter((letter) => letter === letter.toUpperCase()).length;
     return uppercaseCount > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
 }
 function solve3(s) {
-    return (s.match(/[a-z]/g) || []).length >= s.length / 2 ? s.toLowerCase() : s.toUpperCase();
+    return (s.match(/[a-z]/g) || []).length >= s.length / 2
+        ? s.toLowerCase()
+        : s.toUpperCase();
 }
 const solve4 = (s) => {
-    const upperCs = s.split("").filter(x => x == x.toUpperCase());
+    const upperCs = s.split("").filter((x) => x == x.toUpperCase());
     return upperCs.length > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
 };
 function solve5(s) {
-    return s.replace(/[a-z]/g, '').length > s.length / 2 ? s.toUpperCase() : s.toLowerCase();
+    return s.replace(/[a-z]/g, "").length > s.length / 2
+        ? s.toUpperCase()
+        : s.toLowerCase();
 }
 const minValue = (values) => {
     return Number(Array.from(new Set(values)).sort().join(""));
@@ -561,7 +597,11 @@ const checkExam = (array1, array2) => {
 function checkExam2(array1, array2) {
     let result = 0;
     array2.forEach((item, index) => {
-        item === array1[index] ? result += 4 : item === '' ? result += 0 : result -= 1;
+        item === array1[index]
+            ? (result += 4)
+            : item === ""
+                ? (result += 0)
+                : (result -= 1);
     });
     return Math.max(result, 0);
 }
@@ -588,7 +628,10 @@ const sumDigits = (num) => {
         .reduce((a, b) => a + b);
 };
 function sumDigits2(number) {
-    return Math.abs(number).toString().split('').reduce((acc, digit) => parseInt(digit) + acc, 0);
+    return Math.abs(number)
+        .toString()
+        .split("")
+        .reduce((acc, digit) => parseInt(digit) + acc, 0);
 }
 const maxMultiple = (divisor, bound) => {
     let solution = 0;
@@ -601,7 +644,7 @@ const maxMultiple = (divisor, bound) => {
     return solution;
 };
 function maxMultiple2(divisor, bound) {
-    return bound - bound % divisor;
+    return bound - (bound % divisor);
 }
 function maxMultiple3(divisor, bound) {
     return Math.floor(bound / divisor) * divisor;
@@ -612,10 +655,10 @@ function maxMultiple4(divisor, bound) {
             return n;
 }
 const twoOldestAges = (ages) => {
-    return ages
+    return (ages
         .sort((a, b) => b - a)
         .slice(0, 2)
-        .reverse();
+        .reverse());
 };
 const twoOldestAges2 = (ages) => ages.sort((a, b) => a - b).slice(ages.length - 2);
 const divisors = (num) => {
@@ -657,9 +700,7 @@ const nbDig = (num, digit) => {
     return counter;
 };
 const breakChocolate = (n, m) => {
-    return n * m > 1
-        ? n * m - 1
-        : 0;
+    return n * m > 1 ? n * m - 1 : 0;
 };
 const dontGiveMeFive = (start, end) => {
     let counter = 0;
@@ -671,16 +712,15 @@ const dontGiveMeFive = (start, end) => {
     return counter;
 };
 function dontGiveMeFive2(start, end) {
-    return Array.from({ length: (end - start) + 1 }, (ix, it) => it + start).filter((it) => !(/5/.test(it + ""))).length;
+    return Array.from({ length: end - start + 1 }, (ix, it) => it + start).filter((it) => !/5/.test(it + "")).length;
 }
-;
 function dontGiveMeFive3(start, end) {
-    return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(x => !/5/.test(`${x}`)).length;
+    return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter((x) => !/5/.test(`${x}`)).length;
 }
 const reverseWords = (str) => {
     return str
         .split(" ")
-        .map((word) => word.split("").reverse().join(''))
+        .map((word) => word.split("").reverse().join(""))
         .join(" ");
 };
 const SeriesSum = (num) => {
@@ -691,7 +731,10 @@ const SeriesSum = (num) => {
     return String(sum.toFixed(2));
 };
 function SeriesSum2(n) {
-    return [...Array(n).keys()].map(k => 1 / (k * 3 + 1)).reduce((acc, n) => acc + n, 0).toFixed(2);
+    return [...Array(n).keys()]
+        .map((k) => 1 / (k * 3 + 1))
+        .reduce((acc, n) => acc + n, 0)
+        .toFixed(2);
 }
 const solution = (str, ending) => {
     return str.endsWith(ending);
@@ -713,7 +756,7 @@ const oddOrEven = (array) => {
 function oddOrEven2(array) {
     return array.reduce((acc, it) => acc + it, 0) % 2 ? "odd" : "even";
 }
-const oddOrEven3 = (array) => array.reduce((acc, curr) => acc += curr, 0) % 2 === 0 ? 'even' : 'odd';
+const oddOrEven3 = (array) => array.reduce((acc, curr) => (acc += curr), 0) % 2 === 0 ? "even" : "odd";
 const number = (busStops) => {
     let counter = 0;
     busStops.forEach((stop) => {
@@ -729,15 +772,15 @@ function rowSumOddNumbers(n) {
     return Math.pow(n, 3);
 }
 const isTriangle = (a, b, c) => {
-    return (a + b) > c && (a + c) > b && (b + c) > a;
+    return a + b > c && a + c > b && b + c > a;
 };
-const isTriangle2 = (a, b, c) => (a + b <= c || a + c <= b || b + c <= a) ? false : true;
+const isTriangle2 = (a, b, c) => a + b <= c || a + c <= b || b + c <= a ? false : true;
 function isTriangle3(a, b, c) {
     return a + b <= c ? false : a + c <= b ? false : b + c <= a ? false : true;
 }
 const validatePin = (pin) => {
-    return (pin.length === 4 && pin.match(/\d/g).length === 4)
-        || (pin.length === 6 && pin.match(/\d/g).length === 6);
+    return ((pin.length === 4 && pin.match(/\d/g).length === 4) ||
+        (pin.length === 6 && pin.match(/\d/g).length === 6));
 };
 class Kata2 {
     static validatePin(pin) {
@@ -754,7 +797,7 @@ class Kata3 {
 exports.Kata3 = Kata3;
 class Kata4 {
     static validatePin(pin) {
-        const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
         if (pin.length !== 4 && pin.length !== 6) {
             return false;
         }
@@ -788,11 +831,19 @@ const dnaStrand = (dna) => {
     return arr.join("");
 };
 const toJadenCase = (str) => {
-    console.log(str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" "));
-    return str.split(" ").map((word) => word.replace(word[0], word[0].toUpperCase())).join(" ");
+    console.log(str
+        .split(" ")
+        .map((word) => word.replace(word[0], word[0].toUpperCase()))
+        .join(" "));
+    return str
+        .split(" ")
+        .map((word) => word.replace(word[0], word[0].toUpperCase()))
+        .join(" ");
 };
 const findShort = (str) => {
-    return str.split(" ").sort((a, b) => { return a.length - b.length; })[0].length;
+    return str.split(" ").sort((a, b) => {
+        return a.length - b.length;
+    })[0].length;
 };
 findShort("bitcoin take over the world maybe who knows perhaps");
 const xo = (str) => {
@@ -815,7 +866,6 @@ const isIsogram = (str) => {
 function isSquare(num) {
     return Number.isInteger(Math.sqrt(num));
 }
-;
 const getMiddle = (str) => {
     const halfLength = str.length / 2;
     const isEvenLength = str.length % 2 === 0;

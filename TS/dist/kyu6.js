@@ -30,10 +30,12 @@ const wave = (str) => {
 function wave3(str) {
     const result = [];
     for (let i = 0; i < str.length; i++) {
-        if (str.charAt(i) === ' ') {
+        if (str.charAt(i) === " ") {
             continue;
         }
-        result.push(str.substring(0, i) + str.charAt(i).toUpperCase() + str.substring(i + 1));
+        result.push(str.substring(0, i) +
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1));
     }
     return result;
 }
@@ -51,18 +53,20 @@ function wave5(str) {
 function wave7(str) {
     let finalArray = [];
     for (let i = 0; i < str.length; i++) {
-        if (str[i] === ' ')
+        if (str[i] === " ")
             continue;
-        let letters = str.split('');
+        let letters = str.split("");
         letters[i] = str[i].toUpperCase();
-        finalArray.push(letters.join(''));
+        finalArray.push(letters.join(""));
     }
     return finalArray;
 }
 const bouncingBall = (dropHeight, bounceRate, viewHeight) => {
-    if (dropHeight <= 0
-        || (bounceRate <= 0 || bounceRate >= 1)
-        || (viewHeight <= 0 || viewHeight >= dropHeight)) {
+    if (dropHeight <= 0 ||
+        bounceRate <= 0 ||
+        bounceRate >= 1 ||
+        viewHeight <= 0 ||
+        viewHeight >= dropHeight) {
         return -1;
     }
     let actualBounce = dropHeight * bounceRate;
@@ -99,34 +103,30 @@ class G964a {
 }
 class G964a2 {
     static inArray(a1, a2) {
-        return a1.filter(a => a2.some(b => b.includes(a))).sort();
+        return a1.filter((a) => a2.some((b) => b.includes(a))).sort();
     }
 }
 class G964a3 {
     static inArray(a1, a2) {
-        return a1.filter(x => a2.join().indexOf(x) > -1).sort();
+        return a1.filter((x) => a2.join().indexOf(x) > -1).sort();
     }
 }
 class G964a4 {
     static inArray(a1, a2) {
-        const source = a2.join('#');
-        return a1
-            .filter((item) => source.indexOf(item) !== -1)
-            .sort();
+        const source = a2.join("#");
+        return a1.filter((item) => source.indexOf(item) !== -1).sort();
     }
 }
 class G964a5 {
     static inArray(a1, a2) {
-        return a1
-            .sort()
-            .filter(s => a2.find(s2 => s2.includes(s)));
+        return a1.sort().filter((s) => a2.find((s2) => s2.includes(s)));
     }
 }
 const comp = (a1, a2) => {
-    return (a1 === null || a2 === null)
+    return a1 === null || a2 === null
         ? false
-        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2)))
-            === String([...a2].sort((a, b) => a - b));
+        : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
+            String([...a2].sort((a, b) => a - b));
 };
 const comp2 = (a1, a2) => {
     if (a1 === null || a2 === null)
@@ -137,19 +137,34 @@ const comp2 = (a1, a2) => {
     return String(ascending1Squared) === String(ascending2);
 };
 var b1 = [121, 144, 19, 161, 19, 144, 19, 11];
-var b2 = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19];
+var b2 = [
+    11 * 21,
+    121 * 121,
+    144 * 144,
+    19 * 19,
+    161 * 161,
+    19 * 19,
+    144 * 144,
+    19 * 19,
+];
 function comp3(a1, a2) {
     if (!(a1 && a2) || a1.length !== a2.length)
         return false;
-    return a1.map(x => x * x).sort().toString() === a2.sort().toString();
+    return (a1
+        .map((x) => x * x)
+        .sort()
+        .toString() === a2.sort().toString());
 }
 function comp4(a1, a2) {
-    return !!a1 && !!a2 && a1.map(x => x * x).sort().join() == a2.sort().join();
+    return (!!a1 &&
+        !!a2 &&
+        a1
+            .map((x) => x * x)
+            .sort()
+            .join() == a2.sort().join());
 }
 const longestConsec = (strArr, numWords) => {
-    if (strArr.length === 0
-        || numWords < 1
-        || numWords > strArr.length) {
+    if (strArr.length === 0 || numWords < 1 || numWords > strArr.length) {
         return "";
     }
     let concatArr = [];
@@ -176,8 +191,9 @@ const longestConsec = (strArr, numWords) => {
 function longestConsec2(strarr, k) {
     if (strarr.length === 0 || k > strarr.length || k <= 0)
         return "";
-    return strarr.map((currentValue, index, array) => array.slice(index, index + k).join(''))
-        .reduce((acc, cur) => cur.length > acc.length ? cur : acc);
+    return strarr
+        .map((currentValue, index, array) => array.slice(index, index + k).join(""))
+        .reduce((acc, cur) => (cur.length > acc.length ? cur : acc));
 }
 function longestConsec3(strarr, k) {
     if (!(strarr && strarr.length) || k <= 0 || strarr.length < k) {
@@ -189,10 +205,10 @@ function longestConsec3(strarr, k) {
     }, "");
 }
 function longestConsec4(strarr, k) {
-    let max = '';
+    let max = "";
     const n = strarr.length;
     for (let i = 0; i <= n - k && k > 0 && k <= n; i++) {
-        const newStr = strarr.slice(i, i + k).join('');
+        const newStr = strarr.slice(i, i + k).join("");
         max = max.length >= newStr.length ? max : newStr;
     }
     return max;
@@ -204,9 +220,7 @@ const findNb = (num) => {
         total -= Math.pow(base, 3);
         base++;
     }
-    return total < 0
-        ? -1
-        : base - 1;
+    return total < 0 ? -1 : base - 1;
 };
 function findNb2(m) {
     var n = 0;
@@ -220,7 +234,7 @@ function findNb3(m) {
     for (; sum < m; i++) {
         sum += Math.pow(i, 3);
     }
-    return sum === m ? (i - 1) : -1;
+    return sum === m ? i - 1 : -1;
 }
 function findNb4(m) {
     let n = 1;
@@ -235,15 +249,13 @@ function findNb4(m) {
 class G964 {
 }
 G964.digPow = (num, pow) => {
-    const digitArr = String(num).split("").map((Number));
+    const digitArr = String(num).split("").map(Number);
     let sum = 0;
     digitArr.forEach((digit, idx) => {
         sum += Math.pow(digit, idx + pow);
     });
     console.log("sum: " + sum);
-    return sum % num === 0
-        ? sum / num
-        : -1;
+    return sum % num === 0 ? sum / num : -1;
 };
 const validBraces = (braces) => {
     if (braces.length % 2 > 0)
@@ -260,9 +272,9 @@ function validBraces2(braces) {
     if (braces.length % 2 !== 0)
         return false;
     let count = braces.length;
-    braces = braces.replace('()', '');
-    braces = braces.replace('[]', '');
-    braces = braces.replace('{}', '');
+    braces = braces.replace("()", "");
+    braces = braces.replace("[]", "");
+    braces = braces.replace("{}", "");
     if (braces.length === 0)
         return true;
     if (braces.length === count)
@@ -272,12 +284,15 @@ function validBraces2(braces) {
 function validBraces3(braces) {
     let tempBraces = braces;
     for (let i = 0; i <= braces.length / 2; i++) {
-        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, '');
+        tempBraces = tempBraces.replace(/(\(\))|(\[\])|(\{\})/g, "");
     }
     return !tempBraces;
 }
 function validBrace4(braces) {
-    [...braces].forEach(() => braces = braces.replace('()', '').replace('{}', '').replace('[]', ''));
+    [...braces].forEach(() => (braces = braces
+        .replace("()", "")
+        .replace("{}", "")
+        .replace("[]", "")));
     return !braces;
 }
 const validBraces5 = (braces) => {
@@ -290,7 +305,34 @@ const validBraces5 = (braces) => {
         return validBraces(s);
 };
 const high = (str) => {
-    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const alphabet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
     const getScore = (str) => {
         let score = 0;
         str.split("").forEach((char) => {
@@ -307,19 +349,23 @@ const high = (str) => {
 };
 const VALUE_OFFSET = 96;
 const calcValue = (word) => {
-    return word.split('').reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
+    return word
+        .split("")
+        .reduce((sum, char) => sum + char.charCodeAt(0) - VALUE_OFFSET, 0);
 };
 const high2 = (str) => {
-    return str.split(' ').reduce((max, word) => calcValue(word) > calcValue(max) ? word : max);
+    return str
+        .split(" ")
+        .reduce((max, word) => (calcValue(word) > calcValue(max) ? word : max));
 };
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
 const getLetterScore = (str) => alphabet.indexOf(str) + 1;
 const getWordScore = (str) => str
-    .split('')
+    .split("")
     .map(getLetterScore)
     .reduce((acc, n) => acc + n, 0);
 const high3 = (str) => str
-    .split(' ')
+    .split(" ")
     .reduce((acc, value) => getWordScore(value) > getWordScore(acc) ? value : acc);
 const towerBuilder = (nFloors) => {
     const absoluteWidth = nFloors + (nFloors - 1);
@@ -327,12 +373,10 @@ const towerBuilder = (nFloors) => {
     for (let floors = 1, blocks = 1; floors <= nFloors; floors++, blocks += 2) {
         let floorStr = "";
         let leadTrailSpaces = (absoluteWidth - blocks) / 2;
-        floorStr = " "
-            .repeat(leadTrailSpaces)
-            + "*"
-                .repeat(blocks)
-            + " "
-                .repeat(leadTrailSpaces);
+        floorStr =
+            " ".repeat(leadTrailSpaces) +
+                "*".repeat(blocks) +
+                " ".repeat(leadTrailSpaces);
         building.push(floorStr);
     }
     console.log(building);
@@ -350,21 +394,72 @@ const towerBuilder3 = (nFloors) => {
 const towerBuilder4 = (n) => {
     const result = [];
     for (let i = 1; i <= n; i++) {
-        result.push(' '.repeat(n - i)
-            + '*'.repeat(i * 2 - 1)
-            + ' '.repeat(n - i));
+        result.push(" ".repeat(n - i) + "*".repeat(i * 2 - 1) + " ".repeat(n - i));
     }
     return result;
 };
 const towerBuilder5 = (n) => {
     return new Array(n).fill("").map((_, i) => {
         let spaces = " ".repeat(n - i - 1);
-        return spaces + '*'.repeat(2 * i + 1) + spaces;
+        return spaces + "*".repeat(2 * i + 1) + spaces;
     });
 };
 const findMissingLetter = (arr) => {
     let solution = "";
-    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const alphabet = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
     const startIdx = alphabet.indexOf(arr[0]);
     for (let i = 1; i < arr.length; i++) {
         if (alphabet[startIdx + i] !== arr[i]) {
@@ -374,28 +469,28 @@ const findMissingLetter = (arr) => {
     }
     return solution;
 };
-findMissingLetter(['a', 'b', 'c', 'd', 'f']);
-findMissingLetter(['O', 'Q', 'R', 'S']);
+findMissingLetter(["a", "b", "c", "d", "f"]);
+findMissingLetter(["O", "Q", "R", "S"]);
 function findMissingLetter3(array) {
     const isUpper = array[0] == array[0].toUpperCase();
-    let expectedLetter = '';
+    let expectedLetter = "";
     for (const letter of array) {
-        if (expectedLetter != '' && letter != expectedLetter)
+        if (expectedLetter != "" && letter != expectedLetter)
             return expectedLetter;
         expectedLetter = String.fromCharCode(letter.charCodeAt(0) + 1);
     }
-    throw 'Nothing missing';
+    throw "Nothing missing";
 }
 function findMissingLetter4(letters) {
     const first = letters.shift().charCodeAt(0) + 1;
-    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== (i + first));
+    const offset = letters.findIndex((l, i) => l.charCodeAt(0) !== i + first);
     return String.fromCharCode(first + offset);
 }
 function findMissingLetter5(array) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     return alphabet
         .substr(alphabet.indexOf(array[0]))
-        .split('')
+        .split("")
         .find((curr, idx) => curr != array[idx]);
 }
 const findUniq = (arr) => {
@@ -404,7 +499,8 @@ const findUniq = (arr) => {
     if (arr[0] !== arr[1] && arr[0] !== arr[2]) {
         solution = arr[0];
     }
-    if (arr[arrLength - 1] !== arr[arrLength - 2] && arr[arrLength - 1] !== arr[arrLength - 3]) {
+    if (arr[arrLength - 1] !== arr[arrLength - 2] &&
+        arr[arrLength - 1] !== arr[arrLength - 3]) {
         solution = arr[arrLength - 1];
     }
     for (let i = 1; i < arrLength - 1; i++) {
@@ -421,10 +517,10 @@ function findUniq3(arr) {
 }
 function findUniq4(arr) {
     const x = arr[arr[0] == arr[1] ? 0 : 2];
-    return arr.find(y => y != x);
+    return arr.find((y) => y != x);
 }
 function findUniq5(arr) {
-    return arr.find(n => arr.indexOf(n) === arr.lastIndexOf(n));
+    return arr.find((n) => arr.indexOf(n) === arr.lastIndexOf(n));
 }
 function findUniq6(arr) {
     var arr = arr.sort();
@@ -435,9 +531,7 @@ function findUniq7(arr) {
 }
 const narcissistic = (num) => {
     const exp = num.toString().length;
-    const digitArr = num
-        .toString().split("")
-        .map(Number);
+    const digitArr = num.toString().split("").map(Number);
     const powerSum = digitArr
         .map((base) => Math.pow(base, exp))
         .reduce((a, b) => a + b);
@@ -450,12 +544,12 @@ narcissistic(16342);
 function narcissistic2(value) {
     const str = String(value);
     let acc = 0;
-    str.split('').forEach((x) => acc += Math.pow(+x, str.length));
+    str.split("").forEach((x) => (acc += Math.pow(+x, str.length)));
     return acc === value;
 }
 function narcissistic3(value) {
-    const digits = String(value).split('');
-    return digits.reduce((acc, current) => acc + Math.pow(Number(current), digits.length), 0) === value;
+    const digits = String(value).split("");
+    return (digits.reduce((acc, current) => acc + Math.pow(Number(current), digits.length), 0) === value);
 }
 const isPangram = (phrase) => {
     const lettersArr = phrase.toLowerCase().match(/[a-z]/g);
@@ -498,7 +592,7 @@ function tribonacci3([a, b, c], n) {
     }
     return result;
 }
-const tribonacci4 = ([a, b, c], n) => n < 1 ? [] : [a].concat(tribonacci([b, c, a + b + c], n - 1));
+const tribonacci4 = ([a, b, c], n) => (n < 1 ? [] : [a].concat(tribonacci([b, c, a + b + c], n - 1)));
 const findEvenIndex = (arr) => {
     const sum = arr.reduce((a, b) => a + b);
     let counterLeft = 0;
@@ -510,7 +604,11 @@ const findEvenIndex = (arr) => {
         if (sideSum === counterLeft) {
             solution = i;
         }
-        console.table({ current: current, sideSum: sideSum, counter: counterLeft });
+        console.table({
+            current: current,
+            sideSum: sideSum,
+            counter: counterLeft,
+        });
         if (sideSum === counterLeft) {
             console.log("solution found at idx : ", i);
             solution = i;
@@ -532,33 +630,40 @@ const order = (words) => {
     }
 };
 function order2(words) {
-    return words.split(' ')
+    return words
+        .split(" ")
         .sort((a, b) => +a.match(/\d/) - +b.match(/\d/))
-        .join(' ');
+        .join(" ");
 }
 function order3(words) {
-    return words.split(' ')
+    return words
+        .split(" ")
         .sort((l, r) => +/\d/.exec(l)[0] - +/\d/.exec(r)[0])
-        .join(' ');
+        .join(" ");
 }
 const order4 = (words) => {
-    return words.split(' ').sort((a, b) => +a.replace(/\D/g, '') - +b.replace(/\D/g, '')).join(' ');
+    return words
+        .split(" ")
+        .sort((a, b) => +a.replace(/\D/g, "") - +b.replace(/\D/g, ""))
+        .join(" ");
 };
 const isValidWalk = (directions) => {
     const counterObj = {};
-    directions.forEach(dir => counterObj[dir] = (counterObj[dir] || 0) + 1);
+    directions.forEach((dir) => (counterObj[dir] = (counterObj[dir] || 0) + 1));
     return directions.length === 10
-        ? (counterObj.n === counterObj.s) && (counterObj.e === counterObj.w)
+        ? counterObj.n === counterObj.s && counterObj.e === counterObj.w
         : false;
 };
-isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']);
-isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']);
+isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]);
+isValidWalk(["w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e"]);
 function isValidWalk2(walk) {
     if (walk.length !== 10)
         return false;
-    if (walk.filter(e => e === 'n').length !== walk.filter(e => e === 's').length)
+    if (walk.filter((e) => e === "n").length !==
+        walk.filter((e) => e === "s").length)
         return false;
-    if (walk.filter(e => e === 'e').length !== walk.filter(e => e === 'w').length)
+    if (walk.filter((e) => e === "e").length !==
+        walk.filter((e) => e === "w").length)
         return false;
     return true;
 }
@@ -585,22 +690,23 @@ function isValidWalk4(walk) {
     };
     for (let i = 0; i < walk.length; i++) {
         switch (walk[i]) {
-            case 'n':
+            case "n":
                 coordinates.x++;
                 break;
-            case 's':
+            case "s":
                 coordinates.x--;
                 break;
-            case 'e':
+            case "e":
                 coordinates.y++;
                 break;
-            case 'w':
+            case "w":
                 coordinates.y--;
                 break;
-            default: break;
+            default:
+                break;
         }
     }
-    return (!coordinates.x && !coordinates.y);
+    return !coordinates.x && !coordinates.y;
 }
 const duplicateEncode = (word) => {
     const original = word.split("").map((letter) => letter.toLowerCase());
@@ -622,11 +728,11 @@ const duplicateEncode = (word) => {
 function duplicateEncode2(word) {
     return word
         .toLowerCase()
-        .split('')
+        .split("")
         .map((a, i, w) => {
-        return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')';
+        return w.indexOf(a) == w.lastIndexOf(a) ? "(" : ")";
     })
-        .join('');
+        .join("");
 }
 function duplicateEncode3(word) {
     word = word.toLowerCase();
@@ -635,47 +741,46 @@ function duplicateEncode3(word) {
         let count = countObj[char] || 0;
         countObj[char] = ++count;
     }
-    let result = '';
+    let result = "";
     for (let char of word) {
-        result += countObj[char] > 1 ? ')' : '(';
+        result += countObj[char] > 1 ? ")" : "(";
     }
     return result;
 }
 function duplicateEncode4(word) {
     const chars = word.toLowerCase().split("");
-    return chars.map(char => chars.filter(c => c === char).length > 1 ? ")" : "(").join("");
+    return chars
+        .map((char) => (chars.filter((c) => c === char).length > 1 ? ")" : "("))
+        .join("");
 }
 function duplicateEncode5(word) {
     return word
-        .split('')
-        .map(value => (word.match(new RegExp(`[${value}]`, "giu")) || []).length > 1
-        ? ')'
-        : '(')
-        .join('');
+        .split("")
+        .map((value) => (word.match(new RegExp(`[${value}]`, "giu")) || []).length > 1
+        ? ")"
+        : "(")
+        .join("");
 }
 const duplicateCount = (text) => {
     const counterObj = {};
-    text
-        .split("")
+    text.split("")
         .map((letter) => letter.toLowerCase())
-        .forEach(num => counterObj[num] = (counterObj[num] || 0) + 1);
-    const duplicatesArr = Object
-        .entries(counterObj)
-        .filter(([key, value]) => value > 1);
+        .forEach((num) => (counterObj[num] = (counterObj[num] || 0) + 1));
+    const duplicatesArr = Object.entries(counterObj).filter(([key, value]) => value > 1);
     return duplicatesArr.length;
 };
 function duplicateCount3(text) {
     const values = text.toLowerCase();
     const distinctValues = [...new Set(values)];
     const count = (s) => values.split(s).length - 1 > 1;
-    return distinctValues.filter(value => count(value)).length;
+    return distinctValues.filter((value) => count(value)).length;
 }
 function duplicateCount4(text) {
-    let array = text.toLowerCase().split('');
+    let array = text.toLowerCase().split("");
     return [...new Set(array.filter((e, i) => array.indexOf(e) !== i))].length;
 }
 function duplicateCount5(text) {
-    return new Set((text.toLowerCase().match(/(.)(?=.*\1)/gi) || [])).size;
+    return new Set(text.toLowerCase().match(/(.)(?=.*\1)/gi) || []).size;
 }
 const findOutlier = (ints) => {
     const odds = ints.filter((num) => Math.abs(num) % 2 === 1);
@@ -683,17 +788,17 @@ const findOutlier = (ints) => {
     return odds.length > 1 ? evens[0] : odds[0];
 };
 function findOutlier2(integers) {
-    if (integers.slice(0, 3).filter(i => i % 2 !== 0).length > 1) {
-        return integers.find(v => v % 2 === 0) || 0;
+    if (integers.slice(0, 3).filter((i) => i % 2 !== 0).length > 1) {
+        return integers.find((v) => v % 2 === 0) || 0;
     }
     else {
-        return integers.find(v => v % 2 !== 0) || 0;
+        return integers.find((v) => v % 2 !== 0) || 0;
     }
 }
 exports.findOutlier2 = findOutlier2;
 function findOutlier3(integers) {
-    const odds = integers.filter(v => v % 2);
-    const evens = integers.filter(v => !(v % 2));
+    const odds = integers.filter((v) => v % 2);
+    const evens = integers.filter((v) => !(v % 2));
     return odds.length === 1 ? odds[0] : evens[0];
 }
 exports.findOutlier3 = findOutlier3;
@@ -702,28 +807,26 @@ const countBits = (num) => {
     return bitArr === null ? 0 : bitArr.length;
 };
 function countBits2(n) {
-    return n.toString(2).replace(/0/g, '').length;
+    return n.toString(2).replace(/0/g, "").length;
 }
 exports.countBits2 = countBits2;
 function countBits3(n) {
-    return n.toString(2).split('').filter(c => c === '1').length;
+    return n
+        .toString(2)
+        .split("")
+        .filter((c) => c === "1").length;
 }
 exports.countBits3 = countBits3;
 function countBits4(n) {
-    return n.toString(2)
-        .split('')
-        .map(Number)
-        .filter(Boolean)
-        .length;
+    return n.toString(2).split("").map(Number).filter(Boolean).length;
 }
 exports.countBits4 = countBits4;
 function countBits5(n) {
-    return n.toString(2).split('1').length - 1;
-    ;
+    return n.toString(2).split("1").length - 1;
 }
 exports.countBits5 = countBits5;
 function countBits6(n) {
-    return n.toString(2).replace(/0/gi, '').length;
+    return n.toString(2).replace(/0/gi, "").length;
 }
 exports.countBits6 = countBits6;
 function countBits7(n) {
@@ -769,17 +872,17 @@ const spinWords = (words) => {
     return arr.join(" ");
 };
 function spinWords2(words) {
-    return words.replace(/[a-z]{5,}/ig, (s) => s.split("").reverse().join(""));
+    return words.replace(/[a-z]{5,}/gi, (s) => s.split("").reverse().join(""));
 }
 const findOdd = (arr) => {
     const counter = {};
-    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+    arr.forEach((num) => (counter[num] = (counter[num] || 0) + 1));
     const oddTimesArr = Object.entries(counter).filter(([key, value]) => value % 2 > 0);
     return Number(oddTimesArr[0][0]);
 };
 const findOdd2 = (arr) => {
     const counter = {};
-    arr.forEach(num => counter[num] = (counter[num] || 0) + 1);
+    arr.forEach((num) => (counter[num] = (counter[num] || 0) + 1));
     let solution;
     Object.entries(counter).forEach(([key, value]) => {
         if (value % 2 > 0)
