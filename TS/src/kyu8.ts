@@ -560,14 +560,39 @@ If you are an experienced programmer, try shortening your code as much as possib
 */
 
 function htmlspecialchars(formData: string): string {
-    // Insert your code here
-    return formData;
+    // interface StrKeyVal {
+    //     [key: string]: string;
+    // }
+    // const chars: StrKeyVal = {
+    //     "<": "&lt;",
+    //     ">": "&gt;",
+    //     '"': "&quot;",
+    //     "&": "&amp;",
+    // };
+    // return formData.replace(/[<>'&]/g, (m: string) => chars[m]);
+
+    const strArr: string[] = formData.split("");
+    // console.log(strArr);
+
+    for (let i = 0; i < strArr.length; i++) {
+        if (strArr[i] === "<") {
+            strArr.splice(i, 1, "&lt;");
+        } else if (strArr[i] === ">") {
+            strArr.splice(i, 1, "&gt;");
+        } else if (strArr[i] === '"') {
+            strArr.splice(i, 1, "&quot;");
+        } else if (strArr[i] === "&") {
+            strArr.splice(i, 1, "&amp;");
+        }
+    }
+
+    return strArr.join("");
 }
 
-// console.log(htmlspecialchars('abc'));
+// console.log(htmlspecialchars("abc"));
 // console.log(htmlspecialchars("<h2>Hello World</h2>"));
 // console.log(htmlspecialchars("Hello, how would you & I fare?"));
-// console.log();
+console.log(htmlspecialchars('How was "The Matrix"?  Did you like it?'));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 

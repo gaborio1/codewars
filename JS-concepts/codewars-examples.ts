@@ -2,7 +2,6 @@
 // MATH
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // MATH.MAX()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -10,19 +9,15 @@
 //1️⃣ VS TERNARY: RETURN SOMETHING OR ZERO
 
 const enough = (cap: number, on: number, wait: number): number => {
+    return cap < on + wait ? on + wait - cap : 0;
+};
 
-    return cap < (on + wait)
-        ? (on + wait) - cap
-        : 0;
-
-}
-
-const enough2 = (cap: number, on: number, wait: number): number => Math.max(on + wait - cap, 0);
+const enough2 = (cap: number, on: number, wait: number): number =>
+    Math.max(on + wait - cap, 0);
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // BITWISE OPERATORS
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-
 
 /*
 
@@ -61,12 +56,12 @@ Operator	Description	Example	Same as	Result	Decimal
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: SINGLE PIPE BITWISE OPERATOR "|"
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE: 
+// SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const getAverage = (marks: number[]): number => {
     return Math.floor(marks.reduce((a, b) => a + b) / marks.length);
-}
+};
 
 // VS:
 
@@ -74,7 +69,6 @@ const getAverage = (marks: number[]): number => {
 function getAverage2(marks: number[]): number {
     return (marks.reduce((a, b) => a + b) / marks.length) | 0;
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // "AND" / "&"
@@ -88,27 +82,25 @@ function getAverage2(marks: number[]): number {
 // ❗️❗️❗️ num & 1 ❗️❗️❗️
 function simpleMultiplication6(num: number): number {
     if (num & 1) {
-        return num * 9
+        return num * 9;
     }
     return num * 8;
 }
 
-
 function oddOrEven(x: number) {
-    return (x & 1) ? "odd" : "even";
+    return x & 1 ? "odd" : "even";
 }
 
-function isOdd(num: number): number { return num % 2; }
-
+function isOdd(num: number): number {
+    return num % 2;
+}
 
 // FILTER OUT ODD NUMBERS:
 const getEvenNumbers = (numbersArray: number[]): number[] => {
-
     return numbersArray.filter((num) => {
         return (num & 1) === 0;
     });
-
-}
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // "XOR" / "^" (EXCLUSIVE OR)
@@ -118,7 +110,6 @@ const getEvenNumbers = (numbersArray: number[]): number[] => {
 
 class XOR {
     public static xor(a: boolean, b: boolean): boolean {
-
         // ❗️❗️❗️
 
         return (a && !b) || (b && !a);
@@ -126,10 +117,8 @@ class XOR {
         return a != b;
 
         // ❗️❗️❗️
-
     }
 }
-
 
 // 1️⃣  FIND UNIQUE NUMBER IN ARRAY
 
@@ -138,37 +127,32 @@ const findOdd3 = (xs: number[]): number => {
     return xs.reduce((a, b) => a ^ b);
 };
 
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // SWITCH STATEMENT
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  SWITCH(TRUE) WITH LOGICAL OPERATORS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-
 // ❗️❗️❗️ LOGICAL OPERATORS IN SWITCH ❗️❗️❗️
 const bmi = (weight: number, height: number): string => {
-
     const bmi = weight / height ** 2;
 
     switch (true) {
-        case (bmi <= 18.5):
+        case bmi <= 18.5:
             return "Underweight";
             break;
-        case (bmi <= 25.0):
+        case bmi <= 25.0:
             return "Normal";
             break;
-        case (bmi <= 30.0):
+        case bmi <= 30.0:
             return "Overweight";
             break;
         default:
-            return "Obese"
+            return "Obese";
     }
-
-}
+};
 
 // console.log(bmi(90, 1.80));
 
@@ -177,17 +161,27 @@ const bmi = (weight: number, height: number): string => {
 // ❗️❗️❗️ CHAINED TERNARY ❗️❗️❗️
 function bmi2(weight: number, height: number): string {
     const $ = weight / height ** 2;
-    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+    return $ <= 18.5
+        ? "Underweight"
+        : $ <= 25.0
+        ? "Normal"
+        : $ <= 30.0
+        ? "Overweight"
+        : "Obese";
 }
 
-const bmi3 = (weight: number, height: number, bmi: number = 0): string => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
-
-
+const bmi3 = (weight: number, height: number, bmi: number = 0): string =>
+    (bmi = weight / height ** 2) > 18.5
+        ? bmi > 25
+            ? bmi > 30
+                ? "Obese"
+                : "Overweight"
+            : "Normal"
+        : "Underweight";
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TERNARY OPERATOR
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  CHAINED TERNARY:
@@ -195,10 +189,23 @@ const bmi3 = (weight: number, height: number, bmi: number = 0): string => (bmi =
 
 function bmi4(weight: number, height: number): string {
     const $ = weight / height ** 2;
-    return $ <= 18.5 ? 'Underweight' : $ <= 25.0 ? 'Normal' : $ <= 30.0 ? 'Overweight' : 'Obese';
+    return $ <= 18.5
+        ? "Underweight"
+        : $ <= 25.0
+        ? "Normal"
+        : $ <= 30.0
+        ? "Overweight"
+        : "Obese";
 }
 
-const bmi5 = (weight: number, height: number, bmi: number = 0): string => (bmi = weight / height ** 2) > 18.5 ? bmi > 25 ? bmi > 30 ? 'Obese' : 'Overweight' : 'Normal' : 'Underweight';
+const bmi5 = (weight: number, height: number, bmi: number = 0): string =>
+    (bmi = weight / height ** 2) > 18.5
+        ? bmi > 25
+            ? bmi > 30
+                ? "Obese"
+                : "Overweight"
+            : "Normal"
+        : "Underweight";
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  TERNARY IN STRING TEMPLATE
@@ -208,11 +215,8 @@ const bmi5 = (weight: number, height: number, bmi: number = 0): string => (bmi =
 // otherwise	'Hello guest'
 
 const greetTwo = (name: string, owner: string): string => {
-
     return `Hello ${name === owner ? "boss" : "guest"}`;
-
-}
-
+};
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ARRAY METHODS
@@ -226,7 +230,6 @@ const greetTwo = (name: string, owner: string): string => {
 
 // 1️⃣ LOOP
 const isSortedAndHow = (arr: number[]): string => {
-
     let isAscending: boolean = false;
     let isDescending: boolean = false;
     let solution: string = "no";
@@ -254,19 +257,19 @@ const isSortedAndHow = (arr: number[]): string => {
     }
 
     return solution;
-}
+};
 
-// 2️⃣ CONVERT TO STRING AND THEN COMPARE 
+// 2️⃣ CONVERT TO STRING AND THEN COMPARE
 function isSortedAndHow6(array: number[]): string {
     const asc: number[] = [...array].sort((a, b) => a - b);
     const dsc: number[] = [...array].sort((a, b) => b - a);
     switch (array.toString()) {
         case asc.toString():
-            return 'yes, ascending';
+            return "yes, ascending";
         case dsc.toString():
-            return 'yes, descending';
+            return "yes, descending";
         default:
-            return 'no';
+            return "no";
     }
 }
 
@@ -274,17 +277,14 @@ function isSortedAndHow6(array: number[]): string {
 // FILTER():
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-
 // 1️⃣ REMOVE DUPLICATES FROM ARRAY:
 const twoOldestAges = (ages: number[]): number[] => {
-
     return ages
         .filter((curr, index) => ages.indexOf(curr) === index)
         .sort((a, b) => b - a)
         .slice(0, 2)
         .reverse();
-
-}
+};
 
 //  FILTER WILL REMOVE DUPLICATES IF NEEDED
 // SORT ARRAY DESCENDING NUMERICALLY
@@ -294,7 +294,6 @@ const twoOldestAges = (ages: number[]): number[] => {
 // console.log(twoOldestAges([1, 5, 87, 45, 8, 8, 87]));
 // console.log(twoOldestAges([1, 5, 87, 45, 8, 8]));
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  PUSH():
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -303,7 +302,6 @@ const twoOldestAges = (ages: number[]): number[] => {
 
 // 2️⃣ ☑️
 const reverseSeq = (n: number): number[] => {
-
     const solution: number[] = [];
 
     for (let i = 1; i <= n; i++) {
@@ -311,7 +309,6 @@ const reverseSeq = (n: number): number[] => {
     }
 
     return solution.reverse();
-
 };
 
 // 1️⃣
@@ -319,16 +316,14 @@ const reverseSeq = (n: number): number[] => {
 // Execution Timed Out (12000 ms)
 
 const reverseSeq2 = (n: number): number[] => {
-
     const solution: number[] = [];
     for (let i = 1; i <= n; i++) {
-        solution.unshift(i);			// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+        solution.unshift(i); // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
     }
     return solution;
 };
 
 // console.log(reverseSeq(50));
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  FILL():
@@ -376,7 +371,6 @@ monkeyCount(1) // --> [1]
 */
 
 const monkeyCount = (n: number): number[] => {
-
     const solution: number[] = [];
 
     for (let i = 1; i <= n; i++) {
@@ -384,7 +378,7 @@ const monkeyCount = (n: number): number[] => {
     }
     console.log(solution);
     return solution;
-}
+};
 
 // console.log(monkeyCount(5));
 
@@ -410,20 +404,19 @@ The stop index (position).
 Default is array length.
 */
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️
 function monkeyCount3(n: number) {
-    return Array(n).fill(0).map((e, i) => i + 1)
+    return Array(n)
+        .fill(0)
+        .map((e, i) => i + 1);
 }
 // ❗️❗️❗️
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 1️⃣  ARRAY.FROM():
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
 
 /*
 
@@ -458,7 +451,6 @@ An array	The values from the iterable object.
 
 */
 
-
 /*
 Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
 monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -466,7 +458,6 @@ monkeyCount(1) // --> [1]
 */
 
 const monkeyCount5 = (n: number): number[] => {
-
     const solution: number[] = [];
 
     for (let i = 1; i <= n; i++) {
@@ -474,7 +465,7 @@ const monkeyCount5 = (n: number): number[] => {
     }
     console.log(solution);
     return solution;
-}
+};
 
 // console.log(monkeyCount(5));
 // ❗️❗️❗️
@@ -483,7 +474,7 @@ function monkeyCount2(n: number): number[] {
 }
 
 function monkeyCount4(n: number) {
-    return Array.from(Array(n), (x, ix) => ix + 1)
+    return Array.from(Array(n), (x, ix) => ix + 1);
 }
 // ❗️❗️❗️
 
@@ -540,7 +531,6 @@ arr5.flat();
 
 */
 const flattenAndSort = (inputArray: number[][]): number[] => {
-
     // 1️⃣  ❗️❗️❗️ THIS IS NOT WORKING IN CODEWARS ❗️❗️❗️
     // return inputArray
     //     .flat()
@@ -550,9 +540,7 @@ const flattenAndSort = (inputArray: number[][]): number[] => {
     return inputArray
         .reduce((acc, curr) => acc.concat(curr), [])
         .sort((a, b) => a - b);
-
-}
-
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // .SORT():
@@ -580,7 +568,6 @@ const descArr = [...arr].sort((a, b) => b - a);
 // STRING METHODS
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // .REPLACE():
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -595,37 +582,33 @@ const descArr = [...arr].sort((a, b) => b - a);
 // dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
 
 const dnaStrand = (dna: string): string => {
-
     const arr = dna.split("");
 
-
     arr.map((el, i) => {
-
         switch (el) {
             case "A":
-                arr[i] = "T"
-                break
+                arr[i] = "T";
+                break;
             case "T":
-                arr[i] = "A"
-                break
+                arr[i] = "A";
+                break;
             case "C":
-                arr[i] = "G"
-                break
+                arr[i] = "G";
+                break;
             case "G":
-                arr[i] = "C"
+                arr[i] = "C";
         }
     });
 
     console.log(arr.join(""));
     return arr.join("");
-}
+};
 
 dnaStrand("ATCG");
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const correct = (str: string): string => {
-
     interface Errors {
         [key: string]: string;
     }
@@ -633,8 +616,7 @@ const correct = (str: string): string => {
     const errors: Errors = { "5": "S", "0": "O", "1": "I" };
 
     return str.replace(/[015]/g, (char) => errors[char]);
-
-}
+};
 
 // console.log(correct("L0ND0N"));
 // console.log(correct("DUBL1N"));
@@ -643,21 +625,17 @@ const correct = (str: string): string => {
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-
 // ❗️❗️❗️
 function doubleChar5(str: string): string {
-    return str.replace(/./g, e => e + e)
+    return str.replace(/./g, (e) => e + e);
 }
-
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️
 function dnaStrand2(dna: string) {
-    return dna.replace(/./g, (c) => ({ A: 'T', T: 'A', G: 'C', C: 'G' })[c]);
+    return dna.replace(/./g, (c) => ({ A: "T", T: "A", G: "C", C: "G" }[c]));
 }
-
-
 
 // ❗️❗️❗️ if you want a replaced with x, b with y and c with z, you can do something like this:
 
@@ -667,11 +645,9 @@ function dnaStrand2(dna: string) {
 // console.log(s);
 // Output: 234xyz567yyyyxz
 
-
 // ❗️❗️❗️
 // let dummyString = 'Javascript^ is$ the most popular _language';
 // newString = dummyString.replace(/[_^$]/g, charactersToReplace => ({'^': '', '_': ':', '$' : '+' })[charactersToReplace]);
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 //  PADSTART(), PADEND():
@@ -691,11 +667,9 @@ str = str.padEnd(4,0);
 // result is 5000
 */
 
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // NUMBER METHODS
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // .TOFIXED():
@@ -704,24 +678,22 @@ str = str.padEnd(4,0);
 
 // FORMAT NUMBER STRING TO ALWAYS SHOW N DECIMAL PLACES:
 const usdcny = (usd: number): string => {
-
     const RATE: number = 6.75;
     let cny: string = (usd * RATE).toFixed(2); // ❗️❗️❗️
 
     return `${cny} Chinese Yuan`;
-}
+};
 
 // '101.25 Chinese Yuan'
 // console.log(usdcny(15));
 // "675.00"
 // console.log(usdcny(100));
 
-let numNoDecimals: number = 1;							// 1
-console.log(numNoDecimals.toFixed(2));					// "1.00"
-console.log(numNoDecimals);								// 1
+let numNoDecimals: number = 1; // 1
+console.log(numNoDecimals.toFixed(2)); // "1.00"
+console.log(numNoDecimals); // 1
 let numWithDecimals: string = numNoDecimals.toFixed(2);
-console.log(numWithDecimals);							// "1.00"
-
+console.log(numWithDecimals); // "1.00"
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // "THIS" KEYWORD
@@ -741,8 +713,6 @@ console.log(numWithDecimals);							// "1.00"
 
 // STRING -> ARR(WORDS) -> CAPITALIZE EACH WORD IN ARRAY -> JOIN INTO STRING WITH " "
 
-
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // REGEX
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -752,7 +722,6 @@ console.log(numWithDecimals);							// "1.00"
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // ❗️❗️❗️ SyntaxError: Invalid regular expression: /(/: Unterminated group ❗️❗️❗️
-
 
 // ❗️❗️❗️ https://stackoverflow.com/questions/17885855/use-dynamic-variable-string-as-regex-pattern-in-javascript/17886301 ❗️❗️❗️
 
@@ -776,22 +745,18 @@ console.log(numWithDecimals);							// "1.00"
 // "din"      =>  "((("
 // "recede"   =>  "()()()"
 // "Success"  =>  ")())())"
-// "(( @"     =>  "))((" 
+// "(( @"     =>  "))(("
 
 const duplicateEncode = (word: string): string => {
-
-
     // 1️⃣  DOES NOT WORK WITH SPECIAL CHARACTERS:
 
     const strArr = word.split("");
     strArr.forEach((letter, i) => {
-        let regex = new RegExp(letter, "gi");  //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
-        console.table(
-            {
-                letter: strArr[i],
-                matches: word.match(regex)?.length
-            }
-        );
+        let regex = new RegExp(letter, "gi"); //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
+        console.table({
+            letter: strArr[i],
+            matches: word.match(regex)?.length,
+        });
 
         //❗️❗️❗️ WITHOUT "?" OBJECT IS POSSIBLY NULL ❗️❗️❗️
         let counter: number | undefined = word.match(regex)?.length;
@@ -803,9 +768,8 @@ const duplicateEncode = (word: string): string => {
                 strArr[i] = "(";
             }
         }
-    })
+    });
     return strArr.join("");
-
 
     // 2️⃣  THIS WORKS:
     //  FIND EACH ELEMENT OF ORIGINAL ARRAY IN COPY(ORIGINAL WORD MINUS CURRENT LETTER)
@@ -826,11 +790,10 @@ const duplicateEncode = (word: string): string => {
 
     console.log(resultArr.join(""));
     return resultArr.join("");
-}
+};
 
 // duplicateEncode("recEde");
-// duplicateEncode("(( @");    // "))(("  
-
+// duplicateEncode("(( @");    // "))(("
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // MATCH VALID WORDS, PUNCUATION:
@@ -840,9 +803,11 @@ const duplicateEncode = (word: string): string => {
 // PUNCTUATION: const punctuation = /[?!\.]/g;
 
 const pigIt = (str: string): string => {
-
     // 1️⃣
-    return str.replace(/[a-z]+/gi, (word) => `${word.slice(1)}${word.charAt(0)}ay`);
+    return str.replace(
+        /[a-z]+/gi,
+        (word) => `${word.slice(1)}${word.charAt(0)}ay`
+    );
 
     // 2️⃣
     // const validWord = /[a-z]+/gi
@@ -850,10 +815,13 @@ const pigIt = (str: string): string => {
     // return str.replace(validWord, (word) => {
     //     return `${word.slice(1)}${word.charAt(0)}ay`
     // });
+};
 
-}
-
-console.log(pigIt('pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg . cQFYCExtQFgytIxTj HWEqmZ qFiJOYxcqIObSWjSlJL lg  !  mGJtNrQ iINNKiOohUuMAk dwwOYRmL'));
+console.log(
+    pigIt(
+        "pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg . cQFYCExtQFgytIxTj HWEqmZ qFiJOYxcqIObSWjSlJL lg  !  mGJtNrQ iINNKiOohUuMAk dwwOYRmL"
+    )
+);
 
 // pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg . cQFYCExtQFgytIxTj HWEqmZ qFiJOYxcqIObSWjSlJL lg  !  mGJtNrQ iINNKiOohUuMAk dwwOYRmL
 
@@ -862,4 +830,3 @@ console.log(pigIt('pdNWGEbnnAYBq  qKDVJ prMerdBgTDjFZYaHXd iX ! rxBwJkSVppxW hg 
 
 // TO EQUAL:
 // dNWGEbnnAYBqpay  KDVJqay rMerdBgTDjFZYaHXdpay Xiay ! xBwJkSVppxWray ghay . QFYCExtQFgytIxTjcay WEqmZHay FiJOYxcqIObSWjSlJLqay glay  !  GJtNrQmay INNKiOohUuMAkiay wwOYRmLday
-

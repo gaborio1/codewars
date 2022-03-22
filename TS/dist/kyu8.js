@@ -6,8 +6,24 @@ function arr2bin(arr) {
     return "hello";
 }
 function htmlspecialchars(formData) {
-    return formData;
+    const strArr = formData.split("");
+    for (let i = 0; i < strArr.length; i++) {
+        if (strArr[i] === "<") {
+            strArr.splice(i, 1, "&lt;");
+        }
+        else if (strArr[i] === ">") {
+            strArr.splice(i, 1, "&gt;");
+        }
+        else if (strArr[i] === '"') {
+            strArr.splice(i, 1, "&quot;");
+        }
+        else if (strArr[i] === "&") {
+            strArr.splice(i, 1, "&amp;");
+        }
+    }
+    return strArr.join("");
 }
+console.log(htmlspecialchars('How was "The Matrix"?  Did you like it?'));
 const iceBrickVolume = (radius, bottleLength, rimLength) => {
     const sqSide = Math.sqrt(Math.pow(radius, 2) * 2);
     return Math.round(Math.pow(sqSide, 2) * (bottleLength - rimLength));
