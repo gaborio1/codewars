@@ -1,10 +1,11 @@
 // ❗️❗️❗️ ✅  ❓❓❓
 // throw new Error("The method or operation is not implemented.");
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -23,7 +24,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -42,7 +43,25 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -61,7 +80,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -80,7 +99,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -99,7 +118,25 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -118,7 +155,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -137,7 +174,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -156,7 +193,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -175,7 +212,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -194,7 +231,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -213,7 +250,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -232,7 +269,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -251,7 +288,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -270,7 +307,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -289,45 +326,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  Learning TypeScript. Basic Types. Type Assertions
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -367,13 +366,13 @@ export class ErrorServerResult {
 
 export function getResult(result: SuccessServerResult) {
   if (result.httpCode === 200) {
-	// Returning result.resultObject if everything is OK
-	return result.resultObject;
+    // Returning result.resultObject if everything is OK
+    return result.resultObject;
   } else {
-	// Returning result.message in case of error
-	// FIXME: help TypeScript Compiler to understand that result here 
-	// is the instance of ErrorServerResult...
-	return result.message;
+    // Returning result.message in case of error
+    // FIXME: help TypeScript Compiler to understand that result here 
+    // is the instance of ErrorServerResult...
+    return result.message;
   }
 }
 Your task is to find and fix error in function getResult.
@@ -408,7 +407,7 @@ HINT: Try to use double assertion - first convert it to any and then convert it 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  Learning TypeScript. Basic Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -465,7 +464,11 @@ var var1Boolean: boolean = true;
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ SEE OTHER SOLUTIONS TOO
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ARGUMENETS TO BINARY ADDITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -484,18 +487,44 @@ arr2bin([]) == '0'
 This is a modification on the Kata: Array2Binary addition hope you like it
 */
 
-function arr2bin(arr: any[]): string {
-    return "hello";
+const arr2bin = (arr: any[]): string => {
+
+    // ❗️❗️❗️ THIS WORKS WITH SAMPLE TESTS (NULL, BOOLEAN AND INTEGERS) ❗️❗️❗️
+    // ❗️❗️❗️ PASS 0 TO REDUCE FOR HANDLING EMPTY ARRAY ❗️❗️❗️
+    // return arr.filter((el) => Number.isInteger(el)).reduce((a, b) => a + b, 0).toString(2);
+
+    return arr
+        .filter((el) => typeof el === "number")
+        .reduce((a, b) => a + b, 0)
+        .toString(2);
+
 }
 
-// console.log(arr2bin([1,2]);
-// console.log(arr2bin([1,2,3,4,5]));
-// console.log(arr2bin([1,10,100,1000]));
+//  FILTER OUT NON "number" TYPES IF ANY ❗️❗️❗️ ISNAN() / TYPEOF ❗️❗️❗️
+//  GET SUM OF ARRAY, INITIALIZE SUM AS 0 IN CASE ARRAY IS EMPTY ❗️❗️❗️ PASS IN 0 ❗️❗️❗️
+//  CONVERT TO BINARY STRING ❗️❗️❗️ NUMBER TOSTRING(BASE - OPTIONAL(INTEGER 2-36))
+
+
+
+
+// console.log(arr2bin([1, 2, "a"]));
+// console.log(arr2bin([]));
+// console.log(arr2bin([1, 2, 3, 4, 5]));
+// console.log(arr2bin([true, true, false, 15]));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function arr2bin2(arr: any[]): string {
+    return arr.filter((x) => typeof x == "number").reduce((x, y) => (x + y), 0).toString(2);
+}
+
+
+function arr2bin3(arr: any[]): string {
+    return (arr.map(val => typeof val !== "number" ? 0 : val).reduce((curr, acc) => curr + acc, 0)).toString(2)
+}
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  PLAYING WITH CUBES II
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -534,10 +563,12 @@ The constructor taking no arguments should assign 0 to Cube's Side property.
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ SEE OTHER SOLUTIONS TOO
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SAFEN USER INPUT PART 1 - HTML SPECIAL CHARS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ESCAPING QUOTES ❗️❗️❗️ REPLACE MULTIPLE CHARS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -559,44 +590,124 @@ Extension
 If you are an experienced programmer, try shortening your code as much as possible and optimise it to minimise run time. Experienced programmers should be able to complete this exercise in one line of code.
 */
 
-function htmlspecialchars(formData: string): string {
-    // interface StrKeyVal {
-    //     [key: string]: string;
-    // }
-    // const chars: StrKeyVal = {
-    //     "<": "&lt;",
-    //     ">": "&gt;",
-    //     '"': "&quot;",
-    //     "&": "&amp;",
-    // };
-    // return formData.replace(/[<>'&]/g, (m: string) => chars[m]);
+const htmlspecialchars = (formData: string): string => {
 
-    const strArr: string[] = formData.split("");
-    // console.log(strArr);
-
-    for (let i = 0; i < strArr.length; i++) {
-        if (strArr[i] === "<") {
-            strArr.splice(i, 1, "&lt;");
-        } else if (strArr[i] === ">") {
-            strArr.splice(i, 1, "&gt;");
-        } else if (strArr[i] === '"') {
-            strArr.splice(i, 1, "&quot;");
-        } else if (strArr[i] === "&") {
-            strArr.splice(i, 1, "&amp;");
-        }
+    // 1️⃣ STRING.REPLACE()
+    interface StrKeyVal {
+        [key: string]: string;
     }
+    const chars: StrKeyVal = {
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "&": "&amp;",
+    };
+    return formData.replace(/[<>"&]/g, (key: string) => chars[key]);
 
-    return strArr.join("");
+    // 2️⃣ ARRAY.SPLICE()
+    // const strArr: string[] = formData.split("");
+
+    // for (let i = 0; i < strArr.length; i++) {
+    //     if (strArr[i] === "<") {
+    //         strArr.splice(i, 1, "&lt;");
+    //     } else if (strArr[i] === ">") {
+    //         strArr.splice(i, 1, "&gt;");
+    //     } else if (strArr[i] === '"') {     // ❗️❗️❗️
+    //         strArr.splice(i, 1, "&quot;");
+    //     } else if (strArr[i] === "&") {
+    //         strArr.splice(i, 1, "&amp;");
+    //     }
+    // }
+
+    // return strArr.join("");
 }
 
 // console.log(htmlspecialchars("abc"));
 // console.log(htmlspecialchars("<h2>Hello World</h2>"));
 // console.log(htmlspecialchars("Hello, how would you & I fare?"));
-console.log(htmlspecialchars('How was "The Matrix"?  Did you like it?'));
+// console.log(htmlspecialchars('How was "The Matrix"?  Did you like it?'));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// CHAINED REPLACE:
+function htmlspecialchars2(formData: string): string {
+    return formData.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+
+// ERROR: Type 'string | undefined' is not assignable to type 'string'.
+//   Type 'undefined' is not assignable to type 'string'.ts(2769)
+
+// function htmlspecialchars3(formData: string): string {
+//     return formData.replace(/[\<\>\"\&]/g, a => ({
+//       "<":"&lt;", 
+//       ">": "&gt;", 
+//       '"': "&quot;", 
+//       "&":"&amp;",
+//     }[a]))
+//   }
+
+function htmlspecialchars4(formData: string): string {
+    // Insert your code here
+    console.log(formData.split(''))
+    formData = formData.split('').map(function (char) {
+        console.log(char);
+        if (char === '<') return '&lt;';
+        if (char === '>') return '&gt;';
+        if (char === '"') return '&quot;';
+        if (char === '&') return '&amp;';
+        return char;
+    }).join('');
+    console.log(formData);
+    return formData;
+}
+
+
+// ERROR: Type 'string[]' is not assignable to type 'string'.ts(2322)
+//   function htmlspecialchars6(formData: string): string {
+//     return [
+//         ["&", "&amp;"],
+//         ["<", "&lt;"],
+//         [">", "&gt;"],
+//         ["\"", "&quot;"],
+//     ].reduce((p: string, c: [string, string]): string => {
+//         return p.split(c[0]).join(c[1]);
+//     }, formData);
+// }
+
+
+function htmlspecialchars7(formData: string): string {
+
+    var rep1 = /</gi;
+    var rep2 = />/gi;
+    var rep3 = /"/gi;
+    var rep4 = /&/gi;
+
+    var formData2 = formData.replace(rep4, "&amp;");
+    formData = formData2.replace(rep1, "&lt;");
+    formData2 = formData.replace(rep2, "&gt;");
+    formData = formData2.replace(rep3, "&quot;");
+
+    formData.trim;
+
+    return formData;
+}
+
+
+function htmlspecialchars8(formData: string): string {
+    const char: { [key: string]: string } = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '&': '&amp;'
+    }
+
+    return formData
+        .replace(/./g, c => char[c] || c);
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FOR TWINS - TWO MATH OPERATIONS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: MATH.POW(), ROUND(), SQRT()
@@ -1732,12 +1843,12 @@ Your function should return the 20 year estimate of the stairs climbed using the
 */
 
 var sunday = [
-        6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
-        7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478,
-        6063, 5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381,
-        5936, 8496, 6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032,
-        9871, 5990, 6309, 7825,
-    ],
+    6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
+    7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478,
+    6063, 5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381,
+    5936, 8496, 6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032,
+    9871, 5990, 6309, 7825,
+],
     monday = [
         9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
         6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932,
@@ -1853,9 +1964,9 @@ const nextId = (ids: number[]): number => {
  INIT solution AS 0
  IF FIRST ELEMENT GREATER THAN 0, RETURN SOLUTION (0)
  LOOP OVER sortedIds AND
-	 CHECK IF CURRENT PLUS 1 IS NOT EQUAL TO NEXT
-		 IF NOT, SOLUTION MUST BE CURRENT PLUS 1
-		 BREAK LOOP
+     CHECK IF CURRENT PLUS 1 IS NOT EQUAL TO NEXT
+         IF NOT, SOLUTION MUST BE CURRENT PLUS 1
+         BREAK LOOP
 RETURN SOLUTION
 */
 
@@ -2439,14 +2550,12 @@ const position = (char: string): string => {
 
 // ❗️❗️❗️ CHARCODEAT()❗️❗️❗️
 function position2(alphabet: string): string {
-    return `Position of alphabet: ${
-        alphabet.charCodeAt(0) - "a".charCodeAt(0) + 1
-    }`;
+    return `Position of alphabet: ${alphabet.charCodeAt(0) - "a".charCodeAt(0) + 1
+        }`;
 }
 
 const position3 = (alphabet: string): string =>
-    `Position of alphabet: ${
-        "abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1
+    `Position of alphabet: ${"abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1
     }`;
 
 function position4(alphabet: string): string {
@@ -2758,9 +2867,8 @@ const warnTheSheep = (queue: string[]): string => {
     for (let i = 0; i < revQueue.length - 1; i++) {
         let next: string = queue[i + 1];
         if (next === "wolf") {
-            message = `Oi! Sheep number ${
-                i + 1
-            }! You are about to be eaten by a wolf!`;
+            message = `Oi! Sheep number ${i + 1
+                }! You are about to be eaten by a wolf!`;
         }
     }
 
@@ -2792,9 +2900,8 @@ function warnTheSheep2(queue: string[]): string {
 function warnTheSheep3(queue: string[]): string {
     return queue.indexOf("wolf") === queue.length - 1
         ? "Pls go away and stop eating my sheep"
-        : `Oi! Sheep number ${
-              queue.length - queue.indexOf("wolf") - 1
-          }! You are about to be eaten by a wolf!`;
+        : `Oi! Sheep number ${queue.length - queue.indexOf("wolf") - 1
+        }! You are about to be eaten by a wolf!`;
 }
 
 function warnTheSheep4(queue: string[]): string {
@@ -2830,16 +2937,16 @@ Please round to 5dp (use Math.round())
 
 /*
 function weatherInfo(temp: number): string {
-	const c: convert(temp)
-	if (c > 0)
-		return (Math.round(c * 1e5) / 1e5 + " is freezing temperature")
-	else
-		return (Math.round(c * 1e5) / 1e5 + " is above freezing temperature")
+    const c: convert(temp)
+    if (c > 0)
+        return (Math.round(c * 1e5) / 1e5 + " is freezing temperature")
+    else
+        return (Math.round(c * 1e5) / 1e5 + " is above freezing temperature")
 }
 
 export function convertToCelsius(temperature: number): number {
-	const celsius = Math.round(((tempertur) - 32 + (5 / 9)) * 1e5) / 1e5
-	return temperature
+    const celsius = Math.round(((tempertur) - 32 + (5 / 9)) * 1e5) / 1e5
+    return temperature
 }
 */
 
@@ -3196,8 +3303,7 @@ const hello = (name?: string): string => {
 
 // ❗️❗️❗️ FIRST CAPITAL LETTER, ❗️❗️❗️ DEFAULT PARAMETER ❗️❗️❗️
 const hello2 = (name = ""): string =>
-    `Hello, ${
-        name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : "World"
+    `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : "World"
     }!`;
 
 function hello3(name: string = ""): string {
@@ -3212,9 +3318,9 @@ function hello4(name: string = ""): string {
     const nameLower: string = name.toLowerCase();
     return name
         ? `Hello, ${nameLower.replace(
-              nameLower[0],
-              nameLower[0].toUpperCase()
-          )}!`
+            nameLower[0],
+            nameLower[0].toUpperCase()
+        )}!`
         : "Hello, World!";
 }
 
@@ -4795,34 +4901,34 @@ const expressionsMatter = (a: number, b: number, c: number): number => {
 /*
 const expressionsMatter = (a: number, b: number, c: number): number => {
 
-	let result: number = 0;
+    let result: number = 0;
 
-	const ascArr: number[] = [a, b, c].sort((a, b) => a - b);
-	console.log(ascArr);
+    const ascArr: number[] = [a, b, c].sort((a, b) => a - b);
+    console.log(ascArr);
 
-	// THREE ONES
-	if (a + b + c === 3) {
-		console.log("hello");
-		return 3;
-	}
+    // THREE ONES
+    if (a + b + c === 3) {
+        console.log("hello");
+        return 3;
+    }
 
-	if (ascArr[0] === 1) {
-		// if (ascArr[1] > 1) {
-		result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
-		// if (ascArr[2] > 1) {
-		// 	result = (ascArr[0] + ascArr[1]) * ascArr[2];
-		// }
-		// } else {
-		// 	result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
-		// }
-		// }
+    if (ascArr[0] === 1) {
+        // if (ascArr[1] > 1) {
+        result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
+        // if (ascArr[2] > 1) {
+        // 	result = (ascArr[0] + ascArr[1]) * ascArr[2];
+        // }
+        // } else {
+        // 	result = ((ascArr[0] + ascArr[1]) * ascArr[2]);
+        // }
+        // }
 
 
-	} else {
-		result = a * b * c;
-	}
+    } else {
+        result = a * b * c;
+    }
 
-	return result;  // highest achievable result
+    return result;  // highest achievable result
 
 }
 */
@@ -5139,16 +5245,16 @@ const oddCount = (num: number): number => {
     return num & 1 ? (num - 1) / 2 : num / 2;
 
     /*
-	❗️❗️❗️ SLOW ❗️❗️❗️
-	FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
-	let oddsArr: number[] = [];
-	for (let i = 0; i < num; i++) {
-		if (i & 1) {
-			oddsArr.push(i);
-		}
-	}
-	return oddsArr.length;
-	*/
+    ❗️❗️❗️ SLOW ❗️❗️❗️
+    FATAL ERROR: invalid array length Allocation failed - JavaScript heap out of memory
+    let oddsArr: number[] = [];
+    for (let i = 0; i < num; i++) {
+        if (i & 1) {
+            oddsArr.push(i);
+        }
+    }
+    return oddsArr.length;
+    */
 };
 
 /*
@@ -5322,15 +5428,15 @@ const otherAngle2 = (a, b) => 180 - a - b;
 	
 	
 const otherAngle3 = (a, b) => {
-	if (a < 0 || b < 0)
-		return 0;
-	return 180 - (a + b);
+    if (a < 0 || b < 0)
+        return 0;
+    return 180 - (a + b);
 }
 	
 	
 const otherAngle4 = (a, b) => {
-	let c;
-	return c = 180 - (a + b);
+    let c;
+    return c = 180 - (a + b);
 }
 	
 */
@@ -5396,8 +5502,8 @@ const flipCharAlphaCase = (code: number): number =>
     code >= 65 && code <= 90
         ? code + 32
         : code >= 97 && code <= 122
-        ? code - 32
-        : code;
+            ? code - 32
+            : code;
 
 const toAlternatingCase4 = (s: string): string =>
     String.fromCharCode(
@@ -5452,20 +5558,20 @@ const updateLight3 = ($: string) =>
     $ === "green"
         ? "yellow"
         : $ === "yellow"
-        ? "red"
-        : $ === "red"
-        ? "green"
-        : "error";
+            ? "red"
+            : $ === "red"
+                ? "green"
+                : "error";
 
 /*
 const lights = {
-	green: 'yellow',
-	yellow: 'red',
-	red: 'green',
+    green: 'yellow',
+    yellow: 'red',
+    red: 'green',
 };
 	
 export const updateLight4 = (current: string): string => {
-	return lights[current];
+    return lights[current];
 };
 */
 
@@ -5666,12 +5772,12 @@ function getGrade2(a: number, b: number, c: number) {
     return avg < 60
         ? "F"
         : avg < 70
-        ? "D"
-        : avg < 80
-        ? "C"
-        : avg < 90
-        ? "B"
-        : "A";
+            ? "D"
+            : avg < 80
+                ? "C"
+                : avg < 90
+                    ? "B"
+                    : "A";
 }
 
 function getGrade3(a: number, b: number, c: number): string {
@@ -6435,9 +6541,9 @@ function sumArray3(a: number[]): number {
     return a === null
         ? 0
         : a
-              .sort((a, b) => a - b)
-              .slice(1, -1)
-              .reduce((a, b) => a + b, 0);
+            .sort((a, b) => a - b)
+            .slice(1, -1)
+            .reduce((a, b) => a + b, 0);
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -6850,10 +6956,10 @@ function bmi2(weight: number, height: number): string {
     return $ <= 18.5
         ? "Underweight"
         : $ <= 25.0
-        ? "Normal"
-        : $ <= 30.0
-        ? "Overweight"
-        : "Obese";
+            ? "Normal"
+            : $ <= 30.0
+                ? "Overweight"
+                : "Obese";
 }
 
 const bmi3 = (weight: number, height: number, bmi: number = 0): string =>
@@ -7069,7 +7175,7 @@ Jenny has written a function that returns a greeting for a user. However, she's 
 export const greet = (name) => {
   return "Hello, " + name + "!";
   if(name === "Johnny")
-	return "Hello, my love!";
+    return "Hello, my love!";
 }
 */
 
@@ -7166,11 +7272,11 @@ const countPositivesSumNegatives = (input: number[]) => {
 function countPositivesSumNegatives3(input: any) {
     return input && input.length
         ? [
-              input.filter((p: number) => p > 0).length,
-              input
-                  .filter((n: number) => n < 0)
-                  .reduce((a: number, b: number) => a + b, 0),
-          ]
+            input.filter((p: number) => p > 0).length,
+            input
+                .filter((n: number) => n < 0)
+                .reduce((a: number, b: number) => a + b, 0),
+        ]
         : [];
 }
 

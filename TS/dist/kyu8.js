@@ -2,28 +2,69 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = exports.howManyLightsabersDoYouOwn5 = void 0;
 var var1Boolean = true;
-function arr2bin(arr) {
-    return "hello";
+const arr2bin = (arr) => {
+    return arr
+        .filter((el) => typeof el === "number")
+        .reduce((a, b) => a + b, 0)
+        .toString(2);
+};
+function arr2bin2(arr) {
+    return arr.filter((x) => typeof x == "number").reduce((x, y) => (x + y), 0).toString(2);
 }
-function htmlspecialchars(formData) {
-    const strArr = formData.split("");
-    for (let i = 0; i < strArr.length; i++) {
-        if (strArr[i] === "<") {
-            strArr.splice(i, 1, "&lt;");
-        }
-        else if (strArr[i] === ">") {
-            strArr.splice(i, 1, "&gt;");
-        }
-        else if (strArr[i] === '"') {
-            strArr.splice(i, 1, "&quot;");
-        }
-        else if (strArr[i] === "&") {
-            strArr.splice(i, 1, "&amp;");
-        }
-    }
-    return strArr.join("");
+function arr2bin3(arr) {
+    return (arr.map(val => typeof val !== "number" ? 0 : val).reduce((curr, acc) => curr + acc, 0)).toString(2);
 }
-console.log(htmlspecialchars('How was "The Matrix"?  Did you like it?'));
+const htmlspecialchars = (formData) => {
+    const chars = {
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "&": "&amp;",
+    };
+    return formData.replace(/[<>"&]/g, (key) => chars[key]);
+};
+function htmlspecialchars2(formData) {
+    return formData.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function htmlspecialchars4(formData) {
+    console.log(formData.split(''));
+    formData = formData.split('').map(function (char) {
+        console.log(char);
+        if (char === '<')
+            return '&lt;';
+        if (char === '>')
+            return '&gt;';
+        if (char === '"')
+            return '&quot;';
+        if (char === '&')
+            return '&amp;';
+        return char;
+    }).join('');
+    console.log(formData);
+    return formData;
+}
+function htmlspecialchars7(formData) {
+    var rep1 = /</gi;
+    var rep2 = />/gi;
+    var rep3 = /"/gi;
+    var rep4 = /&/gi;
+    var formData2 = formData.replace(rep4, "&amp;");
+    formData = formData2.replace(rep1, "&lt;");
+    formData2 = formData.replace(rep2, "&gt;");
+    formData = formData2.replace(rep3, "&quot;");
+    formData.trim;
+    return formData;
+}
+function htmlspecialchars8(formData) {
+    const char = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '&': '&amp;'
+    };
+    return formData
+        .replace(/./g, c => char[c] || c);
+}
 const iceBrickVolume = (radius, bottleLength, rimLength) => {
     const sqSide = Math.sqrt(Math.pow(radius, 2) * 2);
     return Math.round(Math.pow(sqSide, 2) * (bottleLength - rimLength));
