@@ -473,10 +473,10 @@ function overTheRoad(address: number, n: number): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  EVEN NUMBERS IN AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: BITWISE AND, FILTER()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -491,9 +491,16 @@ For example:
 ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
 */
 
-function evenNumbers(array: number[], n: number): number[] {
-    return [1, 2, 3]; // your code here
+const evenNumbers = (array: number[], n: number): number[] => {
+
+    return array.
+        filter((el) => (el & 1) === 0)
+        .slice(-n);
+
 }
+
+//  FILTER OUT ODD NUMBERS
+//  RETURN SUB ARRAY OF LAST n ELEMENTS (SLICE WITH NEGATIVE IDX)
 
 // console.log(evenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));
 // console.log();
@@ -501,6 +508,14 @@ function evenNumbers(array: number[], n: number): number[] {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function isEven2(n: number): boolean {
+    return n % 2 === 0
+}
+
+function evenNumbers2(array: number[], n: number): number[] {
+    return array.filter(isEven2).slice(-n)
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SPEED CONTROL

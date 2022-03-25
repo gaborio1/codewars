@@ -26,8 +26,16 @@ function isPowerOfTwo(n) {
 function overTheRoad(address, n) {
     return 0;
 }
-function evenNumbers(array, n) {
-    return [1, 2, 3];
+const evenNumbers = (array, n) => {
+    return array.
+        filter((el) => (el & 1) === 0)
+        .slice(-n);
+};
+function isEven2(n) {
+    return n % 2 === 0;
+}
+function evenNumbers2(array, n) {
+    return array.filter(isEven2).slice(-n);
 }
 class G965a1 {
 }

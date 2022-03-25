@@ -12,9 +12,25 @@ function camelCase(str) {
 function solution1(roman) {
     return 1;
 }
-function solution2(number) {
+function solution2(num) {
+    let roman = "";
+    if (num >= 1000) {
+        const v1000 = num / 1000 | 0;
+        console.log("1000: " + v1000);
+        num = num % 1000;
+        console.log(num);
+        roman += "M".repeat(v1000);
+        console.log(roman);
+    }
+    if (num >= 500) {
+        const v500 = num / 500 | 0;
+        console.log("500: " + v500);
+        num = num % 500;
+        console.log(num);
+    }
     return "hello";
 }
+console.log(solution2(2844));
 const wave = (str) => {
     const strArr = str.split("");
     let solution = [];

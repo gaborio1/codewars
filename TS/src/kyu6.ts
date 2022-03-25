@@ -513,11 +513,32 @@ M          1,000
 Remember that there can't be more than 3 identical symbols in a row.
 */
 
-function solution2(number: number): string {
+function solution2(num: number): string {
+
+    let roman: string = "";
+
+    if (num >= 1000) {
+        // GET INT NUMBER OF 1000s 
+        const v1000: number = num / 1000 | 0;
+        console.log("1000: " + v1000);
+        // GET REMAINDER AFTER TAKING AWAY 1000s
+        num = num % 1000;
+        console.log(num);
+        roman += "M".repeat(v1000);
+        console.log(roman);
+    }
+
+    if (num >= 500) {
+        const v500: number = num / 500 | 0;
+        console.log("500: " + v500);
+        num = num % 500;
+        console.log(num);
+    }
+
     return "hello";
 }
 
-// console.log((solution(1444));
+console.log(solution2(2844));
 // console.log();
 // console.log();
 // console.log();
@@ -617,8 +638,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -911,7 +932,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1368,10 +1389,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -2671,9 +2692,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
