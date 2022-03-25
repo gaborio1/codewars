@@ -29,14 +29,68 @@ function overTheRoad(address, n) {
 function evenNumbers(array, n) {
     return [1, 2, 3];
 }
-class G965 {
+class G965a1 {
 }
-function noOdds(values) {
-    return [1];
+G965a1.gps = (secInt, distArr) => {
+    let speedsArr = [];
+    for (let i = 1; i < distArr.length; i++) {
+        let curr = distArr[i], prev = distArr[i - 1];
+        let sectionDist = curr - prev;
+        let sectAveSpeed = 3600 / secInt * sectionDist;
+        speedsArr.push(sectAveSpeed);
+    }
+    console.log(speedsArr);
+    return Math.max(...speedsArr) | 0;
+};
+class G965a2 {
+}
+G965a2.gps = (seconds, sections) => {
+    if (sections.length <= 1)
+        return 0;
+    const sectionSpeeds = sections
+        .map((start, index) => start - (sections[index - 1] || 0))
+        .map(distance => (3600 * distance) / seconds);
+    return Math.floor(Math.max(...sectionSpeeds));
+};
+const noOdds = (values) => {
+    return values.filter((el) => {
+        return (el & 1) === 0;
+    });
+};
+function noOdds2(values) {
+    return values.filter(i => !(i % 2));
 }
 class G964a {
+}
+G964a.partlist = (arr) => {
+    let solution = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+        let subArr = [];
+        subArr
+            .push(arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" "));
+        solution.push(subArr);
+    }
+    return solution;
+};
+class G964a2 {
     static partlist(arr) {
-        return [["hello"]];
+        return arr.map((s, i, a) => [a.slice(0, i + 1).join(' '), a.slice(i + 1, a.length).join(' ')]).slice(0, arr.length - 1);
+    }
+}
+class G964a3 {
+    static partlist(arr) {
+        return arr.slice(1).map((x, i) => [arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" ")]);
+    }
+}
+class G964a4 {
+    static partlist(arr) {
+        const x = arr.map((word, idx) => {
+            return [
+                arr.slice(0, idx + 1).join(" "),
+                arr.slice(idx + 1, arr.length).join(" ")
+            ];
+        });
+        return x.slice(0, -1);
     }
 }
 const adjacentElementsProduct = (arr) => {

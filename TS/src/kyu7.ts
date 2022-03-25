@@ -502,10 +502,10 @@ function evenNumbers(array: number[], n: number): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SPEED CONTROL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS:  BITWISE OR TO ROUND DOWN, MATH.MAX() WITH SPREAD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -531,15 +531,37 @@ With floats it can happen that results depends on the operations order. To calcu
 (3600 * delta_distance) / s.
 */
 
-class G965 {
-    // public static gps = (s, x) => {
-    // your code
-    // }
+class G965a1 {
+    public static gps = (secInt: number, distArr: number[]): number => {
+        // secInterval: SECONDS
+        // distArr: KMS
+        let speedsArr = [];
+
+        for (let i = 1; i < distArr.length; i++) {
+            let curr = distArr[i], prev = distArr[i - 1];
+            let sectionDist = curr - prev;
+            let sectAveSpeed = 3600 / secInt * sectionDist;
+            // console.table(
+            //     { time: secInt, dist: sectionDist, speed: sectAveSpeed }
+            // );
+            speedsArr.push(sectAveSpeed);
+        }
+
+        console.log(speedsArr);
+
+        return Math.max(...speedsArr) | 0;
+    }
 }
 
-// s = 20;
-// u = 80;
-// console.log(G965.gps(s, x));
+
+//  CALCULATE AVERAGE SPEED FOR EACH SECTION WITH LOOP
+//  PUSH IT INTO speedsArray AS sectAveSpeed
+//  FIND LARGEST NUMBER(SPEED) IN speedsArray AND ROUND IT DOWN TO NEAREST INT
+//  BITWISE OR "|" WILL ROUND DOWN DECIMALS: 3.345 | 0  =>  3
+
+// s = 15;
+// u = 74;
+// console.log(G965a1.gps(15, [0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]));
 
 // console.log();
 // console.log();
@@ -547,10 +569,23 @@ class G965 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+class G965a2 {
+
+    public static gps = (seconds: number, sections: number[]): number => {
+        if (sections.length <= 1) return 0;
+
+        const sectionSpeeds = sections
+            .map((start, index) => start - (sections[index - 1] || 0))
+            .map(distance => (3600 * distance) / seconds);
+
+        return Math.floor(Math.max(...sectionSpeeds));
+    }
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  NO ODDITIES HERE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: BITWISE AND "&" (EVEN OR ODD)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -561,21 +596,33 @@ Write a small function that returns the values of an array that are not odd.
 All values in the array will be integers. Return the good values in the order they are given.
 */
 
-function noOdds(values: number[]): number[] {
-    return [1];
+const noOdds = (values: number[]): number[] => {
+    return values.filter((el) => {
+        return (el & 1) === 0;
+    });
 }
 
+//  BITWISE AND "&" OPERATOR 
+//  n & 1
+//  RETURNS 1 IF n IS ODD
+//  RETURNS 0 IF n IS EVEN
+
 // console.log(noOdds( [0,1] ));
-// console.log(noOdds( [0,1,2,3] ));
+// console.log(noOdds([0, 1, 2, 3]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function noOdds2(values: number[]): number[] {
+    return values.filter(i => !(i % 2));
+}
+
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PARTS OF A LIST
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SLICE(), GET 2 SUB ARRAYS OF ARR AS STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -605,17 +652,70 @@ a = ["az", "toto", "picaro", "zone", "kiwi"] -->
 */
 
 class G964a {
-    public static partlist(arr: string[]): string[][] {
-        return [["hello"]];
+    public static partlist = (arr: string[]): string[][] => {
+
+        let solution: string[][] = [];
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            // console.log(arr.slice(0, i + 1).join(" "));
+            // console.log(arr.slice(i + 1).join(" "));
+
+            let subArr: string[] = [];
+            subArr
+                .push(arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" "));
+
+            // subArr.push(arr.slice(0, i + 1).join(" "));
+            // subArr.push(arr.slice(i + 1).join(" "));
+
+            solution.push(subArr);
+        }
+
+        return solution;
     }
 }
 
-// console.log(.G964.partlist(["I", "wish", "I", "hadn't", "come"]));
+//  INITIALIZE SOLUTION ARR
+//  LOOP OVER arr
+//      CREATE subArr FOR EACH ITARATION
+//      PUSH FIRST SUB ARRAY OF arr INTO subArr ENDING WITH arr[i]
+//      PUSH SECOND SUB ARRAY OF arr INTO subArr STARTING WITH arr[i + 1]
+//      PUSH subArr INTO solution
+//  RETURN solution
+
+// console.log(G964a.partlist(["a", "b", "c", "d", "e"]));
+// console.log(G964a.partlist(["I", "wish", "I", "hadn't", "come"]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+class G964a2 {
+    public static partlist(arr: string[]): string[][] {
+        return arr.map((s, i, a) => [a.slice(0, i + 1).join(' '), a.slice(i + 1, a.length).join(' ')]).slice(0, arr.length - 1);
+    }
+}
+
+
+
+class G964a3 {
+    public static partlist(arr: string[]): string[][] {
+        return arr.slice(1).map((x, i) => [arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" ")])
+    }
+}
+
+
+
+class G964a4 {
+    public static partlist(arr: string[]): string[][] {
+        const x = arr.map((word, idx) => {
+            return [
+                arr.slice(0, idx + 1).join(" "),
+                arr.slice(idx + 1, arr.length).join(" ")]
+        })
+        return x.slice(0, -1)
+    }
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  BUMPS IN THE ROAD
@@ -1136,11 +1236,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -1935,9 +2035,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -2219,8 +2319,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
