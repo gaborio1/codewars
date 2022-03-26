@@ -12,25 +12,238 @@ function camelCase(str) {
 function solution1(roman) {
     return 1;
 }
-function solution2(num) {
+const solution2 = (num) => {
     let roman = "";
     if (num >= 1000) {
-        const v1000 = num / 1000 | 0;
+        const v1000 = (num / 1000) | 0;
         console.log("1000: " + v1000);
         num = num % 1000;
-        console.log(num);
         roman += "M".repeat(v1000);
-        console.log(roman);
+    }
+    if (num >= 900) {
+        num = num % 900;
+        roman += "CM";
     }
     if (num >= 500) {
-        const v500 = num / 500 | 0;
-        console.log("500: " + v500);
         num = num % 500;
-        console.log(num);
+        roman += "D";
     }
-    return "hello";
+    if (num >= 400) {
+        num = num % 400;
+        roman += "CD";
+    }
+    if (num >= 100) {
+        const v100 = (num / 100) | 0;
+        console.log("100: " + v100);
+        num = num % 100;
+        roman += "C".repeat(v100);
+    }
+    if (num >= 90) {
+        num = num % 90;
+        roman += "XC";
+    }
+    if (num >= 50) {
+        num = num % 50;
+        roman += "L";
+    }
+    if (num >= 40) {
+        num = num % 40;
+        roman += "XL";
+    }
+    if (num >= 10) {
+        const v10 = (num / 10) | 0;
+        console.log("10: " + v10);
+        num = num % 10;
+        roman += "X".repeat(v10);
+    }
+    if (num >= 9) {
+        num = num % 9;
+        roman += "IX";
+    }
+    if (num >= 5) {
+        num = num % 5;
+        roman += "V";
+    }
+    if (num >= 4) {
+        num = num % 4;
+        roman += "IV";
+    }
+    if (num >= 1) {
+        const v1 = (num / 1) | 0;
+        num = num % 1;
+        roman += "I".repeat(v1);
+    }
+    return num > 3999 ? "invalid input" : roman;
+};
+function solution3(number) {
+    const ROMAN = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1,
+    };
+    let result = "";
+    for (let k in ROMAN) {
+        result += k.repeat(Math.floor(number / ROMAN[k]));
+        number = number % ROMAN[k];
+    }
+    return result;
 }
-console.log(solution2(2844));
+function solution4(number) {
+    const nums = [
+        1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1,
+    ];
+    const romans = [
+        "M",
+        "CM",
+        "D",
+        "CD",
+        "C",
+        "XC",
+        "L",
+        "XL",
+        "X",
+        "IX",
+        "V",
+        "IV",
+        "I",
+    ];
+    let result = "";
+    for (let i = 0; i < nums.length; i++) {
+        while (number >= nums[i]) {
+            number -= nums[i];
+            result += romans[i];
+        }
+    }
+    return result;
+}
+function solution5(number) {
+    let table = {
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X",
+        "20": "XX",
+        "30": "XXX",
+        "40": "XL",
+        "50": "L",
+        "60": "LX",
+        "70": "LXX",
+        "80": "LXXX",
+        "90": "XC",
+        "100": "C",
+        "200": "CC",
+        "300": "CCC",
+        "400": "CD",
+        "500": "D",
+        "600": "DC",
+        "700": "DCC",
+        "800": "DCCC",
+        "900": "CM",
+        "1000": "M",
+        "2000": "MM",
+        "3000": "MMM",
+    };
+    let output = "";
+    let str = number.toString();
+    for (let i = str.length - 1, zeros = ""; i >= 0; i--, zeros += "0") {
+        let current = str.charAt(i);
+        if (current !== "0")
+            output = table[current + zeros] + output;
+    }
+    return output;
+}
+function solution6(n) {
+    let thousands = ["", "M", "MM", "MMM"];
+    let hundreds = [
+        "",
+        "C",
+        "CC",
+        "CCC",
+        "CD",
+        "D",
+        "DC",
+        "DCC",
+        "DCCC",
+        "CM",
+    ];
+    let tens = [
+        "",
+        "X",
+        "XX",
+        "XXX",
+        "XL",
+        "L",
+        "LX",
+        "LXX",
+        "LXXX",
+        "XC",
+    ];
+    let ones = [
+        "",
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "VII",
+        "VIII",
+        "IX",
+    ];
+    let res = "";
+    res += thousands[Math.floor(n / 1000)];
+    res += hundreds[Math.floor(n / 100) % 10];
+    res += tens[Math.floor(n / 10) % 10];
+    res += ones[n % 10];
+    return res;
+}
+function solution7(number) {
+    let returnString = "";
+    const table = [
+        { key: "M", value: 1000 },
+        { key: "CM", value: 900 },
+        { key: "D", value: 500 },
+        { key: "CD", value: 400 },
+        { key: "C", value: 100 },
+        { key: "XC", value: 90 },
+        { key: "L", value: 50 },
+        { key: "XL", value: 40 },
+        { key: "X", value: 10 },
+        { key: "IX", value: 9 },
+        { key: "V", value: 5 },
+        { key: "IV", value: 4 },
+        { key: "I", value: 1 },
+    ];
+    while (true) {
+        const v = table.filter((v) => v.value <= number)[0];
+        if (v == null) {
+            break;
+        }
+        if (v !== null) {
+            if (v.value <= number) {
+                returnString += v.key;
+                number = number - v.value;
+            }
+        }
+    }
+    return returnString;
+}
 const wave = (str) => {
     const strArr = str.split("");
     let solution = [];

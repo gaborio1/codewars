@@ -484,10 +484,12 @@ function solution1(roman: string): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR THIS ❗️❗️❗️ AND COMMENT
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ROMAN NUMERALS ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: REPEAT(), MODULO
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -513,37 +515,328 @@ M          1,000
 Remember that there can't be more than 3 identical symbols in a row.
 */
 
-function solution2(num: number): string {
-
+const solution2 = (num: number): string => {
     let roman: string = "";
 
+    // console.table({ num: num, roman: roman });
+
     if (num >= 1000) {
-        // GET INT NUMBER OF 1000s 
-        const v1000: number = num / 1000 | 0;
+        // GET INT NUMBER OF 1000s
+        const v1000: number = (num / 1000) | 0;
         console.log("1000: " + v1000);
         // GET REMAINDER AFTER TAKING AWAY 1000s
         num = num % 1000;
-        console.log(num);
+        // REPEAT "M" V1000 TIMES
         roman += "M".repeat(v1000);
-        console.log(roman);
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 900) {
+        num = num % 900;
+        roman += "CM";
+        // console.table({ num: num, roman: roman });
     }
 
     if (num >= 500) {
-        const v500: number = num / 500 | 0;
-        console.log("500: " + v500);
         num = num % 500;
-        console.log(num);
+        roman += "D";
+        // console.table({ num: num, roman: roman });
     }
 
-    return "hello";
-}
+    if (num >= 400) {
+        num = num % 400;
+        roman += "CD";
+        // console.table({ num: num, roman: roman });
+    }
 
-console.log(solution2(2844));
+    if (num >= 100) {
+        const v100: number = (num / 100) | 0;
+        console.log("100: " + v100);
+        num = num % 100;
+        roman += "C".repeat(v100);
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 90) {
+        num = num % 90;
+        roman += "XC";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 50) {
+        num = num % 50;
+        roman += "L";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 40) {
+        num = num % 40;
+        roman += "XL";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 10) {
+        const v10: number = (num / 10) | 0;
+        console.log("10: " + v10);
+        num = num % 10;
+        roman += "X".repeat(v10);
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 9) {
+        num = num % 9;
+        roman += "IX";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 5) {
+        num = num % 5;
+        roman += "V";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 4) {
+        num = num % 4;
+        roman += "IV";
+        // console.table({ num: num, roman: roman });
+    }
+
+    if (num >= 1) {
+        const v1: number = (num / 1) | 0;
+        // console.log("1: " + v1);
+        num = num % 1;
+        roman += "I".repeat(v1);
+        // console.table({ num: num, roman: roman });
+    }
+
+    return num > 3999 ? "invalid input" : roman;
+};
+
+/*
+3999
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   num   │  3999  │
+│  roman  │   ''   │
+└─────────┴────────┘
+1000: 3
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   num   │  999   │
+│  roman  │ 'MMM'  │
+└─────────┴────────┘
+900: 1
+┌─────────┬─────────┐
+│ (index) │ Values  │
+├─────────┼─────────┤
+│   num   │   99    │
+│  roman  │ 'MMMCM' │
+└─────────┴─────────┘
+90: 1
+┌─────────┬───────────┐
+│ (index) │  Values   │
+├─────────┼───────────┤
+│   num   │     9     │
+│  roman  │ 'MMMCMXC' │
+└─────────┴───────────┘
+9: 1
+┌─────────┬─────────────┐
+│ (index) │   Values    │
+├─────────┼─────────────┤
+│   num   │      0      │
+│  roman  │ 'MMMCMXCIX' │
+└─────────┴─────────────┘
+MMMCMXCIX
+*/
+
+// console.log(solution2(3999));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function solution3(number: number): string {
+    const ROMAN = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1,
+    };
+
+    let result = "";
+    for (let k in ROMAN) {
+        result += k.repeat(Math.floor(number / ROMAN[k]));
+        number = number % ROMAN[k];
+    }
+
+    return result;
+}
+
+function solution4(number: number): string {
+    const nums: Array<number> = [
+        1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1,
+    ];
+    const romans: Array<string> = [
+        "M",
+        "CM",
+        "D",
+        "CD",
+        "C",
+        "XC",
+        "L",
+        "XL",
+        "X",
+        "IX",
+        "V",
+        "IV",
+        "I",
+    ];
+    let result: string = "";
+
+    for (let i: number = 0; i < nums.length; i++) {
+        while (number >= nums[i]) {
+            number -= nums[i];
+            result += romans[i];
+        }
+    }
+
+    return result;
+}
+
+function solution5(number: number): string {
+    let table = {
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X",
+        "20": "XX",
+        "30": "XXX",
+        "40": "XL",
+        "50": "L",
+        "60": "LX",
+        "70": "LXX",
+        "80": "LXXX",
+        "90": "XC",
+        "100": "C",
+        "200": "CC",
+        "300": "CCC",
+        "400": "CD",
+        "500": "D",
+        "600": "DC",
+        "700": "DCC",
+        "800": "DCCC",
+        "900": "CM",
+        "1000": "M",
+        "2000": "MM",
+        "3000": "MMM",
+    };
+    let output = "";
+    let str = number.toString();
+
+    for (let i = str.length - 1, zeros = ""; i >= 0; i--, zeros += "0") {
+        let current = str.charAt(i);
+        if (current !== "0") output = table[current + zeros] + output;
+    }
+
+    return output;
+}
+
+function solution6(n: number): string {
+    let thousands: string[] = ["", "M", "MM", "MMM"];
+    let hundreds: string[] = [
+        "",
+        "C",
+        "CC",
+        "CCC",
+        "CD",
+        "D",
+        "DC",
+        "DCC",
+        "DCCC",
+        "CM",
+    ];
+    let tens: string[] = [
+        "",
+        "X",
+        "XX",
+        "XXX",
+        "XL",
+        "L",
+        "LX",
+        "LXX",
+        "LXXX",
+        "XC",
+    ];
+    let ones: string[] = [
+        "",
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "VII",
+        "VIII",
+        "IX",
+    ];
+
+    let res: string = "";
+    res += thousands[Math.floor(n / 1000)];
+    res += hundreds[Math.floor(n / 100) % 10];
+    res += tens[Math.floor(n / 10) % 10];
+    res += ones[n % 10];
+    return res;
+}
+
+function solution7(number: number): string {
+    let returnString = "";
+    const table = [
+        { key: "M", value: 1000 },
+        { key: "CM", value: 900 },
+        { key: "D", value: 500 },
+        { key: "CD", value: 400 },
+        { key: "C", value: 100 },
+        { key: "XC", value: 90 },
+        { key: "L", value: 50 },
+        { key: "XL", value: 40 },
+        { key: "X", value: 10 },
+        { key: "IX", value: 9 },
+        { key: "V", value: 5 },
+        { key: "IV", value: 4 },
+        { key: "I", value: 1 },
+    ];
+    while (true) {
+        const v = table.filter((v) => v.value <= number)[0];
+        if (v == null) {
+            break;
+        }
+        if (v !== null) {
+            if (v.value <= number) {
+                returnString += v.key;
+                number = number - v.value;
+            }
+        }
+    }
+    return returnString;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MEXICAN WAVE
@@ -638,8 +931,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -932,7 +1225,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1389,10 +1682,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -2692,8 +2985,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
