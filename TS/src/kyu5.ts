@@ -503,6 +503,14 @@ const isPrime = (num: number) => {
     return true;
 };
 
+const decompFormat = (primes: number[]): string => {
+
+    // var counter = {};
+    // primes.forEach(number => counter[number] = (counter[number] || 0) +1);
+
+    return "hello";
+}
+
 // console.log(isPrime(5));
 // =========================================
 
@@ -528,7 +536,8 @@ const primeFactors = (num: number) => {
     console.log(factors);
 };
 
-console.log(primeFactors(36));
+// console.log(primeFactors(36));
+console.log(primeFactors(86240));
 
 class G964a8 {
     public static primeFactors = (num: number): string => {

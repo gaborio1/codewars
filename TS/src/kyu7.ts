@@ -395,10 +395,10 @@ function addLetters(...letters: string[]) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: POWER OF TWO
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS:❗️❗️❗️  MATH.LOG() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -417,17 +417,69 @@ power_of_two?(333)  # false
 Beware of certain edge cases - for example, 1 is a power of 2 since 2^0 = 1 and 0 is not a power of 2.
 */
 
-function isPowerOfTwo(n: number): boolean {
-    // Insert magic here
-    return false;
+const isPowerOfTwo = (num: number): boolean => {
+
+    if (num === 1) return true;
+    if ((num & 1) === 1) return false;
+    // KEEP DIVIDING NUM BY 2
+    while (num > 1) {
+        num = num / 2
+    }
+
+    // console.log(num);
+
+    // IF NUM / 2 EQUALS 1 RETURN true, OTHERWISE false
+    return num === 1;
+
+    // OR:
+
+    // return num === 1
+    //     ? true
+    //     : false;
 }
 
-// console.log(isPowerOfTwo(2));
+// console.log(isPowerOfTwo(23));
+// console.log(isPowerOfTwo(18));
 // console.log(isPowerOfTwo(4096));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function isPowerOfTwo2(n: number): boolean {
+    return Number.isInteger(Math.log2(n));
+}
+
+
+const isPowerOfTwo3 = (n: number): boolean => Math.log2(n) % 1 === 0;
+
+
+
+function isPowerOfTwo4(n: number): boolean {
+    return n === 2 || n === 1 ? true : n < 2 ? false : isPowerOfTwo(n / 2);
+}
+
+
+
+function isPowerOfTwo5(n: number): boolean {
+    for (let i = 0; true; i++) {
+        const pow = Math.pow(2, i);
+        if (pow === n) {
+            return true;
+        } else if (pow > n) {
+            return false;
+        }
+    }
+}
+
+
+
+function isPowerOfTwo6(n: number): boolean {
+    while (n > 2 && n % 2 == 0)
+        n = n / 2;
+
+    return n == 2 || n == 1;
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  OVER THE ROAD

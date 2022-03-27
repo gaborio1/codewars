@@ -20,8 +20,38 @@ function averages(numbers) {
 }
 function addLetters(...letters) {
 }
-function isPowerOfTwo(n) {
-    return false;
+const isPowerOfTwo = (num) => {
+    if (num === 1)
+        return true;
+    if ((num & 1) === 1)
+        return false;
+    while (num > 1) {
+        num = num / 2;
+    }
+    return num === 1;
+};
+function isPowerOfTwo2(n) {
+    return Number.isInteger(Math.log2(n));
+}
+const isPowerOfTwo3 = (n) => Math.log2(n) % 1 === 0;
+function isPowerOfTwo4(n) {
+    return n === 2 || n === 1 ? true : n < 2 ? false : isPowerOfTwo(n / 2);
+}
+function isPowerOfTwo5(n) {
+    for (let i = 0; true; i++) {
+        const pow = Math.pow(2, i);
+        if (pow === n) {
+            return true;
+        }
+        else if (pow > n) {
+            return false;
+        }
+    }
+}
+function isPowerOfTwo6(n) {
+    while (n > 2 && n % 2 == 0)
+        n = n / 2;
+    return n == 2 || n == 1;
 }
 function overTheRoad(address, n) {
     return 0;

@@ -15,6 +15,9 @@ const isPrime = (num) => {
     }
     return true;
 };
+const decompFormat = (primes) => {
+    return "hello";
+};
 const primeFactors = (num) => {
     let factors = [];
     let numRemainder = num;
@@ -33,7 +36,7 @@ const primeFactors = (num) => {
     }
     console.log(factors);
 };
-console.log(primeFactors(36));
+console.log(primeFactors(86240));
 class G964a8 {
 }
 G964a8.primeFactors = (num) => {
