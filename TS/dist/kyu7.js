@@ -101,6 +101,18 @@ class G964a4 {
         return x.slice(0, -1);
     }
 }
+const bump = (road) => {
+    let counter = 0;
+    for (let i = 0; i < road.length; i++) {
+        if (road[i] === "n") {
+            counter++;
+            if (counter > 15)
+                return "Car Dead";
+        }
+    }
+    return "Woohoo!";
+};
+console.log(bump("_"));
 const adjacentElementsProduct = (arr) => {
     let productsArr = [];
     for (let i = 0; i < arr.length - 1; i++) {

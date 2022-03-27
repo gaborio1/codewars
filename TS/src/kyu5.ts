@@ -455,6 +455,7 @@ Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
 
 A prime number is a whole number greater than 1 whose only factors are 1 and itself. A factor is a whole number that can be divided evenly into another number. The first few prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29. Numbers that have more than two factors are called composite numbers.
 
+❗️❗️❗️
 Prime Factor Decomposition
 Quick revise
 Prime factor decomposition of a number means writing it as a product of prime factors.
@@ -486,6 +487,7 @@ But we haven't finished, because 9 is not a prime number. We know that 9 divides
 Hence 36 = 9 × 2 × 2 = 3 × 3 × 2 × 2.
 
 This is the answer, because both 2 and 3 are prime numbers.
+❗️❗️❗️
 */
 
 class G964a8 {

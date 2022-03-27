@@ -658,31 +658,35 @@ MMMCMXCIX
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function solution3(number: number): string {
-    const ROMAN = {
-        M: 1000,
-        CM: 900,
-        D: 500,
-        CD: 400,
-        C: 100,
-        XC: 90,
-        L: 50,
-        XL: 40,
-        X: 10,
-        IX: 9,
-        V: 5,
-        IV: 4,
-        I: 1,
-    };
+// ERROR:
+// Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; } '.
+//   No index signature with a parameter of type 'string' was found on type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; }'.ts(7053)
 
-    let result = "";
-    for (let k in ROMAN) {
-        result += k.repeat(Math.floor(number / ROMAN[k]));
-        number = number % ROMAN[k];
-    }
+// function solution3(number: number): string {
+//     const ROMAN = {
+//         M: 1000,
+//         CM: 900,
+//         D: 500,
+//         CD: 400,
+//         C: 100,
+//         XC: 90,
+//         L: 50,
+//         XL: 40,
+//         X: 10,
+//         IX: 9,
+//         V: 5,
+//         IV: 4,
+//         I: 1,
+//     };
 
-    return result;
-}
+//     let result = "";
+//     for (let k in ROMAN) {
+//         result += k.repeat(Math.floor(number / ROMAN[k]));
+//         number = number % ROMAN[k];
+//     }
+
+//     return result;
+// }
 
 function solution4(number: number): string {
     const nums: Array<number> = [
@@ -715,49 +719,55 @@ function solution4(number: number): string {
     return result;
 }
 
-function solution5(number: number): string {
-    let table = {
-        "1": "I",
-        "2": "II",
-        "3": "III",
-        "4": "IV",
-        "5": "V",
-        "6": "VI",
-        "7": "VII",
-        "8": "VIII",
-        "9": "IX",
-        "10": "X",
-        "20": "XX",
-        "30": "XXX",
-        "40": "XL",
-        "50": "L",
-        "60": "LX",
-        "70": "LXX",
-        "80": "LXXX",
-        "90": "XC",
-        "100": "C",
-        "200": "CC",
-        "300": "CCC",
-        "400": "CD",
-        "500": "D",
-        "600": "DC",
-        "700": "DCC",
-        "800": "DCCC",
-        "900": "CM",
-        "1000": "M",
-        "2000": "MM",
-        "3000": "MMM",
-    };
-    let output = "";
-    let str = number.toString();
 
-    for (let i = str.length - 1, zeros = ""; i >= 0; i--, zeros += "0") {
-        let current = str.charAt(i);
-        if (current !== "0") output = table[current + zeros] + output;
-    }
 
-    return output;
-}
+// ERROR:
+// Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; } '.
+//   No index signature with a parameter of type 'string' was found on type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; }'.ts(7053)
+
+// function solution5(number: number): string {
+//     let table = {
+//         "1": "I",
+//         "2": "II",
+//         "3": "III",
+//         "4": "IV",
+//         "5": "V",
+//         "6": "VI",
+//         "7": "VII",
+//         "8": "VIII",
+//         "9": "IX",
+//         "10": "X",
+//         "20": "XX",
+//         "30": "XXX",
+//         "40": "XL",
+//         "50": "L",
+//         "60": "LX",
+//         "70": "LXX",
+//         "80": "LXXX",
+//         "90": "XC",
+//         "100": "C",
+//         "200": "CC",
+//         "300": "CCC",
+//         "400": "CD",
+//         "500": "D",
+//         "600": "DC",
+//         "700": "DCC",
+//         "800": "DCCC",
+//         "900": "CM",
+//         "1000": "M",
+//         "2000": "MM",
+//         "3000": "MMM",
+//     };
+//     let output = "";
+//     let str = number.toString();
+
+//     for (let i = str.length - 1, zeros = ""; i >= 0; i--, zeros += "0") {
+//         let current = str.charAt(i);
+//         if (current !== "0") output = table[current + zeros] + output;
+//     }
+
+//     return output;
+// }
 
 function solution6(n: number): string {
     let thousands: string[] = ["", "M", "MM", "MMM"];
@@ -931,8 +941,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -1225,7 +1235,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1682,10 +1692,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -2985,9 +2995,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

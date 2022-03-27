@@ -732,7 +732,10 @@ class G964a4 {
     }
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// INCLUDE THIS IN EXAMPLES FOR MATCH() WITH POSSIBLE EMPTY ARR
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR THIS, MAKE IT WORK WITH STR.MATCH() ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  BUMPS IN THE ROAD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -746,16 +749,27 @@ Your car is old, it breaks easily. The shock absorbers are gone and you think it
 Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
 */
 
-// const bump = (road: string): string => {
+const bump = (road: string): string => {
 
-//     // const bumps: number = road.match(/n/g)?.length || 0;
-//     const bumps: number = road.match(/n/g)?.length;
+    // const bumps: number[] = road.match(/n/g);
+    // console.log(bumps);
 
-//     return bumps > 15
-//         ? "Car Dead"
-//         : "Woohoo!";
+    // return bumps.length > 15
+    //     ? "Car Dead"
+    //     : "Woohoo!";
 
-// }
+    let counter: number = 0;
+
+    for (let i = 0; i < road.length; i++) {
+        if (road[i] === "n") {
+            counter++;
+            if (counter > 15) return "Car Dead";
+        }
+    }
+
+    return "Woohoo!";
+
+}
 
 // console.log(bump("n"));
 // console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
@@ -765,6 +779,38 @@ Unfortunately for you, your drive is very bumpy! Given a string showing either f
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function bump2(x: string): string {
+    return x.split('').filter(a => a === 'n').length <= 15 ? "Woohoo!" : "Car Dead"
+}
+
+
+function bump3(x: string): string {
+    return (x.replace(/_/g, '')).length > 15 ? `Car Dead` : `Woohoo!`;
+}
+
+
+
+function bump4(x: string): string {
+    return x
+        .split('')
+        .reduce((total, n) =>
+            n === 'n' ? total + 1 : total
+            , 0
+        ) > 15 ? "Car Dead" : "Woohoo!"
+}
+
+// ❗️❗️❗️ MATCH() ❗️❗️❗️
+function bump5(x: string): string {
+    const arr: string[] = x.match(/[n+]/g) || [];
+    return arr.length <= 15 ? "Woohoo!" : "Car Dead"
+}
+
+
+
+function bump6(x: string): string {
+    return (x.match(/n/g) || []).length > 15 ? "Car Dead" : "Woohoo!"
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  MAXIMUM PRODUCT
