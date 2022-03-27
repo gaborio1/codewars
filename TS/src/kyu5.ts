@@ -490,6 +490,46 @@ This is the answer, because both 2 and 3 are prime numbers.
 ❗️❗️❗️
 */
 
+// =========================================
+// THIS IS FOR PRIME 5KYU
+// =========================================
+
+const isPrime = (num: number) => {
+    if (num === 1 || num === 2) return true;
+    for (let i = 2; i < num; i++) {
+        // console.table({num: num, divider: i});
+        if (num % i === 0) return false;
+    }
+    return true;
+};
+
+// console.log(isPrime(5));
+// =========================================
+
+const primeFactors = (num: number) => {
+    let factors = [];
+    let numRemainder = num;
+    //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
+    for (let i = 2; i < (num - 1) / 2; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            console.log("prime found: ", prime);
+            // if (numRemainder % prime === 0) {
+            //     numRemainder = numRemainder / prime
+            // }
+            while (numRemainder % prime === 0) {
+                numRemainder = numRemainder / prime;
+                factors.push(prime);
+            }
+        }
+        if (numRemainder === 1) break;
+    }
+    console.log(factors);
+};
+
+console.log(primeFactors(36));
+
 class G964a8 {
     public static primeFactors = (num: number): string => {
         // GET PRIME NUMBERS

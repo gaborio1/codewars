@@ -6,6 +6,34 @@ function chooseBestSum(t, k, ls) {
 }
 class G964b {
 }
+const isPrime = (num) => {
+    if (num === 1 || num === 2)
+        return true;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0)
+            return false;
+    }
+    return true;
+};
+const primeFactors = (num) => {
+    let factors = [];
+    let numRemainder = num;
+    for (let i = 2; i < (num - 1) / 2; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            console.log("prime found: ", prime);
+            while (numRemainder % prime === 0) {
+                numRemainder = numRemainder / prime;
+                factors.push(prime);
+            }
+        }
+        if (numRemainder === 1)
+            break;
+    }
+    console.log(factors);
+};
+console.log(primeFactors(36));
 class G964a8 {
 }
 G964a8.primeFactors = (num) => {

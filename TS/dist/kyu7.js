@@ -112,7 +112,24 @@ const bump = (road) => {
     }
     return "Woohoo!";
 };
-console.log(bump("_"));
+function bump2(x) {
+    return x.split('').filter(a => a === 'n').length <= 15 ? "Woohoo!" : "Car Dead";
+}
+function bump3(x) {
+    return (x.replace(/_/g, '')).length > 15 ? `Car Dead` : `Woohoo!`;
+}
+function bump4(x) {
+    return x
+        .split('')
+        .reduce((total, n) => n === 'n' ? total + 1 : total, 0) > 15 ? "Car Dead" : "Woohoo!";
+}
+function bump5(x) {
+    const arr = x.match(/[n+]/g) || [];
+    return arr.length <= 15 ? "Woohoo!" : "Car Dead";
+}
+function bump6(x) {
+    return (x.match(/n/g) || []).length > 15 ? "Car Dead" : "Woohoo!";
+}
 const adjacentElementsProduct = (arr) => {
     let productsArr = [];
     for (let i = 0; i < arr.length - 1; i++) {
