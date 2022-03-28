@@ -18,8 +18,20 @@ function minSum(arr) {
 function averages(numbers) {
     return [1];
 }
-function addLetters(...letters) {
-}
+const addLetters = (...letters) => {
+    console.log(...letters);
+    console.log(letters);
+    if (letters.length === 0)
+        return "z";
+    const charCodeSum = letters
+        .map((char) => char.charCodeAt(0) - 96)
+        .reduce((acc, curr) => acc + curr, 0);
+    console.log(charCodeSum);
+    return charCodeSum > 26
+        ? String.fromCharCode(charCodeSum + 96 - 26)
+        : String.fromCharCode(charCodeSum + 96);
+};
+console.log(addLetters());
 const isPowerOfTwo = (num) => {
     if (num === 1)
         return true;
@@ -53,8 +65,16 @@ function isPowerOfTwo6(n) {
         n = n / 2;
     return n == 2 || n == 1;
 }
-function overTheRoad(address, n) {
-    return 0;
+const overTheRoad = (address, n) => {
+    return (n * 2 + 1) - address;
+};
+function overTheRoad2(address, n) {
+    if (address % 2 === 0) {
+        return 1 + 2 * (n - address / 2);
+    }
+    else {
+        return 2 * n - (address - 1);
+    }
 }
 const evenNumbers = (array, n) => {
     return array.

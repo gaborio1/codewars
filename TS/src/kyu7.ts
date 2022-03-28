@@ -357,6 +357,8 @@ function averages(numbers: number[] | null): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+
+// ❗️❗️❗️  FAILED RANDOM TESTS ❗️❗️❗️ 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: ALPHABETICAL ADDITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -383,12 +385,99 @@ addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
 addLetters() = 'z'
 */
 
-function addLetters(...letters: string[]) {
-    // your code here
+const addLetters = (...letters: string[]): string => {
+
+    // ❗️❗️❗️ ❗️❗️❗️ ❗️❗️❗️ 
+    console.log(...letters);    // a b c
+    console.log(letters);       // [ 'a', 'b', 'c' ]
+
+    // letters.forEach((char) => {
+    //     console.log(char.charCodeAt(0));
+    // });
+
+    /*
+    const sum: any = letters.reduce((total, curr, idx) => {
+        return total + Number(curr.charCodeAt(0));
+    })
+
+    console.log(sum); // ❓❓❓ a9899 ❓❓❓
+    */
+
+    if (letters.length === 0) return "z";
+
+    const charCodeSum = letters
+        .map((char) => char.charCodeAt(0) - 96)
+        .reduce((acc, curr) => acc + curr, 0); // 26 FOR "z"
+    console.log(charCodeSum);
+
+    return charCodeSum > 26
+        ? String.fromCharCode(charCodeSum + 96 - 26)
+        : String.fromCharCode(charCodeSum + 96);
+
 }
 
-// console.log(addLetters(['a', 'b', 'c']));
-// console.log(addLetters(['z']));
+/*
+❗️❗️❗️ ❗️❗️❗️ ❗️❗️❗️
+Random tests
+addLetters("s", "k", "g", "u", "z")
+Log
+s k g u z
+[ 's', 'k', 'g', 'u', 'z' ]
+expected '' to equal 'f'
+Completed in 2ms
+addLetters("b", "u", "t", "y", "c", "y", "n", "i")
+Log
+b u t y c y n i
+[ 'b', 'u', 't', 'y', 'c', 'y', 'n', 'i' ]
+expected '½' to equal 'o'
+addLetters("j", "w", "h", "n")
+Log
+j w h n
+[ 'j', 'w', 'h', 'n' ]
+expected '}' to equal 'c'
+*/
+
+
+/*
+a	097	01100001	A	065	01000001
+b	098	01100010	B	066	01000010
+c	099	01100011	C	067	01000011
+d	100	01100100	D	068	01000100
+e	101	01100101	E	069	01000101
+f	102	01100110	F	070	01000110
+g	103	01100111	G	071	01000111
+h	104	01101000	H	072	01001000
+i	105	01101001	I	073	01001001
+j	106	01101010	J	074	01001010
+k	107	01101011	K	075	01001011
+l	108	01101100	L	076	01001100
+m	109	01101101	M	077	01001101
+n	110	01101110	N	078	01001110
+o	111	01101111	O	079	01001111
+p	112	01110000	P	080	01010000
+q	113	01110001	Q	081	01010001
+r	114	01110010	R	082	01010010
+s	115	01110011	S	083	01010011
+t	116	01110100	T	084	01010100
+u	117	01110101	U	085	01010101
+v	118	01110110	V	086	01010110
+w	119	01110111	W	087	01010111
+x	120	01111000	X	088	01011000
+y	121	01111001	Y	089	01011001
+z	122	01111010	Z	090	01011010
+
+*/
+
+
+// f
+// console.log(addLetters('a', 'b', 'c'));
+// d
+// console.log(addLetters(['y', 'c', 'b']));
+
+// z FOR EMPTY ARRAY OR NO ARGUMENTS
+console.log(addLetters());
+// console.log(addLetters());
+
 // console.log();
 // console.log();
 // console.log();
@@ -481,10 +570,10 @@ function isPowerOfTwo6(n: number): boolean {
     return n == 2 || n == 1;
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  OVER THE ROAD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -512,18 +601,31 @@ If you are timing out, running out of memory, or get any kind of "error", read o
 To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. Read the discourse for some inspiration :)
 */
 
-function overTheRoad(address: number, n: number): number {
-    // Good luck!
+const overTheRoad = (address: number, n: number): number => {
 
-    return 0;
+    return (n * 2 + 1) - address;
 }
 
+//  OPPOSITE NUMBERS ADD UP TO TWICE THE LENGTH OF STREET PLUS 1
+//  SUBSTRACT YOUR address FROM THAT SUM TO GET RESULT
+
 // console.log(overTheRoad(1, 3));
-// console.log((overTheRoad(3, 3));
+// console.log(overTheRoad(3, 3));
+// console.log(overTheRoad(7, 11));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function overTheRoad2(address: number, n: number): number {
+    // Good luck!
+    if (address % 2 === 0) {
+        return 1 + 2 * (n - address / 2);
+    } else {
+        return 2 * n - (address - 1);
+    }
+}
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  EVEN NUMBERS IN AN ARRAY
