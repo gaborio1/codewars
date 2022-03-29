@@ -437,7 +437,10 @@ class G964b {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PRIMES IN NUMBERS - PRIME FACTOR DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -521,18 +524,16 @@ countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 // console.log(isPrime(5));
 // =========================================
 
-const primeFactors = (num: number) => {
+const primeFactors = (num: number): string => {
     let factors = [];
     let numRemainder = num;
+    let solution: string = "";
     //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
     for (let i = 2; i < (num - 1) / 2; i++) {
         let prime = 0;
         if (isPrime(i)) {
             prime = i;
             console.log("prime found: ", prime);
-            // if (numRemainder % prime === 0) {
-            //     numRemainder = numRemainder / prime
-            // }
             while (numRemainder % prime === 0) {
                 numRemainder = numRemainder / prime;
                 factors.push(prime);
@@ -541,23 +542,44 @@ const primeFactors = (num: number) => {
         if (numRemainder === 1) break;
     }
     console.log(factors);
-};
+    if (factors.length === 0) return `(${num})`;
 
-// console.log(primeFactors(36));
-console.log(primeFactors(86240));
+    // COUNT OCCURENCES OF ARRAY ELEMENTS WITH LOOP
+    let counter: number = 0;
+    for (let i = 0; i < factors.length; i++) {
+        counter++;
+        console.log("counter: ", counter);
+        if (factors[i] !== factors[i + 1] && factors[i] !== undefined) {
+            console.log("new factor: ", factors[i], i);
+            // FORMAT FACTORS AND CONCAT TO SOLUTION HERE
+            solution += counter < 2
+                ? `(${factors[i]})`
+                : `(${factors[i]}**${counter})`;
+            // RESET COUNTER
+            counter = 0;
+        }
+    }
 
-class G964a8 {
-    public static primeFactors = (num: number): string => {
-        // GET PRIME NUMBERS
+    return solution;
 
-        // DIVIDE
-
-        return "hello";
-    };
 }
 
+// console.log(primeFactors(36));
+// console.log(primeFactors(86240));
+console.log(primeFactors(7919));
+
+// class G964a8 {
+//     public static primeFactors = (num: number): string => {
+//         // GET PRIME NUMBERS
+
+//         // DIVIDE
+
+//         // return "hello";
+//     };
+// }
+
 // "(2**5)(5)(7**2)(11)"
-console.log(G964a8.primeFactors(86240));
+// console.log(G964a8.primeFactors(86240));
 // console.log();
 // console.log();
 // console.log();

@@ -15,16 +15,17 @@ const isPrime = (num) => {
     }
     return true;
 };
-const decompFormat = (primes) => {
+const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
     console.log(counter);
     return "hello";
 };
-decompFormat([2, 2, 2, 2, 2, 5, 7, 7, 11]);
+countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 const primeFactors = (num) => {
     let factors = [];
     let numRemainder = num;
+    let solution = "";
     for (let i = 2; i < (num - 1) / 2; i++) {
         let prime = 0;
         if (isPrime(i)) {
@@ -39,14 +40,23 @@ const primeFactors = (num) => {
             break;
     }
     console.log(factors);
+    if (factors.length === 0)
+        return `(${num})`;
+    let counter = 0;
+    for (let i = 0; i < factors.length; i++) {
+        counter++;
+        console.log("counter: ", counter);
+        if (factors[i] !== factors[i + 1] && factors[i] !== undefined) {
+            console.log("new factor: ", factors[i], i);
+            solution += counter < 2
+                ? `(${factors[i]})`
+                : `(${factors[i]}**${counter})`;
+            counter = 0;
+        }
+    }
+    return solution;
 };
-console.log(primeFactors(86240));
-class G964a8 {
-}
-G964a8.primeFactors = (num) => {
-    return "hello";
-};
-console.log(G964a8.primeFactors(86240));
+console.log(primeFactors(7919));
 class G964a {
 }
 G964a.perimeter = (num) => {
