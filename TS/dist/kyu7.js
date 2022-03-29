@@ -19,6 +19,18 @@ function averages(numbers) {
     return [1];
 }
 const addLetters = (...letters) => {
+    if (letters.length === 0)
+        return "z";
+    const charCodeSum = letters
+        .map((char) => char.charCodeAt(0) - 96)
+        .reduce((acc, curr) => acc + curr, 0);
+    if (charCodeSum % 26 === 0)
+        return "z";
+    return charCodeSum > 26
+        ? String.fromCharCode((charCodeSum % 26) + 96)
+        : String.fromCharCode(charCodeSum + 96);
+};
+const addLetters2 = (...letters) => {
     console.log(...letters);
     console.log(letters);
     if (letters.length === 0)
@@ -27,11 +39,72 @@ const addLetters = (...letters) => {
         .map((char) => char.charCodeAt(0) - 96)
         .reduce((acc, curr) => acc + curr, 0);
     console.log(charCodeSum);
+    console.log(charCodeSum % 26);
+    if (charCodeSum % 26 === 0)
+        return "z";
     return charCodeSum > 26
-        ? String.fromCharCode(charCodeSum + 96 - 26)
+        ? String.fromCharCode((charCodeSum % 26) + 96)
         : String.fromCharCode(charCodeSum + 96);
 };
-console.log(addLetters());
+function addLetters3(...letters) {
+    const aCode = "a".charCodeAt(0);
+    const zCode = "z".charCodeAt(0);
+    const mod = zCode - aCode + 1;
+    const normalizeCharCode = (letter) => letter.charCodeAt(0) - aCode + 1;
+    const normalizeCharCodes = letters.map(normalizeCharCode);
+    const add = (a, b) => a + b;
+    const value = normalizeCharCodes.reduce(add, 0);
+    const finalCharCode = ((value - 1 + mod) % mod) + aCode;
+    return String.fromCharCode(finalCharCode);
+}
+const addLetters4 = (...letters) => String.fromCharCode((letters.reduce((acc, val) => acc + val.charCodeAt(0) - 96, 0) % 26 ||
+    26) + 96);
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const addLetters5 = (...letters) => letters.length === 0
+    ? "z"
+    : alphabet[(letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+        1) %
+        alphabet.length];
+function addLetters6(...letters) {
+    if (letters.length === 0)
+        return "z";
+    const letterArray = "abcdefghijklmnopqrstuvwxyz".split("");
+    let sum = 0;
+    for (const letter of letters) {
+        sum += letterArray.indexOf(letter) + 1;
+    }
+    let remainder = sum % 26;
+    if (remainder === 0)
+        return "z";
+    else
+        return letterArray[remainder - 1];
+}
+function addLetters7(...letters) {
+    const sum = letters.map((c) => c.charCodeAt(0) - 96).reduce((a, b) => a + b, 0) %
+        26;
+    return sum === 0 ? "z" : String.fromCharCode(96 + sum);
+}
+function addLetters8(...letters) {
+    const s = "zabcdefghijklmnopqrstuvwxy";
+    let sum = 0;
+    for (let l of letters) {
+        sum += s.indexOf(l);
+    }
+    return s[sum % 26];
+}
+function addLetters9(...letters) {
+    if (!letters || letters.length < 1)
+        return "z";
+    if (letters.length === 1)
+        return letters[0];
+    const num = letters
+        .map((ch) => ch.charCodeAt(0) - 96)
+        .reduce((sum, curr) => sum + curr, 0) % 26;
+    if (num === 0)
+        return "z";
+    else
+        return String.fromCharCode(num + 96);
+}
 const isPowerOfTwo = (num) => {
     if (num === 1)
         return true;
@@ -66,7 +139,7 @@ function isPowerOfTwo6(n) {
     return n == 2 || n == 1;
 }
 const overTheRoad = (address, n) => {
-    return (n * 2 + 1) - address;
+    return n * 2 + 1 - address;
 };
 function overTheRoad2(address, n) {
     if (address % 2 === 0) {
@@ -77,9 +150,7 @@ function overTheRoad2(address, n) {
     }
 }
 const evenNumbers = (array, n) => {
-    return array.
-        filter((el) => (el & 1) === 0)
-        .slice(-n);
+    return array.filter((el) => (el & 1) === 0).slice(-n);
 };
 function isEven2(n) {
     return n % 2 === 0;
@@ -94,7 +165,7 @@ G965a1.gps = (secInt, distArr) => {
     for (let i = 1; i < distArr.length; i++) {
         let curr = distArr[i], prev = distArr[i - 1];
         let sectionDist = curr - prev;
-        let sectAveSpeed = 3600 / secInt * sectionDist;
+        let sectAveSpeed = (3600 / secInt) * sectionDist;
         speedsArr.push(sectAveSpeed);
     }
     console.log(speedsArr);
@@ -107,7 +178,7 @@ G965a2.gps = (seconds, sections) => {
         return 0;
     const sectionSpeeds = sections
         .map((start, index) => start - (sections[index - 1] || 0))
-        .map(distance => (3600 * distance) / seconds);
+        .map((distance) => (3600 * distance) / seconds);
     return Math.floor(Math.max(...sectionSpeeds));
 };
 const noOdds = (values) => {
@@ -116,7 +187,7 @@ const noOdds = (values) => {
     });
 };
 function noOdds2(values) {
-    return values.filter(i => !(i % 2));
+    return values.filter((i) => !(i % 2));
 }
 class G964a {
 }
@@ -124,20 +195,29 @@ G964a.partlist = (arr) => {
     let solution = [];
     for (let i = 0; i < arr.length - 1; i++) {
         let subArr = [];
-        subArr
-            .push(arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" "));
+        subArr.push(arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" "));
         solution.push(subArr);
     }
     return solution;
 };
 class G964a2 {
     static partlist(arr) {
-        return arr.map((s, i, a) => [a.slice(0, i + 1).join(' '), a.slice(i + 1, a.length).join(' ')]).slice(0, arr.length - 1);
+        return arr
+            .map((s, i, a) => [
+            a.slice(0, i + 1).join(" "),
+            a.slice(i + 1, a.length).join(" "),
+        ])
+            .slice(0, arr.length - 1);
     }
 }
 class G964a3 {
     static partlist(arr) {
-        return arr.slice(1).map((x, i) => [arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" ")]);
+        return arr
+            .slice(1)
+            .map((x, i) => [
+            arr.slice(0, i + 1).join(" "),
+            arr.slice(i + 1).join(" "),
+        ]);
     }
 }
 class G964a4 {
@@ -145,7 +225,7 @@ class G964a4 {
         const x = arr.map((word, idx) => {
             return [
                 arr.slice(0, idx + 1).join(" "),
-                arr.slice(idx + 1, arr.length).join(" ")
+                arr.slice(idx + 1, arr.length).join(" "),
             ];
         });
         return x.slice(0, -1);
@@ -163,15 +243,19 @@ const bump = (road) => {
     return "Woohoo!";
 };
 function bump2(x) {
-    return x.split('').filter(a => a === 'n').length <= 15 ? "Woohoo!" : "Car Dead";
+    return x.split("").filter((a) => a === "n").length <= 15
+        ? "Woohoo!"
+        : "Car Dead";
 }
 function bump3(x) {
-    return (x.replace(/_/g, '')).length > 15 ? `Car Dead` : `Woohoo!`;
+    return x.replace(/_/g, "").length > 15 ? `Car Dead` : `Woohoo!`;
 }
 function bump4(x) {
     return x
-        .split('')
-        .reduce((total, n) => n === 'n' ? total + 1 : total, 0) > 15 ? "Car Dead" : "Woohoo!";
+        .split("")
+        .reduce((total, n) => (n === "n" ? total + 1 : total), 0) > 15
+        ? "Car Dead"
+        : "Woohoo!";
 }
 function bump5(x) {
     const arr = x.match(/[n+]/g) || [];

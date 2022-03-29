@@ -357,12 +357,12 @@ function averages(numbers: number[] | null): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-// ❗️❗️❗️  FAILED RANDOM TESTS ❗️❗️❗️ 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ALPHABETICAL ADDITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CHARCODEAT(), STRING.FROMCHARCODE(), REDUCE(INITIAL VALUE), SPREAD ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -384,59 +384,6 @@ addLetters('z', 'a') = 'a'
 addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
 addLetters() = 'z'
 */
-
-const addLetters = (...letters: string[]): string => {
-
-    // ❗️❗️❗️ ❗️❗️❗️ ❗️❗️❗️ 
-    console.log(...letters);    // a b c
-    console.log(letters);       // [ 'a', 'b', 'c' ]
-
-    // letters.forEach((char) => {
-    //     console.log(char.charCodeAt(0));
-    // });
-
-    /*
-    const sum: any = letters.reduce((total, curr, idx) => {
-        return total + Number(curr.charCodeAt(0));
-    })
-
-    console.log(sum); // ❓❓❓ a9899 ❓❓❓
-    */
-
-    if (letters.length === 0) return "z";
-
-    const charCodeSum = letters
-        .map((char) => char.charCodeAt(0) - 96)
-        .reduce((acc, curr) => acc + curr, 0); // 26 FOR "z"
-    console.log(charCodeSum);
-
-    return charCodeSum > 26
-        ? String.fromCharCode(charCodeSum + 96 - 26)
-        : String.fromCharCode(charCodeSum + 96);
-
-}
-
-/*
-❗️❗️❗️ ❗️❗️❗️ ❗️❗️❗️
-Random tests
-addLetters("s", "k", "g", "u", "z")
-Log
-s k g u z
-[ 's', 'k', 'g', 'u', 'z' ]
-expected '' to equal 'f'
-Completed in 2ms
-addLetters("b", "u", "t", "y", "c", "y", "n", "i")
-Log
-b u t y c y n i
-[ 'b', 'u', 't', 'y', 'c', 'y', 'n', 'i' ]
-expected '½' to equal 'o'
-addLetters("j", "w", "h", "n")
-Log
-j w h n
-[ 'j', 'w', 'h', 'n' ]
-expected '}' to equal 'c'
-*/
-
 
 /*
 a	097	01100001	A	065	01000001
@@ -468,21 +415,136 @@ z	122	01111010	Z	090	01011010
 
 */
 
+const addLetters = (...letters: string[]): string => {
+    if (letters.length === 0) return "z";
 
-// f
-// console.log(addLetters('a', 'b', 'c'));
+    const charCodeSum = letters
+        .map((char) => char.charCodeAt(0) - 96)
+        .reduce((acc, curr) => acc + curr, 0); // 26 FOR "z"
+
+    if (charCodeSum % 26 === 0) return "z";
+
+    return charCodeSum > 26
+        ? String.fromCharCode((charCodeSum % 26) + 96)
+        : String.fromCharCode(charCodeSum + 96);
+};
+
+//  SOLUTION WITH COMMENTS:
+
+const addLetters2 = (...letters: string[]): string => {
+    // ❗️❗️❗️ SPREAD ARGUMENTS ❗️❗️❗️
+    console.log(...letters); // a b c
+    console.log(letters); // [ 'a', 'b', 'c' ]
+
+    // RETURN Z FOR EMPTY ARRAY
+    if (letters.length === 0) return "z";
+
+    // ❗️❗️❗️ CHARCODEAT()
+    const charCodeSum = letters
+        .map((char) => char.charCodeAt(0) - 96) // [1(97-96), 2(98-96)...3]
+        .reduce((acc, curr) => acc + curr, 0); // [6(1+2+3)]
+    console.log(charCodeSum);
+    console.log(charCodeSum % 26);
+
+    // IF SUM IS MULTIPLIES OF 26 RETURN Z AS SUM % 26 WILL RESULT IN CHARCODE(0)
+    if (charCodeSum % 26 === 0) return "z";
+
+    // STRING.FROMCHARCODE()
+    return charCodeSum > 26
+        ? String.fromCharCode((charCodeSum % 26) + 96) // OVERLAP (MORE THAN 26)
+        : String.fromCharCode(charCodeSum + 96);
+};
+
+// z
+// console.log(addLetters(addLetters("f", "g", "a", "r", "t")));
 // d
 // console.log(addLetters(['y', 'c', 'b']));
 
 // z FOR EMPTY ARRAY OR NO ARGUMENTS
-console.log(addLetters());
 // console.log(addLetters());
 
-// console.log();
+// f
+// console.log(console.log(addLetters("s", "k", "g", "u", "z")));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function addLetters3(...letters: string[]): string {
+    const aCode: number = "a".charCodeAt(0);
+    const zCode: number = "z".charCodeAt(0);
+    const mod: number = zCode - aCode + 1;
+
+    const normalizeCharCode = (letter: string): number =>
+        letter.charCodeAt(0) - aCode + 1;
+    const normalizeCharCodes: number[] = letters.map(normalizeCharCode);
+
+    const add = (a: number, b: number): number => a + b;
+    const value: number = normalizeCharCodes.reduce(add, 0);
+
+    const finalCharCode: number = ((value - 1 + mod) % mod) + aCode;
+    return String.fromCharCode(finalCharCode);
+}
+
+const addLetters4 = (...letters: string[]) =>
+    String.fromCharCode(
+        (letters.reduce((acc, val) => acc + val.charCodeAt(0) - 96, 0) % 26 ||
+            26) + 96
+    );
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+const addLetters5 = (...letters: string[]): string =>
+    letters.length === 0
+        ? "z"
+        : alphabet[
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
+
+function addLetters6(...letters: string[]) {
+    // your code here
+    if (letters.length === 0) return "z"; // account for empty input array
+    const letterArray = "abcdefghijklmnopqrstuvwxyz".split(""); // create array for index reference
+    let sum = 0;
+    for (const letter of letters) {
+        sum += letterArray.indexOf(letter) + 1; // add +1 to compensate for index 0 start logic
+    }
+    let remainder = sum % 26;
+    if (remainder === 0) return "z";
+    else return letterArray[remainder - 1];
+}
+
+function addLetters7(...letters: string[]) {
+    const sum =
+        letters.map((c) => c.charCodeAt(0) - 96).reduce((a, b) => a + b, 0) %
+        26;
+
+    return sum === 0 ? "z" : String.fromCharCode(96 + sum);
+}
+
+function addLetters8(...letters: string[]) {
+    const s = "zabcdefghijklmnopqrstuvwxy";
+    let sum = 0;
+    for (let l of letters) {
+        sum += s.indexOf(l);
+    }
+    return s[sum % 26];
+}
+
+function addLetters9(...letters: string[]) {
+    if (!letters || letters.length < 1) return "z";
+    if (letters.length === 1) return letters[0];
+
+    const num: number =
+        letters
+            .map((ch) => ch.charCodeAt(0) - 96)
+            .reduce((sum, curr) => sum + curr, 0) % 26;
+
+    if (num === 0) return "z";
+    else return String.fromCharCode(num + 96);
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: POWER OF TWO
@@ -507,12 +569,11 @@ Beware of certain edge cases - for example, 1 is a power of 2 since 2^0 = 1 and 
 */
 
 const isPowerOfTwo = (num: number): boolean => {
-
     if (num === 1) return true;
     if ((num & 1) === 1) return false;
     // KEEP DIVIDING NUM BY 2
     while (num > 1) {
-        num = num / 2
+        num = num / 2;
     }
 
     // console.log(num);
@@ -525,7 +586,7 @@ const isPowerOfTwo = (num: number): boolean => {
     // return num === 1
     //     ? true
     //     : false;
-}
+};
 
 // console.log(isPowerOfTwo(23));
 // console.log(isPowerOfTwo(18));
@@ -539,16 +600,11 @@ function isPowerOfTwo2(n: number): boolean {
     return Number.isInteger(Math.log2(n));
 }
 
-
 const isPowerOfTwo3 = (n: number): boolean => Math.log2(n) % 1 === 0;
-
-
 
 function isPowerOfTwo4(n: number): boolean {
     return n === 2 || n === 1 ? true : n < 2 ? false : isPowerOfTwo(n / 2);
 }
-
-
 
 function isPowerOfTwo5(n: number): boolean {
     for (let i = 0; true; i++) {
@@ -561,11 +617,8 @@ function isPowerOfTwo5(n: number): boolean {
     }
 }
 
-
-
 function isPowerOfTwo6(n: number): boolean {
-    while (n > 2 && n % 2 == 0)
-        n = n / 2;
+    while (n > 2 && n % 2 == 0) n = n / 2;
 
     return n == 2 || n == 1;
 }
@@ -602,9 +655,8 @@ To solve this, you need to think of a way to do the kata without making massive 
 */
 
 const overTheRoad = (address: number, n: number): number => {
-
-    return (n * 2 + 1) - address;
-}
+    return n * 2 + 1 - address;
+};
 
 //  OPPOSITE NUMBERS ADD UP TO TWICE THE LENGTH OF STREET PLUS 1
 //  SUBSTRACT YOUR address FROM THAT SUM TO GET RESULT
@@ -626,7 +678,6 @@ function overTheRoad2(address: number, n: number): number {
     }
 }
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  EVEN NUMBERS IN AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -646,12 +697,8 @@ For example:
 */
 
 const evenNumbers = (array: number[], n: number): number[] => {
-
-    return array.
-        filter((el) => (el & 1) === 0)
-        .slice(-n);
-
-}
+    return array.filter((el) => (el & 1) === 0).slice(-n);
+};
 
 //  FILTER OUT ODD NUMBERS
 //  RETURN SUB ARRAY OF LAST n ELEMENTS (SLICE WITH NEGATIVE IDX)
@@ -664,11 +711,11 @@ const evenNumbers = (array: number[], n: number): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function isEven2(n: number): boolean {
-    return n % 2 === 0
+    return n % 2 === 0;
 }
 
 function evenNumbers2(array: number[], n: number): number[] {
-    return array.filter(isEven2).slice(-n)
+    return array.filter(isEven2).slice(-n);
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -707,9 +754,10 @@ class G965a1 {
         let speedsArr = [];
 
         for (let i = 1; i < distArr.length; i++) {
-            let curr = distArr[i], prev = distArr[i - 1];
+            let curr = distArr[i],
+                prev = distArr[i - 1];
             let sectionDist = curr - prev;
-            let sectAveSpeed = 3600 / secInt * sectionDist;
+            let sectAveSpeed = (3600 / secInt) * sectionDist;
             // console.table(
             //     { time: secInt, dist: sectionDist, speed: sectAveSpeed }
             // );
@@ -719,9 +767,8 @@ class G965a1 {
         console.log(speedsArr);
 
         return Math.max(...speedsArr) | 0;
-    }
+    };
 }
-
 
 //  CALCULATE AVERAGE SPEED FOR EACH SECTION WITH LOOP
 //  PUSH IT INTO speedsArray AS sectAveSpeed
@@ -739,16 +786,15 @@ class G965a1 {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 class G965a2 {
-
     public static gps = (seconds: number, sections: number[]): number => {
         if (sections.length <= 1) return 0;
 
         const sectionSpeeds = sections
             .map((start, index) => start - (sections[index - 1] || 0))
-            .map(distance => (3600 * distance) / seconds);
+            .map((distance) => (3600 * distance) / seconds);
 
         return Math.floor(Math.max(...sectionSpeeds));
-    }
+    };
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -769,9 +815,9 @@ const noOdds = (values: number[]): number[] => {
     return values.filter((el) => {
         return (el & 1) === 0;
     });
-}
+};
 
-//  BITWISE AND "&" OPERATOR 
+//  BITWISE AND "&" OPERATOR
 //  n & 1
 //  RETURNS 1 IF n IS ODD
 //  RETURNS 0 IF n IS EVEN
@@ -784,9 +830,8 @@ const noOdds = (values: number[]): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function noOdds2(values: number[]): number[] {
-    return values.filter(i => !(i % 2));
+    return values.filter((i) => !(i % 2));
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PARTS OF A LIST
@@ -822,7 +867,6 @@ a = ["az", "toto", "picaro", "zone", "kiwi"] -->
 
 class G964a {
     public static partlist = (arr: string[]): string[][] => {
-
         let solution: string[][] = [];
 
         for (let i = 0; i < arr.length - 1; i++) {
@@ -830,8 +874,10 @@ class G964a {
             // console.log(arr.slice(i + 1).join(" "));
 
             let subArr: string[] = [];
-            subArr
-                .push(arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" "));
+            subArr.push(
+                arr.slice(0, i + 1).join(" "),
+                arr.slice(i + 1).join(" ")
+            );
 
             // subArr.push(arr.slice(0, i + 1).join(" "));
             // subArr.push(arr.slice(i + 1).join(" "));
@@ -840,7 +886,7 @@ class G964a {
         }
 
         return solution;
-    }
+    };
 }
 
 //  INITIALIZE SOLUTION ARR
@@ -861,28 +907,35 @@ class G964a {
 
 class G964a2 {
     public static partlist(arr: string[]): string[][] {
-        return arr.map((s, i, a) => [a.slice(0, i + 1).join(' '), a.slice(i + 1, a.length).join(' ')]).slice(0, arr.length - 1);
+        return arr
+            .map((s, i, a) => [
+                a.slice(0, i + 1).join(" "),
+                a.slice(i + 1, a.length).join(" "),
+            ])
+            .slice(0, arr.length - 1);
     }
 }
-
-
 
 class G964a3 {
     public static partlist(arr: string[]): string[][] {
-        return arr.slice(1).map((x, i) => [arr.slice(0, i + 1).join(" "), arr.slice(i + 1).join(" ")])
+        return arr
+            .slice(1)
+            .map((x, i) => [
+                arr.slice(0, i + 1).join(" "),
+                arr.slice(i + 1).join(" "),
+            ]);
     }
 }
-
-
 
 class G964a4 {
     public static partlist(arr: string[]): string[][] {
         const x = arr.map((word, idx) => {
             return [
                 arr.slice(0, idx + 1).join(" "),
-                arr.slice(idx + 1, arr.length).join(" ")]
-        })
-        return x.slice(0, -1)
+                arr.slice(idx + 1, arr.length).join(" "),
+            ];
+        });
+        return x.slice(0, -1);
     }
 }
 
@@ -904,7 +957,6 @@ Unfortunately for you, your drive is very bumpy! Given a string showing either f
 */
 
 const bump = (road: string): string => {
-
     // const bumps: number[] = road.match(/n/g);
     // console.log(bumps);
 
@@ -922,8 +974,7 @@ const bump = (road: string): string => {
     }
 
     return "Woohoo!";
-
-}
+};
 
 // console.log(bump("n"));
 // console.log(bump("_nnnnnnn_n__n______nn__nn_nnn"));
@@ -935,35 +986,31 @@ const bump = (road: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function bump2(x: string): string {
-    return x.split('').filter(a => a === 'n').length <= 15 ? "Woohoo!" : "Car Dead"
+    return x.split("").filter((a) => a === "n").length <= 15
+        ? "Woohoo!"
+        : "Car Dead";
 }
-
 
 function bump3(x: string): string {
-    return (x.replace(/_/g, '')).length > 15 ? `Car Dead` : `Woohoo!`;
+    return x.replace(/_/g, "").length > 15 ? `Car Dead` : `Woohoo!`;
 }
-
-
 
 function bump4(x: string): string {
     return x
-        .split('')
-        .reduce((total, n) =>
-            n === 'n' ? total + 1 : total
-            , 0
-        ) > 15 ? "Car Dead" : "Woohoo!"
+        .split("")
+        .reduce((total, n) => (n === "n" ? total + 1 : total), 0) > 15
+        ? "Car Dead"
+        : "Woohoo!";
 }
 
 // ❗️❗️❗️ MATCH() ❗️❗️❗️
 function bump5(x: string): string {
     const arr: string[] = x.match(/[n+]/g) || [];
-    return arr.length <= 15 ? "Woohoo!" : "Car Dead"
+    return arr.length <= 15 ? "Woohoo!" : "Car Dead";
 }
 
-
-
 function bump6(x: string): string {
-    return (x.match(/n/g) || []).length > 15 ? "Car Dead" : "Woohoo!"
+    return (x.match(/n/g) || []).length > 15 ? "Car Dead" : "Woohoo!";
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1451,11 +1498,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -2250,9 +2297,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -2534,8 +2581,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
