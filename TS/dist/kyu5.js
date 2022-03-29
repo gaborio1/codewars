@@ -16,8 +16,12 @@ const isPrime = (num) => {
     return true;
 };
 const decompFormat = (primes) => {
+    const counter = {};
+    primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
+    console.log(counter);
     return "hello";
 };
+decompFormat([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 const primeFactors = (num) => {
     let factors = [];
     let numRemainder = num;

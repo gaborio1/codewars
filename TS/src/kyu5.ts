@@ -503,13 +503,20 @@ const isPrime = (num: number) => {
     return true;
 };
 
-const decompFormat = (primes: number[]): string => {
+const countPrimes = (primes: number[]): string => {
+    interface StrKeyVal {
+        [key: number]: number;
+    }
 
-    // var counter = {};
-    // primes.forEach(number => counter[number] = (counter[number] || 0) +1);
+    const counter: StrKeyVal = {};
+    primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
+
+    console.log(counter);
 
     return "hello";
-}
+};
+
+countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 
 // console.log(isPrime(5));
 // =========================================
