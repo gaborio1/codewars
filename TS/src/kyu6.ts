@@ -444,15 +444,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -505,10 +505,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -534,7 +534,9 @@ const camelCase9 = (str: string): string =>
 //          .map(item =>  item.replace(/^./, item.charAt(0).toUpperCase()))
 //          .join('');
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR AND COMMENT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ROMAN NUMERALS DECODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -563,11 +565,183 @@ M          1,000
 Courtesy of rosettacode.org
 */
 
+// interface Counter {
+//     [key: string]: number;
+// }
+
+// const counterObj: Counter = {};
+
 function solution1(roman: string): number {
-    return 1;
+
+    var valRoman = {
+        1: 'I',
+        4: 'IV',
+        5: 'V',
+        9: 'IX',
+        10: 'X',
+        40: 'XL',
+        50: 'L',
+        90: 'XC',
+        100: 'C',
+        400: 'CD',
+        500: 'D',
+        900: 'CM',
+        1000: 'M'
+    };
+
+    // console.log(valRoman[40]);
+
+    var romanVal = {
+        I: 1,
+        IV: 4,
+        V: 4,
+        IX: 9,
+        x: 10,
+        XL: 40,
+        L: 50,
+        XC: 90,
+        C: 100,
+        CD: 400,
+        D: 500,
+        CM: 900,
+        M: 1000
+    };
+
+    // console.log(romanVal.IV);
+
+    const romanStrVal = {
+        "I": 1,
+        "II": 2,
+        "III": 3,
+        "IV": 4,
+        "V": 5,
+        "VI": 6,
+        "VII": 7,
+        "VIII": 8,
+        "IX": 9,
+        "X": 10,
+        "XX": 20,
+        "XXX": 30,
+        "XL": 40,
+        "L": 50,
+        "XC": 90,
+        "C": 100,
+        "CC": 200,
+        "CCC": 300,
+        "CD": 400,
+        "D": 500,
+        "CM": 900,
+        "M": 1000,
+        "MM": 2000,
+        "MMM": 3000
+    };
+
+    // console.log(romanStrVal.XL);
+    // console.log(romanStrVal[XL])  ERROR
+
+    let result: number = 0;
+    console.log(roman);
+
+    if (roman.indexOf("CM") > -1) {
+        result += romanStrVal.CM;
+        roman = roman.replace("CM", "");
+    }
+    if (roman.indexOf("MMM") > -1) {
+        result += romanStrVal.MMM;
+        roman = roman.replace("MMM", "")
+    }
+    if (roman.indexOf("MM") > -1) {
+        result += romanStrVal.MM;
+        roman = roman.replace("MM", "")
+    }
+    if (roman.indexOf("M") > -1) {
+        result += romanStrVal.M;
+        roman = roman.replace("M", "")
+    }
+
+
+    if (roman.indexOf("CD") > -1) {
+        result += romanStrVal.CD;
+        roman = roman.replace("CD", "");
+    }
+    if (roman.indexOf("D") > -1) {
+        result += romanStrVal.D;
+        roman = roman.replace("D", "");
+    }
+
+    if (roman.indexOf("CCC") > -1) {
+        result += romanStrVal.CCC;
+        roman = roman.replace("CCC", "");
+    }
+    if (roman.indexOf("CC") > -1) {
+        result += romanStrVal.CC;
+        roman = roman.replace("CC", "");
+    }
+    if (roman.indexOf("C") > -1) {
+        result += romanStrVal.C;
+        roman = roman.replace("C", "");
+    }
+
+    if (roman.indexOf("XC") > -1) {
+        result += romanStrVal.XC;
+        roman = roman.replace("XC", "");
+    }
+
+    if (roman.indexOf("XL") > -1) {
+        result += romanStrVal.XL;
+        roman = roman.replace("XL", "");
+    }
+    if (roman.indexOf("L") > -1) {
+        result += romanStrVal.L;
+        roman = roman.replace("L", "");
+    }
+
+
+    if (roman.indexOf("IX") > -1) {
+        result += romanStrVal.IX;
+        roman = roman.replace("IX", "");
+    }
+    if (roman.indexOf("XXX") > -1) {
+        result += romanStrVal.XXX;
+        roman = roman.replace("XXX", "");
+    }
+    if (roman.indexOf("XX") > -1) {
+        result += romanStrVal.XX;
+        roman = roman.replace("XX", "");
+    }
+    if (roman.indexOf("X") > -1) {
+        result += romanStrVal.X;
+        roman = roman.replace("X", "");
+    }
+
+    if (roman.indexOf("IV") > -1) {
+        result += romanStrVal.IV;
+        roman = roman.replace("IV", "");
+    }
+    if (roman.indexOf("V") > -1) {
+        result += romanStrVal.V;
+        roman = roman.replace("V", "");
+    }
+    if (roman.indexOf("III") > -1) {
+        result += romanStrVal.III;
+        roman = roman.replace("III", "");
+    }
+    if (roman.indexOf("II") > -1) {
+        result += romanStrVal.II;
+        roman = roman.replace("II", "");
+    }
+    if (roman.indexOf("I") > -1) {
+        result += romanStrVal.I;
+        roman = roman.replace("I", "");
+    }
+
+    // console.log(result);
+
+    return result;
 }
 
-// console.log(solution('XXI'));
+console.log(solution1('MDCLXVI'));
+// console.log(solution1('MMCM'));
 // console.log(solution('IV');
 // console.log();
 // console.log();
@@ -575,7 +749,7 @@ function solution1(roman: string): number {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ REFACTOR THIS ❗️❗️❗️ AND COMMENT
+// ❗️❗️❗️ REFACTOR THIS ❗️❗️❗️ AND COMMENT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  ROMAN NUMERALS ENCODER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1029,8 +1203,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -1323,7 +1497,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1780,10 +1954,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -3083,9 +3257,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
