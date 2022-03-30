@@ -6,9 +6,20 @@ class G966 {
         return [1];
     }
 }
-function camelCase(str) {
-    return str;
-}
+const camelCase = (str) => {
+    console.log(str.split(" ").map((word) => word.trim()));
+    return str
+        ? str
+            .trim()
+            .split(" ")
+            .map((word) => word
+            .trim()
+            .toLowerCase()
+            .replace(word[0], word[0].toUpperCase()))
+            .join("")
+        : "";
+};
+console.log(camelCase(" test case"));
 function solution1(roman) {
     return 1;
 }

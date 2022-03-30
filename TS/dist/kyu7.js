@@ -15,8 +15,38 @@ function solveA(arr) {
 function minSum(arr) {
     return 1;
 }
-function averages(numbers) {
-    return [1];
+const averages = (numArr) => {
+    if (!numArr || numArr.length < 2)
+        return [];
+    let solution = [];
+    for (let i = 0; i < numArr.length - 1; i++) {
+        let pairAve = (numArr[i] + numArr[i + 1]) / 2;
+        solution.push(pairAve);
+    }
+    return solution;
+};
+function averages2(numbers) {
+    let avrgs = [];
+    if (!numbers || numbers.length <= 1) {
+        return avrgs;
+    }
+    numbers.reduce((a, b) => {
+        avrgs.push((a + b) / 2);
+        return b;
+    });
+    return avrgs;
+}
+function averages3(numbers) {
+    return Array.isArray(numbers)
+        ? numbers
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
+        : [];
+}
+function averages4(numbers) {
+    if (numbers === null)
+        return [];
+    return numbers.slice(1).map((x, i) => (numbers[i] + x) / 2);
 }
 const addLetters = (...letters) => {
     if (letters.length === 0)

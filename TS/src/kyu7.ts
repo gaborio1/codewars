@@ -324,10 +324,11 @@ function minSum(arr: number[]): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ LOOK INTO REDUCE AND MAP ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: AVARAGES OF NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ MAP(), REDUCE(), ISARRAY(), SLICE(0, -1) ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -346,16 +347,67 @@ If the array has 0 or 1 values or is null, your method should return an empty ar
 Have fun coding it and please don't forget to vote and rank this kata! :-)
 */
 
-function averages(numbers: number[] | null): number[] {
-    return [1];
-}
+// ❗️❗️❗️ (numArr![i] ❗️❗️❗️
+// const averages = (numArr: number[] | null): number[] => {
+//     for (let i = 0; i < numArr!.length - 1; i++) {
+//         let pairAve: number = (numArr![i] + numArr![i + 1]) / 2;
+//         console.log(pairAve);
+//     }
+
+//     return [1];
+// };
+
+const averages = (numArr: number[] | null): number[] => {
+    if (!numArr || numArr.length < 2) return [];
+
+    let solution: number[] = [];
+
+    for (let i = 0; i < numArr.length - 1; i++) {
+        let pairAve: number = (numArr[i] + numArr[i + 1]) / 2;
+        solution.push(pairAve);
+    }
+
+    return solution;
+};
 
 // console.log(averages([1, 3, 5, 1, -10]));
-// console.log();
+// console.log(averages([1, 3]));
+// console.log(averages([]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// REDUCE()
+function averages2(numbers: number[]): number[] {
+    let avrgs: number[] = [];
+    if (!numbers || numbers.length <= 1) {
+        return avrgs;
+    }
+
+    numbers.reduce((a, b) => {
+        avrgs.push((a + b) / 2);
+        return b;
+    });
+
+    return avrgs;
+}
+
+// ISARRAY(), MAP
+// ❗️❗️❗️ slice(0, -1) WILL GET RID OF LAST ELEMENT NAN [2,4,3,-4.5,NaN] ❗️❗️❗️
+// ❗️❗️❗️ slice(0, numbers.length -1) === slice(0, -1) ❗️❗️❗️
+function averages3(numbers: number[]): number[] {
+    return Array.isArray(numbers)
+        ? numbers
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
+        : [];
+}
+
+function averages4(numbers: number[] | null): number[] {
+    if (numbers === null) return [];
+    return numbers.slice(1).map((x, i) => (numbers[i] + x) / 2);
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️

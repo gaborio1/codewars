@@ -6,31 +6,29 @@ function chooseBestSum(t, k, ls) {
 }
 class G964b {
 }
-const isPrime = (num) => {
-    if (num === 1 || num === 2)
-        return true;
-    for (let i = 2; i < num; i++) {
-        if (num % i === 0)
-            return false;
-    }
-    return true;
-};
 const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
     console.log(counter);
     return "hello";
 };
-countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 const primeFactors = (num) => {
     let factors = [];
     let numRemainder = num;
     let solution = "";
+    const isPrime = (num) => {
+        if (num === 1 || num === 2)
+            return true;
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0)
+                return false;
+        }
+        return true;
+    };
     for (let i = 2; i < (num - 1) / 2; i++) {
         let prime = 0;
         if (isPrime(i)) {
             prime = i;
-            console.log("prime found: ", prime);
             while (numRemainder % prime === 0) {
                 numRemainder = numRemainder / prime;
                 factors.push(prime);
@@ -48,15 +46,13 @@ const primeFactors = (num) => {
         console.log("counter: ", counter);
         if (factors[i] !== factors[i + 1] && factors[i] !== undefined) {
             console.log("new factor: ", factors[i], i);
-            solution += counter < 2
-                ? `(${factors[i]})`
-                : `(${factors[i]}**${counter})`;
+            solution +=
+                counter < 2 ? `(${factors[i]})` : `(${factors[i]}**${counter})`;
             counter = 0;
         }
     }
     return solution;
 };
-console.log(primeFactors(7919));
 class G964a {
 }
 G964a.perimeter = (num) => {

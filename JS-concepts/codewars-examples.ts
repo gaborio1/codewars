@@ -695,6 +695,35 @@ console.log(numNoDecimals); // 1
 let numWithDecimals: string = numNoDecimals.toFixed(2);
 console.log(numWithDecimals); // "1.00"
 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// PARSEINT():
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// HEXADECIMAL, OCTAL, BINARY
+
+// =========================================
+// !!! INCLUDE THIS IN CODEWARS EXAMPLES !!!
+// =========================================
+
+// console.log(parseInt("f00d", 16));
+// console.log(parseInt("111111", 2));
+// console.log(parseInt("0744", 8));
+
+// console.log("111111".toString(2))
+/*
+Just call parseInt with a different radix, in this case use 2 for binary.
+
+var a = parseInt("01001011", 2);
+// a === 75
+parseInt attempts to figure out the radix itself when you don't explicitly specify it. From the Mozilla Developer Network:
+
+If radix is undefined or 0, JavaScript assumes the following:
+
+If the input string begins with "0x" or "0X", radix is 16 (hexadecimal).
+If the input string begins with "0", radix is eight (octal). This feature is non-standard, and some implementations deliberately do not support it (instead using the radix 10). For this reason always specify a radix when using parseInt.
+If the input string begins with any other value, the radix is 10 (decimal).
+In this case, it is crucial that you do specify the radix, as otherwise it may be interpreted as either a decimal or an octal number. As a rule of thumb, always specify the radix.
+*/
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // "THIS" KEYWORD
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥

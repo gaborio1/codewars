@@ -437,7 +437,6 @@ class G964b {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -493,19 +492,16 @@ This is the answer, because both 2 and 3 are prime numbers.
 ❗️❗️❗️
 */
 
-// =========================================
-// THIS IS FOR PRIME 5KYU
-// =========================================
+// const isPrime = (num: number) => {
+//     if (num === 1 || num === 2) return true;
+//     for (let i = 2; i < num; i++) {
+//         // console.table({num: num, divider: i});
+//         if (num % i === 0) return false;
+//     }
+//     return true;
+// };
 
-const isPrime = (num: number) => {
-    if (num === 1 || num === 2) return true;
-    for (let i = 2; i < num; i++) {
-        // console.table({num: num, divider: i});
-        if (num % i === 0) return false;
-    }
-    return true;
-};
-
+// MAY HAVE TO USE OBJECT TO COUNT OCCURENCES
 const countPrimes = (primes: number[]): string => {
     interface StrKeyVal {
         [key: number]: number;
@@ -519,7 +515,7 @@ const countPrimes = (primes: number[]): string => {
     return "hello";
 };
 
-countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
+// countPrimes([2, 2, 2, 2, 2, 5, 7, 7, 11]);
 
 // console.log(isPrime(5));
 // =========================================
@@ -528,12 +524,22 @@ const primeFactors = (num: number): string => {
     let factors = [];
     let numRemainder = num;
     let solution: string = "";
+
+    const isPrime = (num: number) => {
+        if (num === 1 || num === 2) return true;
+        for (let i = 2; i < num; i++) {
+            // console.table({num: num, divider: i});
+            if (num % i === 0) return false;
+        }
+        return true;
+    };
+
     //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
     for (let i = 2; i < (num - 1) / 2; i++) {
         let prime = 0;
         if (isPrime(i)) {
             prime = i;
-            console.log("prime found: ", prime);
+            // console.log("prime found: ", prime);
             while (numRemainder % prime === 0) {
                 numRemainder = numRemainder / prime;
                 factors.push(prime);
@@ -552,21 +558,22 @@ const primeFactors = (num: number): string => {
         if (factors[i] !== factors[i + 1] && factors[i] !== undefined) {
             console.log("new factor: ", factors[i], i);
             // FORMAT FACTORS AND CONCAT TO SOLUTION HERE
-            solution += counter < 2
-                ? `(${factors[i]})`
-                : `(${factors[i]}**${counter})`;
+            solution +=
+                counter < 2 ? `(${factors[i]})` : `(${factors[i]}**${counter})`;
             // RESET COUNTER
             counter = 0;
         }
     }
 
     return solution;
+};
 
-}
-
+// (2**2)(3**2)
 // console.log(primeFactors(36));
+// (2**5)(5)(7**2)(11)
 // console.log(primeFactors(86240));
-console.log(primeFactors(7919));
+// 7919
+// console.log(primeFactors(7919));
 
 // class G964a8 {
 //     public static primeFactors = (num: number): string => {

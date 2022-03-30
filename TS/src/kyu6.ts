@@ -413,10 +413,11 @@ class G966 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  CAMEL CASE METHOD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: CAPITALIZE FIRST LETTER, REPLACE(), MAP()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -430,17 +431,108 @@ camelCase("hello case"); // => "HelloCase"
 camelCase("camel case word"); // => "CamelCaseWord"
 
 */
+const camelCase = (str: string): string => {
+    /*
+    return str
+        ? str
+            .trim()
+            .split(" ")
+            .map((word) => word.replace(word[0], word[0].toUpperCase()))
+            .join("")
+        : "";  
+    */
 
-function camelCase(str: string): string {
-    return str; // your code here
-}
+    return str
+        ? str
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
+        : "";
 
+    // return "hello";
+};
+
+// ""
 // console.log(camelCase(""));
-// console.log(camelCase("test case"));
+// "TestCase"
+console.log(camelCase(" test case"));
 // console.log(camelCase("camel case method"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const camelCase2 = (str: string): string =>
+    str
+        .split(" ")
+        .map((s) => (s ? s[0].toUpperCase() + s.slice(1) : ""))
+        .join("");
+
+function camelCase3(str: string): string {
+    return str
+        .replace(/\b\w/g, (str) => str.toUpperCase())
+        .split(" ")
+        .join("");
+}
+
+function camelCase4(str: string): string {
+    return str
+        .split(" ")
+        .reduce(
+            (acc, cur) => acc + cur.charAt(0).toUpperCase() + cur.slice(1),
+            ""
+        );
+}
+
+function camelCase5(str: string): string {
+    return str
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("");
+}
+
+const camelCase6 = (str: string): string =>
+    str
+        .split(" ")
+        .map((s) => s.replace(s.charAt(0), s.charAt(0).toUpperCase()))
+        .join("");
+
+function camelCase7(str: string): string {
+    return str
+        ? str
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
+        : "";
+}
+
+const camelCase8 = (str: string): string =>
+    str
+        .split(" ")
+        .map((x) => x[0]?.toUpperCase().concat(x.slice(1)))
+        .join("");
+
+const camelCase9 = (str: string): string =>
+    str
+        .split(" ")
+        .map((word) =>
+            word.length ? word[0].toUpperCase() + word.slice(1) : ""
+        )
+        .join("");
+
+
+
+// function camelCase(str: string): string {
+//   return str
+//          .split(' ')
+//          .map(item =>  item.replace(/^./, item.charAt(0).toUpperCase()))
+//          .join('');
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  ROMAN NUMERALS DECODER
@@ -472,8 +564,6 @@ Courtesy of rosettacode.org
 */
 
 function solution1(roman: string): number {
-    // complete the solution by transforming the
-    // string roman numeral into an integer
     return 1;
 }
 
@@ -719,8 +809,6 @@ function solution4(number: number): string {
     return result;
 }
 
-
-
 // ERROR:
 // Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; } '.
 //   No index signature with a parameter of type 'string' was found on type '{ M: number; CM: number; D: number; CD: number; C: number; XC: number; L: number; XL: number; X: number; IX: number; V: number; IV: number; I: number; }'.ts(7053)
@@ -941,8 +1029,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -1235,7 +1323,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1692,10 +1780,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -1710,7 +1798,7 @@ const validBraces5 = (braces: string): boolean => {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// KEYWORDS: OBJECT.ENTRIES()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -2995,8 +3083,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
