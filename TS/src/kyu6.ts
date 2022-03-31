@@ -444,15 +444,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -461,7 +461,7 @@ const camelCase = (str: string): string => {
 // ""
 // console.log(camelCase(""));
 // "TestCase"
-console.log(camelCase(" test case"));
+// console.log(camelCase(" test case"));
 // console.log(camelCase("camel case method"));
 // console.log();
 
@@ -505,10 +505,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -525,8 +525,6 @@ const camelCase9 = (str: string): string =>
             word.length ? word[0].toUpperCase() + word.slice(1) : ""
         )
         .join("");
-
-
 
 // function camelCase(str: string): string {
 //   return str
@@ -571,22 +569,99 @@ Courtesy of rosettacode.org
 
 // const counterObj: Counter = {};
 
-function solution1(roman: string): number {
+const solution0 = (roman: string): number => {
+    // VALUES OBJ
+    const romanValues = {
+        I: 1,
+        II: 2,
+        III: 3,
+        IV: 4,
+        V: 5,
+        VI: 6,
+        VII: 7,
+        VIII: 8,
+        IX: 9,
+        X: 10,
+        XX: 20,
+        XXX: 30,
+        XL: 40,
+        L: 50,
+        XC: 90,
+        C: 100,
+        CC: 200,
+        CCC: 300,
+        CD: 400,
+        D: 500,
+        CM: 900,
+        M: 1000,
+        MM: 2000,
+        MMM: 3000,
+    };
 
+    let result: number = 0;
+
+    // FILTER OUT COMBINATIONS
+    if (roman.indexOf("CM") > -1) {
+        result += romanValues.CM;
+        roman = roman.replace("CM", "");
+    }
+    if (roman.indexOf("CD") > -1) {
+        result += romanValues.CD;
+        roman = roman.replace("CD", "");
+    }
+    if (roman.indexOf("D") > -1) {
+        result += romanValues.D;
+        roman = roman.replace("D", "");
+    }
+    if (roman.indexOf("XC") > -1) {
+        result += romanValues.XC;
+        roman = roman.replace("XC", "");
+    }
+    if (roman.indexOf("XL") > -1) {
+        result += romanValues.XL;
+        roman = roman.replace("XL", "");
+    }
+    if (roman.indexOf("L") > -1) {
+        result += romanValues.L;
+        roman = roman.replace("L", "");
+    }
+    if (roman.indexOf("IX") > -1) {
+        result += romanValues.IX;
+        roman = roman.replace("IX", "");
+    }
+    if (roman.indexOf("IV") > -1) {
+        result += romanValues.IV;
+        roman = roman.replace("IV", "");
+    }
+    if (roman.indexOf("V") > -1) {
+        result += romanValues.V;
+        roman = roman.replace("V", "");
+    }
+
+    // COUNT SINGLES AND MULTIPLY BY VALUE. ERROR WITHOUT "!"
+    if (roman.match(/M/g)) result += romanValues.M * roman.match(/M/g)!.length;
+    if (roman.match(/C/g)) result += romanValues.C * roman.match(/C/g)!.length;
+    if (roman.match(/X/g)) result += romanValues.X * roman.match(/X/g)!.length;
+    if (roman.match(/I/g)) result += romanValues.I * roman.match(/I/g)!.length;
+
+    return result;
+};
+
+function solution1(roman: string): number {
     var valRoman = {
-        1: 'I',
-        4: 'IV',
-        5: 'V',
-        9: 'IX',
-        10: 'X',
-        40: 'XL',
-        50: 'L',
-        90: 'XC',
-        100: 'C',
-        400: 'CD',
-        500: 'D',
-        900: 'CM',
-        1000: 'M'
+        1: "I",
+        4: "IV",
+        5: "V",
+        9: "IX",
+        10: "X",
+        40: "XL",
+        50: "L",
+        90: "XC",
+        100: "C",
+        400: "CD",
+        500: "D",
+        900: "CM",
+        1000: "M",
     };
 
     // console.log(valRoman[40]);
@@ -604,36 +679,36 @@ function solution1(roman: string): number {
         CD: 400,
         D: 500,
         CM: 900,
-        M: 1000
+        M: 1000,
     };
 
     // console.log(romanVal.IV);
 
     const romanStrVal = {
-        "I": 1,
-        "II": 2,
-        "III": 3,
-        "IV": 4,
-        "V": 5,
-        "VI": 6,
-        "VII": 7,
-        "VIII": 8,
-        "IX": 9,
-        "X": 10,
-        "XX": 20,
-        "XXX": 30,
-        "XL": 40,
-        "L": 50,
-        "XC": 90,
-        "C": 100,
-        "CC": 200,
-        "CCC": 300,
-        "CD": 400,
-        "D": 500,
-        "CM": 900,
-        "M": 1000,
-        "MM": 2000,
-        "MMM": 3000
+        I: 1,
+        II: 2,
+        III: 3,
+        IV: 4,
+        V: 5,
+        VI: 6,
+        VII: 7,
+        VIII: 8,
+        IX: 9,
+        X: 10,
+        XX: 20,
+        XXX: 30,
+        XL: 40,
+        L: 50,
+        XC: 90,
+        C: 100,
+        CC: 200,
+        CCC: 300,
+        CD: 400,
+        D: 500,
+        CM: 900,
+        M: 1000,
+        MM: 2000,
+        MMM: 3000,
     };
 
     // console.log(romanStrVal.XL);
@@ -646,19 +721,19 @@ function solution1(roman: string): number {
         result += romanStrVal.CM;
         roman = roman.replace("CM", "");
     }
-    if (roman.indexOf("MMM") > -1) {
-        result += romanStrVal.MMM;
-        roman = roman.replace("MMM", "")
-    }
-    if (roman.indexOf("MM") > -1) {
-        result += romanStrVal.MM;
-        roman = roman.replace("MM", "")
-    }
-    if (roman.indexOf("M") > -1) {
-        result += romanStrVal.M;
-        roman = roman.replace("M", "")
-    }
 
+    // if (roman.indexOf("MMM") > -1) {
+    //     result += romanStrVal.MMM;
+    //     roman = roman.replace("MMM", "")
+    // }
+    // if (roman.indexOf("MM") > -1) {
+    //     result += romanStrVal.MM;
+    //     roman = roman.replace("MM", "")
+    // }
+    // if (roman.indexOf("M") > -1) {
+    //     result += romanStrVal.M;
+    //     roman = roman.replace("M", "")
+    // }
 
     if (roman.indexOf("CD") > -1) {
         result += romanStrVal.CD;
@@ -669,18 +744,18 @@ function solution1(roman: string): number {
         roman = roman.replace("D", "");
     }
 
-    if (roman.indexOf("CCC") > -1) {
-        result += romanStrVal.CCC;
-        roman = roman.replace("CCC", "");
-    }
-    if (roman.indexOf("CC") > -1) {
-        result += romanStrVal.CC;
-        roman = roman.replace("CC", "");
-    }
-    if (roman.indexOf("C") > -1) {
-        result += romanStrVal.C;
-        roman = roman.replace("C", "");
-    }
+    // if (roman.indexOf("CCC") > -1) {
+    //     result += romanStrVal.CCC;
+    //     roman = roman.replace("CCC", "");
+    // }
+    // if (roman.indexOf("CC") > -1) {
+    //     result += romanStrVal.CC;
+    //     roman = roman.replace("CC", "");
+    // }
+    // if (roman.indexOf("C") > -1) {
+    //     result += romanStrVal.C;
+    //     roman = roman.replace("C", "");
+    // }
 
     if (roman.indexOf("XC") > -1) {
         result += romanStrVal.XC;
@@ -696,23 +771,22 @@ function solution1(roman: string): number {
         roman = roman.replace("L", "");
     }
 
-
     if (roman.indexOf("IX") > -1) {
         result += romanStrVal.IX;
         roman = roman.replace("IX", "");
     }
-    if (roman.indexOf("XXX") > -1) {
-        result += romanStrVal.XXX;
-        roman = roman.replace("XXX", "");
-    }
-    if (roman.indexOf("XX") > -1) {
-        result += romanStrVal.XX;
-        roman = roman.replace("XX", "");
-    }
-    if (roman.indexOf("X") > -1) {
-        result += romanStrVal.X;
-        roman = roman.replace("X", "");
-    }
+    // if (roman.indexOf("XXX") > -1) {
+    //     result += romanStrVal.XXX;
+    //     roman = roman.replace("XXX", "");
+    // }
+    // if (roman.indexOf("XX") > -1) {
+    //     result += romanStrVal.XX;
+    //     roman = roman.replace("XX", "");
+    // }
+    // if (roman.indexOf("X") > -1) {
+    //     result += romanStrVal.X;
+    //     roman = roman.replace("X", "");
+    // }
 
     if (roman.indexOf("IV") > -1) {
         result += romanStrVal.IV;
@@ -722,25 +796,46 @@ function solution1(roman: string): number {
         result += romanStrVal.V;
         roman = roman.replace("V", "");
     }
-    if (roman.indexOf("III") > -1) {
-        result += romanStrVal.III;
-        roman = roman.replace("III", "");
-    }
-    if (roman.indexOf("II") > -1) {
-        result += romanStrVal.II;
-        roman = roman.replace("II", "");
-    }
-    if (roman.indexOf("I") > -1) {
-        result += romanStrVal.I;
-        roman = roman.replace("I", "");
-    }
+    // if (roman.indexOf("III") > -1) {
+    //     result += romanStrVal.III;
+    //     roman = roman.replace("III", "");
+    // }
+    // if (roman.indexOf("II") > -1) {
+    //     result += romanStrVal.II;
+    //     roman = roman.replace("II", "");
+    // }
+    // if (roman.indexOf("I") > -1) {
+    //     result += romanStrVal.I;
+    //     roman = roman.replace("I", "");
+    // }
+
+    // roman = roman.replace(/CM|CD|D|XC|XL|L|IX|IV|V/g, "");
+
+    const Ms: number | undefined = roman.match(/M/g)?.length;
+    if (Ms) result += romanStrVal.M * Ms;
+    // result += romanStrVal.M * Ms;
+    // console.log("1000: ", Ms);
+
+    const Cs: number | undefined = roman.match(/C/g)?.length;
+    if (Cs) result += romanStrVal.C * Cs;
+    // console.log("100: ", Cs);
+
+    const Xs: number | undefined = roman.match(/X/g)?.length;
+    if (Xs) result += romanStrVal.X * Xs;
+    // console.log("10: ", Xs);
+
+    const Is: number | undefined = roman.match(/I/g)?.length;
+    if (Is) result += romanStrVal.I * Is;
+    // console.log("1: ", Is);
 
     // console.log(result);
+    console.log("roman: ", roman);
 
     return result;
 }
 
-console.log(solution1('MDCLXVI'));
+// console.log(solution1("MDCCCXXIXII"));
+console.log(solution1("MDCLXVI"));
 // console.log(solution1('MMCM'));
 // console.log(solution('IV');
 // console.log();
@@ -1203,8 +1298,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -1497,7 +1592,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -1954,10 +2049,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -3257,8 +3352,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
