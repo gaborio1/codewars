@@ -1,11 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
 class G966 {
-    static sqInRect(l, w) {
+    static sqInRect(length, width) {
+        if (length === width)
+            return [0];
+        let solution = [];
+        let sides = [length, width];
+        console.log("sides: ", sides);
+        let descSides = sides.sort((a, b) => b - a);
+        console.log("descSides: ", descSides);
+        let numberOfSq = Math.floor(descSides[0] / descSides[1]);
+        console.log("squares found: ", numberOfSq);
+        for (let i = 1; i <= numberOfSq; i++) {
+            solution.push(descSides[1]);
+        }
+        console.log("SOLUTION: ", solution);
+        let newSide = (descSides[0] % descSides[1]);
+        console.log("new side: ", newSide);
+        descSides[0] = newSide;
+        descSides.sort((a, b) => b - a);
+        console.log("descSides: ", descSides);
         return [1];
     }
 }
+console.log(G966.sqInRect(5, 3));
 const camelCase = (str) => {
     return str
         ? str
@@ -243,7 +262,137 @@ function solution1(roman) {
     console.log("roman: ", roman);
     return result;
 }
-console.log(solution1("MDCLXVI"));
+const values = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+};
+function solution5(roman) {
+    let value = 0;
+    for (let i = 0; i < roman.length; i++) {
+        const current = values[roman[i]];
+        const next = values[roman[i + 1]] || 0;
+        if (current < next) {
+            value -= current;
+        }
+        else {
+            value += current;
+        }
+    }
+    return value;
+}
+exports.solution5 = solution5;
+function solution8(roman) {
+    const symbols = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    };
+    return roman
+        .split('')
+        .map(e => symbols[e])
+        .reduce((p, c) => p < c ? c - p : c + p);
+}
+function solution11(roman) {
+    const symbols = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    };
+    return roman.split('').map((r, i, arr) => (r === 'I' && ['V', 'X'].includes(arr[i + 1]) ? -1 : symbols[r]))
+        .reduce((a, b) => a + b);
+}
+function solution12(roman) {
+    const map = new Map([
+        ['I', 1],
+        ['IV', 4],
+        ['V', 5],
+        ['IX', 9],
+        ['X', 10],
+        ['XL', 40],
+        ['L', 50],
+        ['XC', 90],
+        ['C', 100],
+        ['CD', 400],
+        ['D', 500],
+        ['CM', 900],
+        ['M', 1000]
+    ]);
+    let result = 0;
+    for (let i = 0; i < roman.length; i++) {
+        const twoSymbols = map.get(roman[i] + roman[i + 1]);
+        const oneSymbol = map.get(roman[i]);
+        if (twoSymbols) {
+            i += 1;
+        }
+        result += twoSymbols || oneSymbol || 0;
+    }
+    return result;
+}
+function solution13(roman) {
+    const values = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
+        CM: 900,
+        CD: 400,
+        XC: 90,
+        XL: 40,
+        IX: 9,
+        IV: 4
+    };
+    return roman.replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
+        .split(/,+/)
+        .reduce((sum, n) => sum + Number(n), 0);
+}
+function solution14(roman) {
+    const initial = 0;
+    const numbers = roman.split('').map((letter) => {
+        switch (letter) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    });
+    const result = numbers.reduce(function (valorAnterior, valorActual, indice) {
+        if (indice + 1 === numbers.length || valorActual >= numbers[indice + 1]) {
+            return valorAnterior + valorActual;
+        }
+        else {
+            return valorAnterior - valorActual;
+        }
+    }, initial);
+    return result;
+}
 const solution2 = (num) => {
     let roman = "";
     if (num >= 1000) {

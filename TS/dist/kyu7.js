@@ -12,8 +12,43 @@ function sumCubes(n) {
 }
 function solveA(arr) {
 }
-function minSum(arr) {
-    return 1;
+const minSum = (arr) => {
+    if ((arr.length & 1) === 1)
+        return "odd number of array elements!";
+    let sum = 0;
+    const ascArr = arr.sort((a, b) => a - b);
+    console.log(ascArr);
+    for (let i = 0; i < ascArr.length / 2; i++) {
+        sum += ascArr[i] * ascArr[ascArr.length - 1 - i];
+    }
+    return sum;
+};
+function minSum2(arr) {
+    let sum = 0;
+    const nums = [...arr];
+    while (nums.length !== 0) {
+        const max = Math.max(...nums);
+        const min = Math.min(...nums);
+        sum += max * min;
+        nums.splice(nums.indexOf(max), 1);
+        nums.splice(nums.indexOf(min), 1);
+    }
+    return sum;
+}
+function minSum3(arr) {
+    return [...arr]
+        .sort((a, b) => a - b)
+        .reduce((sum, x, _, sorted) => sum + x * sorted.pop(), 0);
+}
+function minSum4(arr) {
+    return arr
+        .sort((a, b) => a - b)
+        .reduce((acc, currVal, index, a) => acc + (currVal * a[a.length - 1 - index]) / 2, 0);
+}
+function minSum5(arr) {
+    return arr
+        .sort((a, b) => a - b)
+        .reduce((acc, currVal, index, a) => acc + (currVal * a[a.length - 1 - index]) / 2, 0);
 }
 const averages = (numArr) => {
     if (!numArr || numArr.length < 2)

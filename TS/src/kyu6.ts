@@ -401,13 +401,80 @@ Return the string "nil" with Bash, PowerShell, Pascal and Fortran.
 */
 
 class G966 {
-    public static sqInRect(l: number, w: number): number[] {
-        return [1];
+    public static sqInRect(length: number, width: number): number[] {
+
+        if (length === width) return [0];
+
+        let solution: number[] = [];
+
+        // const findSquares = (arr: number[]): number[] => {
+
+        // }
+
+        let sides: number[] = [length, width];
+        console.log("sides: ", sides);
+
+        //  SORT SIDES DESCENDING
+        let descSides = sides.sort((a, b) => b - a);
+        console.log("descSides: ", descSides);
+
+        //  COUNT HOW MANY SQUARES IT CONTAINS
+        let numberOfSq: number = Math.floor(descSides[0] / descSides[1]);
+        console.log("squares found: ", numberOfSq);
+
+        //  PUSH SQUARE INTO SOLUTION numberOfSq TIMES
+        for (let i = 1; i <= numberOfSq; i++) {
+            solution.push(descSides[1]);
+        }
+        console.log("SOLUTION: ", solution);
+
+        //  CALC NEW SMALLER SIDE (LONG / SHORT)
+        let newSide: number = (descSides[0] % descSides[1]);
+        console.log("new side: ", newSide);
+
+        // UPDATE ARRAY, SHORT(ARR[1]) IS NOW EQUAL TO NEWSIZE AND LONG IS PREVIOUS SHORT
+        descSides[0] = newSide;
+        descSides.sort((a, b) => b - a);
+        console.log("descSides: ", descSides);
+
+        // if (longer === shorter) return [0];
+
+
+
+        // ❗️❗️❗️ INFINITE ❗️❗️❗️
+        // return G966.sqInRect(descSides[0], descSides[1]);
+
+        return [1]
     }
 }
 
+/*
+sides:  [ 5, 3 ]
+descSides:  [ 5, 3 ]
+squares found:  1
+SOLUTION:  [ 3 ]
+new side:  2
+descSides:  [ 3, 2 ]
+sides:  [ 3, 2 ]
+descSides:  [ 3, 2 ]
+squares found:  1
+SOLUTION:  [ 2 ]
+new side:  1
+descSides:  [ 2, 1 ]
+sides:  [ 2, 1 ]
+descSides:  [ 2, 1 ]
+squares found:  2
+SOLUTION:  [ 1, 1 ]
+new side:  0
+descSides:  [ 1, 0 ]
+sides:  [ 1, 0 ]
+descSides:  [ 1, 0 ]
+squares found:  Infinity
+*/
+
+
 // console.log(G964.sqInRect(5, 5));
-// console.log(G964.sqInRect(5, 3));
+console.log(G966.sqInRect(5, 3));
 // console.log();
 // console.log();
 
@@ -444,15 +511,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -505,10 +572,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -835,13 +902,264 @@ function solution1(roman: string): number {
 }
 
 // console.log(solution1("MDCCCXXIXII"));
-console.log(solution1("MDCLXVI"));
+// console.log(solution1("MDCLXVI"));
 // console.log(solution1('MMCM'));
 // console.log(solution('IV');
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const values: Record<string, number> = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+}
+
+export function solution5(roman: string): number {
+    let value = 0
+    for (let i = 0; i < roman.length; i++) {
+        const current = values[roman[i]]
+        const next = values[roman[i + 1]] || 0
+        if (current < next) {
+            value -= current
+        } else {
+            value += current
+        }
+    }
+    return value
+}
+
+
+
+
+function solution8(roman: string): number {
+    const symbols: any = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    };
+    return roman
+        .split('')
+        .map(e => symbols[e])
+        .reduce((p, c) => p < c ? c - p : c + p);
+}
+
+
+
+//   function solution9(roman: string): number {
+//     const table = {
+//       M : 1000,
+//       D: 500,
+//       C: 100,
+//       L: 50,
+//       X: 10,
+//       V: 5,
+//       I: 1
+//     }
+
+//     return roman.split('').reduceRight((prev, cur, i, arr) => {
+//       return table[arr[i+1]] > table[cur] ? prev - table[cur] : prev + table[cur];
+//     }, 0);
+//   }
+
+
+// function solution10(roman: string): number {
+//     let splitString : string[] = roman.split("");
+//     let num : number = 0;
+//     let previous: string;
+//     for(var i = 0; i < splitString.length; i++)
+//     {
+//       if( splitString[i] == "I")
+//       {
+//         num += 1;
+//       }
+//       else if( splitString[i] == "V" && previous != "I")
+//       {
+//         num += 5;
+//       }
+//       else if( splitString[i] == "V" && previous == "I")
+//       {
+//         num += 3;
+//       }
+//       else if( splitString[i] == "X")
+//       {
+//         num += 10;
+//       }
+//       else if( splitString[i] == "L" && previous != "X")
+//       {
+//         num += 50;
+//       }
+//       else if( splitString[i] == "L" && previous == "X")
+//       {
+//         num += 30;
+//       }
+//       else if( splitString[i] == "C" && previous != "X")
+//       {
+//         num += 100;
+//       }
+//       else if( splitString[i] == "C" && previous == "X")
+//       {
+//         num += 80;
+//       }
+//       else if( splitString[i] == "D" && previous != "C")
+//       {
+//         num += 500;
+//       }
+//       else if( splitString[i] == "D" && previous == "C")
+//       {
+//         num += 300;
+//       }
+//       else if( splitString[i] == "M" && previous != "C")
+//       {
+//         num += 1000;
+//       }
+//       else if( splitString[i] == "M" && previous == "I")
+//       {
+//         num += 800;
+//       }
+//       previous = splitString[i];
+//     }
+//     return num;
+//   }
+
+
+
+function solution11(roman: string): number {
+    const symbols: any = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    }
+
+    return roman.split('').map((r: string, i: number, arr: string[]) => (
+        r === 'I' && ['V', 'X'].includes(arr[i + 1]) ? -1 : symbols[r])
+    )
+        .reduce((a: number, b: number) => a + b);
+}
+
+
+
+function solution12(roman: string): number {
+    // complete the solution by transforming the 
+    // string roman numeral into an integer  
+    const map = new Map([
+        ['I', 1],
+        ['IV', 4],
+        ['V', 5],
+        ['IX', 9],
+        ['X', 10],
+        ['XL', 40],
+        ['L', 50],
+        ['XC', 90],
+        ['C', 100],
+        ['CD', 400],
+        ['D', 500],
+        ['CM', 900],
+        ['M', 1000]
+    ]);
+    let result = 0;
+
+    for (let i = 0; i < roman.length; i++) {
+        const twoSymbols = map.get(roman[i] + roman[i + 1]);
+        const oneSymbol = map.get(roman[i]);
+        if (twoSymbols) {
+            i += 1;
+        }
+        result += twoSymbols || oneSymbol || 0;
+    }
+
+    return result;
+}
+
+
+
+//   function solution13(roman: string): number {
+//     var dict = {M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
+//    var result = 0;
+//    while (roman.length > 0) {
+//      for (var e in dict) {
+//        if (roman.substring(0, 2) == e) {
+//          result += dict[e];
+//          roman = roman.substr(2);
+//        } else if (roman.substring(0, 1) == e) {
+//          result += dict[e];
+//          roman = roman.substr(1);
+//        }
+//      }
+//    }
+//    return result;
+//  }
+
+
+
+function solution13(roman: string): number {
+    const values: Record<string, number> = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
+        CM: 900,
+        CD: 400,
+        XC: 90,
+        XL: 40,
+        IX: 9,
+        IV: 4
+    }
+    return roman.replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
+        .split(/,+/)
+        .reduce((sum: number, n: string) => sum + Number(n), 0)
+}
+
+
+
+function solution14(roman: string): number {
+    const initial = 0;
+    const numbers: number[] = roman.split('').map((letter) => {
+        switch (letter) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    });
+    const result = numbers.reduce(function (valorAnterior, valorActual, indice) {
+        if (indice + 1 === numbers.length || valorActual >= numbers[indice + 1]) {
+            return valorAnterior + valorActual;
+        } else {
+            return valorAnterior - valorActual;
+        }
+
+    }, initial);
+    return result;
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR THIS ❗️❗️❗️ AND COMMENT ❗️❗️❗️
@@ -1298,8 +1616,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -1592,7 +1910,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -2049,10 +2367,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -3352,9 +3670,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

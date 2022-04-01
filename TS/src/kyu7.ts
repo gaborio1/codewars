@@ -285,10 +285,10 @@ function solveA(arr: string[]) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MINIMIZE SUM OF ARRAY - Array Series #1
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SORT, SPLICE, REDUCE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -312,9 +312,27 @@ Explanation:
 The minimum sum obtained from summing each two integers product , 9*0 + 8*2 +7*4 +6*5 = 74
 */
 
-function minSum(arr: number[]): number {
-    return 1;
+const minSum = (arr: number[]): number | string => {
+
+    if ((arr.length & 1) === 1) return "odd number of array elements!"
+
+    let sum: number = 0;
+    const ascArr = arr.sort((a, b) => a - b);
+    console.log(ascArr);
+    for (let i = 0; i < ascArr.length / 2; i++) {
+        // console.table({ first: ascArr[i], last: ascArr[ascArr.length - 1 - i] });
+        sum += ascArr[i] * ascArr[ascArr.length - 1 - i];
+    }
+
+    return sum;
+
 }
+
+//  ! MULTIPLY LARGEST BY SMALLEST !
+
+//  SORT ARRAY NUMERICALLY ASCENDING (OR DESCENDING) 
+//  LOOP OVER FIRST HALF OF ARRAY
+//      MULTIPLY FIRST EL BY LAST, THEN SECOND BY LAST-1 ETC...AND ADD PRODUCT TO SUM
 
 // 22
 // console.log(minSum([5, 4, 2, 3]));
@@ -323,6 +341,53 @@ function minSum(arr: number[]): number {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function minSum2(arr: number[]) {
+    let sum = 0;
+    const nums = [...arr];
+    while (nums.length !== 0) {
+        const max = Math.max(...nums);
+        const min = Math.min(...nums);
+        sum += max * min;
+        nums.splice(nums.indexOf(max), 1);
+        nums.splice(nums.indexOf(min), 1);
+    }
+    return sum;
+}
+
+
+
+function minSum3(arr: number[]) {
+    return [...arr]
+        .sort((a, b) => a - b)
+        .reduce((sum, x, _, sorted) => sum + x * sorted.pop()!, 0);
+}
+
+
+
+function minSum4(arr: number[]): number {
+    return arr
+        .sort((a: number, b: number) => a - b)
+        .reduce(
+            (acc: number, currVal: number, index: number, a: number[]) =>
+                acc + (currVal * a[a.length - 1 - index]) / 2,
+            0
+        );
+}
+
+
+
+function minSum5(arr: number[]): number {
+    return arr
+        .sort((a: number, b: number) => a - b)
+        .reduce(
+            (acc: number, currVal: number, index: number, a: number[]) =>
+                acc + (currVal * a[a.length - 1 - index]) / 2,
+            0
+        );
+}
+
+
 
 // ❗️❗️❗️ LOOK INTO REDUCE AND MAP ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -399,8 +464,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -550,10 +615,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -1550,11 +1615,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -2349,9 +2414,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -2633,8 +2698,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
