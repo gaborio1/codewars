@@ -10,8 +10,29 @@ function inviteMoreWomen(L) {
 function sumCubes(n) {
     return 1;
 }
-function solveA(arr) {
-}
+const solveA = (arr) => {
+    let solution = [];
+    const lowerC = arr.map((el) => el.toLowerCase());
+    console.log(lowerC);
+    lowerC.forEach((word) => {
+        console.log(word);
+        let counter = 0;
+        for (let i = 0; i < word.length; i++) {
+            let charIdx = word.indexOf(word[i]) + 97;
+            let charCode = word.charCodeAt(i);
+            console.table({
+                charIdx: charIdx,
+                charCode: charCode,
+                match: charIdx === charCode,
+            });
+            if (charIdx === charCode)
+                counter++;
+        }
+        solution.push(counter);
+    });
+    return solution;
+};
+console.log(solveA(["abode", "ABc", "xyzD"]));
 const minSum = (arr) => {
     if ((arr.length & 1) === 1)
         return "odd number of array elements!";

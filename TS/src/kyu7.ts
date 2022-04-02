@@ -273,12 +273,128 @@ Input will consist of alphabet characters, both uppercase and lowercase. No spac
 Good luck!
 */
 
-function solveA(arr: string[]) {
-    // your code here
-}
+const solveA = (arr: string[]): number[] => {
+    let solution: number[] = [];
+    const lowerC = arr.map((el) => el.toLowerCase());
+    console.log(lowerC);
+
+    lowerC.forEach((word) => {
+        console.log(word);
+        let counter: number = 0;
+
+        for (let i = 0; i < word.length; i++) {
+            let charIdx: number = word.indexOf(word[i]) + 97;
+            // console.log(charIdx);
+            let charCode: number = word.charCodeAt(i);
+            // console.log(charCode);
+            console.table({
+                charIdx: charIdx,
+                charCode: charCode,
+                match: charIdx === charCode,
+            });
+            if (charIdx === charCode) counter++;
+        }
+        solution.push(counter);
+    });
+
+    return solution;
+};
+
+/*
+[ 'abode', 'abc', 'xyzd' ]
+abode
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   97   │
+│ charCode │   97   │
+│  match   │  true  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   98   │
+│ charCode │   98   │
+│  match   │  true  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   99   │
+│ charCode │  111   │
+│  match   │ false  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │  100   │
+│ charCode │  100   │
+│  match   │  true  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │  101   │
+│ charCode │  101   │
+│  match   │  true  │
+└──────────┴────────┘
+abc
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   97   │
+│ charCode │   97   │
+│  match   │  true  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   98   │
+│ charCode │   98   │
+│  match   │  true  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   99   │
+│ charCode │   99   │
+│  match   │  true  │
+└──────────┴────────┘
+xyzd
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   97   │
+│ charCode │  120   │
+│  match   │ false  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   98   │
+│ charCode │  121   │
+│  match   │ false  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │   99   │
+│ charCode │  122   │
+│  match   │ false  │
+└──────────┴────────┘
+┌──────────┬────────┐
+│ (index)  │ Values │
+├──────────┼────────┤
+│ charIdx  │  100   │
+│ charCode │  100   │
+│  match   │  true  │
+└──────────┴────────┘
+[ 4, 3, 1 ]
+*/
 
 // [4, 3, 1]
-// console.log(solve(["abode", "ABc", "xyzD"]));
+console.log(solveA(["abode", "ABc", "xyzD"]));
+// console.log(solveA(["abcabc"]));
 // console.log();
 // console.log();
 // console.log();
@@ -313,8 +429,7 @@ The minimum sum obtained from summing each two integers product , 9*0 + 8*2 +7*4
 */
 
 const minSum = (arr: number[]): number | string => {
-
-    if ((arr.length & 1) === 1) return "odd number of array elements!"
+    if ((arr.length & 1) === 1) return "odd number of array elements!";
 
     let sum: number = 0;
     const ascArr = arr.sort((a, b) => a - b);
@@ -325,12 +440,11 @@ const minSum = (arr: number[]): number | string => {
     }
 
     return sum;
-
-}
+};
 
 //  ! MULTIPLY LARGEST BY SMALLEST !
 
-//  SORT ARRAY NUMERICALLY ASCENDING (OR DESCENDING) 
+//  SORT ARRAY NUMERICALLY ASCENDING (OR DESCENDING)
 //  LOOP OVER FIRST HALF OF ARRAY
 //      MULTIPLY FIRST EL BY LAST, THEN SECOND BY LAST-1 ETC...AND ADD PRODUCT TO SUM
 
@@ -355,15 +469,11 @@ function minSum2(arr: number[]) {
     return sum;
 }
 
-
-
 function minSum3(arr: number[]) {
     return [...arr]
         .sort((a, b) => a - b)
         .reduce((sum, x, _, sorted) => sum + x * sorted.pop()!, 0);
 }
-
-
 
 function minSum4(arr: number[]): number {
     return arr
@@ -375,8 +485,6 @@ function minSum4(arr: number[]): number {
         );
 }
 
-
-
 function minSum5(arr: number[]): number {
     return arr
         .sort((a: number, b: number) => a - b)
@@ -386,8 +494,6 @@ function minSum5(arr: number[]): number {
             0
         );
 }
-
-
 
 // ❗️❗️❗️ LOOK INTO REDUCE AND MAP ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -464,8 +570,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -615,10 +721,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -1615,11 +1721,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -2414,9 +2520,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -2698,8 +2804,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
