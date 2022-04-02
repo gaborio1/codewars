@@ -12,27 +12,51 @@ function sumCubes(n) {
 }
 const solveA = (arr) => {
     let solution = [];
-    const lowerC = arr.map((el) => el.toLowerCase());
-    console.log(lowerC);
-    lowerC.forEach((word) => {
-        console.log(word);
+    arr.map((el) => el.toLowerCase()).forEach((word) => {
         let counter = 0;
         for (let i = 0; i < word.length; i++) {
-            let charIdx = word.indexOf(word[i]) + 97;
-            let charCode = word.charCodeAt(i);
-            console.table({
-                charIdx: charIdx,
-                charCode: charCode,
-                match: charIdx === charCode,
-            });
-            if (charIdx === charCode)
+            let position = i;
+            let charCode = word.charCodeAt(i) - 97;
+            if (position === charCode)
                 counter++;
         }
         solution.push(counter);
     });
     return solution;
 };
-console.log(solveA(["abode", "ABc", "xyzD"]));
+function solveA2(arr) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    return arr.map((s) => s
+        .split("")
+        .reduce((t, c, i) => (c.toLowerCase() === alphabet[i] ? t + 1 : t), 0));
+}
+function solveA3(arr) {
+    return arr.map((str) => {
+        var count = 0;
+        var i = str.length;
+        while (i > 0) {
+            i--;
+            if ((str.charCodeAt(i) & 31) == i + 1)
+                count++;
+        }
+        return count;
+    });
+}
+const solveA4 = (arr) => arr.map((x) => x
+    .split("")
+    .reduce((acc, item, i) => acc + (item.toLowerCase().charCodeAt(0) - 97 == i ? 1 : 0), 0));
+function solveA5(arr) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+    return arr.map((word) => {
+        return word
+            .toLowerCase()
+            .split("")
+            .reduce((acc, char, i) => {
+            const isPositionMatch = alphabet[i] === char;
+            return acc + (isPositionMatch ? 1 : 0);
+        }, 0);
+    });
+}
 const minSum = (arr) => {
     if ((arr.length & 1) === 1)
         return "odd number of array elements!";
