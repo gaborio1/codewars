@@ -401,84 +401,146 @@ Return the string "nil" with Bash, PowerShell, Pascal and Fortran.
 */
 
 class G966 {
-    public static sqInRect(length: number, width: number): number[] {
+    public static sqInRect(length: number, width: number): number[] | null {
 
-        if (length === width) return [0];
+        if (length === width) return null;
 
         let solution: number[] = [];
+        let descSides = [length, width].sort((a, b) => b - a);
+        // console.log("descSides: ", descSides);
 
-        // const findSquares = (arr: number[]): number[] => {
 
-        // }
+        while (descSides[0] > 0 && descSides[1] > 0) {
 
-        let sides: number[] = [length, width];
-        console.log("sides: ", sides);
+            //  COUNT HOW MANY SQUARES IT CONTAINS
+            let numberOfSq: number = Math.floor(descSides[0] / descSides[1]);
+            // console.log("squares found: ", numberOfSq);
 
-        //  SORT SIDES DESCENDING
-        let descSides = sides.sort((a, b) => b - a);
-        console.log("descSides: ", descSides);
+            //  PUSH SQUARE INTO SOLUTION numberOfSq TIMES
+            for (let i = 1; i <= numberOfSq; i++) {
+                solution.push(descSides[1]);
+            }
+            // console.log("SOLUTION: ", solution);
 
-        //  COUNT HOW MANY SQUARES IT CONTAINS
-        let numberOfSq: number = Math.floor(descSides[0] / descSides[1]);
-        console.log("squares found: ", numberOfSq);
+            //  CALC NEW SMALLER SIDE (LONG / SHORT)
+            let newSide: number = (descSides[0] % descSides[1]);
+            // console.log("new side: ", newSide);
 
-        //  PUSH SQUARE INTO SOLUTION numberOfSq TIMES
-        for (let i = 1; i <= numberOfSq; i++) {
-            solution.push(descSides[1]);
+            // UPDATE ARRAY, SHORT(ARR[1]) IS NOW EQUAL TO NEWSIZE AND LONG IS PREVIOUS SHORT
+            descSides[0] = newSide;
+            descSides.sort((a, b) => b - a);
+            // console.log("descSides: ", descSides);
+
         }
-        console.log("SOLUTION: ", solution);
 
-        //  CALC NEW SMALLER SIDE (LONG / SHORT)
-        let newSide: number = (descSides[0] % descSides[1]);
-        console.log("new side: ", newSide);
+        return solution;
 
-        // UPDATE ARRAY, SHORT(ARR[1]) IS NOW EQUAL TO NEWSIZE AND LONG IS PREVIOUS SHORT
-        descSides[0] = newSide;
-        descSides.sort((a, b) => b - a);
-        console.log("descSides: ", descSides);
-
-        // if (longer === shorter) return [0];
-
-
-
-        // ❗️❗️❗️ INFINITE ❗️❗️❗️
-        // return G966.sqInRect(descSides[0], descSides[1]);
-
-        return [1]
     }
 }
 
 /*
+
 sides:  [ 5, 3 ]
 descSides:  [ 5, 3 ]
 squares found:  1
 SOLUTION:  [ 3 ]
 new side:  2
 descSides:  [ 3, 2 ]
+
 sides:  [ 3, 2 ]
 descSides:  [ 3, 2 ]
 squares found:  1
 SOLUTION:  [ 2 ]
 new side:  1
 descSides:  [ 2, 1 ]
+
 sides:  [ 2, 1 ]
 descSides:  [ 2, 1 ]
 squares found:  2
 SOLUTION:  [ 1, 1 ]
 new side:  0
 descSides:  [ 1, 0 ]
+
 sides:  [ 1, 0 ]
 descSides:  [ 1, 0 ]
 squares found:  Infinity
+
 */
 
 
 // console.log(G964.sqInRect(5, 5));
-console.log(G966.sqInRect(5, 3));
+// [ 3, 2, 1, 1 ]
+// console.log(G966.sqInRect(5, 3));
+// [ 14, 6, 6, 2, 2, 2 ]
+// console.log(G966.sqInRect(20, 14));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+class G966a {
+    public static sqInRect(l: number, w: number): number[] | null {
+        if (l == w) return null;
+        var sqs = [], tmp;
+        while (l) {
+            tmp = Math.min(w, l);
+            l = Math.max(w, l);
+            w = tmp;
+            sqs.push(w);
+            l -= w
+        }
+        return sqs;
+    }
+}
+
+
+
+class G966a1 {
+    static sqInRect(l: number, w: number): number[] | null {
+        if (l === w) return null;
+        if (w > l) [l, w] = [w, l];
+        return [w].concat(G966a1.sqInRect(l - w, w) || w)
+    }
+}
+
+
+
+class G966a2 {
+    public static sqInRect(l: number, w: number): number[] | null {
+        let remainingSize: number = l * w;
+        let shorterSide: number;
+        const insideSqSides: Array<number> = [];
+
+        if (l == w) {
+            return null;
+        }
+
+        while (remainingSize > 0) {
+            shorterSide = Math.min(l, w);
+            remainingSize -= Math.pow(shorterSide, 2);
+
+            l = shorterSide;
+            w = remainingSize / l;
+
+            insideSqSides.push(shorterSide);
+        }
+
+        return insideSqSides;
+    }
+}
+
+
+
+// class G966a3 {
+//     private static sq(l: number, w: number): number[] | null{
+//       [l, w] = l > w ? [l, w] : [w, l];
+//       return l === w ? [w] : [w, ...G966a3.sq(l - w, w)]
+//     }
+//     public static sqInRect(l: number, w: number): number[] {
+//         // your code
+//         return l === w ? null : G966a3.sq(l, w);
+//     }
+// }
 
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

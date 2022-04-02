@@ -4,27 +4,63 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 class G966 {
     static sqInRect(length, width) {
         if (length === width)
-            return [0];
+            return null;
         let solution = [];
-        let sides = [length, width];
-        console.log("sides: ", sides);
-        let descSides = sides.sort((a, b) => b - a);
-        console.log("descSides: ", descSides);
-        let numberOfSq = Math.floor(descSides[0] / descSides[1]);
-        console.log("squares found: ", numberOfSq);
-        for (let i = 1; i <= numberOfSq; i++) {
-            solution.push(descSides[1]);
+        let descSides = [length, width].sort((a, b) => b - a);
+        while (descSides[0] > 0 && descSides[1] > 0) {
+            let numberOfSq = Math.floor(descSides[0] / descSides[1]);
+            for (let i = 1; i <= numberOfSq; i++) {
+                solution.push(descSides[1]);
+            }
+            let newSide = (descSides[0] % descSides[1]);
+            descSides[0] = newSide;
+            descSides.sort((a, b) => b - a);
         }
-        console.log("SOLUTION: ", solution);
-        let newSide = (descSides[0] % descSides[1]);
-        console.log("new side: ", newSide);
-        descSides[0] = newSide;
-        descSides.sort((a, b) => b - a);
-        console.log("descSides: ", descSides);
-        return [1];
+        return solution;
     }
 }
-console.log(G966.sqInRect(5, 3));
+class G966a {
+    static sqInRect(l, w) {
+        if (l == w)
+            return null;
+        var sqs = [], tmp;
+        while (l) {
+            tmp = Math.min(w, l);
+            l = Math.max(w, l);
+            w = tmp;
+            sqs.push(w);
+            l -= w;
+        }
+        return sqs;
+    }
+}
+class G966a1 {
+    static sqInRect(l, w) {
+        if (l === w)
+            return null;
+        if (w > l)
+            [l, w] = [w, l];
+        return [w].concat(G966a1.sqInRect(l - w, w) || w);
+    }
+}
+class G966a2 {
+    static sqInRect(l, w) {
+        let remainingSize = l * w;
+        let shorterSide;
+        const insideSqSides = [];
+        if (l == w) {
+            return null;
+        }
+        while (remainingSize > 0) {
+            shorterSide = Math.min(l, w);
+            remainingSize -= Math.pow(shorterSide, 2);
+            l = shorterSide;
+            w = remainingSize / l;
+            insideSqSides.push(shorterSide);
+        }
+        return insideSqSides;
+    }
+}
 const camelCase = (str) => {
     return str
         ? str
