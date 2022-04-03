@@ -1,6 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+function cookingTime(eggs) {
+    return 1;
+}
+const strongNumber = (num) => {
+    return "";
+};
+class G964c {
+    static movie(card, ticket, perc) {
+        return 1;
+    }
+}
+function orderedCount(text) {
+    return [["a", 1]];
+}
 function growingPlant(up, down, h) {
     return 1;
 }

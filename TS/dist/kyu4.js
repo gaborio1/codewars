@@ -4,8 +4,21 @@ exports.nextBigger7 = void 0;
 class G964 {
 }
 const sumOfIntervals = (intervals) => {
+    console.log(intervals);
+    let allIntElements = [];
+    intervals.forEach((pair) => {
+        console.log(pair);
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            console.log(i);
+            allIntElements.push(i);
+        }
+    });
+    console.log(allIntElements);
+    const uniqueElements = new Set(allIntElements);
+    console.log(uniqueElements);
     return 1;
 };
+console.log(sumOfIntervals([[1, 4], [7, 10], [3, 5]]));
 const nextBigger = (num) => {
     const digitsArr = String(num)
         .split("")

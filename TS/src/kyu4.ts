@@ -561,6 +561,39 @@ sumOfIntervals([[1, 5]]) // => 4
 */
 
 const sumOfIntervals = (intervals: [number, number][]): number => {
+
+    console.log(intervals);
+
+    // GET ALL ELEMENTS OF INTERVALS IN ONE ARRAY 
+    let allIntElements: number[] = [];
+
+    intervals.forEach((pair) => {
+        console.log(pair);
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            console.log(i);
+            allIntElements.push(i);
+        }
+
+    })
+
+    /*
+     [ 1, 4 ], [ 7, 10 ], [ 3, 5 ]
+    ==> (2,3,4),(8,9,10),(4,5)
+    ==> [2, 3, 4, 8, 9, 10, 4, 5]
+    */
+
+    console.log(allIntElements);
+
+
+    // REMOVE DUPLICATES (SET)
+    const uniqueElements = new Set(allIntElements);
+    // Set(7) { 2, 3, 4, 8, 9, 10, 5 }
+    console.log(uniqueElements);
+
+    // FOUND CONSECUTIVE INCREASING STREAKS AND COUNT THEIR LENGTH
+
+    // SUM ALL LENGTHS
+
     return 1;
 };
 
@@ -571,7 +604,7 @@ const sumOfIntervals = (intervals: [number, number][]): number => {
 // 4
 // console.log(sumOfIntervals([[1, 5], [1, 5]]));
 // 7
-// console.log(sumOfIntervals([[1, 4], [7, 10], [3, 5]]));
+console.log(sumOfIntervals([[1, 4], [7, 10], [3, 5]]));
 
 // console.log();
 // console.log();
