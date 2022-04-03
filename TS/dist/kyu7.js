@@ -1,14 +1,69 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
-function countRedBeads(n) {
-    return 0;
-}
-function inviteMoreWomen(L) {
-    return true;
-}
-function sumCubes(n) {
+function growingPlant(up, down, h) {
     return 1;
+}
+class G964B {
+    static maxRot(n) {
+    }
+}
+function menFromBoys(arr) {
+    return [1];
+}
+function balancedNum(number) {
+}
+function seven(m) {
+    return [1];
+}
+function generateShape(int) {
+    return "+";
+}
+const automorphic = (num) => {
+    const numStr = num.toString();
+    const numStrLength = numStr.length;
+    const sqStr = Math.pow(num, 2).toString();
+    return numStr === sqStr.slice(-numStrLength) ? "Automorphic" : "Not!!";
+};
+function automorphic2(n) {
+    return String(n ** 2).endsWith(String(n)) ? "Automorphic" : "Not!!";
+}
+const countRedBeads = (num) => {
+    return num <= 1 ? 0 : (num - 1) * 2;
+};
+function countRedBeads2(n) {
+    return Math.max(0, (n - 1) * 2);
+}
+const inviteMoreWomen = (guestsArr) => {
+    return guestsArr.reduce((acc, curr) => acc + curr) > 0;
+};
+function inviteMoreWomen2(L) {
+    return eval(L.join("+")) > 0;
+}
+function inviteMoreWomen3(L) {
+    return (L.filter((num) => num > 0).length > L.filter((num) => num < 0).length);
+}
+const sumCubes = (num) => {
+    let result = 0;
+    for (let i = 1; i <= num; i++) {
+        result += Math.pow(i, 3);
+    }
+    return result;
+};
+function sumCubes2(n) {
+    let res = 0;
+    for (let i = 0; i <= n; i += 1) {
+        res += i ** 3;
+    }
+    return res;
+}
+function sumCubes3(n) {
+    if (n == 1) {
+        return 1;
+    }
+    else {
+        return Math.pow(n, 3) + sumCubes(n - 1);
+    }
 }
 const solveA = (arr) => {
     let solution = [];
