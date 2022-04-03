@@ -327,7 +327,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: BOILED EGGS - COOKING TIME
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -335,10 +335,27 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are the greatest chef on earth. No one boils eggs like you! Your restaurant is always full of guests, who love your boiled eggs. But when there is a greater order of boiled eggs, you need some time, because you have only one pot for your job. How much time do you need?
 
+Your Task
+Implement a function, which takes a non-negative integer, representing the number of eggs to boil. It must return the time in minutes (integer), which it takes to have all the eggs boiled.
+
+Rules
+you can put at most 8 eggs into the pot at once
+it takes 5 minutes to boil an egg
+we assume, that the water is boiling all the time (no time to heat up)
+for simplicity we also don't consider the time it takes to put eggs into the pot or get them out of it
+Example (Input --> Output)
+0 --> 0
+5 --> 5
+10 --> 10
 */
 
-// console.log();
+function cookingTime(eggs: number): number {
+    return 1;
+}
+
+// console.log(cookingTime(5));
 // console.log();
 // console.log();
 // console.log();
@@ -346,7 +363,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: STRONG NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -354,18 +371,57 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+
+For example: 145, since
+1! + 4! + 5! = 1 + 24 + 120 = 145
+So, 145 is a Strong number.
+
+Task
+Given a number, Find if it is Strong or not.
+
+Warm-up (Highly recommended)
+Playing With Numbers Series
+Notes
+Number passed is always Positive.
+Return the result as String
+Input >> Output Examples
+strong_num(1) ==> return "STRONG!!!!"
+Explanation:
+Since , the sum of its digits' factorial of (1) is equal to number itself (1) , Then its a Strong .
+
+strong_num(123) ==> return "Not Strong !!"
+Explanation:
+Since the sum of its digits' factorial of 1! + 2! + 3! = 9 is not equal to number itself (123) , Then it's Not Strong .
+
+strong_num(2)  ==>  return "STRONG!!!!"
+Explanation:
+Since the sum of its digits' factorial of 2! = 2 is equal to number itself (2) , Then its a Strong .
+
+strong_num(150) ==> return "Not Strong !!"
+Explanation:
+Since the sum of its digits' factorial of 1! + 5! + 0! = 122 is not equal to number itself (150), Then it's Not Strong .
+
 
 */
 
-// console.log();
-// console.log();
+const strongNumber = (num: number): string => {
+    // Your Code here .. Enjoy !!
+    return "";
+};
+
+//   NOT STRONG
+// console.log(strongNumber(7));
+// console.log(strongNumber(185));
+
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE:   GOING TO THE CINEMA
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -373,10 +429,36 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+My friend John likes to go to the cinema. He can choose between system A and system B.
 
+System A : he buys a ticket (15 dollars) every time
+System B : he buys a card (500 dollars) and a first ticket for 0.90 times the ticket price, 
+then for each additional ticket he pays 0.90 times the price paid for the previous ticket.
+Example:
+If John goes to the cinema 3 times:
+
+System A : 15 * 3 = 45
+System B : 500 + 15 * 0.90 + (15 * 0.90) * 0.90 + (15 * 0.90 * 0.90) * 0.90 ( = 536.5849999999999, no rounding for each ticket)
+John wants to know how many times he must go to the cinema so that the final result of System B, when rounded up to the next dollar, will be cheaper than System A.
+
+The function movie has 3 parameters: card (price of the card), ticket (normal price of a ticket), perc (fraction of what he paid for the previous ticket) and returns the first n such that
+
+ceil(price of System B) < price of System A.
+More examples:
+movie(500, 15, 0.9) should return 43 
+    (with card the total price is 634, with tickets 645)
+movie(100, 10, 0.95) should return 24 
+    (with card the total price is 235, with tickets 240)
 */
 
-// console.log();
+class G964c {
+    public static movie(card: number, ticket: number, perc: number): number {
+        return 1;
+    }
+}
+
+// 43
+// console.log(G964c.movie(500, 15, 0.9));
 // console.log();
 // console.log();
 // console.log();
@@ -384,7 +466,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE:   ORDERED COUNT OF CHARACTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -392,10 +474,18 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty output return an empty list.
 
+Example:
+
+orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
 */
 
-// console.log();
+function orderedCount(text: string): [string, number][] {
+    return [["a", 1]];
+}
+
+// console.log(orderedCount("abracadabra"));
 // console.log();
 // console.log();
 // console.log();
