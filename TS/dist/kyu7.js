@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+function containAllRots(str, arr) {
+    return true;
+}
+function disariumNumber(n) {
+}
 function cookingTime(eggs) {
     return 1;
 }
@@ -30,8 +35,39 @@ function balancedNum(number) {
 function seven(m) {
     return [1];
 }
-function generateShape(int) {
-    return "+";
+const generateShape = (int) => {
+    if (int === 1)
+        return "+";
+    let solution = "";
+    for (let i = 0; i < int; i++) {
+        let row = i >= 1 ? "\n" + "+".repeat(int) : "+".repeat(int);
+        solution += row;
+    }
+    return solution;
+};
+function generateShape2(int) {
+    return `${"+".repeat(int)}\n`.repeat(int).slice(0, -1);
+}
+function generateShape3(int) {
+    return Array(int)
+        .fill(Array(int + 1).join("+"))
+        .join("\n");
+}
+function generateShape4(int) {
+    var array = [];
+    for (let i = 0; i < int; i++) {
+        array.push("+".repeat(int));
+    }
+    return array.join("\n");
+}
+function generateShape5(int) {
+    let result = "";
+    for (let i = 0; i < int; i++)
+        result += "+".repeat(int) + "\n";
+    return result.slice(0, result.length - 1);
+}
+function generateShape6(size) {
+    return new Array(size).fill(new Array(size).fill("+").join("")).join("\n");
 }
 const automorphic = (num) => {
     const numStr = num.toString();

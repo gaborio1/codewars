@@ -289,7 +289,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: ALL INCLUSIVE?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -297,18 +297,44 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Input:
+
+a string strng
+an array of strings arr
+Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
+
+a boolean true if all rotations of strng are included in arr (C returns 1)
+false otherwise (C returns 0)
+Examples:
+contain_all_rots(
+  "bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]) -> true
+
+contain_all_rots(
+  "Ajylvpy", ["Ajylvpy", "ylvpyAj", "jylvpyA", "lvpyAjy", "pyAjylv", "vpyAjyl", "ipywee"]) -> false)
+Note:
+Though not correct in a mathematical sense
+
+we will consider that there are no rotations of strng == ""
+and for any array arr: contain_all_rots("", arr) --> true
+Ref: https://en.wikipedia.org/wiki/String_(computer_science)#Rotations
 
 */
 
-// console.log();
-// console.log();
+function containAllRots(str: string, arr: string[]): boolean {
+    return true;
+}
+
+// true
+// console.log(containAllRots("bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]));
+// false
+// console.log(containAllRots("XjYABhR", ["TzYxlgfnhf", "yqVAuoLjMLy", "BhRXjYA", "YABhRXj", "hRXjYAB", "jYABhRX", "XjYABhR", "ABhRXjY"]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DISARIUM NUMBER - (Special Numbers Series #3)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -316,11 +342,34 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+Disarium number is the number that The sum of its digits powered with their respective positions is equal to the number itself.
 
+Task
+Given a number, Find if it is Disarium or not .
+
+Warm-up (Highly recommended)
+Playing With Numbers Series
+Notes
+Number passed is always Positive .
+Return the result as String
+Input >> Output Examples
+disariumNumber(89) ==> return "Disarium !!"
+Explanation:
+Since , 81 + 92 = 89 , thus output is "Disarium !!"
+disariumNumber(564) ==> return "Not !!"
+Explanation:
+Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
 */
 
-// console.log();
-// console.log();
+function disariumNumber(n: number) {
+    // your code here
+}
+
+// "Disarium !!"
+// console.log(disariumNumber(89));
+// "Not !!"
+// console.log(disariumNumber(564));
 // console.log();
 // console.log();
 
@@ -800,10 +849,12 @@ function seven(m: number): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:   BUILD A SQUARE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ LINEBREAK "\n" (ADD NEW LINE TO CONSOLE OUTPUT) ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -819,16 +870,58 @@ n = 3, so I expect a 3x3 square back just like below as a string:
 +++
 */
 
-function generateShape(int: number): string {
-    return "+"; // your code here
-}
+const generateShape = (int: number): string => {
+    if (int === 1) return "+";
 
-// console.log(generateShape(8));
+    let solution: string = "";
+
+    for (let i = 0; i < int; i++) {
+        // ❗️❗️❗️ LINE BREAK ❗️❗️❗️
+        let row: string = i >= 1 ? "\n" + "+".repeat(int) : "+".repeat(int);
+        solution += row;
+    }
+
+    return solution;
+};
+
+//   ADD LINE BREAK TO EVERY ROW BUT FIRST
+
+// console.log(generateShape(3)); 
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ LINE BREAK ❗️❗️❗️
+function generateShape2(int: number): string {
+    return `${"+".repeat(int)}\n`.repeat(int).slice(0, -1);
+}
+
+function generateShape3(int: number): string {
+    return Array(int)
+        .fill(Array(int + 1).join("+"))
+        .join("\n");
+}
+
+function generateShape4(int: number): string {
+    var array = [];
+    for (let i = 0; i < int; i++) {
+        array.push("+".repeat(int));
+    }
+
+    return array.join("\n");
+}
+
+function generateShape5(int: number): string {
+    let result: string = "";
+    for (let i: number = 0; i < int; i++) result += "+".repeat(int) + "\n";
+    return result.slice(0, result.length - 1);
+}
+
+function generateShape6(size: number): string {
+    return new Array(size).fill(new Array(size).fill("+").join("")).join("\n");
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: AUTOMORPHIC NUMBER (Special Numbers Series #6)
