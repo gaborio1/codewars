@@ -516,8 +516,11 @@ const distinct4 = (a) => {
 const distinct5 = (a) => {
     return [...new Set([...a])];
 };
-function getDrinkByProfession(profession) {
-}
+const getDrinkByProfession = (profession) => {
+    const lowerCaseProf = profession.toLowerCase();
+    console.log(lowerCaseProf);
+};
+console.log(getDrinkByProfession("jabrOni"));
 const position = (char) => {
     const abc = "abcdefghijklmnopqrstuvwxyz";
     return `Position of alphabet: ${abc.indexOf(char.toLowerCase()) + 1}`;

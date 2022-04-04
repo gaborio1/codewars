@@ -1880,12 +1880,12 @@ Your function should return the 20 year estimate of the stairs climbed using the
 */
 
 var sunday = [
-        6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
-        7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478,
-        6063, 5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381,
-        5936, 8496, 6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032,
-        9871, 5990, 6309, 7825,
-    ],
+    6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832, 8274,
+    7148, 6152, 5940, 8040, 9174, 7555, 7682, 5252, 8793, 8837, 7320, 8478,
+    6063, 5751, 9716, 5085, 7315, 7859, 6628, 5425, 6331, 7097, 6249, 8381,
+    5936, 8496, 6934, 8347, 7036, 6421, 6510, 5821, 8602, 5312, 7836, 8032,
+    9871, 5990, 6309, 7825,
+],
     monday = [
         9175, 7883, 7596, 8635, 9274, 9675, 5603, 6863, 6442, 9500, 7468, 9719,
         6648, 8180, 7944, 5190, 6209, 7175, 5984, 9737, 5548, 6803, 9254, 5932,
@@ -2539,12 +2539,15 @@ Note: anything else is the default case: if the input to the function is not any
 Make sure you cover the cases where certain words do not show up with correct capitalization. For example, the input "pOLitiCIaN" should still return "Your tax dollars".
 */
 
-function getDrinkByProfession(profession: string) {
-    //show me the code
+const getDrinkByProfession = (profession: string) => {
+
+    const lowerCaseProf = profession.toLowerCase();
+    console.log(lowerCaseProf);
+
 }
 
 //    "Patron Tequila"
-// console.log(getDrinkByProfession("jabrOni"));
+console.log(getDrinkByProfession("jabrOni"));
 // "Anything with Alcohol"
 // console.log(getDrinkByProfession("scHOOl counselor"));
 // console.log();
@@ -2587,14 +2590,12 @@ const position = (char: string): string => {
 
 // ❗️❗️❗️ CHARCODEAT()❗️❗️❗️
 function position2(alphabet: string): string {
-    return `Position of alphabet: ${
-        alphabet.charCodeAt(0) - "a".charCodeAt(0) + 1
-    }`;
+    return `Position of alphabet: ${alphabet.charCodeAt(0) - "a".charCodeAt(0) + 1
+        }`;
 }
 
 const position3 = (alphabet: string): string =>
-    `Position of alphabet: ${
-        "abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1
+    `Position of alphabet: ${"abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1
     }`;
 
 function position4(alphabet: string): string {
@@ -2906,9 +2907,8 @@ const warnTheSheep = (queue: string[]): string => {
     for (let i = 0; i < revQueue.length - 1; i++) {
         let next: string = queue[i + 1];
         if (next === "wolf") {
-            message = `Oi! Sheep number ${
-                i + 1
-            }! You are about to be eaten by a wolf!`;
+            message = `Oi! Sheep number ${i + 1
+                }! You are about to be eaten by a wolf!`;
         }
     }
 
@@ -2940,9 +2940,8 @@ function warnTheSheep2(queue: string[]): string {
 function warnTheSheep3(queue: string[]): string {
     return queue.indexOf("wolf") === queue.length - 1
         ? "Pls go away and stop eating my sheep"
-        : `Oi! Sheep number ${
-              queue.length - queue.indexOf("wolf") - 1
-          }! You are about to be eaten by a wolf!`;
+        : `Oi! Sheep number ${queue.length - queue.indexOf("wolf") - 1
+        }! You are about to be eaten by a wolf!`;
 }
 
 function warnTheSheep4(queue: string[]): string {
@@ -3344,8 +3343,7 @@ const hello = (name?: string): string => {
 
 // ❗️❗️❗️ FIRST CAPITAL LETTER, ❗️❗️❗️ DEFAULT PARAMETER ❗️❗️❗️
 const hello2 = (name = ""): string =>
-    `Hello, ${
-        name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : "World"
+    `Hello, ${name ? name[0].toUpperCase() + name.slice(1).toLowerCase() : "World"
     }!`;
 
 function hello3(name: string = ""): string {
@@ -3360,9 +3358,9 @@ function hello4(name: string = ""): string {
     const nameLower: string = name.toLowerCase();
     return name
         ? `Hello, ${nameLower.replace(
-              nameLower[0],
-              nameLower[0].toUpperCase()
-          )}!`
+            nameLower[0],
+            nameLower[0].toUpperCase()
+        )}!`
         : "Hello, World!";
 }
 
@@ -5544,8 +5542,8 @@ const flipCharAlphaCase = (code: number): number =>
     code >= 65 && code <= 90
         ? code + 32
         : code >= 97 && code <= 122
-        ? code - 32
-        : code;
+            ? code - 32
+            : code;
 
 const toAlternatingCase4 = (s: string): string =>
     String.fromCharCode(
@@ -5600,10 +5598,10 @@ const updateLight3 = ($: string) =>
     $ === "green"
         ? "yellow"
         : $ === "yellow"
-        ? "red"
-        : $ === "red"
-        ? "green"
-        : "error";
+            ? "red"
+            : $ === "red"
+                ? "green"
+                : "error";
 
 /*
 const lights = {
@@ -5814,12 +5812,12 @@ function getGrade2(a: number, b: number, c: number) {
     return avg < 60
         ? "F"
         : avg < 70
-        ? "D"
-        : avg < 80
-        ? "C"
-        : avg < 90
-        ? "B"
-        : "A";
+            ? "D"
+            : avg < 80
+                ? "C"
+                : avg < 90
+                    ? "B"
+                    : "A";
 }
 
 function getGrade3(a: number, b: number, c: number): string {
@@ -6583,9 +6581,9 @@ function sumArray3(a: number[]): number {
     return a === null
         ? 0
         : a
-              .sort((a, b) => a - b)
-              .slice(1, -1)
-              .reduce((a, b) => a + b, 0);
+            .sort((a, b) => a - b)
+            .slice(1, -1)
+            .reduce((a, b) => a + b, 0);
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -6998,10 +6996,10 @@ function bmi2(weight: number, height: number): string {
     return $ <= 18.5
         ? "Underweight"
         : $ <= 25.0
-        ? "Normal"
-        : $ <= 30.0
-        ? "Overweight"
-        : "Obese";
+            ? "Normal"
+            : $ <= 30.0
+                ? "Overweight"
+                : "Obese";
 }
 
 const bmi3 = (weight: number, height: number, bmi: number = 0): string =>
@@ -7314,11 +7312,11 @@ const countPositivesSumNegatives = (input: number[]) => {
 function countPositivesSumNegatives3(input: any) {
     return input && input.length
         ? [
-              input.filter((p: number) => p > 0).length,
-              input
-                  .filter((n: number) => n < 0)
-                  .reduce((a: number, b: number) => a + b, 0),
-          ]
+            input.filter((p: number) => p > 0).length,
+            input
+                .filter((n: number) => n < 0)
+                .reduce((a: number, b: number) => a + b, 0),
+        ]
         : [];
 }
 
