@@ -1,24 +1,79 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextBigger7 = void 0;
+exports.nextBigger7 = exports.sumOfIntervals3 = void 0;
 class G964 {
 }
 const sumOfIntervals = (intervals) => {
-    console.log(intervals);
     let allIntElements = [];
     intervals.forEach((pair) => {
-        console.log(pair);
         for (let i = pair[0] + 1; i <= pair[1]; i++) {
-            console.log(i);
             allIntElements.push(i);
         }
     });
-    console.log(allIntElements);
     const uniqueElements = new Set(allIntElements);
-    console.log(uniqueElements);
-    return 1;
+    return uniqueElements.size;
 };
-console.log(sumOfIntervals([[1, 4], [7, 10], [3, 5]]));
+const sumOfIntervals1 = (intervals) => {
+    let allIntElements = [];
+    intervals.forEach((pair) => {
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            allIntElements.push(i);
+        }
+    });
+    const uniqueElements = new Set(allIntElements);
+    const ascArr = Array.from(uniqueElements).sort((a, b) => a - b);
+    return ascArr.length;
+};
+function sumOfIntervals2(intervals) {
+    const ranges = new Set();
+    intervals.forEach(([start, end]) => {
+        for (let i = start; i < end; i++)
+            ranges.add(i);
+    });
+    return ranges.size;
+}
+function isIntervalsConnected(int1, int2) {
+    const [int1Start, int1End] = int1;
+    const [int2Start, int2End] = int2;
+    return ((int1Start <= int2Start && int2Start <= int1End) ||
+        (int1Start <= int2End && int2End <= int1End));
+}
+function mergeIntervals(int1, int2) {
+    return [Math.min(int1[0], int2[0]), Math.max(int1[1], int2[1])];
+}
+function tryMergeInterval(intervals) {
+    let isMergedSmth = false;
+    for (let i = 0; i < intervals.length; i++) {
+        for (let j = 0; j < intervals.length; j++) {
+            if (i === j)
+                continue;
+            if (isIntervalsConnected(intervals[i], intervals[j])) {
+                intervals[Math.min(i, j)] = mergeIntervals(intervals[i], intervals[j]);
+                intervals.splice(Math.max(i, j), 1);
+                isMergedSmth = true;
+                break;
+            }
+        }
+    }
+    return isMergedSmth;
+}
+function sumOfIntervals3(intervals) {
+    const mergedIntervals = [...intervals];
+    while (tryMergeInterval(mergedIntervals)) { }
+    return mergedIntervals.reduce((a, b) => a + Math.abs(b[1] - b[0]), 0);
+}
+exports.sumOfIntervals3 = sumOfIntervals3;
+function sumOfIntervals4(intervals) {
+    const newIntervals = intervals.map((e) => new Array(e[1] - e[0]).fill(0).map((el, i) => i + e[0]));
+    return new Set(newIntervals.reduce((a, b) => [...a, ...b])).size;
+}
+function sumOfIntervals5(intervals) {
+    return new Set(intervals.reduce((a, c) => {
+        for (let j = c[0] + 1; j <= c[1]; j++)
+            a.push(j);
+        return a;
+    }, [])).size;
+}
 const nextBigger = (num) => {
     const digitsArr = String(num)
         .split("")

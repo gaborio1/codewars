@@ -530,10 +530,12 @@ class G964 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❓❓❓ TRY ADDING TO SET IN LOOP ❓❓❓
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF INTERVALS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SET.SIZE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -560,21 +562,47 @@ sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // => 11
 sumOfIntervals([[1, 5]]) // => 4 
 */
 
+// 2️⃣ REFACTORED
 const sumOfIntervals = (intervals: [number, number][]): number => {
-
-    console.log(intervals);
-
-    // GET ALL ELEMENTS OF INTERVALS IN ONE ARRAY 
     let allIntElements: number[] = [];
 
     intervals.forEach((pair) => {
-        console.log(pair);
         for (let i = pair[0] + 1; i <= pair[1]; i++) {
-            console.log(i);
             allIntElements.push(i);
         }
+    });
 
-    })
+    const uniqueElements = new Set(allIntElements);
+
+    return uniqueElements.size;
+};
+
+/*
+GET ALL ELEMENTS OF INTERVALS IN ONE ARRAY:
+
+     [ 1, 4 ], [ 7, 10 ], [ 3, 5 ]
+    ==> (2,3,4),(8,9,10),(4,5)
+    ==> [2, 3, 4, 8, 9, 10, 4, 5]
+    
+REMOVE DUPLICATES Set(7) { 2, 3, 4, 8, 9, 10, 5 }
+   (SET AS A SORTED ARRAY: [2, 3, 4, 5,    8, 9, 10] EASIER TO RECOGNISE PATTERN)
+   JUST RETURN SET SIZE
+*/
+
+// 1️⃣ FIRST IDEA
+const sumOfIntervals1 = (intervals: [number, number][]): number => {
+    // console.log(intervals);
+
+    // GET ALL ELEMENTS OF INTERVALS IN ONE ARRAY
+    let allIntElements: number[] = [];
+
+    intervals.forEach((pair) => {
+        // console.log(pair);
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            // console.log(i);
+            allIntElements.push(i);
+        }
+    });
 
     /*
      [ 1, 4 ], [ 7, 10 ], [ 3, 5 ]
@@ -582,34 +610,134 @@ const sumOfIntervals = (intervals: [number, number][]): number => {
     ==> [2, 3, 4, 8, 9, 10, 4, 5]
     */
 
-    console.log(allIntElements);
-
+    // console.log(allIntElements);
 
     // REMOVE DUPLICATES (SET)
     const uniqueElements = new Set(allIntElements);
     // Set(7) { 2, 3, 4, 8, 9, 10, 5 }
-    console.log(uniqueElements);
+    // console.log(uniqueElements);
+
+    // !!! NOT NECESSARY, JUST RETURN SET.SIZE !!!
+
+    // CONVERT BACK TO ARRAY AND SORT ASCENDING
+    const ascArr: number[] = Array.from(uniqueElements).sort((a, b) => a - b);
+    // [2, 3, 4, 5, 8, 9, 10]
+    // console.log(ascArr);
 
     // FOUND CONSECUTIVE INCREASING STREAKS AND COUNT THEIR LENGTH
 
     // SUM ALL LENGTHS
 
-    return 1;
+    return ascArr.length;
 };
 
 // 4
 // console.log(sumOfIntervals([[1, 5]]));
 // 8
-// console.log(sumOfIntervals([[1, 5], [6, 10]]));
+// console.log(
+//     sumOfIntervals([
+//         [1, 5],
+//         [6, 10],
+//     ])
+// );
 // 4
-// console.log(sumOfIntervals([[1, 5], [1, 5]]));
+// console.log(
+//     sumOfIntervals([
+//         [1, 5],
+//         [1, 5],
+//     ])
+// );
 // 7
-console.log(sumOfIntervals([[1, 4], [7, 10], [3, 5]]));
+// console.log(
+//     sumOfIntervals([
+//         [1, 4],
+//         [7, 10],
+//         [3, 5],
+//     ])
+// );
 
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function sumOfIntervals2(intervals: [number, number][]) {
+    const ranges = new Set<number>();
+    intervals.forEach(([start, end]) => {
+        for (let i = start; i < end; i++) ranges.add(i);
+    });
+    return ranges.size;
+}
+
+// ====================================================
+
+function isIntervalsConnected(
+    int1: [number, number],
+    int2: [number, number]
+): boolean {
+    const [int1Start, int1End] = int1;
+    const [int2Start, int2End] = int2;
+
+    return (
+        (int1Start <= int2Start && int2Start <= int1End) ||
+        (int1Start <= int2End && int2End <= int1End)
+    );
+}
+
+function mergeIntervals(
+    int1: [number, number],
+    int2: [number, number]
+): [number, number] {
+    return [Math.min(int1[0], int2[0]), Math.max(int1[1], int2[1])];
+}
+
+function tryMergeInterval(intervals: [number, number][]): boolean {
+    let isMergedSmth = false;
+
+    for (let i = 0; i < intervals.length; i++) {
+        for (let j = 0; j < intervals.length; j++) {
+            if (i === j) continue;
+
+            if (isIntervalsConnected(intervals[i], intervals[j])) {
+                intervals[Math.min(i, j)] = mergeIntervals(
+                    intervals[i],
+                    intervals[j]
+                );
+                intervals.splice(Math.max(i, j), 1);
+                isMergedSmth = true;
+                break;
+            }
+        }
+    }
+
+    return isMergedSmth;
+}
+
+export function sumOfIntervals3(intervals: [number, number][]): number {
+    const mergedIntervals = [...intervals];
+
+    while (tryMergeInterval(mergedIntervals)) {}
+
+    return mergedIntervals.reduce((a, b) => a + Math.abs(b[1] - b[0]), 0);
+}
+
+// ====================================================
+
+function sumOfIntervals4(intervals: [number, number][]) {
+    const newIntervals = intervals.map((e) =>
+        new Array(e[1] - e[0]).fill(0).map((el, i) => i + e[0])
+    );
+    return new Set(newIntervals.reduce((a, b) => [...a, ...b])).size;
+}
+
+function sumOfIntervals5(intervals: [number, number][]) {
+    return new Set<number>(
+        intervals.reduce((a, c) => {
+            for (let j = c[0] + 1; j <= c[1]; j++) a.push(j);
+            return a;
+        }, <number[]>[])
+    ).size;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  NEXT BIGGER NUMBER WITH SAME DIGITS
