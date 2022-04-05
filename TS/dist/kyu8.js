@@ -518,9 +518,97 @@ const distinct5 = (a) => {
 };
 const getDrinkByProfession = (profession) => {
     const lowerCaseProf = profession.toLowerCase();
-    console.log(lowerCaseProf);
+    let drink = "";
+    switch (lowerCaseProf) {
+        case "jabroni":
+            drink = "Patron Tequila";
+            break;
+        case "school counselor":
+            drink = "Anything with Alcohol";
+            break;
+        case "programmer":
+            drink = "Hipster Craft Beer";
+            break;
+        case "bike gang member":
+            drink = "Moonshine";
+            break;
+        case "politician":
+            drink = "Your tax dollars";
+            break;
+        case "rapper":
+            drink = "Cristal";
+            break;
+        default:
+            drink = "Beer";
+    }
+    return drink;
 };
-console.log(getDrinkByProfession("jabrOni"));
+var params = {};
+params["jabroni"] = "Patron Tequila";
+params["school counselor"] = "Anything with Alcohol";
+params["programmer"] = "Hipster Craft Beer";
+params["bike gang member"] = "Moonshine";
+params["politician"] = "Your tax dollars";
+params["rapper"] = "Cristal";
+function getDrinkByProfession3(profession) {
+    var key = profession.toLowerCase();
+    if (params[key] !== undefined) {
+        return params[key];
+    }
+    return "Beer";
+}
+function getDrinkByProfession5(profession) {
+    switch (profession.toLowerCase()) {
+        case "jabroni":
+            return "Patron Tequila";
+        case "school counselor":
+            return "Anything with Alcohol";
+        case "programmer":
+            return "Hipster Craft Beer";
+        case "bike gang member":
+            return "Moonshine";
+        case "politician":
+            return "Your tax dollars";
+        case "rapper":
+            return "Cristal";
+        default:
+            return "Beer";
+    }
+}
+function capitalize(profession) {
+    const words = profession.split(" ");
+    return words
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(" ");
+}
+function getDrinkByProfession6(profession) {
+    switch (capitalize(profession)) {
+        case "Jabroni":
+            return "Patron Tequila";
+        case "School Counselor":
+            return "Anything with Alcohol";
+        case "Programmer":
+            return "Hipster Craft Beer";
+        case "Bike Gang Member":
+            return "Moonshine";
+        case "Politician":
+            return "Your tax dollars";
+        case "Rapper":
+            return "Cristal";
+        default:
+            return "Beer";
+    }
+}
+function getDrinkByProfession7(profession) {
+    return (new Map([
+        ["Jabroni".toLowerCase(), "Patron Tequila"],
+        ["School Counselor".toLowerCase(), "Anything with Alcohol"],
+        ["Programmer".toLowerCase(), "Hipster Craft Beer"],
+        ["Bike Gang Member".toLowerCase(), "Moonshine"],
+        ["Politician".toLowerCase(), "Your tax dollars"],
+        ["Rapper".toLowerCase(), "Cristal"],
+    ]).get(profession.toLowerCase()) || "Beer");
+}
 const position = (char) => {
     const abc = "abcdefghijklmnopqrstuvwxyz";
     return `Position of alphabet: ${abc.indexOf(char.toLowerCase()) + 1}`;

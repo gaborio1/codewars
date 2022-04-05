@@ -32,9 +32,31 @@ function menFromBoys(arr) {
 }
 function balancedNum(number) {
 }
-function seven(m) {
-    return [1];
-}
+let cycleCount = 0;
+const seven = (num) => {
+    if (num === 0)
+        return [0, 0];
+    const numStr = num.toString();
+    let lastDigit = Number(numStr.slice(-1));
+    let remainingDigits = Number(numStr.substring(0, numStr.length - 1));
+    let remainder = remainingDigits - lastDigit * 2;
+    cycleCount++;
+    let solution = [remainder, cycleCount];
+    console.table({
+        numStr: numStr,
+        lastDigit: lastDigit,
+        remainingDigits: remainingDigits,
+        remainder: remainder,
+        cycleCount: cycleCount,
+        solution: solution,
+    });
+    if (remainder < 100) {
+        cycleCount = 0;
+        return solution;
+    }
+    return remainder > 99 ? seven(remainder) : remainder;
+};
+console.log(seven(477557101));
 const generateShape = (int) => {
     if (int === 1)
         return "+";
