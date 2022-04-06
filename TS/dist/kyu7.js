@@ -30,7 +30,80 @@ class G964B {
 function menFromBoys(arr) {
     return [1];
 }
-function balancedNum(number) {
+const balancedNum = (num) => {
+    if (num < 100)
+        return "Balanced";
+    const numStr = String(num);
+    const length = numStr.length;
+    const getLeftNumStr = (numStr) => {
+        let leftStr = (length & 1) === 1
+            ? numStr.slice(0, (length - 1) / 2)
+            : numStr.slice(0, length / 2 - 1);
+        return leftStr;
+    };
+    const getRightNumStr = (numStr) => {
+        let rightStr = (length & 1) === 1
+            ? numStr.slice((length - 1) / 2 + 1)
+            : numStr.slice(length / 2 + 1);
+        return rightStr;
+    };
+    const leftSum = getLeftNumStr(numStr)
+        .split("")
+        .map((strDigit) => Number(strDigit))
+        .reduce((a, b) => a + b);
+    const rightSum = getRightNumStr(numStr)
+        .split("")
+        .map((strDigit) => Number(strDigit))
+        .reduce((a, b) => a + b);
+    return leftSum === rightSum
+        ? "Balanced"
+        : "Not Balanced";
+};
+function balancedNum2(number) {
+    const numbers = (number + "").split("").map(digit => parseInt(digit));
+    const length = numbers.length;
+    if (length <= 2)
+        return "Balanced";
+    const left = numbers.slice(0, Math.floor(length / 2 - 0.5));
+    const right = numbers.slice(Math.ceil(length / 2 + 0.5), length);
+    return left.reduce((a, b) => a + b) == right.reduce((a, b) => a + b)
+        ? "Balanced"
+        : "Not Balanced";
+}
+function balancedNum3(number) {
+    let s = number.toString();
+    let n = Math.floor((s.length - 1) / 2);
+    return !n || [...s.slice(0, n)].reduce((a, b) => a + +b, 0) == [...s.slice(-n)].reduce((a, b) => a + +b, 0) ? "Balanced" : "Not Balanced";
+}
+function balancedNum4(number) {
+    const numArray = number.toString().split('');
+    let forwardSum = 0;
+    let backwardSum = 0;
+    for (let i = 0; i < numArray.length / 2 - 1; i++) {
+        forwardSum += parseInt(numArray[i]);
+        backwardSum += parseInt(numArray[numArray.length - 1 - i]);
+    }
+    return forwardSum === backwardSum ? 'Balanced' : 'Not Balanced';
+}
+function balancedNum5(num) {
+    const [leftSum, rightSum] = splitMiddle(numToArray(num)).map(sum);
+    return leftSum === rightSum ? 'Balanced' : 'Not Balanced';
+}
+function numToArray(num, res = []) {
+    if (num === 0)
+        return res;
+    res.push(num % 10);
+    return numToArray(Math.trunc(num / 10), res);
+}
+function splitMiddle(arr) {
+    const middle = Math.floor(arr.length / 2);
+    return [
+        arr.slice(0, middle - (arr.length % 2 ? 0 : 1)),
+        arr.slice(middle + 1),
+    ];
+}
+function sum(arr) {
+    return arr.reduce((total, x) => total + x, 0);
 }
 let cycleCount = 0;
 const seven = (num) => {
@@ -48,15 +121,14 @@ const seven = (num) => {
         remainingDigits: remainingDigits,
         remainder: remainder,
         cycleCount: cycleCount,
-        solution: solution,
+        solution: [solution],
     });
     if (remainder < 100) {
         cycleCount = 0;
         return solution;
     }
-    return remainder > 99 ? seven(remainder) : remainder;
+    return seven(remainder);
 };
-console.log(seven(477557101));
 const generateShape = (int) => {
     if (int === 1)
         return "+";

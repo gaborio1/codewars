@@ -3,6 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextBigger7 = exports.sumOfIntervals3 = void 0;
 class G964 {
 }
+const sumOfIntervals6 = (intervals) => {
+    let uniqueElements = new Set();
+    intervals.forEach((pair) => {
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            uniqueElements.add(i);
+        }
+    });
+    return uniqueElements.size;
+};
 const sumOfIntervals = (intervals) => {
     let allIntElements = [];
     intervals.forEach((pair) => {

@@ -530,12 +530,10 @@ class G964 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❓❓❓ TRY ADDING TO SET IN LOOP ❓❓❓
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  SUM OF INTERVALS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: SET.SIZE
+// KEYWORDS: SET.SIZE, SET.ADD, SET()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -561,6 +559,31 @@ sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // => 11
 
 sumOfIntervals([[1, 5]]) // => 4 
 */
+
+// 3️⃣ REFACTORED WITH SET()
+const sumOfIntervals6 = (intervals: [number, number][]): number => {
+    let uniqueElements = new Set();
+
+    intervals.forEach((pair) => {
+        for (let i = pair[0] + 1; i <= pair[1]; i++) {
+            uniqueElements.add(i);
+        }
+    });
+
+    return uniqueElements.size;
+};
+
+/*
+ ADD ALL ELEMENS OF INTERVALS TO SET (DUPLICATES WILL NOT BE ADDED)
+    [ 1, 4 ], [ 7, 10 ], [ 3, 5 ]
+        ==> (2,3,4),(8,9,10),(4,5)
+        ==> Set(7) { 2, 3, 4, 8, 9, 10, 5 }
+
+    (SET AS A SORTED ARRAY: [2, 3, 4, 5,    8, 9, 10] EASIER TO RECOGNISE PATTERN)
+   JUST RETURN SET SIZE !
+*/
+
+
 
 // 2️⃣ REFACTORED
 const sumOfIntervals = (intervals: [number, number][]): number => {
@@ -649,7 +672,7 @@ const sumOfIntervals1 = (intervals: [number, number][]): number => {
 // );
 // 7
 // console.log(
-//     sumOfIntervals([
+//     sumOfIntervals6([
 //         [1, 4],
 //         [7, 10],
 //         [3, 5],
@@ -716,7 +739,7 @@ function tryMergeInterval(intervals: [number, number][]): boolean {
 export function sumOfIntervals3(intervals: [number, number][]): number {
     const mergedIntervals = [...intervals];
 
-    while (tryMergeInterval(mergedIntervals)) {}
+    while (tryMergeInterval(mergedIntervals)) { }
 
     return mergedIntervals.reduce((a, b) => a + Math.abs(b[1] - b[0]), 0);
 }

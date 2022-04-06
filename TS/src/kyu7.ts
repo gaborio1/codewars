@@ -727,10 +727,10 @@ function menFromBoys(arr: number[]): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BALANCED NUMBER (Special Numbers Series #1 )
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ GENERICS ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -787,21 +787,188 @@ Note : The middle digit(s) are 02 .
 
 */
 
-function balancedNum(number: number) {
-    // your code here
+const balancedNum = (num: number) => {
+
+    if (num < 100) return "Balanced";
+
+    // CONVERT TO STRING
+    const numStr: string = String(num);
+    // GET LENGTH
+    const length: number = numStr.length;
+
+    // GET BOTH SIDES AS STRING
+    const getLeftNumStr = (numStr: string): string => {
+
+        let leftStr = (length & 1) === 1
+            ? numStr.slice(0, (length - 1) / 2)
+            : numStr.slice(0, length / 2 - 1);
+
+        return leftStr;
+
+    }
+
+    const getRightNumStr = (numStr: string): string => {
+
+        let rightStr = (length & 1) === 1
+            ? numStr.slice((length - 1) / 2 + 1)
+            : numStr.slice(length / 2 + 1);
+
+        return rightStr;
+
+    }
+
+    // GET VALUE OF SUM OF NUMERIC DIGITS
+    const leftSum: number = getLeftNumStr(numStr)
+        .split("")
+        .map((strDigit) => Number(strDigit))
+        .reduce((a, b) => a + b);
+
+    const rightSum: number = getRightNumStr(numStr)
+        .split("")
+        .map((strDigit) => Number(strDigit))
+        .reduce((a, b) => a + b);
+
+    /*
+      console.table({
+          input: num,
+          numStr: numStr,
+          length: length,
+          middleDigitIdxOdd: (length - 1) / 2,
+          middleDigitOdd: numStr[(length - 1) / 2],
+          middleDigitsIdxEven: [length / 2 - 1, length / 2],
+          middleDigitsEven: [numStr[length / 2 - 1], numStr[length / 2]],
+          leftNumStr: getLeftNumStr(numStr),
+          rightNumStr: getRightNumStr(numStr),
+          leftSum: leftSum,
+          rightSum: rightSum,
+          isBalanced: leftSum === rightSum
+      })
+      */
+
+    // COMPARE SIDES AND RETURN SOLUTION STRING
+    return leftSum === rightSum
+        ? "Balanced"
+        : "Not Balanced";
+
 }
 
-// BALANCED
-// console.log(balancedNum(7));
-// NOT BALANCED
-// console.log(balancedNum(432));
+// balanced
+// console.log(balancedNum(56239814));
+// not balanced
+// console.log(balancedNum(1230987));
 // console.log();
 // console.log();
 
+/*
+
+56239814 EVEN LENGTH
+┌─────────────────────┬─────┬─────┬────────────┐
+│       (index)       │  0  │  1  │   Values   │
+├─────────────────────┼─────┼─────┼────────────┤
+│        input        │     │     │  56239814  │
+│       numStr        │     │     │ '56239814' │
+│       length        │     │     │     8      │
+│  middleDigitIdxOdd  │     │     │    3.5     │
+│   middleDigitOdd    │     │     │ undefined  │
+│ middleDigitsIdxEven │  3  │  4  │            │
+│  middleDigitsEven   │ '3' │ '9' │            │
+│     leftNumStr      │     │     │   '562'    │
+│     rightNumStr     │     │     │   '814'    │
+│       leftSum       │     │     │     13     │
+│      rightSum       │     │     │     13     │
+│     isBalanced      │     │     │    true    │
+└─────────────────────┴─────┴─────┴────────────┘
+Balanced
+
+1230987 ODD LENGTH
+┌─────────────────────┬───────────┬───────────┬───────────┐
+│       (index)       │     0     │     1     │  Values   │
+├─────────────────────┼───────────┼───────────┼───────────┤
+│        input        │           │           │  1230987  │
+│       numStr        │           │           │ '1230987' │
+│       length        │           │           │     7     │
+│  middleDigitIdxOdd  │           │           │     3     │
+│   middleDigitOdd    │           │           │    '0'    │
+│ middleDigitsIdxEven │    2.5    │    3.5    │           │
+│  middleDigitsEven   │ undefined │ undefined │           │
+│     leftNumStr      │           │           │   '123'   │
+│     rightNumStr     │           │           │   '987'   │
+│       leftSum       │           │           │     6     │
+│      rightSum       │           │           │    24     │
+│     isBalanced      │           │           │   false   │
+└─────────────────────┴───────────┴───────────┴───────────┘
+Not Balanced
+
+*/
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function balancedNum2(number: number): "Balanced" | "Not Balanced" {
+    const numbers = (number + "").split("").map(digit => parseInt(digit));
+    const length = numbers.length;
+    if (length <= 2) return "Balanced";
+
+    const left = numbers.slice(0, Math.floor(length / 2 - 0.5));
+    const right = numbers.slice(Math.ceil(length / 2 + 0.5), length);
+
+    return left.reduce((a, b) => a + b) == right.reduce((a, b) => a + b)
+        ? "Balanced"
+        : "Not Balanced";
+}
+
+
+
+function balancedNum3(number: number): string {
+    let s: string = number.toString()
+    let n: number = Math.floor((s.length - 1) / 2)
+    return !n || [...s.slice(0, n)].reduce((a, b) => a + +b, 0) == [...s.slice(-n)].reduce((a, b) => a + +b, 0) ? "Balanced" : "Not Balanced"
+}
+
+
+
+function balancedNum4(number: number) {
+    const numArray = number.toString().split('')
+    let forwardSum = 0
+    let backwardSum = 0
+    for (let i = 0; i < numArray.length / 2 - 1; i++) {
+        forwardSum += parseInt(numArray[i])
+        backwardSum += parseInt(numArray[numArray.length - 1 - i])
+    }
+
+    return forwardSum === backwardSum ? 'Balanced' : 'Not Balanced'
+}
+
+
+// =====================================================
+function balancedNum5(num: number): string {
+    const [leftSum, rightSum] = splitMiddle(numToArray(num)).map(sum);
+
+    return leftSum === rightSum ? 'Balanced' : 'Not Balanced';
+}
+
+function numToArray(num: number, res: number[] = []): number[] {
+    if (num === 0) return res;
+    res.push(num % 10);
+    return numToArray(Math.trunc(num / 10), res);
+}
+
+// ❗️❗️❗️ GENERICS ❗️❗️❗️
+function splitMiddle<T>(arr: T[]): [T[], T[]] {
+    const middle = Math.floor(arr.length / 2);
+    return [
+        arr.slice(0, middle - (arr.length % 2 ? 0 : 1)),
+        arr.slice(middle + 1),
+    ];
+}
+
+function sum(arr: number[]): number {
+    return arr.reduce((total, x) => total + x, 0);
+}
+// =====================================================
+
+
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
-// 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: RULE OF DIVISIBILITY BY 7
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -837,33 +1004,31 @@ seven(371) should return [35, 1]
 seven(1603) should return [7, 2]
 seven(477557101) should return [28, 7]
 */
+
+// 1️⃣ 
+
+// GLOBAL COUNTER VARIABLE TO COUNT HOW MANY TIMES FUNCTION RUNS
 let cycleCount: number = 0;
 
+// ❗️❗️❗️ RETURNS number WHEN CALLED AGAIN, AND number[] WHEN SOLUTION IS FOUND ❗️❗️❗️
 const seven = (num: number): number | number[] => {
     if (num === 0) return [0, 0];
 
+    // CONVERT TO STRING IN ORDER TO BE ABLE TO EXTRACT DIGITS
     const numStr: string = num.toString();
-    // console.log(numStr);
-
-    // let remaindersArr: number[] = [];
-
+    // GRAB LAST DIGIT AND REMAINING DIGITS
     let lastDigit: number = Number(numStr.slice(-1));
-    // console.log("last digit: ", lastDigit);
-
     let remainingDigits: number = Number(
         // ❗️❗️❗️ SUBSTRING() ❗️❗️❗️
         numStr.substring(0, numStr.length - 1)
     );
 
-    // console.log(remainingDigits);
-
+    // GET REMAINDER AFTER SUBSTRACTING LASTDIGIT TWICE
     let remainder: number = remainingDigits - lastDigit * 2;
-    // console.log("remainder", remainder);
-
+    // INCREMENT CYCLECOUNT
     cycleCount++;
-
+    // INITIALIZE SOLUTION ARRAY
     let solution: number[] = [remainder, cycleCount];
-    // console.log(solution);
 
     console.table({
         numStr: numStr,
@@ -871,97 +1036,106 @@ const seven = (num: number): number | number[] => {
         remainingDigits: remainingDigits,
         remainder: remainder,
         cycleCount: cycleCount,
-        solution: solution,
+        solution: [solution],
     });
 
+    // IF REMAINDER IS REDUCED TO MAX 2 DIGITS
     if (remainder < 100) {
         // RESET COUNTER
         cycleCount = 0;
+        // RETURN
         return solution;
     }
 
-    return remainder > 99 ? seven(remainder) : remainder;
+    // ❗️❗️❗️ RECURSION ❗️❗️❗️
+    // OTHERWISE, IF REMAINDER IS NOT REDUCED TO 2 DIGITS
+    // RETURN FUNCION WITH REMAINDER 
+    return seven(remainder);
+
+    // !!! THIS TERNARY IS NOT NECESSARY !!
+    // return remainder > 99 ? seven(remainder) : remainder;
 };
 
+// 35, 1
 // console.log(seven(371));
 // [10, 2]
 // console.log(seven(1021));
 // [28, 7]
-console.log(seven(477557101));
+// console.log(seven(477557101));
 
 /*
 
 seven(477557101)
-┌─────────────────┬──────────┬───┬─────────────┐
-│     (index)     │    0     │ 1 │   Values    │
-├─────────────────┼──────────┼───┼─────────────┤
-│     numStr      │          │   │ '477557101' │
-│    lastDigit    │          │   │      1      │
-│ remainingDigits │          │   │  47755710   │
-│    remainder    │          │   │  47755708   │
-│   cycleCount    │          │   │      1      │
-│    solution     │ 47755708 │ 1 │             │
-└─────────────────┴──────────┴───┴─────────────┘
-┌─────────────────┬─────────┬───┬────────────┐
-│     (index)     │    0    │ 1 │   Values   │
-├─────────────────┼─────────┼───┼────────────┤
-│     numStr      │         │   │ '47755708' │
-│    lastDigit    │         │   │     8      │
-│ remainingDigits │         │   │  4775570   │
-│    remainder    │         │   │  4775554   │
-│   cycleCount    │         │   │     2      │
-│    solution     │ 4775554 │ 2 │            │
-└─────────────────┴─────────┴───┴────────────┘
-┌─────────────────┬────────┬───┬───────────┐
-│     (index)     │   0    │ 1 │  Values   │
-├─────────────────┼────────┼───┼───────────┤
-│     numStr      │        │   │ '4775554' │
-│    lastDigit    │        │   │     4     │
-│ remainingDigits │        │   │  477555   │
-│    remainder    │        │   │  477547   │
-│   cycleCount    │        │   │     3     │
-│    solution     │ 477547 │ 3 │           │
-└─────────────────┴────────┴───┴───────────┘
-┌─────────────────┬───────┬───┬──────────┐
-│     (index)     │   0   │ 1 │  Values  │
-├─────────────────┼───────┼───┼──────────┤
-│     numStr      │       │   │ '477547' │
-│    lastDigit    │       │   │    7     │
-│ remainingDigits │       │   │  47754   │
-│    remainder    │       │   │  47740   │
-│   cycleCount    │       │   │    4     │
-│    solution     │ 47740 │ 4 │          │
-└─────────────────┴───────┴───┴──────────┘
-┌─────────────────┬──────┬───┬─────────┐
-│     (index)     │  0   │ 1 │ Values  │
-├─────────────────┼──────┼───┼─────────┤
-│     numStr      │      │   │ '47740' │
-│    lastDigit    │      │   │    0    │
-│ remainingDigits │      │   │  4774   │
-│    remainder    │      │   │  4774   │
-│   cycleCount    │      │   │    5    │
-│    solution     │ 4774 │ 5 │         │
-└─────────────────┴──────┴───┴─────────┘
-┌─────────────────┬─────┬───┬────────┐
-│     (index)     │  0  │ 1 │ Values │
-├─────────────────┼─────┼───┼────────┤
-│     numStr      │     │   │ '4774' │
-│    lastDigit    │     │   │   4    │
-│ remainingDigits │     │   │  477   │
-│    remainder    │     │   │  469   │
-│   cycleCount    │     │   │   6    │
-│    solution     │ 469 │ 6 │        │
-└─────────────────┴─────┴───┴────────┘
-┌─────────────────┬────┬───┬────────┐
-│     (index)     │ 0  │ 1 │ Values │
-├─────────────────┼────┼───┼────────┤
-│     numStr      │    │   │ '469'  │
-│    lastDigit    │    │   │   9    │
-│ remainingDigits │    │   │   46   │
-│    remainder    │    │   │   28   │
-│   cycleCount    │    │   │   7    │
-│    solution     │ 28 │ 7 │        │
-└─────────────────┴────┴───┴────────┘
+┌─────────────────┬─────────────────┬─────────────┐
+│     (index)     │        0        │   Values    │
+├─────────────────┼─────────────────┼─────────────┤
+│     numStr      │                 │ '477557101' │
+│    lastDigit    │                 │      1      │
+│ remainingDigits │                 │  47755710   │
+│    remainder    │                 │  47755708   │
+│   cycleCount    │                 │      1      │
+│    solution     │ [ 47755708, 1 ] │             │
+└─────────────────┴─────────────────┴─────────────┘
+┌─────────────────┬────────────────┬────────────┐
+│     (index)     │       0        │   Values   │
+├─────────────────┼────────────────┼────────────┤
+│     numStr      │                │ '47755708' │
+│    lastDigit    │                │     8      │
+│ remainingDigits │                │  4775570   │
+│    remainder    │                │  4775554   │
+│   cycleCount    │                │     2      │
+│    solution     │ [ 4775554, 2 ] │            │
+└─────────────────┴────────────────┴────────────┘
+┌─────────────────┬───────────────┬───────────┐
+│     (index)     │       0       │  Values   │
+├─────────────────┼───────────────┼───────────┤
+│     numStr      │               │ '4775554' │
+│    lastDigit    │               │     4     │
+│ remainingDigits │               │  477555   │
+│    remainder    │               │  477547   │
+│   cycleCount    │               │     3     │
+│    solution     │ [ 477547, 3 ] │           │
+└─────────────────┴───────────────┴───────────┘
+┌─────────────────┬──────────────┬──────────┐
+│     (index)     │      0       │  Values  │
+├─────────────────┼──────────────┼──────────┤
+│     numStr      │              │ '477547' │
+│    lastDigit    │              │    7     │
+│ remainingDigits │              │  47754   │
+│    remainder    │              │  47740   │
+│   cycleCount    │              │    4     │
+│    solution     │ [ 47740, 4 ] │          │
+└─────────────────┴──────────────┴──────────┘
+┌─────────────────┬─────────────┬─────────┐
+│     (index)     │      0      │ Values  │
+├─────────────────┼─────────────┼─────────┤
+│     numStr      │             │ '47740' │
+│    lastDigit    │             │    0    │
+│ remainingDigits │             │  4774   │
+│    remainder    │             │  4774   │
+│   cycleCount    │             │    5    │
+│    solution     │ [ 4774, 5 ] │         │
+└─────────────────┴─────────────┴─────────┘
+┌─────────────────┬────────────┬────────┐
+│     (index)     │     0      │ Values │
+├─────────────────┼────────────┼────────┤
+│     numStr      │            │ '4774' │
+│    lastDigit    │            │   4    │
+│ remainingDigits │            │  477   │
+│    remainder    │            │  469   │
+│   cycleCount    │            │   6    │
+│    solution     │ [ 469, 6 ] │        │
+└─────────────────┴────────────┴────────┘
+┌─────────────────┬───────────┬────────┐
+│     (index)     │     0     │ Values │
+├─────────────────┼───────────┼────────┤
+│     numStr      │           │ '469'  │
+│    lastDigit    │           │   9    │
+│ remainingDigits │           │   46   │
+│    remainder    │           │   28   │
+│   cycleCount    │           │   7    │
+│    solution     │ [ 28, 7 ] │        │
+└─────────────────┴───────────┴────────┘
 [ 28, 7 ]
 */
 
@@ -1825,8 +1999,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -1976,10 +2150,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -2976,11 +3150,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -3775,9 +3949,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -4059,8 +4233,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
