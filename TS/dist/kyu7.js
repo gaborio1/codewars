@@ -27,9 +27,54 @@ class G964B {
     static maxRot(n) {
     }
 }
-function menFromBoys(arr) {
-    return [1];
+const menFromBoys = (arr) => {
+    let uniqueOdds = new Set(), uniqueEvens = new Set();
+    arr.forEach((int) => {
+        (int & 1) === 1 ? uniqueOdds.add(int) : uniqueEvens.add(int);
+    });
+    const oddsArr = [...uniqueOdds].sort((a, b) => b - a);
+    const evensArr = [...uniqueEvens].sort((a, b) => a - b);
+    const solution = [...evensArr, ...oddsArr];
+    return solution;
+};
+function menFromBoys2(arr) {
+    let urr = [...new Set(arr)];
+    return [
+        ...urr.filter((x) => Math.abs(x % 2) == 0).sort((a, b) => a - b),
+        ...urr.filter((x) => Math.abs(x % 2) == 1).sort((a, b) => b - a),
+    ];
 }
+function menFromBoys3(arr) {
+    let ar = [...new Set(arr)];
+    return ar
+        .filter((x) => x % 2 === 0)
+        .sort((a, b) => a - b)
+        .concat(...ar.filter((x) => x % 2).sort((a, b) => b - a));
+}
+function menFromBoys4(arr) {
+    const [even, odd] = [new Set(), new Set()];
+    for (const x of arr) {
+        x % 2 ? odd.add(x) : even.add(x);
+    }
+    return [...even]
+        .sort((a, b) => a - b)
+        .concat([...odd].sort((a, b) => b - a));
+}
+function menFromBoys5(arr) {
+    return arr
+        .reduce(([even, odd], x) => {
+        x % 2 ? odd.add(x) : even.add(x);
+        return [even, odd];
+    }, [new Set(), new Set()])
+        .map((set, i) => [...set].sort(i % 2 ? (a, b) => b - a : (a, b) => a - b))
+        .flat();
+}
+const menFromBoys6 = (arr) => [
+    ...new Set(arr
+        .filter((e) => e % 2 === 0)
+        .sort((a, b) => a - b)
+        .concat(arr.filter((a) => a % 2).sort((a, b) => b - a))),
+];
 const balancedNum = (num) => {
     if (num < 100)
         return "Balanced";
@@ -55,12 +100,10 @@ const balancedNum = (num) => {
         .split("")
         .map((strDigit) => Number(strDigit))
         .reduce((a, b) => a + b);
-    return leftSum === rightSum
-        ? "Balanced"
-        : "Not Balanced";
+    return leftSum === rightSum ? "Balanced" : "Not Balanced";
 };
 function balancedNum2(number) {
-    const numbers = (number + "").split("").map(digit => parseInt(digit));
+    const numbers = (number + "").split("").map((digit) => parseInt(digit));
     const length = numbers.length;
     if (length <= 2)
         return "Balanced";
@@ -73,21 +116,25 @@ function balancedNum2(number) {
 function balancedNum3(number) {
     let s = number.toString();
     let n = Math.floor((s.length - 1) / 2);
-    return !n || [...s.slice(0, n)].reduce((a, b) => a + +b, 0) == [...s.slice(-n)].reduce((a, b) => a + +b, 0) ? "Balanced" : "Not Balanced";
+    return !n ||
+        [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        ? "Balanced"
+        : "Not Balanced";
 }
 function balancedNum4(number) {
-    const numArray = number.toString().split('');
+    const numArray = number.toString().split("");
     let forwardSum = 0;
     let backwardSum = 0;
     for (let i = 0; i < numArray.length / 2 - 1; i++) {
         forwardSum += parseInt(numArray[i]);
         backwardSum += parseInt(numArray[numArray.length - 1 - i]);
     }
-    return forwardSum === backwardSum ? 'Balanced' : 'Not Balanced';
+    return forwardSum === backwardSum ? "Balanced" : "Not Balanced";
 }
 function balancedNum5(num) {
     const [leftSum, rightSum] = splitMiddle(numToArray(num)).map(sum);
-    return leftSum === rightSum ? 'Balanced' : 'Not Balanced';
+    return leftSum === rightSum ? "Balanced" : "Not Balanced";
 }
 function numToArray(num, res = []) {
     if (num === 0)

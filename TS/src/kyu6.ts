@@ -349,13 +349,23 @@ Example of a string rotated to the left by one position:
 s = "123456" gives "234561".
 */
 
-// class G964B {
-//     public static revrot(str, sz) {
-//         // your code
-//     }
-// }
+// "563000655734469485" LENGTH: 22
+// "0365065073456944"   LENGTH: CHUNK(4) * 5 = 20
 
-// console.log(G964.revrot("1234", 0));
+class G964B {
+    public static revrot = (str: string, chunkSize: number): string => {
+        console.log(str);
+        let chunksArr: string[] = [];
+        for (let i = 0; i < str.length; i += chunkSize) {
+            console.log(i);
+        }
+
+        return "hello";
+    };
+}
+
+// "0365065073456944"
+console.log(G964B.revrot("563000655734469485", 4));
 // console.log();
 // console.log();
 // console.log();
@@ -402,16 +412,13 @@ Return the string "nil" with Bash, PowerShell, Pascal and Fortran.
 
 class G966 {
     public static sqInRect(length: number, width: number): number[] | null {
-
         if (length === width) return null;
 
         let solution: number[] = [];
         let descSides = [length, width].sort((a, b) => b - a);
         // console.log("descSides: ", descSides);
 
-
         while (descSides[0] > 0 && descSides[1] > 0) {
-
             //  COUNT HOW MANY SQUARES IT CONTAINS
             let numberOfSq: number = Math.floor(descSides[0] / descSides[1]);
             // console.log("squares found: ", numberOfSq);
@@ -423,18 +430,16 @@ class G966 {
             // console.log("SOLUTION: ", solution);
 
             //  CALC NEW SMALLER SIDE (LONG / SHORT)
-            let newSide: number = (descSides[0] % descSides[1]);
+            let newSide: number = descSides[0] % descSides[1];
             // console.log("new side: ", newSide);
 
             // UPDATE ARRAY, SHORT(ARR[1]) IS NOW EQUAL TO NEWSIZE AND LONG IS PREVIOUS SHORT
             descSides[0] = newSide;
             descSides.sort((a, b) => b - a);
             // console.log("descSides: ", descSides);
-
         }
 
         return solution;
-
     }
 }
 
@@ -467,7 +472,6 @@ squares found:  Infinity
 
 */
 
-
 // console.log(G964.sqInRect(5, 5));
 // [ 3, 2, 1, 1 ]
 // console.log(G966.sqInRect(5, 3));
@@ -481,29 +485,26 @@ squares found:  Infinity
 class G966a {
     public static sqInRect(l: number, w: number): number[] | null {
         if (l == w) return null;
-        var sqs = [], tmp;
+        var sqs = [],
+            tmp;
         while (l) {
             tmp = Math.min(w, l);
             l = Math.max(w, l);
             w = tmp;
             sqs.push(w);
-            l -= w
+            l -= w;
         }
         return sqs;
     }
 }
 
-
-
 class G966a1 {
     static sqInRect(l: number, w: number): number[] | null {
         if (l === w) return null;
         if (w > l) [l, w] = [w, l];
-        return [w].concat(G966a1.sqInRect(l - w, w) || w)
+        return [w].concat(G966a1.sqInRect(l - w, w) || w);
     }
 }
-
-
 
 class G966a2 {
     public static sqInRect(l: number, w: number): number[] | null {
@@ -528,8 +529,6 @@ class G966a2 {
         return insideSqSides;
     }
 }
-
-
 
 // class G966a3 {
 //     private static sq(l: number, w: number): number[] | null{
@@ -573,15 +572,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -634,10 +633,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -980,42 +979,37 @@ const values: Record<string, number> = {
     C: 100,
     D: 500,
     M: 1000,
-}
+};
 
 export function solution5(roman: string): number {
-    let value = 0
+    let value = 0;
     for (let i = 0; i < roman.length; i++) {
-        const current = values[roman[i]]
-        const next = values[roman[i + 1]] || 0
+        const current = values[roman[i]];
+        const next = values[roman[i + 1]] || 0;
         if (current < next) {
-            value -= current
+            value -= current;
         } else {
-            value += current
+            value += current;
         }
     }
-    return value
+    return value;
 }
-
-
-
 
 function solution8(roman: string): number {
     const symbols: any = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
     };
     return roman
-        .split('')
-        .map(e => symbols[e])
-        .reduce((p, c) => p < c ? c - p : c + p);
+        .split("")
+        .map((e) => symbols[e])
+        .reduce((p, c) => (p < c ? c - p : c + p));
 }
-
-
 
 //   function solution9(roman: string): number {
 //     const table = {
@@ -1032,7 +1026,6 @@ function solution8(roman: string): number {
 //       return table[arr[i+1]] > table[cur] ? prev - table[cur] : prev + table[cur];
 //     }, 0);
 //   }
-
 
 // function solution10(roman: string): number {
 //     let splitString : string[] = roman.split("");
@@ -1093,44 +1086,42 @@ function solution8(roman: string): number {
 //     return num;
 //   }
 
-
-
 function solution11(roman: string): number {
     const symbols: any = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000,
-    }
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
+    };
 
-    return roman.split('').map((r: string, i: number, arr: string[]) => (
-        r === 'I' && ['V', 'X'].includes(arr[i + 1]) ? -1 : symbols[r])
-    )
+    return roman
+        .split("")
+        .map((r: string, i: number, arr: string[]) =>
+            r === "I" && ["V", "X"].includes(arr[i + 1]) ? -1 : symbols[r]
+        )
         .reduce((a: number, b: number) => a + b);
 }
 
-
-
 function solution12(roman: string): number {
-    // complete the solution by transforming the 
-    // string roman numeral into an integer  
+    // complete the solution by transforming the
+    // string roman numeral into an integer
     const map = new Map([
-        ['I', 1],
-        ['IV', 4],
-        ['V', 5],
-        ['IX', 9],
-        ['X', 10],
-        ['XL', 40],
-        ['L', 50],
-        ['XC', 90],
-        ['C', 100],
-        ['CD', 400],
-        ['D', 500],
-        ['CM', 900],
-        ['M', 1000]
+        ["I", 1],
+        ["IV", 4],
+        ["V", 5],
+        ["IX", 9],
+        ["X", 10],
+        ["XL", 40],
+        ["L", 50],
+        ["XC", 90],
+        ["C", 100],
+        ["CD", 400],
+        ["D", 500],
+        ["CM", 900],
+        ["M", 1000],
     ]);
     let result = 0;
 
@@ -1145,8 +1136,6 @@ function solution12(roman: string): number {
 
     return result;
 }
-
-
 
 //   function solution13(roman: string): number {
 //     var dict = {M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
@@ -1165,8 +1154,6 @@ function solution12(roman: string): number {
 //    return result;
 //  }
 
-
-
 function solution13(roman: string): number {
     const values: Record<string, number> = {
         I: 1,
@@ -1181,45 +1168,51 @@ function solution13(roman: string): number {
         XC: 90,
         XL: 40,
         IX: 9,
-        IV: 4
-    }
-    return roman.replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
+        IV: 4,
+    };
+    return roman
+        .replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
         .split(/,+/)
-        .reduce((sum: number, n: string) => sum + Number(n), 0)
+        .reduce((sum: number, n: string) => sum + Number(n), 0);
 }
-
-
 
 function solution14(roman: string): number {
     const initial = 0;
-    const numbers: number[] = roman.split('').map((letter) => {
+    const numbers: number[] = roman.split("").map((letter) => {
         switch (letter) {
-            case 'I':
+            case "I":
                 return 1;
-            case 'V':
+            case "V":
                 return 5;
-            case 'X':
+            case "X":
                 return 10;
-            case 'L':
+            case "L":
                 return 50;
-            case 'C':
+            case "C":
                 return 100;
-            case 'D':
+            case "D":
                 return 500;
-            case 'M':
+            case "M":
                 return 1000;
             default:
                 return 0;
         }
     });
-    const result = numbers.reduce(function (valorAnterior, valorActual, indice) {
-        if (indice + 1 === numbers.length || valorActual >= numbers[indice + 1]) {
+    const result = numbers.reduce(function (
+        valorAnterior,
+        valorActual,
+        indice
+    ) {
+        if (
+            indice + 1 === numbers.length ||
+            valorActual >= numbers[indice + 1]
+        ) {
             return valorAnterior + valorActual;
         } else {
             return valorAnterior - valorActual;
         }
-
-    }, initial);
+    },
+    initial);
     return result;
 }
 
@@ -1678,8 +1671,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -1972,7 +1965,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -2429,10 +2422,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -3732,8 +3725,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

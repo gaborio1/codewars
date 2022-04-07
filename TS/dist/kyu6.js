@@ -1,6 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+class G964B {
+}
+G964B.revrot = (str, chunkSize) => {
+    console.log(str);
+    let chunksArr = [];
+    for (let i = 0; i < str.length; i += chunkSize) {
+        console.log(i);
+    }
+    return "hello";
+};
+console.log(G964B.revrot("563000655734469485", 4));
 class G966 {
     static sqInRect(length, width) {
         if (length === width)
@@ -12,7 +23,7 @@ class G966 {
             for (let i = 1; i <= numberOfSq; i++) {
                 solution.push(descSides[1]);
             }
-            let newSide = (descSides[0] % descSides[1]);
+            let newSide = descSides[0] % descSides[1];
             descSides[0] = newSide;
             descSides.sort((a, b) => b - a);
         }
@@ -324,47 +335,49 @@ function solution5(roman) {
 exports.solution5 = solution5;
 function solution8(roman) {
     const symbols = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
     };
     return roman
-        .split('')
-        .map(e => symbols[e])
-        .reduce((p, c) => p < c ? c - p : c + p);
+        .split("")
+        .map((e) => symbols[e])
+        .reduce((p, c) => (p < c ? c - p : c + p));
 }
 function solution11(roman) {
     const symbols = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000,
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000,
     };
-    return roman.split('').map((r, i, arr) => (r === 'I' && ['V', 'X'].includes(arr[i + 1]) ? -1 : symbols[r]))
+    return roman
+        .split("")
+        .map((r, i, arr) => r === "I" && ["V", "X"].includes(arr[i + 1]) ? -1 : symbols[r])
         .reduce((a, b) => a + b);
 }
 function solution12(roman) {
     const map = new Map([
-        ['I', 1],
-        ['IV', 4],
-        ['V', 5],
-        ['IX', 9],
-        ['X', 10],
-        ['XL', 40],
-        ['L', 50],
-        ['XC', 90],
-        ['C', 100],
-        ['CD', 400],
-        ['D', 500],
-        ['CM', 900],
-        ['M', 1000]
+        ["I", 1],
+        ["IV", 4],
+        ["V", 5],
+        ["IX", 9],
+        ["X", 10],
+        ["XL", 40],
+        ["L", 50],
+        ["XC", 90],
+        ["C", 100],
+        ["CD", 400],
+        ["D", 500],
+        ["CM", 900],
+        ["M", 1000],
     ]);
     let result = 0;
     for (let i = 0; i < roman.length; i++) {
@@ -391,36 +404,38 @@ function solution13(roman) {
         XC: 90,
         XL: 40,
         IX: 9,
-        IV: 4
+        IV: 4,
     };
-    return roman.replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
+    return roman
+        .replace(/CM|CD|XC|XL|IX|IV|M|D|C|L|X|V|I/g, (r) => `,${values[r]},`)
         .split(/,+/)
         .reduce((sum, n) => sum + Number(n), 0);
 }
 function solution14(roman) {
     const initial = 0;
-    const numbers = roman.split('').map((letter) => {
+    const numbers = roman.split("").map((letter) => {
         switch (letter) {
-            case 'I':
+            case "I":
                 return 1;
-            case 'V':
+            case "V":
                 return 5;
-            case 'X':
+            case "X":
                 return 10;
-            case 'L':
+            case "L":
                 return 50;
-            case 'C':
+            case "C":
                 return 100;
-            case 'D':
+            case "D":
                 return 500;
-            case 'M':
+            case "M":
                 return 1000;
             default:
                 return 0;
         }
     });
     const result = numbers.reduce(function (valorAnterior, valorActual, indice) {
-        if (indice + 1 === numbers.length || valorActual >= numbers[indice + 1]) {
+        if (indice + 1 === numbers.length ||
+            valorActual >= numbers[indice + 1]) {
             return valorAnterior + valorActual;
         }
         else {

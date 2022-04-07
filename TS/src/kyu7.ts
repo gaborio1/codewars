@@ -667,10 +667,10 @@ class G964B {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT OUT MEN FROM BOYS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CREATE SET TYPE, ❗️❗️❗️ SET(),
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -710,23 +710,108 @@ Explanation:
 Since , {-282 , 818 , 900 , 928 } is the even numbers here , So it came first in ascending order , then the odds in descending order { 281 , 49 , -1 }
 
 Since , (Duplications are not included when separating) , then you can see only one (-282) was appeared in the final array/list .
-
-
 */
 
-function menFromBoys(arr: number[]): number[] {
-    return [1];
-}
+// ! [...EVENS ASCENDING, ...ODDS DESCENDING] REMOVE DUPLICATES !
+const menFromBoys = (arr: number[]): number[] => {
+    // ❗️❗️❗️ CREATE SET TYPE ❗️❗️❗️ Type 'unknown' is not assignable to type 'number'.ts(2322)
+    let uniqueOdds = new Set<number>(),
+        uniqueEvens = new Set<number>();
+    arr.forEach((int) => {
+        (int & 1) === 1 ? uniqueOdds.add(int) : uniqueEvens.add(int);
+    });
+    const oddsArr = [...uniqueOdds].sort((a, b) => b - a);
+    const evensArr = [...uniqueEvens].sort((a, b) => a - b);
+
+    // console.table({
+    //     input: arr,
+    //     uniqueOdds: [uniqueOdds],
+    //     uniqueEvens: [uniqueEvens],
+    //     oddsArr: [oddsArr],
+    //     evensArr: [evensArr],
+    // });
+
+    const solution: number[] = [...evensArr, ...oddsArr];
+    return solution;
+};
 
 // [14, 17, 7, 3]
 // console.log((menFromBoys([7, 3, 14, 17]));
 // [2, 90, 95, 43, 37]
-// console.log(menFromBoys([2, 43, 95, 90, 37]));
-// console.log();
-// console.log();
+// console.log(menFromBoys([37, 2, 43, 95, 90, 37]));
+
+/*
+
+FILTER OUT DUPLICATES WITH SET 
+CREATE ASC/DESC SORTED SUB-ARRAYS
+MERGE SUB-ARRAYS FOR SOLUTION
+
+INPUT: [37, 2, 43, 95, 90, 37]
+┌─────────────┬───────────────────────┬───┬────┬────┬────┬────┐
+│   (index)   │           0           │ 1 │ 2  │ 3  │ 4  │ 5  │
+├─────────────┼───────────────────────┼───┼────┼────┼────┼────┤
+│    input    │          37           │ 2 │ 43 │ 95 │ 90 │ 37 │
+│ uniqueOdds  │ Set(3) { 37, 43, 95 } │   │    │    │    │    │
+│ uniqueEvens │   Set(2) { 2, 90 }    │   │    │    │    │    │
+│   oddsArr   │    [ 95, 43, 37 ]     │   │    │    │    │    │
+│  evensArr   │       [ 2, 90 ]       │   │    │    │    │    │
+└─────────────┴───────────────────────┴───┴────┴────┴────┴────┘
+SOLUTION: [ 2, 90, 95, 43, 37 ]
+*/
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function menFromBoys2(arr: number[]) {
+    let urr = [...new Set(arr)];
+    return [
+        ...urr.filter((x) => Math.abs(x % 2) == 0).sort((a, b) => a - b),
+        ...urr.filter((x) => Math.abs(x % 2) == 1).sort((a, b) => b - a),
+    ];
+}
+
+function menFromBoys3(arr: number[]): number[] {
+    let ar: number[] = [...new Set(arr)];
+    return ar
+        .filter((x) => x % 2 === 0)
+        .sort((a, b) => a - b)
+        .concat(...ar.filter((x) => x % 2).sort((a, b) => b - a));
+}
+
+function menFromBoys4(arr: number[]): number[] {
+    const [even, odd] = [new Set<number>(), new Set<number>()];
+
+    for (const x of arr) {
+        x % 2 ? odd.add(x) : even.add(x);
+    }
+
+    return [...even]
+        .sort((a, b) => a - b)
+        .concat([...odd].sort((a, b) => b - a));
+}
+
+function menFromBoys5(arr: number[]): number[] {
+    return arr
+        .reduce(
+            ([even, odd], x) => {
+                x % 2 ? odd.add(x) : even.add(x);
+                return [even, odd];
+            },
+            [new Set<number>(), new Set<number>()]
+        )
+        .map((set, i) =>
+            [...set].sort(i % 2 ? (a, b) => b - a : (a, b) => a - b)
+        )
+        .flat();
+}
+
+const menFromBoys6 = (arr: number[]): number[] => [
+    ...new Set(
+        arr
+            .filter((e) => e % 2 === 0)
+            .sort((a, b) => a - b)
+            .concat(arr.filter((a) => a % 2).sort((a, b) => b - a))
+    ),
+];
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BALANCED NUMBER (Special Numbers Series #1 )
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -788,7 +873,6 @@ Note : The middle digit(s) are 02 .
 */
 
 const balancedNum = (num: number) => {
-
     if (num < 100) return "Balanced";
 
     // CONVERT TO STRING
@@ -798,24 +882,22 @@ const balancedNum = (num: number) => {
 
     // GET BOTH SIDES AS STRING
     const getLeftNumStr = (numStr: string): string => {
-
-        let leftStr = (length & 1) === 1
-            ? numStr.slice(0, (length - 1) / 2)
-            : numStr.slice(0, length / 2 - 1);
+        let leftStr =
+            (length & 1) === 1
+                ? numStr.slice(0, (length - 1) / 2)
+                : numStr.slice(0, length / 2 - 1);
 
         return leftStr;
-
-    }
+    };
 
     const getRightNumStr = (numStr: string): string => {
-
-        let rightStr = (length & 1) === 1
-            ? numStr.slice((length - 1) / 2 + 1)
-            : numStr.slice(length / 2 + 1);
+        let rightStr =
+            (length & 1) === 1
+                ? numStr.slice((length - 1) / 2 + 1)
+                : numStr.slice(length / 2 + 1);
 
         return rightStr;
-
-    }
+    };
 
     // GET VALUE OF SUM OF NUMERIC DIGITS
     const leftSum: number = getLeftNumStr(numStr)
@@ -846,11 +928,8 @@ const balancedNum = (num: number) => {
       */
 
     // COMPARE SIDES AND RETURN SOLUTION STRING
-    return leftSum === rightSum
-        ? "Balanced"
-        : "Not Balanced";
-
-}
+    return leftSum === rightSum ? "Balanced" : "Not Balanced";
+};
 
 // balanced
 // console.log(balancedNum(56239814));
@@ -904,7 +983,7 @@ Not Balanced
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function balancedNum2(number: number): "Balanced" | "Not Balanced" {
-    const numbers = (number + "").split("").map(digit => parseInt(digit));
+    const numbers = (number + "").split("").map((digit) => parseInt(digit));
     const length = numbers.length;
     if (length <= 2) return "Balanced";
 
@@ -916,34 +995,33 @@ function balancedNum2(number: number): "Balanced" | "Not Balanced" {
         : "Not Balanced";
 }
 
-
-
 function balancedNum3(number: number): string {
-    let s: string = number.toString()
-    let n: number = Math.floor((s.length - 1) / 2)
-    return !n || [...s.slice(0, n)].reduce((a, b) => a + +b, 0) == [...s.slice(-n)].reduce((a, b) => a + +b, 0) ? "Balanced" : "Not Balanced"
+    let s: string = number.toString();
+    let n: number = Math.floor((s.length - 1) / 2);
+    return !n ||
+        [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        ? "Balanced"
+        : "Not Balanced";
 }
-
-
 
 function balancedNum4(number: number) {
-    const numArray = number.toString().split('')
-    let forwardSum = 0
-    let backwardSum = 0
+    const numArray = number.toString().split("");
+    let forwardSum = 0;
+    let backwardSum = 0;
     for (let i = 0; i < numArray.length / 2 - 1; i++) {
-        forwardSum += parseInt(numArray[i])
-        backwardSum += parseInt(numArray[numArray.length - 1 - i])
+        forwardSum += parseInt(numArray[i]);
+        backwardSum += parseInt(numArray[numArray.length - 1 - i]);
     }
 
-    return forwardSum === backwardSum ? 'Balanced' : 'Not Balanced'
+    return forwardSum === backwardSum ? "Balanced" : "Not Balanced";
 }
-
 
 // =====================================================
 function balancedNum5(num: number): string {
     const [leftSum, rightSum] = splitMiddle(numToArray(num)).map(sum);
 
-    return leftSum === rightSum ? 'Balanced' : 'Not Balanced';
+    return leftSum === rightSum ? "Balanced" : "Not Balanced";
 }
 
 function numToArray(num: number, res: number[] = []): number[] {
@@ -965,7 +1043,6 @@ function sum(arr: number[]): number {
     return arr.reduce((total, x) => total + x, 0);
 }
 // =====================================================
-
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
@@ -1005,7 +1082,7 @@ seven(1603) should return [7, 2]
 seven(477557101) should return [28, 7]
 */
 
-// 1️⃣ 
+// 1️⃣
 
 // GLOBAL COUNTER VARIABLE TO COUNT HOW MANY TIMES FUNCTION RUNS
 let cycleCount: number = 0;
@@ -1049,7 +1126,7 @@ const seven = (num: number): number | number[] => {
 
     // ❗️❗️❗️ RECURSION ❗️❗️❗️
     // OTHERWISE, IF REMAINDER IS NOT REDUCED TO 2 DIGITS
-    // RETURN FUNCION WITH REMAINDER 
+    // RETURN FUNCION WITH REMAINDER
     return seven(remainder);
 
     // !!! THIS TERNARY IS NOT NECESSARY !!
@@ -1999,8 +2076,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -2150,10 +2227,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -3150,11 +3227,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -3949,9 +4026,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -4233,8 +4310,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
