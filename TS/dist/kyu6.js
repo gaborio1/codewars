@@ -4,14 +4,35 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 class G964B {
 }
 G964B.revrot = (str, chunkSize) => {
-    console.log(str);
+    if (chunkSize <= 0 || str.length === 0)
+        return "";
+    let numArr = str.split("").map((el) => parseInt(el));
+    console.log(numArr);
     let chunksArr = [];
     for (let i = 0; i < str.length; i += chunkSize) {
-        console.log(i);
+        if (numArr.length >= chunkSize) {
+            chunksArr.push(numArr.slice(0, chunkSize));
+        }
+        numArr.splice(0, chunkSize);
     }
-    return "hello";
+    chunksArr.forEach((chunk) => {
+        let condition = Number.isInteger(chunk
+            .map((num) => Math.pow(num, 3))
+            .reduce((a, b) => a + b) / 2);
+        if (condition) {
+            chunk = chunk.reverse();
+        }
+        else {
+            let firstDigit = chunk[0];
+            chunk.splice(0, 1);
+            chunk.push(firstDigit);
+        }
+    });
+    const solution = chunksArr
+        .flat()
+        .join("");
+    return solution;
 };
-console.log(G964B.revrot("563000655734469485", 4));
 class G966 {
     static sqInRect(length, width) {
         if (length === width)

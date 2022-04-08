@@ -318,10 +318,10 @@ In the result codes and their values are in the same order as in M.
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: REVERSE OR ROTATE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: FLAT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -354,23 +354,191 @@ s = "123456" gives "234561".
 
 class G964B {
     public static revrot = (str: string, chunkSize: number): string => {
-        console.log(str);
-        let chunksArr: string[] = [];
+
+        if (chunkSize <= 0 || str.length === 0) return "";
+
+        let numArr: number[] = str.split("").map((el) => parseInt(el));
+        console.log(numArr);
+        // ❓❓❓ WILL NOT ACCEPT type: number , type: any IS OK ❓❓❓
+        //  let chunksArr: any = [];
+        let chunksArr = [];
+        // LOOP ONLY RUNS LENGTH / CHUNKSIZE TIMES
         for (let i = 0; i < str.length; i += chunkSize) {
-            console.log(i);
+            // ONLY GET CHUNKS WITH MINIMUM LENGTH OF chunkSize
+            if (numArr.length >= chunkSize) {
+                chunksArr.push(numArr.slice(0, chunkSize));
+            }
+            // DELETE FIRST chunkSize ELEMENTS
+            numArr.splice(0, chunkSize);
         }
 
-        return "hello";
+        // [ [ 5, 6, 3, 0 ], [ 0, 0, 6, 5 ], [ 5, 7, 3, 4 ], [ 4, 6, 9, 4 ] ]
+        // console.log("before: ", chunksArr);
+
+        // CHECK IF CHUNKS MEETS CONDITION
+        chunksArr.forEach((chunk: number[]) => {
+            // sum of the cubes of its digits is divisible by 2 ???
+            let condition = Number.isInteger(
+                chunk
+                    .map((num) => Math.pow(num, 3))
+                    .reduce((a, b) => a + b) / 2
+            );
+            if (condition) {                // REVERSE [ 5, 6, 3, 0 ] => [ 0, 3, 6, 5 ]
+                chunk = chunk.reverse();
+            } else {                        // ROTATE [ 0, 0, 6, 5 ] => [ 0, 6, 5, 0 ]
+                let firstDigit = chunk[0];
+                chunk.splice(0, 1);
+                chunk.push(firstDigit);
+            }
+        })
+
+        // [ [ 0, 3, 6, 5 ], [ 0, 6, 5, 0 ], [ 7, 3, 4, 5 ], [ 6, 9, 4, 4 ] ]
+        // console.log("after: ", chunksArr);
+
+        // FLATTEN ARRAY AND JOIN INTO STRING
+        const solution: string = chunksArr
+            // ❗️❗️❗️ HAVE TO USE reduce() ON CODEWARS ❗️❗️❗️
+            // .reduce((acc, val) => acc.concat(val), [])
+            .flat()
+            .join(""); // 0365065073456944
+
+        return solution;
     };
 }
 
-// "0365065073456944"
-console.log(G964B.revrot("563000655734469485", 4));
+/*
+❗️❗️❗️ Property 'flat' does not exist on type 'any[]'. (2339) ❗️❗️❗️
+
+You should add es2019 or es2019.array to your --lib setting for TypeScript to recognize array.flat() and flatMap().
+
+Example:
+
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es2019"
+    ]
+  }
+}
+
+To flat single level array:
+
+arr.reduce((acc, val) => acc.concat(val), []);
+
+To flat multi level array
+
+function flatDeep(arr, d = 1) {
+   return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), []) : arr.slice();
+};
+*/
+
+// "5630 0065 5734 4694 85" ==>
+// "0365 0650 7345 6944"
+// console.log(G964B.revrot("563000655734469485", 4));
+// console.log(G964B.revrot("565635", 0));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+/*
+class G964B3 {
+    public static revrot(str: string, sz: number) {
+        if (sz <= 0 || str == "" || sz > str.length) return "";
+        let chunk = str.slice(0, sz).split('');
+        const divisibleBy2 = chunk.reduce((a, b) => { return a + Math.pow(parseInt(b), 3) }, 0) % 2 == 0;
+        divisibleBy2 ? chunk = chunk.reverse() : chunk.push(chunk.shift());
+        return chunk.join('') + G964.revrot(str.slice(sz, str.length), sz);
+    }
+}
+
+
+class G964B4 {
+    public static revrot(str, sz) {
+        if (sz <= 0 || str === '' || sz > str.length) return '';
+        const chunks: string[] = str.match(new RegExp(`.{${sz}}`, 'g'));
+        const test = (chunk: string) => chunk.split('').reduce((a: number, b: string) => a + Number(b)**3, 0) % 2 === 0 ? true : false;
+        const reverse = (chunk: string) => chunk.split('').reverse().join('');
+        const rotate = (chunk: string) => chunk.slice(1) + chunk[0];
+        return chunks.map((chunk: string) => test(chunk) ? reverse(chunk) : rotate(chunk)).join('');
+    }
+}
+
+
+
+class G964B5 {
+    public static revrot(str, sz) {
+        if(this.isInvalidInput(str, sz)) { return '' }
+
+        const chunks: string[] = this.getChunks(str, sz);
+        const newChunks = chunks.map(chunk => this.formatChunk(chunk, sz));
+        
+        return newChunks.join('');
+        
+    }
+    
+    private static isInvalidInput(str, sz) {
+      return !str || !sz || str.length < sz;
+    }
+    
+    private static getChunks(str: string, sz: number): string[] {
+      return str.match(new RegExp('.{1,' + sz + '}', 'g'));
+    }
+    
+    private static formatChunk(chunk: string, sz: number): string {
+      if(chunk.length < sz) { 
+        chunk = '';
+        return '';
+      }
+      const splitChunk = chunk.split('');
+      const shouldReverse = this.shouldReverseChunk(splitChunk);
+      return shouldReverse ? this.reverseChunk(splitChunk) : this.rotateChunk(splitChunk);
+    }
+    
+    private static shouldReverseChunk(splitChunk: string[]): boolean {
+      const total = splitChunk.reduce((accumulator, currentValue) => accumulator + (+currentValue * +currentValue), 0);
+      return +total % 2 === 0;
+    }
+    
+    private static reverseChunk(splitChunk: string[]): string {
+      return splitChunk.reverse().join('');
+    }
+    
+    private static rotateChunk(splitChunk: string[]): string {
+      const firstItem = splitChunk.shift();
+      splitChunk.push(firstItem);
+      return splitChunk.join('');
+    }
+}
+
+
+
+class G964B6 {
+    public static revrot(str, sz) {
+        if (str === "" || sz === 0 || str.length < sz) {
+            return "";
+        }
+
+        const processSlice = (s: string): string => {
+            let chunks = [...s];
+            const div2 = chunks.map((d) => Math.pow(parseInt(d), 3)).reduce((a, b) => a + b, 0) % 2 === 0;
+            if (div2) {
+                chunks.reverse();
+            } else {
+                chunks = [...chunks.slice(1), chunks[0]];
+            }
+            return chunks.join("");
+          };
+
+        return processSlice(str.slice(0, sz)) + G964B6.revrot(str.slice(sz), sz);
+    }
+}
+
+*/
+
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  RECTANGLE INTO SQUARES
@@ -572,15 +740,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -633,10 +801,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -1212,7 +1380,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -1671,8 +1839,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -1965,7 +2133,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -2422,10 +2590,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -3725,9 +3893,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
