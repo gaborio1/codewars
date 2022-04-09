@@ -541,7 +541,10 @@ function orderedCount(text: string): [string, number][] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ REFACTOR: END RETURN STATEMENT NEVER RUNS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GROWING PLANT - Simple Fun #74
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -604,16 +607,85 @@ Constraints: 4 ≤ desiredHeight ≤ 1000.
 The number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
 */
 
-function growingPlant(up: number, down: number, h: number): number {
-    return 1;
-}
+const growingPlant = (up: number, down: number, target: number): number => {
+    if (
+        up < 5 ||
+        up > 100 ||
+        down < 2 ||
+        down >= up ||
+        target < 4 ||
+        target > 1000
+    ) {
+        return 0;
+    }
+
+    let actualHeigth = 0,
+        counter = 0;
+
+    while (actualHeigth <= target) {
+        actualHeigth += up;
+        counter++;
+        if (actualHeigth >= target) {
+            return counter;
+        }
+        actualHeigth -= down;
+
+        // console.table({
+        //     up: up,
+        //     down: down,
+        //     actualHeigth: actualHeigth,
+        //     counter: counter,
+        // });
+    }
+
+    // ❗️❗️❗️ THIS RETURN NEVER RUNS ❗️❗️❗️
+    return counter;
+};
 
 // 10
-// console.log(growingPlant(100, 10, 910));
+// console.log(growingPlant(100, 10, 410));
+// console.log(growingPlant(10, 10, 410));
 // 1
 // console.log(growingPlant(10, 9, 4));
 // console.log();
 // console.log();
+
+/*
+growingPlant(100, 10, 410)
+┌──────────────┬────────┐
+│   (index)    │ Values │
+├──────────────┼────────┤
+│      up      │  100   │
+│     down     │   10   │
+│ actualHeigth │   90   │
+│   counter    │   1    │
+└──────────────┴────────┘
+┌──────────────┬────────┐
+│   (index)    │ Values │
+├──────────────┼────────┤
+│      up      │  100   │
+│     down     │   10   │
+│ actualHeigth │  180   │
+│   counter    │   2    │
+└──────────────┴────────┘
+┌──────────────┬────────┐
+│   (index)    │ Values │
+├──────────────┼────────┤
+│      up      │  100   │
+│     down     │   10   │
+│ actualHeigth │  270   │
+│   counter    │   3    │
+└──────────────┴────────┘
+┌──────────────┬────────┐
+│   (index)    │ Values │
+├──────────────┼────────┤
+│      up      │  100   │
+│     down     │   10   │
+│ actualHeigth │  360   │
+│   counter    │   4    │
+└──────────────┴────────┘
+5
+*/
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -653,13 +725,27 @@ max_rot(38458215) should return 85821534
 */
 
 class G964B {
-    public static maxRot(n: Number) {
-        // your code
-    }
+    public static maxRot = (num: number): number => {
+        // GET HOW MANY TIMES NUM WILL BE ROTATED
+        const numRotations: number = num.toString().length - 1;
+        console.log(numRotations);
+        const numArr = num.toString().split("");
+        console.log(numArr);
+
+        // ARRAY FOR ALL VERSIONS
+        let versionsArr = [];
+
+        for (let i = 0; i < numRotations; i++) {
+            let rotatedDigit = numArr[i];
+            console.log(rotatedDigit);
+        }
+
+        return 0;
+    };
 }
 
 // 85821534
-// console.log(G964B.maxRot(38458215));
+console.log(G964B.maxRot(38458215));
 // 988103115
 // console.log(G964B.maxRot(195881031));
 // console.log();

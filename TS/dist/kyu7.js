@@ -20,13 +20,41 @@ class G964c {
 function orderedCount(text) {
     return [["a", 1]];
 }
-function growingPlant(up, down, h) {
-    return 1;
-}
-class G964B {
-    static maxRot(n) {
+const growingPlant = (up, down, target) => {
+    if (up < 5 ||
+        up > 100 ||
+        down < 2 ||
+        down >= up ||
+        target < 4 ||
+        target > 1000) {
+        return 0;
     }
+    let actualHeigth = 0, counter = 0;
+    while (actualHeigth <= target) {
+        actualHeigth += up;
+        counter++;
+        if (actualHeigth >= target) {
+            return counter;
+        }
+        actualHeigth -= down;
+    }
+    return counter;
+};
+class G964B {
 }
+G964B.maxRot = (num) => {
+    const numRotations = num.toString().length - 1;
+    console.log(numRotations);
+    const numArr = num.toString().split("");
+    console.log(numArr);
+    let versionsArr = [];
+    for (let i = 0; i < numRotations; i++) {
+        let rotatedDigit = numArr[i];
+        console.log(rotatedDigit);
+    }
+    return 0;
+};
+console.log(G964B.maxRot(38458215));
 const menFromBoys = (arr) => {
     let uniqueOdds = new Set(), uniqueEvens = new Set();
     arr.forEach((int) => {
