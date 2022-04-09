@@ -689,7 +689,7 @@ growingPlant(100, 10, 410)
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ROTATE FOR A MAX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -726,39 +726,236 @@ max_rot(38458215) should return 85821534
 
 class G964B {
     public static maxRot = (num: number): number => {
+
+        console.log(num);
         // GET HOW MANY TIMES NUM WILL BE ROTATED
         const numRotations: number = num.toString().length - 1;
-        console.log(numRotations);
         const numArr = num.toString().split("");
-        console.log(numArr);
+        // NOT NECESSARY AS ORIGINAL NUM IS NOW ADDED TO VERSIONSARR TO COMPARE
+        // if (numArr[1] === "0" || num < 10) return num;
 
-        // ARRAY FOR ALL VERSIONS
+        // ARRAY FOR ALL VARIATIONS
         let versionsArr = [];
 
         for (let i = 0; i < numRotations; i++) {
+            // CURRENT DIGIT TO SHIFT
             let rotateDigit = numArr[i];
-            console.log(rotateDigit);
+            // REMOVE iTH DIGIT
             numArr.splice(i, 1);
+            // ADD IT TO END OF ARRAY
             numArr.push(rotateDigit);
-            console.log("CURRENT DIGITS: ", numArr);
+            //  console.log("CURRENT DIGITS: ", numArr);
+            // CONVERT TO NUMBER
             let number: number = parseInt(numArr.join(""));
+            // PUSH INTO versionsArr
             versionsArr.push(number);
+
+            // console.table({
+            //     rotateDigit: rotateDigit,
+            //     number: number
+            // })
+
         }
 
-        console.log(versionsArr);
 
-        return Math.max(...versionsArr);
+        // ADD ORIGINAL INPUT NUM TO versionsArr AND GET LARGEST NUMBER
+        return Math.max(...versionsArr.concat(num));
     };
 }
 
-// 85821534
-console.log(G964B.maxRot(56789));
+/*
+553188569
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '5'    │
+│   number    │ 531885695 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '3'    │
+│   number    │ 518856953 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '8'    │
+│   number    │ 518569538 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '5'    │
+│   number    │ 518695385 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '9'    │
+│   number    │ 518653859 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '3'    │
+│   number    │ 518658593 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '5'    │
+│   number    │ 518658935 │
+└─────────────┴───────────┘
+┌─────────────┬───────────┐
+│   (index)   │  Values   │
+├─────────────┼───────────┤
+│ rotateDigit │    '3'    │
+│   number    │ 518658953 │
+└─────────────┴───────────┘
+553188569
+*/
+
+// 553188569
+// console.log(G964B.maxRot(553188569));
 // 988103115
-// console.log(G964B.maxRot(195881031));
+// console.log(G964B.maxRot(1));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+/*
+class G964B1 {
+    public static maxRot(n) {
+
+        let arrResult = [];
+        arrResult.push(n);
+
+        let arrNum = n.toString().split('');
+        let i = 0;
+        while (arrNum.length >= i) {
+            arrNum.push(...arrNum.splice(i, 1));
+
+            arrResult.push(arrNum.join(''));
+            i++;
+        }
+
+        return arrResult.sort().pop();
+    }
+}
+
+
+
+
+class G964B2 {
+    public static maxRot = ($) => Math.max(...($ = `${$}`.split(``)).reduce((a, b, i) =>
+        a.concat([a[i].slice(0, i).concat(a[i].slice(i + 1))
+            .concat(a[i].slice(i, i + 1))]), [$]).map(el => el.join('')));
+}
+
+
+
+
+class G964B3 {
+    public static maxRot(n: number) {
+        var s: string = String(n)
+        var max = Number(s)
+
+        for (var i = 0; i < s.length; i++) {
+            s = s.substr(0, i) + rot(s.substr(i))
+            var num = Number(s)
+            if (num > max) max = num
+        }
+
+        return max
+
+        /////////////////////////
+
+        function rot(s: string) {
+            return s.substr(1) + s.substr(0, 1)
+        }
+    }
+}
+
+
+
+class G964B4 {
+    public static maxRot = n =>
+        Math.max(...(n = String(n).split(''))
+            .reduce((r, _, i) =>
+                r.concat([r[i].slice(0, i)
+                    .concat(r[i].slice(i + 1))
+                    .concat(r[i].slice(i, i + 1))]), [n])
+            .map(e => e.join('')));
+}
+
+
+
+class G964B5 {
+    public static maxRot(n) {
+        let arr = n.toString().split('');
+        const length = arr.length;
+        let results = [];
+        for (let i = 0; i < length; i++) {
+            // the results are pushed here to include the initial number
+            results.push(Number(arr.join('')));
+            // cut and paste the rotating number
+            let cache = arr.splice(i, 1);
+            arr.push(cache[0])
+            cache = [];
+        }
+        return Math.max.apply(null, results);
+    }
+}
+
+
+
+class G964B6 {
+    public static maxRot(n) {
+        let digits = `${n}`, max = n;
+
+        for (let i = 0; i < digits.length; i++) {
+
+            //  rotate the next digit
+            digits = digits.substr(0, i) //  before the rotated digit
+                + digits.substr(i + 1)     //  after rotated digit
+                + digits.substr(i, 1);     //  the rotated digit
+
+            max = Math.max(max, parseInt(digits));
+        }
+
+        return max;
+    }
+}
+
+
+class G964B7 {
+    public static maxRot(n) {
+        let str = n.toString()
+        let max = n;
+        for (let i = 0; i < str.length; i++) {
+            str = str.slice(0, i) + str.slice(i + 1) + str.charAt(i)
+            max = Math.max(max, parseInt(str));
+        };
+        return max;
+    }
+}
+
+
+
+class G964B8 {
+    public static maxRot(n) {
+        const arrNum = n.toString().split('');
+        const resArr = [];
+        for (let i = 0; i < arrNum.length - 1; i++) {
+            arrNum.push(arrNum.splice(i, 1)[0]);
+            resArr.push(Number(arrNum.join('')));
+        }
+        return Math.max(n, ...resArr);
+    }
+}
+*/
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT OUT MEN FROM BOYS
@@ -1093,7 +1290,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -2169,8 +2366,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -2320,10 +2517,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -3320,11 +3517,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -4119,9 +4316,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -4403,8 +4600,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
