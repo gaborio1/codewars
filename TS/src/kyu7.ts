@@ -736,16 +736,23 @@ class G964B {
         let versionsArr = [];
 
         for (let i = 0; i < numRotations; i++) {
-            let rotatedDigit = numArr[i];
-            console.log(rotatedDigit);
+            let rotateDigit = numArr[i];
+            console.log(rotateDigit);
+            numArr.splice(i, 1);
+            numArr.push(rotateDigit);
+            console.log("CURRENT DIGITS: ", numArr);
+            let number: number = parseInt(numArr.join(""));
+            versionsArr.push(number);
         }
 
-        return 0;
+        console.log(versionsArr);
+
+        return Math.max(...versionsArr);
     };
 }
 
 // 85821534
-console.log(G964B.maxRot(38458215));
+console.log(G964B.maxRot(56789));
 // 988103115
 // console.log(G964B.maxRot(195881031));
 // console.log();

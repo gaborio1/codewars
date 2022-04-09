@@ -49,12 +49,18 @@ G964B.maxRot = (num) => {
     console.log(numArr);
     let versionsArr = [];
     for (let i = 0; i < numRotations; i++) {
-        let rotatedDigit = numArr[i];
-        console.log(rotatedDigit);
+        let rotateDigit = numArr[i];
+        console.log(rotateDigit);
+        numArr.splice(i, 1);
+        numArr.push(rotateDigit);
+        console.log("CURRENT DIGITS: ", numArr);
+        let number = parseInt(numArr.join(""));
+        versionsArr.push(number);
     }
-    return 0;
+    console.log(versionsArr);
+    return Math.max(...versionsArr);
 };
-console.log(G964B.maxRot(38458215));
+console.log(G964B.maxRot(56789));
 const menFromBoys = (arr) => {
     let uniqueOdds = new Set(), uniqueEvens = new Set();
     arr.forEach((int) => {
