@@ -100,16 +100,42 @@ const growingPlant = (up, down, target) => {
             break;
         }
         actualHeigth -= down;
-        console.table({
-            up: up,
-            down: down,
-            actualHeigth: actualHeigth,
-            counter: counter,
-        });
     }
     return counter;
 };
-console.log(growingPlant(100, 10, 410));
+function growingPlant2(up, down, h) {
+    let count = 1;
+    let a = up;
+    while (a < h) {
+        count++;
+        a = a - down + up;
+    }
+    return count;
+}
+function growingPlant3(up, down, target) {
+    let height = up;
+    let days = 1;
+    while (height < target) {
+        height += up - down;
+        days++;
+    }
+    return days;
+}
+function growingPlant4(up, down, h) {
+    return Math.max(Math.ceil((h - down) / (up - down)), 1);
+}
+function growingPlant5(up, down, h) {
+    let meters = 0;
+    let day = 0;
+    while (meters < h) {
+        day++;
+        meters += up;
+        if (meters >= h)
+            return day;
+        meters -= down;
+    }
+    return day;
+}
 class G964B {
 }
 G964B.maxRot = (num) => {

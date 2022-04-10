@@ -2,10 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = exports.howManyLightsabersDoYouOwn5 = void 0;
 const var1Boolean = true;
+console.log(var1Boolean);
 const var2Decimal = 13;
+console.log(var2Decimal);
 const var2Hex = parseInt("f00d", 16);
+console.log(var2Hex);
 const var4Binary = parseInt("111111", 2);
 const var5Octal = parseInt("0744", 8);
+const var6String = "Hello, world!";
+const var7Array = [1, "test", { a: 3 }, 4, 5];
+const var8NumericArray = [1, 2, 3, 4, 5];
+const var9Tuple = ["key", 12345];
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 1] = "Red";
+    Color[Color["Green"] = 2] = "Green";
+    Color[Color["Blue"] = 4] = "Blue";
+})(Color || (Color = {}));
+const var10Enum = Color.Blue;
+const var11ArrayOfAny = [1, "test", { a: 3 }, 4, 5];
+const var13Null = null;
+const var14Undefined = undefined;
 const arr2bin = (arr) => {
     return arr
         .filter((el) => typeof el === "number")

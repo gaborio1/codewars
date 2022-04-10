@@ -454,6 +454,7 @@ Export var15NeverFunction function that returns never value.
 
 */
 
+/*
 // BOOLEAN
 const var1Boolean: boolean = true;
 
@@ -464,32 +465,76 @@ const var4Binary: number = parseInt("111111", 2);
 const var5Octal: number = parseInt("0744", 8);
 
 // STRING
-// const var6String: string = "Hello, world!";
+const var6String: string = "Hello, world!";
 
 // ARRAY
-// const var7Array: any[] = [1, 'test', {a: 3}, 4, 5];
-// const var8NumericArray: number = [1, 2, 3, 4, 5];
+const var7Array: any[] = [1, 'test', {a: 3}, 4, 5];
+const var8NumericArray: number = [1, 2, 3, 4, 5];
 
 // TUPLE
-// const var9Tuple: [string, number] =  ['key', 12345];
+const var9Tuple: [string, number] =  ['key', 12345];
 
 // ENUM
-// const var10Enum: number = Color.Blue;
-// const Color: enum = {Red = 1, Green = 2, Blue = 4};
+const var10Enum: number = Color.Blue;
+const Color: enum = {Red = 1, Green = 2, Blue = 4};
 
 // ANY
-// const var11ArrayOfAny: any[] = [1, 'test', {a: 3}, 4, 5];
+const var11ArrayOfAny: any[] = [1, 'test', {a: 3}, 4, 5];
 
 // VOID
-// const var12VoidFunction = (): void => void;
+const var12VoidFunction = (): void => void;
 
 // NULL AND UNDEFINED
-// const var13Null: null = null;
-// const var14Undefined: any = undefined;
+const var13Null: null = null;
+const var14Undefined: any = undefined;
 
 // NEVER
+const var15NeverFunction = (): never => {};
+
+*/
+// === === === === === === === ===
+
+// BOOLEAN: Export var1Boolean variable of boolean type with value true.
+const var1Boolean: boolean = true;
+console.log(var1Boolean);
+
+// NUMBER: Export var2Decimal variable of numeric type with decimal value 13.
+const var2Decimal: number = 13;
+console.log(var2Decimal);
+// Export var3Hex variable of numeric type with hex value f00d.
+const var2Hex: number = parseInt("f00d", 16);
+console.log(var2Hex);
+// Export var4Binary variable of numeric type with binary value 111111.
+const var4Binary: number = parseInt("111111", 2);
+// Export var5Octal variable of numeric type with octal value 744.
+const var5Octal: number = parseInt("0744", 8);
+// STRING: Export var6String variable of string type with value Hello, world!.
+const var6String: string = "Hello, world!";
+
+// ARRAY: Export var7Array variable of array type with value [1, 'test', {a: 3}, 4, 5].
+const var7Array: any[] = [1, "test", { a: 3 }, 4, 5];
+// Export var8NumericArray variable of numeric generic array type with value [1, 2, 3, 4, 5].
+const var8NumericArray: number[] = [1, 2, 3, 4, 5];
+// TUPLE: Export var9Tuple variable of tuple type with value ['key', 12345] - i.e. it should represent a value as a pair of a string and a number.
+const var9Tuple: [string, number] = ["key", 12345];
+// ENUM: Export var10Enum variable with value Color.Blue from enum export enum Color {Red = 1, Green = 2, Blue = 4}.
+enum Color {
+    Red = 1,
+    Green = 2,
+    Blue = 4,
+}
+const var10Enum: number = Color.Blue;
+
+// ANY: Export var11ArrayOfAny variable of Array<any> type with value [1, 'test', {a: 3}, 4, 5].
+const var11ArrayOfAny: any[] = [1, "test", { a: 3 }, 4, 5];
+// VOID: Export var12VoidFunction function that returns void.
+// const var12VoidFunction = (): void => void;
+// NULL: Export var13Null variable with type and value null.
+const var13Null: null = null; // UNDEFINED: Export var14Undefined variable with type and value undefined.
+const var14Undefined: any = undefined;
+// NEVER: Export var15NeverFunction function that returns never value.
 // const var15NeverFunction = (): never => {};
-// TODO:
+// === === === === === === === ===
 
 // console.log();
 // console.log();
