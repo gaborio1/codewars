@@ -17,8 +17,71 @@ class G964c {
         return 1;
     }
 }
-function orderedCount(text) {
-    return [["a", 1]];
+const orderedCount = (text) => {
+    let solution = [];
+    const counterObj = {};
+    text.split("").forEach((num) => (counterObj[num] = (counterObj[num] || 0) + 1));
+    console.log(counterObj);
+    Object.entries(counterObj).forEach(([key, value]) => {
+        console.log([key, value]);
+        solution.push([key, value]);
+    });
+    return solution;
+};
+const orderedCount2 = (text) => {
+    const strArr = text.split("");
+    let solution = [];
+    const counterObj = {};
+    strArr.forEach((num) => (counterObj[num] = (counterObj[num] || 0) + 1));
+    console.log(counterObj);
+    const uniqueElements = new Set(strArr);
+    console.log(uniqueElements);
+    uniqueElements.forEach((el) => {
+        console.log(el, counterObj[el]);
+        solution.push([el, counterObj[el]]);
+    });
+    return solution;
+};
+console.log(orderedCount2("233312"));
+function orderedCount3(text) {
+    return [...new Set(text)].map((x) => [x, text.split(x).length - 1]);
+}
+function orderedCount4(t) {
+    return [...new Set(t.split(""))].map((e) => [
+        e,
+        t.split("").filter((v) => v == e).length,
+    ]);
+}
+function orderedCount5(text) {
+    const arr = text.split("").filter((el, i, arr) => arr.indexOf(el) === i);
+    return arr.map((value, index) => {
+        return [value, text.split("").filter((val) => val === value).length];
+    });
+}
+function orderedCount6(text) {
+    return text
+        .split("")
+        .filter((el, i) => text.indexOf(el) === i)
+        .map((item) => [item, text.split(item).length - 1]);
+}
+function orderedCount7(text) {
+    let m = {};
+    let output = [];
+    for (let i of text) {
+        if (!(i in m)) {
+            m[i] = 1;
+        }
+        else {
+            m[i] += 1;
+        }
+    }
+    for (let i of text) {
+        if (i in m) {
+            output.push([i, m[i]]);
+            delete m[i];
+        }
+    }
+    return output;
 }
 const growingPlant = (up, down, target) => {
     if (up < 5 ||
@@ -34,12 +97,19 @@ const growingPlant = (up, down, target) => {
         actualHeigth += up;
         counter++;
         if (actualHeigth >= target) {
-            return counter;
+            break;
         }
         actualHeigth -= down;
+        console.table({
+            up: up,
+            down: down,
+            actualHeigth: actualHeigth,
+            counter: counter,
+        });
     }
     return counter;
 };
+console.log(growingPlant(100, 10, 410));
 class G964B {
 }
 G964B.maxRot = (num) => {

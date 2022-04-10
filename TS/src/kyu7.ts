@@ -514,10 +514,12 @@ class G964c {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:   ORDERED COUNT OF CHARACTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: COUNT OCCURENCES IN ARRAY, OBJECT.ENTRIES(), SET(), LOOP OVER SET
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -530,24 +532,126 @@ Example:
 orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
 */
 
-function orderedCount(text: string): [string, number][] {
-    return [["a", 1]];
-}
+// 1️⃣  !!! THIS IS NOT IN ORDER OF APPEARANCE FOR NUMBER STRING !!!
+// WORKS WITH ALPABETIC STRINGS
+const orderedCount = (text: string): [string, number][] => {
+    let solution: [string, number][] = [];
 
+    interface StingKey {
+        [key: string]: number;
+    }
+
+    const counterObj: StingKey = {};
+
+    text.split("").forEach(
+        (num) => (counterObj[num] = (counterObj[num] || 0) + 1)
+    );
+
+    console.log(counterObj);
+
+    Object.entries(counterObj).forEach(([key, value]) => {
+        console.log([key, value]);
+        solution.push([key, value]);
+    });
+
+    return solution;
+};
+
+// 2️⃣
+const orderedCount2 = (text: string): [string, number][] => {
+    const strArr: string[] = text.split("");
+    let solution: [string, number][] = [];
+
+    interface StringNumber {
+        [key: string]: number;
+    }
+
+    const counterObj: StringNumber = {};
+
+    strArr.forEach((num) => (counterObj[num] = (counterObj[num] || 0) + 1));
+
+    console.log(counterObj);
+
+    // Object.entries(counterObj).forEach(([key, value]) => {
+    //     console.log([key, value]);
+    //     solution.push([key, value]);
+    // });
+
+    // LOOP OVER strArr TO PRESERVE ORIGINAL ORDER ???
+    // REMOVE DUPLICATES [2, 3, 3, 3, 1, 2] => [2, 3, 1]
+    // AND LOOP OVER SET:
+    const uniqueElements = new Set<string>(strArr);
+    console.log(uniqueElements);
+
+    uniqueElements.forEach((el) => {
+        console.log(el, counterObj[el]);
+        solution.push([el, counterObj[el]]);
+    });
+
+    return solution;
+};
+
+// [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
 // console.log(orderedCount("abracadabra"));
+// [ [ '2', 2 ], [ '3', 3 ], [ '1', 1 ] ]
+console.log(orderedCount2("233312"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ REFACTOR: END RETURN STATEMENT NEVER RUNS ❗️❗️❗️
+function orderedCount3(text: string): [string, number][] {
+    return [...new Set(text)].map((x: string) => [x, text.split(x).length - 1]);
+}
+
+function orderedCount4(t: string): [string, number][] {
+    return [...new Set(t.split(""))].map((e) => [
+        e,
+        t.split("").filter((v) => v == e).length,
+    ]);
+}
+
+function orderedCount5(text: string): [string, number][] {
+    const arr = text.split("").filter((el, i, arr) => arr.indexOf(el) === i);
+    return arr.map((value, index) => {
+        return [value, text.split("").filter((val) => val === value).length];
+    });
+}
+
+function orderedCount6(text: string): [string, number][] {
+    return text
+        .split("")
+        .filter((el, i) => text.indexOf(el) === i)
+        .map((item) => [item, text.split(item).length - 1]);
+}
+
+function orderedCount7(text: string): [string, number][] {
+    let m: any = {};
+    let output: any = [];
+
+    for (let i of text) {
+        if (!(i in m)) {
+            m[i] = 1;
+        } else {
+            m[i] += 1;
+        }
+    }
+
+    for (let i of text) {
+        if (i in m) {
+            output.push([i, m[i]]);
+            delete m[i];
+        }
+    }
+
+    return output;
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GROWING PLANT - Simple Fun #74
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: BREAK OUT OF WHILE LOOP
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -626,7 +730,13 @@ const growingPlant = (up: number, down: number, target: number): number => {
         actualHeigth += up;
         counter++;
         if (actualHeigth >= target) {
-            return counter;
+            // ❗️ REFACTOR: END RETURN STATEMENT NEVER RUNS ❗️
+            // return counter;
+
+            // VS:
+
+            // ❗️ STOP LOOP AND RETURN AT END OF FUNCTION ❗️
+            break;
         }
         actualHeigth -= down;
 
@@ -638,7 +748,6 @@ const growingPlant = (up: number, down: number, target: number): number => {
         // });
     }
 
-    // ❗️❗️❗️ THIS RETURN NEVER RUNS ❗️❗️❗️
     return counter;
 };
 
@@ -689,6 +798,42 @@ growingPlant(100, 10, 410)
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function growingPlant2(up: number, down: number, h: number): number {
+    let count: number = 1;
+    let a: number = up;
+    while (a < h) {
+        count++;
+        a = a - down + up;
+    }
+    return count;
+}
+
+function growingPlant3(up: number, down: number, target: number): number {
+    let height = up;
+    let days = 1;
+    while (height < target) {
+        height += up - down;
+        days++;
+    }
+    return days;
+}
+
+function growingPlant4(up: number, down: number, h: number): number {
+    return Math.max(Math.ceil((h - down) / (up - down)), 1);
+}
+
+function growingPlant5(up: number, down: number, h: number): number {
+    let meters = 0;
+    let day = 0;
+    while (meters < h) {
+        day++;
+        meters += up;
+        if (meters >= h) return day;
+        meters -= down;
+    }
+    return day;
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ROTATE FOR A MAX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -726,7 +871,6 @@ max_rot(38458215) should return 85821534
 
 class G964B {
     public static maxRot = (num: number): number => {
-
         console.log(num);
         // GET HOW MANY TIMES NUM WILL BE ROTATED
         const numRotations: number = num.toString().length - 1;
@@ -754,9 +898,7 @@ class G964B {
             //     rotateDigit: rotateDigit,
             //     number: number
             // })
-
         }
-
 
         // ADD ORIGINAL INPUT NUM TO versionsArr AND GET LARGEST NUMBER
         return Math.max(...versionsArr.concat(num));
@@ -1290,7 +1432,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -2366,8 +2508,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -2517,10 +2659,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -3517,11 +3659,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -4316,9 +4458,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -4600,8 +4742,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
