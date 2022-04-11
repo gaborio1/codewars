@@ -15,7 +15,7 @@ const strongNumber = (num) => {
 class G964c {
     static movie(prePaid, ticket, perc) {
         let counter = 0, sysA = 0, sysB = prePaid, currDiscPrice = ticket;
-        while (sysA < sysB) {
+        while (Math.ceil(sysB) >= sysA) {
             sysA += ticket;
             currDiscPrice *= perc;
             sysB += currDiscPrice;
@@ -24,7 +24,56 @@ class G964c {
         return counter;
     }
 }
-console.log(G964c.movie(0, 10, 0.95));
+class G964c1 {
+    static movie(card, ticket, perc) {
+        let i = 0;
+        while (Math.ceil(card) >= ticket * i) {
+            card += ticket * perc ** i;
+            i++;
+        }
+        return i - 1;
+    }
+}
+class G964c2 {
+    static movie(card, ticket, perc) {
+        let k = 1, i = 1;
+        while (Math.ceil(card + ticket * perc * k) >= ticket * i) {
+            k += Math.pow(perc, i);
+            i++;
+        }
+        return i;
+    }
+}
+class G964c3 {
+    static movie(card, ticket, perc) {
+        var cardPrice = card + ticket;
+        var ticketPrice = ticket;
+        var previousTicket = ticket;
+        var i = 1;
+        while (Math.ceil(cardPrice) >= ticketPrice) {
+            ticketPrice += ticket;
+            previousTicket *= perc;
+            cardPrice += previousTicket;
+            i += 1;
+        }
+        return i - 1;
+    }
+}
+class G964c5 {
+    static movie(card, ticket, perc) {
+        let counter = 1;
+        let ticketTotal = ticket;
+        let currentTicketPrice = ticket * perc;
+        let cardTotal = card + currentTicketPrice;
+        while (ticketTotal <= Math.ceil(cardTotal)) {
+            counter++;
+            ticketTotal += ticket;
+            currentTicketPrice *= perc;
+            cardTotal += currentTicketPrice;
+        }
+        return counter;
+    }
+}
 const orderedCount = (text) => {
     let solution = [];
     const counterObj = {};

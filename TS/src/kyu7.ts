@@ -470,11 +470,10 @@ const strongNumber = (num: number): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ FAILED ON LAST SAMPLE TEST, ROUND UP MAYBE ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:   GOING TO THE CINEMA
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ACCUMULATOR WHILE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -508,27 +507,159 @@ class G964c {
             sysA: number = 0, // A
             sysB: number = prePaid, // B
             currDiscPrice: number = ticket; // TRACK CURRENT PRICE FOR sysB
-
-        while (sysA < sysB) {
+        // ROUND UP sysB WHEN CHECKING CONDITION
+        while (Math.ceil(sysB) >= sysA) {
+            // console.table({ sysA: sysA, sysB: sysB, counter: counter });
             sysA += ticket; // UPDATE sysA
             currDiscPrice *= perc; // CALC CURRENT DISC PRICE
             sysB += currDiscPrice; // UPDATE sysB
             counter++; // INCREMENT COUNTER
+            // console.table({
+            //     sysA: sysA,
+            //     sysB: sysB,
+            //     "sysB rounded up: ": Math.ceil(sysB),
+            //     counter: counter,
+            // });
         }
-        // console.log(counter);
+
         return counter;
     }
 }
 
+/*
+G964c.movie(0, 10, 0.95)
+┌───────────────────┬────────┐
+│      (index)      │ Values │
+├───────────────────┼────────┤
+│       sysA        │   10   │
+│       sysB        │  9.5   │
+│ sysB rounded up:  │   10   │
+│      counter      │   1    │
+└───────────────────┴────────┘
+┌───────────────────┬────────┐
+│      (index)      │ Values │
+├───────────────────┼────────┤
+│       sysA        │   20   │
+│       sysB        │ 18.525 │
+│ sysB rounded up:  │   19   │
+│      counter      │   2    │
+└───────────────────┴────────┘
+2
+*/
+
 // 43
 // console.log(G964c.movie(500, 15, 0.9));
 // 2
-console.log(G964c.movie(0, 10, 0.95));
+// console.log(G964c.movie(0, 10, 0.95));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+class G964c1 {
+    public static movie(card: number, ticket: number, perc: number): number {
+        let i: number = 0;
+        while (Math.ceil(card) >= ticket * i) {
+            card += ticket * perc ** i;
+            i++;
+        }
+        return i - 1;
+    }
+}
+
+class G964c2 {
+    public static movie(card: number, ticket: number, perc: number): number {
+        let k = 1,
+            i = 1;
+        while (Math.ceil(card + ticket * perc * k) >= ticket * i) {
+            k += Math.pow(perc, i);
+            i++;
+        }
+        return i;
+    }
+}
+
+class G964c3 {
+    public static movie(card: number, ticket: number, perc: number): number {
+        var cardPrice: number = card + ticket;
+        var ticketPrice: number = ticket;
+        var previousTicket: number = ticket;
+        var i: number = 1;
+        while (Math.ceil(cardPrice) >= ticketPrice) {
+            ticketPrice += ticket;
+            previousTicket *= perc;
+            cardPrice += previousTicket;
+            i += 1;
+        }
+        return i - 1;
+    }
+}
+
+/*
+class G964c4 {
+    
+    public static movie(card: number, ticket: number, perc: number): number {
+        let lastN = 0;
+        let n = 0;
+        let count = 0;
+        while(true) {
+          lastN = n;
+          let costA = G964.systemA(ticket, n);
+          let costB = G964.systemB(card, ticket, perc, n);
+          if(roundup(costB) >= roundup(costA)) {
+            if(Math.abs(costB - costA) < ticket) {
+              n++;
+            } else {
+            n += Math.ceil((costB - costA)/ticket);
+            }
+          } else {
+              break;
+          }
+          if(count++ > 20) break;
+        }
+        return n;
+    };
+    
+    public static systemA(ticket, n) {
+        return ticket*n;
+    }    
+    
+    public static systemB(card, ticket, perc, n) {
+        return card + ticket*perc*(1-Math.pow(perc,n))/(1-perc);
+    }
+    
+    public static costDifference(card: number, ticket: number, perc: number, n: number) {
+        return (G964.systemB(card, ticket, perc, n)) - (G964.systemA(ticket, n));
+    }
+}
+
+function roundup(x): number {
+    return Math.ceil(x);
+}
+*/
+
+class G964c5 {
+    public static movie(card: number, ticket: number, perc: number): number {
+        let counter = 1;
+        let ticketTotal = ticket;
+
+        let currentTicketPrice = ticket * perc;
+
+        let cardTotal = card + currentTicketPrice;
+
+        while (ticketTotal <= Math.ceil(cardTotal)) {
+            counter++;
+
+            ticketTotal += ticket;
+
+            currentTicketPrice *= perc;
+            cardTotal += currentTicketPrice;
+        }
+
+        return counter;
+    }
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES ❗️❗️❗️
