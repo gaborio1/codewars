@@ -13,10 +13,18 @@ const strongNumber = (num) => {
     return "";
 };
 class G964c {
-    static movie(card, ticket, perc) {
-        return 1;
+    static movie(prePaid, ticket, perc) {
+        let counter = 0, sysA = 0, sysB = prePaid, currDiscPrice = ticket;
+        while (sysA < sysB) {
+            sysA += ticket;
+            currDiscPrice *= perc;
+            sysB += currDiscPrice;
+            counter++;
+        }
+        return counter;
     }
 }
+console.log(G964c.movie(0, 10, 0.95));
 const orderedCount = (text) => {
     let solution = [];
     const counterObj = {};
@@ -42,7 +50,6 @@ const orderedCount2 = (text) => {
     });
     return solution;
 };
-console.log(orderedCount2("233312"));
 function orderedCount3(text) {
     return [...new Set(text)].map((x) => [x, text.split(x).length - 1]);
 }

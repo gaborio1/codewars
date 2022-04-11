@@ -470,6 +470,8 @@ const strongNumber = (num: number): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ FAILED ON LAST SAMPLE TEST, ROUND UP MAYBE ❗️❗️❗️
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:   GOING TO THE CINEMA
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -501,13 +503,27 @@ movie(100, 10, 0.95) should return 24
 */
 
 class G964c {
-    public static movie(card: number, ticket: number, perc: number): number {
-        return 1;
+    public static movie(prePaid: number, ticket: number, perc: number): number {
+        let counter: number = 0, // SOLUTION
+            sysA: number = 0, // A
+            sysB: number = prePaid, // B
+            currDiscPrice: number = ticket; // TRACK CURRENT PRICE FOR sysB
+
+        while (sysA < sysB) {
+            sysA += ticket; // UPDATE sysA
+            currDiscPrice *= perc; // CALC CURRENT DISC PRICE
+            sysB += currDiscPrice; // UPDATE sysB
+            counter++; // INCREMENT COUNTER
+        }
+        // console.log(counter);
+        return counter;
     }
 }
 
 // 43
 // console.log(G964c.movie(500, 15, 0.9));
+// 2
+console.log(G964c.movie(0, 10, 0.95));
 // console.log();
 // console.log();
 // console.log();
@@ -594,7 +610,7 @@ const orderedCount2 = (text: string): [string, number][] => {
 // [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
 // console.log(orderedCount("abracadabra"));
 // [ [ '2', 2 ], [ '3', 3 ], [ '1', 1 ] ]
-console.log(orderedCount2("233312"));
+// console.log(orderedCount2("233312"));
 // console.log();
 // console.log();
 // console.log();
