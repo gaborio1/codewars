@@ -6,6 +6,43 @@ function chooseBestSum(t, k, ls) {
 }
 class G964b {
 }
+G964b.gap = (gap, min, max) => {
+    let solution = [];
+    let primesArr = [];
+    let allMatchesArr = [];
+    const isPrime = (num) => {
+        if (num === 1 || num === 2)
+            return true;
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0)
+                return false;
+        }
+        return true;
+    };
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            primesArr.push(prime);
+        }
+    }
+    console.log(primesArr);
+    const gapsArr = primesArr.map((el, idx) => {
+        if (primesArr[idx + 1] - el === gap) {
+            console.log("match found");
+            allMatchesArr.push([el, primesArr[idx + 1]]);
+        }
+        return primesArr[idx + 1] - el;
+    });
+    console.table({
+        primesArr: primesArr,
+        "gaps arr: ": gapsArr,
+        allMatchesArr: allMatchesArr,
+    });
+    solution = allMatchesArr[0];
+    return solution;
+};
+console.log(G964b.gap(2, 100, 110));
 const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));

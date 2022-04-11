@@ -372,10 +372,13 @@ function chooseBestSum(t: number, k: number, ls: number[]): number | null {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+// ❗️❗️❗️ WORKING IN CONSOLE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:  GAP IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: PRIME NUMNERS, ISPRIME(),
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -426,23 +429,89 @@ https://en.wikipedia.org/wiki/Prime_gap
 */
 
 class G964b {
-    // public static gap = (g, m, n) => {
-    // }
+    public static gap = (gap: number, min: number, max: number): number[] => {
+        let solution: number[] = [];
+        let primesArr: number[] = [];
+        // THIS WILL BE ALL THE POSSIBLE MATCHES WHICH IS NOT NECESSARY AS WE HAVE TO RETURN THE FIRST MATCH
+        let allMatchesArr: [number, number][] = [];
+
+        // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+        // ISPRIME() FROM PREVIOUS CODEWARS EXAMPLE
+        const isPrime = (num: number) => {
+            if (num === 1 || num === 2) return true;
+            for (let i = 2; i < num; i++) {
+                // console.table({num: num, divider: i});
+                if (num % i === 0) return false;
+            }
+            return true;
+        };
+
+        //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
+        for (let i = min; i <= max; i++) {
+            let prime = 0;
+            if (isPrime(i)) {
+                prime = i;
+                // console.log("prime found: ", prime);
+
+                primesArr.push(prime);
+            }
+        }
+        // [ 101, 103, 107, 109 ]
+        console.log(primesArr);
+        // LOOP OVER PRIMES ARRAY (AND GET GAPS)
+        // [ 2, 4, 2, NaN ] ❗️❗️❗️ LAST EL WILL BE NAN BECAUSE primesArr[idx + 1] IS UNDEFINE FOR THE LAST ELEMENT ❗️❗️❗️
+        const gapsArr: number[] = primesArr.map((el, idx) => {
+            if (primesArr[idx + 1] - el === gap) {
+                console.log("match found");
+                allMatchesArr.push([el, primesArr[idx + 1]]);
+            }
+            return primesArr[idx + 1] - el;
+        });
+        // .slice(0, -1);   // ❗️❗️❗️ [ 2, 4, 2 ]  RETURN NEW ARRAY WITHOUT LAST ELEMENT (NAN)
+
+        console.table({
+            primesArr: primesArr,
+            "gaps arr: ": gapsArr,
+            allMatchesArr: allMatchesArr,
+        });
+
+        //  FIND AND RETURN FIRST GAP MATCH
+        solution = allMatchesArr[0];
+        return solution;
+    };
 }
 
-// console.log(G964b.gap(2,100,110));
+/*
+G964b.gap(2, 100, 110) LOGS:
+
+┌───────────────┬──────────────┬──────────────┬─────┬─────┐
+│    (index)    │      0       │      1       │  2  │  3  │
+├───────────────┼──────────────┼──────────────┼─────┼─────┤
+│   primesArr   │     101      │     103      │ 107 │ 109 │
+│  gaps arr:    │      2       │      4       │  2  │ NaN │
+│ allMatchesArr │ [ 101, 103 ] │ [ 107, 109 ] │     │     │
+└───────────────┴──────────────┴──────────────┴─────┴─────┘
+[ 101, 103 ]
+
+*/
+
+// [ 101, 103 ]
+console.log(G964b.gap(2, 100, 110));
+// console.log(G964b.gap(2, 1, 10));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ INCLUDE ISPRIME() IN CODEWARS EXAMPLES ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PRIMES IN NUMBERS - PRIME FACTOR DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: PRIME NUMBERS, ISPRIME(),
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
