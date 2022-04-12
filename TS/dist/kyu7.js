@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
 function containAllRots(str, arr) {
     return true;
 }
@@ -10,8 +10,33 @@ function cookingTime(eggs) {
     return 1;
 }
 const strongNumber = (num) => {
-    return "";
+    const factorial = (n) => {
+        if (n <= 1)
+            return 1;
+        return n * factorial(n - 1);
+    };
+    const numArr = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    console.log(numArr);
+    const factSum = numArr
+        .map((digit) => {
+        return factorial(digit);
+    })
+        .reduce((a, b) => a + b);
+    console.log(factSum);
+    return num === factSum ? "STRONG!!!!" : "Not Strong !!";
 };
+const factorial3 = (n) => (n === 0 ? 1 : n * factorial(n - 1));
+const strongNumber4 = (num) => num ===
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    ? "STRONG!!!!"
+    : "Not Strong !!";
+exports.strongNumber4 = strongNumber4;
 class G964c {
     static movie(prePaid, ticket, perc) {
         let counter = 0, sysA = 0, sysB = prePaid, currDiscPrice = ticket;

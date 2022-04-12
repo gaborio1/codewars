@@ -39,10 +39,14 @@ G964b.gap = (gap, min, max) => {
         "gaps arr: ": gapsArr,
         allMatchesArr: allMatchesArr,
     });
+    if (allMatchesArr.length === 0) {
+        console.log("empty array");
+        return [0, 0];
+    }
     solution = allMatchesArr[0];
     return solution;
 };
-console.log(G964b.gap(2, 100, 110));
+console.log(G964b.gap(6, 100, 110));
 const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));

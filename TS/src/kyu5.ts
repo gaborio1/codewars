@@ -372,10 +372,9 @@ function chooseBestSum(t: number, k: number, ls: number[]): number | null {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-
-// ❗️❗️❗️ WORKING IN CONSOLE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️ REFACTOR ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GAP IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: PRIME NUMNERS, ISPRIME(),
@@ -476,6 +475,10 @@ class G964b {
             allMatchesArr: allMatchesArr,
         });
 
+        if (allMatchesArr.length === 0) {
+            console.log("empty array");
+            return [0, 0];
+        }
         //  FIND AND RETURN FIRST GAP MATCH
         solution = allMatchesArr[0];
         return solution;
@@ -497,8 +500,8 @@ G964b.gap(2, 100, 110) LOGS:
 */
 
 // [ 101, 103 ]
-console.log(G964b.gap(2, 100, 110));
-// console.log(G964b.gap(2, 1, 10));
+// console.log(G964b.gap(2, 100, 110));
+console.log(G964b.gap(6, 100, 110));
 // console.log();
 // console.log();
 // console.log();
@@ -507,7 +510,7 @@ console.log(G964b.gap(2, 100, 110));
 
 // ❗️❗️❗️ INCLUDE ISPRIME() IN CODEWARS EXAMPLES ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️ REFACTOR ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  PRIMES IN NUMBERS - PRIME FACTOR DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

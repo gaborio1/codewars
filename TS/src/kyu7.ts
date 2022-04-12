@@ -456,19 +456,72 @@ Since the sum of its digits' factorial of 1! + 5! + 0! = 122 is not equal to num
 */
 
 const strongNumber = (num: number): string => {
-    // Your Code here .. Enjoy !!
-    return "";
+    const factorial = (n: number): number => {
+        if (n <= 1) return 1;
+        return n * factorial(n - 1);
+    };
+    // console.log(factorial(4));
+    const numArr: number[] = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    console.log(numArr);
+
+    const factSum: number = numArr
+        .map((digit) => {
+            return factorial(digit);
+        })
+        .reduce((a, b) => a + b);
+    console.log(factSum);
+
+    return num === factSum ? "STRONG!!!!" : "Not Strong !!";
 };
 
 //   NOT STRONG
 // console.log(strongNumber(7));
-// console.log(strongNumber(185));
+// console.log(strongNumber(145));
 
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+/*
+const strongNumber2 = (num: number): string => {
+    var arr: number[] = [];
+  
+    function factorial(n: number) { 
+        return n <= 1 ? 1 : n * factorial(n - 1)
+    }
+  
+    return num === String(num).split('')
+        .map((e) => Number(e))
+        .map((e) => factorial(e))
+        .reduce((a, b) => a + b) ? "STRONG!!!!" : "Not Strong !!";
+  };
+
+
+
+
+  function fac(n: number){
+    return n < 2 ? 1 : n * fac(n - 1)
+  }
+  
+  export const strongNumber3 = (num: number): string => {
+    return String(num).split("").reduce((a, b) => a + fac(+b), 0) === num ? "STRONG!!!!" : "Not Strong !!";
+}; 
+  */
+
+const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
+
+export const strongNumber4 = (num: number): string =>
+    num ===
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        ? "STRONG!!!!"
+        : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:   GOING TO THE CINEMA
