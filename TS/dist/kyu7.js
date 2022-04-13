@@ -6,9 +6,16 @@ function containAllRots(str, arr) {
 }
 function disariumNumber(n) {
 }
-function cookingTime(eggs) {
-    return 1;
-}
+const cookingTime = (eggs) => {
+    if (eggs === 0)
+        return 0;
+    const rounds = Math.ceil(eggs / 8);
+    const time = rounds * 5;
+    return time;
+};
+const cookingTime2 = (eggs) => {
+    return eggs < 1 ? 0 : Math.ceil(eggs / 8) * 5;
+};
 const strongNumber = (num) => {
     const factorial = (n) => {
         if (n <= 1)
