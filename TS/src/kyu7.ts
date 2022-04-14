@@ -362,9 +362,25 @@ Explanation:
 Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
 */
 
-function disariumNumber(n: number) {
-    // your code here
-}
+const disariumNumber = (num: number): string => {
+    // CONVERT NUM TO ARRAY OF ITS NUMERIC DIGITS
+    const digitsArr: number[] = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+
+    // console.log(digitsArr);
+
+    // RAISE EACH EL TO ITS POSITION'S POWER AND GET SUM OF ARRAY
+    const pwrPosSum: number = digitsArr
+        // POSITION 1 = 0 SO HAVE TO ADJUST BY ADDING 1
+        .map((el, idx) => Math.pow(el, idx + 1))
+        .reduce((a, b) => a + b);
+
+    // console.log(pwrPosSum);
+
+    return pwrPosSum === num ? "Disarium !!" : "Not !!";
+};
 
 // "Disarium !!"
 // console.log(disariumNumber(89));
@@ -375,6 +391,33 @@ function disariumNumber(n: number) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function disariumNumber2(n: number): string {
+    return String(n)
+        .split("")
+        .reduce((sum, x, i) => sum + parseInt(x) ** (i + 1), 0) === n
+        ? "Disarium !!"
+        : "Not !!";
+}
+
+const disariumNumber3 = (n: number): string =>
+    n
+        .toString()
+        .split("")
+        .map((value, index) => parseInt(value) ** (index + 1))
+        .reduce((acc, n) => acc + n, 0) === n
+        ? "Disarium !!"
+        : "Not !!";
+
+function disariumNumber4(n: number) {
+    return String(n)
+        .split("")
+        .reduce(
+            (prev, curr, index) => prev + Math.pow(Number(curr), index + 1),
+            0
+        ) === n
+        ? "Disarium !!"
+        : "Not !!";
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BOILED EGGS - COOKING TIME
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

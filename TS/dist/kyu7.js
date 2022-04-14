@@ -4,7 +4,36 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
 function containAllRots(str, arr) {
     return true;
 }
-function disariumNumber(n) {
+const disariumNumber = (num) => {
+    const digitsArr = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    const pwrPosSum = digitsArr
+        .map((el, idx) => Math.pow(el, idx + 1))
+        .reduce((a, b) => a + b);
+    return pwrPosSum === num ? "Disarium !!" : "Not !!";
+};
+function disariumNumber2(n) {
+    return String(n)
+        .split("")
+        .reduce((sum, x, i) => sum + parseInt(x) ** (i + 1), 0) === n
+        ? "Disarium !!"
+        : "Not !!";
+}
+const disariumNumber3 = (n) => n
+    .toString()
+    .split("")
+    .map((value, index) => parseInt(value) ** (index + 1))
+    .reduce((acc, n) => acc + n, 0) === n
+    ? "Disarium !!"
+    : "Not !!";
+function disariumNumber4(n) {
+    return String(n)
+        .split("")
+        .reduce((prev, curr, index) => prev + Math.pow(Number(curr), index + 1), 0) === n
+        ? "Disarium !!"
+        : "Not !!";
 }
 const cookingTime = (eggs) => {
     if (eggs === 0)
