@@ -1,7 +1,59 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
-function containAllRots(str, arr) {
+const tidyNumber = (num) => {
+    const increasingNum = num
+        .toString()
+        .split("")
+        .map((el) => Number(el))
+        .sort((a, b) => a - b)
+        .join("");
+    return parseInt(increasingNum) === num;
+};
+function tidyNumber2(num) {
+    let s = "" + num;
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] < s[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+const tidyNumber3 = (num) => num == +[...String(num)].sort((a, b) => +a - +b).join("");
+const tidyNumber4 = (n) => +[...String(n)].sort().join("") === n;
+const containAllRots = (str, arr) => {
+    const strArr = str.split("");
+    for (let i = 0; i < strArr.length; i++) {
+        let currChar = strArr[0];
+        strArr.splice(0, 1);
+        strArr.push(currChar);
+        let currtRotationStr = strArr.join("");
+        if (arr.indexOf(currtRotationStr) < 0)
+            return false;
+    }
+    return true;
+};
+function containAllRots2($, arr) {
+    arr = arr.map((e) => e.toLowerCase());
+    const arr$ = Array.from({ length: $.length }, (x) => $.toLowerCase()).map((el, i) => el.slice(i) + el.slice(0, i));
+    return arr$.every((e) => arr.includes(e));
+}
+function containAllRots3(str, arr) {
+    const inputStrings = new Set(arr);
+    return getRots(str).every((rotation) => inputStrings.has(rotation));
+}
+function getRots(str, res = []) {
+    if (res.length === str.length)
+        return res;
+    res.push(str);
+    return getRots(str.slice(1) + str[0], res);
+}
+function containAllRots4(str, arr) {
+    for (let idx = 0; idx < str.length; idx += 1) {
+        const rot = str.slice(idx) + str.slice(0, idx);
+        if (!arr.includes(rot))
+            return false;
+    }
     return true;
 }
 const disariumNumber = (num) => {

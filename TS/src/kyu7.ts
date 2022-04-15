@@ -269,8 +269,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: TIDY NUMBER (Special Numbers Series #9)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -278,20 +278,53 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+A Tidy number is a number whose digits are in non-decreasing order.
 
+Task
+Given a number, Find if it is Tidy or not .
 */
 
-// console.log();
-// console.log();
+const tidyNumber = (num: number): boolean => {
+    // ARRANGE DIGITS IN INCREASING ORDER(STRING)
+    const increasingNum = num
+        .toString()
+        .split("")
+        .map((el) => Number(el))
+        .sort((a, b) => a - b)
+        .join("");
+
+    // CONVERT TO NUMBER AND COMPARE TO INPUT NUMBER
+    return parseInt(increasingNum) === num;
+};
+
+// TRUE
+// console.log(tidyNumber(2789));
+// FALSE
+// console.log(tidyNumber(9672));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function tidyNumber2(num: number) {
+    let s = "" + num;
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] < s[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const tidyNumber3 = (num: number) =>
+    num == +[...String(num)].sort((a, b) => +a - +b).join("");
+
+const tidyNumber4 = (n: number) => +[...String(n)].sort().join("") === n;
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ALL INCLUSIVE?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ROTATE STRING,
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -320,20 +353,72 @@ Ref: https://en.wikipedia.org/wiki/String_(computer_science)#Rotations
 
 */
 
-function containAllRots(str: string, arr: string[]): boolean {
+const containAllRots = (str: string, arr: string[]): boolean => {
+    const strArr: string[] = str.split("");
+    // GET ALL ROTATIONS AND COMPARE
+    for (let i = 0; i < strArr.length; i++) {
+        // ROTATE
+        let currChar = strArr[0];
+        strArr.splice(0, 1);
+        strArr.push(currChar);
+        // CONVERT TO STRING
+        let currtRotationStr: string = strArr.join("");
+        // COMPARE
+        if (arr.indexOf(currtRotationStr) < 0) return false;
+    }
+
     return true;
-}
+};
 
 // true
-// console.log(containAllRots("bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]));
+// console.log(
+// containAllRots("bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"])
+// );
 // false
-// console.log(containAllRots("XjYABhR", ["TzYxlgfnhf", "yqVAuoLjMLy", "BhRXjYA", "YABhRXj", "hRXjYAB", "jYABhRX", "XjYABhR", "ABhRXjY"]));
+// console.log(
+//     containAllRots("XjYABhR", [
+//         "TzYxlgfnhf",
+//         "yqVAuoLjMLy",
+//         "BhRXjYA",
+//         "YABhRXj",
+//         "hRXjYAB",
+//         "jYABhRX",
+//         "XjYABhR",
+//         "ABhRXjY",
+//     ])
+// );
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function containAllRots2($: string, arr: string[]): boolean {
+    arr = arr.map((e) => e.toLowerCase());
+    const arr$ = Array.from({ length: $.length }, (x) => $.toLowerCase()).map(
+        (el, i) => el.slice(i) + el.slice(0, i)
+    );
+    return arr$.every((e) => arr.includes(e));
+}
+
+function containAllRots3(str: string, arr: string[]): boolean {
+    const inputStrings = new Set(arr);
+    return getRots(str).every((rotation) => inputStrings.has(rotation));
+}
+
+function getRots(str: string, res: string[] = []): string[] {
+    if (res.length === str.length) return res;
+    res.push(str);
+    return getRots(str.slice(1) + str[0], res);
+}
+
+function containAllRots4(str: string, arr: string[]): boolean {
+    for (let idx = 0; idx < str.length; idx += 1) {
+        const rot = str.slice(idx) + str.slice(0, idx);
+        if (!arr.includes(rot)) return false;
+    }
+    return true;
+}
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DISARIUM NUMBER - (Special Numbers Series #3)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
