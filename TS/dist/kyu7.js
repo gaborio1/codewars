@@ -1,6 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
+const add = (num1, num2) => {
+    const greater = Math.max(num1, num2).toString();
+    const numStr1 = num1.toString();
+    const numStr2 = num2.toString();
+    let solutionArr = [];
+    for (let i = 0; i < greater.length; i++) {
+        console.log("numbers: ", numStr1[numStr1.length - i], numStr2[numStr2.length - i]);
+        let sum = 0;
+        if (numStr1[numStr1.length - 1 - i] === undefined) {
+            console.log("undefined");
+            sum = Number(numStr2[numStr2.length - 1 - i]);
+        }
+        else if (numStr2[numStr2.length - 1 - i] === undefined) {
+            console.log("undefined");
+            sum = Number(numStr1[numStr1.length - 1 - i]);
+        }
+        else {
+            sum =
+                Number(numStr1[numStr1.length - 1 - i]) +
+                    Number(numStr2[numStr2.length - 1 - i]);
+        }
+        console.log("sum: ", sum);
+        solutionArr.unshift(sum);
+    }
+    console.log(solutionArr);
+    return Number(solutionArr.join(""));
+};
+console.log(add(1222, 30277));
 const tidyNumber = (num) => {
     const increasingNum = num
         .toString()

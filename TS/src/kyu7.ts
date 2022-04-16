@@ -251,7 +251,9 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// ❗️❗️❗️ NOT SUBMITTED ON CODEWARS YET ❗️❗️❗️ REFACTOR ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: 16+18=214
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -259,11 +261,110 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+For this kata you will have to forget how to add two numbers.
 
+It can be best explained using the following meme:
+
+Dayane Rivas adding up a sum while competing in the Guatemalan television show "Combate" in May 2016
+
+In simple terms, our method does not like the principle of carrying over numbers and just writes down every number it calculates :-)
+
+You may assume both integers are positive integers.
+
+Examples
+16+1821426+39515122+811103\large \begin{array}{lll} & 1 & 6 \\ + & 1 & 8 \\ \hline & 2 & 1 4 \\ \end{array} \qquad \large \begin{array}{lll} & 2 & 6 \\ + & 3 & 9 \\ \hline & 5 & 15 \\ \end{array} \qquad \large \begin{array}{lll} & 1 & 2 & 2 \\ + & & 8 & 1 \\ \hline & 1 & 10 & 3 \\ \end{array} 
++
+​
+  
+1
+1
+2
+​
+  
+6
+8
+14
+​
+ 
+​
+  
++
+​
+  
+2
+3
+5
+​
+  
+6
+9
+15
+​
+ 
+​
+  
++
+​
+  
+1
+1
+​
+  
+2
+8
+10
+​
+  
+2
+1
+3
+​
 */
 
-// console.log();
-// console.log();
+// const nyuszi: string = "🐰";
+// console.log("maci ❤️ : ", nyuszi);
+
+const add = (num1: number, num2: number): number => {
+    const greater = Math.max(num1, num2).toString();
+    // console.log(greater.length);
+
+    const numStr1: string = num1.toString();
+    const numStr2: string = num2.toString();
+    let solutionArr: number[] = [];
+
+    for (let i = 0; i < greater.length; i++) {
+        console.log(
+            "numbers: ",
+            numStr1[numStr1.length - i],
+            numStr2[numStr2.length - i]
+        );
+        let sum: number = 0;
+        if (numStr1[numStr1.length - 1 - i] === undefined) {
+            console.log("undefined");
+            sum = Number(numStr2[numStr2.length - 1 - i]);
+            // continue;
+        } else if (numStr2[numStr2.length - 1 - i] === undefined) {
+            console.log("undefined");
+            sum = Number(numStr1[numStr1.length - 1 - i]);
+            // continue;
+        } else {
+            sum =
+                Number(numStr1[numStr1.length - 1 - i]) +
+                Number(numStr2[numStr2.length - 1 - i]);
+            // console.log("sum: ", sum);
+        }
+        console.log("sum: ", sum);
+        solutionArr.unshift(sum);
+    }
+    console.log(solutionArr);
+
+    return Number(solutionArr.join(""));
+};
+
+// 1 10 3 (1103)
+// console.log(add(122, 81));
+// 31499
+console.log(add(1222, 30277));
 // console.log();
 // console.log();
 
