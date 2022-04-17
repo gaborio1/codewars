@@ -1,13 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
+const maxTriSum = (nums) => {
+    return 1;
+};
+const nthSmallest = (arr, pos) => {
+    const ascArr = arr.sort((a, b) => a - b);
+    return ascArr[pos - 1];
+};
+function nthSmallest2(arr, pos) {
+    return arr.sort((a, b) => a - b)[--pos];
+}
+function nthSmallest3(arr, pos) {
+    return [...arr].sort((a, b) => a - b)[pos - 1];
+}
+function nthSmallest4(arr, pos) {
+    for (let i = 1; i < pos; i++) {
+        arr.splice(arr.indexOf(Math.min(...arr)), 1);
+    }
+    return arr[arr.indexOf(Math.min(...arr))];
+}
+function nthSmallest5(arr, pos) {
+    var sortArray = arr.sort((a, b) => a - b);
+    return sortArray[pos - 1];
+}
 const add = (num1, num2) => {
     const greater = Math.max(num1, num2).toString();
     const numStr1 = num1.toString();
     const numStr2 = num2.toString();
     let solutionArr = [];
     for (let i = 0; i < greater.length; i++) {
-        console.log("numbers: ", numStr1[numStr1.length - i], numStr2[numStr2.length - i]);
+        console.log("numbers: ", numStr1[numStr1.length - 1 - i], numStr2[numStr2.length - 1 - i]);
         let sum = 0;
         if (numStr1[numStr1.length - 1 - i] === undefined) {
             console.log("undefined");
@@ -28,7 +51,6 @@ const add = (num1, num2) => {
     console.log(solutionArr);
     return Number(solutionArr.join(""));
 };
-console.log(add(1222, 30277));
 const tidyNumber = (num) => {
     const increasingNum = num
         .toString()

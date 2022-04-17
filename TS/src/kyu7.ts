@@ -213,7 +213,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MAXIMUM TRIPLET SUM (Array Series #7)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -221,18 +221,50 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task
+Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
 
+Notes :
+Array/list size is at least 3 .
+
+Array/list numbers could be a mixture of positives , negatives and zeros .
+
+Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
+
+Input >> Output Examples
+1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+Explanation:
+As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
+Explanation:
+As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
+Explanation:
+As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is (41) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
 */
 
-// console.log();
+const maxTriSum = (nums: number[]): number => {
+    return 1;
+};
+
+// 17
+// console.log((maxTriSum([3, 2, 6, 8, 2, 3]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: NTH SMALLEST ELEMENT (Array Series #4) DON'T REMOVE DUPLICATES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -240,15 +272,72 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Introduction and Warm-up (Highly recommended)
+Playing With Lists/Arrays Series
+Task
+Given an array/list [] of integers , Find the Nth smallest element in this array of integers
+
+Notes
+Array/list size is at least 3 .
+
+Array/list's numbers could be a mixture of positives , negatives and zeros .
+
+Repetition in array/list's numbers could occur , so don't Remove Duplications .
+
+Input >> Output Examples
+nthSmallest({3,1,2} ,2) ==> return (2) 
+Explanation:
+Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
+
+nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+Explanation:
+Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
+
+nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) 
+Explanation:
+Since the passed number is 4 , Then * the fourth smallest element in this array/list is 2*
+
+nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
+Explanation:
+Since the passed number is 5 , Then * the fifth smallest element in this array/list is 92*
+
 
 */
 
-// console.log();
+const nthSmallest = (arr: number[], pos: number): number => {
+    // SORT ASCENDING
+    const ascArr: number[] = arr.sort((a, b) => a - b);
+    // RETURN ELEMENT AT POSITION pos
+    return ascArr[pos - 1];
+};
+
+// 7
+// console.log(nthSmallest([15, 20, 7, 10, 4, 3], 3));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function nthSmallest2(arr: number[], pos: number) {
+    return arr.sort((a, b) => a - b)[--pos];
+}
+
+function nthSmallest3(arr: number[], pos: number) {
+    return [...arr].sort((a, b) => a - b)[pos - 1];
+}
+
+function nthSmallest4(arr: number[], pos: number) {
+    for (let i = 1; i < pos; i++) {
+        arr.splice(arr.indexOf(Math.min(...arr)), 1);
+    }
+    return arr[arr.indexOf(Math.min(...arr))];
+}
+
+function nthSmallest5(arr: number[], pos: number) {
+    var sortArray: Array<number> = arr.sort((a, b) => a - b);
+    return sortArray[pos - 1];
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ NOT SUBMITTED ON CODEWARS YET ❗️❗️❗️ REFACTOR ❗️❗️❗️
@@ -275,50 +364,6 @@ Examples
 16+1821426+39515122+811103\large \begin{array}{lll} & 1 & 6 \\ + & 1 & 8 \\ \hline & 2 & 1 4 \\ \end{array} \qquad \large \begin{array}{lll} & 2 & 6 \\ + & 3 & 9 \\ \hline & 5 & 15 \\ \end{array} \qquad \large \begin{array}{lll} & 1 & 2 & 2 \\ + & & 8 & 1 \\ \hline & 1 & 10 & 3 \\ \end{array} 
 +
 ​
-  
-1
-1
-2
-​
-  
-6
-8
-14
-​
- 
-​
-  
-+
-​
-  
-2
-3
-5
-​
-  
-6
-9
-15
-​
- 
-​
-  
-+
-​
-  
-1
-1
-​
-  
-2
-8
-10
-​
-  
-2
-1
-3
-​
 */
 
 // const nyuszi: string = "🐰";
@@ -335,8 +380,8 @@ const add = (num1: number, num2: number): number => {
     for (let i = 0; i < greater.length; i++) {
         console.log(
             "numbers: ",
-            numStr1[numStr1.length - i],
-            numStr2[numStr2.length - i]
+            numStr1[numStr1.length - 1 - i],
+            numStr2[numStr2.length - 1 - i]
         );
         let sum: number = 0;
         if (numStr1[numStr1.length - 1 - i] === undefined) {
@@ -364,7 +409,7 @@ const add = (num1: number, num2: number): number => {
 // 1 10 3 (1103)
 // console.log(add(122, 81));
 // 31499
-console.log(add(1222, 30277));
+// console.log(add(1222, 30277));
 // console.log();
 // console.log();
 
