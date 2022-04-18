@@ -1,9 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
-const maxTriSum = (nums) => {
-    return 1;
+const arrayLeaders = (numbers) => {
+    let leadersArr = [];
+    for (let i = 0; i <= numbers.length; i++) {
+        console.log(numbers[i]);
+    }
+    return leadersArr || [];
 };
+console.log(arrayLeaders([16, 17, 4, 3, 5, 2]));
+const maxTriSum = (nums) => {
+    const unuqueNums = new Set(nums);
+    console.log(unuqueNums);
+    const ascArr = Array.from(unuqueNums).sort((a, b) => b - a);
+    console.log(ascArr);
+    console.log(ascArr[0] + ascArr[1] + ascArr[2]);
+    return ascArr[0] + ascArr[1] + ascArr[2];
+};
+function maxTriSum2(nums) {
+    return [...new Set(nums)]
+        .sort((a, b) => b - a)
+        .slice(0, 3)
+        .reduce((c, d) => c + d, 0);
+}
+const maxTriSum3 = (nums) => nums
+    .filter((item, i) => nums.indexOf(item) == i)
+    .sort((a, b) => (a < b ? 1 : -1))
+    .slice(0, 3)
+    .reduce((a, b) => a + b, 0);
 const nthSmallest = (arr, pos) => {
     const ascArr = arr.sort((a, b) => a - b);
     return ascArr[pos - 1];

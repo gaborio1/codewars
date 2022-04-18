@@ -194,7 +194,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: ARRAY LEADERS (Array Series #3)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -202,17 +202,83 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+An element is leader if it is greater than The Sum all the elements to its right side.
 
+Task
+Given an array/list [] of integers , Find all the LEADERS in the array.
+
+Notes
+Array/list size is at least 3 .
+
+Array/list's numbers Will be mixture of positives , negatives and zeros
+
+Repetition of numbers in the array/list could occur.
+
+Returned Array/list should store the leading numbers in the same order in the original array/list .
+
+Input >> Output Examples
+arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+Explanation:
+4 is greater than the sum all the elements to its right side
+
+Note : The last element 0 is equal to right sum of its elements (abstract zero).
+
+arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
+Explanation:
+17 is greater than the sum all the elements to its right side
+
+5 is greater than the sum all the elements to its right side
+
+Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+
+arrayLeaders ({5, 2, -1}) ==> return {5, 2}
+Explanation:
+5 is greater than the sum all the elements to its right side
+
+2 is greater than the sum all the elements to its right side
+
+Note : The last element -1 is less than the sum of its right elements (abstract zero).
+
+arrayLeaders ({0, -1, -29, 3, 2}) ==> return {0, -1, 3, 2}
+Explanation:
+0 is greater than the sum all the elements to its right side
+
+-1 is greater than the sum all the elements to its right side
+
+3 is greater than the sum all the elements to its right side
+
+Note : The last element 2 is greater than the sum of its right elements (abstract zero).
 */
 
-// console.log();
+const arrayLeaders = (numbers: number[]): number[] => {
+    let leadersArr: number[] = [];
+
+    for (let i = 0; i <= numbers.length; i++) {
+        console.log(numbers[i]);
+        // console.table({
+        //     idx: i,
+        //     current: numbers[i],
+        //     rest: numbers.slice(i + 1).reduce((a, b) => a + b),
+        // });
+        // console.log(numbers[i] > numbers.slice(i + 1).reduce((a, b) => a + b));
+        // if (numbers[i] > numbers.slice(i + 1).reduce((a, b) => a + b)) {
+        //     console.log(numbers[i]);
+        //     leadersArr.push(numbers[i]);
+        // }
+    }
+    return leadersArr || [];
+};
+
+// [17, 5, 2]
+console.log(arrayLeaders([16, 17, 4, 3, 5, 2]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAXIMUM TRIPLET SUM (Array Series #7)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -252,16 +318,36 @@ Note : duplications are not included when summing , (i.e) the numbers added only
 */
 
 const maxTriSum = (nums: number[]): number => {
-    return 1;
+    const unuqueNums = new Set<number>(nums);
+    console.log(unuqueNums);
+    const ascArr: number[] = Array.from(unuqueNums).sort((a, b) => b - a);
+    console.log(ascArr);
+    console.log(ascArr[0] + ascArr[1] + ascArr[2]);
+
+    return ascArr[0] + ascArr[1] + ascArr[2];
 };
 
 // 17
-// console.log((maxTriSum([3, 2, 6, 8, 2, 3]));
+// console.log(maxTriSum([3, 2, 6, 8, 2, 3]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function maxTriSum2(nums: number[]): number {
+    return [...new Set(nums)]
+        .sort((a, b) => b - a)
+        .slice(0, 3)
+        .reduce((c, d) => c + d, 0);
+}
+
+const maxTriSum3 = (nums: number[]) =>
+    nums
+        .filter((item, i) => nums.indexOf(item) == i)
+        .sort((a, b) => (a < b ? 1 : -1))
+        .slice(0, 3)
+        .reduce((a, b) => a + b, 0);
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NTH SMALLEST ELEMENT (Array Series #4) DON'T REMOVE DUPLICATES
