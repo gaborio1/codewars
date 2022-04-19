@@ -3,12 +3,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
 const arrayLeaders = (numbers) => {
     let leadersArr = [];
-    for (let i = 0; i <= numbers.length; i++) {
-        console.log(numbers[i]);
+    const lastEl = numbers.length - 1;
+    for (let i = 0; i < lastEl; i++) {
+        let current = numbers[i];
+        if (current > numbers.slice(i + 1).reduce((a, b) => a + b)) {
+            leadersArr.push(current);
+        }
     }
-    return leadersArr || [];
+    if (numbers[lastEl] > 0) {
+        leadersArr.push(numbers[lastEl]);
+    }
+    return leadersArr;
 };
-console.log(arrayLeaders([16, 17, 4, 3, 5, 2]));
+const arrayLeaders2 = (numbers) => numbers.filter((item, i) => item > numbers.slice(i + 1).reduce((a, b) => a + b, 0));
+function arrayLeaders3(numbers) {
+    return numbers.filter((x, i) => x > numbers.slice(i + 1).reduce((a, b) => a + b, 0));
+}
+function arrayLeaders4(numbers) {
+    let sum = 0;
+    const results = [];
+    for (let i = numbers.length - 1; i >= 0; i--) {
+        const current = numbers[i];
+        if (current > sum) {
+            results.push(current);
+        }
+        sum += current;
+    }
+    return results.reverse();
+}
 const maxTriSum = (nums) => {
     const unuqueNums = new Set(nums);
     console.log(unuqueNums);

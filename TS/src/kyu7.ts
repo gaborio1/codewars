@@ -193,7 +193,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ REFACTOR ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ARRAY LEADERS (Array Series #3)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -253,30 +254,104 @@ Note : The last element 2 is greater than the sum of its right elements (abstrac
 
 const arrayLeaders = (numbers: number[]): number[] => {
     let leadersArr: number[] = [];
+    const lastEl: number = numbers.length - 1;
 
-    for (let i = 0; i <= numbers.length; i++) {
-        console.log(numbers[i]);
+    for (let i = 0; i < lastEl; i++) {
+        let current: number = numbers[i];
         // console.table({
         //     idx: i,
         //     current: numbers[i],
         //     rest: numbers.slice(i + 1).reduce((a, b) => a + b),
         // });
-        // console.log(numbers[i] > numbers.slice(i + 1).reduce((a, b) => a + b));
-        // if (numbers[i] > numbers.slice(i + 1).reduce((a, b) => a + b)) {
-        //     console.log(numbers[i]);
-        //     leadersArr.push(numbers[i]);
-        // }
+        if (current > numbers.slice(i + 1).reduce((a, b) => a + b)) {
+            // console.log(current);
+            leadersArr.push(current);
+        }
     }
-    return leadersArr || [];
+
+    if (numbers[lastEl] > 0) {
+        leadersArr.push(numbers[lastEl]);
+    }
+
+    return leadersArr;
 };
 
 // [17, 5, 2]
-console.log(arrayLeaders([16, 17, 4, 3, 5, 2]));
+// console.log(arrayLeaders([16, 17, 4, 3, 5, 2]));
 // console.log();
 // console.log();
 // console.log();
 
+/*
+
+arrayLeaders([16, 17, 4, 3, 5, 2])
+
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   idx   │   0    │
+│ current │   16   │
+│  rest   │   31   │
+└─────────┴────────┘
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   idx   │   1    │
+│ current │   17   │
+│  rest   │   14   │
+└─────────┴────────┘
+17
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   idx   │   2    │
+│ current │   4    │
+│  rest   │   10   │
+└─────────┴────────┘
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   idx   │   3    │
+│ current │   3    │
+│  rest   │   7    │
+└─────────┴────────┘
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│   idx   │   4    │
+│ current │   5    │
+│  rest   │   2    │
+└─────────┴────────┘
+5
+
+[ 17, 5, 2 ]
+*/
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const arrayLeaders2 = (numbers: number[]) =>
+    numbers.filter(
+        (item, i) => item > numbers.slice(i + 1).reduce((a, b) => a + b, 0)
+    );
+
+function arrayLeaders3(numbers: number[]): number[] {
+    return numbers.filter(
+        (x, i) => x > numbers.slice(i + 1).reduce((a, b) => a + b, 0)
+    );
+}
+
+function arrayLeaders4(numbers: number[]) {
+    let sum = 0;
+    const results = [];
+    for (let i = numbers.length - 1; i >= 0; i--) {
+        const current = numbers[i];
+        if (current > sum) {
+            results.push(current);
+        }
+        sum += current;
+    }
+    return results.reverse();
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAXIMUM TRIPLET SUM (Array Series #7)
