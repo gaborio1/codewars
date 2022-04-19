@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
+function wordValue(arr) {
+}
+function jumpingNumber(n) {
+}
 const arrayLeaders = (numbers) => {
     let leadersArr = [];
     const lastEl = numbers.length - 1;

@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+function partsSums(ls) {
+    return [1];
+}
+function parse(data) {
+    return [1];
+}
 class G964B {
 }
 G964B.revrot = (str, chunkSize) => {
@@ -16,9 +22,7 @@ G964B.revrot = (str, chunkSize) => {
         numArr.splice(0, chunkSize);
     }
     chunksArr.forEach((chunk) => {
-        let condition = Number.isInteger(chunk
-            .map((num) => Math.pow(num, 3))
-            .reduce((a, b) => a + b) / 2);
+        let condition = Number.isInteger(chunk.map((num) => Math.pow(num, 3)).reduce((a, b) => a + b) / 2);
         if (condition) {
             chunk = chunk.reverse();
         }

@@ -420,7 +420,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SUM BY FACTORS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -428,10 +428,35 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given an array of positive or negative integers
 
+I= [i1,..,in]
+
+you have to produce a sorted array P of the form
+
+[ [p, sum of all ij of I for which p is a prime factor (p positive) of ij] ...]
+
+P will be sorted by increasing order of the prime numbers. The final result has to be given as a string in Java, C#, C, C++ and as an array of arrays in other languages.
+
+Example:
+I = [12, 15]; //result = [[2, 12], [3, 27], [5, 15]]
+[2, 3, 5] is the list of all prime factors of the elements of I, hence the result.
+
+Notes:
+
+It can happen that a sum is 0 if some numbers are negative!
+Example: I = [15, 30, -45] 5 divides 15, 30 and (-45) so 5 appears in the result, the sum of the numbers for which 5 is a factor is 0 so we have [5, 0] in the result amongst others.
+
+In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
 */
 
-// console.log();
+class G965A {
+    public static sumOfDivided(lst: number[]): number[][] {
+        return [[1]];
+    }
+}
+
+// console.log(G965A.sumOfDivided([12, 15], [ [2, 12], [3, 27], [5, 15] ]));
 // console.log();
 // console.log();
 // console.log();
@@ -439,7 +464,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DECODE THE MORSE CODE ADVANCED
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -447,10 +472,64 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+In this kata you have to write a Morse code decoder for wired electrical telegraph.
+Electric telegraph is operated on a 2-wire line with a key that, when pressed, connects the wires together, which can be detected on a remote station. The Morse code encodes every character being transmitted as a sequence of "dots" (short presses on the key) and "dashes" (long presses on the key).
 
+When transmitting the Morse code, the international standard specifies that:
+
+"Dot" – is 1 time unit long.
+"Dash" – is 3 time units long.
+Pause between dots and dashes in a character – is 1 time unit long.
+Pause between characters inside a word – is 3 time units long.
+Pause between words – is 7 time units long.
+However, the standard does not specify how long that "time unit" is. And in fact different operators would transmit at different speed. An amateur person may need a few seconds to transmit a single character, a skilled professional can transmit 60 words per minute, and robotic transmitters may go way faster.
+
+For this kata we assume the message receiving is performed automatically by the hardware that checks the line periodically, and if the line is connected (the key at the remote station is down), 1 is recorded, and if the line is not connected (remote key is up), 0 is recorded. After the message is fully received, it gets to you for decoding as a string containing only symbols 0 and 1.
+
+For example, the message HEY JUDE, that is ···· · −·−−   ·−−− ··− −·· · may be received as follows:
+
+1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011
+
+As you may see, this transmission is perfectly accurate according to the standard, and the hardware sampled the line exactly two times per "dot".
+
+That said, your task is to implement two functions:
+
+Function decodeBits(bits), that should find out the transmission rate of the message, correctly decode the message to dots ., dashes - and spaces (one between characters, three between words) and return those as a string. Note that some extra 0's may naturally occur at the beginning and the end of a message, make sure to ignore them. Also if you have trouble discerning if the particular sequence of 1's is a dot or a dash, assume it's a dot.
+2. Function decodeMorse(morseCode), that would take the output of the previous function and return a human-readable string.
+
+NOTE: For coding purposes you have to use ASCII characters . and -, not Unicode characters.
+
+The Morse code table is preloaded for you (see the solution setup, to get its identifier in your language).
+
+
+Eg:
+  morseCodes(".--") //to access the morse translation of ".--"
+All the test strings would be valid to the point that they could be reliably decoded as described above, so you may skip checking for errors and exceptions, just do your best in figuring out what the message is!
+
+Good luck!
+
+After you master this kata, you may try to Decode the Morse code, for real.
 */
 
-// console.log();
+// ======================
+
+// import { MORSE_CODE } from './preloaded';
+// export const decodeBits = (bits: string) => {
+//   // ToDo: Accept 0's and 1's, return dots, dashes and spaces
+//   return bits.replace('111', '-').replace('000', ' ').replace('1', '.').replace('0', '');
+// };
+
+// export const decodeMorse = (morseCode: string) => {
+//   // ToDo: Accept dots, dashes and spaces, return human-readable message
+//   return morseCode.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '');
+// };
+
+// ======================
+const bits =
+    "1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011";
+
+// 'HEY JUDE'
+// console.log(decodeMorse(decodeBits(bits)));
 // console.log();
 // console.log();
 // console.log();
@@ -458,7 +537,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: TWICE LINEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -466,10 +545,31 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Consider a sequence u where u is defined as follows:
 
+The number u(0) = 1 is the first one in u.
+For each x in u, then y = 2 * x + 1 and z = 3 * x + 1 must be in u too.
+There are no other numbers in u.
+Ex: u = [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+
+1 gives 3 and 4, then 3 gives 7 and 10, 4 gives 9 and 13, then 7 gives 15 and 22 and so on...
+
+Task:
+Given parameter n the function dbl_linear (or dblLinear...) returns the element u(n) of the ordered (with <) sequence u (so, there are no duplicates).
+
+Example:
+dbl_linear(10) should return 22
+
+Note:
+Focus attention on efficiency
 */
 
-// console.log();
+function dblLinear(n: number): number {
+    return 1;
+}
+
+// 22
+// console.log(dblLinear(10));
 // console.log();
 // console.log();
 // console.log();
@@ -582,8 +682,6 @@ const sumOfIntervals6 = (intervals: [number, number][]): number => {
     (SET AS A SORTED ARRAY: [2, 3, 4, 5,    8, 9, 10] EASIER TO RECOGNISE PATTERN)
    JUST RETURN SET SIZE !
 */
-
-
 
 // 2️⃣ REFACTORED
 const sumOfIntervals = (intervals: [number, number][]): number => {
@@ -739,7 +837,7 @@ function tryMergeInterval(intervals: [number, number][]): boolean {
 export function sumOfIntervals3(intervals: [number, number][]): number {
     const mergedIntervals = [...intervals];
 
-    while (tryMergeInterval(mergedIntervals)) { }
+    while (tryMergeInterval(mergedIntervals)) {}
 
     return mergedIntervals.reduce((a, b) => a + Math.abs(b[1] - b[0]), 0);
 }

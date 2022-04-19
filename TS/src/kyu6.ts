@@ -232,7 +232,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SUMS OF PARTS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -240,10 +240,36 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Let us consider this example (array written in general format):
 
+ls = [0, 1, 3, 6, 10]
+
+Its following parts:
+
+ls = [0, 1, 3, 6, 10]
+ls = [1, 3, 6, 10]
+ls = [3, 6, 10]
+ls = [6, 10]
+ls = [10]
+ls = []
+The corresponding sums are (put together in a list): [20, 20, 19, 16, 10, 0]
+
+The function parts_sums (or its variants in other languages) will take as parameter a list ls and return a list of the sums of its parts as defined above.
+
+Other Examples:
+ls = [1, 2, 3, 4, 5, 6] 
+parts_sums(ls) -> [21, 20, 18, 15, 11, 6, 0]
+
+ls = [744125, 935, 407, 454, 430, 90, 144, 6710213, 889, 810, 2579358]
+parts_sums(ls) -> [10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 9291414, 9291270, 2581057, 2580168, 2579358, 0]
 */
 
-// console.log();
+function partsSums(ls: number[]): number[] {
+    return [1];
+}
+
+// [20, 20, 19, 16, 10, 0]
+// console.log(partSums([0, 1, 3, 6, 10]));
 // console.log();
 // console.log();
 // console.log();
@@ -251,7 +277,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MAKE THE DEADFISH SWIM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -259,11 +285,27 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Write a simple parser that will parse and run Deadfish.
 
+Deadfish has 4 commands, each 1 character long:
+
+i increments the value (initially 0)
+d decrements the value
+s squares the value
+o outputs the value into the return array
+Invalid characters should be ignored.
+
+parse("iiisdoso") => [8, 64]
 */
 
-// console.log();
-// console.log();
+/** return the output array and ignore all non-op characters */
+function parse(data: string): number[] {
+    return [1];
+}
+
+// [8, 64]
+// console.log(parse("iiisdoso"));
+// console.log(parse("iiisxxxdoso"));
 // console.log();
 // console.log();
 
@@ -354,7 +396,6 @@ s = "123456" gives "234561".
 
 class G964B {
     public static revrot = (str: string, chunkSize: number): string => {
-
         if (chunkSize <= 0 || str.length === 0) return "";
 
         let numArr: number[] = str.split("").map((el) => parseInt(el));
@@ -379,18 +420,18 @@ class G964B {
         chunksArr.forEach((chunk: number[]) => {
             // sum of the cubes of its digits is divisible by 2 ???
             let condition = Number.isInteger(
-                chunk
-                    .map((num) => Math.pow(num, 3))
-                    .reduce((a, b) => a + b) / 2
+                chunk.map((num) => Math.pow(num, 3)).reduce((a, b) => a + b) / 2
             );
-            if (condition) {                // REVERSE [ 5, 6, 3, 0 ] => [ 0, 3, 6, 5 ]
+            if (condition) {
+                // REVERSE [ 5, 6, 3, 0 ] => [ 0, 3, 6, 5 ]
                 chunk = chunk.reverse();
-            } else {                        // ROTATE [ 0, 0, 6, 5 ] => [ 0, 6, 5, 0 ]
+            } else {
+                // ROTATE [ 0, 0, 6, 5 ] => [ 0, 6, 5, 0 ]
                 let firstDigit = chunk[0];
                 chunk.splice(0, 1);
                 chunk.push(firstDigit);
             }
-        })
+        });
 
         // [ [ 0, 3, 6, 5 ], [ 0, 6, 5, 0 ], [ 7, 3, 4, 5 ], [ 6, 9, 4, 4 ] ]
         // console.log("after: ", chunksArr);
@@ -537,8 +578,6 @@ class G964B6 {
 }
 
 */
-
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  RECTANGLE INTO SQUARES
@@ -740,15 +779,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -801,10 +840,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -1380,7 +1419,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -1839,8 +1878,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -2133,7 +2172,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -2590,10 +2629,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -3893,8 +3932,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

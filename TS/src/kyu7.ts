@@ -156,7 +156,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: WORD VALUES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -164,10 +164,23 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a string "abc" and assuming that each letter in the string has a value equal to its position in the alphabet, our string will have a value of 1 + 2 + 3 = 6. This means that: a = 1, b = 2, c = 3 ....z = 26.
 
+You will be given a list of strings and your task will be to return the values of the strings as explained above multiplied by the position of that string in the list. For our purpose, position begins with 1.
+
+nameValue ["abc","abc abc"] should return [6,24] because of [ 6 * 1, 12 * 2 ]. Note how spaces are ignored.
+
+"abc" has a value of 6, while "abc abc" has a value of 12. Now, the value at position 1 is multiplied by 1 while the value at position 2 is multiplied by 2.
+
+Input will only contain lowercase characters and spaces.
 */
 
-// console.log();
+function wordValue(arr: string[]) {
+    // your code here
+}
+
+// [88, 12, 225]
+// console.log(wordValue(["codewars", "abc", "xyz"]));
 // console.log();
 // console.log();
 // console.log();
@@ -175,7 +188,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: JUMPING NUMBER (Special Numbers Series #4)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -183,10 +196,55 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+Jumping number is the number that All adjacent digits in it differ by 1.
 
+Task
+Given a number, Find if it is Jumping or not .
+
+Warm-up (Highly recommended)
+Playing With Numbers Series
+Notes
+Number passed is always Positive .
+
+Return the result as String .
+
+The difference between ‘9’ and ‘0’ is not considered as 1 .
+
+All single digit numbers are considered as Jumping numbers.
+
+Input >> Output Examples
+jumpingNumber(9) ==> return "Jumping!!"
+Explanation:
+It's single-digit number
+jumpingNumber(79) ==> return "Not!!"
+Explanation:
+Adjacent digits don't differ by 1
+jumpingNumber(23) ==> return "Jumping!!"
+Explanation:
+Adjacent digits differ by 1
+jumpingNumber(556847) ==> return "Not!!"
+Explanation:
+Adjacent digits don't differ by 1
+jumpingNumber(4343456) ==> return "Jumping!!"
+Explanation:
+Adjacent digits differ by 1
+jumpingNumber(89098) ==> return "Not!!"
+Explanation:
+Adjacent digits don't differ by 1
+jumpingNumber(32) ==> return "Jumping!!"
+Explanation:
+Adjacent digits differ by 1
 */
 
-// console.log();
+function jumpingNumber(n: number) {
+    // your code here
+}
+
+// JUMPING
+// console.log(jumpingNumber(1));
+// NOT
+// console.log(jumpingNumber(79);
 // console.log();
 // console.log();
 // console.log();
@@ -197,7 +255,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ARRAY LEADERS (Array Series #3)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: FILTER() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -329,6 +387,7 @@ arrayLeaders([16, 17, 4, 3, 5, 2])
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ FILTER() ❗️❗️❗️
 const arrayLeaders2 = (numbers: number[]) =>
     numbers.filter(
         (item, i) => item > numbers.slice(i + 1).reduce((a, b) => a + b, 0)

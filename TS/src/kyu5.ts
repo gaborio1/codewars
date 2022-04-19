@@ -268,7 +268,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MY SMALLEST CODE INTERPRETER (aka Brainf**k)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -276,18 +276,47 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Inspired from real-world Brainf**k, we want to create an interpreter of that language which will support the following instructions:
 
+> increment the data pointer (to point to the next cell to the right).
+< decrement the data pointer (to point to the next cell to the left).
++ increment (increase by one, truncate overflow: 255 + 1 = 0) the byte at the data pointer.
+- decrement (decrease by one, treat as unsigned byte: 0 - 1 = 255 ) the byte at the data pointer.
+. output the byte at the data pointer.
+, accept one byte of input, storing its value in the byte at the data pointer.
+[ if the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ] command.
+] if the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching [ command.
+The function will take in input...
+
+the program code, a string with the sequence of machine instructions,
+the program input, a string, possibly empty, that will be interpreted as an array of bytes using each character's ASCII code and will be consumed by the , instruction
+... and will return ...
+
+the output of the interpreted code (always as a string), produced by the . instruction.
+Implementation-specific details for this Kata:
+
+Your memory tape should be large enough - the original implementation had 30,000 cells but a few thousand should suffice for this Kata
+Each cell should hold an unsigned byte with wrapping behavior (i.e. 255 + 1 = 0, 0 - 1 = 255), initialized to 0
+The memory pointer should initially point to a cell in the tape with a sufficient number (e.g. a few thousand or more) of cells to its right. For convenience, you may want to have it point to the leftmost cell initially
+You may assume that the , command will never be invoked when the input stream is exhausted
+Error-handling, e.g. unmatched square brackets and/or memory pointer going past the leftmost cell is not required in this Kata. If you see test cases that require you to perform error-handling then please open an Issue in the Discourse for this Kata (don't forget to state which programming language you are attempting this Kata in).
 */
 
-// console.log();
+function brainLuck(code: string, input: string) {
+    // return output;
+  }
+  
+// 'Codewars'
+// console.log(brainLuck(',+[-.,+]','Codewars'+String.fromCharCode(255)));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// !!! SOLVED IN JS !!!
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: CHAIN ADDING FUNCTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -295,10 +324,35 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+We want to create a function that will add numbers together when called in succession.
 
+add(1)(2); // == 3
+We also want to be able to continue to add numbers to our chain.
+
+add(1)(2)(3); // == 6
+add(1)(2)(3)(4); //  == 10
+add(1)(2)(3)(4)(5); // == 15
+and so on.
+
+A single call should be equal to the number passed in.
+
+add(1); // == 1
+We should be able to store the returned values and reuse them.
+
+var addTwo = add(2);
+addTwo; // == 2
+addTwo + 5; // == 7
+addTwo(3); // == 5
+addTwo(3)(5); // == 10
+We can assume any number being passed in will be valid whole number.
 */
 
-// console.log();
+function add(x: number): any {
+    // Curry away, curry away, curry away me hearties!
+}
+
+// 15
+// console.log(add(1)(2)(3)(4)(5));
 // console.log();
 // console.log();
 // console.log();
@@ -306,7 +360,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: IS MY FRIEND CHEATING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -314,19 +368,54 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A friend of mine takes the sequence of all numbers from 1 to n (where n > 0).
+Within that sequence, he chooses two numbers, a and b.
+He says that the product of a and b should be equal to the sum of all numbers in the sequence, excluding a and b.
+Given a number n, could you tell me the numbers he excluded from the sequence?
+The function takes the parameter: n (n is always strictly greater than 0) and returns an array or a string (depending on the language) of the form:
 
+[(a, b), ...] or [[a, b], ...] or {{a, b}, ...} or or [{a, b}, ...]
+with all (a, b) which are the possible removed numbers in the sequence 1 to n.
+
+[(a, b), ...] or [[a, b], ...] or {{a, b}, ...} or ... will be sorted in increasing order of the "a".
+
+It happens that there are several possible (a, b). The function returns an empty array (or an empty string) if no possible numbers are found which will prove that my friend has not told the truth! (Go: in this case return nil).
+
+Examples:
+removNb(26) should return [(15, 21), (21, 15)]
+or
+removNb(26) should return { {15, 21}, {21, 15} }
+or
+removeNb(26) should return [[15, 21], [21, 15]]
+or
+removNb(26) should return [ {15, 21}, {21, 15} ]
+or
+removNb(26) should return "15 21, 21 15"
+or
+
+in C:
+removNb(26) should return  {{15, 21}{21, 15}} tested by way of strings.
+Function removNb should return a pointer to an allocated array of Pair pointers, each one also allocated. 
+Note
+See examples of returns for each language in "RUN SAMPLE TESTS"
 */
 
-// console.log();
+class G965 {
+    public static removeNb(n: number) {
+        // your code
+    }
+}
+
+// [[15,21],[21,15]]
+// console.log(removeNb(26));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ??? BEST TRAVEL ???
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: BEST TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

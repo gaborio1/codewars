@@ -1,6 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextBigger7 = exports.sumOfIntervals3 = void 0;
+class G965A {
+    static sumOfDivided(lst) {
+        return [[1]];
+    }
+}
+const bits = "1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011";
+function dblLinear(n) {
+    return 1;
+}
 class G964 {
 }
 const sumOfIntervals6 = (intervals) => {
