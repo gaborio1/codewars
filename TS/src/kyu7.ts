@@ -237,14 +237,37 @@ Explanation:
 Adjacent digits differ by 1
 */
 
-function jumpingNumber(n: number) {
-    // your code here
+function jumpingNumber(num: number): string {
+    if (num < 10) return "Jumping!!";
+    let isJumping: boolean = true;
+    const digitArr: number[] = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    for (let i = 0; i < digitArr.length - 1; i++) {
+        if (
+            digitArr[i] + 1 !== digitArr[i + 1] ||
+            digitArr[i] - 1 !== digitArr[i + 1]
+        ) {
+            isJumping = false;
+            break;
+        }
+        console.table({
+            current: digitArr[i],
+            next: digitArr[i + 1],
+            isJumping: isJumping,
+        });
+    }
+
+    // console.log(isJumping);
+
+    return isJumping ? "Jumping!!" : "Not!!";
 }
 
 // JUMPING
-// console.log(jumpingNumber(1));
+console.log(jumpingNumber(12323));
 // NOT
-// console.log(jumpingNumber(79);
+// console.log(jumpingNumber(789));
 // console.log();
 // console.log();
 // console.log();

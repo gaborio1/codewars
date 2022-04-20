@@ -3,8 +3,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
 function wordValue(arr) {
 }
-function jumpingNumber(n) {
+function jumpingNumber(num) {
+    if (num < 10)
+        return "Jumping!!";
+    let isJumping = true;
+    const digitArr = num
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    for (let i = 0; i < digitArr.length - 1; i++) {
+        if (digitArr[i] + 1 !== digitArr[i + 1] ||
+            digitArr[i] - 1 !== digitArr[i + 1]) {
+            isJumping = false;
+            break;
+        }
+        console.table({
+            current: digitArr[i],
+            next: digitArr[i + 1],
+            isJumping: isJumping,
+        });
+    }
+    return isJumping ? "Jumping!!" : "Not!!";
 }
+console.log(jumpingNumber(12323));
 const arrayLeaders = (numbers) => {
     let leadersArr = [];
     const lastEl = numbers.length - 1;
