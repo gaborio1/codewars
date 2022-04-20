@@ -187,10 +187,10 @@ function wordValue(arr: string[]) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: JUMPING NUMBER (Special Numbers Series #4)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ EVERY()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -237,7 +237,7 @@ Explanation:
 Adjacent digits differ by 1
 */
 
-function jumpingNumber(num: number): string {
+const jumpingNumber = (num: number): string => {
     if (num < 10) return "Jumping!!";
     let isJumping: boolean = true;
     const digitArr: number[] = num
@@ -246,7 +246,7 @@ function jumpingNumber(num: number): string {
         .map((el) => Number(el));
     for (let i = 0; i < digitArr.length - 1; i++) {
         if (
-            digitArr[i] + 1 !== digitArr[i + 1] ||
+            digitArr[i] + 1 !== digitArr[i + 1] &&
             digitArr[i] - 1 !== digitArr[i + 1]
         ) {
             isJumping = false;
@@ -259,20 +259,69 @@ function jumpingNumber(num: number): string {
         });
     }
 
-    // console.log(isJumping);
-
     return isJumping ? "Jumping!!" : "Not!!";
-}
+};
 
 // JUMPING
-console.log(jumpingNumber(12323));
+// console.log(jumpingNumber(12321));
 // NOT
-// console.log(jumpingNumber(789));
+// console.log(jumpingNumber(79));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function jumpingNumber2(n: number) {
+    let arr: number[] = String(n)
+        .split("")
+        .map((num) => Number(num));
+
+    if (arr.length === 1) {
+        return "Jumping!!";
+    }
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] - arr[i + 1] !== 1 && arr[i + 1] - arr[i] !== 1) {
+            return "Not!!";
+        }
+    }
+    return "Jumping!!";
+}
+
+// ❗️❗️❗️ EVERY() ❗️❗️❗️
+function jumpingNumber3(n: number): string {
+    let arr: string[] = [...String(n)];
+    return arr.slice(1).every((x, i) => Math.abs(+x - +arr[i]) == 1)
+        ? "Jumping!!"
+        : "Not!!";
+}
+
+function jumpingNumber4(n: number) {
+    // your code here
+    if (n < 10) {
+        return "Jumping!!";
+    }
+    let arr = n.toString().split("").map(Number);
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (Math.pow(arr[i] - arr[i + 1], 2) != 1) {
+            return "Not!!";
+        }
+    }
+    return "Jumping!!";
+}
+
+function jumpingNumber5(n: number) {
+    return n
+        .toString()
+        .split("")
+        .map((n) => parseInt(n))
+        .every((digit, index, arr) =>
+            index === 0 ? true : Math.abs(arr[index - 1] - arr[index]) === 1
+        )
+        ? "Jumping!!"
+        : "Not!!";
+}
 
 // ❗️❗️❗️ REFACTOR ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

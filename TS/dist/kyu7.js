@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
 function wordValue(arr) {
 }
-function jumpingNumber(num) {
+const jumpingNumber = (num) => {
     if (num < 10)
         return "Jumping!!";
     let isJumping = true;
@@ -12,7 +12,7 @@ function jumpingNumber(num) {
         .split("")
         .map((el) => Number(el));
     for (let i = 0; i < digitArr.length - 1; i++) {
-        if (digitArr[i] + 1 !== digitArr[i + 1] ||
+        if (digitArr[i] + 1 !== digitArr[i + 1] &&
             digitArr[i] - 1 !== digitArr[i + 1]) {
             isJumping = false;
             break;
@@ -24,8 +24,48 @@ function jumpingNumber(num) {
         });
     }
     return isJumping ? "Jumping!!" : "Not!!";
+};
+function jumpingNumber2(n) {
+    let arr = String(n)
+        .split("")
+        .map((num) => Number(num));
+    if (arr.length === 1) {
+        return "Jumping!!";
+    }
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] - arr[i + 1] !== 1 && arr[i + 1] - arr[i] !== 1) {
+            return "Not!!";
+        }
+    }
+    return "Jumping!!";
 }
-console.log(jumpingNumber(12323));
+function jumpingNumber3(n) {
+    let arr = [...String(n)];
+    return arr.slice(1).every((x, i) => Math.abs(+x - +arr[i]) == 1)
+        ? "Jumping!!"
+        : "Not!!";
+}
+function jumpingNumber4(n) {
+    if (n < 10) {
+        return "Jumping!!";
+    }
+    let arr = n.toString().split("").map(Number);
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (Math.pow(arr[i] - arr[i + 1], 2) != 1) {
+            return "Not!!";
+        }
+    }
+    return "Jumping!!";
+}
+function jumpingNumber5(n) {
+    return n
+        .toString()
+        .split("")
+        .map((n) => parseInt(n))
+        .every((digit, index, arr) => index === 0 ? true : Math.abs(arr[index - 1] - arr[index]) === 1)
+        ? "Jumping!!"
+        : "Not!!";
+}
 const arrayLeaders = (numbers) => {
     let leadersArr = [];
     const lastEl = numbers.length - 1;
