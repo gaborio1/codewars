@@ -1,7 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
-function wordValue(arr) {
+const wordValue = (arr) => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let solution = [];
+    arr.forEach((word, idx) => {
+        console.log(word);
+        let letterArr = word.split("");
+        console.log(letterArr);
+        let wordVal = 0;
+        letterArr.forEach((letter) => {
+            let letterVal = alphabet.indexOf(letter) + 1;
+            wordVal += letterVal;
+        });
+        solution.push(wordVal * (idx + 1));
+    });
+    return solution;
+};
+function wordValue2(arr) {
+    const w = " abcdefghijklmnopqrstuvwxyz";
+    return arr.map((x, i) => x.split("").reduce((sum, y) => sum + w.indexOf(y), 0) * (i + 1));
+}
+const wordValue3 = (arr) => arr
+    .map((a) => a
+    .split("")
+    .map((c) => (c === " " ? 0 : c.charCodeAt(0) - 96))
+    .reduce((z, x) => z + x, 0))
+    .map((e, i) => e * +[i + 1]);
+function wordValue4(arr) {
+    let res = [];
+    arr.forEach((str, ind) => {
+        let sum = 0;
+        for (let i = 0; i < str.length; i++) {
+            str.charCodeAt(i) !== 32
+                ? (sum += (str.charCodeAt(i) - 96) * (ind + 1))
+                : 0;
+        }
+        res.push(sum);
+    });
+    return res;
 }
 const jumpingNumber = (num) => {
     if (num < 10)

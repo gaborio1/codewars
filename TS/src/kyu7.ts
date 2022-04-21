@@ -155,8 +155,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: WORD VALUES
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: WORD VALUES MULTIPLIED BY ITS POSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -175,17 +175,75 @@ nameValue ["abc","abc abc"] should return [6,24] because of [ 6 * 1, 12 * 2 ]. N
 Input will only contain lowercase characters and spaces.
 */
 
-function wordValue(arr: string[]) {
-    // your code here
-}
+const wordValue = (arr: string[]) => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let solution: number[] = [];
+    arr.forEach((word, idx) => {
+        console.log(word);
+        let letterArr: string[] = word.split("");
+        console.log(letterArr);
+        let wordVal: number = 0;
+        letterArr.forEach((letter) => {
+            // let wordVal: number = 0;
+            let letterVal: number = alphabet.indexOf(letter) + 1;
+            wordVal += letterVal;
+            // console.table({
+            //     word: word,
+            //     letter: letter,
+            //     value: letterVal,
+            //     wordVal: wordVal,
+            //     solution: solution,
+            // });
+        });
+        solution.push(wordVal * (idx + 1));
+    });
+    // return solution.map((val, idx) => val * (idx + 1));
+    return solution;
+};
 
 // [88, 12, 225]
 // console.log(wordValue(["codewars", "abc", "xyz"]));
-// console.log();
+// console.log(wordValue(["lencsi", "mama", "papa"]));
+// [6,24]
+// console.log(wordValue(["abc", "abc abc"]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function wordValue2(arr: string[]): number[] {
+    const w: string = " abcdefghijklmnopqrstuvwxyz";
+    return arr.map(
+        (x, i) =>
+            x.split("").reduce((sum, y) => sum + w.indexOf(y), 0) * (i + 1)
+    );
+}
+
+const wordValue3 = (arr: string[]) =>
+    arr
+        .map((a) =>
+            a
+                .split("")
+                .map((c) => (c === " " ? 0 : c.charCodeAt(0) - 96))
+                .reduce((z, x) => z + x, 0)
+        )
+        .map((e, i) => e * +[i + 1]);
+
+function wordValue4(arr: string[]): number[] {
+    let res: number[] = [];
+
+    arr.forEach((str, ind) => {
+        let sum = 0;
+        for (let i = 0; i < str.length; i++) {
+            str.charCodeAt(i) !== 32
+                ? (sum += (str.charCodeAt(i) - 96) * (ind + 1))
+                : 0;
+        }
+        res.push(sum);
+    });
+
+    return res;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: JUMPING NUMBER (Special Numbers Series #4)
