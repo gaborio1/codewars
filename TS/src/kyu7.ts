@@ -139,7 +139,7 @@
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REDUCE OF EMPTY ARRAY, STR.CHARCODEAT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -162,34 +162,89 @@ Then return the difference between the❗️❗️❗️  sum of the digits ❗�
                        6
 */
 
-const calc = (str: string): number => {
+export const calc = (str: string): number => {
+    // ❗️❗️❗️ TypeError: Reduce of empty array with no initial value ❗️❗️❗️ CHECK FOR EMPTY ARRAY ❗️❗️❗️
+    if (str.length < 1) return 0;
     const strArr: string[] = str.split("");
-    let numStrTotal: string = "";
+    let numStrConcat: string = "";
+    //  CONCAT CHAR CODE FOR EACH CHAR TO numStrConcat
     strArr.forEach((char: string, idx) => {
-        console.log(char);
-        console.log(str.charCodeAt(idx));
-        // let charStr: string = "";
-        numStrTotal += str.charCodeAt(idx);
+        numStrConcat += str.charCodeAt(idx);
     });
-    console.log(numStrTotal);
-    const numStrMinusSeven: string = numStrTotal.replace(/7/g, "1");
-    console.log(numStrMinusSeven);
-    const total1: number = Number(numStrTotal);
-    const total2: number = Number(numStrMinusSeven);
+    //  REPLACE ALL INSTANCES OF "7" WITH "1"
+    const numStrMinusSeven: string = numStrConcat.replace(/7/g, "1");
+    //  GET SUM OF DIGITS FOR BOTH STRINGS
+    const total1: number = numStrConcat
+        .split("")
+        .map((el) => Number(el))
+        .reduce((a, b) => a + b);
+    const total2: number = numStrMinusSeven
+        .split("")
+        .map((el) => Number(el))
+        .reduce((a, b) => a + b);
+    //  SUBSTRACT
     const result: number = total1 - total2;
+
     return result;
 };
 
 // 6
 // console.log(calc("ABC"));
 
-// ❗️❗️❗️ expected 60000000000000 to equal 6
-console.log(calc("abcdef"));
-// ❗️❗️❗️ expected NaN to equal 456
+// console.log(calc("abcdef"));
 // console.log(calc("hkodededyvcmntdzdyqrbqhxipcynkjezcsxcbyjktjaugiwllioggxvwijjpqmoxngklpqvsphtsklcbugkpdlnwuinbfeqphpctbaqfmrorkxyrhvbnlfuyktrdnyavxjvublyqfgdopehfjgcvwmilrghgvnwkjeklaihsalcfdqtdsmzbtqocslkbrxycrdnxgoliezbiwobdvxcijtjkcwijjrygfucmpufpmxigjrnuhsckyqhehxvnmadkbrwqrbcjqlstamfmpmqgcurpdemyuqqearbnzpywaycwpntcwrndwxkadbdwgjqairzoplqiinrxgdzebebxlilekpqokdrhwhyrjlfpedqywfiaqjseorwpjhimazefhsypzvyxtjggytrawymqvkrrggpdezrdtotwqhizigvuvvkepskmajinldotdwnzwwplfyezkzxbmfclaisbpybnewwlnttgeezuhbnedugpjxtahmrlcoccfmwygbiosggjqrzxtibfthvucdfjxivfeijcjkgcfwusehzxtlqrphwizngcaefaktbzjuppdtloulpbqorxckntgumqwhqqotzltulsyzoxpqsjccewvxlrizjppnmeeihnwusjuhdpnwjjkucaizjxaspjxuypsybxywdwriwkynpgbzrbvszpntjkappmzhoywferhpyuaqcsbxozfyjmksvk"));
-// console.log();
+// console.log(calc(""));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function calc2(str: string): number {
+    return (
+        [...str]
+            .map((x) => x.charCodeAt(0))
+            .join("")
+            .split("")
+            .filter((x) => x === "7").length * 6
+    );
+}
+
+const calc3 = (x: string): number => {
+    return (
+        (x.replace(/./g, (x) => x.charCodeAt(0).toString()).match(/7/g) || [])
+            .length * 6
+    );
+};
+
+function calc4(str: string): number {
+    return (
+        Array.from(str, (c) => c.charCodeAt(0))
+            .toString()
+            .replace(/[^7]/g, "").length * 6
+    );
+}
+
+const calc5 = (str: string): number => {
+    const codes = str.split("").map((c: string) => c.charCodeAt(0));
+    const total1 = codes.reduce((a, b) => a + b, 0);
+    const total2 = codes
+        .map((x) => +x.toString().replace(/7/g, "1"))
+        .reduce((a, b) => a + b, 0);
+    return total1 - total2;
+};
+
+// ===
+
+function calc6(str: string): number {
+    const charCodes = str.split("").map((char) => char.charCodeAt(0));
+    return sum2(charCodes) - sum(charCodes.map(replace7with1));
+}
+
+function sum2(arr: number[]): number {
+    return arr.reduce((total, x) => total + x, 0);
+}
+
+function replace7with1(num: number): number {
+    return parseInt(num.toString().replace(/7/g, "1"));
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: WORD VALUES MULTIPLIED BY ITS POSITION

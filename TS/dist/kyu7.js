@@ -1,23 +1,61 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = void 0;
 const calc = (str) => {
+    if (str.length < 1)
+        return 0;
     const strArr = str.split("");
-    let numStrTotal = "";
+    let numStrConcat = "";
     strArr.forEach((char, idx) => {
-        console.log(char);
-        console.log(str.charCodeAt(idx));
-        numStrTotal += str.charCodeAt(idx);
+        numStrConcat += str.charCodeAt(idx);
     });
-    console.log(numStrTotal);
-    const numStrMinusSeven = numStrTotal.replace(/7/g, "1");
-    console.log(numStrMinusSeven);
-    const total1 = Number(numStrTotal);
-    const total2 = Number(numStrMinusSeven);
+    const numStrMinusSeven = numStrConcat.replace(/7/g, "1");
+    const total1 = numStrConcat
+        .split("")
+        .map((el) => Number(el))
+        .reduce((a, b) => a + b);
+    const total2 = numStrMinusSeven
+        .split("")
+        .map((el) => Number(el))
+        .reduce((a, b) => a + b);
     const result = total1 - total2;
     return result;
 };
-console.log(calc("abcdef"));
+exports.calc = calc;
+function calc2(str) {
+    return ([...str]
+        .map((x) => x.charCodeAt(0))
+        .join("")
+        .split("")
+        .filter((x) => x === "7").length * 6);
+}
+const calc3 = (x) => {
+    return ((x.replace(/./g, (x) => x.charCodeAt(0).toString()).match(/7/g) || [])
+        .length * 6);
+};
+function calc4(str) {
+    return (Array.from(str, (c) => c.charCodeAt(0))
+        .toString()
+        .replace(/[^7]/g, "").length * 6);
+}
+const calc5 = (str) => {
+    const codes = str.split("").map((c) => c.charCodeAt(0));
+    const total1 = codes.reduce((a, b) => a + b, 0);
+    const total2 = codes
+        .map((x) => +x.toString().replace(/7/g, "1"))
+        .reduce((a, b) => a + b, 0);
+    return total1 - total2;
+};
+function calc6(str) {
+    const charCodes = str.split("").map((char) => char.charCodeAt(0));
+    return sum2(charCodes) - sum(charCodes.map(replace7with1));
+}
+function sum2(arr) {
+    return arr.reduce((total, x) => total + x, 0);
+}
+function replace7with1(num) {
+    return parseInt(num.toString().replace(/7/g, "1"));
+}
 const wordValue = (arr) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     let solution = [];
