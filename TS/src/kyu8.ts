@@ -407,7 +407,9 @@ HINT: Try to use double assertion - first convert it to any and then convert it 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  Learning TypeScript. Basic Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -506,17 +508,22 @@ const var2Hex: number = parseInt("f00d", 16);
 console.log(var2Hex);
 // Export var4Binary variable of numeric type with binary value 111111.
 const var4Binary: number = parseInt("111111", 2);
+console.log(var4Binary);
 // Export var5Octal variable of numeric type with octal value 744.
 const var5Octal: number = parseInt("0744", 8);
+console.log(var5Octal);
 // STRING: Export var6String variable of string type with value Hello, world!.
 const var6String: string = "Hello, world!";
-
+console.log(var6String);
 // ARRAY: Export var7Array variable of array type with value [1, 'test', {a: 3}, 4, 5].
 const var7Array: any[] = [1, "test", { a: 3 }, 4, 5];
+console.log(var7Array);
 // Export var8NumericArray variable of numeric generic array type with value [1, 2, 3, 4, 5].
 const var8NumericArray: number[] = [1, 2, 3, 4, 5];
+console.log(var8NumericArray);
 // TUPLE: Export var9Tuple variable of tuple type with value ['key', 12345] - i.e. it should represent a value as a pair of a string and a number.
 const var9Tuple: [string, number] = ["key", 12345];
+console.log(var9Tuple);
 // ENUM: Export var10Enum variable with value Color.Blue from enum export enum Color {Red = 1, Green = 2, Blue = 4}.
 enum Color {
     Red = 1,
@@ -524,16 +531,30 @@ enum Color {
     Blue = 4,
 }
 const var10Enum: number = Color.Blue;
+console.log(var10Enum);
 
 // ANY: Export var11ArrayOfAny variable of Array<any> type with value [1, 'test', {a: 3}, 4, 5].
 const var11ArrayOfAny: any[] = [1, "test", { a: 3 }, 4, 5];
-// VOID: Export var12VoidFunction function that returns void.
-// const var12VoidFunction = (): void => void;
-// NULL: Export var13Null variable with type and value null.
-const var13Null: null = null; // UNDEFINED: Export var14Undefined variable with type and value undefined.
-const var14Undefined: any = undefined;
-// NEVER: Export var15NeverFunction function that returns never value.
-// const var15NeverFunction = (): never => {};
+console.log(var11ArrayOfAny);
+
+// ❗️❗️❗️ VOID: Export var12VoidFunction function that returns void.
+const var12VoidFunction = (): void => {
+    console.log("void");
+};
+const voidVar: void = var12VoidFunction();
+console.log(voidVar); // undefined
+// ❗️❗️❗️ NULL: Export var13Null variable with type and value null.
+const var13Null: null = null;
+console.log(var13Null);
+// UNDEFINED: Export var14Undefined variable with type and value undefined.
+const var14Undefined = undefined;
+console.log(var14Undefined);
+
+// ❗️❗️❗️ NEVER: Export var15NeverFunction function that returns never value.
+const var15NeverFunction = (): never => {
+    // console.log("never");
+    throw new Error();
+};
 // === === === === === === === ===
 
 // console.log();
@@ -541,7 +562,186 @@ const var14Undefined: any = undefined;
 // console.log();
 // console.log();
 
+/*
+
+❗️❗️❗️ VOID: 
+
+TypeScript Data Type - Void
+Similar to languages like Java, void is used where there is no data. For example, if a function does not return any value then you can specify void as return type.
+
+Example: void Copy
+function sayHi(): void { 
+    console.log('Hi!')
+} 
+
+let speech: void = sayHi(); 
+console.log(speech); //Output: undefined
+There is no meaning to assign void to a variable, as only null or undefined is assignable to void.
+
+let nothing: void = undefined;
+let num: void = 1; // Error
+
+*/
+
+/*
+
+❗️❗️❗️ NEVER:
+
+TypeScript Data Type - Never
+TypeScript introduced a new type never, which indicates the values that will never occur.
+
+The never type is used when you are sure that something is never going to occur. For example, you write a function which will not return to its end point or always throws an exception.
+
+Example: never Copy
+function throwError(errorMsg: string): never { 
+            throw new Error(errorMsg); 
+} 
+
+function keepProcessing(): never { 
+            while (true) { 
+         console.log('I always does something and never ends.')
+     }
+}
+In the above example, the throwError() function throws an error and keepProcessing() function is always executing and never reaches an end point because the while loop never ends. Thus, never type is used to indicate the value that will never occur or return from a function.
+
+*/
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+/*
+export enum Color {Red = 1, Green = 2, Blue = 4};
+export var var1Boolean: boolean = true,
+          var2Decimal: number = 13, 
+          var3Hex: number = 0xf00d, 
+          var4Binary : number = 0b111111,
+          var5Octal: number = 0o744,
+          var6String: string = 'Hello, world!',
+          var7Array: any[] =[1, 'test', {a: 3}, 4, 5],
+          var8NumericArray: Array<number> = [1, 2, 3, 4, 5],
+          var9Tuple:[string ,number] =['key', 12345],
+          var10Enum:Color = Color.Blue,
+          var11ArrayOfAny: Array<any> = [1, 'test', {a: 3}, 4, 5],
+          var12VoidFunction = function():void {},
+          var13Null : null =null,
+          var14Undefined  : undefined = undefined,
+    var15NeverFunction = function (): never  { throw new Error(); };
+          
+
+
+    export enum Color {Red = 1, Green = 2, Blue = 4};
+export const var1Boolean: boolean = true;
+export const var2Decimal: number = 13;
+export const var3Hex: number = 0xf00d;
+export const var4Binary: number =  0b111111;
+export const var5Octal: number = 0o744 ;
+export const var6String: string = "Hello, world!"
+export const var7Array: any[] = [1, 'test', {a: 3}, 4, 5];
+export const var8NumericArray: Array<number> = [1,2,3,4,5];
+export const var9Tuple: [string,number] = ['key', 12345];
+export const var10Enum: Color = Color.Blue;
+export const var11ArrayOfAny: Array<any> = [1, 'test', {a: 3}, 4, 5];
+export const var12VoidFunction = (): void => {console.log("Voiddd")};
+export const var13Null: null = null;
+export const var14Undefined: undefined = undefined;
+export const var15NeverFunction = (): never => { throw new Error("it doesnt work") };
+
+
+
+export const var1Boolean: boolean = true
+export const var2Decimal: number = 13
+export const var3Hex: number = 0xf00d
+export const var4Binary: number = 0b111111
+export const var5Octal: number = 0o744
+export const var6String: string = 'Hello, world!'
+export const var7Array: [number, string, { a: number }, number, number] = [
+  1,
+  'test',
+  { a: 3 },
+  4,
+  5,
+]
+export const var8NumericArray: number[] = [1, 2, 3, 4, 5]
+export const var9Tuple: [string, number] = ['key', 12345]
+export enum Color {
+  Red = 1,
+  Green = 2,
+  Blue = 4,
+}
+export const var10Enum: Color = Color.Blue
+export const var11ArrayOfAny: any[] = [1, 'test', { a: 3 }, 4, 5]
+export const var12VoidFunction: () => void = () => {}
+export const var13Null: null = null
+export const var14Undefined: undefined = undefined
+export const var15NeverFunction: () => never = () => {
+  throw new Error()
+}
+
+
+
+
+export var var1Boolean: boolean = true;
+export var var2Decimal: number = 13;
+export var var3Hex: number = 0xf00d;
+export var var4Binary: number =  0b111111;
+export var var5Octal: number = 0o744 ;
+export var var6String: string = "Hello, world!"
+export var var7Array: any[] = [1, 'test', {a: 3}, 4, 5];
+export var var8NumericArray: Array<number> = [1,2,3,4,5];
+export var var9Tuple: [string,number] = ['key', 12345];
+export enum Color {Red = 1, Green = 2, Blue = 4};
+export var var10Enum: Color = Color.Blue;
+export var var11ArrayOfAny: Array<any> = [1, 'test', {a: 3}, 4, 5];
+export var var12VoidFunction = (): void => {console.log("Voiddd")};
+export var var13Null: null = null;
+export var var14Undefined: undefined = undefined;
+export var var15NeverFunction = (): never => {throw new Error("it doesnt work")};
+
+
+
+
+export enum Color {Red = 1, Green = 2, Blue = 4};
+export const var1Boolean = true;
+export const var2Decimal = 13;
+export const var3Hex = 0xf00d;
+export const var4Binary = 0b111111;
+export const var5Octal = 0o744;
+export const var6String = 'Hello, world!';
+export const var7Array = [1, 'test', {a: 3}, 4, 5];
+export const var8NumericArray = [1, 2, 3, 4, 5];
+export const var9Tuple = ['key', 12345];
+export const var10Enum = Color.Blue;
+export const var11ArrayOfAny = [1, 'test', {a: 3}, 4, 5];
+export const var12VoidFunction = () => {};
+export const var13Null = null;
+export const var14Undefined = undefined;
+export const var15NeverFunction = () => { };
+
+
+
+export var var1Boolean: boolean = true;
+export var var2Decimal: number = 13;
+export var var3Hex: number = 0xf00d;
+export var var4Binary: number = 0b111111;
+export var var5Octal: number = 0o744;
+export var var6String: string = 'Hello, world!';
+export var var7Array: Array<any> = [1, 'test', {a: 3}, 4, 5];
+export var var8NumericArray: number[] = [1, 2, 3, 4, 5];
+export var var9Tuple: [string, number] = ['key', 12345];
+
+export enum Color {Red = 1, Green = 2, Blue = 4};
+export var var10Enum: Color = Color.Blue;
+
+export var var11ArrayOfAny: Array<any> = [1, 'test', {a: 3}, 4, 5];
+export function var12VoidFunction(): void {
+    return undefined;
+}
+export var var13Null: null = null;
+export var var14Undefined: undefined = undefined;
+export function var15NeverFunction(): never {
+    throw new Error(undefined);
+}
+
+*/
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ SEE OTHER SOLUTIONS TOO

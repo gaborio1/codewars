@@ -8,11 +8,17 @@ console.log(var2Decimal);
 const var2Hex = parseInt("f00d", 16);
 console.log(var2Hex);
 const var4Binary = parseInt("111111", 2);
+console.log(var4Binary);
 const var5Octal = parseInt("0744", 8);
+console.log(var5Octal);
 const var6String = "Hello, world!";
+console.log(var6String);
 const var7Array = [1, "test", { a: 3 }, 4, 5];
+console.log(var7Array);
 const var8NumericArray = [1, 2, 3, 4, 5];
+console.log(var8NumericArray);
 const var9Tuple = ["key", 12345];
+console.log(var9Tuple);
 var Color;
 (function (Color) {
     Color[Color["Red"] = 1] = "Red";
@@ -20,9 +26,21 @@ var Color;
     Color[Color["Blue"] = 4] = "Blue";
 })(Color || (Color = {}));
 const var10Enum = Color.Blue;
+console.log(var10Enum);
 const var11ArrayOfAny = [1, "test", { a: 3 }, 4, 5];
+console.log(var11ArrayOfAny);
+const var12VoidFunction = () => {
+    console.log("void");
+};
+const voidVar = var12VoidFunction();
+console.log(voidVar);
 const var13Null = null;
+console.log(var13Null);
 const var14Undefined = undefined;
+console.log(var14Undefined);
+const var15NeverFunction = () => {
+    throw new Error();
+};
 const arr2bin = (arr) => {
     return arr
         .filter((el) => typeof el === "number")

@@ -145,12 +145,48 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
 
+'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+
+total1 = 656667
+              ^
+total2 = 656661
+              ^
+Then return the difference between the❗️❗️❗️  sum of the digits ❗️❗️❗️ in total1 and total2:
+
+  (6 + 5 + 6 + 6 + 6 + 7)
+- (6 + 5 + 6 + 6 + 6 + 1)
+-------------------------
+                       6
 */
 
-// console.log();
-// console.log();
-// console.log();
+const calc = (str: string): number => {
+    const strArr: string[] = str.split("");
+    let numStrTotal: string = "";
+    strArr.forEach((char: string, idx) => {
+        console.log(char);
+        console.log(str.charCodeAt(idx));
+        // let charStr: string = "";
+        numStrTotal += str.charCodeAt(idx);
+    });
+    console.log(numStrTotal);
+    const numStrMinusSeven: string = numStrTotal.replace(/7/g, "1");
+    console.log(numStrMinusSeven);
+    const total1: number = Number(numStrTotal);
+    const total2: number = Number(numStrMinusSeven);
+    const result: number = total1 - total2;
+    return result;
+};
+
+// 6
+// console.log(calc("ABC"));
+
+// ❗️❗️❗️ expected 60000000000000 to equal 6
+console.log(calc("abcdef"));
+// ❗️❗️❗️ expected NaN to equal 456
+// console.log(calc("hkodededyvcmntdzdyqrbqhxipcynkjezcsxcbyjktjaugiwllioggxvwijjpqmoxngklpqvsphtsklcbugkpdlnwuinbfeqphpctbaqfmrorkxyrhvbnlfuyktrdnyavxjvublyqfgdopehfjgcvwmilrghgvnwkjeklaihsalcfdqtdsmzbtqocslkbrxycrdnxgoliezbiwobdvxcijtjkcwijjrygfucmpufpmxigjrnuhsckyqhehxvnmadkbrwqrbcjqlstamfmpmqgcurpdemyuqqearbnzpywaycwpntcwrndwxkadbdwgjqairzoplqiinrxgdzebebxlilekpqokdrhwhyrjlfpedqywfiaqjseorwpjhimazefhsypzvyxtjggytrawymqvkrrggpdezrdtotwqhizigvuvvkepskmajinldotdwnzwwplfyezkzxbmfclaisbpybnewwlnttgeezuhbnedugpjxtahmrlcoccfmwygbiosggjqrzxtibfthvucdfjxivfeijcjkgcfwusehzxtlqrphwizngcaefaktbzjuppdtloulpbqorxckntgumqwhqqotzltulsyzoxpqsjccewvxlrizjppnmeeihnwusjuhdpnwjjkucaizjxaspjxuypsybxywdwriwkynpgbzrbvszpntjkappmzhoywferhpyuaqcsbxozfyjmksvk"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============

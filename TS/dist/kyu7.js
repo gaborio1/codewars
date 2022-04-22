@@ -1,6 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = void 0;
+const calc = (str) => {
+    const strArr = str.split("");
+    let numStrTotal = "";
+    strArr.forEach((char, idx) => {
+        console.log(char);
+        console.log(str.charCodeAt(idx));
+        numStrTotal += str.charCodeAt(idx);
+    });
+    console.log(numStrTotal);
+    const numStrMinusSeven = numStrTotal.replace(/7/g, "1");
+    console.log(numStrMinusSeven);
+    const total1 = Number(numStrTotal);
+    const total2 = Number(numStrMinusSeven);
+    const result = total1 - total2;
+    return result;
+};
+console.log(calc("abcdef"));
 const wordValue = (arr) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     let solution = [];
