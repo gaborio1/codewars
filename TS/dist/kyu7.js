@@ -1,6 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = void 0;
+const solveB = (str) => {
+    if (str.length < 1)
+        return 0;
+    const substrings = str.match(/[aeiou]+/g);
+    const solution = substrings.sort((a, b) => b.length - a.length)[0]
+        .length;
+    return solution;
+};
+console.log(solveB("fgfgfg"));
 const calc = (str) => {
     if (str.length < 1)
         return 0;
