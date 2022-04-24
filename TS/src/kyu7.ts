@@ -1011,11 +1011,11 @@ const maxProduct2 = (numbers: number[], size: number): number => {
 };
 
 // 20
-console.log(maxProduct([4, 3, 5], 2));
+// console.log(maxProduct([4, 3, 5], 2));
 // 720
-console.log(maxProduct([10, 8, 7, 9], 3));
+// console.log(maxProduct([10, 8, 7, 9], 3));
 // 9600
-console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
+// console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -1028,14 +1028,10 @@ function maxProduct3(numbers: number[], size: number) {
         .reduce((ret, val) => ret * val, 1);
 }
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ SOLVED BUT NOT SUBMITTED ❗️❗️❗️
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-//  ❗️❗️❗️ REFACTOR TO HANDLE STRINGS WITH NO VOWELS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LONGEST VOWEL CHAIN
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: MATCH(AEIOU), SORT ARRAY BY LENGTH OF ELEMENTS, REGEX
+// KEYWORDS: MATCH(AEIOU), SORT ARRAY BY LENGTH OF ELEMENTS, REGEX, TEST()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1046,7 +1042,10 @@ The vowel substrings in the word codewarriors are o,e,a,io. The longest of these
 Good luck!
 */
 const solveB = (str: string): number => {
-    if (str.length < 1) return 0;
+    // ❗️❗️❗️ CHECK IF STRING HAS ANY VOWELS ❗️❗️❗️
+    if (!/[aeiou]/g.test(str)) return 0;
+    // !!! THIS IS NOW NOT NEEDED !!!
+    // if (str.length < 1) return 0;
     const substrings: string[] = str.match(/[aeiou]+/g)!;
     const solution: number = substrings.sort((a, b) => b.length - a.length)[0]
         .length;
@@ -1057,13 +1056,24 @@ const solveB = (str: string): number => {
 // console.log(solveB("codewarriors"));
 // 3
 // console.log(solveB("suoidea"));
-// ❗️❗️❗️ TypeError: Cannot read property 'sort' of null ❗️❗️❗️
+// FIXED:❗️❗️❗️ TypeError: Cannot read property 'sort' of null ❗️❗️❗️
 // console.log(solveB("fgfgfg"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function solveB2(s: string): number {
+    return Math.max(...(s.match(/[aeiou]+/gi) || []).map((x) => x.length));
+}
 
+const solveB3 = (str: string): number =>
+    Math.max(...str.split(/[^aeiou]/i).map((x) => x.length));
+
+function solveB4(str: string) {
+    return str
+        .split(/[^aeiou]+/)
+        .reduce((acc, vowelChain) => Math.max(acc, vowelChain.length), 0);
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:   CHAR CODE CALCULATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

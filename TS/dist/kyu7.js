@@ -32,9 +32,6 @@ const maxProduct2 = (numbers, size) => {
         .slice(0, size)
         .reduce((acc, curr) => acc * curr);
 };
-console.log(maxProduct([4, 3, 5], 2));
-console.log(maxProduct([10, 8, 7, 9], 3));
-console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
 function maxProduct3(numbers, size) {
     return numbers
         .sort((a, b) => a - b)
@@ -42,13 +39,22 @@ function maxProduct3(numbers, size) {
         .reduce((ret, val) => ret * val, 1);
 }
 const solveB = (str) => {
-    if (str.length < 1)
+    if (!/[aeiou]/g.test(str))
         return 0;
     const substrings = str.match(/[aeiou]+/g);
     const solution = substrings.sort((a, b) => b.length - a.length)[0]
         .length;
     return solution;
 };
+function solveB2(s) {
+    return Math.max(...(s.match(/[aeiou]+/gi) || []).map((x) => x.length));
+}
+const solveB3 = (str) => Math.max(...str.split(/[^aeiou]/i).map((x) => x.length));
+function solveB4(str) {
+    return str
+        .split(/[^aeiou]+/)
+        .reduce((acc, vowelChain) => Math.max(acc, vowelChain.length), 0);
+}
 const calc = (str) => {
     if (str.length < 1)
         return 0;
