@@ -1,6 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = void 0;
+function houseNumbersSum(inputArray) {
+    return 1;
+}
+function solveC(s) {
+}
+function specialNumber(n) {
+}
+function unluckyDays(year) {
+    return 1;
+}
+function maxProduct(numbers, size) {
+    return 1;
+}
 const solveB = (str) => {
     if (str.length < 1)
         return 0;
