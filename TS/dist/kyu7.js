@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = void 0;
+function compare(s1, s2) {
+    return true;
+}
+const closestMultiple10 = (num) => {
+    return num;
+};
 function houseNumbersSum(inputArray) {
     return 1;
 }
@@ -11,8 +17,29 @@ function specialNumber(n) {
 function unluckyDays(year) {
     return 1;
 }
-function maxProduct(numbers, size) {
-    return 1;
+function encode(str, n) {
+    return [1, 2, 3];
+}
+const maxProduct = (numbers, size) => {
+    const descArr = numbers.sort((a, b) => b - a);
+    const factorsArr = descArr.slice(0, size);
+    let solution = factorsArr.reduce((acc, curr) => acc * curr);
+    return solution;
+};
+const maxProduct2 = (numbers, size) => {
+    return numbers
+        .sort((a, b) => b - a)
+        .slice(0, size)
+        .reduce((acc, curr) => acc * curr);
+};
+console.log(maxProduct([4, 3, 5], 2));
+console.log(maxProduct([10, 8, 7, 9], 3));
+console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
+function maxProduct3(numbers, size) {
+    return numbers
+        .sort((a, b) => a - b)
+        .slice(-size)
+        .reduce((ret, val) => ret * val, 1);
 }
 const solveB = (str) => {
     if (str.length < 1)
@@ -22,7 +49,6 @@ const solveB = (str) => {
         .length;
     return solution;
 };
-console.log(solveB("fgfgfg"));
 const calc = (str) => {
     if (str.length < 1)
         return 0;

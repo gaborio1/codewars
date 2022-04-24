@@ -639,18 +639,38 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Compare two strings by comparing the sum of their values (ASCII character code).
+
+For comparing treat all letters as UpperCase
+null/NULL/Nil/None should be treated as empty strings
+If the string contains other characters than letters, treat the whole string as it would be empty
+Your method should return true, if the strings are equal and false if they are not equal.
+
+Examples:
+"AD", "BC"  -> equal
+"AD", "DD"  -> not equal
+"gf", "FG"  -> equal
+"zz1", ""   -> equal (both are considered empty)
+"ZzZz", "ffPFF" -> equal
+"kl", "lz"  -> not equal
+null, ""    -> equal
 
 */
+function compare(s1: string | null, s2: string | null): boolean {
+    return true;
+}
 
-// console.log();
-// console.log();
+// true
+// console.log(compare("AD", "BC"));
+// false
+// console.log(compare("AD", "DD"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: RETURN THE CLOSEST NUMBER MULTIPLE OF 10
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -658,10 +678,25 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a number return the closest number to it that is divisible by 10.
 
+Example input:
+
+22
+25
+37
+Expected output:
+
+20
+30
+40
 */
+const closestMultiple10 = (num: number) => {
+    return num;
+};
 
-// console.log();
+// 50
+// console.log((closestMultiple10(54));
 // console.log();
 // console.log();
 // console.log();
@@ -669,7 +704,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: RECURSION #1 - FACTORIAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -677,10 +712,22 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+This is a kata series that you can only solve using recursion.
+##1 - Factorial
 
+In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
+
+5! = 5 * 4 * 3 * 2 * 1 = 120.
+
+The value of 0! is 1.
+
+#Your task
+
+You have to create the function factorial that receives n and returns n!. You have to use recursion.
 */
 
-// console.log();
+// 6
+// console.log(factorial(3));
 // console.log();
 // console.log();
 // console.log();
@@ -688,7 +735,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DIGITAL CYPHER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -696,10 +743,44 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Introduction
+Digital Cypher assigns to each letter of the alphabet unique number. For example:
 
+ a  b  c  d  e  f  g  h  i  j  k  l  m
+ 1  2  3  4  5  6  7  8  9 10 11 12 13
+ n  o  p  q  r  s  t  u  v  w  x  y  z
+14 15 16 17 18 19 20 21 22 23 24 25 26
+Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
+
+ s  c  o  u  t
+19  3 15 21 20
+Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
+
+   s  c  o  u  t
+  19  3 15 21 20
+ + 1  9  3  9  1
+ ---------------
+  20 12 18 30 21
+  
+   m  a  s  t  e  r  p  i  e  c  e
+  13  1 19 20  5 18 16  9  5  3  5
++  1  9  3  9  1  9  3  9  1  9  3
+  --------------------------------
+  14 10 22 29  6 27 19 18  6  12 8
+Task
+Write a function that accepts str string and key number and returns an array of integers representing encoded str.
+
+Input / Output
+The str input string consists of lowercase characters only.
+The key input number is a positive integer.
+
+Example
+Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
+Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
 */
 
-// console.log();
+// [ 20, 12, 18, 30, 21]
+// console.log(encode("scout",1939));
 // console.log();
 // console.log();
 // console.log();
@@ -859,6 +940,9 @@ unluckyDays(1986) == 1
 function unluckyDays(year: number): number {
     return 1;
 }
+function encode(str: String, n: number): number[] {
+    return [1, 2, 3];
+}
 
 // 3
 // console.log(unluckyDays(2015));
@@ -869,10 +953,10 @@ function unluckyDays(year: number): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PRODUCT OF MAXIMUMS IN ARRAY (Array Series #2)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REDUCE WITH INITIAL VALUE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -905,19 +989,44 @@ maxProduct ({10, 3, -1, -27} , 3)  return (-30)
 Explanation:
 Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 10 * 3 * -1 = -30 .
 */
-function maxProduct(numbers: number[], size: number): number {
-    return 1;
-}
+
+// 1️⃣
+const maxProduct = (numbers: number[], size: number): number => {
+    // SORT DESCENDING
+    const descArr: number[] = numbers.sort((a, b) => b - a);
+    // GRAB SUB-ARRAY STARTING AT INDEX 0, WITH size NUMBER OF ELEMENTS
+    const factorsArr: number[] = descArr.slice(0, size);
+    // MULTIPLY ELEMENTS
+    let solution: number = factorsArr.reduce((acc, curr) => acc * curr);
+
+    return solution;
+};
+
+// 2️⃣
+const maxProduct2 = (numbers: number[], size: number): number => {
+    return numbers
+        .sort((a, b) => b - a)
+        .slice(0, size)
+        .reduce((acc, curr) => acc * curr);
+};
 
 // 20
-// console.log(maxProduct([4, 3, 5], 2));
+console.log(maxProduct([4, 3, 5], 2));
 // 720
-// console.log(maxProduct([10, 8, 7, 9], 3));
+console.log(maxProduct([10, 8, 7, 9], 3));
 // 9600
-// console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
+console.log(maxProduct([10, 2, 3, 8, 1, 10, 4], 5));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ REDUCE WITH INITIAL VALUE ❗️❗️❗️
+function maxProduct3(numbers: number[], size: number) {
+    return numbers
+        .sort((a, b) => a - b)
+        .slice(-size)
+        .reduce((ret, val) => ret * val, 1);
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ SOLVED BUT NOT SUBMITTED ❗️❗️❗️
@@ -949,7 +1058,7 @@ const solveB = (str: string): number => {
 // 3
 // console.log(solveB("suoidea"));
 // ❗️❗️❗️ TypeError: Cannot read property 'sort' of null ❗️❗️❗️
-console.log(solveB("fgfgfg"));
+// console.log(solveB("fgfgfg"));
 // console.log();
 // console.log();
 
