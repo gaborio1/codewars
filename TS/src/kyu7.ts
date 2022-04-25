@@ -778,7 +778,9 @@ Example
 Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
 Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
 */
-
+function encode(str: String, n: number): number[] {
+    return [1, 2, 3];
+}
 // [ 20, 12, 18, 30, 21]
 // console.log(encode("scout",1939));
 // console.log();
@@ -856,10 +858,10 @@ function solveC(s: string) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPECIAL NUMBER (Special Numbers Series #5)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: TEST()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -870,8 +872,6 @@ A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
 
 Given a number determine if it special number or not .
 
-Warm-up (Highly recommended)
-Playing With Numbers Series
 Notes
 The number passed will be positive (N > 0) .
 
@@ -901,19 +901,38 @@ Although, there is a digit (5) Within the interval But the second digit is not (
 specialNumber(513) ==> return "Special!!"
 specialNumber(709) ==> return "NOT!!"
 */
-function specialNumber(n: number) {
-    // your code here
-}
+const specialNumber = (num: number) => {
+    const numStr: string = num.toString();
+    // console.log(numStr);
+    // console.log(/[6-9]/g.test(numStr));
+    return /[6-9]/g.test(numStr) ? "NOT!!" : "Special!!";
+};
 
 // "Special!!"
-// console.log(specialNumber(2));
+// console.log(specialNumber(234055));
 // "NOT!!"
-// console.log(specialNumber(6));
+// console.log(specialNumber(6789));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+const specialNumbers = [0, 1, 2, 3, 4, 5].map((n) => n.toString());
 
+export const specialNumber2 = (n: number): string =>
+    n
+        .toString()
+        .split("")
+        .every((n) => specialNumbers.includes(n))
+        ? "Special!!"
+        : "NOT!!";
+
+function specialNumber3(n: number) {
+    return /[^0-5]/.test(n.toString()) ? "NOT!!" : "Special!!";
+}
+
+function specialNumber4(n: number) {
+    return n.toString().match(/[^0-5]/) ? "NOT!!" : "Special!!";
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: UNLUCKY DAYS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -939,9 +958,6 @@ unluckyDays(1986) == 1
 */
 function unluckyDays(year: number): number {
     return 1;
-}
-function encode(str: String, n: number): number[] {
-    return [1, 2, 3];
 }
 
 // 3

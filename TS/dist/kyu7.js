@@ -1,24 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = void 0;
 function compare(s1, s2) {
     return true;
 }
 const closestMultiple10 = (num) => {
     return num;
 };
+function encode(str, n) {
+    return [1, 2, 3];
+}
 function houseNumbersSum(inputArray) {
     return 1;
 }
 function solveC(s) {
 }
-function specialNumber(n) {
+const specialNumber = (num) => {
+    const numStr = num.toString();
+    return /[6-9]/g.test(numStr) ? "NOT!!" : "Special!!";
+};
+const specialNumbers = [0, 1, 2, 3, 4, 5].map((n) => n.toString());
+const specialNumber2 = (n) => n
+    .toString()
+    .split("")
+    .every((n) => specialNumbers.includes(n))
+    ? "Special!!"
+    : "NOT!!";
+exports.specialNumber2 = specialNumber2;
+function specialNumber3(n) {
+    return /[^0-5]/.test(n.toString()) ? "NOT!!" : "Special!!";
+}
+function specialNumber4(n) {
+    return n.toString().match(/[^0-5]/) ? "NOT!!" : "Special!!";
 }
 function unluckyDays(year) {
     return 1;
-}
-function encode(str, n) {
-    return [1, 2, 3];
 }
 const maxProduct = (numbers, size) => {
     const descArr = numbers.sort((a, b) => b - a);
