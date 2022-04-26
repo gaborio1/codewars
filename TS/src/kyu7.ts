@@ -703,10 +703,12 @@ const closestMultiple10 = (num: number) => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ WORKS IN IDE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: RECURSION #1 - FACTORIAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: FACTORIAL, RECURSION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -726,18 +728,36 @@ The value of 0! is 1.
 You have to create the function factorial that receives n and returns n!. You have to use recursion.
 */
 
-// 6
-// console.log(factorial(3));
+// 1️⃣
+const factorialA = (n: number): number => {
+    if (n < 2) {
+        return 1;
+    } else {
+        return n * factorialA(n - 1);
+    }
+};
+
+// 2️⃣
+const factorialA2 = (n: number): number => {
+    return n < 2 ? 1 : n * factorialA(n - 1);
+};
+
+// 120
+console.log(factorialA(5));
+// 720
+console.log(factorialA2(6));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ WORKS IN IDE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: DIGITAL CYPHER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: MAP(IDX)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -778,21 +798,48 @@ Example
 Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
 Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
 */
-function encode(str: String, n: number): number[] {
-    return [1, 2, 3];
+function encode(str: String, key: number): number[] {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    // SPLIT KEY INTO ARRAY OF DIGITS: [ 1, 9, 3, 9 ]
+    const keyArr: number[] = key
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    // console.log(keyArr);
+    // GET KEY LENGTH FOR SEQUENCING KEY: 4
+    const seqLength: number = keyArr.length;
+    // console.log(seqLength);
+    // MAKE ARRAY OF CHARACTERS: [ 's', 'c', 'o', 'u', 't' ]
+    const strArr: string[] = str.split("");
+    // console.log(strArr);
+    // REPLACE EVERY ELEMENT WITH ITS POSITION IN THE ALPHABET: [ 19, 3, 15, 21, 20 ]
+    const charPositionArr: number[] = strArr.map(
+        (char) => alphabet.indexOf(char) + 1
+    );
+    // console.log(charPositionArr);
+
+    // ADD CONSECUTIVE KEY DIGITS TO EACH DIGIT IN SEQUENCE (1,9,3,9,1,9,3,9,1...) [ 20, 12, 18, 30, 21 ]
+    const encodedArr: number[] = charPositionArr.map(
+        (el: number, idx) =>
+            (el += idx < seqLength ? keyArr[idx] : keyArr[idx % seqLength])
+    );
+
+    // console.log(encodedArr);
+
+    return encodedArr;
 }
 // [ 20, 12, 18, 30, 21]
-// console.log(encode("scout",1939));
+// console.log(encode("scout", 1939));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: SIMPLEN FUN - HOUSE NUMBERS SUM
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: SIMPLE FUN - HOUSE NUMBERS SUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: FOR OF, BREAK
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -817,9 +864,16 @@ Constraints: 5 ≤ inputArray.length ≤ 50, 0 ≤ inputArray[i] ≤ 10.
 
 [output] an integer
 */
-function houseNumbersSum(inputArray: number[]): number {
-    return 1;
-}
+const houseNumbersSum = (arr: number[]): number => {
+    let solution: number = 0;
+    for (let i = 0; i < arr.length; i++) {
+        solution += arr[i];
+        // if (arr[i] === 0) break;
+        // OR:
+        if (!arr[i]) break;
+    }
+    return solution;
+};
 
 // 11
 // console.log(houseNumbersSum([5, 1, 2, 3, 0, 1, 5, 0, 2]));
@@ -829,6 +883,33 @@ function houseNumbersSum(inputArray: number[]): number {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const houseNumbersSum2 = (arr: number[]): number =>
+    arr.splice(0, arr.indexOf(0)).reduce((a, v) => a + v, 0);
+
+function houseNumbersSum3(inputArray: number[]): number {
+    let counter: number = 0;
+
+    for (let i: number = 0; i < inputArray.length; i++) {
+        if (inputArray[i] !== 0) {
+            counter += inputArray[i];
+        } else {
+            break;
+        }
+    }
+    return counter;
+}
+
+// ❗️❗️❗️ FOR OF ❗️❗️❗️
+function houseNumbersSum4(inputArray: number[]): number {
+    let sum: number = 0;
+    4;
+    for (let i of inputArray) {
+        if (i === 0) break;
+        sum += i;
+    }
+    return sum;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NUMBERS IN STRINGS

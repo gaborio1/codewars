@@ -7,11 +7,62 @@ function compare(s1, s2) {
 const closestMultiple10 = (num) => {
     return num;
 };
-function encode(str, n) {
-    return [1, 2, 3];
+const factorialA = (n) => {
+    if (n < 2) {
+        return 1;
+    }
+    else {
+        return n * factorialA(n - 1);
+    }
+};
+const factorialA2 = (n) => {
+    return n < 2 ? 1 : n * factorialA(n - 1);
+};
+console.log(factorialA(5));
+console.log(factorialA2(6));
+function encode(str, key) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const keyArr = key
+        .toString()
+        .split("")
+        .map((el) => Number(el));
+    const seqLength = keyArr.length;
+    const strArr = str.split("");
+    const charPositionArr = strArr.map((char) => alphabet.indexOf(char) + 1);
+    const encodedArr = charPositionArr.map((el, idx) => (el += idx < seqLength ? keyArr[idx] : keyArr[idx % seqLength]));
+    return encodedArr;
 }
-function houseNumbersSum(inputArray) {
-    return 1;
+const houseNumbersSum = (arr) => {
+    let solution = 0;
+    for (let i = 0; i < arr.length; i++) {
+        solution += arr[i];
+        if (!arr[i])
+            break;
+    }
+    return solution;
+};
+const houseNumbersSum2 = (arr) => arr.splice(0, arr.indexOf(0)).reduce((a, v) => a + v, 0);
+function houseNumbersSum3(inputArray) {
+    let counter = 0;
+    for (let i = 0; i < inputArray.length; i++) {
+        if (inputArray[i] !== 0) {
+            counter += inputArray[i];
+        }
+        else {
+            break;
+        }
+    }
+    return counter;
+}
+function houseNumbersSum4(inputArray) {
+    let sum = 0;
+    4;
+    for (let i of inputArray) {
+        if (i === 0)
+            break;
+        sum += i;
+    }
+    return sum;
 }
 const solveC = (str) => {
     if (!/\d/g.test(str))
