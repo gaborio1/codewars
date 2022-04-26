@@ -830,10 +830,10 @@ function houseNumbersSum(inputArray: number[]): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NUMBERS IN STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: TEST(), MATCH(), ❓❓❓ SYMBOL ITERATOR ❓❓❓
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -845,19 +845,51 @@ For example, solve("gh12cdy695m1") = 695, because this is the largest of all num
 
 Good luck!
 */
-function solveC(s: string) {
-    // your code here
-}
+
+// 1️⃣
+const solveC = (str: string): number => {
+    // CHECK FOR NUMERIC DIGITS
+    if (!/\d/g.test(str)) return 0;
+    // FIND ALL DIGIT SUBSTRINGS AND CONVERT TO NUMBER
+    const digitSubs: number[] = str.match(/\d+/g)!.map((el) => Number(el));
+    // GET THE LARGEST ELEMENT
+    // ❓❓❓ Type 'number[] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator.ts(2488) ❓❓❓
+    // console.log(Math.max(...digitSubs));
+    const solution: number = Math.max(...digitSubs);
+    return solution;
+};
+
+// 2️⃣ REFACTORED:
+const solveC2 = (str: string): number => {
+    return /\d/g.test(str)
+        ? Math.max(...str.match(/\d+/g)!.map((el) => Number(el)))
+        : 0;
+};
 
 // 695
-// console.log(solve('gh12cdy695m1'));
+// console.log(solveC2("gh12cdy695m1"));
 // 9
-// console.log(solve('2ti9iei7qhr5'));
+// console.log(solveC2("2ti9iei7qhr5"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+const solveC3 = (s: string): number =>
+    Math.max(...s.split(/[a-z]/g).map((el) => +el));
 
+function solveC4(s: string) {
+    return Math.max(...s.split(/\D+/).map((e) => Number(e)));
+}
+
+function solveC5(s: string): number {
+    const numArray = s.replace(/\D+/g, " ").trim().split(" ").map(Number);
+    return Math.max(...numArray);
+}
+
+function solveC6(s: string): number {
+    const matches = s.match(/\d+/g)!;
+    return Math.max(...matches.map((el) => Number(el)));
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPECIAL NUMBER (Special Numbers Series #5)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

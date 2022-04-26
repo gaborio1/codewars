@@ -13,7 +13,29 @@ function encode(str, n) {
 function houseNumbersSum(inputArray) {
     return 1;
 }
-function solveC(s) {
+const solveC = (str) => {
+    if (!/\d/g.test(str))
+        return 0;
+    const digitSubs = str.match(/\d+/g).map((el) => Number(el));
+    const solution = Math.max(...digitSubs);
+    return solution;
+};
+const solveC2 = (str) => {
+    return /\d/g.test(str)
+        ? Math.max(...str.match(/\d+/g).map((el) => Number(el)))
+        : 0;
+};
+const solveC3 = (s) => Math.max(...s.split(/[a-z]/g).map((el) => +el));
+function solveC4(s) {
+    return Math.max(...s.split(/\D+/).map((e) => Number(e)));
+}
+function solveC5(s) {
+    const numArray = s.replace(/\D+/g, " ").trim().split(" ").map(Number);
+    return Math.max(...numArray);
+}
+function solveC6(s) {
+    const matches = s.match(/\d+/g);
+    return Math.max(...matches.map((el) => Number(el)));
 }
 const specialNumber = (num) => {
     const numStr = num.toString();
