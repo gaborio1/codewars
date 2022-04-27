@@ -752,9 +752,7 @@ console.log(factorialA2(6));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ WORKS IN IDE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DIGITAL CYPHER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: MAP(IDX)
@@ -798,25 +796,22 @@ Example
 Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
 Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
 */
-function encode(str: String, key: number): number[] {
+const encode = (str: String, key: number): number[] => {
+
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     // SPLIT KEY INTO ARRAY OF DIGITS: [ 1, 9, 3, 9 ]
     const keyArr: number[] = key
         .toString()
         .split("")
         .map((el) => Number(el));
-    // console.log(keyArr);
     // GET KEY LENGTH FOR SEQUENCING KEY: 4
     const seqLength: number = keyArr.length;
-    // console.log(seqLength);
     // MAKE ARRAY OF CHARACTERS: [ 's', 'c', 'o', 'u', 't' ]
     const strArr: string[] = str.split("");
-    // console.log(strArr);
     // REPLACE EVERY ELEMENT WITH ITS POSITION IN THE ALPHABET: [ 19, 3, 15, 21, 20 ]
     const charPositionArr: number[] = strArr.map(
         (char) => alphabet.indexOf(char) + 1
     );
-    // console.log(charPositionArr);
 
     // ADD CONSECUTIVE KEY DIGITS TO EACH DIGIT IN SEQUENCE (1,9,3,9,1,9,3,9,1...) [ 20, 12, 18, 30, 21 ]
     const encodedArr: number[] = charPositionArr.map(
@@ -824,9 +819,9 @@ function encode(str: String, key: number): number[] {
             (el += idx < seqLength ? keyArr[idx] : keyArr[idx % seqLength])
     );
 
-    // console.log(encodedArr);
 
     return encodedArr;
+
 }
 // [ 20, 12, 18, 30, 21]
 // console.log(encode("scout", 1939));
@@ -836,6 +831,63 @@ function encode(str: String, key: number): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function encode2(str: String, n: number): number[] {
+    const keys: number[] = n.toString().split('').map(Number);
+    return str.split('').map((code, index) => {
+        return code.toLowerCase().charCodeAt(0) - 96 + keys[index % keys.length]
+    });
+}
+
+
+function encode3(str: string, n: number): number[] {
+    return str.split('')
+        .map(c => c.charCodeAt(0) - 96)
+        .map((c, idx) => c + parseInt(n.toString()[idx % n.toString().length]))
+}
+
+/*
+function encode4(str: String, n: number): number[] {
+    const decodedArray: number[] = [];
+    const stringArray = str.split("");
+    const codeArray = stringArray.map(letter => letter.charCodeAt(0) - 96);
+    const numberArray = n.toString().split("").map(Number)
+    let tempArray = [...numberArray];
+
+    const result = codeArray.map(code => {
+        if (!tempArray.length) tempArray = [...numberArray];
+
+        // ❗️❗️❗️ Object is possibly 'undefined'.ts(2532) ❗️❗️❗️
+        return code += tempArray.shift()
+    })
+
+    return result;
+}
+*/
+
+/*
+function encode5(str: String, n: number): number[] {
+    const decodedArray: number[] = [];
+    const code = {
+        a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8,
+        i: 9, j: 10, k: 11, l: 12, m: 13, n: 14, o: 15,
+        p: 16, q: 17, r: 18, s: 19, t: 20, u: 21, v: 22,
+        w: 23, x: 24, y: 25, z: 26,
+    }
+    const stringArray = str.split("");
+    // ❗️❗️❗️ error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ a: number; b: number; c: number; d: number; e: number; f: number; g: number; h: number; i: number; j: number; k: number; l: number; m: number; n: number; o: number; p: number; q: number; r: number; s: number; t: number; u: number; ... 4 more ...; z: number; }'.
+    const codeArray = stringArray.map(letter => code[letter]);
+    const numberArray = n.toString().split("").map(str => parseInt(str))
+    let tempArray = [...numberArray];
+
+    const result = codeArray.map(code => {
+        if (!tempArray.length) tempArray = [...numberArray];
+
+        return code += tempArray.shift()
+    })
+
+    return result;
+}
+*/
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SIMPLE FUN - HOUSE NUMBERS SUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2308,10 +2360,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -3424,7 +3476,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -4500,8 +4552,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -4651,10 +4703,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -5651,11 +5703,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -6450,9 +6502,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -6734,8 +6786,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);

@@ -20,7 +20,7 @@ const factorialA2 = (n) => {
 };
 console.log(factorialA(5));
 console.log(factorialA2(6));
-function encode(str, key) {
+const encode = (str, key) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const keyArr = key
         .toString()
@@ -31,6 +31,17 @@ function encode(str, key) {
     const charPositionArr = strArr.map((char) => alphabet.indexOf(char) + 1);
     const encodedArr = charPositionArr.map((el, idx) => (el += idx < seqLength ? keyArr[idx] : keyArr[idx % seqLength]));
     return encodedArr;
+};
+function encode2(str, n) {
+    const keys = n.toString().split('').map(Number);
+    return str.split('').map((code, index) => {
+        return code.toLowerCase().charCodeAt(0) - 96 + keys[index % keys.length];
+    });
+}
+function encode3(str, n) {
+    return str.split('')
+        .map(c => c.charCodeAt(0) - 96)
+        .map((c, idx) => c + parseInt(n.toString()[idx % n.toString().length]));
 }
 const houseNumbersSum = (arr) => {
     let solution = 0;
