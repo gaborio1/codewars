@@ -18,8 +18,17 @@ const factorialA = (n) => {
 const factorialA2 = (n) => {
     return n < 2 ? 1 : n * factorialA(n - 1);
 };
-console.log(factorialA(5));
-console.log(factorialA2(6));
+const factorialA5 = (n) => {
+    var fact = 1;
+    function factorial(num) {
+        if (num > 0) {
+            fact = fact * num;
+            factorial(num - 1);
+        }
+        return fact;
+    }
+    return (factorial(n));
+};
 const encode = (str, key) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const keyArr = key
