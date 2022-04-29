@@ -669,10 +669,10 @@ function compare(s1: string | null, s2: string | null): boolean {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: RETURN THE CLOSEST NUMBER MULTIPLE OF 10
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ MATH.ROUND() ❗️❗️❗️ SET UP TYPE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -692,20 +692,54 @@ Expected output:
 40
 */
 const closestMultiple10 = (num: number) => {
-    return num;
+    return Math.round(num / 10) * 10;
 };
 
+// ❗️❗️❗️ Math.round ROUNDS TO NEAREST INTEGER ❗️❗️❗️
+//  1. DIVIDE BY 10 TO MAKE NUM DECIMAL 54 => 5.4
+//  2. RUN Math.round()                 5.4 => 5
+//  3. MULTIPLY BY 10                   5 => 50
+
 // 50
-// console.log((closestMultiple10(54));
+console.log(closestMultiple10(54));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ WORKS IN IDE, NOT TESTED IN CODEWARS YET ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function closestMultiple102(num: number) {
+    let last: number = num % 10;
+    if (last < 5) {
+        num -= last;
+    } else {
+        num += 10 - last;
+    }
+    return num;
+};
+
+// Parameter 'n' implicitly has an 'any' type.ts(7006)
+// const closestMultiple103 = n => {
+//     let s = n < 0 ? -1 : 1;
+//     n = n < 0 ? -n : n;
+//     let a = (n / 10 | 0) * 10;
+//     let b = a + 10;
+//     return s * ((n - a >= b - n) ? b : a);
+// };
+// ----------------------------------------------------
+// ❗️❗️❗️ SET UP TYPE ❗️❗️❗️ SEE OBJECTS IN TYPESCRIPT ❗️❗️❗️
+type F10 = (num: number) => number;
+
+const part10: F10 = (num) => {
+    if (num < 5) return num * -1;
+    return 10 - num;
+}
+
+export const closestMultiple104: F10 = (num) => {
+    return num + part10(num % 10);
+};
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: RECURSION #1 - FACTORIAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: FACTORIAL, RECURSION
@@ -743,14 +777,45 @@ const factorialA2 = (n: number): number => {
 };
 
 // 120
-console.log(factorialA(5));
+// console.log(factorialA(5));
 // 720
-console.log(factorialA2(6));
+// console.log(factorialA2(6));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+// const factorialA3 = (n: number, total: number = 1): number => {
+//     if (n === 0) {
+//         return 1;
+//     }
+
+//     if (n === 1) {
+//         return total;
+//     }
+
+//     return factorial(n - 1, total * n)
+// };
+
+// const factorialA4 = (n: number): number => {
+//     return (n > 0) ? n * this.factorial(n - 1) : 1;
+// };
+
+
+const factorialA5 = (n: number): number => {
+
+    var fact = 1;
+
+    function factorial(num: number): number {
+        if (num > 0) {
+            fact = fact * num;
+            factorial(num - 1);
+        }
+        return fact;
+    }
+    return (factorial(n));
+
+};
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DIGITAL CYPHER

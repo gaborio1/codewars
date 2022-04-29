@@ -5,8 +5,9 @@ function compare(s1, s2) {
     return true;
 }
 const closestMultiple10 = (num) => {
-    return num;
+    return Math.round(num / 10) * 10;
 };
+console.log(closestMultiple10(54));
 const factorialA = (n) => {
     if (n < 2) {
         return 1;
