@@ -1,13 +1,84 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = void 0;
-function compare(s1, s2) {
-    return true;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const compare = (str1, str2) => {
+    const getStrVal = (str) => {
+        if (!str || /[^A-Z]/ig.test(str))
+            return 0;
+        const upperCased = str.toUpperCase();
+        let value = 0;
+        for (let i = 0; i < upperCased.length; i++) {
+            value += upperCased.charCodeAt(i);
+        }
+        return value;
+    };
+    console.table({
+        value1: getStrVal(str1),
+        value2: getStrVal(str2),
+        isEqual: getStrVal(str1) === getStrVal(str2)
+    });
+    return getStrVal(str1) === getStrVal(str2);
+};
+function compare2(s1, s2) {
+    function fun(s) {
+        if (typeof (s) === 'string' && s.replace(/[a-z]/gi, '') === '')
+            return s.toUpperCase();
+        return '';
+    }
+    const red = (s) => fun(s).split("").reduce((acc, el) => acc + el.charCodeAt(0), 0);
+    return red(s1) === red(s2);
+}
+function compare3(s1, s2) {
+    function sum(str) {
+        if (!str || !str.length) {
+            return 0;
+        }
+        let arr = str.toUpperCase().split("").map(c => c.charCodeAt(0));
+        if (!arr.every(el => el >= "A".charCodeAt(0) && el <= "Z".charCodeAt(0))) {
+            return 0;
+        }
+        return arr.reduce((acc, el) => acc + el);
+    }
+    return sum(s1) === sum(s2);
+}
+function compare5(s1, s2) {
+    function count(x) {
+        let count = 0;
+        if (x)
+            for (let c of x.toUpperCase()) {
+                const cc = c.charCodeAt(0);
+                if (cc >= 65 && cc <= 90)
+                    count += cc;
+                else
+                    return 0;
+            }
+        return count;
+    }
+    return count(s1) == count(s2);
 }
 const closestMultiple10 = (num) => {
     return Math.round(num / 10) * 10;
 };
-console.log(closestMultiple10(54));
+function closestMultiple102(num) {
+    let last = num % 10;
+    if (last < 5) {
+        num -= last;
+    }
+    else {
+        num += 10 - last;
+    }
+    return num;
+}
+;
+const part10 = (num) => {
+    if (num < 5)
+        return num * -1;
+    return 10 - num;
+};
+const closestMultiple104 = (num) => {
+    return num + part10(num % 10);
+};
+exports.closestMultiple104 = closestMultiple104;
 const factorialA = (n) => {
     if (n < 2) {
         return 1;

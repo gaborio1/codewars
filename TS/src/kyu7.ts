@@ -629,11 +629,12 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️  INCLUDE THIS IN EXAMPLES (REGEX)❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: COMPARE STRINGS BY SUM OF CHARACTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEX MATCH NEGATED SET ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -656,19 +657,114 @@ Examples:
 null, ""    -> equal
 
 */
-function compare(s1: string | null, s2: string | null): boolean {
-    return true;
+const compare = (str1: string | null, str2: string | null): boolean => {
+
+    //  !!! REPLACE LETTERS WITH SPACE AND CHECK LENGTH !!!
+    const getStrVal = (str: string | null): number => {
+        // const validStr: string = str?.replace(/[^A-Z]/ig, "");
+
+        // ❗️❗️❗️ THESE TWO ARE REPLACED WITH !str BELOW ❗️❗️❗️
+        // if (str === null) return 0;
+        // if (str === "") return 0;
+        // FILTER OUT INVALID INPUT (NON LETTER CHARACTERS / EMPTY STR / null)
+        if (!str || /[^A-Z]/ig.test(str)) return 0;
+        const upperCased: string = str.toUpperCase()
+        let value: number = 0;
+
+        for (let i = 0; i < upperCased.length; i++) {
+            value += upperCased.charCodeAt(i);
+        }
+
+        return value;
+    }
+
+    console.table({
+        value1: getStrVal(str1),
+        value2: getStrVal(str2),
+        isEqual: getStrVal(str1) === getStrVal(str2)
+    })
+
+    return getStrVal(str1) === getStrVal(str2);
 }
 
+/*
+❗️❗️❗️ REGEX MATCH NEGATED SET "^" ❗️❗️❗️ MATCH ANY CHAR THAT IS NOT IN THE SET
+Match letters only /[A-Z]/ig
+Match anything not letters /[^A-Z]/ig
+Match number only /[0-9]/g or /\d+/g
+Match anything not number /[^0-9]/g or /\D+/g
+Match anything not number or letter /[^A-Z0-9]/ig
+
+*/
+
 // true
-// console.log(compare("AD", "BC"));
+// console.log(compare("aD", "Bc"));
 // false
 // console.log(compare("AD", "DD"));
+// true
+// console.log(compare("cx1", ""));
+// console.log(compare(null, ""));
+// console.log(compare("!!", "235"));
 // console.log();
 // console.log();
+
+/*
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│ value1  │  133   │
+│ value2  │  133   │
+│ isEqual │  true  │
+└─────────┴────────┘
+true
+*/
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function compare2(s1: string | null, s2: string | null): boolean {
+    function fun(s: string | null): string {
+        if (typeof (s) === 'string' && s.replace(/[a-z]/gi, '') === '') return s.toUpperCase();
+        return '';
+    }
 
+    const red = (s: string | null): number => fun(s).split("").reduce((acc, el) => acc + el.charCodeAt(0), 0);
+
+    return red(s1) === red(s2);
+}
+
+
+function compare3(s1: string | null, s2: string | null): boolean {
+    function sum(str: string | null): number {
+        if (!str || !str.length) { return 0; }
+        let arr = str.toUpperCase().split("").map(c => c.charCodeAt(0));
+        if (!arr.every(el => el >= "A".charCodeAt(0) && el <= "Z".charCodeAt(0))) { return 0; }
+        return arr.reduce((acc, el) => acc + el);
+    }
+
+    return sum(s1) === sum(s2);
+}
+
+
+//   function compare4(x, y):boolean {
+//     return (x = [x, y]
+//       .map(a => (/[^A-Za-z]/g.test(a) ? '' : a || '')
+//       .toUpperCase()
+//       .split('')
+//       .reduce((s, e) => s + e.charCodeAt(), 0)))[0] === x[1];
+//   }
+
+
+function compare5(s1: string | null, s2: string | null): boolean {
+    function count(x: string | null): number {
+        let count = 0;
+        if (x) for (let c of x.toUpperCase()) {
+            const cc = c.charCodeAt(0);
+            if (cc >= 65 && cc <= 90) count += cc;
+            else return 0;
+        }
+        return count;
+    }
+    return count(s1) == count(s2);
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: RETURN THE CLOSEST NUMBER MULTIPLE OF 10
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -701,7 +797,7 @@ const closestMultiple10 = (num: number) => {
 //  3. MULTIPLY BY 10                   5 => 50
 
 // 50
-console.log(closestMultiple10(54));
+// console.log(closestMultiple10(54));
 // console.log();
 // console.log();
 // console.log();
