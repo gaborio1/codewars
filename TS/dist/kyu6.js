@@ -7,6 +7,30 @@ function partsSums(ls) {
 function parse(data) {
     return [1];
 }
+class G964C {
+}
+G964C.stockList = (artList, catList) => {
+    let solutionArr = [];
+    let totalCounter = 0;
+    catList.forEach((cat) => {
+        let counter = 0;
+        artList.forEach((art) => {
+            if (art[0] === cat) {
+                let stock = Number(art.match(/\d+/g)[0]);
+                counter += stock;
+            }
+        });
+        solutionArr.push(`(${cat} : ${counter})`);
+        totalCounter += counter;
+    });
+    const solution = solutionArr.join(" - ");
+    return totalCounter
+        ? solution
+        : "";
+};
+var b, c;
+b = ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"];
+c = ["A", "B", "C", "D"];
 class G964B {
 }
 G964B.revrot = (str, chunkSize) => {

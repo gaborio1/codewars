@@ -540,10 +540,10 @@ function parse(data: string): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HELP THE BOOKSELLER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEX MATCH ONE OR MORE DIGITS TO EXTRACT NUMBER FROM STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -576,19 +576,92 @@ Note:
 In the result codes and their values are in the same order as in M.
 */
 
-// class G964C {
-//     public static stockList = (listOfArt, listOfCat) => {
-//         // your code
-//     };
-// }
+class G964C {
+    public static stockList = (artList: string[], catList: string[]): string => {
 
-// console.log();
+        let solutionArr: string[] = [];
+        // COUNT TOTAL NUMBER OF BOOKS IN STOCK
+        let totalCounter: number = 0;
+        // LOOP OVER CATLIST AND FIND EACH CATEGORY IN ARTLIST
+        catList.forEach((cat) => {
+            // ❗️❗️❗️ TRY DOING IT WITH DYNAMIC REGEX ❗️❗️❗️
+            // let regex = new RegExp(`/^${cat}/`);
+            let counter: number = 0;
+            artList.forEach((art) => {
+                // if (regex.test(art)) {
+                //     console.log(art);
+                // }
+                // CHECK IF FIRST CHARACTER OF art MATCHES cat ("B" IN "BKWR 250")
+                if (art[0] === cat) {
+                    // ❗️❗️❗️ EXTRACT NUMBER (ONE OR MORE NUMERIC DIGITS: "BTSQ 890" => [890], GET ONLY ELEMENT AT IDX 0) 
+                    let stock: number = Number(art.match(/\d+/g)![0]);
+                    // INCREMENT COUNTER WITH CURRENT STOCK
+                    counter += stock;
+                }
+            })
+            // ADD FORMATTED PAIR TO solutionArr (B : 1290)
+            solutionArr.push(`(${cat} : ${counter})`);
+            // UPDATE TOTALCOUNTER
+            totalCounter += counter;
+        })
+
+        // FORMAT SOLUTION [(A : 0), (B : 1290)...] => (A : 0) - (B : 1290) - (C : 515) - (D : 600)
+        const solution: string = solutionArr.join(" - ");
+
+        // RETURN EMPTY STRING IF ALL CATEGORIES ARE EMPTY, OTHERWISE SOLUTION
+        return totalCounter
+            ? solution
+            : "";
+
+    };
+
+}
+
+var b, c;
+b = ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"];
+c = ["A", "B", "C", "D"];
+
+// "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
+// console.log(G964C.stockList(b, c));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+// class G964C2 {
 
+//     public static stockList = (listOfArt, listOfCat) => {
+//         if( !listOfArt.length || !listOfCat.length ) return "";
+//         var count = listOfArt.reduce(function(cat, art) {
+//             cat[art[0]] = ~~cat[art[0]]+ +art.split(" ")[1];
+//             return cat
+//         },{});
+//         return listOfCat.map(function(cat){ return "(" +cat +" : " + (count[cat] || 0) + ")"; }).join(" - ");
+//     }
+// }
+
+
+// Variable 'bookList' implicitly has type 'any[]' in some locations where its type cannot be determined.ts(7034)
+// class G964C3 {
+//     public static stockList = (listOfArt: string[], listOfCat: string[]) => {
+//       if (listOfArt.length === 0) return "";
+
+//       const books: { [k: string]: number } = {};
+//       listOfCat.forEach((category) => (books[category] = 0));
+
+//       listOfArt.forEach((i) => {
+//         let [category, quantity] = i.split(" ");
+//         books[category[0]] += Number(quantity);
+//       });
+
+//       let bookList = [];
+//       listOfCat.forEach((category) =>
+//         bookList.push(`(${category} : ${books[category]})`)
+//       );
+
+//       return bookList.join(" - ");
+//     };
+//   }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: REVERSE OR ROTATE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
