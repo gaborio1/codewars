@@ -1,17 +1,237 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G9642 = void 0;
+exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+const convertFrac = (list) => {
+    let solution = "";
+    let denomsArr = [];
+    list.forEach((frac) => {
+        denomsArr.push(frac[1]);
+    });
+    let commDenom = 0;
+    let i = Math.max(...denomsArr);
+    while (true) {
+        if (denomsArr.every((denom) => i % denom === 0)) {
+            commDenom = i;
+            break;
+        }
+        i++;
+    }
+    const uniqueComps = new Set();
+    list.forEach((frac) => {
+        solution += `(${frac[0] * (commDenom / frac[1])},${commDenom})`;
+        uniqueComps.add(frac[0] * (commDenom / frac[1]));
+    });
+    let simplifiedSolution = "";
+    uniqueComps.add(commDenom);
+    const allCompsArr = Array.from(uniqueComps);
+    for (let i = 2; i <= commDenom / 2; i++) {
+        if (allCompsArr.every((comp) => comp % i === 0)) {
+            simplifiedSolution = solution
+                .replace(/\d+/g, (num) => (Number(num) / i).toString());
+        }
+    }
+    return simplifiedSolution
+        ? simplifiedSolution
+        : solution;
+};
+const convertFrac2 = (lst) => {
+    const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+    const lcm = (a, b) => (a * b) / gcd(a, b);
+    const cd = lst.reduce((a, [_, d]) => lcm(d, a), 1);
+    const lcd = lst.reduce((d, [a, c]) => gcd(d, (a * cd) / c), cd);
+    return lst.map(([n, d]) => `(${(n * cd) / d / lcd},${cd / lcd})`).join('');
+};
+const gcd = (x, y) => {
+    while (y != 0) {
+        const z = x % y;
+        x = y;
+        y = z;
+    }
+    return x;
+};
+const lcm = (x, y) => x * y / gcd(x, y);
+const convertFrac3 = (lst) => {
+    const common = lst
+        .map(([x, y]) => y)
+        .reduce(lcm, 1);
+    const acc = lst
+        .map(([x, y]) => x * (common / y));
+    const least = acc
+        .reduce(gcd, common);
+    return acc
+        .map(x => `(${x / least},${common / least})`)
+        .join('');
+};
+const findGcd = (a, b) => b ? findGcd(b, a % b) : a;
+const findLcm = (a, b) => a * b / findGcd(a, b);
+const findLcmOfList = (arr) => arr.reduce((lcm, num) => findLcm(lcm, num), 1);
+const simplify = (a, b) => {
+    const gcd = findGcd(a, b);
+    return gcd === 1 ? [a, b] : [a / gcd, b / gcd];
+};
+const convertFrac4 = (lst) => {
+    let denoms = [];
+    const list = lst.map(([n0, n1]) => {
+        const simpleArr = simplify(n0, n1);
+        denoms.push(simpleArr[1]);
+        return simpleArr;
+    });
+    const lcm = findLcmOfList(denoms);
+    return list.reduce((result, [n0, n1]) => `${result}(${n0 * lcm / n1},${lcm})`, '');
+};
+exports.convertFrac4 = convertFrac4;
+const convertFrac5 = (lst) => {
+    if (lst.length == 0)
+        return "";
+    const getPrimes = function (maxNum) {
+        const candidates = Array.from({ length: maxNum }, i => true);
+        const maxi = Math.floor(Math.sqrt(maxNum));
+        for (let i = 2; i <= maxi; i++) {
+            if (candidates[i]) {
+                const sqi = i * i;
+                for (let k = 0;; k++) {
+                    const j = sqi + i * k;
+                    if (j > maxNum)
+                        break;
+                    candidates[j] = false;
+                }
+            }
+        }
+        const primes = [];
+        for (let i = 2; i < candidates.length; i++) {
+            if (candidates[i]) {
+                primes.push(i);
+            }
+        }
+        return primes;
+    };
+    const max_denom = lst.map(i => i[1]).reduce((carry, item) => {
+        if (carry < item)
+            return item;
+        return carry;
+    });
+    const primes = getPrimes(max_denom + 1);
+    const factorize = function (num) {
+        const res = {};
+        primes.forEach(prime => {
+            let cnt = 0;
+            while (num > 1) {
+                if ((num % prime) === 0) {
+                    num = Math.floor(num / prime);
+                    cnt++;
+                }
+                else {
+                    break;
+                }
+            }
+            if (cnt > 0)
+                res[prime] = cnt;
+        });
+        return res;
+    };
+    const simplified_lst = lst.map(item => {
+        const fnum = factorize(item[0]);
+        const fdenom = factorize(item[1]);
+        const cfactors = {};
+        Object.keys(fnum).forEach(prime => {
+            if (fdenom[parseInt(prime)]) {
+                cfactors[parseInt(prime)] = (fnum[parseInt(prime)] <= fdenom[parseInt(prime)]) ? fnum[parseInt(prime)] : fdenom[parseInt(prime)];
+            }
+        });
+        const div = Object.keys(cfactors).reduce((carry, prime) => {
+            return carry * Math.pow(parseInt(prime), cfactors[parseInt(prime)]);
+        }, 1);
+        return [Math.floor(item[0] / div), Math.floor(item[1]) / div];
+    });
+    const fdenoms = simplified_lst.map(item => {
+        return factorize(item[1]);
+    });
+    const lcm_factors = {};
+    for (const factors of fdenoms) {
+        for (const prime in factors) {
+            if (lcm_factors[parseInt(prime)]) {
+                if (factors[parseInt(prime)] > lcm_factors[parseInt(prime)])
+                    lcm_factors[parseInt(prime)] = factors[parseInt(prime)];
+            }
+            else {
+                lcm_factors[parseInt(prime)] = factors[parseInt(prime)];
+            }
+        }
+    }
+    const lcd = Object.keys(lcm_factors).reduce((carry, prime) => {
+        return carry * Math.pow(parseInt(prime), lcm_factors[parseInt(prime)]);
+    }, 1);
+    return simplified_lst.map(item => {
+        const num = Math.floor(item[0] * lcd / item[1]);
+        return `(${num},${lcd})`;
+    }).join('');
+};
+exports.convertFrac5 = convertFrac5;
 function brainLuck(code, input) {
 }
-function add(x) {
+function add(n) {
+    const sum = function (y) {
+        return add(n + y);
+    };
+    sum.valueOf = function () {
+        return n;
+    };
+    return sum;
 }
+function add2(x) {
+    const fn = (y) => add(x + y);
+    fn.valueOf = () => x;
+    return fn;
+}
+function add3(x) {
+    const addNum = (next) => {
+        return add(x + next);
+    };
+    addNum.valueOf = () => {
+        return x;
+    };
+    return addNum;
+}
+function add4(x) {
+    let currentSum = x;
+    function f(y) {
+        if (typeof (y) === "number") {
+            currentSum += y;
+            return f;
+        }
+    }
+    f.toString = function () {
+        return currentSum;
+    };
+    return f;
+}
+function add5(n) { return Object.assign((i) => add(i + n), { valueOf: () => n }); }
 class G965 {
     static removeNb(n) {
     }
 }
-function chooseBestSum(t, k, ls) {
-    return 1;
-}
+const chooseBestSum = (maxDist, numTowns, list) => {
+    const generatePermutations = (list, size = list.length) => {
+        if (size > list.length)
+            return [];
+        else if (size == 1)
+            return list.map(d => [d]);
+        return list.flatMap(d => generatePermutations(list.filter(a => a !== d), size - 1).map(item => [d, ...item]));
+    };
+    const allPermutations = generatePermutations(list, numTowns);
+    console.log(allPermutations);
+    const allDistances = allPermutations.map((arr) => {
+        return arr.reduce((acc, curr) => acc + curr);
+    });
+    console.log(allDistances);
+    const distsInRange = allDistances.filter((dist) => dist <= maxDist);
+    console.log(distsInRange);
+    const solution = Math.max(...distsInRange, 0);
+    console.log(solution);
+    return solution
+        ? solution
+        : null;
+};
 class G964b {
 }
 G964b.gap = (gap, min, max) => {
@@ -54,7 +274,6 @@ G964b.gap = (gap, min, max) => {
     solution = allMatchesArr[0];
     return solution;
 };
-console.log(G964b.gap(6, 100, 110));
 const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));

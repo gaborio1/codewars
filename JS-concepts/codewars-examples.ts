@@ -164,10 +164,10 @@ function bmi2(weight: number, height: number): string {
     return $ <= 18.5
         ? "Underweight"
         : $ <= 25.0
-        ? "Normal"
-        : $ <= 30.0
-        ? "Overweight"
-        : "Obese";
+            ? "Normal"
+            : $ <= 30.0
+                ? "Overweight"
+                : "Obese";
 }
 
 const bmi3 = (weight: number, height: number, bmi: number = 0): string =>
@@ -192,10 +192,10 @@ function bmi4(weight: number, height: number): string {
     return $ <= 18.5
         ? "Underweight"
         : $ <= 25.0
-        ? "Normal"
-        : $ <= 30.0
-        ? "Overweight"
-        : "Obese";
+            ? "Normal"
+            : $ <= 30.0
+                ? "Overweight"
+                : "Obese";
 }
 
 const bmi5 = (weight: number, height: number, bmi: number = 0): string =>
@@ -531,7 +531,7 @@ arr5.flat();
 
 */
 const flattenAndSort = (inputArray: number[][]): number[] => {
-    // 1️⃣  ❗️❗️❗️ THIS IS NOT WORKING IN CODEWARS ❗️❗️❗️
+    // 1️⃣  ❗️❗️❗️ THIS IS NOT WORKING IN CODEWARS ❗️❗️❗️ 
     // return inputArray
     //     .flat()
     //     .sort((a, b) => a - b);
@@ -541,6 +541,19 @@ const flattenAndSort = (inputArray: number[][]): number[] => {
         .reduce((acc, curr) => acc.concat(curr), [])
         .sort((a, b) => a - b);
 };
+/*
+https://stackoverflow.com/questions/53556409/flatmap-flat-flatten-doesnt-exist-on-type-any
+
+❗️❗️❗️ To flat single level array
+
+arr.reduce((acc, val) => acc.concat(val), []);
+
+❗️❗️❗️ To flat multi level array
+
+function flatDeep(arr, d = 1) {
+   return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), []) : arr.slice();
+};
+*/
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // .SORT():

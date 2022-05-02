@@ -247,26 +247,272 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES (REPLACE) ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: COMMON DENOMINATORS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: EVERY(), SET(),  ❗️❗️❗️ REPLACE(PERFORM MATH OPERATIONS ON NUMERIC STRINGS)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Common denominators
 
+You will have a list of rationals in the form
+
+{ {numer_1, denom_1} , ... {numer_n, denom_n} } 
+or
+[ [numer_1, denom_1] , ... [numer_n, denom_n] ] 
+or
+[ (numer_1, denom_1) , ... (numer_n, denom_n) ] 
+where all numbers are positive ints. You have to produce a result in the form:
+
+(N_1, D) ... (N_n, D) 
+or
+[ [N_1, D] ... [N_n, D] ] 
+or
+[ (N_1', D) , ... (N_n, D) ] 
+or
+{{N_1, D} ... {N_n, D}} 
+or
+"(N_1, D) ... (N_n, D)"
+depending on the language (See Example tests) in which D is as small as possible and
+
+N_1/D == numer_1/denom_1 ... N_n/D == numer_n,/denom_n.
+Example:
+convertFracs [(1, 2), (1, 3), (1, 4)] `shouldBe` [(6, 12), (4, 12), (3, 12)]
+Note:
+Due to the fact that the first translations were written long ago - more than 6 years - these first translations have only irreducible fractions.
+
+Newer translations have some reducible fractions. To be on the safe side it is better to do a bit more work by simplifying fractions even if they don't have to be.
 */
+const convertFrac = (list: [number, number][]): string => {
 
-// console.log();
+    let solution: string = "";
+    let denomsArr: number[] = [];
+    // FIND COMMON DENOMINATOR
+    list.forEach((frac) => {
+        denomsArr.push(frac[1]);
+    });
+    // console.log("denomsArr: ", denomsArr); 
+    // denomsArr:  [ 2, 5, 4, 9, 10 ]
+
+    let commDenom: number = 0;
+    let i = Math.max(...denomsArr);
+    while (true) {
+        if (denomsArr.every((denom) => i % denom === 0)) {
+            commDenom = i;
+            break;
+        }
+        i++;
+    }
+    // console.log("common denom: ", commDenom);
+    // common denom:  180
+
+    // SET FOR ALL UNIQUE COMPONENTS (FURTHER REDUCTION OF FRACTIONS)
+    const uniqueComps = new Set<number>();
+
+    list.forEach((frac) => {
+        // (90,180) AND SO ON...
+        solution += `(${frac[0] * (commDenom / frac[1])},${commDenom})`;
+        uniqueComps.add(frac[0] * (commDenom / frac[1]));
+    })
+    // console.log(uniqueComps);
+    // Set(5) { 90, 144, 135, 120, 126 }
+
+    // SIMPLIFY FRACTIONS IF POSSIBLE (FIND COMMON DIVIDER FOR ALL COMPONENTS)
+    let simplifiedSolution: string = "";
+    // ADD COMMON DENOMINATOR TO SET
+    uniqueComps.add(commDenom);
+    // MAKE ARRAY FROM SET FOR ARRAY METHOD EVERY
+    const allCompsArr: number[] = Array.from(uniqueComps);
+    // console.log("allCompsArr: ", allCompsArr);
+    // allCompsArr:  [ 90, 144, 135, 120, 126, 180 ]
+    for (let i = 2; i <= commDenom / 2; i++) {
+        if (allCompsArr.every((comp) => comp % i === 0)) {
+            // ❗️❗️❗️ REPLACE EVERY NUMBER IN STRING WITH ITSELF DIVIDED BY i (COMMON DIVIDER)
+            simplifiedSolution = solution
+                .replace(/\d+/g, (num: string) => (Number(num) / i).toString());
+        }
+    }
+
+    // console.log("simplifiedSolution: ", simplifiedSolution);
+    // simplifiedSolution:  (30,60)(48,60)(45,60)(40,60)(42,60)
+
+    // IF SIMPLIFIED SOLUTION EXIST, RETURN IT, OTHERWISE RETURN SOLUTION
+    return simplifiedSolution
+        ? simplifiedSolution
+        : solution;
+}
+
+// "(6,12)(4,12)(3,12)"
+// console.log(convertFrac([[1, 2], [1, 3], [1, 4]]));
+// ============================================================
+// ❗️❗️❗️ SOLUTION:
+// '(90,180)(144,180)(135,180)(120,180)(126,180)'
+//  ❗️❗️❗️ SIMPLIFIED SOLUTION:
+// '(30,60) (48,60)  (45,60)  (40,60)  (42,60)'
+// console.log(convertFrac([[1, 2], [4, 5], [3, 4], [6, 9], [7, 10]]));
+// ============================================================
+
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+const convertFrac2 = (lst: [number, number][]): string => {
+    const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+    const lcm = (a: number, b: number): number => (a * b) / gcd(a, b);
+    const cd = lst.reduce((a, [_, d]) => lcm(d, a), 1);
+    const lcd = lst.reduce((d, [a, c]) => gcd(d, (a * cd) / c), cd);
+    return lst.map(([n, d]) => `(${(n * cd) / d / lcd},${cd / lcd})`).join('');
+}
+// ============================================================
 
+
+const gcd = (x: number, y: number): number => {
+    while (y != 0) {
+        const z = x % y;
+        x = y;
+        y = z;
+    }
+
+    return x;
+}
+
+const lcm = (x: number, y: number): number =>
+    x * y / gcd(x, y);
+
+
+const convertFrac3 = (lst: [number, number][]): string => {
+    const common = lst
+        .map(([x, y]) => y)
+        .reduce(lcm, 1);
+
+    const acc = lst
+        .map(([x, y]) => x * (common / y))
+
+    const least = acc
+        .reduce(gcd, common);
+
+    return acc
+        .map(x => `(${x / least},${common / least})`)
+        .join('');
+}
+// ============================================================
+const findGcd = (a: number, b: number): number => b ? findGcd(b, a % b) : a;
+
+const findLcm = (a: number, b: number): number => a * b / findGcd(a, b)
+
+const findLcmOfList = (arr: number[]): number => arr.reduce((lcm, num) => findLcm(lcm, num), 1)
+
+const simplify = (a: number, b: number): [number, number] => {
+    const gcd = findGcd(a, b)
+    return gcd === 1 ? [a, b] : [a / gcd, b / gcd]
+}
+
+export const convertFrac4 = (lst: [number, number][]): string => {
+    let denoms: number[] = [];
+    const list = lst.map(([n0, n1]) => {
+        const simpleArr = simplify(n0, n1)
+        denoms.push(simpleArr[1])
+        return simpleArr
+    })
+
+    const lcm = findLcmOfList(denoms)
+
+    return list.reduce((result, [n0, n1]) => `${result}(${n0 * lcm / n1},${lcm})`, '')
+
+}
+// ============================================================
+interface IFactorized {
+    [key: number]: number;
+}
+
+export const convertFrac5 = (lst: [number, number][]): string => {
+    if (lst.length == 0)
+        return "";
+    const getPrimes = function (maxNum: number) {
+        const candidates: boolean[] = Array.from({ length: maxNum }, i => true);
+        const maxi = Math.floor(Math.sqrt(maxNum));
+        for (let i = 2; i <= maxi; i++) {
+            if (candidates[i]) {
+                const sqi = i * i;
+                for (let k = 0; ; k++) {
+                    const j = sqi + i * k;
+                    if (j > maxNum) break;
+                    candidates[j] = false;
+                }
+            }
+        }
+        const primes: number[] = [];
+        for (let i = 2; i < candidates.length; i++) {
+            if (candidates[i]) {
+                primes.push(i);
+            }
+        }
+        return primes;
+    };
+    const max_denom = lst.map(i => i[1]).reduce((carry, item) => {
+        if (carry < item) return item;
+        return carry;
+    });
+    const primes = getPrimes(max_denom + 1);
+    const factorize = function (num: number) {
+        const res: IFactorized = {};
+        primes.forEach(prime => {
+            let cnt = 0;
+            while (num > 1) {
+                if ((num % prime) === 0) {
+                    num = Math.floor(num / prime);
+                    cnt++;
+                } else {
+                    break;
+                }
+            }
+            if (cnt > 0)
+                res[prime] = cnt;
+        });
+        return res;
+    };
+    const simplified_lst = lst.map(item => {
+        const fnum = factorize(item[0]);
+        const fdenom = factorize(item[1]);
+        const cfactors: IFactorized = {};
+        Object.keys(fnum).forEach(prime => {
+            if (fdenom[parseInt(prime)]) {
+                cfactors[parseInt(prime)] = (fnum[parseInt(prime)] <= fdenom[parseInt(prime)]) ? fnum[parseInt(prime)] : fdenom[parseInt(prime)];
+            }
+        });
+        const div = Object.keys(cfactors).reduce((carry, prime) => {
+            return carry * Math.pow(parseInt(prime), cfactors[parseInt(prime)])
+        }, 1);
+        return [Math.floor(item[0] / div), Math.floor(item[1]) / div];
+    });
+    const fdenoms: IFactorized[] = simplified_lst.map(item => {
+        return factorize(item[1]);
+    });
+    const lcm_factors: IFactorized = {};
+    for (const factors of fdenoms) {
+        for (const prime in factors) {
+            if (lcm_factors[parseInt(prime)]) {
+                if (factors[parseInt(prime)] > lcm_factors[parseInt(prime)])
+                    lcm_factors[parseInt(prime)] = factors[parseInt(prime)];
+            } else {
+                lcm_factors[parseInt(prime)] = factors[parseInt(prime)];
+            }
+        }
+    }
+    const lcd = Object.keys(lcm_factors).reduce((carry, prime) => {
+        return carry * Math.pow(parseInt(prime), lcm_factors[parseInt(prime)]);
+    }, 1);
+    return simplified_lst.map(item => {
+        const num = Math.floor(item[0] * lcd / item[1]);
+        return `(${num},${lcd})`;
+    }).join('');
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: MY SMALLEST CODE INTERPRETER (aka Brainf**k)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -304,8 +550,8 @@ Error-handling, e.g. unmatched square brackets and/or memory pointer going past 
 
 function brainLuck(code: string, input: string) {
     // return output;
-  }
-  
+}
+
 // 'Codewars'
 // console.log(brainLuck(',+[-.,+]','Codewars'+String.fromCharCode(255)));
 // console.log();
@@ -314,11 +560,11 @@ function brainLuck(code: string, input: string) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// !!! SOLVED IN JS !!!
+// ❗️❗️❗️  SOLUTION NOT WORKING IN IDE ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: CHAIN ADDING FUNCTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ VALUEOF
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -347,17 +593,79 @@ addTwo(3)(5); // == 10
 We can assume any number being passed in will be valid whole number.
 */
 
-function add(x: number): any {
-    // Curry away, curry away, curry away me hearties!
-}
+// ❗️❗️❗️  SOLUTION NOT WORKING IN IDE ❗️❗️❗️
+// [Function: sum] { valueOf: [Function (anonymous)] }
 
+function add(n: number): any {
+    const sum = function (y: number) {
+        return add(n + y);
+    };
+    // ❗️❗️❗️
+    sum.valueOf = function () {
+        return n;
+    };
+
+    return sum;
+}
 // 15
+// add(1)(2)(3)(4)(5);
 // console.log(add(1)(2)(3)(4)(5));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function add2(x: number): any {
+    const fn = (y: number) => add(x + y);
+    fn.valueOf = () => x;
+    return fn;
+}
+
+
+function add3(x: number): any {
+    // receives the next number in the sequence
+    const addNum = (next: any) => {
+        // returns the outer function, with cumulative number so far as the argument
+        return add(x + next)
+    }
+
+    // sets value of method of inner function to return value of x for final number
+    addNum.valueOf = () => {
+        return x
+    }
+
+    // returns addNum function which will be called with next number as argument
+    return addNum
+}
+
+
+/**
+ * Calculates the sum of numbers.
+ *
+ * @param x number
+ * @returns number
+ * The sum of numbers using closures.
+ */
+function add4(x: number): any {
+    let currentSum: number = x;
+
+    function f(y: number): any {
+        if (typeof (y) === "number") {
+            currentSum += y;
+            return f;
+        }
+    }
+
+    // "f" is a function object and should include "toString" method.
+    f.toString = function (): any {
+        return currentSum;
+    };
+
+    return f;
+}
+
+function add5(n: number): any { return Object.assign((i: any) => add(i + n), { valueOf: () => n }) }
+
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: IS MY FRIEND CHEATING
@@ -413,13 +721,14 @@ class G965 {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ NOT WORKING IN CODEWARS, FLATMAP GIVES ERROR ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: BEST TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: FLATMAP()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: ❗️❗️❗️ https://stackoverflow.com/questions/9960908/permutations-in-javascript
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -448,8 +757,30 @@ try not to modify the input list of distances ls
 in some languages this "list" is in fact a string (see the Sample Tests).
 */
 
-function chooseBestSum(t: number, k: number, ls: number[]): number | null {
-    return 1;
+const chooseBestSum = (maxDist: number, numTowns: number, list: number[]): number | null => {
+
+    // if ()
+
+    const generatePermutations = (list: number[], size = list.length): number[][] => {
+        if (size > list.length) return [];
+        else if (size == 1) return list.map(d => [d]);
+        return list.flatMap(d => generatePermutations(list.filter(a => a !== d), size - 1).map(item => [d, ...item]));
+    }
+
+
+    const allPermutations: number[][] = generatePermutations(list, numTowns);
+    console.log(allPermutations);
+    const allDistances: number[] = allPermutations.map((arr) => {
+        return arr.reduce((acc, curr) => acc + curr);
+    });
+    console.log(allDistances);
+    const distsInRange: number[] = allDistances.filter((dist) => dist <= maxDist);
+    console.log(distsInRange);
+    const solution: number = Math.max(...distsInRange, 0);
+    console.log(solution);
+    return solution
+        ? solution
+        : null;
 }
 
 //   163
@@ -458,6 +789,67 @@ function chooseBestSum(t: number, k: number, ls: number[]): number | null {
 // console.log(chooseBestSum(163, 3, [50]));
 // console.log();
 // console.log();
+
+/*
+❗️❗️❗️ THIS WILL GIVE ALL THE PERMUTATIONS, DUPLICATES WILL OCCUR ❗️❗️❗️
+❗️❗️❗️ SOURCE: https://stackoverflow.com/questions/9960908/permutations-in-javascript
+
+Here's a very concise and recursive solution that allows you to input the size of the output permutations similar to the statistical operator nPr. "5 permutation 3". This allows you to get all possible permutations with a specific size.
+
+function generatePermutations(list, size=list.length) {
+    if (size > list.length) return [];
+    else if (size == 1) return list.map(d=>[d]); 
+    return list.flatMap(d => generatePermutations(list.filter(a => a !== d), size - 1).map(item => [d, ...item]));
+}
+generatePermutations([1,2,3])
+
+[[1, 2, 3],[1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+generatePermutations([1,2,3],2)
+
+[[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
+
+OUTPUT EXAMPLE:
+
+[
+  [ 50, 55, 56 ], [ 50, 55, 57 ], [ 50, 55, 58 ],
+  [ 50, 56, 55 ], [ 50, 56, 57 ], [ 50, 56, 58 ],
+  [ 50, 57, 55 ], [ 50, 57, 56 ], [ 50, 57, 58 ],
+  [ 50, 58, 55 ], [ 50, 58, 56 ], [ 50, 58, 57 ],
+  [ 55, 50, 56 ], [ 55, 50, 57 ], [ 55, 50, 58 ],
+  [ 55, 56, 50 ], [ 55, 56, 57 ], [ 55, 56, 58 ],
+  [ 55, 57, 50 ], [ 55, 57, 56 ], [ 55, 57, 58 ],
+  [ 55, 58, 50 ], [ 55, 58, 56 ], [ 55, 58, 57 ],
+  [ 56, 50, 55 ], [ 56, 50, 57 ], [ 56, 50, 58 ],
+  [ 56, 55, 50 ], [ 56, 55, 57 ], [ 56, 55, 58 ],
+  [ 56, 57, 50 ], [ 56, 57, 55 ], [ 56, 57, 58 ],
+  [ 56, 58, 50 ], [ 56, 58, 55 ], [ 56, 58, 57 ],
+  [ 57, 50, 55 ], [ 57, 50, 56 ], [ 57, 50, 58 ],
+  [ 57, 55, 50 ], [ 57, 55, 56 ], [ 57, 55, 58 ],
+  [ 57, 56, 50 ], [ 57, 56, 55 ], [ 57, 56, 58 ],
+  [ 57, 58, 50 ], [ 57, 58, 55 ], [ 57, 58, 56 ],
+  [ 58, 50, 55 ], [ 58, 50, 56 ], [ 58, 50, 57 ],
+  [ 58, 55, 50 ], [ 58, 55, 56 ], [ 58, 55, 57 ],
+  [ 58, 56, 50 ], [ 58, 56, 55 ], [ 58, 56, 57 ],
+  [ 58, 57, 50 ], [ 58, 57, 55 ], [ 58, 57, 56 ]
+]
+[
+  161, 162, 163, 161, 163, 164, 162, 163, 165,
+  163, 164, 165, 161, 162, 163, 161, 168, 169,
+  162, 168, 170, 163, 169, 170, 161, 163, 164,
+  161, 168, 169, 163, 168, 171, 164, 169, 171,
+  162, 163, 165, 162, 168, 170, 163, 168, 171,
+  165, 170, 171, 163, 164, 165, 163, 169, 170,
+  164, 169, 171, 165, 170, 171
+]
+[
+  161, 162, 163, 161, 163,
+  162, 163, 163, 161, 162,
+  163, 161, 162, 163, 161,
+  163, 161, 163, 162, 163,
+  162, 163, 163, 163
+]
+163
+*/
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -590,7 +982,7 @@ G964b.gap(2, 100, 110) LOGS:
 
 // [ 101, 103 ]
 // console.log(G964b.gap(2, 100, 110));
-console.log(G964b.gap(6, 100, 110));
+// console.log(G964b.gap(6, 100, 110));
 // console.log();
 // console.log();
 // console.log();

@@ -40,13 +40,13 @@ func();
 
 // SOLUTION: USE IMMEDIATELY INVOKED FUNCTION EXPRESSION
 
-const func = function () {
+const func2 = function () {
     {
-        (function() {
-            let l = "let";  
-            var v = "var";  
+        (function () {
+            let l = "let";
+            var v = "var";
         })();
-        
+
     }
     console.log(l);     //  l DOESN'T EXIST OUTSIDE OF ITS BLOCK (UNCAUGHT REF ERROR: l IS NOT DEFINED)
     console.log(v);     //  (UNCAUGHT REF ERROR: v IS NOT DEFINED)
@@ -72,14 +72,14 @@ console.log(a("hello"));    //  WON'T GE ARGUMENTS BACK
 
 // SOLUTION: USE REGULAR FUNCTION OR:
 
-const a = (...n) => {return n};
+const a2 = (...n) => { return n };
 
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 // 6️⃣   return STATEMENT SHOULD NOT HAVE A LINE BREAK
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
 
-const x = function() {
+const x = function () {
     return                  // WILL MEAN: return; AS JS INSERTS A ";"
     {
         message: "hello"
@@ -90,7 +90,7 @@ x();    // undefined !!!
 
 // solution: 
 
-const x = () => {
+const x2 = () => {
     return {
         message: "hello"
     }
@@ -161,9 +161,9 @@ console.log(Math.max());    // NEGATIVE INFINITY
 //  let IS BLOCK SCOPE, var IS FUNCTION SCOPE
 //  var GETS HOISTED:
 
-let x = function() {
+let x3 = function () {
 
-    if(true) {
+    if (true) {
         console.log(v);     // undefined  AS ITS DEFINITION GETS HOISTED BUT NOT THE VALUE !!!
         console.log(l);     // REF ERROR: l IN NOT DEFINED !!!
         var v = 2;
@@ -220,12 +220,12 @@ const profile = {
 
     firstName: "",
     lastName: "",
-    setName: function(name) {                   
-        let splitName = function(n) {           // REGULAR FUNCTION HAS ITS OWN this 
+    setName: function (name) {
+        let splitName = function (n) {           // REGULAR FUNCTION HAS ITS OWN this 
             let nameArray = n.split(" ");       // THEREFORE this = window obj
             this.firstName = nameArray[0];
             this.lastName = nameArray[1];
-            console.log(this); 
+            console.log(this);
             // this = Window {window: Window, self: Window, document: document, name: '', location: Location, …}
         }
         splitName(name);
@@ -245,12 +245,12 @@ const profile = {
 
     firstName: "",
     lastName: "",
-    setName: function(name)  {                   
+    setName: function (name) {
         let splitName = (n) => {              // ARROW FUNCTION DOESN'T GET ITS OWN this 
             let nameArray = n.split(" ");     // this = profile OBJECT
             this.firstName = nameArray[0];
             this.lastName = nameArray[1];
-            console.log(this);  
+            console.log(this);
             // this = // {firstName: 'phil', lastName: 'collins', setName: ƒ} 
         }
         splitName(name);
@@ -260,7 +260,7 @@ const profile = {
 
 profile.setName("phil collins");
 
-console.log(profile.firstName);    
+console.log(profile.firstName);
 
 // ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 // 6️⃣   PROTOTYPAL INHERITANCE
@@ -274,11 +274,11 @@ console.log(profile.firstName);
 
 
 
-let car = function(model) {             // car CONSTRUCTOR OBJ
+let car = function (model) {             // car CONSTRUCTOR OBJ
     this.model = model;
 }
 
-car.prototype.getModel = function() {    // ATTACH getModel TO ITS PROTOTYPE
+car.prototype.getModel = function () {    // ATTACH getModel TO ITS PROTOTYPE
     return this.model;
 }
 
