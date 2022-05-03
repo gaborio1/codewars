@@ -1,6 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+const josephus = (items, gap) => {
+    let solutionArr = [];
+    while (items.length > 2) {
+        solutionArr.push(items[gap - 1]);
+        items.splice(gap - 1, 1);
+        console.log("items before rotation: ", items);
+        let leadingSubArr = items.slice(0, gap - 1);
+        console.log("leadingSubArr: ", leadingSubArr);
+        items.splice(0, gap - 1);
+        items = items.concat(leadingSubArr);
+        console.log("items after rotation: ", items);
+    }
+    console.log("solutionArr: ", solutionArr);
+    return ["hello"];
+};
+console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
 const convertFrac = (list) => {
     let solution = "";
     let denomsArr = [];
