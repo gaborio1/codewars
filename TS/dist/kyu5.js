@@ -3,18 +3,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
 const josephus = (items, gap) => {
     let solutionArr = [];
-    while (items.length > 2) {
-        solutionArr.push(items[gap - 1]);
-        items.splice(gap - 1, 1);
-        console.log("items before rotation: ", items);
-        let leadingSubArr = items.slice(0, gap - 1);
-        console.log("leadingSubArr: ", leadingSubArr);
-        items.splice(0, gap - 1);
-        items = items.concat(leadingSubArr);
-        console.log("items after rotation: ", items);
+    while (items.length) {
+        if (items.length <= gap) {
+            if (items.length === 1) {
+                solutionArr.push(items[0]);
+                items.splice(0, 1);
+            }
+            console.log("short length! ", items);
+            if (items.length === 0)
+                break;
+            console.log("item to remove: ", items[((gap - 1) % items.length)]);
+            solutionArr.push(items[((gap - 1) % items.length)]);
+            items.splice((gap - 1) % items.length, 1);
+            console.log("items FINAL STAGE: ", items);
+        }
+        else {
+            solutionArr.push(items[gap - 1]);
+            items.splice(gap - 1, 1);
+            console.log("items before rotation: ", items);
+            let leadingSubArr = items.slice(0, gap - 1);
+            console.log("leadingSubArr: ", leadingSubArr);
+            items.splice(0, gap - 1);
+            items = items.concat(leadingSubArr);
+            console.log("items after rotation: ", items);
+        }
+        console.log("solutionArr: ", solutionArr);
     }
-    console.log("solutionArr: ", solutionArr);
-    return ["hello"];
+    return solutionArr;
 };
 console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
 const convertFrac = (list) => {

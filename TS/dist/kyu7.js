@@ -1,6 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const incrementer = (numArr) => {
+    const solution = numArr
+        .map((el, idx) => {
+        return (el + (numArr.indexOf(el) + 1)) > 9
+            ? (el + (numArr.indexOf(el) + 1)) - 10
+            : el + (numArr.indexOf(el) + 1);
+    });
+    return solution;
+};
+console.log(incrementer([1, 2, 3]));
+console.log(incrementer([4, 6, 7, 1, 3]));
 const compare = (str1, str2) => {
     const getStrVal = (str) => {
         if (!str || /[^A-Z]/ig.test(str))

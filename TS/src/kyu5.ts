@@ -263,38 +263,68 @@ So our final result is:
 josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 */
 
+//  ❗️❗️❗️ Passed: 16Failed: 32 ❗️❗️❗️
+//  SHOULD WORK FOR LARGA ARRAYS / LARGE GAP AND RANDOM TESTS
 const josephus = (items: any[], gap: number): any[] => {
 
-    let solutionArr: number[] = [];
+    // if (items.length === 1) return items;
+
+    let solutionArr: any[] = [];
     // let counter: number = 0;
-    while (items.length > 2) {
-        solutionArr.push(items[gap - 1]);
+    while (items.length) {
+        // if (items.length === 0) break;
+        // solutionArr.push(items[gap - 1]);
 
-        // IF items.length IS THAN GAP, USE MODULO TO CYCLE THROUGH ARRAY
+        // IF items.length < THAN GAP, USE MODULO TO CYCLE THROUGH ARRAY
 
-        // REMOVE CURRENT ELEMENT
-        items.splice(gap - 1, 1);
-        console.log("items before rotation: ", items);
-        // ROTATE ARRAY 
-        // GRAB FIRST gap - 1 ELEMENTS
-        let leadingSubArr: number[] = items.slice(0, gap - 1);
-        console.log("leadingSubArr: ", leadingSubArr);
-        // REMOVE THEM
-        items.splice(0, gap - 1);
-        // AND CONCAT TO END OF ARRAY
-        items = items.concat(leadingSubArr);
-        console.log("items after rotation: ", items);
+        if (items.length <= gap) {
+            // if (items.length === 0) break;
+            if (items.length === 1) {
+                solutionArr.push(items[0]);
+                items.splice(0, 1);
+            }
+            console.log("short length! ", items);
+            // !!! WITHOUT THIS LAST ITEM WILL BE UNDEFINED IN SOLUTION !!!
+            if (items.length === 0) break;
+            // console.log("item to remove: ", items[(gap % items.length) - 1]);
+            console.log("item to remove: ", items[((gap - 1) % items.length)]);
+            // solutionArr.push(items[(gap % items.length) - 1]);
+            solutionArr.push(items[((gap - 1) % items.length)]);
+            // items.splice((gap % items.length) - 1, 1);
+            items.splice((gap - 1) % items.length, 1);
+            console.log("items FINAL STAGE: ", items);
+            // return ["loop stopped"];
+        } else {
+            solutionArr.push(items[gap - 1]);
+            // REMOVE CURRENT ELEMENT
+            items.splice(gap - 1, 1);
+            console.log("items before rotation: ", items);
+            // ROTATE ARRAY 
+            // GRAB FIRST gap - 1 ELEMENTS
+            let leadingSubArr: any[] = items.slice(0, gap - 1);
+            console.log("leadingSubArr: ", leadingSubArr);
+            // REMOVE THEM
+            items.splice(0, gap - 1);
+            // AND CONCAT TO END OF ARRAY
+            items = items.concat(leadingSubArr);
+            console.log("items after rotation: ", items);
+        }
+
+        console.log("solutionArr: ", solutionArr);
 
     }
-    console.log("solutionArr: ", solutionArr);
-    return ["hello"];
+    return solutionArr;
 }
-
 //   [3, 6, 2, 7, 5, 1, 4]
 console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
-// console.log();
-// console.log();
-// console.log();
+// [1,2,3,4,5,6,7,8,9,10]
+// console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
+// [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
+// console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
+// ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
+// console.log(josephus(["C", "o", "d", "e", "W", "a", "r", "s"], 4));
+// []
+// console.log(josephus([], 3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
@@ -309,16 +339,16 @@ console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
 
 /*
 Common denominators
-
+ 
 You will have a list of rationals in the form
-
+ 
 { {numer_1, denom_1} , ... {numer_n, denom_n} } 
 or
 [ [numer_1, denom_1] , ... [numer_n, denom_n] ] 
 or
 [ (numer_1, denom_1) , ... (numer_n, denom_n) ] 
 where all numbers are positive ints. You have to produce a result in the form:
-
+ 
 (N_1, D) ... (N_n, D) 
 or
 [ [N_1, D] ... [N_n, D] ] 
@@ -329,13 +359,13 @@ or
 or
 "(N_1, D) ... (N_n, D)"
 depending on the language (See Example tests) in which D is as small as possible and
-
+ 
 N_1/D == numer_1/denom_1 ... N_n/D == numer_n,/denom_n.
 Example:
 convertFracs [(1, 2), (1, 3), (1, 4)] `shouldBe` [(6, 12), (4, 12), (3, 12)]
 Note:
 Due to the fact that the first translations were written long ago - more than 6 years - these first translations have only irreducible fractions.
-
+ 
 Newer translations have some reducible fractions. To be on the safe side it is better to do a bit more work by simplifying fractions even if they don't have to be.
 */
 const convertFrac = (list: [number, number][]): string => {
@@ -573,7 +603,7 @@ export const convertFrac5 = (lst: [number, number][]): string => {
 
 /*
 Inspired from real-world Brainf**k, we want to create an interpreter of that language which will support the following instructions:
-
+ 
 > increment the data pointer (to point to the next cell to the right).
 < decrement the data pointer (to point to the next cell to the left).
 + increment (increase by one, truncate overflow: 255 + 1 = 0) the byte at the data pointer.
@@ -583,14 +613,14 @@ Inspired from real-world Brainf**k, we want to create an interpreter of that lan
 [ if the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ] command.
 ] if the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching [ command.
 The function will take in input...
-
+ 
 the program code, a string with the sequence of machine instructions,
 the program input, a string, possibly empty, that will be interpreted as an array of bytes using each character's ASCII code and will be consumed by the , instruction
 ... and will return ...
-
+ 
 the output of the interpreted code (always as a string), produced by the . instruction.
 Implementation-specific details for this Kata:
-
+ 
 Your memory tape should be large enough - the original implementation had 30,000 cells but a few thousand should suffice for this Kata
 Each cell should hold an unsigned byte with wrapping behavior (i.e. 255 + 1 = 0, 0 - 1 = 255), initialized to 0
 The memory pointer should initially point to a cell in the tape with a sufficient number (e.g. a few thousand or more) of cells to its right. For convenience, you may want to have it point to the leftmost cell initially
@@ -621,20 +651,20 @@ function brainLuck(code: string, input: string) {
 
 /*
 We want to create a function that will add numbers together when called in succession.
-
+ 
 add(1)(2); // == 3
 We also want to be able to continue to add numbers to our chain.
-
+ 
 add(1)(2)(3); // == 6
 add(1)(2)(3)(4); //  == 10
 add(1)(2)(3)(4)(5); // == 15
 and so on.
-
+ 
 A single call should be equal to the number passed in.
-
+ 
 add(1); // == 1
 We should be able to store the returned values and reuse them.
-
+ 
 var addTwo = add(2);
 addTwo; // == 2
 addTwo + 5; // == 7
@@ -731,14 +761,14 @@ Within that sequence, he chooses two numbers, a and b.
 He says that the product of a and b should be equal to the sum of all numbers in the sequence, excluding a and b.
 Given a number n, could you tell me the numbers he excluded from the sequence?
 The function takes the parameter: n (n is always strictly greater than 0) and returns an array or a string (depending on the language) of the form:
-
+ 
 [(a, b), ...] or [[a, b], ...] or {{a, b}, ...} or or [{a, b}, ...]
 with all (a, b) which are the possible removed numbers in the sequence 1 to n.
-
+ 
 [(a, b), ...] or [[a, b], ...] or {{a, b}, ...} or ... will be sorted in increasing order of the "a".
-
+ 
 It happens that there are several possible (a, b). The function returns an empty array (or an empty string) if no possible numbers are found which will prove that my friend has not told the truth! (Go: in this case return nil).
-
+ 
 Examples:
 removNb(26) should return [(15, 21), (21, 15)]
 or
@@ -750,7 +780,7 @@ removNb(26) should return [ {15, 21}, {21, 15} ]
 or
 removNb(26) should return "15 21, 21 15"
 or
-
+ 
 in C:
 removNb(26) should return  {{15, 21}{21, 15}} tested by way of strings.
 Function removNb should return a pointer to an allocated array of Pair pointers, each one also allocated. 
@@ -783,25 +813,25 @@ class G965 {
 
 /*
 John and Mary want to travel between a few towns A, B, C ... Mary has on a sheet of paper a list of distances between these towns. ls = [50, 55, 57, 58, 60]. John is tired of driving and he says to Mary that he doesn't want to drive more than t = 174 miles and he will visit only 3 towns.
-
+ 
 Which distances, hence which towns, they will choose so that the sum of the distances is the biggest possible to please Mary and John?
-
+ 
 Example:
 With list ls and 3 towns to visit they can make a choice between: [50,55,57],[50,55,58],[50,55,60],[50,57,58],[50,57,60],[50,58,60],[55,57,58],[55,57,60],[55,58,60],[57,58,60].
-
+ 
 The sums of distances are then: 162, 163, 165, 165, 167, 168, 170, 172, 173, 175.
-
+ 
 The biggest possible sum taking a limit of 174 into account is then 173 and the distances of the 3 corresponding towns is [55, 58, 60].
-
+ 
 The function chooseBestSum (or choose_best_sum or ... depending on the language) will take as parameters t (maximum sum of distances, integer >= 0), k (number of towns to visit, k >= 1) and ls (list of distances, all distances are positive or zero integers and this list has at least one element). The function returns the "best" sum ie the biggest possible sum of k distances less than or equal to the given limit t, if that sum exists, or otherwise nil, null, None, Nothing, depending on the language. In that case with C, C++, D, Dart, Fortran, F#, Go, Julia, Kotlin, Nim, OCaml, Pascal, Perl, PowerShell, Reason, Rust, Scala, Shell, Swift return -1.
-
+ 
 Examples:
 ts = [50, 55, 56, 57, 58] choose_best_sum(163, 3, ts) -> 163
-
+ 
 xs = [50] choose_best_sum(163, 3, xs) -> nil (or null or ... or -1 (C++, C, D, Rust, Swift, Go, ...)
-
+ 
 ys = [91, 74, 73, 85, 73, 81, 87] choose_best_sum(230, 3, ys) -> 228
-
+ 
 Notes:
 try not to modify the input list of distances ls
 in some languages this "list" is in fact a string (see the Sample Tests).
@@ -843,23 +873,23 @@ const chooseBestSum = (maxDist: number, numTowns: number, list: number[]): numbe
 /*
 ❗️❗️❗️ THIS WILL GIVE ALL THE PERMUTATIONS, DUPLICATES WILL OCCUR ❗️❗️❗️
 ❗️❗️❗️ SOURCE: https://stackoverflow.com/questions/9960908/permutations-in-javascript
-
+ 
 Here's a very concise and recursive solution that allows you to input the size of the output permutations similar to the statistical operator nPr. "5 permutation 3". This allows you to get all possible permutations with a specific size.
-
+ 
 function generatePermutations(list, size=list.length) {
     if (size > list.length) return [];
     else if (size == 1) return list.map(d=>[d]); 
     return list.flatMap(d => generatePermutations(list.filter(a => a !== d), size - 1).map(item => [d, ...item]));
 }
 generatePermutations([1,2,3])
-
+ 
 [[1, 2, 3],[1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 generatePermutations([1,2,3],2)
-
+ 
 [[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
-
+ 
 OUTPUT EXAMPLE:
-
+ 
 [
   [ 50, 55, 56 ], [ 50, 55, 57 ], [ 50, 55, 58 ],
   [ 50, 56, 55 ], [ 50, 56, 57 ], [ 50, 56, 58 ],
@@ -915,23 +945,23 @@ OUTPUT EXAMPLE:
 
 /*
 The prime numbers are not regularly spaced. For example from 2 to 3 the gap is 1. From 3 to 5 the gap is 2. From 7 to 11 it is 4. Between 2 and 50 we have the following pairs of 2-gaps primes: 3-5, 5-7, 11-13, 17-19, 29-31, 41-43
-
+ 
 A prime gap of length n is a run of n-1 consecutive composite numbers between two successive primes (see: http://mathworld.wolfram.com/PrimeGaps.html).
-
+ 
 We will write a function gap with parameters:
-
+ 
 g (integer >= 2) which indicates the gap we are looking for
-
+ 
 m (integer > 2) which gives the start of the search (m inclusive)
-
+ 
 n (integer >= m) which gives the end of the search (n inclusive)
-
+ 
 n won't go beyond 1100000.
-
+ 
 In the example above gap(2, 3, 50) will return [3, 5] or (3, 5) or {3, 5} which is the first pair between 3 and 50 with a 2-gap.
-
+ 
 So this function should return the first pair of two prime numbers spaced with a gap of g between the limits m, n if these numbers exist otherwise `nil or null or None or Nothing (or ... depending on the language).
-
+ 
 In such a case (no pair of prime numbers with a gap of `g`)
 In C: return [0, 0]
 In C++, Lua, COBOL: return `{0, 0}`. 
@@ -940,20 +970,20 @@ In Kotlin, Dart and Prolog: return `[]`.
 In Pascal: return Type TGap (0, 0).
 Examples:
 - gap(2, 5, 7) --> [5, 7] or (5, 7) or {5, 7}
-
+ 
 gap(2, 5, 5) --> nil. In C++ {0, 0}. In F# [||]. In Kotlin, Dart and Prolog return []`
-
+ 
 gap(4, 130, 200) --> [163, 167] or (163, 167) or {163, 167}
-
+ 
 ([193, 197] is also such a 4-gap primes between 130 and 200 but it's not the first pair)
-
+ 
 gap(6,100,110) --> nil or {0, 0} or ... : between 100 and 110 we have 101, 103, 107, 109 but 101-107is not a 6-gap because there is 103in between and 103-109is not a 6-gap because there is 107in between.
-
+ 
 You can see more examples of return in Sample Tests.
-
+ 
 Note for Go
 For Go: nil slice is expected when there are no gap between m and n. Example: gap(11,30000,100000) --> nil
-
+ 
 Ref
 https://en.wikipedia.org/wiki/Prime_gap
 */
@@ -1018,7 +1048,7 @@ class G964b {
 
 /*
 G964b.gap(2, 100, 110) LOGS:
-
+ 
 ┌───────────────┬──────────────┬──────────────┬─────┬─────┐
 │    (index)    │      0       │      1       │  2  │  3  │
 ├───────────────┼──────────────┼──────────────┼─────┼─────┤
@@ -1027,7 +1057,7 @@ G964b.gap(2, 100, 110) LOGS:
 │ allMatchesArr │ [ 101, 103 ] │ [ 107, 109 ] │     │     │
 └───────────────┴──────────────┴──────────────┴─────┴─────┘
 [ 101, 103 ]
-
+ 
 */
 
 // [ 101, 103 ]
@@ -1052,19 +1082,19 @@ G964b.gap(2, 100, 110) LOGS:
 
 /*
 Given a positive number n > 1 find the prime factor decomposition of n. The result will be a string with the following form :
-
+ 
  "(p1**n1)(p2**n2)...(pk**nk)"
 with the p(i) in increasing order and n(i) empty if n(i) is 1.
-
+ 
 Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
-
+ 
 A prime number is a whole number greater than 1 whose only factors are 1 and itself. A factor is a whole number that can be divided evenly into another number. The first few prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29. Numbers that have more than two factors are called composite numbers.
-
+ 
 ❗️❗️❗️
 Prime Factor Decomposition
 Quick revise
 Prime factor decomposition of a number means writing it as a product of prime factors.
-
+ 
 To factorise a number, divide it by the first possible prime number.
 Take the resulting quotient below the number.
 If it is possible, continue dividing this quotient successively by the same prime number.
@@ -1072,25 +1102,25 @@ When you cannot do the division by this prime number, divide it by the next poss
 And so forth until the final quotient is 1.
 Finally write this number as a product of powers of prime factors.
 Example
-
+ 
 Find the prime factor decomposition of 36.
-
+ 
 We look at 36 and try to find numbers which we can divide it by. We can see that it divides by 2.
-
+ 
 36 = 18 × 2
-
+ 
 2 is a prime number, but 18 isn't. So we need to split 18 up into prime numbers. We can also divide 18 by 2.
-
+ 
 18 = 9 × 2
-
+ 
 and so 36 = 18 × 2 = 9 × 2 × 2
-
+ 
 But we haven't finished, because 9 is not a prime number. We know that 9 divides by 3.
-
+ 
 9 = 3 x 3.
-
+ 
 Hence 36 = 9 × 2 × 2 = 3 × 3 × 2 × 2.
-
+ 
 This is the answer, because both 2 and 3 are prime numbers.
 ❗️❗️❗️
 */
@@ -1206,19 +1236,19 @@ const primeFactors = (num: number): string => {
 
 /*
 The drawing shows 6 squares the sides of which have a length of 1, 1, 2, 3, 5, 8. It's easy to see that the sum of the perimeters of these squares is : 4 * (1 + 1 + 2 + 3 + 5 + 8) = 4 * 20 = 80
-
+ 
 Could you give the sum of the perimeters of all the squares in a rectangle when there are n + 1 squares disposed in the same manner as in the drawing:
-
+ 
 alternative text
-
+ 
 Hint:
 See Fibonacci sequence
-
+ 
 Ref:
 http://oeis.org/A000045
-
+ 
 The function perimeter has for parameter n where n + 1 is the number of squares (they are numbered from 0 to n) and returns the total perimeter of all the squares.
-
+ 
 perimeter(5)  should return 80
 perimeter(7)  should return 216
 */
@@ -1362,23 +1392,23 @@ class G964a7 {
 
 /*
 My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because each month a list with the weights of members is published and each month he is the last on the list which means he is the heaviest.
-
+ 
 I am the one who establishes the list so I told him: "Don't worry any more, I will modify the order of the list". It was decided to attribute a "weight" to numbers. The weight of a number will be from now on the sum of its digits.
-
+ 
 For example 99 will have "weight" 18, 100 will have "weight" 1 so in the list 100 will come before 99.
-
+ 
 Given a string with the weights of FFC members in normal order can you give this string ordered by "weights" of these numbers?
-
+ 
 Example:
 "56 65 74 100 99 68 86 180 90" ordered by numbers weights becomes: 
-
+ 
 "100 180 90 56 65 74 68 86 99"
 When two numbers have the same "weight", let us class them as if they were strings (alphabetical ordering) and not numbers:
-
+ 
 180 is before 90 since, having the same "weight" (9), it comes before as a string.
-
+ 
 All numbers in the list are positive numbers and the list can be empty.
-
+ 
 Notes
 it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
 */
@@ -1406,33 +1436,33 @@ it may happen that the input string have leading, trailing whitespaces and more 
 
 /*
 The Fibonacci numbers are the numbers in the following integer sequence (Fn):
-
+ 
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
-
+ 
 such as
-
+ 
 F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
-
+ 
 Given a number, say prod (for product), we search two Fibonacci numbers F(n) and F(n+1) verifying
-
+ 
 F(n) * F(n+1) = prod.
-
+ 
 Your function productFib takes an integer (prod) and returns an array:
-
+ 
 [F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n), F(n+1), True)
 depending on the language if F(n) * F(n+1) = prod.
-
+ 
 If you don't find two consecutive F(n) verifying F(n) * F(n+1) = prodyou will return
-
+ 
 [F(n), F(n+1), false] or {F(n), F(n+1), 0} or (F(n), F(n+1), False)
 F(n) being the smallest one such as F(n) * F(n+1) > prod.
-
+ 
 Some Examples of Return:
 (depend on the language)
-
+ 
 productFib(714) # should return (21, 34, true), 
                 # since F(8) = 21, F(9) = 34 and 714 = 21 * 34
-
+ 
 productFib(800) # should return (34, 55, false), 
                 # since F(8) = 21, F(9) = 34, F(10) = 55 and 21 * 34 < 800 < 34 * 55
 -----
@@ -1543,11 +1573,11 @@ export class G964 {
       return [p1 , p2, (p1 * p2 == prod)]; 
     }
 }
-
-
-
+ 
+ 
+ 
 export class G964 {
-
+ 
     public static productFib = (prod, f0 = 0, f1 = 1) => (f0 * f1 < prod) ? G964.productFib(prod, f1, f0+f1) : [f0,f1,(f0 * f1) === prod]
 }
 */
@@ -1563,19 +1593,19 @@ export class G964 {
 /*
 Once upon a time, on a way through the old wild mountainous west,…
 … a man was given directions to go from one point to another. The directions were "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite, "WEST" and "EAST" too.
-
+ 
 Going to one direction and coming back the opposite direction right away is a needless effort. Since this is the wild west, with dreadfull weather and not much water, it's important to save yourself some energy, otherwise you might die of thirst!
-
+ 
 How I crossed a mountainous desert the smart way.
 The directions given to the man are, for example, the following (depending on the language):
-
+ 
 ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"].
 or
 { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
 or
 [North, South, South, East, West, North, West]
 You can immediatly see that going "NORTH" and immediately "SOUTH" is not reasonable, better stay to the same place! So the task is to give to the man a simplified version of the plan. A better plan in this case is simply:
-
+ 
 ["WEST"]
 or
 { "WEST" }
@@ -1583,14 +1613,14 @@ or
 [West]
 Other examples:
 In ["NORTH", "SOUTH", "EAST", "WEST"], the direction "NORTH" + "SOUTH" is going north and coming back right away.
-
+ 
 The path becomes ["EAST", "WEST"], now "EAST" and "WEST" annihilate each other, therefore, the final result is [] (nil in Clojure).
-
+ 
 In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"].
-
+ 
 Task
 Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
-
+ 
 The Haskell version takes a list of directions with data Direction = North | East | West | South.
 The Clojure version returns nil when the path is reduced to nothing.
 The Rust version takes a slice of enum Direction {North, East, West, South}.
@@ -1723,12 +1753,12 @@ function dirReduc5(arr: string[]): string[] {
 
 /*
 Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
-
+ 
 HH = hours, padded to 2 digits, range: 00 - 99
 MM = minutes, padded to 2 digits, range: 00 - 59
 SS = seconds, padded to 2 digits, range: 00 - 59
 The maximum time never exceeds 359999 (99:59:59)
-
+ 
 You can find some examples in the test fixtures.
 */
 
@@ -1808,7 +1838,7 @@ function humanReadable3(seconds: number): string {
 
 /*
 Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
-
+ 
 Examples
 pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 pigIt('Hello world !');     // elloHay orldway !
