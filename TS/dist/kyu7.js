@@ -1,17 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const minimumSteps = (numsArr, tHold) => {
+    const ascArr = numsArr.sort((a, b) => a - b);
+    let sum = 0, counter = 0;
+    for (counter; counter < ascArr.length; counter += 1) {
+        sum += ascArr[counter];
+        if (sum >= tHold)
+            break;
+    }
+    return counter;
+};
+function minimumSteps2(nums, value) {
+    var s = 0;
+    var total = 0;
+    nums.sort((n1, n2) => n1 - n2);
+    for (let i = 0; i < nums.length; i++) {
+        total += nums[i];
+        s++;
+        console.log(total);
+        if (nums[0] >= value) {
+            return 0;
+        }
+        if (total >= value) {
+            return s - 1;
+        }
+    }
+}
+const minimumSteps3 = (nums, value) => nums.sort((a, b) => a - b).reduce((acc, item) => (acc[0] < value ? [acc[0] + item, acc[1] + 1] : acc), [0, -1])[1];
 const incrementer = (numArr) => {
     const solution = numArr
         .map((el, idx) => {
-        return (el + (numArr.indexOf(el) + 1)) > 9
-            ? (el + (numArr.indexOf(el) + 1)) - 10
-            : el + (numArr.indexOf(el) + 1);
+        const sum = el + (numArr.indexOf(el) + 1);
+        return sum > 9
+            ? sum - 10
+            : sum;
     });
     return solution;
 };
-console.log(incrementer([1, 2, 3]));
-console.log(incrementer([4, 6, 7, 1, 3]));
+const incrementer2 = (nums) => nums.map((num, index) => (num + index + 1) % 10);
 const compare = (str1, str2) => {
     const getStrVal = (str) => {
         if (!str || /[^A-Z]/ig.test(str))

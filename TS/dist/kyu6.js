@@ -1,11 +1,106 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
-function partsSums(ls) {
-    return [1];
+const partsSums = (numArr) => {
+    numArr.reverse();
+    let solution = [];
+    let accum = 0;
+    numArr.forEach((num) => {
+        accum += num;
+        solution.push(accum);
+    });
+    solution.reverse().push(0);
+    return solution;
+};
+function partsSums2(ls) {
+    let total = ls.reduce((acc, cur) => acc + cur, 0);
+    return [...[total], ...ls.map(num => total -= num)];
 }
-function parse(data) {
-    return [1];
+function partsSums3(ls) {
+    let summArr = [0];
+    for (let i = ls.length - 1; i >= 0; i--) {
+        summArr.push(summArr[summArr.length - 1] + ls[i]);
+    }
+    return summArr.reverse();
+}
+function partsSums4(ls) {
+    let length = ls.length;
+    let total = ls.reduce((prev, curr) => prev + curr, 0);
+    ls.unshift(0);
+    return ls.map((val, i) => total -= val);
+}
+function partsSums5(values) {
+    let knownTotal = values.reduce((ac, n) => ac + n, 0);
+    return values.reduce((output, value) => {
+        output.push(knownTotal -= value);
+        return output;
+    }, [knownTotal]);
+}
+function partsSums6(ls) {
+    return ls.reverse().reduce((acc, n, i) => {
+        const a = acc[i];
+        acc.push(n + a);
+        return acc;
+    }, [0]).reverse();
+}
+const parse = (str) => {
+    let solution = [];
+    let currVal = 0;
+    str.split("").forEach((instr) => {
+        switch (instr) {
+            case "i":
+                currVal++;
+                break;
+            case "d":
+                currVal--;
+                break;
+            case "s":
+                currVal *= currVal;
+                break;
+            case "o":
+                solution.push(currVal);
+        }
+    });
+    return solution;
+};
+function parse2(data) {
+    var result = [];
+    var current = 0;
+    data.split('').map((c) => {
+        switch (c) {
+            case 'i':
+                current++;
+                break;
+            case 'd':
+                current--;
+                break;
+            case 's':
+                current = current ** 2;
+                break;
+            case 'o':
+                result.push(current);
+                break;
+        }
+    });
+    return result;
+}
+function parse3(data) {
+    let v = 0, result = [];
+    for (let d of data.split('')) {
+        switch (d) {
+            case 'i':
+                v++;
+                break;
+            case 'd':
+                v--;
+                break;
+            case 's':
+                v *= v;
+                break;
+            case 'o': result.push(v);
+        }
+    }
+    return result;
 }
 class G964C {
 }

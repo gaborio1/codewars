@@ -460,10 +460,10 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SUMS OF PARTS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -491,24 +491,74 @@ parts_sums(ls) -> [21, 20, 18, 15, 11, 6, 0]
 
 ls = [744125, 935, 407, 454, 430, 90, 144, 6710213, 889, 810, 2579358]
 parts_sums(ls) -> [10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 9291414, 9291270, 2581057, 2580168, 2579358, 0]
+
+Notes
+Take a look at performance: some lists have thousands of elements.
 */
 
-function partsSums(ls: number[]): number[] {
-    return [1];
+const partsSums = (numArr: number[]): number[] => {
+
+    numArr.reverse();   // ❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
+    let solution: number[] = [];
+    let accum: number = 0;
+
+    numArr.forEach((num) => {
+        accum += num;
+        solution.push(accum);
+    })
+
+    solution.reverse().push(0); //❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
+    return solution;
 }
 
 // [20, 20, 19, 16, 10, 0]
-// console.log(partSums([0, 1, 3, 6, 10]));
+// console.log(partsSums([0, 1, 3, 6, 10]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function partsSums2(ls: number[]): number[] {
+    let total = ls.reduce((acc, cur) => acc + cur, 0)
+    return [...[total], ...ls.map(num => total -= num)]
+}
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function partsSums3(ls: number[]): number[] {
+    let summArr = [0];
+    for (let i = ls.length - 1; i >= 0; i--) {
+        summArr.push(summArr[summArr.length - 1] + ls[i]);
+    }
+    return summArr.reverse();
+}
+
+
+function partsSums4(ls: number[]): number[] {
+    let length = ls.length;
+    let total = ls.reduce((prev, curr) => prev + curr, 0);
+    ls.unshift(0);
+    return ls.map((val, i) => total -= val);
+}
+
+
+function partsSums5(values: number[]): number[] {
+    let knownTotal = values.reduce((ac, n) => ac + n, 0);
+    return values.reduce((output, value) => {
+        output.push(knownTotal -= value);
+        return output;
+    }, [knownTotal]);
+}
+
+function partsSums6(ls: number[]): number[] {
+    return ls.reverse().reduce((acc, n, i) => {
+        const a = acc[i];
+        acc.push(n + a)
+        return acc;
+    }, [0]).reverse();
+}
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAKE THE DEADFISH SWIM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SWITCH(), FOR(OF)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -528,17 +578,79 @@ parse("iiisdoso") => [8, 64]
 */
 
 /** return the output array and ignore all non-op characters */
-function parse(data: string): number[] {
-    return [1];
+const parse = (str: string): number[] => {
+
+    let solution: number[] = [];
+    let currVal: number = 0;
+    str.split("").forEach((instr) => {
+
+        // if (instr === "i") {
+        //     currVal++;
+        // } else if (instr === "d") {
+        //     currVal--;
+        // } else if (instr === "s") {
+        //     currVal *= currVal;
+        // } else if (instr === "o") {
+        //     solution.push(currVal);
+        // }
+
+        switch (instr) {
+            case "i":
+                currVal++;
+                break;
+            case "d":
+                currVal--;
+                break;
+            case "s":
+                currVal *= currVal;
+                break;
+            case "o":
+                solution.push(currVal);
+        }
+
+    })
+    return solution;
 }
 
 // [8, 64]
 // console.log(parse("iiisdoso"));
+// [8, 64]
 // console.log(parse("iiisxxxdoso"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function parse2(data: string): number[] {
+    var result: number[] = []
+    var current = 0
+
+    data.split('').map((c) => {
+        switch (c) {
+            case 'i': current++; break
+            case 'd': current--; break
+            case 's': current = current ** 2; break
+            case 'o': result.push(current); break
+        }
+    })
+
+    return result
+}
+
+
+
+function parse3(data: string): number[] {
+    let v = 0, result = []
+    for (let d of data.split('')) {
+        switch (d) {
+            case 'i': v++; break
+            case 'd': v--; break
+            case 's': v *= v; break
+            case 'o': result.push(v)
+        }
+    }
+    return result
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HELP THE BOOKSELLER

@@ -264,7 +264,7 @@ josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 */
 
 //  ❗️❗️❗️ Passed: 16Failed: 32 ❗️❗️❗️
-//  SHOULD WORK FOR LARGA ARRAYS / LARGE GAP AND RANDOM TESTS
+//  SHOULD WORK FOR LARGE ARRAYS / LARGE GAPS AND RANDOM TESTS
 const josephus = (items: any[], gap: number): any[] => {
 
     // if (items.length === 1) return items;
@@ -316,7 +316,7 @@ const josephus = (items: any[], gap: number): any[] => {
     return solutionArr;
 }
 //   [3, 6, 2, 7, 5, 1, 4]
-console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
 // [1,2,3,4,5,6,7,8,9,10]
 // console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
 // [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
@@ -325,6 +325,91 @@ console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
 // console.log(josephus(["C", "o", "d", "e", "W", "a", "r", "s"], 4));
 // []
 // console.log(josephus([], 3));
+
+const josephus2 = (items: any[], gap: number): any[] => {
+
+    const numCycles: number = items.length;
+    let solutionArr: any[] = [];
+
+
+    for (let i = 0; i < numCycles; i += 1) {
+        console.log("     CYCLE: ", i + 1);
+        // for (let i = 0; i < 7; i += 1) {
+        // PUSH CURRENT TO SOLUTION
+        solutionArr.push(items[(gap - 1) % items.length]);
+        console.log("current to delete: ", items[(gap - 1) % items.length]);
+        // GRAB ITEMS THAT ARE BEFORE CURRENT
+        let leadingSubArr: any[] = items.slice(0, (gap - 1) % items.length);
+        console.log("leadingSubArr: ", leadingSubArr);
+        console.log("items before rotation/deletion: ", items);
+        // DELETE CURRENT
+        items.splice((gap - 1) % items.length, 1);
+        // DELETE THOSE ITEMS FROM THE BEGINNING OF ARRAY
+        items.splice(0, (gap - 1) % items.length);
+        // PUSH THEM TO THE END OF ARRAY
+        items = items.concat(leadingSubArr);
+        console.log("items after rotation/deletion: ", items);
+        // console.log("items: ", items);
+        // let leadingSubArr: any[] = items.slice(0, (gap - 1) % items.length);
+
+    }
+    console.log("solutionArr: ", solutionArr);
+    return solutionArr;
+
+}
+
+//   [3, 6, 2, 7, 5, 1, 4]
+// console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
+// [1,2,3,4,5,6,7,8,9,10]
+// console.log(josephus2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
+// [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
+// console.log(josephus2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
+// ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
+// console.log(josephus2(["C", "o", "d", "e", "W", "a", "r", "s"], 1));
+// []
+// console.log(josephus2([], 3));
+
+const josephus3 = (items: any[], gap: number): any[] => {
+
+    // const numCycles: number = items.length;
+    let solutionArr: any[] = [];
+    // let targetIdx: number = (gap % items.length) - 1;
+
+
+    // for (let i = 0; i < numCycles; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
+        console.log("CYCLE: ", i + 1);
+        console.log("   items before: ", items);
+        console.log("   ITEM to delete: ", items[(gap % items.length) - 1]);
+        solutionArr.push(items[(gap % items.length) - 1]);
+        let leadingSubArr: any[] = items.slice(0, (gap % items.length) - 1);
+        console.log("   SUB ARRAY: ", leadingSubArr, "  length: ", gap % (items.length + 1) - 1);
+        items.splice((gap % items.length) - 1, 1);
+        // items.splice(0, (gap % items.length) - 1);
+        // console.log("       SUBARR LENGTH: ", gap % (items.length + 1) - 1);
+        console.log("       ITEMS LENGTH: ", items.length);
+        items.splice(0, gap % (items.length + 1) - 1);
+        console.log("   items stripped: ", items);
+        items = items.concat(leadingSubArr);
+        console.log("       ITEMS TRANSFORMED: ", items);
+
+    }
+    console.log("           solutionArr: ", solutionArr);
+    return solutionArr;
+
+}
+
+//   [3, 6, 2, 7, 5, 1, 4]
+console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(josephus3([4, 5, 7, 1], 3));
+// [1,2,3,4,5,6,7,8,9,10]
+// console.log(josephus3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
+// [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
+// console.log(josephus3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
+// ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
+// console.log(josephus3(["C", "o", "d", "e", "W", "a", "r", "s"], 1));
+// []
+// console.log(josephus3([], 3));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨

@@ -31,7 +31,44 @@ const josephus = (items, gap) => {
     }
     return solutionArr;
 };
-console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
+const josephus2 = (items, gap) => {
+    const numCycles = items.length;
+    let solutionArr = [];
+    for (let i = 0; i < numCycles; i += 1) {
+        console.log("     CYCLE: ", i + 1);
+        solutionArr.push(items[(gap - 1) % items.length]);
+        console.log("current to delete: ", items[(gap - 1) % items.length]);
+        let leadingSubArr = items.slice(0, (gap - 1) % items.length);
+        console.log("leadingSubArr: ", leadingSubArr);
+        console.log("items before rotation/deletion: ", items);
+        items.splice((gap - 1) % items.length, 1);
+        items.splice(0, (gap - 1) % items.length);
+        items = items.concat(leadingSubArr);
+        console.log("items after rotation/deletion: ", items);
+    }
+    console.log("solutionArr: ", solutionArr);
+    return solutionArr;
+};
+const josephus3 = (items, gap) => {
+    let solutionArr = [];
+    for (let i = 0; i < 5; i += 1) {
+        console.log("CYCLE: ", i + 1);
+        console.log("   items before: ", items);
+        console.log("   ITEM to delete: ", items[(gap % items.length) - 1]);
+        solutionArr.push(items[(gap % items.length) - 1]);
+        let leadingSubArr = items.slice(0, (gap % items.length) - 1);
+        console.log("   SUB ARRAY: ", leadingSubArr, "  length: ", gap % (items.length + 1) - 1);
+        items.splice((gap % items.length) - 1, 1);
+        console.log("       ITEMS LENGTH: ", items.length);
+        items.splice(0, gap % (items.length + 1) - 1);
+        console.log("   items stripped: ", items);
+        items = items.concat(leadingSubArr);
+        console.log("       ITEMS TRANSFORMED: ", items);
+    }
+    console.log("           solutionArr: ", solutionArr);
+    return solutionArr;
+};
+console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
 const convertFrac = (list) => {
     let solution = "";
     let denomsArr = [];

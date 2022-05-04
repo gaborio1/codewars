@@ -592,24 +592,107 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: MAXIMUM STEPS  (Array Series #6)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ SORT() - MUTATES ORIGINAL, DON'T NEED TO SAVE TO VAR ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task
+Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their Sum becomes greater or equal to K.
 
+Notes:
+List size is at least 3.
+
+All numbers will be positive.
+
+Numbers could occur more than once , (Duplications may exist).
+
+Threshold K will always be reachable.
+
+Input >> Output Examples
+minimumSteps({1, 10, 12, 9, 2, 3}, 6)  ==>  return (2)
+Explanation:
+We add two smallest elements (1 + 2), their sum is 3 .
+
+Then we add the next smallest number to it (3 + 3) , so the sum becomes 6 .
+
+Now the result is greater or equal to 6 , Hence the output is (2) i.e (2) operations are required to do this .
+
+minimumSteps({8 , 9, 4, 2}, 23)  ==> return (3)
+Explanation:
+We add two smallest elements (4 + 2), their sum is 6 .
+
+Then we add the next smallest number to it (6 + 8) , so the sum becomes 14 .
+
+Now we add the next smallest number (14 + 9) , so the sum becomes 23 .
+
+Now the result is greater or equal to 23 , Hence the output is (3) i.e (3) operations are required to do this .
+
+minimumSteps({19,98,69,28,75,45,17,98,67}, 464)  ==>  return (8)
+Explanation:
+We add two smallest elements (19 + 17), their sum is 36 .
+
+Then we add the next smallest number to it (36 + 28) , so the sum becomes 64 .
+
+We need to keep doing this until the sum becomes greater or equal to K (464 in this case), which will require 8 Steps .
+
+Expected Time Complexity O(n Log n)
 */
 
-// console.log();
-// console.log();
+const minimumSteps = (numsArr: number[], tHold: number): number => {
+
+    const ascArr: number[] = numsArr.sort((a, b) => a - b);
+
+    let sum: number = 0, counter: number = 0;
+
+    for (counter; counter < ascArr.length; counter += 1) {
+        sum += ascArr[counter];
+        if (sum >= tHold) break;
+    }
+
+    return counter;
+
+}
+
+// 1
+// console.log(minimumSteps([4, 6, 3], 7));
+// 3
+// console.log(minimumSteps([8, 9, 10, 4, 2], 23));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function minimumSteps2(nums: number[], value: number) {
+    var s = 0;
+    var total = 0;
+    // ❗️❗️❗️ SORT() - MUTATES ORIGINAL, DON'T NEED TO SAVE TO VAR ❗️❗️❗️
+    nums.sort((n1, n2) => n1 - n2)
+
+
+    for (let i = 0; i < nums.length; i++) {
+        total += nums[i]
+        s++;
+        console.log(total)
+
+        if (nums[0] >= value) {
+            return 0
+        }
+
+        if (total >= value) {
+            return s - 1
+        }
+    }
+
+}
+
+
+const minimumSteps3 = (nums: number[], value: number) =>
+    nums.sort((a, b) => a - b).reduce((acc, item) => (acc[0] < value ? [acc[0] + item, acc[1] + 1] : acc), [0, -1])[1];
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES (MODULO/REMAINDER )❗️❗️❗️
 // 4 % 10 => 4 !!! DIVIDEND < DIVISOR => DIVIDEND
@@ -650,9 +733,9 @@ const incrementer = (numArr: number[]): number[] => {
 }
 
 // [2, 4, 6]
-console.log(incrementer([1, 2, 3]));
+// console.log(incrementer([1, 2, 3]));
 // [5, 8, 0, 5, 8
-console.log(incrementer([4, 6, 7, 1, 3]));
+// console.log(incrementer([4, 6, 7, 1, 3]));
 // console.log();
 // console.log();
 
