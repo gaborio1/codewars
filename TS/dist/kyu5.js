@@ -1,74 +1,101 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
-const josephus = (items, gap) => {
-    let solutionArr = [];
-    while (items.length) {
-        if (items.length <= gap) {
-            if (items.length === 1) {
-                solutionArr.push(items[0]);
-                items.splice(0, 1);
-            }
-            console.log("short length! ", items);
-            if (items.length === 0)
-                break;
-            console.log("item to remove: ", items[((gap - 1) % items.length)]);
-            solutionArr.push(items[((gap - 1) % items.length)]);
-            items.splice((gap - 1) % items.length, 1);
-            console.log("items FINAL STAGE: ", items);
-        }
-        else {
-            solutionArr.push(items[gap - 1]);
-            items.splice(gap - 1, 1);
-            console.log("items before rotation: ", items);
-            let leadingSubArr = items.slice(0, gap - 1);
-            console.log("leadingSubArr: ", leadingSubArr);
-            items.splice(0, gap - 1);
-            items = items.concat(leadingSubArr);
-            console.log("items after rotation: ", items);
-        }
-        console.log("solutionArr: ", solutionArr);
-    }
-    return solutionArr;
-};
 const josephus2 = (items, gap) => {
-    const numCycles = items.length;
-    let solutionArr = [];
-    for (let i = 0; i < numCycles; i += 1) {
-        console.log("     CYCLE: ", i + 1);
-        solutionArr.push(items[(gap - 1) % items.length]);
-        console.log("current to delete: ", items[(gap - 1) % items.length]);
-        let leadingSubArr = items.slice(0, (gap - 1) % items.length);
-        console.log("leadingSubArr: ", leadingSubArr);
-        console.log("items before rotation/deletion: ", items);
-        items.splice((gap - 1) % items.length, 1);
-        items.splice(0, (gap - 1) % items.length);
-        items = items.concat(leadingSubArr);
-        console.log("items after rotation/deletion: ", items);
+    if (items.length === 1)
+        return items;
+    let solutionArr = [], seqArr = [...items];
+    let validSteps = 0;
+    for (let i = 0; i < seqArr.length; i += 1) {
+        if (!solutionArr.includes(seqArr[i]))
+            validSteps += 1;
+        if (validSteps === gap) {
+            solutionArr.push(seqArr[i]);
+            validSteps = 0;
+        }
+        if (solutionArr.length === items.length)
+            break;
+        if (i === seqArr.length - 1)
+            seqArr = seqArr.concat(items);
     }
-    console.log("solutionArr: ", solutionArr);
     return solutionArr;
 };
+console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
 const josephus3 = (items, gap) => {
-    let solutionArr = [];
-    for (let i = 0; i < 5; i += 1) {
-        console.log("CYCLE: ", i + 1);
-        console.log("   items before: ", items);
-        console.log("   ITEM to delete: ", items[(gap % items.length) - 1]);
-        solutionArr.push(items[(gap % items.length) - 1]);
-        let leadingSubArr = items.slice(0, (gap % items.length) - 1);
-        console.log("   SUB ARRAY: ", leadingSubArr, "  length: ", gap % (items.length + 1) - 1);
-        items.splice((gap % items.length) - 1, 1);
-        console.log("       ITEMS LENGTH: ", items.length);
-        items.splice(0, gap % (items.length + 1) - 1);
-        console.log("   items stripped: ", items);
-        items = items.concat(leadingSubArr);
-        console.log("       ITEMS TRANSFORMED: ", items);
+    if (items.length === 1)
+        return items;
+    let solutionArr = [], sequenceArr = [];
+    for (let i = 0; i < items.length * 40; i += 1) {
+        sequenceArr = sequenceArr.concat(items);
     }
-    console.log("           solutionArr: ", solutionArr);
+    let validSteps = 0;
+    for (let i = 0; i < sequenceArr.length; i += 1) {
+        if (!solutionArr.includes(sequenceArr[i])) {
+            validSteps += 1;
+        }
+        if (validSteps === gap) {
+            solutionArr.push(sequenceArr[i]);
+            validSteps = 0;
+        }
+        if (solutionArr.length === items.length)
+            break;
+    }
     return solutionArr;
 };
-console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
+const josephus4 = (items, k) => {
+    let lst = [];
+    let i = (k - 1) % items.length;
+    while (items.length) {
+        lst.push(items[i]);
+        items.splice(i, 1);
+        i = (i + k - 1) % items.length;
+    }
+    return lst;
+};
+const josephus5 = (items, k) => {
+    const alive = [...items];
+    const dead = [];
+    let i = (k - 1) % alive.length;
+    while (alive.length) {
+        const killed = alive.splice(i, 1);
+        dead.push(...killed);
+        i = (i + k - 1) % alive.length;
+    }
+    return dead;
+};
+function josephus6(items, k) {
+    const result = [];
+    while (items.length > 0) {
+        for (let skip = 1; skip < k; skip++) {
+            items.push(items.shift());
+        }
+        result.push(items.shift());
+    }
+    return result;
+}
+const josephus7 = (items, k) => {
+    let result = [];
+    let currentIndex = 1;
+    while (items.length > 0) {
+        currentIndex = currentIndex + k - 1;
+        while (currentIndex > items.length) {
+            currentIndex = currentIndex - items.length;
+        }
+        result.push(items[currentIndex - 1]);
+        items.splice(currentIndex - 1, 1);
+    }
+    return result;
+};
+const josephus8 = (items, k) => {
+    let res = [];
+    let i = (k - 1) % items.length;
+    while (items.length) {
+        res.push(items[i]);
+        items.splice(i, 1);
+        i = (i + k - 1) % items.length;
+    }
+    return res;
+};
 const convertFrac = (list) => {
     let solution = "";
     let denomsArr = [];

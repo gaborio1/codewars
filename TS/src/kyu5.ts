@@ -228,8 +228,9 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR: DELETE CURRENT ITEM TO ELEMINATE SEQ ARR ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FOSEPHUS PERMUTATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -263,155 +264,170 @@ So our final result is:
 josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 */
 
-//  ❗️❗️❗️ Passed: 16Failed: 32 ❗️❗️❗️
-//  SHOULD WORK FOR LARGE ARRAYS / LARGE GAPS AND RANDOM TESTS
-const josephus = (items: any[], gap: number): any[] => {
-
-    // if (items.length === 1) return items;
-
-    let solutionArr: any[] = [];
-    // let counter: number = 0;
-    while (items.length) {
-        // if (items.length === 0) break;
-        // solutionArr.push(items[gap - 1]);
-
-        // IF items.length < THAN GAP, USE MODULO TO CYCLE THROUGH ARRAY
-
-        if (items.length <= gap) {
-            // if (items.length === 0) break;
-            if (items.length === 1) {
-                solutionArr.push(items[0]);
-                items.splice(0, 1);
-            }
-            console.log("short length! ", items);
-            // !!! WITHOUT THIS LAST ITEM WILL BE UNDEFINED IN SOLUTION !!!
-            if (items.length === 0) break;
-            // console.log("item to remove: ", items[(gap % items.length) - 1]);
-            console.log("item to remove: ", items[((gap - 1) % items.length)]);
-            // solutionArr.push(items[(gap % items.length) - 1]);
-            solutionArr.push(items[((gap - 1) % items.length)]);
-            // items.splice((gap % items.length) - 1, 1);
-            items.splice((gap - 1) % items.length, 1);
-            console.log("items FINAL STAGE: ", items);
-            // return ["loop stopped"];
-        } else {
-            solutionArr.push(items[gap - 1]);
-            // REMOVE CURRENT ELEMENT
-            items.splice(gap - 1, 1);
-            console.log("items before rotation: ", items);
-            // ROTATE ARRAY 
-            // GRAB FIRST gap - 1 ELEMENTS
-            let leadingSubArr: any[] = items.slice(0, gap - 1);
-            console.log("leadingSubArr: ", leadingSubArr);
-            // REMOVE THEM
-            items.splice(0, gap - 1);
-            // AND CONCAT TO END OF ARRAY
-            items = items.concat(leadingSubArr);
-            console.log("items after rotation: ", items);
-        }
-
-        console.log("solutionArr: ", solutionArr);
-
-    }
-    return solutionArr;
-}
-//   [3, 6, 2, 7, 5, 1, 4]
-// console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3));
-// [1,2,3,4,5,6,7,8,9,10]
-// console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
-// [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
-// console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
-// ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
-// console.log(josephus(["C", "o", "d", "e", "W", "a", "r", "s"], 4));
-// []
-// console.log(josephus([], 3));
-
+// 2️⃣ SECOND SOLUTION, DYNAMIC SEQ ARR LENGTH !!!
 const josephus2 = (items: any[], gap: number): any[] => {
 
-    const numCycles: number = items.length;
-    let solutionArr: any[] = [];
+    if (items.length === 1) return items;
+    // INITIALIZE SEQ ARR WITH COPY OF ITEMS
+    let solutionArr: any[] = [], seqArr: any[] = [...items];
+    // CONUNT VALID STEPS (IGNORE DEAD)
+    let validSteps: number = 0;
 
-
-    for (let i = 0; i < numCycles; i += 1) {
-        console.log("     CYCLE: ", i + 1);
-        // for (let i = 0; i < 7; i += 1) {
-        // PUSH CURRENT TO SOLUTION
-        solutionArr.push(items[(gap - 1) % items.length]);
-        console.log("current to delete: ", items[(gap - 1) % items.length]);
-        // GRAB ITEMS THAT ARE BEFORE CURRENT
-        let leadingSubArr: any[] = items.slice(0, (gap - 1) % items.length);
-        console.log("leadingSubArr: ", leadingSubArr);
-        console.log("items before rotation/deletion: ", items);
-        // DELETE CURRENT
-        items.splice((gap - 1) % items.length, 1);
-        // DELETE THOSE ITEMS FROM THE BEGINNING OF ARRAY
-        items.splice(0, (gap - 1) % items.length);
-        // PUSH THEM TO THE END OF ARRAY
-        items = items.concat(leadingSubArr);
-        console.log("items after rotation/deletion: ", items);
-        // console.log("items: ", items);
-        // let leadingSubArr: any[] = items.slice(0, (gap - 1) % items.length);
+    // LOOP THROUGH SEQ ARR
+    for (let i = 0; i < seqArr.length; i += 1) {
+        // INCREMENT VALID STEPS IF ELEMENT IS ALIVE
+        if (!solutionArr.includes(seqArr[i])) validSteps += 1;
+        // IF VALD STEPS === GAP (EVERY NTH), PUSH CURRENT AND RESET VALIDSTEPS
+        if (validSteps === gap) {
+            solutionArr.push(seqArr[i]);
+            validSteps = 0;
+        }
+        // STOP LOOP IF EVERY ELEMENT HAS BEEN SELECTED
+        if (solutionArr.length === items.length) break;
+        // IF LOOP REACHES LENGTH OF ITEMS, CONCAT ANOTHER COPY TO EXTEND SEQUENCE
+        if (i === seqArr.length - 1) seqArr = seqArr.concat(items);
 
     }
-    console.log("solutionArr: ", solutionArr);
+
     return solutionArr;
 
 }
 
 //   [3, 6, 2, 7, 5, 1, 4]
-// console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
+console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 10));
+// console.log(josephus2([4, 5, 7, 1], 3));
 // [1,2,3,4,5,6,7,8,9,10]
 // console.log(josephus2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
 // [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
 // console.log(josephus2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
 // ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
-// console.log(josephus2(["C", "o", "d", "e", "W", "a", "r", "s"], 1));
+// console.log(josephus2(["C", "o", "d", "e", "W", "a", "r", "s"], 4));
 // []
 // console.log(josephus2([], 3));
+// [ 5, 1, 3, 4, 2 ]
+// console.log(josephus2([1, 2, 3, 4, 5], 5));
 
+// 1️⃣  FIRST SOLUTION, UNUSED CODE, HARD CODED SEQ ARR LENGTH !!!
 const josephus3 = (items: any[], gap: number): any[] => {
 
-    // const numCycles: number = items.length;
-    let solutionArr: any[] = [];
-    // let targetIdx: number = (gap % items.length) - 1;
+    if (items.length === 1) return items;
+    // NUMBER OF VALID STEPS TO NEXT ITEM
+    // const validGap: number = gap <= items.length
+    //     ? gap
+    //     : gap % items.length;
+    // console.log(validGap);
 
+    let solutionArr: any[] = [], sequenceArr: any[] = [];
 
-    // for (let i = 0; i < numCycles; i += 1) {
-    for (let i = 0; i < 5; i += 1) {
-        console.log("CYCLE: ", i + 1);
-        console.log("   items before: ", items);
-        console.log("   ITEM to delete: ", items[(gap % items.length) - 1]);
-        solutionArr.push(items[(gap % items.length) - 1]);
-        let leadingSubArr: any[] = items.slice(0, (gap % items.length) - 1);
-        console.log("   SUB ARRAY: ", leadingSubArr, "  length: ", gap % (items.length + 1) - 1);
-        items.splice((gap % items.length) - 1, 1);
-        // items.splice(0, (gap % items.length) - 1);
-        // console.log("       SUBARR LENGTH: ", gap % (items.length + 1) - 1);
-        console.log("       ITEMS LENGTH: ", items.length);
-        items.splice(0, gap % (items.length + 1) - 1);
-        console.log("   items stripped: ", items);
-        items = items.concat(leadingSubArr);
-        console.log("       ITEMS TRANSFORMED: ", items);
-
+    for (let i = 0; i < items.length * 40; i += 1) {
+        sequenceArr = sequenceArr.concat(items);
     }
-    console.log("           solutionArr: ", solutionArr);
+
+    let validSteps: number = 0;
+
+    for (let i = 0; i < sequenceArr.length; i += 1) {
+        // console.log("CYCLE COUNT: ", i)
+        // for (let i = 0; i < 49; i += 1) {
+        if (!solutionArr.includes(sequenceArr[i])) {
+            validSteps += 1;
+        }
+        if (validSteps === gap) {
+            solutionArr.push(sequenceArr[i]);
+            validSteps = 0;
+        }
+        if (solutionArr.length === items.length) break;
+    }
     return solutionArr;
 
 }
 
+
+
 //   [3, 6, 2, 7, 5, 1, 4]
-console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 10));
 // console.log(josephus3([4, 5, 7, 1], 3));
 // [1,2,3,4,5,6,7,8,9,10]
 // console.log(josephus3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1));
 // [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
 // console.log(josephus3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2));
 // ['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']
-// console.log(josephus3(["C", "o", "d", "e", "W", "a", "r", "s"], 1));
+// console.log(josephus3(["C", "o", "d", "e", "W", "a", "r", "s"], 4));
 // []
 // console.log(josephus3([], 3));
+// [ 5, 1, 3, 4, 2 ]
+// console.log(josephus3([1, 2, 3, 4, 5], 5));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const josephus4 = (items: any[], k: number): any[] => {
+    let lst: any[] = []
+    let i: number = (k - 1) % items.length
+    while (items.length) {
+        lst.push(items[i])
+        items.splice(i, 1)
+        i = (i + k - 1) % items.length
+    }
+    return lst
+}
+
+
+const josephus5 = (items: any[], k: number): any[] => {
+    const alive = [...items]
+    const dead = []
+    let i = (k - 1) % alive.length
+
+    while (alive.length) {
+        const killed = alive.splice(i, 1)
+        dead.push(...killed)
+        i = (i + k - 1) % alive.length
+    }
+
+    return dead
+}
+
+
+function josephus6(items: any[], k: number): any[] {
+    const result = [];
+
+    while (items.length > 0) {
+        for (let skip = 1; skip < k; skip++) {
+            items.push(items.shift());
+        }
+        result.push(items.shift());
+    }
+
+    return result;
+}
+
+
+const josephus7 = (items: any[], k: number): any[] => {
+    let result: any[] = [];
+    let currentIndex: number = 1;
+
+    while (items.length > 0) {
+        currentIndex = currentIndex + k - 1;
+        while (currentIndex > items.length) {
+            currentIndex = currentIndex - items.length;
+        }
+
+        result.push(items[currentIndex - 1]);
+        items.splice(currentIndex - 1, 1);
+    }
+    return result;
+}
+
+const josephus8 = (items: any[], k: number): any[] => {
+    let res = [];
+    let i = (k - 1) % items.length;
+    while (items.length) {
+        res.push(items[i]);
+        items.splice(i, 1);
+        i = (i + k - 1) % items.length;
+    }
+    return res;
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES (REPLACE) ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
