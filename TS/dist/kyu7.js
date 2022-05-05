@@ -1,6 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const average = (scoresArr) => {
+    return Math.round(scoresArr.reduce((acc, curr) => acc + curr) / scoresArr.length);
+};
+function average2(scores) {
+    const reducer = (total, currentValue) => total + currentValue;
+    const sumOfNumbers = scores.reduce(reducer);
+    const scoreLength = scores.length;
+    return Math.round(sumOfNumbers / scoreLength);
+}
+function average3(scores) {
+    let sum = eval(scores.join("+"));
+    let avg = sum / scores.length;
+    return Math.round(avg);
+}
 const minimumSteps = (numsArr, tHold) => {
     const ascArr = numsArr.sort((a, b) => a - b);
     let sum = 0, counter = 0;

@@ -1,6 +1,161 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const meeting = (str) => {
+    const namesArr = str.toUpperCase().split(";");
+    let solution = "";
+    const revNamesArr = namesArr
+        .map((fullName) => fullName.split(":"))
+        .map((fullName) => fullName.reverse());
+    const sortedTest = revNamesArr.sort();
+    sortedTest.forEach((fullName) => {
+        solution += `(${fullName.join(", ")})`;
+    });
+    return solution;
+};
+function meeting2(s) {
+    return s.toUpperCase()
+        .split(';')
+        .map(n => '(' + n.split(':').reverse().join(', ') + ')')
+        .sort()
+        .join('');
+}
+const toUpper = (str) => str.toUpperCase();
+const stringSorter = (a, b) => {
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
+    return 0;
+};
+const attendeeToString = ({ lastName, firstName }) => `(${toUpper(lastName)}, ${toUpper(firstName)})`;
+function meeting3(s) {
+    const attendees = s.split(';').map(attendee => {
+        const [firstName, lastName] = attendee.split(':');
+        return {
+            firstName: toUpper(firstName),
+            lastName: toUpper(lastName),
+        };
+    });
+    const sortedAttendees = attendees.sort((a, b) => {
+        if (a.lastName === b.lastName) {
+            return stringSorter(a.firstName, b.firstName);
+        }
+        else {
+            return stringSorter(a.lastName, b.lastName);
+        }
+    });
+    return sortedAttendees.map(x => attendeeToString(x)).join('');
+}
+function meeting4(s) {
+    return s.split(';').map(x => x.split(':').map(x => x.toUpperCase()).reverse().join(', ')).sort().map(x => `(${x})`).join('');
+}
+class Friend {
+    constructor(name) {
+        const [firstName, lastName] = name.split(":");
+        this.firstName = firstName.toUpperCase();
+        this.lastName = lastName.toUpperCase();
+    }
+    get getFirstName() {
+        return this.firstName;
+    }
+    get getLastName() {
+        return this.lastName;
+    }
+    get getFullName() {
+        return `(${this.getLastName}, ${this.getFirstName})`;
+    }
+}
+class FriendGrouped {
+    constructor(groups) {
+        this.groups = groups;
+    }
+    sortGroupByKey() {
+        this.groups.sort((lhs, rhs) => lhs.key.localeCompare(rhs.key));
+    }
+    sortFriendsByFirstName() {
+        this.groups.forEach(group => group.value.sort((lhs, rhs) => lhs.getFirstName.localeCompare(rhs.getFirstName)));
+    }
+    toString() {
+        let str = "";
+        for (const group of this.groups) {
+            str += group.value.map(friend => friend.getFullName).join("");
+        }
+        return str;
+    }
+}
+class FriendsHelper {
+    static parse(input) {
+        return input.split(";").map(name => new Friend(name));
+    }
+    static createGroupedFriends(friends) {
+        let list = [];
+        friends.forEach(friend => {
+            let group = list.find(group => group.key === friend.getLastName);
+            if (!group) {
+                group = {
+                    key: friend.getLastName,
+                    value: []
+                };
+                list.push(group);
+            }
+            group.value.push(friend);
+        });
+        return new FriendGrouped(list);
+    }
+}
+function meeting5(s) {
+    const friends = FriendsHelper.parse(s);
+    const groupedFriends = FriendsHelper.createGroupedFriends(friends);
+    groupedFriends.sortGroupByKey();
+    groupedFriends.sortFriendsByFirstName();
+    return groupedFriends.toString();
+}
+class Attendee2 {
+    constructor(_first, _last) {
+        this._first = _first;
+        this._last = _last;
+    }
+    static FromInputString(str) {
+        const [firstName, lastName] = str.split(':');
+        return new Attendee2(firstName, lastName);
+    }
+    get first() {
+        return this._first.toUpperCase();
+    }
+    get last() {
+        return this._last.toUpperCase();
+    }
+    toString() {
+        return `(${this.last}, ${this.first})`;
+    }
+}
+const stringSorter2 = (a, b) => {
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
+    return 0;
+};
+function meeting6(s) {
+    const attendees = s.split(';').map(str => Attendee2.FromInputString(str));
+    const sortedAttendees = attendees.sort((a, b) => {
+        if (a.last === b.last) {
+            return stringSorter(a.first, b.first);
+        }
+        else {
+            return stringSorter(a.last, b.last);
+        }
+    });
+    return sortedAttendees.join('');
+}
+function thirt(n) {
+    return 1;
+}
 const partsSums = (numArr) => {
     numArr.reverse();
     let solution = [];

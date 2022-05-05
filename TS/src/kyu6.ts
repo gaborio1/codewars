@@ -422,27 +422,280 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: MEETING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SORT NESTED ARRAY, TYPE, CLASS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+John has invited some friends. His list is:
+
+s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+Could you make a program that
+
+makes this string uppercase
+gives it sorted in alphabetical order by last name.
+When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+
+So the result of function meeting(s) will be:
+
+"(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+It can happen that in two distinct families with the same family name two people have the same first name too.
+
 
 */
 
-// console.log();
-// console.log();
+const meeting = (str: string): string => {
+    // EXTRACT NAMES INTO ARRAY / MAKE UPPERCASE: 'ALEXIS:WAHL'...
+    const namesArr: string[] = str.toUpperCase().split(";");
+    let solution: string = "";
+    // SPLIT FULL NAMES: [ 'ALEXIS', 'WAHL' ]...
+    // REVERSE NAME ORDER: [ 'WAHL', 'ALEXIS' ]...
+    const revNamesArr: string[][] = namesArr
+        .map((fullName) => fullName.split(":"))
+        .map((fullName) => fullName.reverse());
+    // SORT ALPHABETICALLY: [ 'ARNO', 'ANN' ], [ 'BELL', 'JOHN' ]...
+    const sortedTest: string[][] = revNamesArr.sort();
+    // FORMAT AND CONCAT: (ARNO, ANN)(BELL, JOHN)...
+    sortedTest.forEach((fullName) => {
+        solution += `(${fullName.join(", ")})`;
+    })
+
+    return solution;
+}
+
+// "(ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(SCHWARZ, VICTORIA)(STAN, MADISON)(STAN, MEGAN)(WAHL, ALEXIS)");
+// console.log(meeting("Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn"));
+// "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+// console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function meeting2(s: string): string {
+    return s.toUpperCase()
+        .split(';')
+        .map(n => '(' + n.split(':').reverse().join(', ') + ')')
+        .sort()
+        .join('');
+}
+
+// ====================================================
+
+type Attendee = {
+    firstName: string;
+    lastName: string;
+}
+
+const toUpper = (str: string) => str.toUpperCase();
+const stringSorter = (a: string, b: string) => {
+    if (a < b) { return -1; }
+    if (a > b) { return 1; }
+    return 0;
+}
+const attendeeToString = ({ lastName, firstName }: Attendee) => `(${toUpper(lastName)}, ${toUpper(firstName)})`;
+
+function meeting3(s: string): string {
+
+    const attendees: Attendee[] = s.split(';').map(attendee => {
+        const [firstName, lastName] = attendee.split(':');
+        return {
+            firstName: toUpper(firstName),
+            lastName: toUpper(lastName),
+        }
+    })
+
+    const sortedAttendees = attendees.sort((a, b) => {
+        if (a.lastName === b.lastName) {
+            return stringSorter(a.firstName, b.firstName)
+        } else {
+            return stringSorter(a.lastName, b.lastName)
+        }
+    });
+
+
+    return sortedAttendees.map(x => attendeeToString(x)).join('');
+
+}
+
+// ====================================================
+
+function meeting4(s: string): string {
+    return s.split(';').map(x => x.split(':').map(x => x.toUpperCase()).reverse().join(', ')).sort().map(x => `(${x})`).join('')
+}
+
+// ====================================================
+
+/**
+ * * Wrapper for grouped objects
+ */
+type Group<T> = {
+    key: string;
+    value: Array<T>
+}
+
+/**
+ * * Friend class which contains an information about the meeting user
+ */
+class Friend {
+    private readonly firstName: string;
+    private readonly lastName: string;
+
+    constructor(name: string) {
+        const [firstName, lastName] = name.split(":");
+
+        this.firstName = firstName.toUpperCase();
+        this.lastName = lastName.toUpperCase();
+    }
+
+    get getFirstName() {
+        return this.firstName;
+    }
+
+    get getLastName() {
+        return this.lastName;
+    }
+
+    get getFullName() {
+        return `(${this.getLastName}, ${this.getFirstName})`
+    }
+}
+
+/**
+ * * Group for the meeting friend
+ */
+type FriendGroup = Group<Friend>
+
+/**
+ * * Grouped friends
+ */
+class FriendGrouped {
+    constructor(private readonly groups: Array<FriendGroup>) { }
+
+    /**
+     * * Sort array of groups by key value by alphabet
+     */
+    public sortGroupByKey() {
+        this.groups.sort((lhs, rhs) => lhs.key.localeCompare(rhs.key))
+    }
+
+    /**
+     * * Sort array of friends by firstName
+     */
+    public sortFriendsByFirstName() {
+        this.groups.forEach(group => group.value.sort((lhs, rhs) => lhs.getFirstName.localeCompare(rhs.getFirstName)))
+    }
+
+    /**
+     * * Transform groups to readable string
+     */
+    public toString() {
+        let str = ""
+
+        for (const group of this.groups) {
+            str += group.value.map(friend => friend.getFullName).join("")
+        }
+
+        return str;
+    }
+}
+
+/**
+ * * Helper to work with friends
+ */
+class FriendsHelper {
+    /**
+     * * Transform input to friends array
+     */
+    public static parse(input: string): Array<Friend> {
+        return input.split(";").map(name => new Friend(name))
+    }
+
+    /**
+     * * Group by lastName and return an grouped list
+     */
+    public static createGroupedFriends(friends: Array<Friend>): FriendGrouped {
+        let list: Array<FriendGroup> = [];
+
+        friends.forEach(friend => {
+            let group = list.find(group => group.key === friend.getLastName)
+
+            if (!group) {
+                group = {
+                    key: friend.getLastName,
+                    value: []
+                }
+
+                list.push(group);
+            }
+
+            group.value.push(friend);
+        })
+
+        return new FriendGrouped(list)
+    }
+}
+
+function meeting5(s: string): string {
+    const friends = FriendsHelper.parse(s);
+    const groupedFriends = FriendsHelper.createGroupedFriends(friends);
+    groupedFriends.sortGroupByKey()
+    groupedFriends.sortFriendsByFirstName()
+
+    return groupedFriends.toString();
+}
+// ====================================================
+
+class Attendee2 {
+
+    static FromInputString(str: string) {
+        const [firstName, lastName] = str.split(':');
+        return new Attendee2(firstName, lastName);
+    }
+
+    constructor(private _first: string, private _last: string) { }
+
+    public get first() {
+        return this._first.toUpperCase();
+    }
+    public get last() {
+        return this._last.toUpperCase();
+    }
+
+    public toString() {
+        return `(${this.last}, ${this.first})`
+    }
+}
+
+const stringSorter2 = (a: string, b: string) => {
+    if (a < b) { return -1; }
+    if (a > b) { return 1; }
+    return 0;
+}
+
+function meeting6(s: string): string {
+
+    const attendees: Attendee2[] = s.split(';').map(str => Attendee2.FromInputString(str))
+
+    const sortedAttendees = attendees.sort((a, b) => {
+        if (a.last === b.last) {
+            return stringSorter(a.first, b.first)
+        } else {
+            return stringSorter(a.last, b.last)
+        }
+    });
+
+    return sortedAttendees.join('');
+
+}
+
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: RULE OF DIVISIBILITY BY 13
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -450,11 +703,66 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+From Wikipedia:
 
+"A divisibility rule is a shorthand way of determining whether a given integer is divisible by a fixed divisor without performing the division, usually by examining its digits."
+
+When you divide the successive powers of 10 by 13 you get the following remainders of the integer divisions:
+
+1, 10, 9, 12, 3, 4 because:
+
+10 ^ 0 ->  1 (mod 13)
+10 ^ 1 -> 10 (mod 13)
+10 ^ 2 ->  9 (mod 13)
+10 ^ 3 -> 12 (mod 13)
+10 ^ 4 ->  3 (mod 13)
+10 ^ 5 ->  4 (mod 13)
+(For "mod" you can see: https://en.wikipedia.org/wiki/Modulo_operation)
+
+Then the whole pattern repeats. Hence the following method:
+
+Multiply
+
+the right most digit of the number with the left most number in the sequence shown above,
+the second right most digit with the second left most digit of the number in the sequence.
+The cycle goes on and you sum all these products. Repeat this process until the sequence of sums is stationary.
+
+Example:
+What is the remainder when 1234567 is divided by 13?
+
+7      6     5      4     3     2     1  (digits of 1234567 from the right)
+×      ×     ×      ×     ×     ×     ×  (multiplication)
+1     10     9     12     3     4     1  (the repeating sequence)
+Therefore following the method we get:
+
+7×1 + 6×10 + 5×9 + 4×12 + 3×3 + 2×4 + 1×1 = 178
+
+We repeat the process with the number 178:
+
+8x1 + 7x10 + 1x9 = 87
+
+and again with 87:
+
+7x1 + 8x10 = 87
+
+From now on the sequence is stationary (we always get 87) and the remainder of 1234567 by 13 is the same as the remainder of 87 by 13 ( i.e 9).
+
+Task:
+Call thirt the function which processes this sequence of operations on an integer n (>=0). thirt will return the stationary number.
+
+thirt(1234567) calculates 178, then 87, then 87 and returns 87.
+
+thirt(321) calculates 48, 48 and returns 48
 */
 
-// console.log();
-// console.log();
+function thirt(n: number): number {
+    return 1;
+}
+
+//  79
+// console.log((thirt(8529));
+// 31
+// console.log(thirt(85299258));
 // console.log();
 // console.log();
 
