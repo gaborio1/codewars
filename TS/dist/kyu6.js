@@ -1,6 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const encryptThis = (str) => {
+    const wordsArr = str.split(" ").map((word) => word.split(""));
+    wordsArr.forEach((lettersArr) => {
+        lettersArr[0] = lettersArr[0].charCodeAt(0).toString();
+        if (lettersArr.length > 2) {
+            let secondChar = lettersArr[1];
+            let lastChar = lettersArr[lettersArr.length - 1];
+            lettersArr[1] = lastChar;
+            lettersArr[lettersArr.length - 1] = secondChar;
+        }
+    });
+    const solution = wordsArr
+        .map((array) => array.join(""))
+        .join((" "));
+    console.log(solution);
+    return "hello";
+};
+console.log(encryptThis("A wise old owl lived in an oak"));
 const meeting = (str) => {
     const namesArr = str.toUpperCase().split(";");
     let solution = "";

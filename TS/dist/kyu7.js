@@ -1,6 +1,54 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const maxGap = (numArr) => {
+    const sortedArr = numArr.sort((a, b) => a - b);
+    let diffsArr = sortedArr
+        .map((num, idx) => sortedArr[idx + 1] - num)
+        .slice(0, -1);
+    const solution = Math.max(...diffsArr);
+    return solution;
+};
+const maxGap2 = (numArr) => {
+    return Math.max(...numArr
+        .sort((a, b) => a - b)
+        .map((num, idx) => numArr[idx + 1] - num)
+        .slice(0, -1));
+};
+const maxGap7 = (numArr) => {
+    return Math.max(...numArr
+        .sort((a, b) => a - b)
+        .map((num, idx, arr) => arr[idx + 1] - num)
+        .slice(0, -1));
+};
+function maxGap6(nums) {
+    return Math.max(...nums.sort((a, b) => { return b - a; })
+        .map((value, index, array) => { return index == array.length - 1 ? 0 : value - array[index + 1]; }));
+}
+function maxGap3(nums) {
+    let arr = nums.slice().sort((x, y) => x - y);
+    return Math.max(...arr.map((x, i, a) => a[i + 1] - x).slice(0, -1));
+}
+function maxGap4(nums) {
+    const sorted = nums.sort((a, b) => b - a);
+    let answer = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < sorted.length - 1; i++) {
+        const temp = sorted[i] - sorted[i + 1];
+        if (temp > answer)
+            answer = temp;
+    }
+    return answer;
+}
+function maxGap5(nums) {
+    nums.sort((a, b) => b - a);
+    let diff = 0;
+    for (let i = 1; i < nums.length; i++) {
+        if (Math.abs(nums[i] - nums[i - 1]) > diff) {
+            diff = Math.abs(nums[i] - nums[i - 1]);
+        }
+    }
+    return diff;
+}
 const average = (scoresArr) => {
     return Math.round(scoresArr.reduce((acc, curr) => acc + curr) / scoresArr.length);
 };

@@ -404,7 +404,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: ENCRYPT THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -412,12 +412,56 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Encrypt this!
 
+You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
+
+Your message is a string containing space separated words.
+You need to encrypt each word in the message using the following rules:
+The first letter must be converted to its ASCII code.
+The second letter must be switched with the last letter
+Keepin' it simple: There are no special characters in the input.
+Examples:
+encryptThis "Hello" == "72olle"
+encryptThis "good" == "103doo"
+encryptThis "hello world" == "104olle 119drlo"
 */
 
-// console.log();
-// console.log();
-// console.log();
+const encryptThis = (str: string): string => {
+
+    if (str.length === 0) return "";
+
+    const wordsArr: string[][] = str.split(" ").map((word) => word.split(""));
+    // console.log(wordsArr);
+    // let solutionArr: string[][] = [];
+
+    wordsArr.forEach((lettersArr) => {
+        // console.log(lettersArr);
+        // console.log(lettersArr[0]);
+        lettersArr[0] = lettersArr[0].charCodeAt(0).toString();
+        if (lettersArr.length > 2) {
+            let secondChar: string = lettersArr[1];
+            let lastChar: string = lettersArr[lettersArr.length - 1];
+            lettersArr[1] = lastChar;
+            lettersArr[lettersArr.length - 1] = secondChar;
+        }
+    })
+
+    const solution: string = wordsArr
+        .map((array: string[]) => array.join(""))
+        .join((" "))
+
+    console.log(solution);
+    // console.log(wordsArr);
+    return solution;
+}
+
+//   ""
+// console.log(encryptThis(""));
+// "65"
+// console.log((encryptThis("A"));
+// "65 119esi 111dl 111lw 108dvei 105n 97n 111ka"
+console.log(encryptThis("A wise old owl lived in an oak"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
