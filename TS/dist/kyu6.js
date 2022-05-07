@@ -1,6 +1,46 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const cleanString = (str) => {
+    let charsArr = [];
+    for (let char of str) {
+        if (char !== "#")
+            charsArr.push(char);
+        if (char === "#" && charsArr.length)
+            charsArr.pop();
+    }
+    const solution = charsArr.join("");
+    return solution;
+};
+function cleanString6(s) {
+    const re = /(^|[^#])#/;
+    return re.test(s) ? cleanString(s.replace(re, '')) : s;
+}
+function cleanString2(s) {
+    return Array.from(s).reduce((a, b) => b == '#' ? a.slice(0, -1) : a.concat(b), '');
+}
+function cleanString3(s) {
+    let stack = [];
+    for (const c of s) {
+        if (c === '#') {
+            stack.pop();
+        }
+        else {
+            stack.push(c);
+        }
+    }
+    return stack.join('');
+}
+const cleanString4 = (s) => Array.from(s).reduce((acc, char) => char === '#' ? acc.substring(0, acc.length - 1) : acc + char, '');
+function cleanString8(s) {
+    while (s.indexOf("#") != -1) {
+        while (s[0] == "#") {
+            s = s.substring(1);
+        }
+        s = s.replace(/[^#]#/g, "");
+    }
+    return s;
+}
 const encryptThis = (str) => {
     if (str.length === 0)
         return "";

@@ -535,8 +535,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: ODD-EVEN STRING SORT, (FIRST CHAR/ODDS/EVENS)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -544,16 +544,110 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a string s. You have to return another string such that even-indexed and odd-indexed characters of s are grouped and groups are space-separated (see sample below)
+
+Note: 
+0 is considered to be an even index. 
+All input strings are valid with no spaces
+input: 'CodeWars'
+output 'CdWr oeas'
+
+S[0] = 'C'
+S[1] = 'o'
+S[2] = 'd'
+S[3] = 'e'
+S[4] = 'W'
+S[5] = 'a'
+S[6] = 'r'
+S[7] = 's'
+Even indices 0, 2, 4, 6, so we have 'CdWr' as the first group
+odd ones are 1, 3, 5, 7, so the second group is 'oeas'
+And the final string to return is 'Cdwr oeas'
 
 */
 
-// console.log();
-// console.log();
+const sortMyString = (str: string): string => {
+
+    let solution: string = "";
+    let oddStr: string = "";
+    let evenStr: string = "";
+
+    for (let i = 0; i < str.length; i += 1) {
+        let current: string = str[i];
+        if ((i & 1) === 1) {
+            oddStr += current;
+        } else if ((i & 1) === 0) {
+            evenStr += current;
+        }
+    }
+
+    // console.log("odds:", oddStr, "evens:", evenStr);
+
+    solution += evenStr + " " + oddStr;
+
+    return solution;
+}
+
+// "CdWr oeas"
+// console.log(sortMyString("CodeWars"));
+// "YOU'RE CLEVER"
+// console.log(sortMyString("YCOLUE'VREER"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function sortMyString2(S: string): string {
+    var getEveryOtherLetter = (n: number) => S.split("").filter((_, i) => i % 2 === n).join("");
+    return `${getEveryOtherLetter(0)} ${getEveryOtherLetter(1)}`;
+}
+
+
+function sortMyString3(S: string): string {
+    let even: string = "", odd: string = "";
+    for (let i: number = 0; i < S.length; i++) {
+        if (i === 0 || i % 2 === 0) even += S.charAt(i);
+        else odd += S.charAt(i);
+    }
+    return even + " " + odd;
+}
+
+
+function sortMyString4(s: string): string {
+    return s.split("").filter((_, i) => !(i % 2)).join("") + ' ' + s.split("").filter((_, i) => i % 2).join("");
+}
+
+
+const sortMyString5 = (str: string): string =>
+    [0, 1]
+        .map((n) =>
+            str
+                .split("")
+                .filter((_, index) => index % 2 === n)
+                .join("")
+        )
+        .join(" ");
+
+
+function sortMyString6(str: string): string {
+    var a = str.split(""), sodd = [], seven = [];
+    for (let i = 0; i < a.length; i++)
+        if (i % 2 === 0) seven.push(a[i]);
+        else sodd.push(a[i]);
+    return seven.join("") + " " + sodd.join("");
+}
+
+function sortMyString7(S: string): string {
+    let first = '', second = '', i
+    for (i = 0; i < S.length; i++) i & 1 ? second += S[i] : first += S[i]
+    return `${first} ${second}`
+}
+
+
+function sortMyString8(S: string): string {
+    return S.split('').filter((e, i) => i % 2 === 0).join('') + ' ' +
+        S.split('').filter((e, i) => i % 2 !== 0).join('');
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAXIMUM GAP (Array Series #4)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

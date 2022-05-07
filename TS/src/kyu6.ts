@@ -384,25 +384,90 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: BACKSPACE IN STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: REGEX NEGATED SET // ❗️❗️❗️ RECURSION REPLACE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Assume "#" is like a backspace in string. This means that string "a#bc#d" actually is "bd"
+  
+Your task is to process a string with "#" symbols.  
 
+Examples
+"abc#d##c"      ==>  "ac"
+"abc##d######"  ==>  ""
+"#######"       ==>  ""
+""              ==>  ""
 */
 
-// console.log();
-// console.log();
+const cleanString = (str: string): string => {
+
+    let charsArr: string[] = [];
+
+    for (let char of str) {
+        // WITH REGEX:
+        // if (/[^#]/.test(char)) charsArr.push(char);
+        // if (/#/.test(char) && charsArr.length > 0) charsArr.pop();
+        if (char !== "#") charsArr.push(char);
+        if (char === "#" && charsArr.length) charsArr.pop();
+    }
+    const solution: string = charsArr.join("");
+    return solution;
+}
+
+// "ac"
+// console.log(cleanString('abc#d##c'));
+// ""
+// console.log(cleanString('abc####d##c#'));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ RECURSION REPLACE ❗️❗️❗️
+function cleanString6(s: string): string {
+    const re = /(^|[^#])#/
+    return re.test(s) ? cleanString(s.replace(re, '')) : s
+}
+
+
+function cleanString2(s: string) {
+    return Array.from(s).reduce((a, b) => b == '#' ? a.slice(0, -1) : a.concat(b), '')
+}
+
+
+function cleanString3(s: string): string {
+    let stack = []
+    for (const c of s) {
+        if (c === '#') {
+            stack.pop()
+        } else {
+            stack.push(c)
+        }
+    }
+    return stack.join('');
+}
+
+
+const cleanString4 = (s: string) => Array.from(s).reduce((acc, char) => char === '#' ? acc.substring(0, acc.length - 1) : acc + char, '');
+
+
+
+function cleanString8(s: string): string {
+    while (s.indexOf("#") != -1) {
+        while (s[0] == "#") {
+            s = s.substring(1);
+        }
+
+        s = s.replace(/[^#]#/g, "");
+    }
+
+    return s;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ENCRYPT THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

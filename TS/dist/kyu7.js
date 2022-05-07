@@ -1,6 +1,64 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+const sortMyString = (str) => {
+    let solution = "";
+    let oddStr = "";
+    let evenStr = "";
+    for (let i = 0; i < str.length; i += 1) {
+        let current = str[i];
+        if ((i & 1) === 1) {
+            oddStr += current;
+        }
+        else if ((i & 1) === 0) {
+            evenStr += current;
+        }
+    }
+    solution += evenStr + " " + oddStr;
+    return solution;
+};
+function sortMyString2(S) {
+    var getEveryOtherLetter = (n) => S.split("").filter((_, i) => i % 2 === n).join("");
+    return `${getEveryOtherLetter(0)} ${getEveryOtherLetter(1)}`;
+}
+function sortMyString3(S) {
+    let even = "", odd = "";
+    for (let i = 0; i < S.length; i++) {
+        if (i === 0 || i % 2 === 0)
+            even += S.charAt(i);
+        else
+            odd += S.charAt(i);
+    }
+    return even + " " + odd;
+}
+function sortMyString4(s) {
+    return s.split("").filter((_, i) => !(i % 2)).join("") + ' ' + s.split("").filter((_, i) => i % 2).join("");
+}
+const sortMyString5 = (str) => [0, 1]
+    .map((n) => str
+    .split("")
+    .filter((_, index) => index % 2 === n)
+    .join(""))
+    .join(" ");
+function sortMyString6(str) {
+    var a = str.split(""), sodd = [], seven = [];
+    for (let i = 0; i < a.length; i++)
+        if (i % 2 === 0)
+            seven.push(a[i]);
+        else
+            sodd.push(a[i]);
+    return seven.join("") + " " + sodd.join("");
+}
+function sortMyString7(S) {
+    let first = '', second = '', i;
+    for (i = 0; i < S.length; i++)
+        i & 1 ? second += S[i] : first += S[i];
+    return `${first} ${second}`;
+}
+function sortMyString8(S) {
+    return S.split('').filter((e, i) => i % 2 === 0).join('') + ' ' +
+        S.split('').filter((e, i) => i % 2 !== 0).join('');
+}
 const maxGap = (numArr) => {
     const sortedArr = numArr.sort((a, b) => a - b);
     let diffsArr = sortedArr
