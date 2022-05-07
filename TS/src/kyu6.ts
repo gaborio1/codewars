@@ -403,10 +403,10 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ENCRYPT THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -430,30 +430,29 @@ encryptThis "hello world" == "104olle 119drlo"
 const encryptThis = (str: string): string => {
 
     if (str.length === 0) return "";
-
+    // [ [ 'A' ],[ 'w', 'i', 's', 'e' ]... ]
     const wordsArr: string[][] = str.split(" ").map((word) => word.split(""));
-    // console.log(wordsArr);
-    // let solutionArr: string[][] = [];
-
     wordsArr.forEach((lettersArr) => {
-        // console.log(lettersArr);
-        // console.log(lettersArr[0]);
+        //[ 'A' ],[ 'w', 'i', 's', 'e' ]... => "A", "w"... => 65 => "65"
         lettersArr[0] = lettersArr[0].charCodeAt(0).toString();
         if (lettersArr.length > 2) {
+            // GRAB THE CHARACTERS THAT NEED SWAPPING
             let secondChar: string = lettersArr[1];
             let lastChar: string = lettersArr[lettersArr.length - 1];
+            // SWAP
             lettersArr[1] = lastChar;
             lettersArr[lettersArr.length - 1] = secondChar;
         }
     })
 
+    // [[ '65' ],[ '119', 'e', 's', 'i' ]...] => [65, 119esi...]
+    // => "65 119esi 111dl 111lw 108dvei 105n 97n 111ka"
     const solution: string = wordsArr
         .map((array: string[]) => array.join(""))
         .join((" "))
 
-    console.log(solution);
-    // console.log(wordsArr);
     return solution;
+
 }
 
 //   ""
@@ -461,11 +460,79 @@ const encryptThis = (str: string): string => {
 // "65"
 // console.log((encryptThis("A"));
 // "65 119esi 111dl 111lw 108dvei 105n 97n 111ka"
-console.log(encryptThis("A wise old owl lived in an oak"));
+// console.log(encryptThis("A wise old owl lived in an oak"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+let encryptThis2 = (str: string): string => {
+    if (!str)
+        return '';
+    return str
+        .split(' ')
+        .map((word) => {
+            let first = word[0];
+            let second = (word.length > 1) ? word[1] : '';
+            let middle = word.slice(2, -1);
+            let last = (word.length > 2) ? word[word.length - 1] : '';
+            return first.charCodeAt(0) + last + middle + second;
+        })
+        .join(' ');
+};
+
+// ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
+const encryptThis3 = (str: string): string =>
+    str
+        .split(' ')
+        .map(word => word
+            .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
+            .replace(/^\w/, letter => letter.charCodeAt(0).toFixed(0)))
+        .join(' ');
+
+// ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
+const encryptThis4 = (str: string): string => {
+    return str.replace(/\b(\S)(\S?)(\S*?)(\S?)\b/g, (_, a, b, c, d) => `${a.charCodeAt(0)}${d}${c}${b}`)
+}
+
+
+const encryptThis5 = (str: string): string => {
+    return str.split(' ').map((word) => {
+        if (word === '') return '';
+        if (word.length === 1) return word.charCodeAt(0).toString();
+        if (word.length === 2) return (word[0].charCodeAt(0) + word[1]).toString();
+
+        return word[0].charCodeAt(0) + word[word.length - 1] + word.substring(2, word.length - 1) + word[1];
+    }).join(' ');
+}
+
+// ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
+const encryptThis6 = (str: string): string => {
+    return str
+        .split(" ")
+        .map((word) =>
+            word.replace(
+                /(^\w)(\w?)(\w*?)(\w?$)/,
+                (match, p1, p2, p3, p4) => `${p1.charCodeAt(0)}${p4}${p3}${p2}`,
+            ),
+        )
+        .join(" ");
+}
+
+
+const encryptThis7 = (str: string): string => {
+    return str.split(' ').map(w => {
+        switch (w.length) {
+            case 0:
+                return '';
+            case 1:
+                return w.charCodeAt(0);
+            case 2:
+                return w.charCodeAt(0) + w.charAt(1);
+            default:
+                return w.charCodeAt(0) + w.charAt(w.length - 1) + w.slice(2, w.length - 1) + w.charAt(1);
+        }
+    }).join(' ')
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MEETING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

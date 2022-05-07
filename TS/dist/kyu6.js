@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
 const encryptThis = (str) => {
+    if (str.length === 0)
+        return "";
     const wordsArr = str.split(" ").map((word) => word.split(""));
     wordsArr.forEach((lettersArr) => {
         lettersArr[0] = lettersArr[0].charCodeAt(0).toString();
@@ -15,10 +17,62 @@ const encryptThis = (str) => {
     const solution = wordsArr
         .map((array) => array.join(""))
         .join((" "));
-    console.log(solution);
-    return "hello";
+    return solution;
 };
-console.log(encryptThis("A wise old owl lived in an oak"));
+let encryptThis2 = (str) => {
+    if (!str)
+        return '';
+    return str
+        .split(' ')
+        .map((word) => {
+        let first = word[0];
+        let second = (word.length > 1) ? word[1] : '';
+        let middle = word.slice(2, -1);
+        let last = (word.length > 2) ? word[word.length - 1] : '';
+        return first.charCodeAt(0) + last + middle + second;
+    })
+        .join(' ');
+};
+const encryptThis3 = (str) => str
+    .split(' ')
+    .map(word => word
+    .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
+    .replace(/^\w/, letter => letter.charCodeAt(0).toFixed(0)))
+    .join(' ');
+const encryptThis4 = (str) => {
+    return str.replace(/\b(\S)(\S?)(\S*?)(\S?)\b/g, (_, a, b, c, d) => `${a.charCodeAt(0)}${d}${c}${b}`);
+};
+const encryptThis5 = (str) => {
+    return str.split(' ').map((word) => {
+        if (word === '')
+            return '';
+        if (word.length === 1)
+            return word.charCodeAt(0).toString();
+        if (word.length === 2)
+            return (word[0].charCodeAt(0) + word[1]).toString();
+        return word[0].charCodeAt(0) + word[word.length - 1] + word.substring(2, word.length - 1) + word[1];
+    }).join(' ');
+};
+const encryptThis6 = (str) => {
+    return str
+        .split(" ")
+        .map((word) => word.replace(/(^\w)(\w?)(\w*?)(\w?$)/, (match, p1, p2, p3, p4) => `${p1.charCodeAt(0)}${p4}${p3}${p2}`))
+        .join(" ");
+};
+const encryptThis7 = (str) => {
+    return str.split(' ').map(w => {
+        switch (w.length) {
+            case 0:
+                return '';
+            case 1:
+                return w.charCodeAt(0);
+            case 2:
+                return w.charCodeAt(0) + w.charAt(1);
+            default:
+                return w.charCodeAt(0) + w.charAt(w.length - 1) + w.slice(2, w.length - 1) + w.charAt(1);
+        }
+    }).join(' ');
+};
 const meeting = (str) => {
     const namesArr = str.toUpperCase().split(";");
     let solution = "";
