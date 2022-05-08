@@ -1,6 +1,51 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const multiplicationTable = (size) => {
+    let solution = [];
+    let firstRow = [];
+    for (let i = 1; i <= size; i += 1) {
+        firstRow.push(i);
+    }
+    console.log(firstRow);
+    for (let i = 1; i <= firstRow.length; i += 1) {
+        let nthRow = firstRow.map((num) => {
+            return num * (i);
+        });
+        solution.push(nthRow);
+    }
+    return solution;
+};
+const multiplicationTable2 = (size) => {
+    const result = [];
+    for (let i = 1; i <= size; i++) {
+        const resultSubArr = [];
+        for (let j = 1; j <= size; j++) {
+            resultSubArr.push(i * j);
+        }
+        result.push(resultSubArr);
+    }
+    return result;
+};
+function multiplicationTable3(size) {
+    return [...Array(size)].map((_, i) => [...Array(size)].map((_, j) => (i + 1) * (j + 1)));
+}
+function multiplicationTable4(size) {
+    let table = [];
+    for (let i = 1; size >= i; i++) {
+        let row = [];
+        for (let j = 1; size >= j; j++) {
+            row.push(i * j);
+        }
+        table.push(row);
+    }
+    return table;
+}
+function multiplicationTable5(size) {
+    return new Array(size).fill(null)
+        .map((_, i) => new Array(size).fill(null)
+        .map((_, j) => (i + 1) * (j + 1)));
+}
 const cleanString = (str) => {
     let charsArr = [];
     for (let char of str) {

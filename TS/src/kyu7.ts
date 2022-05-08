@@ -516,25 +516,80 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: EVENS AND ODDS, EVENS TO BINARY ODDS TO HEX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CONVERT INTEGER TO BINARY/HEX ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+This kata is about converting numbers to their binary or hexadecimal representation:
 
+If a number is even, convert it to binary.
+If a number is odd, convert it to hex.
+Numbers will be positive. The hexadecimal string should be lowercased.
 */
 
-// console.log();
-// console.log();
+const evensAndOdds = (num: number): string => {
+
+    // const binary: string = (num >>> 0).toString(2);
+    const binary: string = num.toString(2);
+
+    const hex: string = num.toString(16);
+
+    return num & 1
+        ? hex
+        : binary;
+
+}
+
+/*
+
+❗️❗️❗️ CONVERT INTEGER TO BINARY ❗️❗️❗️ 
+You can use Number.toString(2) function, but it has some problems when representing negative numbers. For example, (-1).toString(2) output is "-1".
+
+To fix this issue, you can use the unsigned right shift bitwise operator (>>>) to coerce your number to an unsigned integer.
+
+If you run (-1 >>> 0).toString(2) you will shift your number 0 bits to the right, which doesn't change the number itself but it will be represented as an unsigned integer. The code above will output "11111111111111111111111111111111" correctly.
+
+This question has further explanation.
+
+-3 >>> 0 (right logical shift) coerces its arguments to unsigned integers, which is why you get the 32-bit two's complement representation of -3.
+*/
+
+//   "10"
+// console.log(evensAndOdds(2));
+// "d"
+// console.log(evensAndOdds(13));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const evensAndOdds2 = (n: number): string =>
+    n % 2 === 0 ? n.toString(2) : n.toString(16);
+
+
+function evensAndOdds3(n: number): string {
+    return Number(n).toString(n % 2 == 0 ? 2 : 16)
+}
+
+
+// Shifting the n: number 0 bits to the right turns into unsigned int, thus converting negative numbers to positive
+export const evensAndOdds4 = (n: number): string => {
+    return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16)
+}
+
+
+function evensAndOdds5(n: number): string {
+    if (n & 1) {
+        return n.toString(16)
+    }
+    return n.toString(2)
+
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ODD-EVEN STRING SORT, (FIRST CHAR/ODDS/EVENS)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

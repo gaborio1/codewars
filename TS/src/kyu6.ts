@@ -365,8 +365,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: MULTIPLICATION TABLE/MATRIX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -374,16 +374,86 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Your task, is to create NxN multiplication table, of size provided in parameter.
 
+for example, when given size is 3:
+
+1 2 3
+2 4 6
+3 6 9
+for given example, the return value should be: [[1,2,3],[2,4,6],[3,6,9]]
 */
 
-// console.log();
-// console.log();
-// console.log();
+const multiplicationTable = (size: number): number[][] => {
+
+    let solution: number[][] = [];
+
+    let firstRow: number[] = [];
+
+    // [ 1, 2, 3 ]
+    for (let i = 1; i <= size; i += 1) {
+        firstRow.push(i);
+    }
+    console.log(firstRow);
+    for (let i = 1; i <= firstRow.length; i += 1) {
+        // [ 1, 2, 3 ] => [ 2, 4, 6 ] , [ 3, 6, 9 ]
+        let nthRow: number[] = firstRow.map((num) => {
+            return num * (i);
+        })
+        solution.push(nthRow);
+    }
+
+    return solution;
+}
+
+// [1]
+// console.log(multiplicationTable(1));
+// [[1, 2], [2, 4]]
+// console.log(multiplicationTable(2));
+// [[1, 2, 3], [2, 4, 6], [3, 6, 9]]
+// console.log(multiplicationTable(3));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const multiplicationTable2 = (size: number): number[][] => {
+    const result = [];
+    for (let i = 1; i <= size; i++) {
+        const resultSubArr = [];
+        for (let j = 1; j <= size; j++) {
+            resultSubArr.push(i * j);
+        }
+        result.push(resultSubArr);
+    }
+    return result;
+};
+
+
+function multiplicationTable3(size: number): number[][] {
+    return [...Array(size)].map((_, i) => [...Array(size)].map((_, j) => (i + 1) * (j + 1)))
+}
+
+
+function multiplicationTable4(size: number): number[][] {
+    let table: number[][] = [];
+
+    for (let i = 1; size >= i; i++) {
+        let row: number[] = [];
+        for (let j = 1; size >= j; j++) {
+            row.push(i * j);
+        }
+        table.push(row);
+    }
+
+    return table;
+}
+
+
+function multiplicationTable5(size: number): number[][] {
+    return new Array(size).fill(null)
+        .map((_, i) => new Array(size).fill(null)
+            .map((_, j) => (i + 1) * (j + 1)));
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BACKSPACE IN STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

@@ -1,6 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const evensAndOdds = (num) => {
+    const binary = num.toString(2);
+    const hex = num.toString(16);
+    return num & 1
+        ? hex
+        : binary;
+};
+const evensAndOdds2 = (n) => n % 2 === 0 ? n.toString(2) : n.toString(16);
+function evensAndOdds3(n) {
+    return Number(n).toString(n % 2 == 0 ? 2 : 16);
+}
+const evensAndOdds4 = (n) => {
+    return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16);
+};
+exports.evensAndOdds4 = evensAndOdds4;
+function evensAndOdds5(n) {
+    if (n & 1) {
+        return n.toString(16);
+    }
+    return n.toString(2);
+}
 const sortMyString = (str) => {
     let solution = "";
     let oddStr = "";
