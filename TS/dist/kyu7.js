@@ -1,6 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const squaresNeeded = (numGrains) => {
+    if (!numGrains)
+        return 0;
+    let curr = 1, acc = 1, sqCounter = 1;
+    while (acc < numGrains) {
+        curr *= 2;
+        acc += curr;
+        sqCounter += 1;
+    }
+    return sqCounter;
+};
+function squaresNeeded2(grains) {
+    return grains && grains.toString(2).length;
+}
+function squaresNeeded3(grains) {
+    return grains ? Math.floor(Math.log2(grains) + 1) : 0;
+}
+function squaresNeeded4(grains) {
+    return Math.ceil(Math.log2(grains + 1));
+}
+function squaresNeeded5(grains) {
+    let squares = 0;
+    let squareSize = 1;
+    let totalGrains = grains;
+    while (totalGrains > 0) {
+        totalGrains -= squareSize;
+        squares++;
+        squareSize *= 2;
+    }
+    return squares;
+}
+const squaresNeeded6 = (grains) => grains && ~~Math.log2(grains) + 1;
 const evensAndOdds = (num) => {
     const binary = num.toString(2);
     const hex = num.toString(16);

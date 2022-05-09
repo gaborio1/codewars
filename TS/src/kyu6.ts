@@ -347,7 +347,9 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: TORTOISE RACING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -355,10 +357,107 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Two tortoises named A and B must run a race. A starts with an average speed of 720 feet per hour. Young B knows she runs faster than A, and furthermore has not finished her cabbage.
 
+When she starts, at last, she can see that A has a 70 feet lead but B's speed is 850 feet per hour. How long will it take B to catch A?
+
+More generally: given two speeds v1 (A's speed, integer > 0) and v2 (B's speed, integer > 0) and a lead g (integer > 0) how long will it take B to catch A?
+
+The result will be an array [hour, min, sec] which is the time needed in hours, minutes and seconds (round down to the nearest second) or a string in some languages.
+
+If v1 >= v2 then return nil, nothing, null, None or {-1, -1, -1} for C++, C, Go, Nim, Pascal, COBOL, [-1, -1, -1] for Perl,[] for Kotlin or "-1 -1 -1".
+
+Examples:
+(form of the result depends on the language)
+
+race(720, 850, 70) => [0, 32, 18] or "0 32 18"
+race(80, 91, 37)   => [3, 21, 49] or "3 21 49"
+Note:
+See other examples in "Your test cases".
+
+In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
+
+** Hints for people who don't know how to convert to hours, minutes, seconds:
+
+Tortoises don't care about fractions of seconds
+Think of calculation by hand using only integers (in your code use or simulate integer division)
+or Google: "convert decimal time to hours minutes seconds"
 */
 
-// console.log();
+const race = (v1: number, v2: number, lead: number): number[] => {
+
+    const convert = (seconds: number): [number, number, number] => {
+
+        let hour: number = 0, min: number = 0, sec: number = 0;
+
+        // ❗️❗️❗️ TOO SLOW, TOO MANY OPERATIONS, USE DIISION AS BELOW ❗️❗️❗️
+        // while (seconds >= 3600) {
+        //     seconds -= 3600;
+        //     hour += 1;
+        // }
+        // while (seconds >= 60) {
+        //     seconds -= 60;
+        //     min += 1;
+        // }
+        // while (seconds > 0) {
+        //     seconds -= 1;
+        //     sec += 1;
+        // }
+
+        if (seconds >= 3600) {
+            hour += Math.floor(seconds / 3600);
+            seconds = seconds % 3600;
+            // console.log("seconds - 3600", seconds);
+
+        }
+        if (seconds >= 60) {
+            min += Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            // console.log("seconds - 60", seconds);
+
+        }
+
+        sec += seconds;
+
+        return [hour, min, sec];
+    }
+
+    const feetPerSec1: number = v1 / 3600, feetPerSec2 = v2 / 3600;
+
+    // const feetPerSec1: number = Math.floor(v1 / 3600)
+    //       ,feetPerSec2 = Math.floor(v2 / 3600);
+    // console.log(feetPerSec1, feetPerSec2);
+
+    let numSeconds: number = 0;
+    let dist1: number = lead;
+    let dist2: number = 0;
+    // let numHours: number = 0;
+
+    while (dist2 < dist1) {
+        dist1 += feetPerSec1;
+        dist2 += feetPerSec2;
+        numSeconds += 1;
+
+        // dist1 += v1;
+        // dist2 += v2;
+        // numHours += 1;
+    }
+
+    // console.log(numSeconds);
+    // console.log(numHours - 1);
+
+    // ❗️❗️❗️ -1 ❗️❗️❗️
+    const solution: number[] = convert(numSeconds - 1)
+
+    return solution;
+
+    // return [1];
+}
+
+// [3, 21, 49]
+// console.log(race(80, 91, 37));
+// [2, 0, 0]
+console.log(race(80, 100, 40));
 // console.log();
 // console.log();
 // console.log();

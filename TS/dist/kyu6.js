@@ -1,6 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const race = (v1, v2, lead) => {
+    const convert = (seconds) => {
+        let hour = 0, min = 0, sec = 0;
+        if (seconds >= 3600) {
+            hour += Math.floor(seconds / 3600);
+            seconds = seconds % 3600;
+        }
+        if (seconds >= 60) {
+            min += Math.floor(seconds / 60);
+            seconds = seconds % 60;
+        }
+        sec += seconds;
+        return [hour, min, sec];
+    };
+    const feetPerSec1 = v1 / 3600, feetPerSec2 = v2 / 3600;
+    let numSeconds = 0;
+    let dist1 = lead;
+    let dist2 = 0;
+    while (dist2 < dist1) {
+        dist1 += feetPerSec1;
+        dist2 += feetPerSec2;
+        numSeconds += 1;
+    }
+    const solution = convert(numSeconds - 1);
+    return solution;
+};
+console.log(race(80, 100, 40));
 const multiplicationTable = (size) => {
     let solution = [];
     let firstRow = [];

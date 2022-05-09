@@ -497,24 +497,107 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: RICE AND CHESSBOARD PROBLEM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ TOSTRING(2).LENGTH, MATH.LOG2() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+I assume most of you are familiar with the ancient legend of the rice (but I see wikipedia suggests wheat, for some reason) problem, but a quick recap for you: a young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+
+Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
+
+As usual, a few examples might be way better than thousands of words from me:
+
+squaresNeeded(0) === 0
+squaresNeeded(1) === 1
+squaresNeeded(2) === 2
+squaresNeeded(3) === 2
+squaresNeeded(4) === 3
+Input is always going to be valid/reasonable: ie: a non negative number; extra cookie for not using a loop to compute square-by-square (at least not directly) and instead trying a smarter approach [hint: some peculiar operator]; a trick converting the number might also work: impress me!
 
 */
 
-// console.log();
+const squaresNeeded = (numGrains: number): number => {
+
+    if (!numGrains) return 0;
+
+    let curr: number = 1, acc: number = 1, sqCounter: number = 1;
+
+    while (acc < numGrains) {
+        curr *= 2;
+        // console.log("curr:", curr);
+        acc += curr;
+        // console.log("acc:", acc);
+        sqCounter += 1;
+        // console.log("sqCounter:", sqCounter);
+    }
+
+    // console.log("   solution:", sqCounter);
+
+    return sqCounter;
+
+}
+
+
+// 3
+// console.log(squaresNeeded(0));
+// console.log(squaresNeeded(1));
+// console.log(squaresNeeded(2));
+// console.log(squaresNeeded(3));
+// console.log(squaresNeeded(4));
+// console.log(squaresNeeded(8));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ TOSTRING(2).LENGTH ❗️❗️❗️
+// GRAINS = 4
+// GRAINS.TOSTRING(2).LENGTH = 3 (4 IN BINARY IS "100")
+// 4 && 3 => 3, 8 && 4 => 4
+// RETURNS HOW MANY SQUARES NEEDED TO REACH NUMBER OF GRAINS
+function squaresNeeded2(grains: number) {
+    return grains && grains.toString(2).length
+}
+
+// ❗️❗️❗️ LOG2(X) ❗️❗️❗️
+// Example: What is log2(4000)?
+// The answer completes the sentence:
+// "4,000 is the result of 2 being raised to the power of..." The value of this expression is 11.965.
+function squaresNeeded3(grains: number) {
+    return grains ? Math.floor(Math.log2(grains) + 1) : 0;
+}
+
+
+function squaresNeeded4(grains: number) {
+    // Search for 'sum of geometric series' and work backwards.
+    // Eventually you get (sum + 1) equals (2 ** n)
+    // log2 of (2 ** n) equals n.
+    return Math.ceil(Math.log2(grains + 1));
+}
+
+
+
+function squaresNeeded5(grains: number) {
+    let squares = 0
+    let squareSize = 1;
+    let totalGrains = grains;
+    while (totalGrains > 0) {
+        totalGrains -= squareSize;
+        squares++;
+        squareSize *= 2;
+    }
+
+    return squares;
+}
+
+
+const squaresNeeded6 = (grains: number) => grains && ~~Math.log2(grains) + 1;
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: EVENS AND ODDS, EVENS TO BINARY ODDS TO HEX

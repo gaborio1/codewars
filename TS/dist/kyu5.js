@@ -1,6 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+const josephusSurvivor = (num, gap) => {
+    let seqArr = [];
+    for (let i = 1; i <= num; i += 1) {
+        seqArr.push(i);
+    }
+    console.log(seqArr);
+    let targetIdx = gap > seqArr.length
+        ? gap % seqArr.length
+        : gap;
+    console.log(targetIdx);
+    return 1;
+};
+console.log(josephusSurvivor(7, 3));
+console.log(josephusSurvivor(7, 10));
+console.log(josephusSurvivor(7, 8));
 const josephus2 = (items, gap) => {
     if (items.length === 1)
         return items;
@@ -20,7 +35,6 @@ const josephus2 = (items, gap) => {
     }
     return solutionArr;
 };
-console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
 const josephus3 = (items, gap) => {
     if (items.length === 1)
         return items;
