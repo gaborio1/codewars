@@ -478,25 +478,76 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: LAST SURVIVOR - REMOVE CHARS FROM STRING IN ORDER OF APPEARANCE OF INXEX IN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ SLICE() ❗️❗️❗️ REMOVE CHARS AT GIVEN INDEX FROM STRING ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a string of letters and an array of numbers.
+The numbers indicate positions of letters that must be removed, in order, starting from the beginning of the array.
+After each removal the size of the string decreases (there is no empty space).
+Return the only letter left.
 
+Example:
+
+let str = "zbk", arr = [0, 1]
+    str = "bk", arr = [1]
+    str = "b", arr = []
+    return 'b'
+Notes
+The given string will never be empty.
+The length of the array is always one less than the length of the string.
+All numbers are valid.
+There can be duplicate letters and numbers.
 */
 
-// console.log();
-// console.log();
+
+// 1️⃣  WITH ARRAY SPLICE ❗️❗️❗️
+const lastSurvivor = (letters: string, coords: number[]): string => {
+
+    const lettersArr: string[] = letters.split("");
+
+    coords.forEach((index) => {
+        // DELETE CORRESPONDIN CHAR AT FOR EACH INDEX
+        lettersArr.splice(index, 1);
+    })
+
+    // console.log("   lettersArr final:", lettersArr);
+
+    return lettersArr[0];
+
+}
+
+
+// "b"
+// console.log(lastSurvivor('kbc', [0, 1]));
+// "a"
+// console.log(lastSurvivor('abc', [1, 1]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function lastSurvivor2(letters: string, coords: number[]): string {
+    return coords.reduce((s, p) => s.slice(0, p) + s.slice(p + 1), letters);
+}
+
+// 2️⃣ ❗️❗️❗️ WITH STRING SLICE() ❗️❗️❗️
+function lastSurvivor3(letters: string, coords: number[]): string {
+    coords.forEach(n => {
+        letters = letters.slice(0, n) + letters.slice(n + 1);
+    });
+    return letters;
+}
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: RICE AND CHESSBOARD PROBLEM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

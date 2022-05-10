@@ -1,6 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const lastSurvivor = (letters, coords) => {
+    const lettersArr = letters.split("");
+    coords.forEach((index) => {
+        lettersArr.splice(index, 1);
+    });
+    return lettersArr[0];
+};
+function lastSurvivor2(letters, coords) {
+    return coords.reduce((s, p) => s.slice(0, p) + s.slice(p + 1), letters);
+}
+function lastSurvivor3(letters, coords) {
+    coords.forEach(n => {
+        letters = letters.slice(0, n) + letters.slice(n + 1);
+    });
+    return letters;
+}
 const squaresNeeded = (numGrains) => {
     if (!numGrains)
         return 0;
