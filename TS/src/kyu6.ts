@@ -327,25 +327,153 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: CONSONANT VALUE - GET MAX SUM OF CONSUNANT SUBSTRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ SPLIT, MAP, REDUCE, MATH.MAX ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except "aeiou".
 
+We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
+
+For example, for the word "zodiacs", let's cross out the vowels. We get: "z o d ia cs"
+
+-- The consonant substrings are: "z", "d" and "cs" and the values are z = 26, d = 4 and cs = 3 + 19 = 22. The highest is 26.
+solve("zodiacs") = 26
+
+For the word "strength", solve("strength") = 57
+-- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20 + 18 = 57 and "ngth" = 14 + 7 + 20 + 8 = 49. The highest is 57.
+For C: do not mutate input.
 */
 
-// console.log();
+// 1️⃣
+const solve = (str: string): number => {
+
+    // RETUTRN 0 IF NO CONSONANTS ARE IN STRING
+    if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str)) return 0;
+
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    // [ 'chr', 'schtsch', 'v' ] => 
+    // [ [ 'c', 'h', 'r' ], ['s', 'c', 'h', 't', 's', 'c','h'],[ 'v' ]]
+    const matchSubs: string[][] = str
+        .match(/[^aeiou]+/g)!
+        .map((sub) => sub.split(""));
+
+    // [ [ 3, 8, 18 ], [ 19, 3, 8, 20, 19, 3, 8 ], [ 22 ] ]
+    const valueSubs: number[][] = matchSubs.map((subArr) => {
+        return subArr.map((char) => alphabet.indexOf(char) + 1);
+    })
+
+    let allSums: number[] = [];
+    // GET SUM OF EACH SUBARRAY
+    valueSubs.forEach((sub) => {
+        let currSum = sub.reduce((acc, curr) => acc + curr);
+        allSums.push(currSum);
+    })
+
+    // all sums => [ 29, 80, 22 ]
+    const solution: number = Math.max(...allSums);
+    // 80
+    return solution;
+
+}
+
+// 2️⃣ SHORTER:
+const solve6 = (str: string): number => {
+
+    // RETUTRN 0 IF NO CONSONANTS ARE IN STRING
+    if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str)) return 0;
+
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    const valueSubs: number[][] = str
+        .match(/[^aeiou]+/g)!
+        .map((sub) => sub.split(""))
+        .map((subArr) => {
+            return subArr.map((char) => alphabet.indexOf(char) + 1);
+        });
+
+
+    let allSums: number[] = [];
+    // GET SUM OF EACH SUBARRAY
+    valueSubs.forEach((sub) => {
+        let currSum = sub.reduce((acc, curr) => acc + curr);
+        allSums.push(currSum);
+    })
+
+    // all sums => [ 29, 80, 22 ]
+    const solution: number = Math.max(...allSums);
+    // 80
+    return solution;
+
+}
+
+// 80
+// console.log(solve("chruschtschov"));
+// console.log(solve("eaiouuua"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ SPLIT, MAP, REDUCE, MATH.MAX ❗️❗️❗️
+function solve2(s: string) {
+    // your code here
+    return Math.max(
+        ...s
+            .split(/[aeiou]/)
+            .map(x => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0))
+    );
+}
+
+// console.log(solve2("chruschtschov"));
+
+function solve3(s: string) {
+    let highest = 0
+    let sum = 0
+
+    for (let i = 0; i < s.length; i++) {
+        if ('aeiou'.includes(s[i])) {
+            sum = 0
+            continue
+        }
+
+        sum += s.charCodeAt(i) - 96
+
+        if (highest < sum) {
+            highest = sum
+        }
+    }
+
+    return highest
+}
+
+
+function solve4(s: string) {
+    let res = 0;
+    const arr = s.split(/a|e|i|o|u/);
+    arr.forEach(subs => {
+        let sum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            sum += (subs.charCodeAt(i) - 96);
+        }
+        if (sum > res) res = sum
+    })
+    return res;
+}
+
+
+function solve5(s: string): number {
+    return Math.max(...s.replace(/[aeiou]+/g, ' ')
+        .split(' ')
+        .map(e => e.split('').reduce((prev, current) => prev + current.charCodeAt(0) - 96, 0)));
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -358,27 +486,27 @@
 
 /*
 Two tortoises named A and B must run a race. A starts with an average speed of 720 feet per hour. Young B knows she runs faster than A, and furthermore has not finished her cabbage.
-
+ 
 When she starts, at last, she can see that A has a 70 feet lead but B's speed is 850 feet per hour. How long will it take B to catch A?
-
+ 
 More generally: given two speeds v1 (A's speed, integer > 0) and v2 (B's speed, integer > 0) and a lead g (integer > 0) how long will it take B to catch A?
-
+ 
 The result will be an array [hour, min, sec] which is the time needed in hours, minutes and seconds (round down to the nearest second) or a string in some languages.
-
+ 
 If v1 >= v2 then return nil, nothing, null, None or {-1, -1, -1} for C++, C, Go, Nim, Pascal, COBOL, [-1, -1, -1] for Perl,[] for Kotlin or "-1 -1 -1".
-
+ 
 Examples:
 (form of the result depends on the language)
-
+ 
 race(720, 850, 70) => [0, 32, 18] or "0 32 18"
 race(80, 91, 37)   => [3, 21, 49] or "3 21 49"
 Note:
 See other examples in "Your test cases".
-
+ 
 In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
-
+ 
 ** Hints for people who don't know how to convert to hours, minutes, seconds:
-
+ 
 Tortoises don't care about fractions of seconds
 Think of calculation by hand using only integers (in your code use or simulate integer division)
 or Google: "convert decimal time to hours minutes seconds"
@@ -457,7 +585,7 @@ const race = (v1: number, v2: number, lead: number): number[] => {
 // [3, 21, 49]
 // console.log(race(80, 91, 37));
 // [2, 0, 0]
-console.log(race(80, 100, 40));
+// console.log(race(80, 100, 40));
 // console.log();
 // console.log();
 // console.log();
@@ -474,9 +602,9 @@ console.log(race(80, 100, 40));
 
 /*
 Your task, is to create NxN multiplication table, of size provided in parameter.
-
+ 
 for example, when given size is 3:
-
+ 
 1 2 3
 2 4 6
 3 6 9
@@ -565,7 +693,7 @@ function multiplicationTable5(size: number): number[][] {
 Assume "#" is like a backspace in string. This means that string "a#bc#d" actually is "bd"
   
 Your task is to process a string with "#" symbols.  
-
+ 
 Examples
 "abc#d##c"      ==>  "ac"
 "abc##d######"  ==>  ""
@@ -647,9 +775,9 @@ function cleanString8(s: string): string {
 
 /*
 Encrypt this!
-
+ 
 You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
-
+ 
 Your message is a string containing space separated words.
 You need to encrypt each word in the message using the following rules:
 The first letter must be converted to its ASCII code.
@@ -777,20 +905,20 @@ const encryptThis7 = (str: string): string => {
 
 /*
 John has invited some friends. His list is:
-
+ 
 s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
 Could you make a program that
-
+ 
 makes this string uppercase
 gives it sorted in alphabetical order by last name.
 When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
-
+ 
 So the result of function meeting(s) will be:
-
+ 
 "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
 It can happen that in two distinct families with the same family name two people have the same first name too.
-
-
+ 
+ 
 */
 
 const meeting = (str: string): string => {
@@ -1049,13 +1177,13 @@ function meeting6(s: string): string {
 
 /*
 From Wikipedia:
-
+ 
 "A divisibility rule is a shorthand way of determining whether a given integer is divisible by a fixed divisor without performing the division, usually by examining its digits."
-
+ 
 When you divide the successive powers of 10 by 13 you get the following remainders of the integer divisions:
-
+ 
 1, 10, 9, 12, 3, 4 because:
-
+ 
 10 ^ 0 ->  1 (mod 13)
 10 ^ 1 -> 10 (mod 13)
 10 ^ 2 ->  9 (mod 13)
@@ -1063,40 +1191,40 @@ When you divide the successive powers of 10 by 13 you get the following remainde
 10 ^ 4 ->  3 (mod 13)
 10 ^ 5 ->  4 (mod 13)
 (For "mod" you can see: https://en.wikipedia.org/wiki/Modulo_operation)
-
+ 
 Then the whole pattern repeats. Hence the following method:
-
+ 
 Multiply
-
+ 
 the right most digit of the number with the left most number in the sequence shown above,
 the second right most digit with the second left most digit of the number in the sequence.
 The cycle goes on and you sum all these products. Repeat this process until the sequence of sums is stationary.
-
+ 
 Example:
 What is the remainder when 1234567 is divided by 13?
-
+ 
 7      6     5      4     3     2     1  (digits of 1234567 from the right)
 ×      ×     ×      ×     ×     ×     ×  (multiplication)
 1     10     9     12     3     4     1  (the repeating sequence)
 Therefore following the method we get:
-
+ 
 7×1 + 6×10 + 5×9 + 4×12 + 3×3 + 2×4 + 1×1 = 178
-
+ 
 We repeat the process with the number 178:
-
+ 
 8x1 + 7x10 + 1x9 = 87
-
+ 
 and again with 87:
-
+ 
 7x1 + 8x10 = 87
-
+ 
 From now on the sequence is stationary (we always get 87) and the remainder of 1234567 by 13 is the same as the remainder of 87 by 13 ( i.e 9).
-
+ 
 Task:
 Call thirt the function which processes this sequence of operations on an integer n (>=0). thirt will return the stationary number.
-
+ 
 thirt(1234567) calculates 178, then 87, then 87 and returns 87.
-
+ 
 thirt(321) calculates 48, 48 and returns 48
 */
 
@@ -1123,11 +1251,11 @@ function thirt(n: number): number {
 
 /*
 Let us consider this example (array written in general format):
-
+ 
 ls = [0, 1, 3, 6, 10]
-
+ 
 Its following parts:
-
+ 
 ls = [0, 1, 3, 6, 10]
 ls = [1, 3, 6, 10]
 ls = [3, 6, 10]
@@ -1135,16 +1263,16 @@ ls = [6, 10]
 ls = [10]
 ls = []
 The corresponding sums are (put together in a list): [20, 20, 19, 16, 10, 0]
-
+ 
 The function parts_sums (or its variants in other languages) will take as parameter a list ls and return a list of the sums of its parts as defined above.
-
+ 
 Other Examples:
 ls = [1, 2, 3, 4, 5, 6] 
 parts_sums(ls) -> [21, 20, 18, 15, 11, 6, 0]
-
+ 
 ls = [744125, 935, 407, 454, 430, 90, 144, 6710213, 889, 810, 2579358]
 parts_sums(ls) -> [10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 9291414, 9291270, 2581057, 2580168, 2579358, 0]
-
+ 
 Notes
 Take a look at performance: some lists have thousands of elements.
 */
@@ -1218,15 +1346,15 @@ function partsSums6(ls: number[]): number[] {
 
 /*
 Write a simple parser that will parse and run Deadfish.
-
+ 
 Deadfish has 4 commands, each 1 character long:
-
+ 
 i increments the value (initially 0)
 d decrements the value
 s squares the value
 o outputs the value into the return array
 Invalid characters should be ignored.
-
+ 
 parse("iiisdoso") => [8, 64]
 */
 
@@ -1315,28 +1443,28 @@ function parse3(data: string): number[] {
 
 /*
 A bookseller has lots of books classified in 26 categories labeled A, B, ... Z. Each book has a code c of 3, 4, 5 or more characters. The 1st character of a code is a capital letter which defines the book category.
-
+ 
 In the bookseller's stocklist each code c is followed by a space and by a positive integer n (int n >= 0) which indicates the quantity of books of this code in stock.
-
+ 
 For example an extract of a stocklist could be:
-
+ 
 L = {"ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"}.
 or
 L = ["ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"] or ....
 You will be given a stocklist (e.g. : L) and a list of categories in capital letters e.g :
-
+ 
 M = {"A", "B", "C", "W"} 
 or
 M = ["A", "B", "C", "W"] or ...
 and your task is to find all the books of L with codes belonging to each category of M and to sum their quantity according to each category.
-
+ 
 For the lists L and M of example you have to return the string (in Haskell/Clojure/Racket a list of pairs):
-
+ 
 (A : 20) - (B : 114) - (C : 50) - (W : 0)
 where A, B, C, W are the categories, 20 is the sum of the unique book of category A, 114 the sum corresponding to "BKWRK" and "BTSQZ", 50 corresponding to "CDXEF" and 0 to category 'W' since there are no code beginning with W.
-
+ 
 If L or M are empty return string is "" (Clojure and Racket should return an empty array/list instead).
-
+ 
 Note:
 In the result codes and their values are in the same order as in M.
 */
@@ -1437,11 +1565,11 @@ c = ["A", "B", "C", "D"];
 
 /*
 The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).
-
+ 
 If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.
-
+ 
 If
-
+ 
 sz is <= 0 or if str is empty return ""
 sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
 Examples:
@@ -1516,11 +1644,11 @@ class G964B {
 
 /*
 ❗️❗️❗️ Property 'flat' does not exist on type 'any[]'. (2339) ❗️❗️❗️
-
+ 
 You should add es2019 or es2019.array to your --lib setting for TypeScript to recognize array.flat() and flatMap().
-
+ 
 Example:
-
+ 
 {
   "compilerOptions": {
     "target": "es5",
@@ -1529,13 +1657,13 @@ Example:
     ]
   }
 }
-
+ 
 To flat single level array:
-
+ 
 arr.reduce((acc, val) => acc.concat(val), []);
-
+ 
 To flat multi level array
-
+ 
 function flatDeep(arr, d = 1) {
    return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), []) : arr.slice();
 };
@@ -1561,8 +1689,8 @@ class G964B3 {
         return chunk.join('') + G964.revrot(str.slice(sz, str.length), sz);
     }
 }
-
-
+ 
+ 
 class G964B4 {
     public static revrot(str, sz) {
         if (sz <= 0 || str === '' || sz > str.length) return '';
@@ -1573,13 +1701,13 @@ class G964B4 {
         return chunks.map((chunk: string) => test(chunk) ? reverse(chunk) : rotate(chunk)).join('');
     }
 }
-
-
-
+ 
+ 
+ 
 class G964B5 {
     public static revrot(str, sz) {
         if(this.isInvalidInput(str, sz)) { return '' }
-
+ 
         const chunks: string[] = this.getChunks(str, sz);
         const newChunks = chunks.map(chunk => this.formatChunk(chunk, sz));
         
@@ -1620,15 +1748,15 @@ class G964B5 {
       return splitChunk.join('');
     }
 }
-
-
-
+ 
+ 
+ 
 class G964B6 {
     public static revrot(str, sz) {
         if (str === "" || sz === 0 || str.length < sz) {
             return "";
         }
-
+ 
         const processSlice = (s: string): string => {
             let chunks = [...s];
             const div2 = chunks.map((d) => Math.pow(parseInt(d), 3)).reduce((a, b) => a + b, 0) % 2 === 0;
@@ -1639,11 +1767,11 @@ class G964B6 {
             }
             return chunks.join("");
           };
-
+ 
         return processSlice(str.slice(0, sz)) + G964B6.revrot(str.slice(sz), sz);
     }
 }
-
+ 
 */
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1656,31 +1784,31 @@ class G964B6 {
 
 /*
 The drawing below gives an idea of how to cut a given "true" rectangle into squares ("true" rectangle meaning that the two dimensions are different).
-
+ 
 alternative text
-
+ 
 Can you translate this drawing into an algorithm?
-
+ 
 You will be given two dimensions
-
+ 
 a positive integer length
 a positive integer width
 You will return a collection or a string (depending on the language; Shell bash, PowerShell, Pascal and Fortran return a string) with the size of each of the squares.
-
+ 
 Examples in general form:
 (depending on the language)
-
+ 
   sqInRect(5, 3) should return [3, 2, 1, 1]
   sqInRect(3, 5) should return [3, 2, 1, 1]
   
   You can see examples for your language in **"SAMPLE TESTS".**
 Notes:
 lng == wdth as a starting case would be an entirely different problem and the drawing is planned to be interpreted with lng != wdth. (See kata, Square into Squares. Protect trees! http://www.codewars.com/kata/54eb33e5bc1a25440d000891 for this problem).
-
+ 
 When the initial parameters are so that lng == wdth, the solution [lng] would be the most obvious but not in the spirit of this kata so, in that case, return None/nil/null/Nothing or return {} with C++, Array() with Scala, [] with Perl, Raku.
-
+ 
 In that case the returned structure of C will have its sz component equal to 0.
-
+ 
 Return the string "nil" with Bash, PowerShell, Pascal and Fortran.
 */
 
@@ -1718,32 +1846,32 @@ class G966 {
 }
 
 /*
-
+ 
 sides:  [ 5, 3 ]
 descSides:  [ 5, 3 ]
 squares found:  1
 SOLUTION:  [ 3 ]
 new side:  2
 descSides:  [ 3, 2 ]
-
+ 
 sides:  [ 3, 2 ]
 descSides:  [ 3, 2 ]
 squares found:  1
 SOLUTION:  [ 2 ]
 new side:  1
 descSides:  [ 2, 1 ]
-
+ 
 sides:  [ 2, 1 ]
 descSides:  [ 2, 1 ]
 squares found:  2
 SOLUTION:  [ 1, 1 ]
 new side:  0
 descSides:  [ 1, 0 ]
-
+ 
 sides:  [ 1, 0 ]
 descSides:  [ 1, 0 ]
 squares found:  Infinity
-
+ 
 */
 
 // console.log(G964.sqInRect(5, 5));
@@ -1826,12 +1954,12 @@ class G966a2 {
 
 /*
 Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
-
+ 
 For instance:
-
+ 
 camelCase("hello case"); // => "HelloCase"
 camelCase("camel case word"); // => "CamelCaseWord"
-
+ 
 */
 const camelCase = (str: string): string => {
     /*
@@ -1946,14 +2074,14 @@ const camelCase9 = (str: string): string =>
 
 /*
 Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
-
+ 
 Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. So 1990 is rendered "MCMXC" (1000 = M, 900 = CM, 90 = XC) and 2008 is rendered "MMVIII" (2000 = MM, 8 = VIII). The Roman numeral for 1666, "MDCLXVI", uses each letter in descending order.
-
+ 
 Example:
-
+ 
 solution('XXI'); // should return 21
 Help:
-
+ 
 Symbol    Value
 I          1
 V          5
@@ -2502,14 +2630,14 @@ function solution14(roman: string): number {
 
 /*
 Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
-
+ 
 Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
-
+ 
 Example:
-
+ 
 solution(1000); // should return 'M'
 Help:
-
+ 
 Symbol    Value
 I          1
 V          5
@@ -2863,13 +2991,13 @@ function solution7(number: number): string {
 /*
 Introduction
 The wave (known as the Mexican wave in the English-speaking world outside North America) is an example of metachronal rhythm achieved in a packed stadium when successive groups of spectators briefly stand, yell, and raise their arms. Immediately upon stretching to full height, the spectator returns to the usual seated position.
-
+ 
 The result is a wave of standing spectators that travels through the crowd, even though individual spectators never move away from their seats. In many large arenas the crowd is seated in a contiguous circuit all the way around the sport field, and so the wave is able to travel continuously around the arena; in discontiguous seating arrangements, the wave can instead reflect back and forth through the crowd. When the gap in seating is narrow, the wave can sometimes pass through it. Usually only one wave crest will be present at any given time in an arena, although simultaneous, counter-rotating waves have been produced. (Source Wikipedia)
 Task
 In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
 Rules
  1.  The input string will always be lower case but maybe empty.
-
+ 
  2.  If the character in the string is whitespace then pass over it as if it was an empty seat
 Example
 wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
@@ -3001,27 +3129,27 @@ function wave7(str: string): Array<string> {
 
 /*
 A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.
-
+ 
 He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
-
+ 
 His mother looks out of a window 1.5 meters from the ground.
-
+ 
 How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing?
-
+ 
 Three conditions must be met for a valid experiment:
 Float parameter "h" in meters must be greater than 0
 Float parameter "bounce" must be greater than 0 and less than 1
 Float parameter "window" must be less than h.
 If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
-
+ 
 Note:
 The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
-
+ 
 Examples:
 - h = 3, bounce = 0.66, window = 1.5, result is 3
-
+ 
 - h = 3, bounce = 1, window = 1.5, result is -1 
-
+ 
 (Condition 2) not fulfilled).
 */
 
@@ -3091,21 +3219,21 @@ function bouncingBall3(h: number, bounce: number, window: number): number {
 
 /*
 Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
-
+ 
 Example 1:
 a1 = ["arp", "live", "strong"]
-
+ 
 a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
-
+ 
 returns ["arp", "live", "strong"]
-
+ 
 Example 2:
 a1 = ["tarp", "mice", "bull"]
-
+ 
 a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
-
+ 
 returns []
-
+ 
 Notes:
 Arrays are written in "general" notation. See "Your Test Cases" for examples in your language.
 In Shell bash a1 and a2 are strings. The return is a string where words are separated by commas.
@@ -3204,31 +3332,31 @@ class G964a5 {
 
 /*
 Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
-
+ 
 Examples
 Valid arrays
 a = [121, 144, 19, 161, 19, 144, 19, 11]  
 b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
 comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
-
+ 
 a = [121, 144, 19, 161, 19, 144, 19, 11] 
 b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
 Invalid arrays
 If, for example, we change the first number to something else, comp is not returning true anymore:
-
+ 
 a = [121, 144, 19, 161, 19, 144, 19, 11]  
 b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
 comp(a,b) returns false because in b 132 is not the square of any number of a.
-
+ 
 a = [121, 144, 19, 161, 19, 144, 19, 11]  
 b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
 comp(a,b) returns false because in b 36100 is not the square of any number of a.
-
+ 
 Remarks
 a or b might be [] or {} (all languages except R, Shell).
 a or b might be nil or null or None or nothing (except in C++, COBOL, Crystal, D, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
 If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
-
+ 
 Note for C
 The two arrays have the same size (> 0) given as parameter in fun
 */
@@ -3260,9 +3388,9 @@ const comp2 = (a1: number[] | null, a2: number[] | null): boolean => {
 
 /* ❗️❗️❗️ SPREAD NULL:
 I think you cannot spread null, you should check on whether your argument is null either:
-
+ 
 before it gets into this function, and then you can change the type to string
-
+ 
 do it in the function, before you spread the argument
 ❗️❗️❗️ 
 */
@@ -3323,22 +3451,22 @@ function comp4(a1: number[] | null, a2: number[] | null): boolean {
 
 /*
 You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
-
+ 
 Examples:
 strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], k = 2
-
+ 
 Concatenate the consecutive strings of strarr by 2, we get:
-
+ 
 treefoling   (length 10)  concatenation of strarr[0] and strarr[1]
 folingtrashy ("      12)  concatenation of strarr[1] and strarr[2]
 trashyblue   ("      10)  concatenation of strarr[2] and strarr[3]
 blueabcdef   ("      10)  concatenation of strarr[3] and strarr[4]
 abcdefuvwxyz ("      12)  concatenation of strarr[4] and strarr[5]
-
+ 
 Two strings are the longest: "folingtrashy" and "abcdefuvwxyz".
 The first that came is "folingtrashy" so 
 longest_consec(strarr, 2) should return "folingtrashy".
-
+ 
 In the same way:
 longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
 */
@@ -3390,10 +3518,10 @@ const longestConsec = (strArr: string[], numWords: number): string => {
 /*
 ❗️❗️❗️
 You need to copy the array before you sort it. One way with es6:
-
+ 
 const sorted = [...arr].sort();
 The spread-syntax as array literal (copied from mdn):
-
+ 
 var arr = [1, 2, 3];
 var arr2 = [...arr]; // like arr.slice()
 ❗️❗️❗️
@@ -3450,14 +3578,14 @@ function longestConsec4(strarr: string[], k: number): string {
 
 /*
 Your task is to construct a building which will be a pile of n cubes. The cube at the bottom will have a volume of n^3, the cube above will have volume of (n-1)^3 and so on until the top which will have a volume of 1^3.
-
+ 
 You are given the total volume m of the building. Being given m can you find the number n of cubes you will have to build?
-
+ 
 The parameter of the function findNb (find_nb, find-nb, findNb, ...) will be an integer m and you have to return the integer n such as n^3 + (n-1)^3 + ... + 1^3 = m if such a n exists or -1 if there is no such n.
-
+ 
 Examples:
 findNb(1071225) --> 45
-
+ 
 findNb(91716553919377) --> -1
 */
 
@@ -3525,24 +3653,24 @@ function findNb4(m: number): number {
 
 /*
 Some numbers have funny properties. For example:
-
+ 
 89 --> 8¹ + 9² = 89 * 1
-
+ 
 695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
-
+ 
 46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
-
+ 
 Given a positive integer n written as abcd... (a, b, c, d... being digits) and a positive integer p
-
+ 
 we want to find a positive integer k, if it exists, such as the sum of the digits of n taken to the successive powers of p is equal to k * n.
 In other words:
-
+ 
 Is there an integer k such as : (a ^ p + b ^ (p+1) + c ^(p+2) + d ^ (p+3) + ...) = n * k
-
+ 
 If it is the case we will return k, if not return -1.
-
+ 
 Note: n and p will always be given as strictly positive integers.
-
+ 
 dig_pow(89, 1) should return 1 since 8¹ + 9² = 89 = 89 * 1
 dig_pow(92, 1) should return -1 since there is no k such as 9¹ + 2² equals 92 * k
 dig_pow(695, 2) should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
@@ -3585,37 +3713,37 @@ class G964 {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
-
+ 
 class G964 {
-
+ 
     public static digPow = (n, p) => {
         var x = n.toString().split("").reduce((s, d, i) => s + Math.pow(d, p + i), 0)
         return x % n ? -1 : x / n;
     }
-
+ 
 }
-
-
-
+ 
+ 
+ 
 class G964 {
-
+ 
     public static digPow = (n, p) => {
         var x = n.toString().split("").reduce((s, d, i) => s + Math.pow(d, p + i), 0)
         return x % n ? -1 : x / n;
     }
 }
-
-
-
+ 
+ 
+ 
 class G964 {
-
+ 
     public static digPow = (n: number, p: number) => {
         const sum = ('' + n).split('').reduce((sum, digit, i) => sum += Math.pow(+digit, p + i), 0);
         const k = sum / n;
         return Number.isInteger(k) ? k : -1;
     }
 }
-
+ 
 */
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -3626,14 +3754,14 @@ class G964 {
 
 /*
 Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
-
+ 
 This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
-
+ 
 All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
-
+ 
 What is considered Valid?
 A string of braces is considered valid if all braces are matched with the correct brace.
-
+ 
 Examples
 "(){}[]"   =>  True
 "([{}])"   =>  True

@@ -1,6 +1,80 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const solve = (str) => {
+    if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str))
+        return 0;
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const matchSubs = str
+        .match(/[^aeiou]+/g)
+        .map((sub) => sub.split(""));
+    const valueSubs = matchSubs.map((subArr) => {
+        return subArr.map((char) => alphabet.indexOf(char) + 1);
+    });
+    let allSums = [];
+    valueSubs.forEach((sub) => {
+        let currSum = sub.reduce((acc, curr) => acc + curr);
+        allSums.push(currSum);
+    });
+    const solution = Math.max(...allSums);
+    return solution;
+};
+const solve6 = (str) => {
+    if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str))
+        return 0;
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const valueSubs = str
+        .match(/[^aeiou]+/g)
+        .map((sub) => sub.split(""))
+        .map((subArr) => {
+        return subArr.map((char) => alphabet.indexOf(char) + 1);
+    });
+    let allSums = [];
+    valueSubs.forEach((sub) => {
+        let currSum = sub.reduce((acc, curr) => acc + curr);
+        allSums.push(currSum);
+    });
+    const solution = Math.max(...allSums);
+    return solution;
+};
+function solve2(s) {
+    return Math.max(...s
+        .split(/[aeiou]/)
+        .map(x => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0)));
+}
+function solve3(s) {
+    let highest = 0;
+    let sum = 0;
+    for (let i = 0; i < s.length; i++) {
+        if ('aeiou'.includes(s[i])) {
+            sum = 0;
+            continue;
+        }
+        sum += s.charCodeAt(i) - 96;
+        if (highest < sum) {
+            highest = sum;
+        }
+    }
+    return highest;
+}
+function solve4(s) {
+    let res = 0;
+    const arr = s.split(/a|e|i|o|u/);
+    arr.forEach(subs => {
+        let sum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            sum += (subs.charCodeAt(i) - 96);
+        }
+        if (sum > res)
+            res = sum;
+    });
+    return res;
+}
+function solve5(s) {
+    return Math.max(...s.replace(/[aeiou]+/g, ' ')
+        .split(' ')
+        .map(e => e.split('').reduce((prev, current) => prev + current.charCodeAt(0) - 96, 0)));
+}
 const race = (v1, v2, lead) => {
     const convert = (seconds) => {
         let hour = 0, min = 0, sec = 0;
@@ -27,7 +101,6 @@ const race = (v1, v2, lead) => {
     const solution = convert(numSeconds - 1);
     return solution;
 };
-console.log(race(80, 100, 40));
 const multiplicationTable = (size) => {
     let solution = [];
     let firstRow = [];

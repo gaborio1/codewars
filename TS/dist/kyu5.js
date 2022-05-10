@@ -1,21 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
-const josephusSurvivor = (num, gap) => {
-    let seqArr = [];
-    for (let i = 1; i <= num; i += 1) {
-        seqArr.push(i);
-    }
-    console.log(seqArr);
-    let targetIdx = gap > seqArr.length
-        ? gap % seqArr.length
-        : gap;
-    console.log(targetIdx);
-    return 1;
+const parseMolecule = (formula) => {
 };
-console.log(josephusSurvivor(7, 3));
-console.log(josephusSurvivor(7, 10));
-console.log(josephusSurvivor(7, 8));
+const josephusSurvivor = (num, gap) => {
+    let items = [];
+    for (let i = 1; i <= num; i += 1) {
+        items.push(i);
+    }
+    console.log(items);
+    let solutionArr = [], seqArr = [...items];
+    let validSteps = 0;
+    for (let i = 0; i < seqArr.length; i += 1) {
+        if (!solutionArr.includes(seqArr[i]))
+            validSteps += 1;
+        if (validSteps === gap) {
+            solutionArr.push(seqArr[i]);
+            validSteps = 0;
+        }
+        if (solutionArr.length === items.length)
+            break;
+        if (i === seqArr.length - 1)
+            seqArr = seqArr.concat(items);
+    }
+    return solutionArr[solutionArr.length - 1];
+};
+console.log(josephusSurvivor(11, 19));
 const josephus2 = (items, gap) => {
     if (items.length === 1)
         return items;

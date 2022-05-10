@@ -200,16 +200,43 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+For a given chemical formula represented by a string, count the number of atoms of each element contained in the molecule and return an object (associative array in PHP, Dictionary<string, int> in C#, Map<String,Integer> in Java).
+
+For example:
+
+var water = 'H2O';
+parseMolecule(water); // return {H: 2, O: 1}
+
+var magnesiumHydroxide = 'Mg(OH)2';
+parseMolecule(magnesiumHydroxide); // return {Mg: 1, O: 2, H: 2}
+
+var fremySalt = 'K4[ON(SO3)2]2';
+parseMolecule(fremySalt); // return {K: 4, O: 14, N: 2, S: 4}
+As you can see, some formulas have brackets in them. The index outside the brackets tells you that you have to multiply count of each atom inside the bracket on this index. For example, in Fe(NO3)2 you have one iron atom, two nitrogen atoms and six oxygen atoms.
+
+Note that brackets may be round, square or curly and can also be nested. Index after the braces is optional.
+
 
 */
 
-// console.log();
-// console.log();
-// console.log();
+const parseMolecule = (formula: string) => {
+    // TODO: do your science here
+}
+
+
+// {H: 2, O: 1}
+// console.log(parseMolecule("H2O"));
+// {Mg: 1, O: 2, H: 2}
+// console.log(parseMolecule("Mg(OH)2"));
+// {K: 4, O: 14, N: 2, S: 4}
+// console.log(parseMolecule("K4[ON(SO3)2]2"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+//  ❗️❗️❗️ REFACTOR, SLOW ❗️❗️❗️
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ Timed Out Passed: 9 Failed: 1+ ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -239,30 +266,53 @@ Notes and tips: using the solution to the other kata to check your function may 
 
 const josephusSurvivor = (num: number, gap: number): number => {
 
-    let seqArr: number[] = [];
+    // if (num === 1) return num;
+
+    let items: number[] = [];
     for (let i = 1; i <= num; i += 1) {
-        seqArr.push(i);
+        items.push(i);
     }
-    console.log(seqArr);
+    console.log(items);
 
-    let targetIdx: number = gap > seqArr.length
-        ? gap % seqArr.length
-        : gap;
+    // let targetIdx: number = gap > seqArr.length
+    //     ? gap % seqArr.length - 1
+    //     : gap - 1;
 
-    console.log(targetIdx);
+    // console.log("targetIdx:", targetIdx);
 
-    // for (let i = 0; i < seqArr.length; i += 1) {
 
-    // }
+    // INITIALIZE SEQ ARR WITH COPY OF ITEMS
+    let solutionArr: number[] = [], seqArr: number[] = [...items];
+    // CONUNT VALID STEPS (IGNORE DEAD)
+    let validSteps: number = 0;
 
-    return 1;
+    // LOOP THROUGH SEQ ARR
+    for (let i = 0; i < seqArr.length; i += 1) {
+        // INCREMENT VALID STEPS IF ELEMENT IS ALIVE
+        if (!solutionArr.includes(seqArr[i])) validSteps += 1;
+        // IF VALD STEPS === GAP (EVERY NTH), PUSH CURRENT AND RESET VALIDSTEPS
+        if (validSteps === gap) {
+            solutionArr.push(seqArr[i]);
+            validSteps = 0;
+        }
+        // STOP LOOP IF EVERY ELEMENT HAS BEEN SELECTED
+        if (solutionArr.length === items.length) break;
+        // IF LOOP REACHES LENGTH OF ITEMS, CONCAT ANOTHER COPY TO EXTEND SEQUENCE
+        if (i === seqArr.length - 1) seqArr = seqArr.concat(items);
+
+    }
+
+    return solutionArr[solutionArr.length - 1];
+
+    // return 1;
 
 }
 
-//   4
-console.log(josephusSurvivor(7, 3));
-console.log(josephusSurvivor(7, 10));
-console.log(josephusSurvivor(7, 8));
+//  4
+// console.log(josephusSurvivor(7, 3));
+// 10
+console.log(josephusSurvivor(11, 19));
+// console.log(josephusSurvivor(7, 8));
 // console.log();
 // console.log();
 // console.log();
