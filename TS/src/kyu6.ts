@@ -307,21 +307,94 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ COMMENT THIS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: FOLD AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: RECURSION, 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+In this kata you have to write a method that folds a given array of integers by the middle x-times.
 
+An example says more than thousand words:
+
+Fold 1-times:
+[1,2,3,4,5] -> [6,6,3]
+
+A little visualization (NOT for the algorithm but for the idea of folding):
+
+ Step 1         Step 2        Step 3       Step 4       Step5
+                     5/           5|         5\          
+                    4/            4|          4\      
+1 2 3 4 5      1 2 3/         1 2 3|       1 2 3\       6 6 3
+----*----      ----*          ----*        ----*        ----*
+
+
+Fold 2-times:
+[1,2,3,4,5] -> [9,6]
+As you see, if the count of numbers is odd, the middle number will stay. Otherwise the fold-point is between the middle-numbers, so all numbers would be added in a way.
+
+The array will always contain numbers and will never be null. The parameter runs will always be a positive integer greater than 0 and says how many runs of folding your method has to do.
+
+If an array with one element is folded, it stays as the same array.
+
+The input array should not be modified!
 */
+const foldArray = (numArr: number[], numFolds: number): number[] => {
 
-// console.log();
-// console.log();
+    // TRACK NUMBER OF FOLDS REMAINING
+    let numFoldsLeft: number = numFolds;
+    // THIS IS THE STATE OF OUR numArr AFTER EACH FOLD
+    let currentArray: number[] = [];
+
+    // IF ODD LENGTH:
+    if (numArr.length & 1) {
+        // GRAB FIRST HALF, SECOND HALF(REVERSED) AND MIDDLE OF ARRAY
+        let leadSub: number[] = numArr.slice(0, (numArr.length - 1) / 2);
+        let trailSub: number[] = numArr.slice(Math.ceil(numArr.length / 2)).reverse();
+        let middleEl: number = numArr[(numArr.length - 1) / 2];
+        // SUM CURRENT PAIR AND PUSH INTO CURRENT ARR
+        leadSub.forEach((num, idx) => {
+            currentArray.push(num + trailSub[idx]);
+        })
+        // CONCAT MIDDLE ELEMENT TO CURREN ARRAY
+        currentArray.push(middleEl);
+        // DECREMENT NUMBER OF FOLDS BY ONE (OUTSIDE OF LOOP !!!)
+        numFoldsLeft -= 1;
+    } else {
+        // EVEN LENGTH:
+        for (let i = 0; i < numArr.length / 2; i += 1) {
+            // CALC CURRENT SUM BY ADDING (FIRST AND N), (SECOND AND N-1), (THIRD AND N-2)...
+            let currSum: number = numArr[i] + numArr[numArr.length - 1 - i];
+            // PUSH INTO CURRENT ARRAY
+            currentArray.push(currSum);
+        }
+        // DECREMENT NUMBER OF REMAINING FOLDS BY ONE (OUTSIDE OF LOOP !!!)
+        numFoldsLeft -= 1;
+    }
+
+    // RECURSION: IF numFoldsLeft > 0 FUNCION TO CALL ITSELF WITH CURRENT ARGUMENTS,
+    // OTHERWISE RETURN CURRENT ARRAY
+    return numFoldsLeft
+        ? foldArray(currentArray, numFoldsLeft)
+        : currentArray;
+
+}
+
+//  [ 6, 6, 3 ]
+// console.log(foldArray([1, 2, 3, 4, 5], 1));
+//  [9, 6]
+// console.log(foldArray([1, 2, 3, 4, 5], 2));
+// [15]
+// console.log(foldArray([1, 2, 3, 4, 5], 3));
+// [ 14, 75, 0 ]
+// console.log(foldArray([-9, 9, -8, 8, 66, 23], 1));
+// [427]
+// console.log(foldArray([1, 2, 3, 4, 5, 99, 88, 78, 74, 73], 5));
 // console.log();
 // console.log();
 

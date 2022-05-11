@@ -1,6 +1,184 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+var Issuer;
+(function (Issuer) {
+    Issuer["VISA"] = "VISA";
+    Issuer["AMEX"] = "AMEX";
+    Issuer["Mastercard"] = "Mastercard";
+    Issuer["Discover"] = "Discover";
+    Issuer["Unknown"] = "Unknown";
+})(Issuer || (Issuer = {}));
+const getIssuer = (cardNum) => {
+    const cardNumStr = cardNum.toString();
+    let solution = "";
+    const re = {
+        VISA: /^4[0-9]{12}(?:[0-9]{3})?$/,
+        Mastercard: /^5[1-5][0-9]{14}$/,
+        AMEX: /^3[47][0-9]{13}$/,
+        Discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/
+    };
+    for (let key in re) {
+        if (re[key].test(cardNumStr)) {
+            solution = key;
+            break;
+        }
+        else {
+            solution = "Unknown";
+        }
+    }
+    return solution;
+};
+function detectCardType(number) {
+    var re = {
+        electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
+        maestro: /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
+        dankort: /^(5019)\d+$/,
+        interpayment: /^(636)\d+$/,
+        unionpay: /^(62|88)\d+$/,
+        visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
+        mastercard: /^5[1-5][0-9]{14}$/,
+        amex: /^3[47][0-9]{13}$/,
+        diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
+        discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
+        jcb: /^(?:2131|1800|35\d{3})\d{11}$/
+    };
+}
+const getIssuer2 = (x, $ = x.toString()) => ((Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) && $.length === 15) ? "AMEX" :
+    (Number($.slice(0, 4)) === 6011 && $.length === 16) ? "Discover" :
+        (Number($.slice(0, 2)) > 50 && Number($.slice(0, 2)) < 56 && $.length === 16) ? 'Mastercard' :
+            (Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)) ? 'VISA' :
+                'Unknown';
+const getIssuer3 = (x) => {
+    let cn = x.toString();
+    switch (true) {
+        case /^3[4,7]/.test(cn) && cn.length == 15:
+            return Issuer.AMEX;
+        case /^6011/.test(cn) && cn.length == 16:
+            return Issuer.Discover;
+        case /^5[1-5]/.test(cn) && cn.length == 16:
+            return Issuer.Mastercard;
+        case /^4/.test(cn) && (cn.length == 13 || cn.length == 16):
+            return Issuer.VISA;
+        default:
+            return Issuer.Unknown;
+    }
+};
+const getIssuer4 = (x) => {
+    let str = x.toString();
+    let len = str.length;
+    let begin = { a: str.slice(0, 2), b: str.slice(0, 4), c: str.slice(0, 1) };
+    if ((len === 16 || len === 13) && begin.c === '4') {
+        return 'VISA';
+    }
+    else if (len === 16 && (begin.a === '51' || begin.a === '52' || begin.a === '53' || begin.a === '54' || begin.a === '55')) {
+        return 'Mastercard';
+    }
+    else if (len === 16 && begin.b === '6011') {
+        return 'Discover';
+    }
+    else if (len === 15 && (begin.a === '34' || begin.a === '37')) {
+        return 'AMEX';
+    }
+    return 'Unknown';
+};
+function getIssuer5(x) {
+    const test = (reg) => reg.test(`${x}`);
+    if (test(/^(34|37)\d{13}$/))
+        return 'AMEX';
+    else if (test(/^6011\d{12}$/))
+        return 'Discover';
+    else if (test(/^(51|52|53|54|55)\d{14}$/))
+        return 'Mastercard';
+    else if (test(/^4((\d{12})|(\d{15}))$/))
+        return 'VISA';
+    return 'Unknown';
+}
+const getIssuer6 = (x) => {
+    let creditCardNumber = x.toString();
+    let ccFirstFour = creditCardNumber.substr(0, 4);
+    let ccFirstTwo = creditCardNumber.substr(0, 2);
+    let ccLength = creditCardNumber.length;
+    let Issuer;
+    (function (Issuer) {
+        Issuer["VISA"] = "VISA";
+        Issuer["AMEX"] = "AMEX";
+        Issuer["Mastercard"] = "Mastercard";
+        Issuer["Discover"] = "Discover";
+        Issuer["Unknown"] = "Unknown";
+    })(Issuer || (Issuer = {}));
+    if (ccFirstFour == "6011" && ccLength == 16) {
+        return Issuer.Discover;
+    }
+    if ((ccFirstTwo == "34" || ccFirstTwo == "37") && ccLength == 15) {
+        return Issuer.AMEX;
+    }
+    if (creditCardNumber.substr(0, 1) == "4" && (ccLength == 13 || ccLength == 16)) {
+        return Issuer.VISA;
+    }
+    if ((ccFirstTwo == "51" || ccFirstTwo == "52" || ccFirstTwo == "53" || ccFirstTwo == "54" || ccFirstTwo == "55") && ccLength == 16) {
+        return Issuer.Mastercard;
+    }
+    else {
+        return Issuer.Unknown;
+    }
+};
+const getIssuer7 = (x) => {
+    const s = x.toString();
+    if (/^4(\d{12}|\d{15})$/.test(s))
+        return Issuer.VISA;
+    if (/^3[4|7]\d{13}$/.test(s))
+        return Issuer.AMEX;
+    if (/^6011\d{12}$/.test(s))
+        return Issuer.Discover;
+    if (/^5[1-5]\d{14}$/.test(s))
+        return Issuer.Mastercard;
+    return Issuer.Unknown;
+};
+const getIssuer9 = (x) => {
+    if (String(x).length === 15 && /^34|37/.test(String(x)))
+        return Issuer.AMEX;
+    if (String(x).length === 16 && /^6011/.test(String(x)))
+        return Issuer.Discover;
+    if (String(x).length === 16 && /^51|^52|^53|^54|^55/.test(String(x)))
+        return Issuer.Mastercard;
+    if (String(x).length === 13 && /^4/.test(String(x)))
+        return Issuer.VISA;
+    if (String(x).length === 16 && /^4/.test(String(x)))
+        return Issuer.VISA;
+    return Issuer.Unknown;
+};
+const getIssuer10 = (x) => {
+    const card_number = String(x);
+    const data = [
+        { type: Issuer.AMEX, begins: ["34", "37"], len: [15], },
+        { type: Issuer.Discover, begins: ["6011"], len: [16], },
+        { type: Issuer.Mastercard, begins: ["51", "52", "53", "54", "55"], len: [16] },
+        { type: Issuer.VISA, begins: ["4"], len: [13, 16] },
+    ];
+    const res = data.find(d => (d.begins.some(b => card_number.startsWith(b)) &&
+        d.len.some(l => card_number.length === l)));
+    return res ? res.type : Issuer.Unknown;
+};
+const getIssuer8 = (x) => Object.values(Issuer)[[/^4\d{12}(\d{3})?$/, /^3[47]\d{13}$/, /^5[1-5]\d{14}$/, /^6011\d{12}$/, /.*/].findIndex(p => p.test(`${x}`))];
+const getIssuer11 = (x) => {
+    const s = x.toString();
+    if (s.length === 15 && (s.startsWith("34") || s.startsWith("37"))) {
+        return Issuer.AMEX;
+    }
+    else if (s.length === 16 && s.startsWith("6011")) {
+        return Issuer.Discover;
+    }
+    else if (s.length === 16 && ["51", "52", "53", "54", "55"].includes(s.slice(0, 2))) {
+        return Issuer.Mastercard;
+    }
+    else if ((s.length === 13 || s.length === 16) && s.startsWith("4")) {
+        return Issuer.VISA;
+    }
+    else {
+        return Issuer.Unknown;
+    }
+};
 const lastSurvivor = (letters, coords) => {
     const lettersArr = letters.split("");
     coords.forEach((index) => {

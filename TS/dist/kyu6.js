@@ -1,6 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const foldArray = (numArr, numFolds) => {
+    let numFoldsLeft = numFolds;
+    let currentArray = [];
+    if (numArr.length & 1) {
+        let leadSub = numArr.slice(0, (numArr.length - 1) / 2);
+        let trailSub = numArr.slice(Math.ceil(numArr.length / 2)).reverse();
+        let middleEl = numArr[(numArr.length - 1) / 2];
+        leadSub.forEach((num, idx) => {
+            currentArray.push(num + trailSub[idx]);
+        });
+        currentArray.push(middleEl);
+        numFoldsLeft -= 1;
+    }
+    else {
+        console.log("even length");
+        for (let i = 0; i < numArr.length / 2; i += 1) {
+            console.log("   i:", i);
+            console.log("       current pair:", numArr[i], numArr[numArr.length - 1 - i]);
+            let currSum = numArr[i] + numArr[numArr.length - 1 - i];
+            console.log("           current sum:", currSum);
+            currentArray.push(currSum);
+            console.log("       currentFold:", currentArray);
+        }
+        numFoldsLeft -= 1;
+    }
+    console.log("counter:", numFoldsLeft);
+    return numFoldsLeft > 0
+        ? foldArray(currentArray, numFoldsLeft)
+        : currentArray;
+};
+console.log(foldArray([1, 2, 3, 4, 5, 99, 88, 78, 74, 73], 5));
 const solve = (str) => {
     if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str))
         return 0;

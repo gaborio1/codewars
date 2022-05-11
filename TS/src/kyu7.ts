@@ -459,25 +459,293 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: CREDIT CARD ISSUER CHECKING (RANDOM TESTS NOT 100%)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: TEST, BEGINS, STARTSWITH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: https://stackoverflow.com/questions/72768/how-do-you-detect-credit-card-type-based-on-number
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
+
+Complete the function getIssuer() that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string Unknown.
+
+Where Issuer is defined with the following enum type.
+
+enum Issuer {
+  VISA = 'VISA',
+  AMEX = 'AMEX',
+  Mastercard = 'Mastercard',
+  Discover = 'Discover',
+  Unknown = 'Unknown',
+}
+Examples
+getIssuer(4111111111111111) == "VISA"
+getIssuer(4111111111111) == "VISA"
+getIssuer(4012888888881881) == "VISA"
+getIssuer(378282246310005) == "AMEX"
+getIssuer(6011111111111117) == "Discover"
+getIssuer(5105105105105100) == "Mastercard"
+getIssuer(5105105105105106) == "Mastercard"
+getIssuer(9111111111111111) == "Unknown"
+*/
+
+enum Issuer {
+    VISA = 'VISA',
+    AMEX = 'AMEX',
+    Mastercard = 'Mastercard',
+    Discover = 'Discover',
+    Unknown = 'Unknown',
+}
+
+const getIssuer = (cardNum: number): string => {
+
+
+    const cardNumStr: string = cardNum.toString();
+
+    let solution: string = "";
+
+    interface StrKeyVal {
+        [key: string]: any;
+    }
+
+    const re: StrKeyVal = {
+        // electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
+        // maestro: /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
+        // dankort: /^(5019)\d+$/,
+        // interpayment: /^(636)\d+$/,
+        // unionpay: /^(62|88)\d+$/,
+        VISA: /^4[0-9]{12}(?:[0-9]{3})?$/,
+        Mastercard: /^5[1-5][0-9]{14}$/,
+        AMEX: /^3[47][0-9]{13}$/,
+        // diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
+        Discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/
+        // jcb: /^(?:2131|1800|35\d{3})\d{11}$/
+    }
+
+    for (let key in re) {
+        if (re[key].test(cardNumStr)) {
+            // solution = Issuer[key]; // ❗️❗️❗️ ERROR
+            solution = key;
+            break;
+        } else {
+            // solution = Issuer.Unknown; // ❗️❗️❗️ ARROR
+            solution = "Unknown";
+        }
+
+    }
+
+    return solution;
+
+};
+
+// Issuer.VISA
+// console.log(getIssuer(4111111111111111));
+// Issuer.AMEX
+// console.log(getIssuer(378282246310005));
+// Issuer.Unknown
+// console.log(getIssuer(9111111111111111));
+// console.log();
+
+function detectCardType(number: string) {
+    var re = {
+        electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
+        maestro: /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
+        dankort: /^(5019)\d+$/,
+        interpayment: /^(636)\d+$/,
+        unionpay: /^(62|88)\d+$/,
+        visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
+        mastercard: /^5[1-5][0-9]{14}$/,
+        amex: /^3[47][0-9]{13}$/,
+        diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
+        discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
+        jcb: /^(?:2131|1800|35\d{3})\d{11}$/
+    }
+
+    // for (var key in re) {
+    //     if (re[key].test(number)) {
+    //         return key
+    //     }
+    // }
+}
+
+/*
+The credit/debit card number is referred to as a PAN, or Primary Account Number. The first six digits of the PAN are taken from the IIN, or Issuer Identification Number, belonging to the issuing bank (IINs were previously known as BIN — Bank Identification Numbers — so you may see references to that terminology in some documents). These six digits are subject to an international standard, ISO/IEC 7812, and can be used to determine the type of card from the number.
+
+Unfortunately the actual ISO/IEC 7812 database is not publicly available, however, there are unofficial lists, both commercial and free, including on Wikipedia.
+
+Anyway, to detect the type from the number, you can use a regular expression like the ones below: Credit for original expressions
+
+Visa: ^4[0-9]{6,}$ Visa card numbers start with a 4.
+
+MasterCard: ^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$ Before 2016, MasterCard numbers start with the numbers 51 through 55, but this will only detect MasterCard credit cards; there are other cards issued using the MasterCard system that do not fall into this IIN range. In 2016, they will add numbers in the range (222100-272099).
+
+American Express: ^3[47][0-9]{5,}$ American Express card numbers start with 34 or 37.
+
+Diners Club: ^3(?:0[0-5]|[68][0-9])[0-9]{4,}$ Diners Club card numbers begin with 300 through 305, 36 or 38. There are Diners Club cards that begin with 5 and have 16 digits. These are a joint venture between Diners Club and MasterCard and should be processed like a MasterCard.
+
+Discover: ^6(?:011|5[0-9]{2})[0-9]{3,}$ Discover card numbers begin with 6011 or 65.
+
+JCB: ^(?:2131|1800|35[0-9]{3})[0-9]{3,}$ JCB cards begin with 2131, 1800 or 35.
+
+Unfortunately, there are a number of card types processed with the MasterCard system that do not live in MasterCard’s IIN range (numbers starting 51...55); the most important case is that of Maestro cards, many of which have been issued from other banks’ IIN ranges and so are located all over the number space. As a result, it may be best to assume that any card that is not of some other type you accept must be a MasterCard.
+
+Important: card numbers do vary in length; for instance, Visa has in the past issued cards with 13 digit PANs and cards with 16 digit PANs. Visa’s documentation currently indicates that it may issue or may have issued numbers with between 12 and 19 digits. Therefore, you should not check the length of the card number, other than to verify that it has at least 7 digits (for a complete IIN plus one check digit, which should match the value predicted by the Luhn algorithm).
+
+One further hint: before processing a cardholder PAN, strip any whitespace and punctuation characters from the input. Why? Because it’s typically much easier to enter the digits in groups, similar to how they’re displayed on the front of an actual credit card, i.e.
+
+4444 4444 4444 4444
+is much easier to enter correctly than
+
+4444444444444444
+There’s really no benefit in chastising the user because they’ve entered characters you don't expect here.
+
+This also implies making sure that your entry fields have room for at least 24 characters, otherwise users who enter spaces will run out of room. I’d recommend that you make the field wide enough to display 32 characters and allow up to 64; that gives plenty of headroom for expansion.
 
 */
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const getIssuer2 = (x: number, $: string = x.toString()) =>
+    ((Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) && $.length === 15) ? "AMEX" :
+        (Number($.slice(0, 4)) === 6011 && $.length === 16) ? "Discover" :
+            (Number($.slice(0, 2)) > 50 && Number($.slice(0, 2)) < 56 && $.length === 16) ? 'Mastercard' :
+                (Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)) ? 'VISA' :
+                    'Unknown';
+
+
+const getIssuer3 = (x: number): Issuer => {
+    let cn: string = x.toString();
+    switch (true) {
+        case /^3[4,7]/.test(cn) && cn.length == 15:
+            return Issuer.AMEX;
+        case /^6011/.test(cn) && cn.length == 16:
+            return Issuer.Discover;
+        case /^5[1-5]/.test(cn) && cn.length == 16:
+            return Issuer.Mastercard;
+        case /^4/.test(cn) && (cn.length == 13 || cn.length == 16):
+            return Issuer.VISA;
+        default:
+            return Issuer.Unknown;
+    }
+};
+
+
+const getIssuer4 = (x: number) => {
+    let str = x.toString();
+    let len = str.length;
+    let begin = { a: str.slice(0, 2), b: str.slice(0, 4), c: str.slice(0, 1) };
+    if ((len === 16 || len === 13) && begin.c === '4') {
+        return 'VISA';
+    } else if (len === 16 && (begin.a === '51' || begin.a === '52' || begin.a === '53' || begin.a === '54' || begin.a === '55')) {
+        return 'Mastercard';
+    } else if (len === 16 && begin.b === '6011') {
+        return 'Discover';
+    } else if (len === 15 && (begin.a === '34' || begin.a === '37')) {
+        return 'AMEX';
+    }
+    return 'Unknown';
+};
+
+
+function getIssuer5(x: number): string {
+    const test = (reg: RegExp): boolean => reg.test(`${x}`);
+    if (test(/^(34|37)\d{13}$/)) return 'AMEX';
+    else if (test(/^6011\d{12}$/)) return 'Discover';
+    else if (test(/^(51|52|53|54|55)\d{14}$/)) return 'Mastercard';
+    else if (test(/^4((\d{12})|(\d{15}))$/)) return 'VISA';
+    return 'Unknown';
+}
+
+
+const getIssuer6 = (x: number): string => {
+    let creditCardNumber = x.toString()
+    let ccFirstFour = creditCardNumber.substr(0, 4);
+    let ccFirstTwo = creditCardNumber.substr(0, 2);
+    let ccLength = creditCardNumber.length;
+
+    enum Issuer {
+        VISA = 'VISA',
+        AMEX = 'AMEX',
+        Mastercard = 'Mastercard',
+        Discover = 'Discover',
+        Unknown = 'Unknown',
+    }
+
+    if (ccFirstFour == "6011" && ccLength == 16) {
+        return Issuer.Discover
+    }
+    if ((ccFirstTwo == "34" || ccFirstTwo == "37") && ccLength == 15) {
+        return Issuer.AMEX
+    }
+    if (creditCardNumber.substr(0, 1) == "4" && (ccLength == 13 || ccLength == 16)) {
+        return Issuer.VISA
+    }
+    if ((ccFirstTwo == "51" || ccFirstTwo == "52" || ccFirstTwo == "53" || ccFirstTwo == "54" || ccFirstTwo == "55") && ccLength == 16) {
+        return Issuer.Mastercard
+    } else {
+        return Issuer.Unknown
+    }
+};
+
+
+const getIssuer7 = (x: number): Issuer => {
+    const s: string = x.toString();
+    if (/^4(\d{12}|\d{15})$/.test(s)) return Issuer.VISA;
+    if (/^3[4|7]\d{13}$/.test(s)) return Issuer.AMEX;
+    if (/^6011\d{12}$/.test(s)) return Issuer.Discover;
+    if (/^5[1-5]\d{14}$/.test(s)) return Issuer.Mastercard;
+    return Issuer.Unknown;
+};
+
+
+const getIssuer9 = (x: number): Issuer => {
+
+    if (String(x).length === 15 && /^34|37/.test(String(x))) return Issuer.AMEX;
+    if (String(x).length === 16 && /^6011/.test(String(x))) return Issuer.Discover;
+    if (String(x).length === 16 && /^51|^52|^53|^54|^55/.test(String(x))) return Issuer.Mastercard;
+    if (String(x).length === 13 && /^4/.test(String(x))) return Issuer.VISA;
+    if (String(x).length === 16 && /^4/.test(String(x))) return Issuer.VISA;
+
+    return Issuer.Unknown
+};
+
+const getIssuer10 = (x: number): Issuer => {
+    const card_number = String(x)
+    const data = [
+        { type: Issuer.AMEX, begins: ["34", "37"], len: [15], },
+        { type: Issuer.Discover, begins: ["6011"], len: [16], },
+        { type: Issuer.Mastercard, begins: ["51", "52", "53", "54", "55"], len: [16] },
+        { type: Issuer.VISA, begins: ["4"], len: [13, 16] },
+    ]
+    const res = data.find(d => (
+        d.begins.some(b => card_number.startsWith(b)) &&
+        d.len.some(l => card_number.length === l)
+    ))
+    return res ? res.type : Issuer.Unknown
+};
+
+const getIssuer8 = (x: number) => Object.values(Issuer)[[/^4\d{12}(\d{3})?$/, /^3[47]\d{13}$/, /^5[1-5]\d{14}$/, /^6011\d{12}$/, /.*/].findIndex(p => p.test(`${x}`))];
+
+
+const getIssuer11 = (x: number): Issuer => {
+    const s = x.toString();
+    if (s.length === 15 && (s.startsWith("34") || s.startsWith("37"))) {
+        return Issuer.AMEX;
+    } else if (s.length === 16 && s.startsWith("6011")) {
+        return Issuer.Discover;
+    } else if (s.length === 16 && ["51", "52", "53", "54", "55"].includes(s.slice(0, 2))) {
+        return Issuer.Mastercard;
+    } else if ((s.length === 13 || s.length === 16) && s.startsWith("4")) {
+        return Issuer.VISA;
+    } else {
+        return Issuer.Unknown;
+    }
+};
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
