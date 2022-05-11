@@ -307,8 +307,7 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ COMMENT THIS ❗️❗️❗️
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FOLD AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -400,6 +399,93 @@ const foldArray = (numArr: number[], numFolds: number): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+//  ERROR: Object is possibly 'undefined'.ts(2532) AT array.pop(), ADDED "!"
+function foldArray2(array: number[], runs: number): number[] {
+    const arr2 = [...array]
+    while (runs > 0) {
+        arr2.map((val, i, arr) => i + 1 === arr.length ? val : arr[i] = val + arr.pop()!);
+        runs--;
+    }
+    return arr2;
+}
+
+
+
+function foldArray3(array: number[], runs: number): number[] {
+    var len = array.length, arr = array.slice();  //copy array
+    if (runs == 0) return arr;
+    for (var i = 0; i < Math.floor(len / 2); i++) {
+        arr[i] += arr[len - i - 1];
+    }
+    return foldArray(arr.slice(0, Math.ceil(len / 2)), runs - 1);
+}
+
+
+function foldArray4(array: number[], runs: number): number[] {
+    let resultArray = array.slice();
+    for (var i = 0; i < runs; ++i) {
+        let runArray = resultArray.slice(0, Math.ceil(resultArray.length / 2));
+        for (var j = resultArray.length - 1; j >= resultArray.length / 2; --j) {
+            runArray[resultArray.length - 1 - j] += resultArray[j];
+        }
+        resultArray = runArray;
+    }
+    return resultArray;
+}
+
+
+function foldArray5(array: number[], runs: number): number[] {
+    while (runs > 0) {
+        let n = ~~(array.length / 2)
+        array = Array.from({ length: n }, (_, i) => array[i] + array[array.length - 1 - i]).concat(...(array.length % 2 ? [array[n]] : []))
+        runs--
+    }
+    return array
+}
+
+// =========================================================
+function foldArray6(array: number[], runs: number): number[] {
+    let foldedArray = array;
+    for (let i = 0; i < runs; i++) {
+        // Folding the array 'runs' times
+        foldedArray = singleFold(foldedArray);
+    }
+
+    return foldedArray;
+}
+
+function singleFold(array: number[]) {
+    const middle = Math.ceil(array.length / 2); // The middle of the array
+
+    // Reversing the array and splitting it into the middle. Also adding
+    // a trailing zero in case the array hasn't a pair length
+    const reversed = array.slice(middle, array.length).reverse().concat(0);
+    // Splitted but non reversed array
+    const normal = array.slice(0, middle);
+
+    // Number addition iteration
+    return normal.map((num, i) => num + reversed[i]);
+}
+// =========================================================
+
+
+function foldArray7(array: number[], runs: number): number[] {
+    if (runs === 0) return array
+
+    const hasCenterPoint = array.length % 2 === 1
+
+    const foldLength = Math.floor(array.length / 2)
+
+    const newArr = []
+
+    for (let i = 0; i < foldLength; i++) {
+        newArr[i] = array[(array.length - 1) - i] + array[i]
+    }
+
+    if (hasCenterPoint) newArr.push(array[foldLength])
+
+    return foldArray(newArr, --runs)
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CONSONANT VALUE - GET MAX SUM OF CONSUNANT SUBSTRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

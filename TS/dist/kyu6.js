@@ -15,23 +15,78 @@ const foldArray = (numArr, numFolds) => {
         numFoldsLeft -= 1;
     }
     else {
-        console.log("even length");
         for (let i = 0; i < numArr.length / 2; i += 1) {
-            console.log("   i:", i);
-            console.log("       current pair:", numArr[i], numArr[numArr.length - 1 - i]);
             let currSum = numArr[i] + numArr[numArr.length - 1 - i];
-            console.log("           current sum:", currSum);
             currentArray.push(currSum);
-            console.log("       currentFold:", currentArray);
         }
         numFoldsLeft -= 1;
     }
-    console.log("counter:", numFoldsLeft);
-    return numFoldsLeft > 0
+    return numFoldsLeft
         ? foldArray(currentArray, numFoldsLeft)
         : currentArray;
 };
-console.log(foldArray([1, 2, 3, 4, 5, 99, 88, 78, 74, 73], 5));
+function foldArray2(array, runs) {
+    const arr2 = [...array];
+    while (runs > 0) {
+        arr2.map((val, i, arr) => i + 1 === arr.length ? val : arr[i] = val + arr.pop());
+        runs--;
+    }
+    return arr2;
+}
+function foldArray3(array, runs) {
+    var len = array.length, arr = array.slice();
+    if (runs == 0)
+        return arr;
+    for (var i = 0; i < Math.floor(len / 2); i++) {
+        arr[i] += arr[len - i - 1];
+    }
+    return foldArray(arr.slice(0, Math.ceil(len / 2)), runs - 1);
+}
+function foldArray4(array, runs) {
+    let resultArray = array.slice();
+    for (var i = 0; i < runs; ++i) {
+        let runArray = resultArray.slice(0, Math.ceil(resultArray.length / 2));
+        for (var j = resultArray.length - 1; j >= resultArray.length / 2; --j) {
+            runArray[resultArray.length - 1 - j] += resultArray[j];
+        }
+        resultArray = runArray;
+    }
+    return resultArray;
+}
+function foldArray5(array, runs) {
+    while (runs > 0) {
+        let n = ~~(array.length / 2);
+        array = Array.from({ length: n }, (_, i) => array[i] + array[array.length - 1 - i]).concat(...(array.length % 2 ? [array[n]] : []));
+        runs--;
+    }
+    return array;
+}
+function foldArray6(array, runs) {
+    let foldedArray = array;
+    for (let i = 0; i < runs; i++) {
+        foldedArray = singleFold(foldedArray);
+    }
+    return foldedArray;
+}
+function singleFold(array) {
+    const middle = Math.ceil(array.length / 2);
+    const reversed = array.slice(middle, array.length).reverse().concat(0);
+    const normal = array.slice(0, middle);
+    return normal.map((num, i) => num + reversed[i]);
+}
+function foldArray7(array, runs) {
+    if (runs === 0)
+        return array;
+    const hasCenterPoint = array.length % 2 === 1;
+    const foldLength = Math.floor(array.length / 2);
+    const newArr = [];
+    for (let i = 0; i < foldLength; i++) {
+        newArr[i] = array[(array.length - 1) - i] + array[i];
+    }
+    if (hasCenterPoint)
+        newArr.push(array[foldLength]);
+    return foldArray(newArr, --runs);
+}
 const solve = (str) => {
     if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str))
         return 0;
