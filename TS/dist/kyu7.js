@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const productArray = (nums) => {
+    const totalProd = nums.reduce((acc, curr) => acc * curr);
+    const solution = nums.map((num) => totalProd / num);
+    return solution;
+};
+const productArray2 = (nums) => {
+    return nums.map((num) => nums.reduce((acc, curr) => acc * curr) / num);
+};
+function productArray3(nums) {
+    let n = nums.reduce((a, b) => a * b, 1);
+    return nums.map(x => n / x);
+}
 var Issuer;
 (function (Issuer) {
     Issuer["VISA"] = "VISA";

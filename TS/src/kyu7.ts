@@ -440,24 +440,85 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: PRODUCT OF ARRAY  (Array Series #5)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REDUCE WITH INITIAL VALUE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task
+Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the elements of Arr[] except Arr[i].
 
+Notes
+Array/list size is at least 2 .
+
+Array/list's numbers Will be only Positives
+
+Repetition of numbers in the array/list could occur.
+
+Input >> Output Examples
+productArray ({12,20}) ==>  return {20,12}
+Explanation:
+The first element in prod [] array 12 is the product of all array's elements except the first element
+
+The second element 20 is the product of all array's elements except the second element .
+
+productArray ({1,5,2}) ==> return {10,2,5}
+Explanation:
+The first element 10 is the product of all array's elements except the first element 1
+
+The second element 2 is the product of all array's elements except the second element 5
+
+The Third element 5 is the product of all array's elements except the Third element 2.
+
+productArray ({10,3,5,6,2}) return ==> {180,600,360,300,900}
+Explanation:
+The first element 180 is the product of all array's elements except the first element 10
+
+The second element 600 is the product of all array's elements except the second element 3
+
+The Third element 360 is the product of all array's elements except the third element 5
+
+The Fourth element 300 is the product of all array's elements except the fourth element 6
+
+Finally ,The Fifth element 900 is the product of all array's elements except the fifth element 2
 */
 
-// console.log();
-// console.log();
+// 1️⃣
+const productArray = (nums: number[]): number[] => {
+
+    const totalProd: number = nums.reduce((acc, curr) => acc * curr);
+
+    const solution: number[] = nums.map((num) => totalProd / num);
+
+    return solution;
+
+}
+
+// 2️⃣  SHORTER:
+const productArray2 = (nums: number[]): number[] => {
+
+    return nums.map((num) => nums.reduce((acc, curr) => acc * curr) / num);
+
+}
+
+// [20, 12]
+// console.log(productArray([12, 20]));
+// [216, 24, 162, 324]
+// console.log(productArray2([3, 27, 4, 2]));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ REDUCE WITH INITIAL VALUE ❗️❗️❗️
+function productArray3(nums: number[]): number[] {
+    let n: number = nums.reduce((a, b) => a * b, 1)
+    return nums.map(x => n / x)
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
