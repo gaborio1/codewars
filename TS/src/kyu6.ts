@@ -288,25 +288,158 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+//  ❗️❗️❗️ LOOK INTO THIS: STRING.FROMCHARCODE() ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: PLAYING WITH PASSPHRASES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SHIFT EACH LETTER BY A GIVEN NUM, ❗️❗️❗️ STRING.FROMCHARCODE() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Everyone knows passphrases. One can choose passphrases from poems, songs, movies names and so on but frequently they can be guessed due to common cultural references. You can get your passphrases stronger by different means. One is the following:
 
+choose a text in capital letters including or not digits and non alphabetic characters,
+
+shift each letter by a given number but the transformed letter must be a letter (circular shift),
+replace each digit by its complement to 9,
+keep such as non alphabetic and non digit characters,
+downcase each letter in odd position, upcase each letter in even position (the first character is in position 0),
+reverse the whole result.
+Example:
+your text: "BORN IN 2015!", shift 1
+
+1 + 2 + 3 -> "CPSO JO 7984!"
+
+4 "CpSo jO 7984!"
+
+5 "!4897 Oj oSpC"
+
+With longer passphrases it's better to have a small and easy program. Would you write it?
 */
+const playPass = (str: string, shift: number): string => {
 
-// console.log();
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    // ['i', ' ', 'l', 'o','v', 'e', ' ', 'y','o', 'u', '!', '!','!']
+    const strArr: string[] = str.toLowerCase().split("");
+
+    // ['j', ' ', 'm', 'p','w', 'f', ' ', 'z','p', 'v', '!', '!','!']
+    const shiftArr: string[] = strArr.map((char, i) => {
+        // CALCULATE TARGET IDX, IF IT IS LONGER THAN ARRAY LENGTH,
+        // DIVIDE IT BY LENGTH AND GET REMAINDER AS IDX
+        let targetIdx = alphabet.indexOf(char) + shift;
+        if (targetIdx > alphabet.length - 1) targetIdx = targetIdx % alphabet.length;
+        // IF CHAR IS A LETTER, REPLACE WITH LETTER AT TARGET IDX (A,B,C), 2 => (C, D, E)
+        if (/[a-z]/.test(char)) return alphabet[targetIdx];
+        // IF CHAR IS NUMERIC, REPLACE IT WITH ITS COMPLIMENT TO 9
+        if (/[0-9]/.test(char)) return (9 - Number(char)).toString();
+
+        // IF CHAR IS NOT A LETTER/DIGIT, THEN LEAVE IT AS IT IS
+        return char;
+    });
+
+    // MAKE CHARS AT EVEN INDECES UPPERCASE, REVERSE ARRAY AND JOIN INTO STR
+    const solution: string = shiftArr
+        .map((char, i) => {
+            if ((i & 1) === 0) return char.toUpperCase();
+            return char;
+        })
+        .reverse()
+        .join("");
+
+    return solution;
+
+}
+// }"!!!vPz fWpM J"
+// console.log(playPass("I LOVE YOU!!!", 1));
+// console.log(playPass("xyz123", 2));
+// "!!!uOy eVoL I"
+// console.log(playPass("I LOVE YOU!!!", 0));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ STRING.FROMCHARCODE() ❗️❗️❗️
+function playPass2(s: string, n: number): string {
+    return s.toUpperCase()
+        .split('')
+        .map((v, i, a) => {
+            if (/[0-9]/.test(v))
+                return Math.abs(Number(v) - 9);
+            if (/[A-Z]/.test(v)) {
+                let x = String.fromCharCode((((v.charCodeAt(0) + n) - 65) % 26) + 65);
+                return i % 2 == 1 ? x.toLowerCase() : x;
+            }
+            return v;
+        }).reverse()
+        .join('');
+}
+
+
+class G9641 {
+    private static alphabet = "abcdefghijklmnopqrstuvwxyz"
+    private static digits = "0123456789"
+
+    private static isLetter(v: string) {
+        return G9641.alphabet.indexOf(v) !== -1
+    }
+
+    private static isDigit(v: string) {
+        return G9641.digits.indexOf(v) !== -1
+    }
+
+    public static playPass3(s: string = '', n: number = 0): string {
+        if (!s) {
+            return ''
+        }
+        return s.toLowerCase().split('').map((v, i) => {
+            if (G9641.isLetter(v)) {
+                let letter = G9641.alphabet[(G9641.alphabet.indexOf(v) + n) % 26]
+                return (i % 2) ? letter.toLowerCase() : letter.toUpperCase()
+            } else if (G9641.isDigit(v)) {
+                return 9 - Number(v)
+            }
+            return v
+        }).reverse().join('')
+    }
+}
+
+function playPass4(s: string, n: number, a: string = 'abcdefghijklmnopqrstuvwxyz'): string {
+    return s.replace(/\d/g, d => '' + (9 - +d))
+        .replace(/[a-z]/gi, l => a[(a.indexOf(l.toLowerCase()) + n) % a.length])
+        .split('').map((e, i) => i % 2 == 1 ? e : e.toUpperCase())
+        .reverse().join('');
+}
+
+// ❗️❗️❗️ STRING.FROMCHARCODE() ❗️❗️❗️
+class G9642 {
+    public static playPass(s: string, n: number): string {
+        let result = s.replace(/[A-Z]/g, (match) => {
+            const code = match.charCodeAt(0);
+            return String.fromCharCode((code - 65 + n) % 26 + 65);
+        })
+
+        result = result.replace(/\d/g, (match) => {
+            return Math.abs(Number(match) - 9).toString();
+        })
+
+        const split = result.split("");
+
+        for (let i = 0; i < split.length; i++) {
+            if (i % 2 === 0) {
+                split[i] = split[i].toUpperCase();
+            } else {
+                split[i] = split[i].toLowerCase();
+            }
+        }
+        return split.reverse().join("");
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FOLD AN ARRAY
@@ -318,29 +451,29 @@
 
 /*
 In this kata you have to write a method that folds a given array of integers by the middle x-times.
-
+ 
 An example says more than thousand words:
-
+ 
 Fold 1-times:
 [1,2,3,4,5] -> [6,6,3]
-
+ 
 A little visualization (NOT for the algorithm but for the idea of folding):
-
+ 
  Step 1         Step 2        Step 3       Step 4       Step5
                      5/           5|         5\          
                     4/            4|          4\      
 1 2 3 4 5      1 2 3/         1 2 3|       1 2 3\       6 6 3
 ----*----      ----*          ----*        ----*        ----*
-
-
+ 
+ 
 Fold 2-times:
 [1,2,3,4,5] -> [9,6]
 As you see, if the count of numbers is odd, the middle number will stay. Otherwise the fold-point is between the middle-numbers, so all numbers would be added in a way.
-
+ 
 The array will always contain numbers and will never be null. The parameter runs will always be a positive integer greater than 0 and says how many runs of folding your method has to do.
-
+ 
 If an array with one element is folded, it stays as the same array.
-
+ 
 The input array should not be modified!
 */
 const foldArray = (numArr: number[], numFolds: number): number[] => {
@@ -496,14 +629,14 @@ function foldArray7(array: number[], runs: number): number[] {
 
 /*
 Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except "aeiou".
-
+ 
 We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
-
+ 
 For example, for the word "zodiacs", let's cross out the vowels. We get: "z o d ia cs"
-
+ 
 -- The consonant substrings are: "z", "d" and "cs" and the values are z = 26, d = 4 and cs = 3 + 19 = 22. The highest is 26.
 solve("zodiacs") = 26
-
+ 
 For the word "strength", solve("strength") = 57
 -- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20 + 18 = 57 and "ngth" = 14 + 7 + 20 + 8 = 49. The highest is 57.
 For C: do not mutate input.

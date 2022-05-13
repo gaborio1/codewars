@@ -1,6 +1,95 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+const playPass = (str, shift) => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const strArr = str.toLowerCase().split("");
+    const shiftArr = strArr.map((char, i) => {
+        let targetIdx = alphabet.indexOf(char) + shift;
+        if (targetIdx > alphabet.length - 1)
+            targetIdx = targetIdx % alphabet.length;
+        if (/[a-z]/.test(char))
+            return alphabet[targetIdx];
+        if (/[0-9]/.test(char))
+            return (9 - Number(char)).toString();
+        return char;
+    });
+    const solution = shiftArr
+        .map((char, i) => {
+        if ((i & 1) === 0)
+            return char.toUpperCase();
+        return char;
+    })
+        .reverse()
+        .join("");
+    return solution;
+};
+function playPass2(s, n) {
+    return s.toUpperCase()
+        .split('')
+        .map((v, i, a) => {
+        if (/[0-9]/.test(v))
+            return Math.abs(Number(v) - 9);
+        if (/[A-Z]/.test(v)) {
+            let x = String.fromCharCode((((v.charCodeAt(0) + n) - 65) % 26) + 65);
+            return i % 2 == 1 ? x.toLowerCase() : x;
+        }
+        return v;
+    }).reverse()
+        .join('');
+}
+class G9641 {
+    static isLetter(v) {
+        return G9641.alphabet.indexOf(v) !== -1;
+    }
+    static isDigit(v) {
+        return G9641.digits.indexOf(v) !== -1;
+    }
+    static playPass3(s = '', n = 0) {
+        if (!s) {
+            return '';
+        }
+        return s.toLowerCase().split('').map((v, i) => {
+            if (G9641.isLetter(v)) {
+                let letter = G9641.alphabet[(G9641.alphabet.indexOf(v) + n) % 26];
+                return (i % 2) ? letter.toLowerCase() : letter.toUpperCase();
+            }
+            else if (G9641.isDigit(v)) {
+                return 9 - Number(v);
+            }
+            return v;
+        }).reverse().join('');
+    }
+}
+G9641.alphabet = "abcdefghijklmnopqrstuvwxyz";
+G9641.digits = "0123456789";
+function playPass4(s, n, a = 'abcdefghijklmnopqrstuvwxyz') {
+    return s.replace(/\d/g, d => '' + (9 - +d))
+        .replace(/[a-z]/gi, l => a[(a.indexOf(l.toLowerCase()) + n) % a.length])
+        .split('').map((e, i) => i % 2 == 1 ? e : e.toUpperCase())
+        .reverse().join('');
+}
+class G9642 {
+    static playPass(s, n) {
+        let result = s.replace(/[A-Z]/g, (match) => {
+            const code = match.charCodeAt(0);
+            return String.fromCharCode((code - 65 + n) % 26 + 65);
+        });
+        result = result.replace(/\d/g, (match) => {
+            return Math.abs(Number(match) - 9).toString();
+        });
+        const split = result.split("");
+        for (let i = 0; i < split.length; i++) {
+            if (i % 2 === 0) {
+                split[i] = split[i].toUpperCase();
+            }
+            else {
+                split[i] = split[i].toLowerCase();
+            }
+        }
+        return split.reverse().join("");
+    }
+}
 const foldArray = (numArr, numFolds) => {
     let numFoldsLeft = numFolds;
     let currentArray = [];
