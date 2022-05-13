@@ -1,6 +1,45 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const newAvg = (donations, targetAvg) => {
+    if (!donations.length)
+        return targetAvg;
+    const targetSum = targetAvg * (donations.length + 1);
+    const currentSum = donations.reduce((acc, curr) => acc + curr);
+    const solution = Math.ceil(targetSum - currentSum);
+    if (solution <= 0)
+        throw new Error("Expected New Average is too low");
+    return solution;
+};
+const newAvg2 = (dons, targetAvg) => {
+    if (!dons.length)
+        return targetAvg;
+    const solution = Math.ceil(targetAvg * (dons.length + 1) - dons.reduce((acc, curr) => acc + curr));
+    if (solution <= 0)
+        throw new Error("Expected New Average is too low");
+    return solution;
+};
+function newAvg3(arr, newavg) {
+    const out = Math.ceil(newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0));
+    if (out <= 0) {
+        throw 'Expected New Average is too low';
+    }
+    return out;
+}
+function newAvg4(arr, newavg) {
+    const sum = arr.reduce((tot, val) => tot + val, 0);
+    const don = (arr.length + 1) * newavg - sum;
+    if (don < 0) {
+        throw new Error("Expected New Average is too low");
+    }
+    return Math.ceil(don);
+}
+function newAvg5(arr, newavg) {
+    let donate = Math.ceil(newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0));
+    if (donate <= 0)
+        throw 'Expected New Average is too low';
+    return donate;
+}
 const productArray = (nums) => {
     const totalProd = nums.reduce((acc, curr) => acc * curr);
     const solution = nums.map((num) => totalProd / num);
