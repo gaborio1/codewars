@@ -1,6 +1,284 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = void 0;
+const streetFighterSelection = (fighters, position, moves) => {
+    let solution = [];
+    let y = position[1], x = position[0];
+    let currName = fighters[y][x];
+    moves.forEach((dir) => {
+        if (dir === "up") {
+            if (y === 1) {
+                y = 0;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+            else {
+                solution.push(currName);
+            }
+        }
+        if (dir === "down") {
+            if (y === 0) {
+                y = 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+            else {
+                solution.push(currName);
+            }
+        }
+        if (dir === "left") {
+            if (x === 0) {
+                x = 5;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+            else {
+                x -= 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+        }
+        if (dir === "right") {
+            if (x === 5) {
+                x = 0;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+            else {
+                x += 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+        }
+    });
+    return solution;
+};
+let fighters = [
+    ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
+    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+];
+let moves = ["up", "left", "down", "right", "up", "left", "down", "right"];
+function streetFighterSelection2(fighters, position, moves) {
+    const returnArr = [];
+    const pos = position;
+    moves.map(move => {
+        switch (move) {
+            case 'up':
+                pos[0] = 0;
+                break;
+            case 'down':
+                pos[0] = 1;
+                break;
+            case 'right':
+                pos[1] = pos[1] === fighters[0].length - 1 ? 0 : ++pos[1];
+                break;
+            case 'left':
+                pos[1] = pos[1] === 0 ? pos[1] = fighters[0].length - 1 : --pos[1];
+                break;
+        }
+        returnArr.push(fighters[pos[0]][pos[1]]);
+    });
+    return returnArr;
+}
+function streetFighterSelection3(fighters, position, moves) {
+    let characters = new Array();
+    for (let move of moves) {
+        switch (move) {
+            case 'left':
+                position[0] = ((position[0] === 0) ? 5 : position[0] - 1);
+                break;
+            case 'right':
+                position[0] = ((position[0] === 5) ? 0 : position[0] + 1);
+                break;
+            case 'up':
+                position[1] = 0;
+                break;
+            case 'down':
+                position[1] = 1;
+                break;
+        }
+        characters.push(fighters[position[1]][position[0]]);
+    }
+    return characters;
+}
+function streetFighterSelection4(fighters, position, moves) {
+    let x = position[0];
+    let y = position[1];
+    let arr = [];
+    const mod = 6;
+    const stepL = (a) => {
+        let sum = a - 1;
+        if (sum < 0)
+            sum += mod;
+        return sum;
+    };
+    const stepR = (a) => {
+        let sum = a + 1;
+        if (sum >= mod)
+            sum -= mod;
+        return sum;
+    };
+    for (let i = 0; i < moves.length; i++) {
+        switch (moves[i]) {
+            case "up":
+                y = 0;
+                break;
+            case "down":
+                y = 1;
+                break;
+            case "left":
+                x = stepL(x);
+                break;
+            case "right":
+                x = stepR(x);
+                break;
+        }
+        arr.push(fighters[y][x]);
+    }
+    return arr;
+}
+function streetFighterSelection6(fighters, position, moves) {
+    let s = [];
+    let [x, y] = position;
+    for (let c of moves) {
+        switch (c) {
+            case "up":
+                x = Math.max(x - 1, 0);
+                break;
+            case "down":
+                x = Math.min(x + 1, 1);
+                break;
+            case "left":
+                y = (y + 5) % 6;
+                break;
+            case "right":
+                y = (y + 1) % 6;
+                break;
+        }
+        s.push(fighters[x][y]);
+    }
+    return s;
+}
+var Moves;
+(function (Moves) {
+    Moves["right"] = "right";
+    Moves["left"] = "left";
+    Moves["up"] = "up";
+    Moves["down"] = "down";
+})(Moves || (Moves = {}));
+function streetFighterSelection8(fighters, position, moves) {
+    var chosenFighters = [];
+    var horizontalPosition = position[1];
+    var verticalPosition = position[0];
+    function setHorisontalPosition() {
+        var fightersLength = fighters[verticalPosition].length - 1;
+        if (horizontalPosition < 0) {
+            horizontalPosition = fightersLength;
+        }
+        else if (horizontalPosition > fightersLength) {
+            horizontalPosition = 0;
+        }
+    }
+    function setVerticalPosition() {
+        var fightersLength = fighters.length - 1;
+        if (verticalPosition < 0) {
+            verticalPosition = 0;
+        }
+        else if (verticalPosition > fightersLength) {
+            verticalPosition = fightersLength;
+        }
+    }
+    for (var i = 0; i < moves.length; i++) {
+        if (moves[i] === Moves.right) {
+            horizontalPosition++;
+            setHorisontalPosition();
+        }
+        else if (moves[i] === Moves.left) {
+            horizontalPosition--;
+            setHorisontalPosition();
+        }
+        else if (moves[i] === Moves.up) {
+            verticalPosition--;
+            setVerticalPosition();
+        }
+        else if (moves[i] === Moves.down) {
+            verticalPosition++;
+            setVerticalPosition();
+        }
+        console.log(moves, fighters[verticalPosition][horizontalPosition]);
+        chosenFighters.push(fighters[verticalPosition][horizontalPosition]);
+    }
+    return chosenFighters;
+}
+exports.streetFighterSelection8 = streetFighterSelection8;
+const MAX_X = 5;
+const MAX_Y = 1;
+function streetFighterSelection9(fighters, position, moves) {
+    let [x, y] = position;
+    return moves.map(dir => {
+        switch (dir) {
+            case 'up':
+                y = y > 0 ? y - 1 : y;
+                break;
+            case 'down':
+                y = y < MAX_Y ? y + 1 : y;
+                break;
+            case 'left':
+                x = x === 0 ? MAX_X : x - 1;
+                break;
+            case 'right':
+                x = x === MAX_X ? 0 : x + 1;
+                break;
+        }
+        return fighters[y][x];
+    });
+}
+exports.streetFighterSelection9 = streetFighterSelection9;
+function streetFighterSelection10(fighters, position, moves) {
+    let hoveredCharacters = [];
+    let currentPosition = position;
+    for (let move of moves) {
+        if (move == 'up') {
+            if (currentPosition[0] == 0) {
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+            else {
+                currentPosition[0]--;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+        if (move == 'down') {
+            if (currentPosition[0] == 1) {
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+            else {
+                currentPosition[0]++;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+        if (move == 'left') {
+            if (currentPosition[1] == 0) {
+                currentPosition[1] = 5;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+            else {
+                currentPosition[1]--;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+        if (move == 'right') {
+            if (currentPosition[1] == 5) {
+                currentPosition[1] = 0;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+            else {
+                currentPosition[1]++;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+    }
+    return hoveredCharacters;
+}
 const playPass = (str, shift) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const strArr = str.toLowerCase().split("");

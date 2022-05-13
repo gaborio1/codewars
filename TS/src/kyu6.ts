@@ -270,8 +270,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: STREET FIGHTER2 - CHARACTER SELECTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -279,15 +279,416 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Short Intro
 
+Some of you might remember spending afternoons playing Street Fighter 2 in some Arcade back in the 90s or emulating it nowadays with the numerous emulators for retro consoles.
+
+Can you solve this kata? Suuure-You-Can!
+
+UPDATE: a new kata's harder version is available here.
+
+The Kata
+
+You'll have to simulate the video game's character selection screen behaviour, more specifically the selection grid. Such screen looks like this:
+
+Screen:
+
+screen
+
+Selection Grid Layout in text:
+
+| Ryu  | E.Honda | Blanka  | Guile   | Balrog | Vega    |
+| Ken  | Chun Li | Zangief | Dhalsim | Sagat  | M.Bison |
+Input
+
+the list of game characters in a 2x6 grid;
+the initial position of the selection cursor (top-left is (0,0));
+a list of moves of the selection cursor (which are up, down, left, right);
+Output
+
+the list of characters who have been hovered by the selection cursor after all the moves (ordered and with repetition, all the ones after a move, whether successful or not, see tests);
+Rules
+
+Selection cursor is circular horizontally but not vertically!
+
+As you might remember from the game, the selection cursor rotates horizontally but not vertically; that means that if I'm in the leftmost and I try to go left again I'll get to the rightmost (examples: from Ryu to Vega, from Ken to M.Bison) and vice versa from rightmost to leftmost.
+
+Instead, if I try to go further up from the upmost or further down from the downmost, I'll just stay where I am located (examples: you can't go lower than lowest row: Ken, Chun Li, Zangief, Dhalsim, Sagat and M.Bison in the above image; you can't go upper than highest row: Ryu, E.Honda, Blanka, Guile, Balrog and Vega in the above image).
+
+Test
+
+For this easy version the fighters grid layout and the initial position will always be the same in all tests, only the list of moves change.
+
+Notice: changing some of the input data might not help you.
+
+Examples
+
+fighters = [
+  ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
+  ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+]
+initial_position = (0,0)
+moves = ['up', 'left', 'right', 'left', 'left']
+then I should get:
+
+['Ryu', 'Vega', 'Ryu', 'Vega', 'Balrog']
+as the characters I've been hovering with the selection cursor during my moves. Notice: Ryu is the first just because it "fails" the first up See test cases for more examples.
+
+fighters = [
+  ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
+  ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+]
+initial_position = (0,0)
+moves = ['right', 'down', 'left', 'left', 'left', 'left', 'right']
+Result:
+
+['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']
 */
+const streetFighterSelection = (
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+): string[] => {
 
-// console.log();
+    let solution: string[] = [];
+    let y: number = position[1], x: number = position[0];
+
+    let currName: string = fighters[y][x];
+
+    moves.forEach((dir) => {
+
+        if (dir === "up") {
+            if (y === 1) {
+                y = 0;
+                currName = fighters[y][x];
+                solution.push(currName);
+            } else {
+                solution.push(currName);
+            }
+        }
+
+        if (dir === "down") {
+            if (y === 0) {
+                y = 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            } else {
+                solution.push(currName);
+            }
+        }
+
+        if (dir === "left") {
+            if (x === 0) {
+                x = 5;
+                currName = fighters[y][x];
+                solution.push(currName);
+            } else {
+                x -= 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+        }
+
+        if (dir === "right") {
+            if (x === 5) {
+                x = 0;
+                currName = fighters[y][x];
+                solution.push(currName);
+            } else {
+                x += 1;
+                currName = fighters[y][x];
+                solution.push(currName);
+            }
+        }
+
+    })
+
+    return solution;
+}
+
+let fighters = [
+    ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
+    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+];
+// let moves = ['up', 'left', 'right', 'left', 'left'];
+
+
+// ['Ryu', 'Vega', 'M.Bison', 'Ken', 'Ryu', 'Vega', 'M.Bison', 'Ken']);
+let moves = ["up", "left", "down", "right", "up", "left", "down", "right"];
+// ['Ryu', 'Vega', 'Ryu', 'Vega', 'Balrog']
+// console.log(streetFighterSelection(fighters, [0, 0], moves));
+// console.log(streetFighterSelection(fighters, [0, 1], moves));
+// console.log(streetFighterSelection(fighters, [0, 0], moves));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function streetFighterSelection2(fighters: Array<string[]>, position: number[], moves: string[]): string[] {
+    const returnArr: string[] = [];
+    const pos = position;
+
+    moves.map(move => {
+        switch (move) {
+            case 'up': pos[0] = 0;
+                break;
+            case 'down': pos[0] = 1;
+                break;
+            case 'right': pos[1] = pos[1] === fighters[0].length - 1 ? 0 : ++pos[1];
+                break;
+            case 'left': pos[1] = pos[1] === 0 ? pos[1] = fighters[0].length - 1 : --pos[1];
+                break;
+        }
+        returnArr.push(fighters[pos[0]][pos[1]]);
+    })
+    return returnArr;
+}
+
+
+
+function streetFighterSelection3(fighters: Array<string[]>, position: number[], moves: string[]) {
+    let characters = new Array<string>();
+
+    for (let move of moves) {
+        switch (move) {
+            case 'left': position[0] = ((position[0] === 0) ? 5 : position[0] - 1); break;
+            case 'right': position[0] = ((position[0] === 5) ? 0 : position[0] + 1); break;
+            case 'up': position[1] = 0; break;
+            case 'down': position[1] = 1; break;
+        }
+
+        characters.push(fighters[position[1]][position[0]]);
+    }
+
+    return characters;
+}
+
+
+function streetFighterSelection4(fighters: Array<string[]>, position: number[], moves: string[]) {
+    let x: number = position[0];
+    let y: number = position[1];
+    let arr: string[] = [];
+    const mod = 6;
+    const stepL = (a: number) => {
+        let sum = a - 1;
+        if (sum < 0) sum += mod;
+        return sum;
+    };
+    const stepR = (a: number) => {
+        let sum = a + 1;
+        if (sum >= mod) sum -= mod;
+        return sum;
+    };
+    for (let i = 0; i < moves.length; i++) {
+        switch (moves[i]) {
+            case "up":
+                y = 0
+                break;
+            case "down":
+                y = 1
+                break;
+            case "left":
+                x = stepL(x)
+                break;
+            case "right":
+                x = stepR(x)
+                break;
+        }
+        arr.push(fighters[y][x])
+    }
+    return arr;
+}
+
+
+// function streetFighterSelection5(xs: Array<string[]>, p: number[], moves: string[]) {
+//     const n = xs[0].length;
+//     const vx = { "up": [-1, 0], "down": [1, 0], "left": [0, -1], "right": [0, 1] };
+//     const move = v => { p[0] = Math.min(Math.max(p[0] + v[0], 0), 1); p[1] = (((p[1] + v[1]) % n) + n) % n; }
+//     return moves.reduce((his, m) => (move(vx[m]), his.push(xs[p[0]][p[1]]), his), []);
+// }
+
+function streetFighterSelection6(fighters: string[][], position: number[], moves: string[]): string[] {
+    let s: string[] = []
+    let [x, y] = position
+    for (let c of moves) {
+        switch (c) {
+            case "up": x = Math.max(x - 1, 0)
+                break;
+            case "down": x = Math.min(x + 1, 1)
+                break;
+            case "left": y = (y + 5) % 6
+                break;
+            case "right": y = (y + 1) % 6
+                break;
+
+        }
+        s.push(fighters[x][y])
+    }
+    return s
+}
+
+
+
+// function streetFighterSelection7(fighters: Array<string[]>, position: number[], moves: string[]) {
+//     function goLeft(current: number[]): number[] {
+//         if (current[1] == 0) return [current[0], fighters[current[0]].length - 1];
+//         return [current[0], current[1] - 1];
+//     }
+
+//     function goRight(current: number[]): number[] {
+//         if (current[1] == fighters[current[0]].length - 1) return [current[0], 0];
+//         return [current[0], current[1] + 1];
+//     }
+
+//     function goDown(current: number[]): number[] {
+//         if (current[0] == fighters.length - 1) return current;
+//         return [current[0] + 1, current[1]];
+//     }
+
+//     function goUp(current: number[]): number[] {
+//         if (current[0] == 0) return current;
+//         return [current[0] - 1, current[1]];
+//     }
+
+//     let selectedFighters: string[] = [];
+//     let current = [...position]
+
+//     for (let i = 0; i < moves.length; i += 1) {
+//         let operation;
+//         switch (moves[i]) {
+//             case 'up': operation = goUp; break;
+//             case 'down': operation = goDown; break;
+//             case 'left': operation = goLeft; break;
+//             case 'right': operation = goRight; break;
+//         }
+
+//         current = operation(current);
+//         selectedFighters.push(fighters[current[0]][current[1]])
+//     }
+
+//     return selectedFighters
+// }
+
+// ================================
+
+enum Moves {
+    right = "right",
+    left = "left",
+    up = "up",
+    down = "down",
+
+}
+export function streetFighterSelection8(fighters: Array<string[]>, position: number[], moves: string[]) {
+    var chosenFighters: string[] = [];
+    var horizontalPosition = position[1];
+    var verticalPosition = position[0];
+    function setHorisontalPosition() {
+        var fightersLength = fighters[verticalPosition].length - 1;
+        if (horizontalPosition < 0) {
+            horizontalPosition = fightersLength
+        } else if (horizontalPosition > fightersLength) {
+            horizontalPosition = 0;
+        }
+    }
+
+    function setVerticalPosition() {
+        var fightersLength = fighters.length - 1;
+        if (verticalPosition < 0) {
+            verticalPosition = 0;
+        } else if (verticalPosition > fightersLength) {
+            verticalPosition = fightersLength;
+        }
+    }
+
+    for (var i = 0; i < moves.length; i++) {
+        if (moves[i] === Moves.right) {
+            horizontalPosition++;
+            setHorisontalPosition();
+        } else if (moves[i] === Moves.left) {
+            horizontalPosition--;
+            setHorisontalPosition();
+        } else if (moves[i] === Moves.up) {
+            verticalPosition--;
+            setVerticalPosition();
+        } else if (moves[i] === Moves.down) {
+            verticalPosition++;
+            setVerticalPosition();
+        }
+        console.log(moves, fighters[verticalPosition][horizontalPosition])
+        chosenFighters.push(fighters[verticalPosition][horizontalPosition]);
+    }
+    return chosenFighters;
+}
+//   =======================
+
+
+const MAX_X = 5;
+const MAX_Y = 1;
+
+export function streetFighterSelection9(fighters: Array<string[]>, position: number[], moves: string[]) {
+    let [x, y] = position;
+
+    return moves.map(dir => {
+        switch (dir) {
+            case 'up': y = y > 0 ? y - 1 : y; break;
+            case 'down': y = y < MAX_Y ? y + 1 : y; break;
+            case 'left': x = x === 0 ? MAX_X : x - 1; break;
+            case 'right': x = x === MAX_X ? 0 : x + 1; break;
+        }
+        return fighters[y][x];
+    });
+}
+
+
+function streetFighterSelection10(fighters: Array<string[]>, position: number[], moves: string[]) {
+    let hoveredCharacters = [];
+    let currentPosition = position;
+    for (let move of moves) {
+
+        if (move == 'up') {
+            if (currentPosition[0] == 0) {
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            } else {
+                currentPosition[0]--;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+
+        if (move == 'down') {
+            if (currentPosition[0] == 1) {
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            } else {
+                currentPosition[0]++;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+
+        if (move == 'left') {
+            if (currentPosition[1] == 0) {
+                currentPosition[1] = 5;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            } else {
+                currentPosition[1]--;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+
+        if (move == 'right') {
+            if (currentPosition[1] == 5) {
+                currentPosition[1] = 0;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            } else {
+                currentPosition[1]++;
+                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+            }
+        }
+
+    }
+
+    return hoveredCharacters;
+}
+
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 //  ❗️❗️❗️ LOOK INTO THIS: STRING.FROMCHARCODE() ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
