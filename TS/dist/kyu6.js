@@ -1,6 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = void 0;
+const dashatize = (num) => {
+    if (num < 0)
+        num = Math.abs(num);
+    if (num < 10)
+        return num.toString();
+    const numStrArr = num.toString().split("");
+    for (let i = 0; i < numStrArr.length; i += 1) {
+        let current = numStrArr[i];
+        if (Number(current) & 1) {
+            if (i === 0)
+                numStrArr[i] = `${current}-`;
+            else if (i === numStrArr.length - 1)
+                numStrArr[i] = `-${current}`;
+            else
+                numStrArr[i] = `-${current}-`;
+        }
+    }
+    const dashStr = numStrArr.join("");
+    const solution = dashStr.replace(/-{2,}/g, "-");
+    return solution;
+};
+const dashatize2 = (num) => {
+    return num.toString().
+        replace(/([13579])/g, '-$1-').
+        replace(/\-+/g, '-').
+        replace(/^\-/, '').
+        replace(/\-$/, '');
+};
+const dashatize3 = (num) => {
+    return num.toString().replace('-', '').split(/([13579])/).filter(s => s !== '').join('-');
+};
+const dashatize4 = (num) => {
+    return String(Math.abs(num))
+        .split(/([13579])/)
+        .filter(s => s !== '')
+        .join('-');
+};
 const streetFighterSelection = (fighters, position, moves) => {
     let solution = [];
     let y = position[1], x = position[0];

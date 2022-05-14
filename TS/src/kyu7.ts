@@ -402,25 +402,88 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Simple Fun #2 - CIRCLE OF NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the distance between any two neighbouring numbers is equal (note that 0 and n - 1 are neighbouring, too).
 
+Given n and firstNumber/first_number/first-number, find the number which is written in the radially opposite position to firstNumber.
+
+Example
+For n = 10 and firstNumber = 2, the output should be 7
+
+
+
+Input/Output
+[input] integer n
+
+A positive even integer.
+
+Constraints: 4 ≤ n ≤ 1000.
+
+[input] integer firstNumber/first_number/first-number
+
+Constraints: 0 ≤ firstNumber ≤ n - 1
+
+[output] an integer
 */
+const circleOfNumbers = (num: number, firstNum: number): number => {
 
-// console.log();
+    return firstNum < num / 2
+        ? (num / 2) + firstNum
+        : firstNum - (num / 2);
+
+}
+// 7
+// console.log(circleOfNumbers(10, 2));
+// console.log(circleOfNumbers(6, 3));
 // console.log();
 // console.log();
 // console.log();
 
+/*
+❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
+Math.trunc(8.76) => 8
+The Math.trunc() method returns the integer part of a number.
+
+Note: This method will NOT round the number up/down to the nearest integer, but simply remove the decimals.
+*/
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function circleOfNumbers2(n: number, firstNumber: number): number {
+    return (firstNumber + n / 2) % n;
+}
+
+function circleOfNumbers3(n: number, firstNumber: number) {
+    const result = firstNumber - n / 2
+    return result == 0 ? 0 : result > 0 ? 0 + result : n + result
+}
+
+
+function circleOfNumbers4(n: number, firstNumber: number) {
+    let midPoint = n / 2
+    let result = 0
+    if (firstNumber === midPoint) {
+        return 0
+    }
+    if (firstNumber > midPoint) {
+        return firstNumber - midPoint
+    }
+    return firstNumber + midPoint
+}
+
+// ❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
+function circleOfNumbers5(n: number, firstNumber: number) {
+    const stepSize = 360 / n
+    const stepCount = 180 / stepSize
+    return (Math.trunc((firstNumber + stepCount) % n))
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LOOKING FOR A BANEFACTOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

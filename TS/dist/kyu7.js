@@ -1,6 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const circleOfNumbers = (num, firstNum) => {
+    return firstNum < num / 2
+        ? (num / 2) + firstNum
+        : firstNum - (num / 2);
+};
+function circleOfNumbers2(n, firstNumber) {
+    return (firstNumber + n / 2) % n;
+}
+function circleOfNumbers3(n, firstNumber) {
+    const result = firstNumber - n / 2;
+    return result == 0 ? 0 : result > 0 ? 0 + result : n + result;
+}
+function circleOfNumbers4(n, firstNumber) {
+    let midPoint = n / 2;
+    let result = 0;
+    if (firstNumber === midPoint) {
+        return 0;
+    }
+    if (firstNumber > midPoint) {
+        return firstNumber - midPoint;
+    }
+    return firstNumber + midPoint;
+}
+function circleOfNumbers5(n, firstNumber) {
+    const stepSize = 360 / n;
+    const stepCount = 180 / stepSize;
+    return (Math.trunc((firstNumber + stepCount) % n));
+}
 const newAvg = (donations, targetAvg) => {
     if (!donations.length)
         return targetAvg;

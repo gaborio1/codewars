@@ -251,8 +251,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: DASHATIZE IT 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -260,16 +260,83 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given a variable n,
 
+If n is an integer, Return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark. If n is negative, then the negative sign should be removed.
+
+If n is not an integer, return an empty value.
+
+Ex:
+
+dashatize(274) -> '2-7-4'
+dashatize(6815) -> '68-1-5'
 */
+const dashatize = (num: number): string => {
 
-// console.log();
+    // IF NUM IS NEGATIVE, GET RID OF "-"
+    if (num < 0) num = Math.abs(num);
+    // IF NUM IS ONE DIGIT, DONT CHANGE IT
+    if (num < 10) return num.toString();
+
+    // [ '5', '3', '1', '1' ]
+    const numStrArr: string[] = num.toString().split("");
+
+    // [ '5-', '-3-', '-1-', '-1' ]
+    for (let i = 0; i < numStrArr.length; i += 1) {
+        let current: string = numStrArr[i];
+        // IF CURRENT IS ODD
+        if (Number(current) & 1) {
+            // TRIM "-" AT BEGINNING OF SOLUTION
+            if (i === 0) numStrArr[i] = `${current}-`;
+            // TRIM  "-" AT THE END OF SOLUTION
+            else if (i === numStrArr.length - 1) numStrArr[i] = `-${current}`;
+            // WRAP CURRENT IN "-"S 
+            else numStrArr[i] = `-${current}-`;
+
+        }
+    }
+
+    // MAKE IT STR: "5--3--1--1"
+    const dashStr: string = numStrArr.join("");
+    // REPLACE "--" WITH "-"
+    const solution: string = dashStr.replace(/-{2,}/g, "-");
+    return solution;
+
+};
+
+// "Should return 2-7-4"
+// console.log(dashatize(12743));
+// "Should return 5-3-1-1"
+// console.log(dashatize(5311));
+// console.log(dashatize(-1));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const dashatize2 = (num: number) => {
+
+    return num.toString().
+        replace(/([13579])/g, '-$1-').
+        replace(/\-+/g, '-').
+        replace(/^\-/, '').
+        replace(/\-$/, '');
+
+};
+
+
+const dashatize3 = (num: number) => {
+    return num.toString().replace('-', '').split(/([13579])/).filter(s => s !== '').join('-');
+};
+
+
+const dashatize4 = (num: number) => {
+    return String(Math.abs(num))
+        .split(/([13579])/)
+        .filter(s => s !== '')
+        .join('-')
+};
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STREET FIGHTER2 - CHARACTER SELECTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
