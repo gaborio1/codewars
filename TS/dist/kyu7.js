@@ -1,6 +1,42 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const save = (sizesArr, storage) => {
+    let freeSpace = storage, solution = 0;
+    for (let i = 0; i < sizesArr.length; i += 1) {
+        freeSpace -= sizesArr[i];
+        if (freeSpace < 0) {
+            break;
+        }
+        solution += 1;
+    }
+    return solution;
+};
+function save2(sizes, hd) {
+    return sizes.reduce((a, v) => {
+        if ((hd -= v) >= 0)
+            a++;
+        return a;
+    }, 0);
+}
+function save3(sizes, hd) {
+    let currentCapacity = 0;
+    let totalSavedFiles = 0;
+    for (let index = 0; index < sizes.length; index++) {
+        if (currentCapacity + sizes[index] <= hd) {
+            currentCapacity += sizes[index];
+            totalSavedFiles += 1;
+        }
+        else {
+            break;
+        }
+    }
+    return totalSavedFiles;
+}
+const save4 = (sizes, hd) => sizes.reduce(({ total, files }, n) => ({
+    total: total + n,
+    files: total + n <= hd ? files + 1 : files,
+}), { total: 0, files: 0 }).files;
 const circleOfNumbers = (num, firstNum) => {
     return firstNum < num / 2
         ? (num / 2) + firstNum

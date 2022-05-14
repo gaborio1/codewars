@@ -383,24 +383,88 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: FILL THE HARD DISK DRIVE - Computer problem series #1
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS:❗️❗️❗️  REDUCE WITH COUNTER OBJECT ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved in the order they appear in the queue.
 
+Input:
+Array of file sizes (0 <= s <= 100)
+Capacity of the HD (0 <= c <= 500)
+Output:
+Number of files that can be fully saved in the HD.
+Examples:
+save([4,4,4,3,3], 12) -> 3
+# 4+4+4 <= 12, but 4+4+4+3 > 12
+save([4,4,4,3,3], 11) -> 2
+# 4+4 <= 11, but 4+4+4 > 11
+Do not expect any negative or invalid inputs.
 */
 
-// console.log();
-// console.log();
+const save = (sizesArr: number[], storage: number): number => {
+
+    let freeSpace: number = storage, solution: number = 0;
+
+    for (let i = 0; i < sizesArr.length; i += 1) {
+
+        freeSpace -= sizesArr[i];
+        if (freeSpace < 0) {
+            break;
+        }
+        solution += 1;
+    }
+
+    return solution;
+
+}
+
+// 3
+// console.log(save([4, 4, 4, 3, 3], 11));
+// 0
+// console.log(save([11, 13, 15, 17, 19], 8));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function save2(sizes: number[], hd: number) {
+    return sizes.reduce((a, v) => {
+        if ((hd -= v) >= 0) a++
+        return a
+    }, 0)
+}
+
+
+function save3(sizes: number[], hd: number) {
+    let currentCapacity: number = 0;
+    let totalSavedFiles: number = 0;
+    for (let index = 0; index < sizes.length; index++) {
+        if (currentCapacity + sizes[index] <= hd) {
+            currentCapacity += sizes[index];
+            totalSavedFiles += 1;
+        } else {
+            break;
+        }
+    }
+    return totalSavedFiles;
+}
+
+// ❗️❗️❗️  REDUCE WITH COUNTER OBJECT ❗️❗️❗️
+const save4 = (sizes: number[], hd: number): number =>
+    sizes.reduce(
+        ({ total, files }, n) => ({
+            total: total + n,
+            files: total + n <= hd ? files + 1 : files,
+        }),
+        { total: 0, files: 0 }
+    ).files;
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Simple Fun #2 - CIRCLE OF NUMBERS

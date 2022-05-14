@@ -232,25 +232,96 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: PYRAMID ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ARRAY.FROM, FILL, NEW ARRAY, 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Write a function that when given a number >= 0, returns an Array of ascending length subarrays.
 
+pyramid(0) => [ ]
+pyramid(1) => [ [1] ]
+pyramid(2) => [ [1], [1, 1] ]
+pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
+Note: the subarrays should be filled with 1s
 */
+const pyramid = (num: number): number[][] => {
 
-// console.log();
+    let solutionArr: number[][] = [];
+
+    for (let i = 0; i < num; i += 1) {
+        // "i", "ii", "iii"
+        let rowStr: string = "1".repeat(i + 1);
+        // [ 1 ], [ 1, 1 ], [ 1, 1, 1 ]...
+        let rowArr: number[] = rowStr.split("").map((str) => Number(str));
+        // console.log(rowStr, rowArr);
+        solutionArr.push(rowArr);
+    }
+
+    // [ [ 1 ], [ 1, 1 ], [ 1, 1, 1 ] ]
+    return solutionArr;
+
+}
+
+// [[1], [1, 1], [1, 1, 1]]
+// console.log(pyramid(0));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function pyramid2(n: number) {
+    const ret = [];
+    for (let i = 0; i < n; i++) {
+        ret.push(Array(i + 1).fill(1));
+    }
+    return ret;
+}
+
+
+function pyramid3(n: number) {
+    const result: Array<Array<1>> = [];
+
+    while (n > 0) {
+        result.unshift(new Array(n).fill(1));
+        n--;
+    }
+    return result;
+}
+
+function pyramid4(n: number): number[][] {
+    // your code here
+    if (n === 0) {
+        return [];
+    }
+    const newArr = new Array(n).fill(1);
+
+    return [...pyramid(n - 1), newArr];
+}
+
+
+function pyramid5(n: number) {
+    const p: number[][] = []
+    for (let i = 1; i <= n; i++) {
+        p.push(new Array(i).fill(1))
+    }
+    return p
+}
+
+
+function pyramid6(n: number): number[][] {
+    return Array.from(new Array(n).keys()).map((x) => new Array(x + 1).fill(1));
+}
+
+
+function pyramid7(n: number) {
+    return Array.from({ length: n }, (_, i) => Array(i + 1).fill(1))
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DASHATIZE IT 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

@@ -1,6 +1,50 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = void 0;
+const pyramid = (num) => {
+    let solutionArr = [];
+    for (let i = 0; i < num; i += 1) {
+        let rowStr = "1".repeat(i + 1);
+        let rowArr = rowStr.split("").map((str) => Number(str));
+        solutionArr.push(rowArr);
+    }
+    return solutionArr;
+};
+function pyramid2(n) {
+    const ret = [];
+    for (let i = 0; i < n; i++) {
+        ret.push(Array(i + 1).fill(1));
+    }
+    return ret;
+}
+function pyramid3(n) {
+    const result = [];
+    while (n > 0) {
+        result.unshift(new Array(n).fill(1));
+        n--;
+    }
+    return result;
+}
+function pyramid4(n) {
+    if (n === 0) {
+        return [];
+    }
+    const newArr = new Array(n).fill(1);
+    return [...pyramid(n - 1), newArr];
+}
+function pyramid5(n) {
+    const p = [];
+    for (let i = 1; i <= n; i++) {
+        p.push(new Array(i).fill(1));
+    }
+    return p;
+}
+function pyramid6(n) {
+    return Array.from(new Array(n).keys()).map((x) => new Array(x + 1).fill(1));
+}
+function pyramid7(n) {
+    return Array.from({ length: n }, (_, i) => Array(i + 1).fill(1));
+}
 const dashatize = (num) => {
     if (num < 0)
         num = Math.abs(num);
