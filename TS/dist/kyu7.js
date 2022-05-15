@@ -1,6 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+class Kata1 {
+    static isNice(arr) {
+        let solution = false;
+        for (let i = 0; i < arr.length; i += 1) {
+            const numArr = arr.slice();
+            numArr.splice(i, 1);
+            solution = numArr.some((el) => el + 1 === arr[i] || el - 1 === arr[i]);
+            if (!solution)
+                break;
+        }
+        return solution;
+    }
+}
+function isNice2(arr) {
+    let set = new Set(arr);
+    return arr.length !== 0 && arr.every(v => set.has(v - 1) || set.has(v + 1));
+}
+function isNice4(arr) {
+    return arr.length > 0 && arr.every(n => arr.includes(n - 1) || arr.includes(n + 1));
+}
 const nextHappyYear = (year) => {
     year += 1;
     let digitsArr = year.toString().split("");

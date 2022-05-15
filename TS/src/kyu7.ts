@@ -345,25 +345,98 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: NICE ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SPLICE, MINUS ARRAY, ARR.SOME
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A Nice array is defined to be an array where for every value n in the array, there is also an element n - 1 or n + 1 in the array.
 
+examples:
+
+[2, 10, 9, 3] is a nice array because
+
+ 2 =  3 - 1
+10 =  9 + 1
+ 3 =  2 + 1
+ 9 = 10 - 1
+
+[4, 2, 3] is a nice array because
+
+4 = 3 + 1
+2 = 3 - 1
+3 = 2 + 1 (or 3 = 4 - 1)
+
+[4, 2, 1] is a not a nice array because
+
+for n = 4, there is neither n - 1 = 3 nor n + 1 = 5
+Write a function named isNice/IsNice that returns true if its array argument is a Nice array, else false. An empty array is not considered nice.
+*/
+class Kata1 {
+    static isNice(arr: number[]): boolean {
+        // INIT SOLUTION AS FALSE
+        let solution: boolean = false;
+
+        for (let i = 0; i < arr.length; i += 1) {
+            // RESET NUM ARR TO ORIGINAL: [ 2, 10, 9, 3 ]
+            const numArr: number[] = arr.slice();
+            // REMOVE CURRENT NUM: [ 10, 9, 3 ] 2 IS REMOVED
+            numArr.splice(i, 1);
+            // CHECK IF SOME ELEMENT MEETS CONDITION: BOOLEAN
+            solution = numArr.some((el) => el + 1 === arr[i] || el - 1 === arr[i]);
+            // AS SOON AS CURRENT NUM IS FALSE, STOP LOOP AND RETURN DEFAULT FALSE
+            if (!solution) break;
+        }
+
+        // RETURN SOLUTION (true) IF ALL ITERATIONS HAVE RETURNED TRUE FOR SOLUION
+        return solution;
+    }
+}
+
+// true
+// console.log(Kata1.isNice([2, 10, 9, 3]));
+// false
+// console.log(Kata1.isNice([8, 4, 5, 3]));
+
+
+/*
+iteration: 0 num: 2
+   numArr: [ 2, 10, 9, 3 ]
+       minus Array: [ 10, 9, 3 ]
+iteration: 1 num: 10
+   numArr: [ 2, 10, 9, 3 ]
+       minus Array: [ 2, 9, 3 ]
+iteration: 2 num: 9
+   numArr: [ 2, 10, 9, 3 ]
+       minus Array: [ 2, 10, 3 ]
+iteration: 3 num: 3
+   numArr: [ 2, 10, 9, 3 ]
+       minus Array: [ 2, 10, 9 ]
+true
+iteration: 0 num: 8
+   numArr: [ 8, 4, 5, 3 ]
+       minus Array: [ 4, 5, 3 ]
+false
 */
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
 //============= OTHER CODEWARS SOLUTIONS: =============
+function isNice2(arr: number[]) {
+    let set = new Set(arr);
 
+    return arr.length !== 0 && arr.every(v => set.has(v - 1) || set.has(v + 1));
+}
+
+
+// const isNice3 = $ => $.length ? $.every(el => $.includes(el-1) || $.includes(el+1)) : false;
+
+
+function isNice4(arr: number[]) {
+    return arr.length > 0 && arr.every(n => arr.includes(n - 1) || arr.includes(n + 1));
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ TRY WITH WHILE LOOP ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
