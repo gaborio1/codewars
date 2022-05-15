@@ -1,6 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = void 0;
+const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
+    let balance = priceOld - priceNew;
+    console.log("initial balance:", balance);
+    let monthCount = 0;
+    while (balance <= 0) {
+        if (monthCount % 2 === 0 && monthCount / 2 >= 1)
+            lossPCM += 0.5;
+        console.log("   loss pc month:", lossPCM);
+        balance *= (100 - lossPCM) / 100;
+        console.log("       balance:", balance);
+        balance += savePerM * lossPCM / 100;
+        console.log("       balance:", balance);
+        balance += savePerM;
+        console.log("            balance after savings:", balance);
+        monthCount += 1;
+        console.log("                  months count:", monthCount);
+    }
+    return [1];
+};
+console.log(nbMonths(2000, 8000, 1000, 1.5));
 const myFirstInterpreter = (code) => {
     let cellStatus = 0;
     const commandArr = code.split("");
