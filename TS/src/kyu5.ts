@@ -282,7 +282,8 @@ const josephusSurvivor = (num: number, gap: number): number => {
 
 
     // INITIALIZE SEQ ARR WITH COPY OF ITEMS
-    let solutionArr: number[] = [], seqArr: number[] = [...items];
+    let solutionArr: number[] = [],
+        seqArr: number[] = [...items];
     // CONUNT VALID STEPS (IGNORE DEAD)
     let validSteps: number = 0;
 

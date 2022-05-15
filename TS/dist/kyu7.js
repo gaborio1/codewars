@@ -1,6 +1,71 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+const nextHappyYear = (year) => {
+    year += 1;
+    let digitsArr = year.toString().split("");
+    let uniqueDigits = new Set(digitsArr);
+    return digitsArr.length > uniqueDigits.size
+        ? nextHappyYear(year)
+        : year;
+};
+function nextHappyYear2(year) {
+    year += 1;
+    while (new Set("" + year).size != 4) {
+        year++;
+    }
+    return year;
+}
+function nextHappyYear3(year) {
+    let res = year;
+    do {
+        res++;
+    } while (+res.toString().split('').filter((el, i, arr) => arr.indexOf(el) === i).join('') != res);
+    return res;
+}
+function nextHappyYear4(year) {
+    while (3 > 2) {
+        let shake = new Set(String(++year).split(''));
+        if (shake.size === 4)
+            break;
+    }
+    return year;
+}
+function nextHappyYear5(year) {
+    let digits_of_the_year = year.toString().split("").map(Number);
+    do {
+        year++;
+        digits_of_the_year = year.toString().split("").map(Number);
+    } while (digits_of_the_year[3] == digits_of_the_year[2] ||
+        digits_of_the_year[3] == digits_of_the_year[1] ||
+        digits_of_the_year[3] == digits_of_the_year[0] ||
+        digits_of_the_year[2] == digits_of_the_year[1] ||
+        digits_of_the_year[2] == digits_of_the_year[0] ||
+        digits_of_the_year[1] == digits_of_the_year[0]);
+    return year;
+}
+function nextHappyYear6(year) {
+    cicle: for (let i = year + 1; i <= 9999; i++) {
+        if (new Set(i.toString().split('')).size == 4) {
+            return i;
+            break cicle;
+        }
+    }
+}
+function nextHappyYear7(year) {
+    year++;
+    const arr = Array.from(year.toString());
+    if ((new Set(arr)).size !== arr.length) {
+        return nextHappyYear(year);
+    }
+    else {
+        return year;
+    }
+}
+function nextHappyYear8(year) {
+    while ([...new Set(('' + ++year).split(''))].length < 4) { }
+    return year;
+}
 const save = (sizesArr, storage) => {
     let freeSpace = storage, solution = 0;
     for (let i = 0; i < sizesArr.length; i += 1) {

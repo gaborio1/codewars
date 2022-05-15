@@ -1,6 +1,70 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = void 0;
+const myFirstInterpreter = (code) => {
+    let cellStatus = 0;
+    const commandArr = code.split("");
+    let solution = "";
+    for (let i = 0; i < commandArr.length; i += 1) {
+        let currCommand = commandArr[i];
+        if (currCommand === "+") {
+            cellStatus += 1;
+            if (cellStatus === 256) {
+                cellStatus = 0;
+            }
+        }
+        if (currCommand === ".") {
+            console.log(String.fromCharCode(cellStatus));
+            solution += String.fromCharCode(cellStatus);
+        }
+    }
+    console.log(solution);
+    return solution;
+};
+const arr = [89, 79, 85, 32, 68, 73, 68, 32, 73, 84, 33];
+function myFirstInterpreter2(code) {
+    var c = 0, out = '';
+    for (var i of code) {
+        if (i === '+')
+            c = (c + 1) % 256;
+        if (i === '.')
+            out += String.fromCharCode(c);
+    }
+    return out;
+}
+const COMMANDS = {
+    '+': '+',
+    '.': '.',
+};
+const myFirstInterpreter3 = (code) => {
+    const DEFAULT_STATE = {
+        value: 0,
+        output: '',
+    };
+    const add = (state) => {
+        const value = (state.value + 1) % 256;
+        return { ...state, value };
+    };
+    const print = (state) => {
+        const output = state.output + String.fromCharCode(state.value);
+        return { ...state, output };
+    };
+    const interprete = (char, state) => {
+        switch (char) {
+            case COMMANDS['+']:
+                return add(state);
+            case COMMANDS['.']:
+                return print(state);
+            default:
+                return state;
+        }
+    };
+    const result = code.split('').reduce((acc, curr) => {
+        return interprete(curr, acc);
+    }, DEFAULT_STATE);
+    return result.output;
+};
+exports.myFirstInterpreter3 = myFirstInterpreter3;
 const pyramid = (num) => {
     let solutionArr = [];
     for (let i = 0; i < num; i += 1) {

@@ -364,25 +364,166 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ TRY WITH WHILE LOOP ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: SEE U NEXT HAPPY YEAR - YEAR WITH DISTINCT DIGITS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: RECURSION, ❓❓❓ WHAT IS CYCLE ❓❓❓
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Scenario
+You're saying good-bye your best friend , See you next happy year .
 
+Happy Year is the year with only distinct digits , (e.g) 2018
+
+Task
+Given a year, Find The next happy year or The closest year You'll see your best friend!alt!alt
+
+Notes
+Year Of Course always Positive .
+Have no fear , It is guaranteed that the answer exists .
+It's not necessary that the year passed to the function is Happy one .
+Input Year with in range (1000  ≤  y  ≤  9000)
+Input >> Output Examples:
+nextHappyYear (7712) ==> return (7801)
+Explanation:
+As the Next closest year with only distinct digits is 7801 .
+
+nextHappyYear (8989) ==> return (9012)
+Explanation:
+As the Next closest year with only distinct digits is 9012 .
+
+nextHappyYear (1001) ==> return (1023)
+Explanation:
+As the Next closest year with only distinct digits is 1023 .
+*/
+const nextHappyYear = (year: number): number => {
+
+    year += 1;
+
+    let digitsArr = year.toString().split("");
+    let uniqueDigits = new Set<string>(digitsArr);
+
+    // console.log(year, digitsArr, uniqueDigits);
+
+    return digitsArr.length > uniqueDigits.size
+        ? nextHappyYear(year)
+        : year;
+
+}
+
+/*
+console.log(nextHappyYear(1001));
+
+1002 [ '1', '0', '0', '2' ] Set(3) { '1', '0', '2' }
+1003 [ '1', '0', '0', '3' ] Set(3) { '1', '0', '3' }
+1004 [ '1', '0', '0', '4' ] Set(3) { '1', '0', '4' }
+1005 [ '1', '0', '0', '5' ] Set(3) { '1', '0', '5' }
+1006 [ '1', '0', '0', '6' ] Set(3) { '1', '0', '6' }
+1007 [ '1', '0', '0', '7' ] Set(3) { '1', '0', '7' }
+1008 [ '1', '0', '0', '8' ] Set(3) { '1', '0', '8' }
+1009 [ '1', '0', '0', '9' ] Set(3) { '1', '0', '9' }
+1010 [ '1', '0', '1', '0' ] Set(2) { '1', '0' }
+1011 [ '1', '0', '1', '1' ] Set(2) { '1', '0' }
+1012 [ '1', '0', '1', '2' ] Set(3) { '1', '0', '2' }
+1013 [ '1', '0', '1', '3' ] Set(3) { '1', '0', '3' }
+1014 [ '1', '0', '1', '4' ] Set(3) { '1', '0', '4' }
+1015 [ '1', '0', '1', '5' ] Set(3) { '1', '0', '5' }
+1016 [ '1', '0', '1', '6' ] Set(3) { '1', '0', '6' }
+1017 [ '1', '0', '1', '7' ] Set(3) { '1', '0', '7' }
+1018 [ '1', '0', '1', '8' ] Set(3) { '1', '0', '8' }
+1019 [ '1', '0', '1', '9' ] Set(3) { '1', '0', '9' }
+1020 [ '1', '0', '2', '0' ] Set(3) { '1', '0', '2' }
+1021 [ '1', '0', '2', '1' ] Set(3) { '1', '0', '2' }
+1022 [ '1', '0', '2', '2' ] Set(3) { '1', '0', '2' }
+1023 [ '1', '0', '2', '3' ] Set(4) { '1', '0', '2', '3' }
+1023
 */
 
-// console.log();
+
+
+// 1023
+// console.log(nextHappyYear(1001));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function nextHappyYear2(year: number): number {
+    year += 1
+    while (new Set("" + year).size != 4) {
+        year++
+    }
+    return year
+}
+
+function nextHappyYear3(year: number) {
+    let res = year;
+    do {
+        res++;
+    } while (+res.toString().split('').filter((el, i, arr) => arr.indexOf(el) === i).join('') != res);
+    return res;
+}
+
+function nextHappyYear4(year: number): number {
+    while (3 > 2) {
+        let shake = new Set(String(++year).split(''));
+        if (shake.size === 4) break;
+    }
+    return year;
+}
+
+
+function nextHappyYear5(year: number): number {
+
+    let digits_of_the_year = year.toString().split("").map(Number);
+
+    do {
+        year++;
+        digits_of_the_year = year.toString().split("").map(Number);
+    } while (
+        digits_of_the_year[3] == digits_of_the_year[2] ||
+        digits_of_the_year[3] == digits_of_the_year[1] ||
+        digits_of_the_year[3] == digits_of_the_year[0] ||
+        digits_of_the_year[2] == digits_of_the_year[1] ||
+        digits_of_the_year[2] == digits_of_the_year[0] ||
+        digits_of_the_year[1] == digits_of_the_year[0]
+    );
+    return year;
+}
+
+// ❓❓❓ WHAT IS CYCLE ❓❓❓
+function nextHappyYear6(year: number) {
+    cicle:
+    for (let i = year + 1; i <= 9999; i++) {
+        if (new Set(i.toString().split('')).size == 4) {
+            return i;
+            break cicle;
+        }
+    }
+}
+
+
+function nextHappyYear7(year: number): number {
+    year++;
+    const arr = Array.from(year.toString());
+    if ((new Set(arr)).size !== arr.length) {
+        return nextHappyYear(year);
+    } else {
+        return year;
+    }
+}
+
+
+function nextHappyYear8(year: number) {
+    while ([...new Set(('' + ++year).split(''))].length < 4) { }
+    return year;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FILL THE HARD DISK DRIVE - Computer problem series #1
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
