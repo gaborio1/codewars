@@ -786,13 +786,33 @@ Task:
 Write function scale(strng, k, v) k and v will be positive integers. If strng == "" return "".
 */
 class G9643 {
-    public static scale = (str: string, k: number, n: number): string => {
+    public static scale = (
+        str: string,
+        repeatChar: number,
+        repeatSub: number
+    ): string => {
+        const subStrArr: string[] = str.split("\n");
+        console.log(subStrArr);
+        const horizontal: string[] = subStrArr.map((sub) => {
+            return sub.replace(/./g, function (match) {
+                return match.repeat(repeatChar);
+            });
+        });
+        console.log(horizontal);
+        console.log("joined:", horizontal.join("\n"));
+        const vertical: string[] = horizontal.map((sub) => {
+            return sub.repeat(repeatSub);
+        });
+        console.log(vertical);
+
         return "hello";
     };
 }
 
 // "Kj\nKj\nSH\nSH"
 // console.log(G9643.scale("Kj\nSH", 1, 2));
+// "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
+console.log(G9643.scale("abcd\nefgh\nijkl\nmnop", 2, 2));
 // console.log();
 // console.log();
 // console.log();

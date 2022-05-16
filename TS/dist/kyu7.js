@@ -54,9 +54,23 @@ const countLettersAndDigits = (input) => {
 };
 class G9643 {
 }
-G9643.scale = (str, k, n) => {
+G9643.scale = (str, repeatChar, repeatSub) => {
+    const subStrArr = str.split("\n");
+    console.log(subStrArr);
+    const horizontal = subStrArr.map((sub) => {
+        return sub.replace(/./g, function (match) {
+            return match.repeat(repeatChar);
+        });
+    });
+    console.log(horizontal);
+    console.log("joined:", horizontal.join("\n"));
+    const vertical = horizontal.map((sub) => {
+        return sub.repeat(repeatSub);
+    });
+    console.log(vertical);
     return "hello";
 };
+console.log(G9643.scale("abcd\nefgh\nijkl\nmnop", 2, 2));
 class Kata1 {
     static isNice(arr) {
         let solution = false;
