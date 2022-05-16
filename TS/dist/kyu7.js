@@ -55,22 +55,33 @@ const countLettersAndDigits = (input) => {
 class G9643 {
 }
 G9643.scale = (str, repeatChar, repeatSub) => {
+    if (str.length === 0)
+        return "";
     const subStrArr = str.split("\n");
-    console.log(subStrArr);
-    const horizontal = subStrArr.map((sub) => {
+    const horizontal = subStrArr
+        .map((sub) => {
         return sub.replace(/./g, function (match) {
-            return match.repeat(repeatChar);
-        });
+            return Array(repeatChar + 1).join(match);
+        }).concat("\n");
     });
-    console.log(horizontal);
-    console.log("joined:", horizontal.join("\n"));
     const vertical = horizontal.map((sub) => {
-        return sub.repeat(repeatSub);
+        return Array(repeatSub + 1).join(sub);
     });
-    console.log(vertical);
-    return "hello";
+    const solution = vertical.join("").slice(0, -1);
+    return solution;
 };
-console.log(G9643.scale("abcd\nefgh\nijkl\nmnop", 2, 2));
+;
+const scale2 = (strng, k, n) => strng.replace(/[^\n]/g, x => Array(k + 1).join(x))
+    .replace(/[^\n]+/g, x => Array(n + 1).join("\n" + x).trim());
+const scale3 = (strng, k, n) => {
+    if (strng.length === 0)
+        return "";
+    var a = strng.split("\n").map(function (x) {
+        var y = x.split("").map(function (z) { return Array(k + 1).join(z); }).join("");
+        return Array(n + 1).join(y + "\n");
+    }).join("");
+    return a.substring(0, a.length - 1);
+};
 class Kata1 {
     static isNice(arr) {
         let solution = false;

@@ -743,10 +743,12 @@ const countLettersAndDigits = (input: string): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SCALING SQUARED STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: STRING.REPEAT ALTERNATIVE, REPLACE(FUNCTON), LINEBREAK - \n NEWLINE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -791,34 +793,72 @@ class G9643 {
         repeatChar: number,
         repeatSub: number
     ): string => {
-        const subStrArr: string[] = str.split("\n");
-        console.log(subStrArr);
-        const horizontal: string[] = subStrArr.map((sub) => {
-            return sub.replace(/./g, function (match) {
-                return match.repeat(repeatChar);
-            });
-        });
-        console.log(horizontal);
-        console.log("joined:", horizontal.join("\n"));
-        const vertical: string[] = horizontal.map((sub) => {
-            return sub.repeat(repeatSub);
-        });
-        console.log(vertical);
 
-        return "hello";
+        if (str.length === 0) return "";
+
+        // DOUBLE EVERY CHAR [ 'abcd', 'efgh', 'ijkl', 'mnop' ] 
+        const subStrArr: string[] = str.split("\n");
+
+        // [ 'aabbccdd\n', 'eeffgghh\n', 'iijjkkll\n', 'mmnnoopp\n' ]
+        const horizontal: string[] = subStrArr
+            // ❗️❗️❗️ REPLACE(FUNCTON) ❗️❗️❗️
+            .map((sub) => {
+                return sub.replace(/./g, function (match) {
+                    // return match.repeat(repeatChar);
+                    // ❗️❗️❗️ STRING.REPEAT ALTERNATIVE ❗️❗️❗️
+                    return Array(repeatChar + 1).join(match);
+                }).concat("\n");
+            });
+        // DOUBLE EVERY SUBSTRING ['aabbccdd\naabbccdd\n','eeffgghh\neeffgghh\n',
+        // 'iijjkkll\niijjkkll\n','mmnnoopp\nmmnnoopp\n']
+        const vertical: string[] = horizontal.map((sub) => {
+            // return sub.repeat(repeatSub);
+            return Array(repeatSub + 1).join(sub);
+        });
+        const solution: string = vertical.join("").slice(0, -1);
+
+        return solution;
+
     };
-}
+};
+
+/*
+❗️❗️❗️ STRING.REPEAT ALTERNATIVE❗️❗️❗️ CODEWARS GIVES ERROR: Property 'repeat' does not exist on type 'string'. (2339)
+These days, the repeat string method is implemented almost everywhere. (It is not in Internet Explorer.) So unless you need to support older browsers, you can simply write:
+
+❗️❗️❗️ 1️⃣   "a".repeat(10)
+
+Before repeat, we used this hack:
+
+❗️❗️❗️ 2️⃣    Array(11).join("a") // create string with 10 a's: "aaaaaaaaaa"
+
+(Note that an array of length 11 gets you only 10 "a"s, since Array.join puts the argument between the array elements.)
+*/
+
 
 // "Kj\nKj\nSH\nSH"
 // console.log(G9643.scale("Kj\nSH", 1, 2));
 // "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
-console.log(G9643.scale("abcd\nefgh\nijkl\nmnop", 2, 2));
+// console.log(G9643.scale("abcd\nefgh\nijkl\nmnop", 2, 2));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const scale2 = (strng: string, k: number, n: number) =>
+    strng.replace(/[^\n]/g, x => Array(k + 1).join(x))
+        .replace(/[^\n]+/g, x => Array(n + 1).join("\n" + x).trim());
+
+const scale3 = (strng: string, k: number, n: number) => {
+    if (strng.length === 0) return "";
+    var a = strng.split("\n").map(
+        function (x) {
+            var y = x.split("").map(function (z) { return Array(k + 1).join(z); }).join("");
+            return Array(n + 1).join(y + "\n");
+        }).join("");
+    return a.substring(0, a.length - 1);
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NICE ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1067,7 +1107,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1560,17 +1600,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -1703,13 +1743,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -4311,10 +4351,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -5427,7 +5467,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -6503,8 +6543,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -6654,10 +6694,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -7654,11 +7694,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -8453,9 +8493,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -8737,8 +8777,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
