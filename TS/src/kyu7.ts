@@ -4,7 +4,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: FIND THE CALCULATION TYPE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -12,8 +12,35 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You have to create a function calcType, which receives 3 arguments: 2 numbers, and the result of an unknown operation performed on them (also a number).
 
+Based on those 3 values you have to return a string, that describes which operation was used to get the given result.
+
+The possible return strings are: "addition", "subtraction", "multiplication", "division".
+
+Example:
+calcType(1, 2, 3) -->   1 ? 2 = 3   --> "addition"
+Notes
+In case of division you should expect that the result of the operation is obtained by using / operator on the input values - no manual data type conversion or rounding should be performed.
+Cases with just one possible answers are generated.
+Only valid arguments will be passed to the function.
+Only valid arguments will be passed to the function!
 */
+const calcType = (a: number, b: number, res: number): string => {
+    return "calculation"; // TODO: your solution here
+};
+
+//   it('Fixed test for addition', () => {
+//     assert.strictEqual(calcType(1, 2, 3), 'addition');
+//   });
+//   it('Fixed test for multiplication', () => {
+//     assert.strictEqual(calcType(10, 4, 40), 'multiplication');
+//   });
+//   it('Fixed test for subtraction', () => {
+//     assert.strictEqual(calcType(10, 5, 5), 'subtraction');
+//   });
+//   it('Fixed test for division', () => {
+//     assert.strictEqual(calcType(9, 5, 1.8), 'division');
 
 // console.log();
 // console.log();
@@ -23,7 +50,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: THE FUSC FUNCTION -- Part 1
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -31,8 +58,33 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The fusc function is defined recursively as follows:
 
+1. fusc(0) = 0
+2. fusc(1) = 1
+3. fusc(2 * n) = fusc(n)
+4. fusc(2 * n + 1) = fusc(n) + fusc(n + 1)
+The 4 rules above are sufficient to determine the value of fusc for any non-negative input n. For example, let's say you want to compute fusc(10).
+
+fusc(10) = fusc(5), by rule 3.
+fusc(5) = fusc(2) + fusc(3), by rule 4.
+fusc(2) = fusc(1), by rule 3.
+fusc(1) = 1, by rule 2.
+fusc(3) = fusc(1) + fusc(2) by rule 4.
+fusc(1) and fusc(2) have already been computed are both equal to 1.
+Putting these results together fusc(10) = fusc(5) = fusc(2) + fusc(3) = 1 + 2 = 3
+
+Your job is to produce the code for the fusc function. In this kata, your function will be tested with small values of n, so you should not need to be concerned about stack overflow or timeouts.
+
+Hint: Use recursion.
 */
+const fusc = (n: number): number => {
+    return 1;
+};
+
+// assert.equal(fusc(0), 0, 'fusc(0)')
+// assert.equal(fusc(1), 1, 'fusc(1)')
+// assert.equal(fusc(85), 21, 'fusc(85)')
 
 // console.log();
 // console.log();
@@ -42,7 +94,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DRYING POTATOES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -50,8 +102,37 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+All we eat is water and dry matter.
 
+Let us begin with an example:
+
+John bought potatoes: their weight is 100 kilograms. Potatoes contain water and dry matter. The water content is 99 percent of the total weight. He thinks they are too wet and puts them in an oven - at low temperature - for them to lose some water.
+
+At the output the water content is only 98%.
+
+What is the total weight in kilograms (water content plus dry matter) coming out of the oven?
+
+He finds 50 kilograms and he thinks he made a mistake: "So much weight lost for such a small change in water content!"
+
+Can you help him?
+
+Task
+Write function potatoes with
+
+int parameter p0 - initial percent of water-
+int parameter w0 - initial weight -
+int parameter p1 - final percent of water -
+potatoesshould return the final weight coming out of the oven w1 truncated as an int.
+
+Example:
+potatoes(99, 100, 98) --> 50
 */
+const potatoes = (p0: number, w0: number, p1: number): number => {
+    return 1;
+};
+
+// assert.strictEqual(potatoes(82, 127, 80), 114);
+//     assert.strictEqual(potatoes(93, 129, 91), 100);
 
 // console.log();
 // console.log();
@@ -61,7 +142,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: HOW GREEN IS MY VALLEY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -69,8 +150,72 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Input : an array of integers.
 
+Output : this array, but sorted in such a way that there are two wings:
+
+the left wing with numbers decreasing,
+
+the right wing with numbers increasing.
+
+the two wings have the same length. If the length of the array is odd the wings are around the bottom, if the length is even the bottom is considered to be part of the right wing.
+
+each integer l of the left wing must be greater or equal to its counterpart r in the right wing, the difference l - r being as small as possible. In other words the right wing must be nearly as steep as the left wing.
+
+The function is make_valley or makeValley or make-valley.
+
+a = [79, 35, 54, 19, 35, 25]
+make_valley(a) --> [79, 35, 25, *19*, 35, 54]
+The bottom is 19, left wing is [79, 35, 25], right wing is [*19*, 35, 54].
+79..................54
+    35..........35
+        25. 
+          ..19
+
+a = [67, 93, 100, -16, 65, 97, 92]
+make_valley(a) --> [100, 93, 67, *-16*, 65, 92, 97]
+The bottom is -16, left wing [100, 93, 67] and right wing [65, 92, 97] have same length.
+100.........................97
+    93..........
+               .........92
+        67......
+               .....65
+            -16     
+
+a = [66, 55, 100, 68, 46, -82, 12, 72, 12, 38]
+make_valley(a) --> [100, 68, 55, 38, 12, *-82*, 12, 46, 66, 72]
+The bottom is -82, left wing is [100, 68, 55, 38, 12]], right wing is [*-82*, 12, 46, 66, 72].
+
+a = [14,14,14,14,7,14]
+make_valley(a) => [14, 14, 14, *7*, 14, 14]
+
+a = [14,14,14,14,14]
+make_valley(a) => [14, 14, *14*, 14, 14]
+A counter-example:
+a = [17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]
+A solution could be [17, 17, 15, 14, 8, 1, 4, 4, 5, 7, 7]
+but the right wing [4, 4, 5, 7, 7] is much flatter than the left one 
+[17, 17, 15, 14, 8].
+
+Summing the differences between left and right wing:
+(17-7)+(17-7)+(15-5)+(14-4)+(8-4) = 44
+
+Consider the following solution:
+[17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]
+Summing the differences between left and right wing:
+(17-17)+(15-14)+(8-7)+(7-5)+(4-4) = 4
+The right wing is nearly as steep as the right one.
 */
+class G9645 {
+    public static makeValley(arr: number[]): number[] {
+        return [1];
+    }
+}
+
+// testing(solution.G964.makeValley([17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]), [17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]);
+// testing(solution.G964.makeValley([20, 7, 6, 2]), [20, 6, 2, 7]);
+// testing(solution.G964.makeValley([14, 10, 8]), [14, 8, 10]);
+// testing(solution.G964.makeValley([20, 18, 17, 13, 12, 12, 10, 9, 4, 2, 2, 1, 1]), [20, 17, 12, 10, 4, 2, 1, 1, 2, 9, 12, 13, 18]);
 
 // console.log();
 // console.log();
@@ -80,7 +225,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: CALCULATE MEAN AND CONCAT STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -88,8 +233,41 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You will be given an array which will include both integers and characters.
 
+Return an array of length 2 with a[0] representing the mean of the ten integers as a floating point number. There will always be 10 integers and 10 characters. Create a single string with the characters and return it as a[1] while maintaining the original order.
+
+lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']
+Here is an example of your return
+
+[3.6, "udiwstagwo"]
+In C# and Java the mean return is a double.
 */
+const mean = (lst: string[]): [number, string] => {
+    return [1, "hello"];
+};
+
+// let lst = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([3.6, "udiwstagwo"]));
+//   lst = ["0", "c", "7", "x", "6", "2", "3", "5", "w", "7", "0", "y", "v", "u", "h", "i", "n", "u", "0", "0"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([3.0, "cxwyvuhinu"]));
+//   lst = ["0", "u", "a", "y", "0", "a", "9", "q", "3", "v", "g", "7", "6", "4", "y", "d", "8", "6", "0", "d"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([4.3, "uayaqvgydd"]));
+//   lst = ["s", "n", "9", "l", "0", "m", "i", "z", "9", "7", "y", "4", "z", "3", "3", "k", "4", "1", "0", "k"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([4.0, "snlmizyzkk"]));
+//   lst = ["5", "v", "u", "k", "8", "4", "9", "b", "9", "g", "5", "z", "3", "f", "6", "u", "i", "6", "6", "t"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([6.1, "vukbgzfuit"]));
+//   lst = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "0", "a", "a", "d", "d", "g", "q", "u", "v", "y", "y"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([0.9, "aaddgquvyy"]));
+//   lst = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "a", "a", "d", "d", "g", "q", "u", "v", "y", "y"];
+//   console.log(`Testing  ${lst}`);
+//   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([1.0, "aaddgquvyy"]));
 
 // console.log();
 // console.log();
@@ -99,7 +277,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SPLIT THE BILL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -107,8 +285,104 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+It's tricky keeping track of who is owed what when spending money in a group. Write a function to balance the books.
 
+The function should take one parameter: an object/dict with two or more name-value pairs which represent the members of the group and the amount spent by each.
+The function should return an object/dict with the same names, showing how much money the members should pay or receive.
+Further points:
+
+The values should be positive numbers if the person should receive money from the group, negative numbers if they owe money to the group.
+If value is a decimal, round to two decimal places.
+Translations and comments (and upvotes!) welcome.
+
+Example
+3 friends go out together: A spends £20, B spends £15, and C spends £10. The function should return an object/dict showing that A should receive £5, B should receive £0, and C should pay £5.
+
+var group = {
+    A: 20, 
+    B: 15, 
+    C: 10
+}
+
+splitTheBill(group) // returns {A: 5, B: 0, C: -5}
 */
+const splitTheBill = (x: { [k: string]: number }): { [k: string]: number } => {
+    //code away...
+
+    return x;
+};
+
+// {A: 5, B: 0, C: -5}
+// console.log(splitTheBill({A: 20, B: 15, C: 10}));
+// {A: 15, B: 0, X: -15}
+// console.log(splitTheBill({A: 40, B: 25, X: 10}));
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: VERY EVEN NUMBERS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Task
+Write a function that returns true if the number is a "Very Even" number.
+
+If a number is a single digit, then it is simply "Very Even" if it itself is even.
+
+If it has 2 or more digits, it is "Very Even" if the sum of its digits is "Very Even".
+
+Examples
+number = 88 => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
+
+number = 222 => returns true -> 2 + 2 + 2 = 6 => 6 is even
+
+number = 5 => returns false
+
+number = 841 => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
+Note: The numbers will always be 0 or positive integers!
+*/
+const isVeryEvenNumber = (n: number): boolean => {
+    return true;
+};
+
+// true
+// console.log(isVeryEvenNumber(222));
+// false
+// console.log(isVeryEvenNumber(88));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: FREQUENCY SEQUENCE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Return an output string that translates an input string s/$s by replacing each character in s/$s with a number representing the number of times that character occurs in s/$s and separating each number with the character(s) sep/$sep.
+
+freqSeq("hello world", "-"); // => "1-1-3-3-2-1-1-2-1-3-1"
+freqSeq("19999999", ":"); // => "1:7:7:7:7:7:7:7"
+freqSeq("^^^**$", "x"); // => "3x3x3x2x2x1"
+*/
+const freqSeq = (str: string, sep: string): string => {
+    return "";
+};
+
+// assert.equal(solution.freqSeq("hello world", "-"), "1-1-3-3-2-1-1-2-1-3-1");
+//     assert.equal(solution.freqSeq("19999999", ":"), "1:7:7:7:7:7:7:7");
+//     assert.equal(solution.freqSeq("^^^**$", "x"), "3x3x3x2x2x1");
 
 // console.log();
 // console.log();
@@ -118,7 +392,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SEARCH FOR LETTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -126,8 +400,54 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Create a function which accepts one arbitrary string as an argument, and return a string of length 26.
 
+The objective is to set each of the 26 characters of the output string to either '1' or '0' based on the fact whether the Nth letter of the alphabet is present in the input (independent of its case).
+
+So if an 'a' or an 'A' appears anywhere in the input string (any number of times), set the first character of the output string to '1', otherwise to '0'. if 'b' or 'B' appears in the string, set the second character to '1', and so on for the rest of the alphabet.
+
+For instance:
+
+"a   **&  cZ"  =>  "10100000000000000000000001"
 */
+const change = (string: string): string => {
+    return "hello";
+};
+
+// "11000000000000000000000001"
+// console.log(change("a **&  bZ"));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: DRONE FLY-BY
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The other day I saw an amazing video where a guy hacked some wifi controlled lightbulbs by flying a drone past them. Brilliant.
+
+In this kata we will recreate that stunt... sort of.
+
+You will be given two strings: lamps and drone. lamps represents a row of lamps, currently off, each represented by x. When these lamps are on, they should be represented by o.
+
+The drone string represents the position of the drone T (any better suggestion for character??) and its flight path up until this point =. The drone always flies left to right, and always begins at the start of the row of lamps. Anywhere the drone has flown, including its current position, will result in the lamp at that position switching on.
+
+Return the resulting lamps string. See example tests for more clarity.
+*/
+const flyBy = (lamps: string, drone: string): string => {
+    return "hello";
+};
+
+// assert.strictEqual(flyBy('xxxxxx', '====T'), 'ooooox');
+//     assert.strictEqual(flyBy('xxxxxxxxx', '==T'), 'oooxxxxxx');
+//     assert.strictEqual(flyBy('xxxxxxxxxxxxxxx', '=========T'), 'ooooooooooxxxxx');
 
 // console.log();
 // console.log();
@@ -137,7 +457,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: CORRECT THE TIME-STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -145,8 +465,39 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A new task for you!
 
+You have to create a method, that corrects a given time string.
+There was a problem in addition, so many of the time strings are broken.
+Time is formatted using the 24-hour clock, so from 00:00:00 to 23:59:59.
+Examples
+"09:10:01" -> "09:10:01"  
+"11:70:10" -> "12:10:10"  
+"19:99:99" -> "20:40:39"  
+"24:01:01" -> "00:01:01"  
+If the input-string is null or empty return exactly this value! (empty string for C++) If the time-string-format is invalid, return null. (empty string for C++)
 */
+const timeCorrect = (timestring: string | null): string | null => {
+    return "?";
+};
+
+// it("Basic Tests", function() {
+//     // Null or Empty
+//     assert.equal(solution.timeCorrect(null), null);
+//     assert.equal(solution.timeCorrect(""), "");
+
+// // Invalid Format
+//     assert.equal(solution.timeCorrect("001122"), null);
+//     assert.equal(solution.timeCorrect("00;11;22"), null);
+//     assert.equal(solution.timeCorrect("0a:1c:22"), null);
+
+// // Correction Tests
+//     assert.equal(solution.timeCorrect("09:10:01"), "09:10:01");
+//     assert.equal(solution.timeCorrect("11:70:10"), "12:10:10");
+//     assert.equal(solution.timeCorrect("19:99:09"), "20:39:09");
+//     assert.equal(solution.timeCorrect("19:99:99"), "20:40:39");
+//     assert.equal(solution.timeCorrect("24:01:01"), "00:01:01");
+//     assert.equal(solution.timeCorrect("52:01:01"), "04:01:01");
 
 // console.log();
 // console.log();
@@ -156,7 +507,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: EXTRA PERFECT NUMBERS (Special Numbers Series #7)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -164,10 +515,23 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition
+Extra perfect number is the number that first and last bits are set bits.
 
+Task
+Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
 */
+const extraPerfect = (n: number) => {
+    // your code here
+};
 
-// console.log();
+// it("Testing for 3", () => assert.deepEqual(extraPerfect(3), [1, 3]));
+//   it("Testing for 5", () => assert.deepEqual(extraPerfect(5), [1, 3, 5]));
+//   it("Testing for 7", () => assert.deepEqual(extraPerfect(7), [1, 3, 5, 7]));
+//   it("Testing for 28", () => assert.deepEqual(extraPerfect(28), [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]));
+//   it("Testing for 39", () =>
+
+// console.log(extraPerfect(3));
 // console.log();
 // console.log();
 // console.log();
@@ -175,7 +539,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: REPLACE EVERY NTH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -183,10 +547,37 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task
+Write a method, that replaces every nth char oldValue with char newValue.
 
+Method:
+
+replaceNth(text:string, n:number, oldValue:string, newValue:string):string
+Example:
+n:         2
+oldValue: 'a'
+newValue: 'o'
+"Vader said: No, I am your father!" -> "Vader soid: No, I am your fother!"
+  1     2          3        4       -> 2nd and 4th occurence are replaced
+Your method has to be case sensitive!
+
+As you can see in the example: The first changed is the 2nd 'a'. So the start is always at the nth suitable char and not at the first!
+
+If n is 0 or negative or if it is larger than the count of the oldValue, return the original text without a change.
+
+The text and the chars will never be null.
 */
+const replaceNth = (
+    text: string,
+    n: number,
+    oldValue: string,
+    newValue: string
+): string => {
+    return text;
+};
 
-// console.log();
+// "Vader soid: No, I am your fother!"
+// console.log(replaceNth("Vader said: No, I am your father!", 2, 'a', 'o'));
 // console.log();
 // console.log();
 // console.log();
@@ -194,7 +585,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SPOONERIZE ME
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -202,10 +593,22 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A spoonerism is a spoken phrase in which the first letters of two of the words are swapped around, often with amusing results.
 
+In its most basic form a spoonerism is a two word phrase in which only the first letters of each word are swapped:
+
+"not picking" --> "pot nicking"
+
+Your task is to create a function that takes a string of two words, separated by a space: words and returns a spoonerism of those words in a string, as in the above example. A "word" in the context of this kata can contain any of the letters A through Z in upper or lower case, and the numbers 0 to 9. Though spoonerisms are about letters in words in the domain of written and spoken language, numbers are included in the inputs for the random test cases and they require no special treatment.
+
+NOTE: All input strings will contain only two words. Spoonerisms can be more complex. For example, three-word phrases in which the first letters of the first and last words are swapped: "pack of lies" --> "lack of pies" or more than one letter from a word is swapped: "flat battery --> "bat flattery" You are NOT expected to account for these, or any other nuances involved in spoonerisms.
 */
+const spoonerize = (words: string): string => {
+    return "hello";
+};
 
-// console.log();
+// "pot nicking"
+// console.log(spoonerize("not picking"));
 // console.log();
 // console.log();
 // console.log();
@@ -213,7 +616,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: HEAD, TAIL, INIT AND LAST
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -221,10 +624,119 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Haskell has some useful functions for dealing with lists:
 
+$ ghci
+GHCi, version 7.6.3: http://www.haskell.org/ghc/  :? for help
+λ head [1,2,3,4,5]
+1
+λ tail [1,2,3,4,5]
+[2,3,4,5]
+λ init [1,2,3,4,5]
+[1,2,3,4]
+λ last [1,2,3,4,5]
+5
+Your job is to implement these functions in your given language. Make sure it doesn't edit the array; that would cause problems! Here's a cheat sheet:
+
+| HEAD | <----------- TAIL ------------> |
+[  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+| <----------- INIT ------------> | LAST |
+
+head [x] = x
+tail [x] = []
+init [x] = []
+last [x] = x
+Here's how I expect the functions to be called in your language:
+
+head([1,2,3,4,5]); => 1
+tail([1,2,3,4,5]); => [2,3,4,5]
+Most tests consist of 100 randomly generated arrays, each with four tests, one for each operation. There are 400 tests overall. No empty arrays will be given. Haskell has QuickCheck tests
+*/
+class Kata6 {
+    // Implement the four static functions specified.
+}
+
+// assert.strictEqual(Kata.head([5,1]), 5);
+//     assert.deepEqual(Kata.tail([1]), []);
+//     assert.deepEqual(Kata.init([1,5,7,9]), [1,5,7]);
+//     assert.strictEqual(Kata.last([7,2]), 2);
+
+// console.log(Kata.head([5,1]);
+// console.log(Kata.tail([1]));
+// console.log(Kata.init([1,5,7,9]));
+// console.log(Kata.last([7,2]));
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: NUMBERS WITH THIS DIGIT INSIDE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
+The value of d will always be 0 - 9.
+The value of x will always be greater than 0.
+
+You have to return as an array
+
+the count of these numbers,
+their sum
+and their product.
+
+For example:
+x = 11
+d = 1
+->
+Numbers: 1, 10, 11
+Return: [3, 22, 110]
+
+If there are no numbers, which include the digit, return [0,0,0].
+*/
+const numbersWithDigitInside = (x: number, d: number): number[] => {
+    return [];
+};
+
+// [ 0, 0, 0]
+// console.log(.numbersWithDigitInside(5,6));
+// [ 1, 6, 6]
+// console.log(numbersWithDigitInside(7,6));
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: HELP BOB COUNT LETTERS AND DIGITS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Bob is a lazy man.
+
+He needs you to create a method that can determine how many letters (both uppercase and lowercase ASCII letters) and digits are in a given string.
+
+Example:
+
+"hel2!lo" --> 6
+
+"wicked .. !" --> 6
+
+"!?..A" --> 1
 */
 
-// console.log();
+const countLettersAndDigits = (input: string): number => {
+    return 0;
+};
+
+// 6
+// console.log(countLettersAndDigits("hel2!lo"));
 // console.log();
 // console.log();
 // console.log();
@@ -232,7 +744,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SCALING SQUARED STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -240,105 +752,47 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a string of n lines, each substring being n characters long. For example:
 
+s = "abcd\nefgh\nijkl\nmnop"
+
+We will study the "horizontal" and the "vertical" scaling of this square of strings.
+
+A k-horizontal scaling of a string consists of replicating k times each character of the string (except '\n').
+
+Example: 2-horizontal scaling of s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
+A v-vertical scaling of a string consists of replicating v times each part of the squared string.
+
+Example: 2-vertical scaling of s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
+Function scale(strng, k, v) will perform a k-horizontal scaling and a v-vertical scaling.
+
+Example: a = "abcd\nefgh\nijkl\nmnop"
+scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
+Printed:
+
+abcd   ----->   aabbccdd
+efgh            aabbccdd
+ijkl            aabbccdd
+mnop            eeffgghh
+                eeffgghh
+                eeffgghh
+                iijjkkll
+                iijjkkll
+                iijjkkll
+                mmnnoopp
+                mmnnoopp
+                mmnnoopp
+Task:
+Write function scale(strng, k, v) k and v will be positive integers. If strng == "" return "".
 */
+class G9643 {
+    public static scale = (str: string, k: number, n: number): string => {
+        return "hello";
+    };
+}
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
+// "Kj\nKj\nSH\nSH"
+// console.log(G9643.scale("Kj\nSH", 1, 2));
 // console.log();
 // console.log();
 // console.log();
@@ -387,7 +841,9 @@ class Kata1 {
             // REMOVE CURRENT NUM: [ 10, 9, 3 ] 2 IS REMOVED
             numArr.splice(i, 1);
             // CHECK IF SOME ELEMENT MEETS CONDITION: BOOLEAN
-            solution = numArr.some((el) => el + 1 === arr[i] || el - 1 === arr[i]);
+            solution = numArr.some(
+                (el) => el + 1 === arr[i] || el - 1 === arr[i]
+            );
             // AS SOON AS CURRENT NUM IS FALSE, STOP LOOP AND RETURN DEFAULT FALSE
             if (!solution) break;
         }
@@ -401,7 +857,6 @@ class Kata1 {
 // console.log(Kata1.isNice([2, 10, 9, 3]));
 // false
 // console.log(Kata1.isNice([8, 4, 5, 3]));
-
 
 /*
 iteration: 0 num: 2
@@ -427,15 +882,18 @@ false
 function isNice2(arr: number[]) {
     let set = new Set(arr);
 
-    return arr.length !== 0 && arr.every(v => set.has(v - 1) || set.has(v + 1));
+    return (
+        arr.length !== 0 && arr.every((v) => set.has(v - 1) || set.has(v + 1))
+    );
 }
-
 
 // const isNice3 = $ => $.length ? $.every(el => $.includes(el-1) || $.includes(el+1)) : false;
 
-
 function isNice4(arr: number[]) {
-    return arr.length > 0 && arr.every(n => arr.includes(n - 1) || arr.includes(n + 1));
+    return (
+        arr.length > 0 &&
+        arr.every((n) => arr.includes(n - 1) || arr.includes(n + 1))
+    );
 }
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ TRY WITH WHILE LOOP ❗️❗️❗️
@@ -475,7 +933,6 @@ Explanation:
 As the Next closest year with only distinct digits is 1023 .
 */
 const nextHappyYear = (year: number): number => {
-
     year += 1;
 
     let digitsArr = year.toString().split("");
@@ -483,11 +940,8 @@ const nextHappyYear = (year: number): number => {
 
     // console.log(year, digitsArr, uniqueDigits);
 
-    return digitsArr.length > uniqueDigits.size
-        ? nextHappyYear(year)
-        : year;
-
-}
+    return digitsArr.length > uniqueDigits.size ? nextHappyYear(year) : year;
+};
 
 /*
 console.log(nextHappyYear(1001));
@@ -517,8 +971,6 @@ console.log(nextHappyYear(1001));
 1023
 */
 
-
-
 // 1023
 // console.log(nextHappyYear(1001));
 // console.log();
@@ -528,32 +980,36 @@ console.log(nextHappyYear(1001));
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function nextHappyYear2(year: number): number {
-    year += 1
+    year += 1;
     while (new Set("" + year).size != 4) {
-        year++
+        year++;
     }
-    return year
+    return year;
 }
 
 function nextHappyYear3(year: number) {
     let res = year;
     do {
         res++;
-    } while (+res.toString().split('').filter((el, i, arr) => arr.indexOf(el) === i).join('') != res);
+    } while (
+        +res
+            .toString()
+            .split("")
+            .filter((el, i, arr) => arr.indexOf(el) === i)
+            .join("") != res
+    );
     return res;
 }
 
 function nextHappyYear4(year: number): number {
     while (3 > 2) {
-        let shake = new Set(String(++year).split(''));
+        let shake = new Set(String(++year).split(""));
         if (shake.size === 4) break;
     }
     return year;
 }
 
-
 function nextHappyYear5(year: number): number {
-
     let digits_of_the_year = year.toString().split("").map(Number);
 
     do {
@@ -572,29 +1028,26 @@ function nextHappyYear5(year: number): number {
 
 // ❓❓❓ WHAT IS CYCLE ❓❓❓
 function nextHappyYear6(year: number) {
-    cicle:
-    for (let i = year + 1; i <= 9999; i++) {
-        if (new Set(i.toString().split('')).size == 4) {
+    cicle: for (let i = year + 1; i <= 9999; i++) {
+        if (new Set(i.toString().split("")).size == 4) {
             return i;
             break cicle;
         }
     }
 }
 
-
 function nextHappyYear7(year: number): number {
     year++;
     const arr = Array.from(year.toString());
-    if ((new Set(arr)).size !== arr.length) {
+    if (new Set(arr).size !== arr.length) {
         return nextHappyYear(year);
     } else {
         return year;
     }
 }
 
-
 function nextHappyYear8(year: number) {
-    while ([...new Set(('' + ++year).split(''))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -622,11 +1075,10 @@ Do not expect any negative or invalid inputs.
 */
 
 const save = (sizesArr: number[], storage: number): number => {
-
-    let freeSpace: number = storage, solution: number = 0;
+    let freeSpace: number = storage,
+        solution: number = 0;
 
     for (let i = 0; i < sizesArr.length; i += 1) {
-
         freeSpace -= sizesArr[i];
         if (freeSpace < 0) {
             break;
@@ -635,8 +1087,7 @@ const save = (sizesArr: number[], storage: number): number => {
     }
 
     return solution;
-
-}
+};
 
 // 3
 // console.log(save([4, 4, 4, 3, 3], 11));
@@ -649,11 +1100,10 @@ const save = (sizesArr: number[], storage: number): number => {
 
 function save2(sizes: number[], hd: number) {
     return sizes.reduce((a, v) => {
-        if ((hd -= v) >= 0) a++
-        return a
-    }, 0)
+        if ((hd -= v) >= 0) a++;
+        return a;
+    }, 0);
 }
-
 
 function save3(sizes: number[], hd: number) {
     let currentCapacity: number = 0;
@@ -678,7 +1128,6 @@ const save4 = (sizes: number[], hd: number): number =>
         }),
         { total: 0, files: 0 }
     ).files;
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Simple Fun #2 - CIRCLE OF NUMBERS
@@ -712,12 +1161,8 @@ Constraints: 0 ≤ firstNumber ≤ n - 1
 [output] an integer
 */
 const circleOfNumbers = (num: number, firstNum: number): number => {
-
-    return firstNum < num / 2
-        ? (num / 2) + firstNum
-        : firstNum - (num / 2);
-
-}
+    return firstNum < num / 2 ? num / 2 + firstNum : firstNum - num / 2;
+};
 // 7
 // console.log(circleOfNumbers(10, 2));
 // console.log(circleOfNumbers(6, 3));
@@ -739,28 +1184,27 @@ function circleOfNumbers2(n: number, firstNumber: number): number {
 }
 
 function circleOfNumbers3(n: number, firstNumber: number) {
-    const result = firstNumber - n / 2
-    return result == 0 ? 0 : result > 0 ? 0 + result : n + result
+    const result = firstNumber - n / 2;
+    return result == 0 ? 0 : result > 0 ? 0 + result : n + result;
 }
 
-
 function circleOfNumbers4(n: number, firstNumber: number) {
-    let midPoint = n / 2
-    let result = 0
+    let midPoint = n / 2;
+    let result = 0;
     if (firstNumber === midPoint) {
-        return 0
+        return 0;
     }
     if (firstNumber > midPoint) {
-        return firstNumber - midPoint
+        return firstNumber - midPoint;
     }
-    return firstNumber + midPoint
+    return firstNumber + midPoint;
 }
 
 // ❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
 function circleOfNumbers5(n: number, firstNumber: number) {
-    const stepSize = 360 / n
-    const stepCount = 180 / stepSize
-    return (Math.trunc((firstNumber + stepCount) % n))
+    const stepSize = 360 / n;
+    const stepCount = 180 / stepSize;
+    return Math.trunc((firstNumber + stepCount) % n);
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LOOKING FOR A BANEFACTOR
@@ -808,7 +1252,6 @@ or return `-1` or ERROR or Nothing or None depending on the language.
 
 // 1️⃣
 const newAvg = (donations: number[], targetAvg: number): number => {
-
     // IF EMPTY ARRAY, RETURN TARGETAVG
     if (!donations.length) return targetAvg;
     // CALC EXPECTED SUM OF DONATIONS AFTER RECEIVING NEXT DONATION (+1)
@@ -822,11 +1265,9 @@ const newAvg = (donations: number[], targetAvg: number): number => {
     if (solution <= 0) throw new Error("Expected New Average is too low");
 
     return solution;
-
-}
+};
 // 2️⃣
 const newAvg2 = (dons: number[], targetAvg: number): number => {
-
     if (!dons.length) return targetAvg;
 
     const solution: number = Math.ceil(
@@ -836,8 +1277,7 @@ const newAvg2 = (dons: number[], targetAvg: number): number => {
     if (solution <= 0) throw new Error("Expected New Average is too low");
 
     return solution;
-
-}
+};
 
 // 628
 // console.log(newAvg2([14, 30, 5, 7, 9, 11, 16], 90));
@@ -848,13 +1288,14 @@ const newAvg2 = (dons: number[], targetAvg: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function newAvg3(arr: number[], newavg: number): number | string {
-    const out = Math.ceil(newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0))
+    const out = Math.ceil(
+        newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0)
+    );
     if (out <= 0) {
-        throw 'Expected New Average is too low'
+        throw "Expected New Average is too low";
     }
-    return out
+    return out;
 }
-
 
 function newAvg4(arr: number[], newavg: number): any {
     const sum: number = arr.reduce((tot: number, val: number) => tot + val, 0);
@@ -865,15 +1306,13 @@ function newAvg4(arr: number[], newavg: number): any {
     return Math.ceil(don);
 }
 
-
 function newAvg5(arr: number[], newavg: number): any {
-
-    let donate = Math.ceil(newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0))
-    if (donate <= 0) throw 'Expected New Average is too low'
-    return donate
-
+    let donate = Math.ceil(
+        newavg * (arr.length + 1) - arr.reduce((a, b) => a + b, 0)
+    );
+    if (donate <= 0) throw "Expected New Average is too low";
+    return donate;
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PRODUCT OF ARRAY  (Array Series #5)
@@ -924,21 +1363,17 @@ Finally ,The Fifth element 900 is the product of all array's elements except the
 
 // 1️⃣
 const productArray = (nums: number[]): number[] => {
-
     const totalProd: number = nums.reduce((acc, curr) => acc * curr);
 
     const solution: number[] = nums.map((num) => totalProd / num);
 
     return solution;
-
-}
+};
 
 // 2️⃣  SHORTER:
 const productArray2 = (nums: number[]): number[] => {
-
     return nums.map((num) => nums.reduce((acc, curr) => acc * curr) / num);
-
-}
+};
 
 // [20, 12]
 // console.log(productArray([12, 20]));
@@ -951,8 +1386,8 @@ const productArray2 = (nums: number[]): number[] => {
 
 // ❗️❗️❗️ REDUCE WITH INITIAL VALUE ❗️❗️❗️
 function productArray3(nums: number[]): number[] {
-    let n: number = nums.reduce((a, b) => a * b, 1)
-    return nums.map(x => n / x)
+    let n: number = nums.reduce((a, b) => a * b, 1);
+    return nums.map((x) => n / x);
 }
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
@@ -991,16 +1426,14 @@ getIssuer(9111111111111111) == "Unknown"
 */
 
 enum Issuer {
-    VISA = 'VISA',
-    AMEX = 'AMEX',
-    Mastercard = 'Mastercard',
-    Discover = 'Discover',
-    Unknown = 'Unknown',
+    VISA = "VISA",
+    AMEX = "AMEX",
+    Mastercard = "Mastercard",
+    Discover = "Discover",
+    Unknown = "Unknown",
 }
 
 const getIssuer = (cardNum: number): string => {
-
-
     const cardNumStr: string = cardNum.toString();
 
     let solution: string = "";
@@ -1019,9 +1452,9 @@ const getIssuer = (cardNum: number): string => {
         Mastercard: /^5[1-5][0-9]{14}$/,
         AMEX: /^3[47][0-9]{13}$/,
         // diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
-        Discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/
+        Discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
         // jcb: /^(?:2131|1800|35\d{3})\d{11}$/
-    }
+    };
 
     for (let key in re) {
         if (re[key].test(cardNumStr)) {
@@ -1032,11 +1465,9 @@ const getIssuer = (cardNum: number): string => {
             // solution = Issuer.Unknown; // ❗️❗️❗️ ARROR
             solution = "Unknown";
         }
-
     }
 
     return solution;
-
 };
 
 // Issuer.VISA
@@ -1050,7 +1481,8 @@ const getIssuer = (cardNum: number): string => {
 function detectCardType(number: string) {
     var re = {
         electron: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/,
-        maestro: /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
+        maestro:
+            /^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\d+$/,
         dankort: /^(5019)\d+$/,
         interpayment: /^(636)\d+$/,
         unionpay: /^(62|88)\d+$/,
@@ -1059,8 +1491,8 @@ function detectCardType(number: string) {
         amex: /^3[47][0-9]{13}$/,
         diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
         discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
-        jcb: /^(?:2131|1800|35\d{3})\d{11}$/
-    }
+        jcb: /^(?:2131|1800|35\d{3})\d{11}$/,
+    };
 
     // for (var key in re) {
     //     if (re[key].test(number)) {
@@ -1107,12 +1539,18 @@ This also implies making sure that your entry fields have room for at least 24 c
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
-    ((Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) && $.length === 15) ? "AMEX" :
-        (Number($.slice(0, 4)) === 6011 && $.length === 16) ? "Discover" :
-            (Number($.slice(0, 2)) > 50 && Number($.slice(0, 2)) < 56 && $.length === 16) ? 'Mastercard' :
-                (Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)) ? 'VISA' :
-                    'Unknown';
-
+    (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
+    $.length === 15
+        ? "AMEX"
+        : Number($.slice(0, 4)) === 6011 && $.length === 16
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -1130,64 +1568,77 @@ const getIssuer3 = (x: number): Issuer => {
     }
 };
 
-
 const getIssuer4 = (x: number) => {
     let str = x.toString();
     let len = str.length;
     let begin = { a: str.slice(0, 2), b: str.slice(0, 4), c: str.slice(0, 1) };
-    if ((len === 16 || len === 13) && begin.c === '4') {
-        return 'VISA';
-    } else if (len === 16 && (begin.a === '51' || begin.a === '52' || begin.a === '53' || begin.a === '54' || begin.a === '55')) {
-        return 'Mastercard';
-    } else if (len === 16 && begin.b === '6011') {
-        return 'Discover';
-    } else if (len === 15 && (begin.a === '34' || begin.a === '37')) {
-        return 'AMEX';
+    if ((len === 16 || len === 13) && begin.c === "4") {
+        return "VISA";
+    } else if (
+        len === 16 &&
+        (begin.a === "51" ||
+            begin.a === "52" ||
+            begin.a === "53" ||
+            begin.a === "54" ||
+            begin.a === "55")
+    ) {
+        return "Mastercard";
+    } else if (len === 16 && begin.b === "6011") {
+        return "Discover";
+    } else if (len === 15 && (begin.a === "34" || begin.a === "37")) {
+        return "AMEX";
     }
-    return 'Unknown';
+    return "Unknown";
 };
-
 
 function getIssuer5(x: number): string {
     const test = (reg: RegExp): boolean => reg.test(`${x}`);
-    if (test(/^(34|37)\d{13}$/)) return 'AMEX';
-    else if (test(/^6011\d{12}$/)) return 'Discover';
-    else if (test(/^(51|52|53|54|55)\d{14}$/)) return 'Mastercard';
-    else if (test(/^4((\d{12})|(\d{15}))$/)) return 'VISA';
-    return 'Unknown';
+    if (test(/^(34|37)\d{13}$/)) return "AMEX";
+    else if (test(/^6011\d{12}$/)) return "Discover";
+    else if (test(/^(51|52|53|54|55)\d{14}$/)) return "Mastercard";
+    else if (test(/^4((\d{12})|(\d{15}))$/)) return "VISA";
+    return "Unknown";
 }
 
-
 const getIssuer6 = (x: number): string => {
-    let creditCardNumber = x.toString()
+    let creditCardNumber = x.toString();
     let ccFirstFour = creditCardNumber.substr(0, 4);
     let ccFirstTwo = creditCardNumber.substr(0, 2);
     let ccLength = creditCardNumber.length;
 
     enum Issuer {
-        VISA = 'VISA',
-        AMEX = 'AMEX',
-        Mastercard = 'Mastercard',
-        Discover = 'Discover',
-        Unknown = 'Unknown',
+        VISA = "VISA",
+        AMEX = "AMEX",
+        Mastercard = "Mastercard",
+        Discover = "Discover",
+        Unknown = "Unknown",
     }
 
     if (ccFirstFour == "6011" && ccLength == 16) {
-        return Issuer.Discover
+        return Issuer.Discover;
     }
     if ((ccFirstTwo == "34" || ccFirstTwo == "37") && ccLength == 15) {
-        return Issuer.AMEX
+        return Issuer.AMEX;
     }
-    if (creditCardNumber.substr(0, 1) == "4" && (ccLength == 13 || ccLength == 16)) {
-        return Issuer.VISA
+    if (
+        creditCardNumber.substr(0, 1) == "4" &&
+        (ccLength == 13 || ccLength == 16)
+    ) {
+        return Issuer.VISA;
     }
-    if ((ccFirstTwo == "51" || ccFirstTwo == "52" || ccFirstTwo == "53" || ccFirstTwo == "54" || ccFirstTwo == "55") && ccLength == 16) {
-        return Issuer.Mastercard
+    if (
+        (ccFirstTwo == "51" ||
+            ccFirstTwo == "52" ||
+            ccFirstTwo == "53" ||
+            ccFirstTwo == "54" ||
+            ccFirstTwo == "55") &&
+        ccLength == 16
+    ) {
+        return Issuer.Mastercard;
     } else {
-        return Issuer.Unknown
+        return Issuer.Unknown;
     }
 };
-
 
 const getIssuer7 = (x: number): Issuer => {
     const s: string = x.toString();
@@ -1198,35 +1649,48 @@ const getIssuer7 = (x: number): Issuer => {
     return Issuer.Unknown;
 };
 
-
 const getIssuer9 = (x: number): Issuer => {
-
     if (String(x).length === 15 && /^34|37/.test(String(x))) return Issuer.AMEX;
-    if (String(x).length === 16 && /^6011/.test(String(x))) return Issuer.Discover;
-    if (String(x).length === 16 && /^51|^52|^53|^54|^55/.test(String(x))) return Issuer.Mastercard;
+    if (String(x).length === 16 && /^6011/.test(String(x)))
+        return Issuer.Discover;
+    if (String(x).length === 16 && /^51|^52|^53|^54|^55/.test(String(x)))
+        return Issuer.Mastercard;
     if (String(x).length === 13 && /^4/.test(String(x))) return Issuer.VISA;
     if (String(x).length === 16 && /^4/.test(String(x))) return Issuer.VISA;
 
-    return Issuer.Unknown
+    return Issuer.Unknown;
 };
 
 const getIssuer10 = (x: number): Issuer => {
-    const card_number = String(x)
+    const card_number = String(x);
     const data = [
-        { type: Issuer.AMEX, begins: ["34", "37"], len: [15], },
-        { type: Issuer.Discover, begins: ["6011"], len: [16], },
-        { type: Issuer.Mastercard, begins: ["51", "52", "53", "54", "55"], len: [16] },
+        { type: Issuer.AMEX, begins: ["34", "37"], len: [15] },
+        { type: Issuer.Discover, begins: ["6011"], len: [16] },
+        {
+            type: Issuer.Mastercard,
+            begins: ["51", "52", "53", "54", "55"],
+            len: [16],
+        },
         { type: Issuer.VISA, begins: ["4"], len: [13, 16] },
-    ]
-    const res = data.find(d => (
-        d.begins.some(b => card_number.startsWith(b)) &&
-        d.len.some(l => card_number.length === l)
-    ))
-    return res ? res.type : Issuer.Unknown
+    ];
+    const res = data.find(
+        (d) =>
+            d.begins.some((b) => card_number.startsWith(b)) &&
+            d.len.some((l) => card_number.length === l)
+    );
+    return res ? res.type : Issuer.Unknown;
 };
 
-const getIssuer8 = (x: number) => Object.values(Issuer)[[/^4\d{12}(\d{3})?$/, /^3[47]\d{13}$/, /^5[1-5]\d{14}$/, /^6011\d{12}$/, /.*/].findIndex(p => p.test(`${x}`))];
-
+const getIssuer8 = (x: number) =>
+    Object.values(Issuer)[
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
+    ];
 
 const getIssuer11 = (x: number): Issuer => {
     const s = x.toString();
@@ -1234,7 +1698,10 @@ const getIssuer11 = (x: number): Issuer => {
         return Issuer.AMEX;
     } else if (s.length === 16 && s.startsWith("6011")) {
         return Issuer.Discover;
-    } else if (s.length === 16 && ["51", "52", "53", "54", "55"].includes(s.slice(0, 2))) {
+    } else if (
+        s.length === 16 &&
+        ["51", "52", "53", "54", "55"].includes(s.slice(0, 2))
+    ) {
         return Issuer.Mastercard;
     } else if ((s.length === 13 || s.length === 16) && s.startsWith("4")) {
         return Issuer.VISA;
@@ -1271,23 +1738,19 @@ All numbers are valid.
 There can be duplicate letters and numbers.
 */
 
-
 // 1️⃣  WITH ARRAY SPLICE ❗️❗️❗️
 const lastSurvivor = (letters: string, coords: number[]): string => {
-
     const lettersArr: string[] = letters.split("");
 
     coords.forEach((index) => {
         // DELETE CORRESPONDIN CHAR AT FOR EACH INDEX
         lettersArr.splice(index, 1);
-    })
+    });
 
     // console.log("   lettersArr final:", lettersArr);
 
     return lettersArr[0];
-
-}
-
+};
 
 // "b"
 // console.log(lastSurvivor('kbc', [0, 1]));
@@ -1304,7 +1767,7 @@ function lastSurvivor2(letters: string, coords: number[]): string {
 
 // 2️⃣ ❗️❗️❗️ WITH STRING SLICE() ❗️❗️❗️
 function lastSurvivor3(letters: string, coords: number[]): string {
-    coords.forEach(n => {
+    coords.forEach((n) => {
         letters = letters.slice(0, n) + letters.slice(n + 1);
     });
     return letters;
@@ -1337,10 +1800,11 @@ Input is always going to be valid/reasonable: ie: a non negative number; extra c
 */
 
 const squaresNeeded = (numGrains: number): number => {
-
     if (!numGrains) return 0;
 
-    let curr: number = 1, acc: number = 1, sqCounter: number = 1;
+    let curr: number = 1,
+        acc: number = 1,
+        sqCounter: number = 1;
 
     while (acc < numGrains) {
         curr *= 2;
@@ -1354,9 +1818,7 @@ const squaresNeeded = (numGrains: number): number => {
     // console.log("   solution:", sqCounter);
 
     return sqCounter;
-
-}
-
+};
 
 // 3
 // console.log(squaresNeeded(0));
@@ -1377,7 +1839,7 @@ const squaresNeeded = (numGrains: number): number => {
 // 4 && 3 => 3, 8 && 4 => 4
 // RETURNS HOW MANY SQUARES NEEDED TO REACH NUMBER OF GRAINS
 function squaresNeeded2(grains: number) {
-    return grains && grains.toString(2).length
+    return grains && grains.toString(2).length;
 }
 
 // ❗️❗️❗️ LOG2(X) ❗️❗️❗️
@@ -1388,7 +1850,6 @@ function squaresNeeded3(grains: number) {
     return grains ? Math.floor(Math.log2(grains) + 1) : 0;
 }
 
-
 function squaresNeeded4(grains: number) {
     // Search for 'sum of geometric series' and work backwards.
     // Eventually you get (sum + 1) equals (2 ** n)
@@ -1396,10 +1857,8 @@ function squaresNeeded4(grains: number) {
     return Math.ceil(Math.log2(grains + 1));
 }
 
-
-
 function squaresNeeded5(grains: number) {
-    let squares = 0
+    let squares = 0;
     let squareSize = 1;
     let totalGrains = grains;
     while (totalGrains > 0) {
@@ -1410,7 +1869,6 @@ function squaresNeeded5(grains: number) {
 
     return squares;
 }
-
 
 const squaresNeeded6 = (grains: number) => grains && ~~Math.log2(grains) + 1;
 
@@ -1431,17 +1889,13 @@ Numbers will be positive. The hexadecimal string should be lowercased.
 */
 
 const evensAndOdds = (num: number): string => {
-
     // const binary: string = (num >>> 0).toString(2);
     const binary: string = num.toString(2);
 
     const hex: string = num.toString(16);
 
-    return num & 1
-        ? hex
-        : binary;
-
-}
+    return num & 1 ? hex : binary;
+};
 
 /*
 
@@ -1469,24 +1923,20 @@ This question has further explanation.
 const evensAndOdds2 = (n: number): string =>
     n % 2 === 0 ? n.toString(2) : n.toString(16);
 
-
 function evensAndOdds3(n: number): string {
-    return Number(n).toString(n % 2 == 0 ? 2 : 16)
+    return Number(n).toString(n % 2 == 0 ? 2 : 16);
 }
-
 
 // Shifting the n: number 0 bits to the right turns into unsigned int, thus converting negative numbers to positive
 export const evensAndOdds4 = (n: number): string => {
-    return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16)
-}
-
+    return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16);
+};
 
 function evensAndOdds5(n: number): string {
     if (n & 1) {
-        return n.toString(16)
+        return n.toString(16);
     }
-    return n.toString(2)
-
+    return n.toString(2);
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ODD-EVEN STRING SORT, (FIRST CHAR/ODDS/EVENS)
@@ -1520,7 +1970,6 @@ And the final string to return is 'Cdwr oeas'
 */
 
 const sortMyString = (str: string): string => {
-
     let solution: string = "";
     let oddStr: string = "";
     let evenStr: string = "";
@@ -1539,7 +1988,7 @@ const sortMyString = (str: string): string => {
     solution += evenStr + " " + oddStr;
 
     return solution;
-}
+};
 
 // "CdWr oeas"
 // console.log(sortMyString("CodeWars"));
@@ -1551,13 +2000,16 @@ const sortMyString = (str: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function sortMyString2(S: string): string {
-    var getEveryOtherLetter = (n: number) => S.split("").filter((_, i) => i % 2 === n).join("");
+    var getEveryOtherLetter = (n: number) =>
+        S.split("")
+            .filter((_, i) => i % 2 === n)
+            .join("");
     return `${getEveryOtherLetter(0)} ${getEveryOtherLetter(1)}`;
 }
 
-
 function sortMyString3(S: string): string {
-    let even: string = "", odd: string = "";
+    let even: string = "",
+        odd: string = "";
     for (let i: number = 0; i < S.length; i++) {
         if (i === 0 || i % 2 === 0) even += S.charAt(i);
         else odd += S.charAt(i);
@@ -1565,11 +2017,19 @@ function sortMyString3(S: string): string {
     return even + " " + odd;
 }
 
-
 function sortMyString4(s: string): string {
-    return s.split("").filter((_, i) => !(i % 2)).join("") + ' ' + s.split("").filter((_, i) => i % 2).join("");
+    return (
+        s
+            .split("")
+            .filter((_, i) => !(i % 2))
+            .join("") +
+        " " +
+        s
+            .split("")
+            .filter((_, i) => i % 2)
+            .join("")
+    );
 }
-
 
 const sortMyString5 = (str: string): string =>
     [0, 1]
@@ -1581,9 +2041,10 @@ const sortMyString5 = (str: string): string =>
         )
         .join(" ");
 
-
 function sortMyString6(str: string): string {
-    var a = str.split(""), sodd = [], seven = [];
+    var a = str.split(""),
+        sodd = [],
+        seven = [];
     for (let i = 0; i < a.length; i++)
         if (i % 2 === 0) seven.push(a[i]);
         else sodd.push(a[i]);
@@ -1591,20 +2052,28 @@ function sortMyString6(str: string): string {
 }
 
 function sortMyString7(S: string): string {
-    let first = '', second = '', i
-    for (i = 0; i < S.length; i++) i & 1 ? second += S[i] : first += S[i]
-    return `${first} ${second}`
+    let first = "",
+        second = "",
+        i;
+    for (i = 0; i < S.length; i++) i & 1 ? (second += S[i]) : (first += S[i]);
+    return `${first} ${second}`;
 }
 
-
 function sortMyString8(S: string): string {
-    return S.split('').filter((e, i) => i % 2 === 0).join('') + ' ' +
-        S.split('').filter((e, i) => i % 2 !== 0).join('');
+    return (
+        S.split("")
+            .filter((e, i) => i % 2 === 0)
+            .join("") +
+        " " +
+        S.split("")
+            .filter((e, i) => i % 2 !== 0)
+            .join("")
+    );
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAXIMUM GAP (Array Series #4)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: ❗️❗️❗️ MAP(EL, IDX, ARRAY) ❗️❗️❗️ CAN USE ACTUAL ARRAY 
+// KEYWORDS: ❗️❗️❗️ MAP(EL, IDX, ARRAY) ❗️❗️❗️ CAN USE ACTUAL ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1649,42 +2118,33 @@ Note : Regardless the sign of negativity .
 
 // 1️⃣
 const maxGap = (numArr: number[]): number => {
-
     const sortedArr: number[] = numArr.sort((a, b) => a - b);
     let diffsArr: number[] = sortedArr
         .map((num, idx) => sortedArr[idx + 1] - num)
         .slice(0, -1);
     const solution: number = Math.max(...diffsArr);
     return solution;
-}
+};
 
 // 2️⃣  COMPARE THIS WITH NUMBER 3 BELOW !!!
 const maxGap2 = (numArr: number[]): number => {
-
     return Math.max(
         ...numArr
             .sort((a, b) => a - b)
             .map((num, idx) => numArr[idx + 1] - num)
-            .slice(0, -1)   // SLICE() TO REMOVE LAST ITEM NaN
-    )
-
-}
-
-
+            .slice(0, -1) // SLICE() TO REMOVE LAST ITEM NaN
+    );
+};
 
 // 3️⃣ ❗️❗️❗️ MAP(EL, IDX, ARRAY) ❗️❗️❗️
 const maxGap7 = (numArr: number[]): number => {
-
     return Math.max(
         ...numArr
             .sort((a, b) => a - b)
             .map((num, idx, arr) => arr[idx + 1] - num)
             .slice(0, -1)
-    )
-
-}
-
-
+    );
+};
 
 // 4
 // console.log(maxGap([13, 10, 2, 9, 5]));
@@ -1698,27 +2158,32 @@ const maxGap7 = (numArr: number[]): number => {
 
 // ❗️❗️❗️ MAP(EL, IDX, ARRAY) ❗️❗️❗️
 function maxGap6(nums: number[]) {
-    return Math.max(...nums.sort((a, b) => { return b - a })
-        .map((value, index, array) => { return index == array.length - 1 ? 0 : value - array[index + 1] }));
+    return Math.max(
+        ...nums
+            .sort((a, b) => {
+                return b - a;
+            })
+            .map((value, index, array) => {
+                return index == array.length - 1 ? 0 : value - array[index + 1];
+            })
+    );
 }
 
 function maxGap3(nums: number[]): number {
-    let arr: number[] = nums.slice().sort((x, y) => x - y)
-    return Math.max(...arr.map((x, i, a) => a[i + 1] - x).slice(0, -1))
+    let arr: number[] = nums.slice().sort((x, y) => x - y);
+    return Math.max(...arr.map((x, i, a) => a[i + 1] - x).slice(0, -1));
 }
 
-
 function maxGap4(nums: number[]) {
-    const sorted = nums.sort((a, b) => b - a)
-    let answer = Number.MIN_SAFE_INTEGER
+    const sorted = nums.sort((a, b) => b - a);
+    let answer = Number.MIN_SAFE_INTEGER;
 
     for (let i = 0; i < sorted.length - 1; i++) {
-        const temp = sorted[i] - sorted[i + 1]
+        const temp = sorted[i] - sorted[i + 1];
 
-        if (temp > answer)
-            answer = temp
+        if (temp > answer) answer = temp;
     }
-    return answer
+    return answer;
 }
 
 function maxGap5(nums: number[]): number {
@@ -1744,11 +2209,10 @@ Create a function that returns the average of an array of numbers ("scores"), ro
 */
 
 const average = (scoresArr: number[]): number => {
-
     return Math.round(
         scoresArr.reduce((acc, curr) => acc + curr) / scoresArr.length
     );
-}
+};
 
 // var scores = [49, 3, 5, 300, 7];
 // 73
@@ -1761,7 +2225,8 @@ const average = (scoresArr: number[]): number => {
 
 function average2(scores: number[]): number {
     // 1- Sum the values from the array
-    const reducer = (total: number, currentValue: number) => total + currentValue;
+    const reducer = (total: number, currentValue: number) =>
+        total + currentValue;
     const sumOfNumbers = scores.reduce(reducer);
 
     // 2- Get the length of the array
@@ -1769,7 +2234,6 @@ function average2(scores: number[]): number {
     // 3- Divide the array sum by the length
     return Math.round(sumOfNumbers / scoreLength);
 }
-
 
 function average3(scores: number[]): number {
     // ❗️❗️❗️ EVAL ❗️❗️❗️
@@ -1829,10 +2293,10 @@ Expected Time Complexity O(n Log n)
 */
 
 const minimumSteps = (numsArr: number[], tHold: number): number => {
-
     const ascArr: number[] = numsArr.sort((a, b) => a - b);
 
-    let sum: number = 0, counter: number = 0;
+    let sum: number = 0,
+        counter: number = 0;
 
     for (counter; counter < ascArr.length; counter += 1) {
         sum += ascArr[counter];
@@ -1840,8 +2304,7 @@ const minimumSteps = (numsArr: number[], tHold: number): number => {
     }
 
     return counter;
-
-}
+};
 
 // 1
 // console.log(minimumSteps([4, 6, 3], 7));
@@ -1856,28 +2319,30 @@ function minimumSteps2(nums: number[], value: number) {
     var s = 0;
     var total = 0;
     // ❗️❗️❗️ SORT() - MUTATES ORIGINAL, DON'T NEED TO SAVE TO VAR ❗️❗️❗️
-    nums.sort((n1, n2) => n1 - n2)
-
+    nums.sort((n1, n2) => n1 - n2);
 
     for (let i = 0; i < nums.length; i++) {
-        total += nums[i]
+        total += nums[i];
         s++;
-        console.log(total)
+        console.log(total);
 
         if (nums[0] >= value) {
-            return 0
+            return 0;
         }
 
         if (total >= value) {
-            return s - 1
+            return s - 1;
         }
     }
-
 }
 
-
 const minimumSteps3 = (nums: number[], value: number) =>
-    nums.sort((a, b) => a - b).reduce((acc, item) => (acc[0] < value ? [acc[0] + item, acc[1] + 1] : acc), [0, -1])[1];
+    nums
+        .sort((a, b) => a - b)
+        .reduce(
+            (acc, item) => (acc[0] < value ? [acc[0] + item, acc[1] + 1] : acc),
+            [0, -1]
+        )[1];
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES (MODULO/REMAINDER )❗️❗️❗️
 // 4 % 10 => 4 !!! DIVIDEND < DIVISOR => DIVIDEND
@@ -1905,17 +2370,13 @@ Examples:
 */
 
 const incrementer = (numArr: number[]): number[] => {
-
-    const solution: number[] = numArr
-        .map((el, idx) => {
-            const sum: number = el + (numArr.indexOf(el) + 1);
-            return sum > 9
-                ? sum - 10
-                : sum;
-        })
+    const solution: number[] = numArr.map((el, idx) => {
+        const sum: number = el + (numArr.indexOf(el) + 1);
+        return sum > 9 ? sum - 10 : sum;
+    });
 
     return solution;
-}
+};
 
 // [2, 4, 6]
 // console.log(incrementer([1, 2, 3]));
@@ -1927,7 +2388,8 @@ const incrementer = (numArr: number[]): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️ 4 % 10 => 4 !!! DIVIDEND < DIVISOR => DIVIDEND ❗️❗️❗️
-const incrementer2 = (nums: number[]): number[] => nums.map((num, index) => (num + index + 1) % 10);
+const incrementer2 = (nums: number[]): number[] =>
+    nums.map((num, index) => (num + index + 1) % 10);
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️  INCLUDE THIS IN EXAMPLES (REGEX)❗️❗️❗️
@@ -1958,7 +2420,6 @@ null, ""    -> equal
 
 */
 const compare = (str1: string | null, str2: string | null): boolean => {
-
     //  !!! REPLACE LETTERS WITH SPACE AND CHECK LENGTH !!!
     const getStrVal = (str: string | null): number => {
         // const validStr: string = str?.replace(/[^A-Z]/ig, "");
@@ -1967,8 +2428,8 @@ const compare = (str1: string | null, str2: string | null): boolean => {
         // if (str === null) return 0;
         // if (str === "") return 0;
         // FILTER OUT INVALID INPUT (NON LETTER CHARACTERS / EMPTY STR / null)
-        if (!str || /[^A-Z]/ig.test(str)) return 0;
-        const upperCased: string = str.toUpperCase()
+        if (!str || /[^A-Z]/gi.test(str)) return 0;
+        const upperCased: string = str.toUpperCase();
         let value: number = 0;
 
         for (let i = 0; i < upperCased.length; i++) {
@@ -1976,16 +2437,16 @@ const compare = (str1: string | null, str2: string | null): boolean => {
         }
 
         return value;
-    }
+    };
 
     console.table({
         value1: getStrVal(str1),
         value2: getStrVal(str2),
-        isEqual: getStrVal(str1) === getStrVal(str2)
-    })
+        isEqual: getStrVal(str1) === getStrVal(str2),
+    });
 
     return getStrVal(str1) === getStrVal(str2);
-}
+};
 
 /*
 ❗️❗️❗️ REGEX MATCH NEGATED SET "^" ❗️❗️❗️ MATCH ANY CHAR THAT IS NOT IN THE SET
@@ -2022,27 +2483,40 @@ true
 //============= OTHER CODEWARS SOLUTIONS: =============
 function compare2(s1: string | null, s2: string | null): boolean {
     function fun(s: string | null): string {
-        if (typeof (s) === 'string' && s.replace(/[a-z]/gi, '') === '') return s.toUpperCase();
-        return '';
+        if (typeof s === "string" && s.replace(/[a-z]/gi, "") === "")
+            return s.toUpperCase();
+        return "";
     }
 
-    const red = (s: string | null): number => fun(s).split("").reduce((acc, el) => acc + el.charCodeAt(0), 0);
+    const red = (s: string | null): number =>
+        fun(s)
+            .split("")
+            .reduce((acc, el) => acc + el.charCodeAt(0), 0);
 
     return red(s1) === red(s2);
 }
 
-
 function compare3(s1: string | null, s2: string | null): boolean {
     function sum(str: string | null): number {
-        if (!str || !str.length) { return 0; }
-        let arr = str.toUpperCase().split("").map(c => c.charCodeAt(0));
-        if (!arr.every(el => el >= "A".charCodeAt(0) && el <= "Z".charCodeAt(0))) { return 0; }
+        if (!str || !str.length) {
+            return 0;
+        }
+        let arr = str
+            .toUpperCase()
+            .split("")
+            .map((c) => c.charCodeAt(0));
+        if (
+            !arr.every(
+                (el) => el >= "A".charCodeAt(0) && el <= "Z".charCodeAt(0)
+            )
+        ) {
+            return 0;
+        }
         return arr.reduce((acc, el) => acc + el);
     }
 
     return sum(s1) === sum(s2);
 }
-
 
 //   function compare4(x, y):boolean {
 //     return (x = [x, y]
@@ -2052,15 +2526,15 @@ function compare3(s1: string | null, s2: string | null): boolean {
 //       .reduce((s, e) => s + e.charCodeAt(), 0)))[0] === x[1];
 //   }
 
-
 function compare5(s1: string | null, s2: string | null): boolean {
     function count(x: string | null): number {
         let count = 0;
-        if (x) for (let c of x.toUpperCase()) {
-            const cc = c.charCodeAt(0);
-            if (cc >= 65 && cc <= 90) count += cc;
-            else return 0;
-        }
+        if (x)
+            for (let c of x.toUpperCase()) {
+                const cc = c.charCodeAt(0);
+                if (cc >= 65 && cc <= 90) count += cc;
+                else return 0;
+            }
         return count;
     }
     return count(s1) == count(s2);
@@ -2112,7 +2586,7 @@ function closestMultiple102(num: number) {
         num += 10 - last;
     }
     return num;
-};
+}
 
 // Parameter 'n' implicitly has an 'any' type.ts(7006)
 // const closestMultiple103 = n => {
@@ -2129,7 +2603,7 @@ type F10 = (num: number) => number;
 const part10: F10 = (num) => {
     if (num < 5) return num * -1;
     return 10 - num;
-}
+};
 
 export const closestMultiple104: F10 = (num) => {
     return num + part10(num % 10);
@@ -2197,9 +2671,7 @@ const factorialA2 = (n: number): number => {
 //     return (n > 0) ? n * this.factorial(n - 1) : 1;
 // };
 
-
 const factorialA5 = (n: number): number => {
-
     var fact = 1;
 
     function factorial(num: number): number {
@@ -2209,8 +2681,7 @@ const factorialA5 = (n: number): number => {
         }
         return fact;
     }
-    return (factorial(n));
-
+    return factorial(n);
 };
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2258,7 +2729,6 @@ Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
 Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
 */
 const encode = (str: String, key: number): number[] => {
-
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     // SPLIT KEY INTO ARRAY OF DIGITS: [ 1, 9, 3, 9 ]
     const keyArr: number[] = key
@@ -2280,10 +2750,8 @@ const encode = (str: String, key: number): number[] => {
             (el += idx < seqLength ? keyArr[idx] : keyArr[idx % seqLength])
     );
 
-
     return encodedArr;
-
-}
+};
 // [ 20, 12, 18, 30, 21]
 // console.log(encode("scout", 1939));
 // console.log();
@@ -2293,17 +2761,19 @@ const encode = (str: String, key: number): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function encode2(str: String, n: number): number[] {
-    const keys: number[] = n.toString().split('').map(Number);
-    return str.split('').map((code, index) => {
-        return code.toLowerCase().charCodeAt(0) - 96 + keys[index % keys.length]
+    const keys: number[] = n.toString().split("").map(Number);
+    return str.split("").map((code, index) => {
+        return (
+            code.toLowerCase().charCodeAt(0) - 96 + keys[index % keys.length]
+        );
     });
 }
 
-
 function encode3(str: string, n: number): number[] {
-    return str.split('')
-        .map(c => c.charCodeAt(0) - 96)
-        .map((c, idx) => c + parseInt(n.toString()[idx % n.toString().length]))
+    return str
+        .split("")
+        .map((c) => c.charCodeAt(0) - 96)
+        .map((c, idx) => c + parseInt(n.toString()[idx % n.toString().length]));
 }
 
 /*
@@ -3821,10 +4291,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -4937,7 +5407,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -6013,8 +6483,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -6164,10 +6634,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -7164,11 +7634,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -7963,9 +8433,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -8247,8 +8717,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

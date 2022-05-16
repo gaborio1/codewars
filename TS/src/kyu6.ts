@@ -119,7 +119,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DECIPHER THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -127,8 +127,25 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a secret message you need to decipher. Here are the things you need to know to decipher it:
+
+For each word:
+
+the second and the last letter is switched (e.g. Hello becomes Holle)
+the first letter is replaced by its character code (e.g. H becomes 72)
+Note: there are no special characters used, only letters and spaces
+
+Examples
+
+decipherThis('72olle 103doo 100ya'); // 'Hello good day'
+decipherThis('82yade 115te 103o'); // 'Ready set go'
 
 */
+function decipherThis(str: string): string {
+    return "hello";
+}
+
+// Test.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 
 // console.log();
 // console.log();
@@ -138,7 +155,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: LENGTH OF MISSING ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -146,8 +163,32 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You get an array of arrays.
+If you sort the arrays by their length, you will see, that their length-values are consecutive.
+But one array is missing!
+
+
+You have to write a method, that return the length of the missing array.
+
+Example:
+[[1, 2], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]] --> 3
+
+If the array of arrays is null/nil or empty, the method should return 0.
+
+When an array in the array is null or empty, the method should return 0 too!
+There will always be a missing element and its length will be always between the given arrays.
 
 */
+function getLengthOfMissingArray(arrayOfArrays: any[]): number {
+    return 1;
+}
+
+// assert.equal(solution.getLengthOfMissingArray([ [ 1, 2 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ]] ), 3);
+//     assert.equal(solution.getLengthOfMissingArray([ [ 5, 2, 9 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ]] ), 2);
+//     assert.equal(solution.getLengthOfMissingArray([ [ null ], [ null, null, null ] ] ), 2);
+//     assert.equal(solution.getLengthOfMissingArray([ [ 'a', 'a', 'a' ], [ 'a', 'a' ], [ 'a', 'a', 'a', 'a' ], [ 'a' ], [ 'a', 'a', 'a', 'a', 'a', 'a' ]] ), 5);
+
+//     assert.equal(solution.getLengthOfMissingArray([ ]), 0);
 
 // console.log();
 // console.log();
@@ -157,7 +198,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MAZE RUNNER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -165,8 +206,61 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Introduction
+Welcome Adventurer. Your aim is to navigate the maze and reach the finish point without touching any walls. Doing so will kill you instantly!
+Task
+You will be given a 2D array of the maze and an array of directions. Your task is to follow the directions given. If you reach the end point before all your moves have gone, you should return Finish. If you hit any walls or go outside the maze border, you should return Dead. If you find yourself still in the maze after using all the moves, you should return Lost.
+The Maze array will look like
 
+maze = [[1,1,1,1,1,1,1],
+        [1,0,0,0,0,0,3],
+        [1,0,1,0,1,0,1],
+        [0,0,1,0,0,0,1],
+        [1,0,1,0,1,0,1],
+        [1,0,0,0,0,0,1],
+        [1,2,1,0,1,0,1]]
+..with the following key
+
+      0 = Safe place to walk
+      1 = Wall
+      2 = Start Point
+      3 = Finish Point
+  directions = "NNNNNEEEEE" == "Finish" // (directions passed as a string)
+Rules
+1. The Maze array will always be square i.e. N x N but its size and content will alter from test to test.
+
+2. The start and finish positions will change for the final tests.
+
+3. The directions array will always be in upper case and will be in the format of N = North, E = East, W = West and S = South.
+
+4. If you reach the end point before all your moves have gone, you should return Finish.
+
+5. If you hit any walls or go outside the maze border, you should return Dead.
+
+6. If you find yourself still in the maze after using all the moves, you should return Lost.
 */
+const mazeRunner = (maze: number[][], directions: string[]): string => {
+    return "hello";
+};
+
+let maze = [
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 3],
+    [1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
+    [1, 2, 1, 0, 1, 0, 1],
+];
+
+// assert.equal(mazeRunner(maze,["N","N","N","N","N","E","E","E","E","E"]), "Finish", "Expected Finish");
+// assert.equal(mazeRunner(maze,["N","N","N","N","N","E","E","S","S","E","E","N","N","E"]), "Finish", "Expected Finish");
+// assert.equal(mazeRunner(maze,["N","N","N","N","N","E","E","E","E","E","W","W"]), "Finish", "Expected Finish");
+
+// assert.equal(mazeRunner(maze,["N","N","N","W","W"]), "Dead", "Expected Dead");
+// assert.equal(mazeRunner(maze,["N","N","N","N","N","E","E","S","S","S","S","S","S"]), "Dead", "Expected Dead");
+
+// assert.equal(mazeRunner(maze,["N","E","E","E","E"]), "Lost", "Expected Lost");
 
 // console.log();
 // console.log();
@@ -176,7 +270,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: STATISCTICS FOR AN ATHLETIC ASSOCIATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -184,8 +278,44 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are the "computer expert" of a local Athletic Association (C.A.A.). Many teams of runners come to compete. Each time you get a string of all race results of every team who has run. For example here is a string showing the individual results of a team of 5 runners:
 
+"01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"
+
+Each part of the string is of the form: h|m|s where h, m, s (h for hour, m for minutes, s for seconds) are positive or null integer (represented as strings) with one or two digits. Substrings in the input string are separated by , or ,.
+
+To compare the results of the teams you are asked for giving three statistics; range, average and median.
+
+Range : difference between the lowest and highest values. In {4, 6, 9, 3, 7} the lowest value is 3, and the highest is 9, so the range is 9 − 3 = 6.
+
+Mean or Average : To calculate mean, add together all of the numbers in a set and then divide the sum by the total count of numbers.
+
+Median : In statistics, the median is the number separating the higher half of a data sample from the lower half. The median of a finite list of numbers can be found by arranging all the observations from lowest value to highest value and picking the middle one (e.g., the median of {3, 3, 5, 9, 11} is 5) when there is an odd number of observations. If there is an even number of observations, then there is no single middle value; the median is then defined to be the mean of the two middle values (the median of {3, 5, 6, 9} is (5 + 6) / 2 = 5.5).
+
+Your task is to return a string giving these 3 values. For the example given above, the string result will be
+
+"Range: 00|47|18 Average: 01|35|15 Median: 01|32|34"
+
+of the form: "Range: hh|mm|ss Average: hh|mm|ss Median: hh|mm|ss"`
+
+where hh, mm, ss are integers (represented by strings) with each 2 digits.
+
+Remarks:
+if a result in seconds is ab.xy... it will be given truncated as ab.
+if the given string is "" you will return ""
 */
+class G9644 {
+    public static stat = (str: string): string => {
+        return "hello";
+    };
+}
+
+// dotest("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17",
+//             "Range: 01|01|18 Average: 01|38|05 Median: 01|32|34");
+//         dotest("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41",
+//             "Range: 00|31|17 Average: 02|26|18 Median: 02|22|00");
+//         dotest("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|32|34, 2|17|17",
+//             "Range: 00|31|17 Average: 02|27|10 Median: 02|24|57");
 
 // console.log();
 // console.log();
@@ -240,9 +370,11 @@ nbMonths(8000, 8000, 1000, 1.5) should return [0, 0]
 We don't take care of a deposit of savings in a bank:-)
 */
 const nbMonths = (
-    priceOld: number, priceNew: number, savePerM: number, lossPCM: number
+    priceOld: number,
+    priceNew: number,
+    savePerM: number,
+    lossPCM: number
 ): number[] => {
-
     let balance: number = priceOld - priceNew;
     console.log("initial balance:", balance);
     let monthCount: number = 0;
@@ -260,7 +392,7 @@ const nbMonths = (
         balance *= (100 - lossPCM) / 100;
         console.log("       balance:", balance);
 
-        balance += savePerM * lossPCM / 100;
+        balance += (savePerM * lossPCM) / 100;
         console.log("       balance:", balance);
 
         balance += savePerM;
@@ -272,12 +404,8 @@ const nbMonths = (
         // if (balance >= 0) break;
     }
 
-
-
     return [1];
-
-
-}
+};
 
 // [6, 766]
 console.log(nbMonths(2000, 8000, 1000, 1.5));
@@ -292,7 +420,7 @@ console.log(nbMonths(2000, 8000, 1000, 1.5));
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // INCLUDE FROMCHARCODE IN EXAMPLES !!!
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE: ESOLANG INTERPRETERS #1 - 
+// TITLE: ESOLANG INTERPRETERS #1 -
 // Introduction to Esolangs and My First Interpreter (MiniStringFuck)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: ❗️❗️❗️ TYPE KEYOF ❗️❗️❗️ STRING.FROMCHARCODE ❗️❗️❗️
@@ -356,7 +484,6 @@ Good luck :D
 */
 
 const myFirstInterpreter = (code: string): string => {
-
     // // GET SUBSTRINGS
     // const subStrArr: string[] = code.match(/\+{1,}/g)!;
     // // 12
@@ -365,14 +492,12 @@ const myFirstInterpreter = (code: string): string => {
     // // [72,  29,  7, 3, 189,244,  55, 24, 3, 250,248, 189]
     // console.log(sumArr);
 
-
     let cellStatus: number = 0;
     const commandArr: string[] = code.split("");
     // let solutionArr: string[] = [];
     let solution: string = "";
 
     for (let i = 0; i < commandArr.length; i += 1) {
-
         let currCommand: string = commandArr[i];
 
         if (currCommand === "+") {
@@ -390,20 +515,17 @@ const myFirstInterpreter = (code: string): string => {
             // solutionArr.push(String.fromCharCode(cellStatus));
             solution += String.fromCharCode(cellStatus);
         }
-
     }
 
     // console.log(solutionArr);
     console.log(solution);
     return solution;
-}
+};
 
 // ❗️❗️❗️ STRING.FROMCHARCODE ❗️❗️❗️
-const arr = [89, 79, 85, 32, 68, 73, 68, 32, 73, 84, 33]
+const arr = [89, 79, 85, 32, 68, 73, 68, 32, 73, 84, 33];
 // YOU DID IT!
 // console.log(String.fromCharCode(...arr));
-
-
 
 // 'Hello, World!'
 // console.log(myFirstInterpreter('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++.+++++++..+++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++.+++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.'));
@@ -415,14 +537,14 @@ const arr = [89, 79, 85, 32, 68, 73, 68, 32, 73, 84, 33]
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function myFirstInterpreter2(code: string): string {
-    var c = 0, out = ''
+    var c = 0,
+        out = "";
     for (var i of code) {
-        if (i === '+') c = (c + 1) % 256
-        if (i === '.') out += String.fromCharCode(c)
+        if (i === "+") c = (c + 1) % 256;
+        if (i === ".") out += String.fromCharCode(c);
     }
-    return out
+    return out;
 }
-
 
 // ====================================================
 type InterpreterState = {
@@ -431,22 +553,22 @@ type InterpreterState = {
 };
 
 type Commands = {
-    '.': '.';
-    '+': '+';
+    ".": ".";
+    "+": "+";
 };
 
 // ❗️❗️❗️ TYPE KEYOF ❗️❗️❗️
 type Command = keyof Commands;
 
 const COMMANDS: Commands = {
-    '+': '+',
-    '.': '.',
+    "+": "+",
+    ".": ".",
 };
 
 export const myFirstInterpreter3 = (code: string): string => {
     const DEFAULT_STATE: InterpreterState = {
         value: 0,
-        output: '',
+        output: "",
     };
 
     const add = (state: InterpreterState): InterpreterState => {
@@ -461,10 +583,10 @@ export const myFirstInterpreter3 = (code: string): string => {
 
     const interprete = (char: string, state: InterpreterState) => {
         switch (char as Command) {
-            case COMMANDS['+']:
+            case COMMANDS["+"]:
                 return add(state);
 
-            case COMMANDS['.']:
+            case COMMANDS["."]:
                 return print(state);
 
             default:
@@ -472,7 +594,7 @@ export const myFirstInterpreter3 = (code: string): string => {
         }
     };
 
-    const result = code.split('').reduce((acc, curr) => {
+    const result = code.split("").reduce((acc, curr) => {
         return interprete(curr, acc);
     }, DEFAULT_STATE);
 
@@ -482,7 +604,7 @@ export const myFirstInterpreter3 = (code: string): string => {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PYRAMID ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: ARRAY.FROM, FILL, NEW ARRAY, 
+// KEYWORDS: ARRAY.FROM, FILL, NEW ARRAY,
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -497,7 +619,6 @@ pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
 Note: the subarrays should be filled with 1s
 */
 const pyramid = (num: number): number[][] => {
-
     let solutionArr: number[][] = [];
 
     for (let i = 0; i < num; i += 1) {
@@ -511,8 +632,7 @@ const pyramid = (num: number): number[][] => {
 
     // [ [ 1 ], [ 1, 1 ], [ 1, 1, 1 ] ]
     return solutionArr;
-
-}
+};
 
 // [[1], [1, 1], [1, 1, 1]]
 // console.log(pyramid(0));
@@ -529,7 +649,6 @@ function pyramid2(n: number) {
     }
     return ret;
 }
-
 
 function pyramid3(n: number) {
     const result: Array<Array<1>> = [];
@@ -551,26 +670,23 @@ function pyramid4(n: number): number[][] {
     return [...pyramid(n - 1), newArr];
 }
 
-
 function pyramid5(n: number) {
-    const p: number[][] = []
+    const p: number[][] = [];
     for (let i = 1; i <= n; i++) {
-        p.push(new Array(i).fill(1))
+        p.push(new Array(i).fill(1));
     }
-    return p
+    return p;
 }
-
 
 function pyramid6(n: number): number[][] {
     return Array.from(new Array(n).keys()).map((x) => new Array(x + 1).fill(1));
 }
 
-
 function pyramid7(n: number) {
-    return Array.from({ length: n }, (_, i) => Array(i + 1).fill(1))
+    return Array.from({ length: n }, (_, i) => Array(i + 1).fill(1));
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// TITLE: DASHATIZE IT 
+// TITLE: DASHATIZE IT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -590,7 +706,6 @@ dashatize(274) -> '2-7-4'
 dashatize(6815) -> '68-1-5'
 */
 const dashatize = (num: number): string => {
-
     // IF NUM IS NEGATIVE, GET RID OF "-"
     if (num < 0) num = Math.abs(num);
     // IF NUM IS ONE DIGIT, DONT CHANGE IT
@@ -608,9 +723,8 @@ const dashatize = (num: number): string => {
             if (i === 0) numStrArr[i] = `${current}-`;
             // TRIM  "-" AT THE END OF SOLUTION
             else if (i === numStrArr.length - 1) numStrArr[i] = `-${current}`;
-            // WRAP CURRENT IN "-"S 
+            // WRAP CURRENT IN "-"S
             else numStrArr[i] = `-${current}-`;
-
         }
     }
 
@@ -619,7 +733,6 @@ const dashatize = (num: number): string => {
     // REPLACE "--" WITH "-"
     const solution: string = dashStr.replace(/-{2,}/g, "-");
     return solution;
-
 };
 
 // "Should return 2-7-4"
@@ -634,26 +747,28 @@ const dashatize = (num: number): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const dashatize2 = (num: number) => {
-
-    return num.toString().
-        replace(/([13579])/g, '-$1-').
-        replace(/\-+/g, '-').
-        replace(/^\-/, '').
-        replace(/\-$/, '');
-
+    return num
+        .toString()
+        .replace(/([13579])/g, "-$1-")
+        .replace(/\-+/g, "-")
+        .replace(/^\-/, "")
+        .replace(/\-$/, "");
 };
-
 
 const dashatize3 = (num: number) => {
-    return num.toString().replace('-', '').split(/([13579])/).filter(s => s !== '').join('-');
+    return num
+        .toString()
+        .replace("-", "")
+        .split(/([13579])/)
+        .filter((s) => s !== "")
+        .join("-");
 };
-
 
 const dashatize4 = (num: number) => {
     return String(Math.abs(num))
         .split(/([13579])/)
-        .filter(s => s !== '')
-        .join('-')
+        .filter((s) => s !== "")
+        .join("-");
 };
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STREET FIGHTER2 - CHARACTER SELECTION
@@ -734,14 +849,13 @@ const streetFighterSelection = (
     position: number[],
     moves: string[]
 ): string[] => {
-
     let solution: string[] = [];
-    let y: number = position[1], x: number = position[0];
+    let y: number = position[1],
+        x: number = position[0];
 
     let currName: string = fighters[y][x];
 
     moves.forEach((dir) => {
-
         if (dir === "up") {
             if (y === 1) {
                 y = 0;
@@ -785,18 +899,16 @@ const streetFighterSelection = (
                 solution.push(currName);
             }
         }
-
-    })
+    });
 
     return solution;
-}
+};
 
 let fighters = [
     ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
-    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"],
 ];
 // let moves = ['up', 'left', 'right', 'left', 'left'];
-
 
 // ['Ryu', 'Vega', 'M.Bison', 'Ken', 'Ryu', 'Vega', 'M.Bison', 'Ken']);
 let moves = ["up", "left", "down", "right", "up", "left", "down", "right"];
@@ -810,37 +922,56 @@ let moves = ["up", "left", "down", "right", "up", "left", "down", "right"];
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function streetFighterSelection2(fighters: Array<string[]>, position: number[], moves: string[]): string[] {
+function streetFighterSelection2(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+): string[] {
     const returnArr: string[] = [];
     const pos = position;
 
-    moves.map(move => {
+    moves.map((move) => {
         switch (move) {
-            case 'up': pos[0] = 0;
+            case "up":
+                pos[0] = 0;
                 break;
-            case 'down': pos[0] = 1;
+            case "down":
+                pos[0] = 1;
                 break;
-            case 'right': pos[1] = pos[1] === fighters[0].length - 1 ? 0 : ++pos[1];
+            case "right":
+                pos[1] = pos[1] === fighters[0].length - 1 ? 0 : ++pos[1];
                 break;
-            case 'left': pos[1] = pos[1] === 0 ? pos[1] = fighters[0].length - 1 : --pos[1];
+            case "left":
+                pos[1] =
+                    pos[1] === 0 ? (pos[1] = fighters[0].length - 1) : --pos[1];
                 break;
         }
         returnArr.push(fighters[pos[0]][pos[1]]);
-    })
+    });
     return returnArr;
 }
 
-
-
-function streetFighterSelection3(fighters: Array<string[]>, position: number[], moves: string[]) {
+function streetFighterSelection3(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
     let characters = new Array<string>();
 
     for (let move of moves) {
         switch (move) {
-            case 'left': position[0] = ((position[0] === 0) ? 5 : position[0] - 1); break;
-            case 'right': position[0] = ((position[0] === 5) ? 0 : position[0] + 1); break;
-            case 'up': position[1] = 0; break;
-            case 'down': position[1] = 1; break;
+            case "left":
+                position[0] = position[0] === 0 ? 5 : position[0] - 1;
+                break;
+            case "right":
+                position[0] = position[0] === 5 ? 0 : position[0] + 1;
+                break;
+            case "up":
+                position[1] = 0;
+                break;
+            case "down":
+                position[1] = 1;
+                break;
         }
 
         characters.push(fighters[position[1]][position[0]]);
@@ -849,8 +980,11 @@ function streetFighterSelection3(fighters: Array<string[]>, position: number[], 
     return characters;
 }
 
-
-function streetFighterSelection4(fighters: Array<string[]>, position: number[], moves: string[]) {
+function streetFighterSelection4(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
     let x: number = position[0];
     let y: number = position[1];
     let arr: string[] = [];
@@ -868,23 +1002,22 @@ function streetFighterSelection4(fighters: Array<string[]>, position: number[], 
     for (let i = 0; i < moves.length; i++) {
         switch (moves[i]) {
             case "up":
-                y = 0
+                y = 0;
                 break;
             case "down":
-                y = 1
+                y = 1;
                 break;
             case "left":
-                x = stepL(x)
+                x = stepL(x);
                 break;
             case "right":
-                x = stepR(x)
+                x = stepR(x);
                 break;
         }
-        arr.push(fighters[y][x])
+        arr.push(fighters[y][x]);
     }
     return arr;
 }
-
 
 // function streetFighterSelection5(xs: Array<string[]>, p: number[], moves: string[]) {
 //     const n = xs[0].length;
@@ -893,27 +1026,32 @@ function streetFighterSelection4(fighters: Array<string[]>, position: number[], 
 //     return moves.reduce((his, m) => (move(vx[m]), his.push(xs[p[0]][p[1]]), his), []);
 // }
 
-function streetFighterSelection6(fighters: string[][], position: number[], moves: string[]): string[] {
-    let s: string[] = []
-    let [x, y] = position
+function streetFighterSelection6(
+    fighters: string[][],
+    position: number[],
+    moves: string[]
+): string[] {
+    let s: string[] = [];
+    let [x, y] = position;
     for (let c of moves) {
         switch (c) {
-            case "up": x = Math.max(x - 1, 0)
+            case "up":
+                x = Math.max(x - 1, 0);
                 break;
-            case "down": x = Math.min(x + 1, 1)
+            case "down":
+                x = Math.min(x + 1, 1);
                 break;
-            case "left": y = (y + 5) % 6
+            case "left":
+                y = (y + 5) % 6;
                 break;
-            case "right": y = (y + 1) % 6
+            case "right":
+                y = (y + 1) % 6;
                 break;
-
         }
-        s.push(fighters[x][y])
+        s.push(fighters[x][y]);
     }
-    return s
+    return s;
 }
-
-
 
 // function streetFighterSelection7(fighters: Array<string[]>, position: number[], moves: string[]) {
 //     function goLeft(current: number[]): number[] {
@@ -962,16 +1100,19 @@ enum Moves {
     left = "left",
     up = "up",
     down = "down",
-
 }
-export function streetFighterSelection8(fighters: Array<string[]>, position: number[], moves: string[]) {
+export function streetFighterSelection8(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
     var chosenFighters: string[] = [];
     var horizontalPosition = position[1];
     var verticalPosition = position[0];
     function setHorisontalPosition() {
         var fightersLength = fighters[verticalPosition].length - 1;
         if (horizontalPosition < 0) {
-            horizontalPosition = fightersLength
+            horizontalPosition = fightersLength;
         } else if (horizontalPosition > fightersLength) {
             horizontalPosition = 0;
         }
@@ -1000,75 +1141,103 @@ export function streetFighterSelection8(fighters: Array<string[]>, position: num
             verticalPosition++;
             setVerticalPosition();
         }
-        console.log(moves, fighters[verticalPosition][horizontalPosition])
+        console.log(moves, fighters[verticalPosition][horizontalPosition]);
         chosenFighters.push(fighters[verticalPosition][horizontalPosition]);
     }
     return chosenFighters;
 }
 //   =======================
 
-
 const MAX_X = 5;
 const MAX_Y = 1;
 
-export function streetFighterSelection9(fighters: Array<string[]>, position: number[], moves: string[]) {
+export function streetFighterSelection9(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
     let [x, y] = position;
 
-    return moves.map(dir => {
+    return moves.map((dir) => {
         switch (dir) {
-            case 'up': y = y > 0 ? y - 1 : y; break;
-            case 'down': y = y < MAX_Y ? y + 1 : y; break;
-            case 'left': x = x === 0 ? MAX_X : x - 1; break;
-            case 'right': x = x === MAX_X ? 0 : x + 1; break;
+            case "up":
+                y = y > 0 ? y - 1 : y;
+                break;
+            case "down":
+                y = y < MAX_Y ? y + 1 : y;
+                break;
+            case "left":
+                x = x === 0 ? MAX_X : x - 1;
+                break;
+            case "right":
+                x = x === MAX_X ? 0 : x + 1;
+                break;
         }
         return fighters[y][x];
     });
 }
 
-
-function streetFighterSelection10(fighters: Array<string[]>, position: number[], moves: string[]) {
+function streetFighterSelection10(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
     let hoveredCharacters = [];
     let currentPosition = position;
     for (let move of moves) {
-
-        if (move == 'up') {
+        if (move == "up") {
             if (currentPosition[0] == 0) {
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             } else {
                 currentPosition[0]--;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             }
         }
 
-        if (move == 'down') {
+        if (move == "down") {
             if (currentPosition[0] == 1) {
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             } else {
                 currentPosition[0]++;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             }
         }
 
-        if (move == 'left') {
+        if (move == "left") {
             if (currentPosition[1] == 0) {
                 currentPosition[1] = 5;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             } else {
                 currentPosition[1]--;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             }
         }
 
-        if (move == 'right') {
+        if (move == "right") {
             if (currentPosition[1] == 5) {
                 currentPosition[1] = 0;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             } else {
                 currentPosition[1]++;
-                hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
+                hoveredCharacters.push(
+                    fighters[currentPosition[0]][currentPosition[1]]
+                );
             }
         }
-
     }
 
     return hoveredCharacters;
@@ -1106,7 +1275,6 @@ your text: "BORN IN 2015!", shift 1
 With longer passphrases it's better to have a small and easy program. Would you write it?
 */
 const playPass = (str: string, shift: number): string => {
-
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     // ['i', ' ', 'l', 'o','v', 'e', ' ', 'y','o', 'u', '!', '!','!']
@@ -1117,7 +1285,8 @@ const playPass = (str: string, shift: number): string => {
         // CALCULATE TARGET IDX, IF IT IS LONGER THAN ARRAY LENGTH,
         // DIVIDE IT BY LENGTH AND GET REMAINDER AS IDX
         let targetIdx = alphabet.indexOf(char) + shift;
-        if (targetIdx > alphabet.length - 1) targetIdx = targetIdx % alphabet.length;
+        if (targetIdx > alphabet.length - 1)
+            targetIdx = targetIdx % alphabet.length;
         // IF CHAR IS A LETTER, REPLACE WITH LETTER AT TARGET IDX (A,B,C), 2 => (C, D, E)
         if (/[a-z]/.test(char)) return alphabet[targetIdx];
         // IF CHAR IS NUMERIC, REPLACE IT WITH ITS COMPLIMENT TO 9
@@ -1137,8 +1306,7 @@ const playPass = (str: string, shift: number): string => {
         .join("");
 
     return solution;
-
-}
+};
 // }"!!!vPz fWpM J"
 // console.log(playPass("I LOVE YOU!!!", 1));
 // console.log(playPass("xyz123", 2));
@@ -1152,54 +1320,72 @@ const playPass = (str: string, shift: number): string => {
 
 // ❗️❗️❗️ STRING.FROMCHARCODE() ❗️❗️❗️
 function playPass2(s: string, n: number): string {
-    return s.toUpperCase()
-        .split('')
+    return s
+        .toUpperCase()
+        .split("")
         .map((v, i, a) => {
-            if (/[0-9]/.test(v))
-                return Math.abs(Number(v) - 9);
+            if (/[0-9]/.test(v)) return Math.abs(Number(v) - 9);
             if (/[A-Z]/.test(v)) {
-                let x = String.fromCharCode((((v.charCodeAt(0) + n) - 65) % 26) + 65);
+                let x = String.fromCharCode(
+                    ((v.charCodeAt(0) + n - 65) % 26) + 65
+                );
                 return i % 2 == 1 ? x.toLowerCase() : x;
             }
             return v;
-        }).reverse()
-        .join('');
+        })
+        .reverse()
+        .join("");
 }
 
-
 class G9641 {
-    private static alphabet = "abcdefghijklmnopqrstuvwxyz"
-    private static digits = "0123456789"
+    private static alphabet = "abcdefghijklmnopqrstuvwxyz";
+    private static digits = "0123456789";
 
     private static isLetter(v: string) {
-        return G9641.alphabet.indexOf(v) !== -1
+        return G9641.alphabet.indexOf(v) !== -1;
     }
 
     private static isDigit(v: string) {
-        return G9641.digits.indexOf(v) !== -1
+        return G9641.digits.indexOf(v) !== -1;
     }
 
-    public static playPass3(s: string = '', n: number = 0): string {
+    public static playPass3(s: string = "", n: number = 0): string {
         if (!s) {
-            return ''
+            return "";
         }
-        return s.toLowerCase().split('').map((v, i) => {
-            if (G9641.isLetter(v)) {
-                let letter = G9641.alphabet[(G9641.alphabet.indexOf(v) + n) % 26]
-                return (i % 2) ? letter.toLowerCase() : letter.toUpperCase()
-            } else if (G9641.isDigit(v)) {
-                return 9 - Number(v)
-            }
-            return v
-        }).reverse().join('')
+        return s
+            .toLowerCase()
+            .split("")
+            .map((v, i) => {
+                if (G9641.isLetter(v)) {
+                    let letter =
+                        G9641.alphabet[(G9641.alphabet.indexOf(v) + n) % 26];
+                    return i % 2 ? letter.toLowerCase() : letter.toUpperCase();
+                } else if (G9641.isDigit(v)) {
+                    return 9 - Number(v);
+                }
+                return v;
+            })
+            .reverse()
+            .join("");
     }
 }
 
-function playPass4(s: string, n: number, a: string = 'abcdefghijklmnopqrstuvwxyz'): string {
-    return s.replace(/\d/g, d => '' + (9 - +d))
-        .replace(/[a-z]/gi, l => a[(a.indexOf(l.toLowerCase()) + n) % a.length])
-        .split('').map((e, i) => i % 2 == 1 ? e : e.toUpperCase())
-        .reverse().join('');
+function playPass4(
+    s: string,
+    n: number,
+    a: string = "abcdefghijklmnopqrstuvwxyz"
+): string {
+    return s
+        .replace(/\d/g, (d) => "" + (9 - +d))
+        .replace(
+            /[a-z]/gi,
+            (l) => a[(a.indexOf(l.toLowerCase()) + n) % a.length]
+        )
+        .split("")
+        .map((e, i) => (i % 2 == 1 ? e : e.toUpperCase()))
+        .reverse()
+        .join("");
 }
 
 // ❗️❗️❗️ STRING.FROMCHARCODE() ❗️❗️❗️
@@ -1207,12 +1393,12 @@ class G9642 {
     public static playPass(s: string, n: number): string {
         let result = s.replace(/[A-Z]/g, (match) => {
             const code = match.charCodeAt(0);
-            return String.fromCharCode((code - 65 + n) % 26 + 65);
-        })
+            return String.fromCharCode(((code - 65 + n) % 26) + 65);
+        });
 
         result = result.replace(/\d/g, (match) => {
             return Math.abs(Number(match) - 9).toString();
-        })
+        });
 
         const split = result.split("");
 
@@ -1230,7 +1416,7 @@ class G9642 {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FOLD AN ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: RECURSION, 
+// KEYWORDS: RECURSION,
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1263,7 +1449,6 @@ If an array with one element is folded, it stays as the same array.
 The input array should not be modified!
 */
 const foldArray = (numArr: number[], numFolds: number): number[] => {
-
     // TRACK NUMBER OF FOLDS REMAINING
     let numFoldsLeft: number = numFolds;
     // THIS IS THE STATE OF OUR numArr AFTER EACH FOLD
@@ -1273,12 +1458,14 @@ const foldArray = (numArr: number[], numFolds: number): number[] => {
     if (numArr.length & 1) {
         // GRAB FIRST HALF, SECOND HALF(REVERSED) AND MIDDLE OF ARRAY
         let leadSub: number[] = numArr.slice(0, (numArr.length - 1) / 2);
-        let trailSub: number[] = numArr.slice(Math.ceil(numArr.length / 2)).reverse();
+        let trailSub: number[] = numArr
+            .slice(Math.ceil(numArr.length / 2))
+            .reverse();
         let middleEl: number = numArr[(numArr.length - 1) / 2];
         // SUM CURRENT PAIR AND PUSH INTO CURRENT ARR
         leadSub.forEach((num, idx) => {
             currentArray.push(num + trailSub[idx]);
-        })
+        });
         // CONCAT MIDDLE ELEMENT TO CURREN ARRAY
         currentArray.push(middleEl);
         // DECREMENT NUMBER OF FOLDS BY ONE (OUTSIDE OF LOOP !!!)
@@ -1297,11 +1484,8 @@ const foldArray = (numArr: number[], numFolds: number): number[] => {
 
     // RECURSION: IF numFoldsLeft > 0 FUNCION TO CALL ITSELF WITH CURRENT ARGUMENTS,
     // OTHERWISE RETURN CURRENT ARRAY
-    return numFoldsLeft
-        ? foldArray(currentArray, numFoldsLeft)
-        : currentArray;
-
-}
+    return numFoldsLeft ? foldArray(currentArray, numFoldsLeft) : currentArray;
+};
 
 //  [ 6, 6, 3 ]
 // console.log(foldArray([1, 2, 3, 4, 5], 1));
@@ -1320,25 +1504,25 @@ const foldArray = (numArr: number[], numFolds: number): number[] => {
 
 //  ERROR: Object is possibly 'undefined'.ts(2532) AT array.pop(), ADDED "!"
 function foldArray2(array: number[], runs: number): number[] {
-    const arr2 = [...array]
+    const arr2 = [...array];
     while (runs > 0) {
-        arr2.map((val, i, arr) => i + 1 === arr.length ? val : arr[i] = val + arr.pop()!);
+        arr2.map((val, i, arr) =>
+            i + 1 === arr.length ? val : (arr[i] = val + arr.pop()!)
+        );
         runs--;
     }
     return arr2;
 }
 
-
-
 function foldArray3(array: number[], runs: number): number[] {
-    var len = array.length, arr = array.slice();  //copy array
+    var len = array.length,
+        arr = array.slice(); //copy array
     if (runs == 0) return arr;
     for (var i = 0; i < Math.floor(len / 2); i++) {
         arr[i] += arr[len - i - 1];
     }
     return foldArray(arr.slice(0, Math.ceil(len / 2)), runs - 1);
 }
-
 
 function foldArray4(array: number[], runs: number): number[] {
     let resultArray = array.slice();
@@ -1352,14 +1536,16 @@ function foldArray4(array: number[], runs: number): number[] {
     return resultArray;
 }
 
-
 function foldArray5(array: number[], runs: number): number[] {
     while (runs > 0) {
-        let n = ~~(array.length / 2)
-        array = Array.from({ length: n }, (_, i) => array[i] + array[array.length - 1 - i]).concat(...(array.length % 2 ? [array[n]] : []))
-        runs--
+        let n = ~~(array.length / 2);
+        array = Array.from(
+            { length: n },
+            (_, i) => array[i] + array[array.length - 1 - i]
+        ).concat(...(array.length % 2 ? [array[n]] : []));
+        runs--;
     }
-    return array
+    return array;
 }
 
 // =========================================================
@@ -1387,23 +1573,22 @@ function singleFold(array: number[]) {
 }
 // =========================================================
 
-
 function foldArray7(array: number[], runs: number): number[] {
-    if (runs === 0) return array
+    if (runs === 0) return array;
 
-    const hasCenterPoint = array.length % 2 === 1
+    const hasCenterPoint = array.length % 2 === 1;
 
-    const foldLength = Math.floor(array.length / 2)
+    const foldLength = Math.floor(array.length / 2);
 
-    const newArr = []
+    const newArr = [];
 
     for (let i = 0; i < foldLength; i++) {
-        newArr[i] = array[(array.length - 1) - i] + array[i]
+        newArr[i] = array[array.length - 1 - i] + array[i];
     }
 
-    if (hasCenterPoint) newArr.push(array[foldLength])
+    if (hasCenterPoint) newArr.push(array[foldLength]);
 
-    return foldArray(newArr, --runs)
+    return foldArray(newArr, --runs);
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CONSONANT VALUE - GET MAX SUM OF CONSUNANT SUBSTRINGS
@@ -1430,13 +1615,12 @@ For C: do not mutate input.
 
 // 1️⃣
 const solve = (str: string): number => {
-
     // RETUTRN 0 IF NO CONSONANTS ARE IN STRING
     if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str)) return 0;
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    // [ 'chr', 'schtsch', 'v' ] => 
+    // [ 'chr', 'schtsch', 'v' ] =>
     // [ [ 'c', 'h', 'r' ], ['s', 'c', 'h', 't', 's', 'c','h'],[ 'v' ]]
     const matchSubs: string[][] = str
         .match(/[^aeiou]+/g)!
@@ -1445,25 +1629,23 @@ const solve = (str: string): number => {
     // [ [ 3, 8, 18 ], [ 19, 3, 8, 20, 19, 3, 8 ], [ 22 ] ]
     const valueSubs: number[][] = matchSubs.map((subArr) => {
         return subArr.map((char) => alphabet.indexOf(char) + 1);
-    })
+    });
 
     let allSums: number[] = [];
     // GET SUM OF EACH SUBARRAY
     valueSubs.forEach((sub) => {
         let currSum = sub.reduce((acc, curr) => acc + curr);
         allSums.push(currSum);
-    })
+    });
 
     // all sums => [ 29, 80, 22 ]
     const solution: number = Math.max(...allSums);
     // 80
     return solution;
-
-}
+};
 
 // 2️⃣ SHORTER:
 const solve6 = (str: string): number => {
-
     // RETUTRN 0 IF NO CONSONANTS ARE IN STRING
     if (!/[bcdfghjklmnpqrstvwxyz]/g.test(str)) return 0;
 
@@ -1476,20 +1658,18 @@ const solve6 = (str: string): number => {
             return subArr.map((char) => alphabet.indexOf(char) + 1);
         });
 
-
     let allSums: number[] = [];
     // GET SUM OF EACH SUBARRAY
     valueSubs.forEach((sub) => {
         let currSum = sub.reduce((acc, curr) => acc + curr);
         allSums.push(currSum);
-    })
+    });
 
     // all sums => [ 29, 80, 22 ]
     const solution: number = Math.max(...allSums);
     // 80
     return solution;
-
-}
+};
 
 // 80
 // console.log(solve("chruschtschov"));
@@ -1506,51 +1686,59 @@ function solve2(s: string) {
     return Math.max(
         ...s
             .split(/[aeiou]/)
-            .map(x => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0))
+            .map((x) => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0))
     );
 }
 
 // console.log(solve2("chruschtschov"));
 
 function solve3(s: string) {
-    let highest = 0
-    let sum = 0
+    let highest = 0;
+    let sum = 0;
 
     for (let i = 0; i < s.length; i++) {
-        if ('aeiou'.includes(s[i])) {
-            sum = 0
-            continue
+        if ("aeiou".includes(s[i])) {
+            sum = 0;
+            continue;
         }
 
-        sum += s.charCodeAt(i) - 96
+        sum += s.charCodeAt(i) - 96;
 
         if (highest < sum) {
-            highest = sum
+            highest = sum;
         }
     }
 
-    return highest
+    return highest;
 }
-
 
 function solve4(s: string) {
     let res = 0;
     const arr = s.split(/a|e|i|o|u/);
-    arr.forEach(subs => {
+    arr.forEach((subs) => {
         let sum = 0;
         for (let i = 0; i < subs.length; i++) {
-            sum += (subs.charCodeAt(i) - 96);
+            sum += subs.charCodeAt(i) - 96;
         }
-        if (sum > res) res = sum
-    })
+        if (sum > res) res = sum;
+    });
     return res;
 }
 
-
 function solve5(s: string): number {
-    return Math.max(...s.replace(/[aeiou]+/g, ' ')
-        .split(' ')
-        .map(e => e.split('').reduce((prev, current) => prev + current.charCodeAt(0) - 96, 0)));
+    return Math.max(
+        ...s
+            .replace(/[aeiou]+/g, " ")
+            .split(" ")
+            .map((e) =>
+                e
+                    .split("")
+                    .reduce(
+                        (prev, current) => prev + current.charCodeAt(0) - 96,
+                        0
+                    )
+            )
+    );
 }
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
@@ -1591,10 +1779,10 @@ or Google: "convert decimal time to hours minutes seconds"
 */
 
 const race = (v1: number, v2: number, lead: number): number[] => {
-
     const convert = (seconds: number): [number, number, number] => {
-
-        let hour: number = 0, min: number = 0, sec: number = 0;
+        let hour: number = 0,
+            min: number = 0,
+            sec: number = 0;
 
         // ❗️❗️❗️ TOO SLOW, TOO MANY OPERATIONS, USE DIISION AS BELOW ❗️❗️❗️
         // while (seconds >= 3600) {
@@ -1614,21 +1802,20 @@ const race = (v1: number, v2: number, lead: number): number[] => {
             hour += Math.floor(seconds / 3600);
             seconds = seconds % 3600;
             // console.log("seconds - 3600", seconds);
-
         }
         if (seconds >= 60) {
             min += Math.floor(seconds / 60);
             seconds = seconds % 60;
             // console.log("seconds - 60", seconds);
-
         }
 
         sec += seconds;
 
         return [hour, min, sec];
-    }
+    };
 
-    const feetPerSec1: number = v1 / 3600, feetPerSec2 = v2 / 3600;
+    const feetPerSec1: number = v1 / 3600,
+        feetPerSec2 = v2 / 3600;
 
     // const feetPerSec1: number = Math.floor(v1 / 3600)
     //       ,feetPerSec2 = Math.floor(v2 / 3600);
@@ -1653,12 +1840,12 @@ const race = (v1: number, v2: number, lead: number): number[] => {
     // console.log(numHours - 1);
 
     // ❗️❗️❗️ -1 ❗️❗️❗️
-    const solution: number[] = convert(numSeconds - 1)
+    const solution: number[] = convert(numSeconds - 1);
 
     return solution;
 
     // return [1];
-}
+};
 
 // [3, 21, 49]
 // console.log(race(80, 91, 37));
@@ -1690,7 +1877,6 @@ for given example, the return value should be: [[1,2,3],[2,4,6],[3,6,9]]
 */
 
 const multiplicationTable = (size: number): number[][] => {
-
     let solution: number[][] = [];
 
     let firstRow: number[] = [];
@@ -1703,13 +1889,13 @@ const multiplicationTable = (size: number): number[][] => {
     for (let i = 1; i <= firstRow.length; i += 1) {
         // [ 1, 2, 3 ] => [ 2, 4, 6 ] , [ 3, 6, 9 ]
         let nthRow: number[] = firstRow.map((num) => {
-            return num * (i);
-        })
+            return num * i;
+        });
         solution.push(nthRow);
     }
 
     return solution;
-}
+};
 
 // [1]
 // console.log(multiplicationTable(1));
@@ -1733,11 +1919,11 @@ const multiplicationTable2 = (size: number): number[][] => {
     return result;
 };
 
-
 function multiplicationTable3(size: number): number[][] {
-    return [...Array(size)].map((_, i) => [...Array(size)].map((_, j) => (i + 1) * (j + 1)))
+    return [...Array(size)].map((_, i) =>
+        [...Array(size)].map((_, j) => (i + 1) * (j + 1))
+    );
 }
-
 
 function multiplicationTable4(size: number): number[][] {
     let table: number[][] = [];
@@ -1753,11 +1939,12 @@ function multiplicationTable4(size: number): number[][] {
     return table;
 }
 
-
 function multiplicationTable5(size: number): number[][] {
-    return new Array(size).fill(null)
-        .map((_, i) => new Array(size).fill(null)
-            .map((_, j) => (i + 1) * (j + 1)));
+    return new Array(size)
+        .fill(null)
+        .map((_, i) =>
+            new Array(size).fill(null).map((_, j) => (i + 1) * (j + 1))
+        );
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BACKSPACE IN STRING
@@ -1780,7 +1967,6 @@ Examples
 */
 
 const cleanString = (str: string): string => {
-
     let charsArr: string[] = [];
 
     for (let char of str) {
@@ -1792,7 +1978,7 @@ const cleanString = (str: string): string => {
     }
     const solution: string = charsArr.join("");
     return solution;
-}
+};
 
 // "ac"
 // console.log(cleanString('abc#d##c'));
@@ -1805,32 +1991,35 @@ const cleanString = (str: string): string => {
 
 // ❗️❗️❗️ RECURSION REPLACE ❗️❗️❗️
 function cleanString6(s: string): string {
-    const re = /(^|[^#])#/
-    return re.test(s) ? cleanString(s.replace(re, '')) : s
+    const re = /(^|[^#])#/;
+    return re.test(s) ? cleanString(s.replace(re, "")) : s;
 }
-
 
 function cleanString2(s: string) {
-    return Array.from(s).reduce((a, b) => b == '#' ? a.slice(0, -1) : a.concat(b), '')
+    return Array.from(s).reduce(
+        (a, b) => (b == "#" ? a.slice(0, -1) : a.concat(b)),
+        ""
+    );
 }
-
 
 function cleanString3(s: string): string {
-    let stack = []
+    let stack = [];
     for (const c of s) {
-        if (c === '#') {
-            stack.pop()
+        if (c === "#") {
+            stack.pop();
         } else {
-            stack.push(c)
+            stack.push(c);
         }
     }
-    return stack.join('');
+    return stack.join("");
 }
 
-
-const cleanString4 = (s: string) => Array.from(s).reduce((acc, char) => char === '#' ? acc.substring(0, acc.length - 1) : acc + char, '');
-
-
+const cleanString4 = (s: string) =>
+    Array.from(s).reduce(
+        (acc, char) =>
+            char === "#" ? acc.substring(0, acc.length - 1) : acc + char,
+        ""
+    );
 
 function cleanString8(s: string): string {
     while (s.indexOf("#") != -1) {
@@ -1868,7 +2057,6 @@ encryptThis "hello world" == "104olle 119drlo"
 */
 
 const encryptThis = (str: string): string => {
-
     if (str.length === 0) return "";
     // [ [ 'A' ],[ 'w', 'i', 's', 'e' ]... ]
     const wordsArr: string[][] = str.split(" ").map((word) => word.split(""));
@@ -1883,17 +2071,16 @@ const encryptThis = (str: string): string => {
             lettersArr[1] = lastChar;
             lettersArr[lettersArr.length - 1] = secondChar;
         }
-    })
+    });
 
     // [[ '65' ],[ '119', 'e', 's', 'i' ]...] => [65, 119esi...]
     // => "65 119esi 111dl 111lw 108dvei 105n 97n 111ka"
     const solution: string = wordsArr
         .map((array: string[]) => array.join(""))
-        .join((" "))
+        .join(" ");
 
     return solution;
-
-}
+};
 
 //   ""
 // console.log(encryptThis(""));
@@ -1906,44 +2093,56 @@ const encryptThis = (str: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 let encryptThis2 = (str: string): string => {
-    if (!str)
-        return '';
+    if (!str) return "";
     return str
-        .split(' ')
+        .split(" ")
         .map((word) => {
             let first = word[0];
-            let second = (word.length > 1) ? word[1] : '';
+            let second = word.length > 1 ? word[1] : "";
             let middle = word.slice(2, -1);
-            let last = (word.length > 2) ? word[word.length - 1] : '';
+            let last = word.length > 2 ? word[word.length - 1] : "";
             return first.charCodeAt(0) + last + middle + second;
         })
-        .join(' ');
+        .join(" ");
 };
 
 // ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
 const encryptThis3 = (str: string): string =>
     str
-        .split(' ')
-        .map(word => word
-            .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
-            .replace(/^\w/, letter => letter.charCodeAt(0).toFixed(0)))
-        .join(' ');
+        .split(" ")
+        .map((word) =>
+            word
+                .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
+                .replace(/^\w/, (letter) => letter.charCodeAt(0).toFixed(0))
+        )
+        .join(" ");
 
 // ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
 const encryptThis4 = (str: string): string => {
-    return str.replace(/\b(\S)(\S?)(\S*?)(\S?)\b/g, (_, a, b, c, d) => `${a.charCodeAt(0)}${d}${c}${b}`)
-}
-
+    return str.replace(
+        /\b(\S)(\S?)(\S*?)(\S?)\b/g,
+        (_, a, b, c, d) => `${a.charCodeAt(0)}${d}${c}${b}`
+    );
+};
 
 const encryptThis5 = (str: string): string => {
-    return str.split(' ').map((word) => {
-        if (word === '') return '';
-        if (word.length === 1) return word.charCodeAt(0).toString();
-        if (word.length === 2) return (word[0].charCodeAt(0) + word[1]).toString();
+    return str
+        .split(" ")
+        .map((word) => {
+            if (word === "") return "";
+            if (word.length === 1) return word.charCodeAt(0).toString();
+            if (word.length === 2)
+                return (word[0].charCodeAt(0) + word[1]).toString();
 
-        return word[0].charCodeAt(0) + word[word.length - 1] + word.substring(2, word.length - 1) + word[1];
-    }).join(' ');
-}
+            return (
+                word[0].charCodeAt(0) +
+                word[word.length - 1] +
+                word.substring(2, word.length - 1) +
+                word[1]
+            );
+        })
+        .join(" ");
+};
 
 // ❗️❗️❗️ REPLACE() MULTIPLE / SWAP ❗️❗️❗️
 const encryptThis6 = (str: string): string => {
@@ -1952,27 +2151,34 @@ const encryptThis6 = (str: string): string => {
         .map((word) =>
             word.replace(
                 /(^\w)(\w?)(\w*?)(\w?$)/,
-                (match, p1, p2, p3, p4) => `${p1.charCodeAt(0)}${p4}${p3}${p2}`,
-            ),
+                (match, p1, p2, p3, p4) => `${p1.charCodeAt(0)}${p4}${p3}${p2}`
+            )
         )
         .join(" ");
-}
-
+};
 
 const encryptThis7 = (str: string): string => {
-    return str.split(' ').map(w => {
-        switch (w.length) {
-            case 0:
-                return '';
-            case 1:
-                return w.charCodeAt(0);
-            case 2:
-                return w.charCodeAt(0) + w.charAt(1);
-            default:
-                return w.charCodeAt(0) + w.charAt(w.length - 1) + w.slice(2, w.length - 1) + w.charAt(1);
-        }
-    }).join(' ')
-}
+    return str
+        .split(" ")
+        .map((w) => {
+            switch (w.length) {
+                case 0:
+                    return "";
+                case 1:
+                    return w.charCodeAt(0);
+                case 2:
+                    return w.charCodeAt(0) + w.charAt(1);
+                default:
+                    return (
+                        w.charCodeAt(0) +
+                        w.charAt(w.length - 1) +
+                        w.slice(2, w.length - 1) +
+                        w.charAt(1)
+                    );
+            }
+        })
+        .join(" ");
+};
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MEETING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2013,10 +2219,10 @@ const meeting = (str: string): string => {
     // FORMAT AND CONCAT: (ARNO, ANN)(BELL, JOHN)...
     sortedTest.forEach((fullName) => {
         solution += `(${fullName.join(", ")})`;
-    })
+    });
 
     return solution;
-}
+};
 
 // "(ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(SCHWARZ, VICTORIA)(STAN, MADISON)(STAN, MEGAN)(WAHL, ALEXIS)");
 // console.log(meeting("Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn"));
@@ -2028,11 +2234,12 @@ const meeting = (str: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function meeting2(s: string): string {
-    return s.toUpperCase()
-        .split(';')
-        .map(n => '(' + n.split(':').reverse().join(', ') + ')')
+    return s
+        .toUpperCase()
+        .split(";")
+        .map((n) => "(" + n.split(":").reverse().join(", ") + ")")
         .sort()
-        .join('');
+        .join("");
 }
 
 // ====================================================
@@ -2040,43 +2247,56 @@ function meeting2(s: string): string {
 type Attendee = {
     firstName: string;
     lastName: string;
-}
+};
 
 const toUpper = (str: string) => str.toUpperCase();
 const stringSorter = (a: string, b: string) => {
-    if (a < b) { return -1; }
-    if (a > b) { return 1; }
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
     return 0;
-}
-const attendeeToString = ({ lastName, firstName }: Attendee) => `(${toUpper(lastName)}, ${toUpper(firstName)})`;
+};
+const attendeeToString = ({ lastName, firstName }: Attendee) =>
+    `(${toUpper(lastName)}, ${toUpper(firstName)})`;
 
 function meeting3(s: string): string {
-
-    const attendees: Attendee[] = s.split(';').map(attendee => {
-        const [firstName, lastName] = attendee.split(':');
+    const attendees: Attendee[] = s.split(";").map((attendee) => {
+        const [firstName, lastName] = attendee.split(":");
         return {
             firstName: toUpper(firstName),
             lastName: toUpper(lastName),
-        }
-    })
+        };
+    });
 
     const sortedAttendees = attendees.sort((a, b) => {
         if (a.lastName === b.lastName) {
-            return stringSorter(a.firstName, b.firstName)
+            return stringSorter(a.firstName, b.firstName);
         } else {
-            return stringSorter(a.lastName, b.lastName)
+            return stringSorter(a.lastName, b.lastName);
         }
     });
 
-
-    return sortedAttendees.map(x => attendeeToString(x)).join('');
-
+    return sortedAttendees.map((x) => attendeeToString(x)).join("");
 }
 
 // ====================================================
 
 function meeting4(s: string): string {
-    return s.split(';').map(x => x.split(':').map(x => x.toUpperCase()).reverse().join(', ')).sort().map(x => `(${x})`).join('')
+    return s
+        .split(";")
+        .map((x) =>
+            x
+                .split(":")
+                .map((x) => x.toUpperCase())
+                .reverse()
+                .join(", ")
+        )
+        .sort()
+        .map((x) => `(${x})`)
+        .join("");
 }
 
 // ====================================================
@@ -2086,8 +2306,8 @@ function meeting4(s: string): string {
  */
 type Group<T> = {
     key: string;
-    value: Array<T>
-}
+    value: Array<T>;
+};
 
 /**
  * * Friend class which contains an information about the meeting user
@@ -2112,43 +2332,47 @@ class Friend {
     }
 
     get getFullName() {
-        return `(${this.getLastName}, ${this.getFirstName})`
+        return `(${this.getLastName}, ${this.getFirstName})`;
     }
 }
 
 /**
  * * Group for the meeting friend
  */
-type FriendGroup = Group<Friend>
+type FriendGroup = Group<Friend>;
 
 /**
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
      */
     public sortGroupByKey() {
-        this.groups.sort((lhs, rhs) => lhs.key.localeCompare(rhs.key))
+        this.groups.sort((lhs, rhs) => lhs.key.localeCompare(rhs.key));
     }
 
     /**
      * * Sort array of friends by firstName
      */
     public sortFriendsByFirstName() {
-        this.groups.forEach(group => group.value.sort((lhs, rhs) => lhs.getFirstName.localeCompare(rhs.getFirstName)))
+        this.groups.forEach((group) =>
+            group.value.sort((lhs, rhs) =>
+                lhs.getFirstName.localeCompare(rhs.getFirstName)
+            )
+        );
     }
 
     /**
      * * Transform groups to readable string
      */
     public toString() {
-        let str = ""
+        let str = "";
 
         for (const group of this.groups) {
-            str += group.value.map(friend => friend.getFullName).join("")
+            str += group.value.map((friend) => friend.getFullName).join("");
         }
 
         return str;
@@ -2163,7 +2387,7 @@ class FriendsHelper {
      * * Transform input to friends array
      */
     public static parse(input: string): Array<Friend> {
-        return input.split(";").map(name => new Friend(name))
+        return input.split(";").map((name) => new Friend(name));
     }
 
     /**
@@ -2172,43 +2396,42 @@ class FriendsHelper {
     public static createGroupedFriends(friends: Array<Friend>): FriendGrouped {
         let list: Array<FriendGroup> = [];
 
-        friends.forEach(friend => {
-            let group = list.find(group => group.key === friend.getLastName)
+        friends.forEach((friend) => {
+            let group = list.find((group) => group.key === friend.getLastName);
 
             if (!group) {
                 group = {
                     key: friend.getLastName,
-                    value: []
-                }
+                    value: [],
+                };
 
                 list.push(group);
             }
 
             group.value.push(friend);
-        })
+        });
 
-        return new FriendGrouped(list)
+        return new FriendGrouped(list);
     }
 }
 
 function meeting5(s: string): string {
     const friends = FriendsHelper.parse(s);
     const groupedFriends = FriendsHelper.createGroupedFriends(friends);
-    groupedFriends.sortGroupByKey()
-    groupedFriends.sortFriendsByFirstName()
+    groupedFriends.sortGroupByKey();
+    groupedFriends.sortFriendsByFirstName();
 
     return groupedFriends.toString();
 }
 // ====================================================
 
 class Attendee2 {
-
     static FromInputString(str: string) {
-        const [firstName, lastName] = str.split(':');
+        const [firstName, lastName] = str.split(":");
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -2218,32 +2441,35 @@ class Attendee2 {
     }
 
     public toString() {
-        return `(${this.last}, ${this.first})`
+        return `(${this.last}, ${this.first})`;
     }
 }
 
 const stringSorter2 = (a: string, b: string) => {
-    if (a < b) { return -1; }
-    if (a > b) { return 1; }
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
     return 0;
-}
+};
 
 function meeting6(s: string): string {
-
-    const attendees: Attendee2[] = s.split(';').map(str => Attendee2.FromInputString(str))
+    const attendees: Attendee2[] = s
+        .split(";")
+        .map((str) => Attendee2.FromInputString(str));
 
     const sortedAttendees = attendees.sort((a, b) => {
         if (a.last === b.last) {
-            return stringSorter(a.first, b.first)
+            return stringSorter(a.first, b.first);
         } else {
-            return stringSorter(a.last, b.last)
+            return stringSorter(a.last, b.last);
         }
     });
 
-    return sortedAttendees.join('');
-
+    return sortedAttendees.join("");
 }
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: RULE OF DIVISIBILITY BY 13
@@ -2356,19 +2582,18 @@ Take a look at performance: some lists have thousands of elements.
 */
 
 const partsSums = (numArr: number[]): number[] => {
-
-    numArr.reverse();   // ❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
+    numArr.reverse(); // ❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
     let solution: number[] = [];
     let accum: number = 0;
 
     numArr.forEach((num) => {
         accum += num;
         solution.push(accum);
-    })
+    });
 
     solution.reverse().push(0); //❗️❗️❗️ REVERSE() - MUTATES ORIGINAL ❗️❗️❗️
     return solution;
-}
+};
 
 // [20, 20, 19, 16, 10, 0]
 // console.log(partsSums([0, 1, 3, 6, 10]));
@@ -2378,8 +2603,8 @@ const partsSums = (numArr: number[]): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function partsSums2(ls: number[]): number[] {
-    let total = ls.reduce((acc, cur) => acc + cur, 0)
-    return [...[total], ...ls.map(num => total -= num)]
+    let total = ls.reduce((acc, cur) => acc + cur, 0);
+    return [...[total], ...ls.map((num) => (total -= num))];
 }
 
 function partsSums3(ls: number[]): number[] {
@@ -2390,29 +2615,36 @@ function partsSums3(ls: number[]): number[] {
     return summArr.reverse();
 }
 
-
 function partsSums4(ls: number[]): number[] {
     let length = ls.length;
     let total = ls.reduce((prev, curr) => prev + curr, 0);
     ls.unshift(0);
-    return ls.map((val, i) => total -= val);
+    return ls.map((val, i) => (total -= val));
 }
-
 
 function partsSums5(values: number[]): number[] {
     let knownTotal = values.reduce((ac, n) => ac + n, 0);
-    return values.reduce((output, value) => {
-        output.push(knownTotal -= value);
-        return output;
-    }, [knownTotal]);
+    return values.reduce(
+        (output, value) => {
+            output.push((knownTotal -= value));
+            return output;
+        },
+        [knownTotal]
+    );
 }
 
 function partsSums6(ls: number[]): number[] {
-    return ls.reverse().reduce((acc, n, i) => {
-        const a = acc[i];
-        acc.push(n + a)
-        return acc;
-    }, [0]).reverse();
+    return ls
+        .reverse()
+        .reduce(
+            (acc, n, i) => {
+                const a = acc[i];
+                acc.push(n + a);
+                return acc;
+            },
+            [0]
+        )
+        .reverse();
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAKE THE DEADFISH SWIM
@@ -2438,11 +2670,9 @@ parse("iiisdoso") => [8, 64]
 
 /** return the output array and ignore all non-op characters */
 const parse = (str: string): number[] => {
-
     let solution: number[] = [];
     let currVal: number = 0;
     str.split("").forEach((instr) => {
-
         // if (instr === "i") {
         //     currVal++;
         // } else if (instr === "d") {
@@ -2466,10 +2696,9 @@ const parse = (str: string): number[] => {
             case "o":
                 solution.push(currVal);
         }
-
-    })
+    });
     return solution;
-}
+};
 
 // [8, 64]
 // console.log(parse("iiisdoso"));
@@ -2481,34 +2710,48 @@ const parse = (str: string): number[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function parse2(data: string): number[] {
-    var result: number[] = []
-    var current = 0
+    var result: number[] = [];
+    var current = 0;
 
-    data.split('').map((c) => {
+    data.split("").map((c) => {
         switch (c) {
-            case 'i': current++; break
-            case 'd': current--; break
-            case 's': current = current ** 2; break
-            case 'o': result.push(current); break
+            case "i":
+                current++;
+                break;
+            case "d":
+                current--;
+                break;
+            case "s":
+                current = current ** 2;
+                break;
+            case "o":
+                result.push(current);
+                break;
         }
-    })
+    });
 
-    return result
+    return result;
 }
 
-
-
 function parse3(data: string): number[] {
-    let v = 0, result = []
-    for (let d of data.split('')) {
+    let v = 0,
+        result = [];
+    for (let d of data.split("")) {
         switch (d) {
-            case 'i': v++; break
-            case 'd': v--; break
-            case 's': v *= v; break
-            case 'o': result.push(v)
+            case "i":
+                v++;
+                break;
+            case "d":
+                v--;
+                break;
+            case "s":
+                v *= v;
+                break;
+            case "o":
+                result.push(v);
         }
     }
-    return result
+    return result;
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2548,8 +2791,10 @@ In the result codes and their values are in the same order as in M.
 */
 
 class G964C {
-    public static stockList = (artList: string[], catList: string[]): string => {
-
+    public static stockList = (
+        artList: string[],
+        catList: string[]
+    ): string => {
         let solutionArr: string[] = [];
         // COUNT TOTAL NUMBER OF BOOKS IN STOCK
         let totalCounter: number = 0;
@@ -2564,28 +2809,24 @@ class G964C {
                 // }
                 // CHECK IF FIRST CHARACTER OF art MATCHES cat ("B" IN "BKWR 250")
                 if (art[0] === cat) {
-                    // ❗️❗️❗️ EXTRACT NUMBER (ONE OR MORE NUMERIC DIGITS: "BTSQ 890" => [890], GET ONLY ELEMENT AT IDX 0) 
+                    // ❗️❗️❗️ EXTRACT NUMBER (ONE OR MORE NUMERIC DIGITS: "BTSQ 890" => [890], GET ONLY ELEMENT AT IDX 0)
                     let stock: number = Number(art.match(/\d+/g)![0]);
                     // INCREMENT COUNTER WITH CURRENT STOCK
                     counter += stock;
                 }
-            })
+            });
             // ADD FORMATTED PAIR TO solutionArr (B : 1290)
             solutionArr.push(`(${cat} : ${counter})`);
             // UPDATE TOTALCOUNTER
             totalCounter += counter;
-        })
+        });
 
         // FORMAT SOLUTION [(A : 0), (B : 1290)...] => (A : 0) - (B : 1290) - (C : 515) - (D : 600)
         const solution: string = solutionArr.join(" - ");
 
         // RETURN EMPTY STRING IF ALL CATEGORIES ARE EMPTY, OTHERWISE SOLUTION
-        return totalCounter
-            ? solution
-            : "";
-
+        return totalCounter ? solution : "";
     };
-
 }
 
 var b, c;
@@ -2610,7 +2851,6 @@ c = ["A", "B", "C", "D"];
 //         return listOfCat.map(function(cat){ return "(" +cat +" : " + (count[cat] || 0) + ")"; }).join(" - ");
 //     }
 // }
-
 
 // Variable 'bookList' implicitly has type 'any[]' in some locations where its type cannot be determined.ts(7034)
 // class G964C3 {
@@ -3052,15 +3292,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -3113,10 +3353,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -3692,7 +3932,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -4151,8 +4391,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -4445,7 +4685,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -4902,10 +5142,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -6205,8 +6445,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

@@ -1,6 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = void 0;
+function decipherThis(str) {
+    return "hello";
+}
+function getLengthOfMissingArray(arrayOfArrays) {
+    return 1;
+}
+const mazeRunner = (maze, directions) => {
+    return "hello";
+};
+let maze = [
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 3],
+    [1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
+    [1, 2, 1, 0, 1, 0, 1],
+];
+class G9644 {
+}
+G9644.stat = (str) => {
+    return "hello";
+};
 const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
     let balance = priceOld - priceNew;
     console.log("initial balance:", balance);
@@ -11,7 +34,7 @@ const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
         console.log("   loss pc month:", lossPCM);
         balance *= (100 - lossPCM) / 100;
         console.log("       balance:", balance);
-        balance += savePerM * lossPCM / 100;
+        balance += (savePerM * lossPCM) / 100;
         console.log("       balance:", balance);
         balance += savePerM;
         console.log("            balance after savings:", balance);
@@ -43,23 +66,23 @@ const myFirstInterpreter = (code) => {
 };
 const arr = [89, 79, 85, 32, 68, 73, 68, 32, 73, 84, 33];
 function myFirstInterpreter2(code) {
-    var c = 0, out = '';
+    var c = 0, out = "";
     for (var i of code) {
-        if (i === '+')
+        if (i === "+")
             c = (c + 1) % 256;
-        if (i === '.')
+        if (i === ".")
             out += String.fromCharCode(c);
     }
     return out;
 }
 const COMMANDS = {
-    '+': '+',
-    '.': '.',
+    "+": "+",
+    ".": ".",
 };
 const myFirstInterpreter3 = (code) => {
     const DEFAULT_STATE = {
         value: 0,
-        output: '',
+        output: "",
     };
     const add = (state) => {
         const value = (state.value + 1) % 256;
@@ -71,15 +94,15 @@ const myFirstInterpreter3 = (code) => {
     };
     const interprete = (char, state) => {
         switch (char) {
-            case COMMANDS['+']:
+            case COMMANDS["+"]:
                 return add(state);
-            case COMMANDS['.']:
+            case COMMANDS["."]:
                 return print(state);
             default:
                 return state;
         }
     };
-    const result = code.split('').reduce((acc, curr) => {
+    const result = code.split("").reduce((acc, curr) => {
         return interprete(curr, acc);
     }, DEFAULT_STATE);
     return result.output;
@@ -151,20 +174,26 @@ const dashatize = (num) => {
     return solution;
 };
 const dashatize2 = (num) => {
-    return num.toString().
-        replace(/([13579])/g, '-$1-').
-        replace(/\-+/g, '-').
-        replace(/^\-/, '').
-        replace(/\-$/, '');
+    return num
+        .toString()
+        .replace(/([13579])/g, "-$1-")
+        .replace(/\-+/g, "-")
+        .replace(/^\-/, "")
+        .replace(/\-$/, "");
 };
 const dashatize3 = (num) => {
-    return num.toString().replace('-', '').split(/([13579])/).filter(s => s !== '').join('-');
+    return num
+        .toString()
+        .replace("-", "")
+        .split(/([13579])/)
+        .filter((s) => s !== "")
+        .join("-");
 };
 const dashatize4 = (num) => {
     return String(Math.abs(num))
         .split(/([13579])/)
-        .filter(s => s !== '')
-        .join('-');
+        .filter((s) => s !== "")
+        .join("-");
 };
 const streetFighterSelection = (fighters, position, moves) => {
     let solution = [];
@@ -220,25 +249,26 @@ const streetFighterSelection = (fighters, position, moves) => {
 };
 let fighters = [
     ["Ryu", "E.Honda", "Blanka", "Guile", "Balrog", "Vega"],
-    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"]
+    ["Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat", "M.Bison"],
 ];
 let moves = ["up", "left", "down", "right", "up", "left", "down", "right"];
 function streetFighterSelection2(fighters, position, moves) {
     const returnArr = [];
     const pos = position;
-    moves.map(move => {
+    moves.map((move) => {
         switch (move) {
-            case 'up':
+            case "up":
                 pos[0] = 0;
                 break;
-            case 'down':
+            case "down":
                 pos[0] = 1;
                 break;
-            case 'right':
+            case "right":
                 pos[1] = pos[1] === fighters[0].length - 1 ? 0 : ++pos[1];
                 break;
-            case 'left':
-                pos[1] = pos[1] === 0 ? pos[1] = fighters[0].length - 1 : --pos[1];
+            case "left":
+                pos[1] =
+                    pos[1] === 0 ? (pos[1] = fighters[0].length - 1) : --pos[1];
                 break;
         }
         returnArr.push(fighters[pos[0]][pos[1]]);
@@ -249,16 +279,16 @@ function streetFighterSelection3(fighters, position, moves) {
     let characters = new Array();
     for (let move of moves) {
         switch (move) {
-            case 'left':
-                position[0] = ((position[0] === 0) ? 5 : position[0] - 1);
+            case "left":
+                position[0] = position[0] === 0 ? 5 : position[0] - 1;
                 break;
-            case 'right':
-                position[0] = ((position[0] === 5) ? 0 : position[0] + 1);
+            case "right":
+                position[0] = position[0] === 5 ? 0 : position[0] + 1;
                 break;
-            case 'up':
+            case "up":
                 position[1] = 0;
                 break;
-            case 'down':
+            case "down":
                 position[1] = 1;
                 break;
         }
@@ -380,18 +410,18 @@ const MAX_X = 5;
 const MAX_Y = 1;
 function streetFighterSelection9(fighters, position, moves) {
     let [x, y] = position;
-    return moves.map(dir => {
+    return moves.map((dir) => {
         switch (dir) {
-            case 'up':
+            case "up":
                 y = y > 0 ? y - 1 : y;
                 break;
-            case 'down':
+            case "down":
                 y = y < MAX_Y ? y + 1 : y;
                 break;
-            case 'left':
+            case "left":
                 x = x === 0 ? MAX_X : x - 1;
                 break;
-            case 'right':
+            case "right":
                 x = x === MAX_X ? 0 : x + 1;
                 break;
         }
@@ -403,7 +433,7 @@ function streetFighterSelection10(fighters, position, moves) {
     let hoveredCharacters = [];
     let currentPosition = position;
     for (let move of moves) {
-        if (move == 'up') {
+        if (move == "up") {
             if (currentPosition[0] == 0) {
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
             }
@@ -412,7 +442,7 @@ function streetFighterSelection10(fighters, position, moves) {
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
             }
         }
-        if (move == 'down') {
+        if (move == "down") {
             if (currentPosition[0] == 1) {
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
             }
@@ -421,7 +451,7 @@ function streetFighterSelection10(fighters, position, moves) {
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
             }
         }
-        if (move == 'left') {
+        if (move == "left") {
             if (currentPosition[1] == 0) {
                 currentPosition[1] = 5;
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
@@ -431,7 +461,7 @@ function streetFighterSelection10(fighters, position, moves) {
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
             }
         }
-        if (move == 'right') {
+        if (move == "right") {
             if (currentPosition[1] == 5) {
                 currentPosition[1] = 0;
                 hoveredCharacters.push(fighters[currentPosition[0]][currentPosition[1]]);
@@ -468,18 +498,20 @@ const playPass = (str, shift) => {
     return solution;
 };
 function playPass2(s, n) {
-    return s.toUpperCase()
-        .split('')
+    return s
+        .toUpperCase()
+        .split("")
         .map((v, i, a) => {
         if (/[0-9]/.test(v))
             return Math.abs(Number(v) - 9);
         if (/[A-Z]/.test(v)) {
-            let x = String.fromCharCode((((v.charCodeAt(0) + n) - 65) % 26) + 65);
+            let x = String.fromCharCode(((v.charCodeAt(0) + n - 65) % 26) + 65);
             return i % 2 == 1 ? x.toLowerCase() : x;
         }
         return v;
-    }).reverse()
-        .join('');
+    })
+        .reverse()
+        .join("");
 }
 class G9641 {
     static isLetter(v) {
@@ -488,35 +520,43 @@ class G9641 {
     static isDigit(v) {
         return G9641.digits.indexOf(v) !== -1;
     }
-    static playPass3(s = '', n = 0) {
+    static playPass3(s = "", n = 0) {
         if (!s) {
-            return '';
+            return "";
         }
-        return s.toLowerCase().split('').map((v, i) => {
+        return s
+            .toLowerCase()
+            .split("")
+            .map((v, i) => {
             if (G9641.isLetter(v)) {
                 let letter = G9641.alphabet[(G9641.alphabet.indexOf(v) + n) % 26];
-                return (i % 2) ? letter.toLowerCase() : letter.toUpperCase();
+                return i % 2 ? letter.toLowerCase() : letter.toUpperCase();
             }
             else if (G9641.isDigit(v)) {
                 return 9 - Number(v);
             }
             return v;
-        }).reverse().join('');
+        })
+            .reverse()
+            .join("");
     }
 }
 G9641.alphabet = "abcdefghijklmnopqrstuvwxyz";
 G9641.digits = "0123456789";
-function playPass4(s, n, a = 'abcdefghijklmnopqrstuvwxyz') {
-    return s.replace(/\d/g, d => '' + (9 - +d))
-        .replace(/[a-z]/gi, l => a[(a.indexOf(l.toLowerCase()) + n) % a.length])
-        .split('').map((e, i) => i % 2 == 1 ? e : e.toUpperCase())
-        .reverse().join('');
+function playPass4(s, n, a = "abcdefghijklmnopqrstuvwxyz") {
+    return s
+        .replace(/\d/g, (d) => "" + (9 - +d))
+        .replace(/[a-z]/gi, (l) => a[(a.indexOf(l.toLowerCase()) + n) % a.length])
+        .split("")
+        .map((e, i) => (i % 2 == 1 ? e : e.toUpperCase()))
+        .reverse()
+        .join("");
 }
 class G9642 {
     static playPass(s, n) {
         let result = s.replace(/[A-Z]/g, (match) => {
             const code = match.charCodeAt(0);
-            return String.fromCharCode((code - 65 + n) % 26 + 65);
+            return String.fromCharCode(((code - 65 + n) % 26) + 65);
         });
         result = result.replace(/\d/g, (match) => {
             return Math.abs(Number(match) - 9).toString();
@@ -538,7 +578,9 @@ const foldArray = (numArr, numFolds) => {
     let currentArray = [];
     if (numArr.length & 1) {
         let leadSub = numArr.slice(0, (numArr.length - 1) / 2);
-        let trailSub = numArr.slice(Math.ceil(numArr.length / 2)).reverse();
+        let trailSub = numArr
+            .slice(Math.ceil(numArr.length / 2))
+            .reverse();
         let middleEl = numArr[(numArr.length - 1) / 2];
         leadSub.forEach((num, idx) => {
             currentArray.push(num + trailSub[idx]);
@@ -553,14 +595,12 @@ const foldArray = (numArr, numFolds) => {
         }
         numFoldsLeft -= 1;
     }
-    return numFoldsLeft
-        ? foldArray(currentArray, numFoldsLeft)
-        : currentArray;
+    return numFoldsLeft ? foldArray(currentArray, numFoldsLeft) : currentArray;
 };
 function foldArray2(array, runs) {
     const arr2 = [...array];
     while (runs > 0) {
-        arr2.map((val, i, arr) => i + 1 === arr.length ? val : arr[i] = val + arr.pop());
+        arr2.map((val, i, arr) => i + 1 === arr.length ? val : (arr[i] = val + arr.pop()));
         runs--;
     }
     return arr2;
@@ -613,7 +653,7 @@ function foldArray7(array, runs) {
     const foldLength = Math.floor(array.length / 2);
     const newArr = [];
     for (let i = 0; i < foldLength; i++) {
-        newArr[i] = array[(array.length - 1) - i] + array[i];
+        newArr[i] = array[array.length - 1 - i] + array[i];
     }
     if (hasCenterPoint)
         newArr.push(array[foldLength]);
@@ -658,13 +698,13 @@ const solve6 = (str) => {
 function solve2(s) {
     return Math.max(...s
         .split(/[aeiou]/)
-        .map(x => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0)));
+        .map((x) => [...x].reduce((a, b) => a + b.charCodeAt(0) - 96, 0)));
 }
 function solve3(s) {
     let highest = 0;
     let sum = 0;
     for (let i = 0; i < s.length; i++) {
-        if ('aeiou'.includes(s[i])) {
+        if ("aeiou".includes(s[i])) {
             sum = 0;
             continue;
         }
@@ -678,10 +718,10 @@ function solve3(s) {
 function solve4(s) {
     let res = 0;
     const arr = s.split(/a|e|i|o|u/);
-    arr.forEach(subs => {
+    arr.forEach((subs) => {
         let sum = 0;
         for (let i = 0; i < subs.length; i++) {
-            sum += (subs.charCodeAt(i) - 96);
+            sum += subs.charCodeAt(i) - 96;
         }
         if (sum > res)
             res = sum;
@@ -689,9 +729,12 @@ function solve4(s) {
     return res;
 }
 function solve5(s) {
-    return Math.max(...s.replace(/[aeiou]+/g, ' ')
-        .split(' ')
-        .map(e => e.split('').reduce((prev, current) => prev + current.charCodeAt(0) - 96, 0)));
+    return Math.max(...s
+        .replace(/[aeiou]+/g, " ")
+        .split(" ")
+        .map((e) => e
+        .split("")
+        .reduce((prev, current) => prev + current.charCodeAt(0) - 96, 0)));
 }
 const race = (v1, v2, lead) => {
     const convert = (seconds) => {
@@ -728,7 +771,7 @@ const multiplicationTable = (size) => {
     console.log(firstRow);
     for (let i = 1; i <= firstRow.length; i += 1) {
         let nthRow = firstRow.map((num) => {
-            return num * (i);
+            return num * i;
         });
         solution.push(nthRow);
     }
@@ -760,9 +803,9 @@ function multiplicationTable4(size) {
     return table;
 }
 function multiplicationTable5(size) {
-    return new Array(size).fill(null)
-        .map((_, i) => new Array(size).fill(null)
-        .map((_, j) => (i + 1) * (j + 1)));
+    return new Array(size)
+        .fill(null)
+        .map((_, i) => new Array(size).fill(null).map((_, j) => (i + 1) * (j + 1)));
 }
 const cleanString = (str) => {
     let charsArr = [];
@@ -777,24 +820,24 @@ const cleanString = (str) => {
 };
 function cleanString6(s) {
     const re = /(^|[^#])#/;
-    return re.test(s) ? cleanString(s.replace(re, '')) : s;
+    return re.test(s) ? cleanString(s.replace(re, "")) : s;
 }
 function cleanString2(s) {
-    return Array.from(s).reduce((a, b) => b == '#' ? a.slice(0, -1) : a.concat(b), '');
+    return Array.from(s).reduce((a, b) => (b == "#" ? a.slice(0, -1) : a.concat(b)), "");
 }
 function cleanString3(s) {
     let stack = [];
     for (const c of s) {
-        if (c === '#') {
+        if (c === "#") {
             stack.pop();
         }
         else {
             stack.push(c);
         }
     }
-    return stack.join('');
+    return stack.join("");
 }
-const cleanString4 = (s) => Array.from(s).reduce((acc, char) => char === '#' ? acc.substring(0, acc.length - 1) : acc + char, '');
+const cleanString4 = (s) => Array.from(s).reduce((acc, char) => char === "#" ? acc.substring(0, acc.length - 1) : acc + char, "");
 function cleanString8(s) {
     while (s.indexOf("#") != -1) {
         while (s[0] == "#") {
@@ -819,42 +862,48 @@ const encryptThis = (str) => {
     });
     const solution = wordsArr
         .map((array) => array.join(""))
-        .join((" "));
+        .join(" ");
     return solution;
 };
 let encryptThis2 = (str) => {
     if (!str)
-        return '';
+        return "";
     return str
-        .split(' ')
+        .split(" ")
         .map((word) => {
         let first = word[0];
-        let second = (word.length > 1) ? word[1] : '';
+        let second = word.length > 1 ? word[1] : "";
         let middle = word.slice(2, -1);
-        let last = (word.length > 2) ? word[word.length - 1] : '';
+        let last = word.length > 2 ? word[word.length - 1] : "";
         return first.charCodeAt(0) + last + middle + second;
     })
-        .join(' ');
+        .join(" ");
 };
 const encryptThis3 = (str) => str
-    .split(' ')
-    .map(word => word
+    .split(" ")
+    .map((word) => word
     .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
-    .replace(/^\w/, letter => letter.charCodeAt(0).toFixed(0)))
-    .join(' ');
+    .replace(/^\w/, (letter) => letter.charCodeAt(0).toFixed(0)))
+    .join(" ");
 const encryptThis4 = (str) => {
     return str.replace(/\b(\S)(\S?)(\S*?)(\S?)\b/g, (_, a, b, c, d) => `${a.charCodeAt(0)}${d}${c}${b}`);
 };
 const encryptThis5 = (str) => {
-    return str.split(' ').map((word) => {
-        if (word === '')
-            return '';
+    return str
+        .split(" ")
+        .map((word) => {
+        if (word === "")
+            return "";
         if (word.length === 1)
             return word.charCodeAt(0).toString();
         if (word.length === 2)
             return (word[0].charCodeAt(0) + word[1]).toString();
-        return word[0].charCodeAt(0) + word[word.length - 1] + word.substring(2, word.length - 1) + word[1];
-    }).join(' ');
+        return (word[0].charCodeAt(0) +
+            word[word.length - 1] +
+            word.substring(2, word.length - 1) +
+            word[1]);
+    })
+        .join(" ");
 };
 const encryptThis6 = (str) => {
     return str
@@ -863,18 +912,24 @@ const encryptThis6 = (str) => {
         .join(" ");
 };
 const encryptThis7 = (str) => {
-    return str.split(' ').map(w => {
+    return str
+        .split(" ")
+        .map((w) => {
         switch (w.length) {
             case 0:
-                return '';
+                return "";
             case 1:
                 return w.charCodeAt(0);
             case 2:
                 return w.charCodeAt(0) + w.charAt(1);
             default:
-                return w.charCodeAt(0) + w.charAt(w.length - 1) + w.slice(2, w.length - 1) + w.charAt(1);
+                return (w.charCodeAt(0) +
+                    w.charAt(w.length - 1) +
+                    w.slice(2, w.length - 1) +
+                    w.charAt(1));
         }
-    }).join(' ');
+    })
+        .join(" ");
 };
 const meeting = (str) => {
     const namesArr = str.toUpperCase().split(";");
@@ -889,11 +944,12 @@ const meeting = (str) => {
     return solution;
 };
 function meeting2(s) {
-    return s.toUpperCase()
-        .split(';')
-        .map(n => '(' + n.split(':').reverse().join(', ') + ')')
+    return s
+        .toUpperCase()
+        .split(";")
+        .map((n) => "(" + n.split(":").reverse().join(", ") + ")")
         .sort()
-        .join('');
+        .join("");
 }
 const toUpper = (str) => str.toUpperCase();
 const stringSorter = (a, b) => {
@@ -907,8 +963,8 @@ const stringSorter = (a, b) => {
 };
 const attendeeToString = ({ lastName, firstName }) => `(${toUpper(lastName)}, ${toUpper(firstName)})`;
 function meeting3(s) {
-    const attendees = s.split(';').map(attendee => {
-        const [firstName, lastName] = attendee.split(':');
+    const attendees = s.split(";").map((attendee) => {
+        const [firstName, lastName] = attendee.split(":");
         return {
             firstName: toUpper(firstName),
             lastName: toUpper(lastName),
@@ -922,10 +978,19 @@ function meeting3(s) {
             return stringSorter(a.lastName, b.lastName);
         }
     });
-    return sortedAttendees.map(x => attendeeToString(x)).join('');
+    return sortedAttendees.map((x) => attendeeToString(x)).join("");
 }
 function meeting4(s) {
-    return s.split(';').map(x => x.split(':').map(x => x.toUpperCase()).reverse().join(', ')).sort().map(x => `(${x})`).join('');
+    return s
+        .split(";")
+        .map((x) => x
+        .split(":")
+        .map((x) => x.toUpperCase())
+        .reverse()
+        .join(", "))
+        .sort()
+        .map((x) => `(${x})`)
+        .join("");
 }
 class Friend {
     constructor(name) {
@@ -951,28 +1016,28 @@ class FriendGrouped {
         this.groups.sort((lhs, rhs) => lhs.key.localeCompare(rhs.key));
     }
     sortFriendsByFirstName() {
-        this.groups.forEach(group => group.value.sort((lhs, rhs) => lhs.getFirstName.localeCompare(rhs.getFirstName)));
+        this.groups.forEach((group) => group.value.sort((lhs, rhs) => lhs.getFirstName.localeCompare(rhs.getFirstName)));
     }
     toString() {
         let str = "";
         for (const group of this.groups) {
-            str += group.value.map(friend => friend.getFullName).join("");
+            str += group.value.map((friend) => friend.getFullName).join("");
         }
         return str;
     }
 }
 class FriendsHelper {
     static parse(input) {
-        return input.split(";").map(name => new Friend(name));
+        return input.split(";").map((name) => new Friend(name));
     }
     static createGroupedFriends(friends) {
         let list = [];
-        friends.forEach(friend => {
-            let group = list.find(group => group.key === friend.getLastName);
+        friends.forEach((friend) => {
+            let group = list.find((group) => group.key === friend.getLastName);
             if (!group) {
                 group = {
                     key: friend.getLastName,
-                    value: []
+                    value: [],
                 };
                 list.push(group);
             }
@@ -994,7 +1059,7 @@ class Attendee2 {
         this._last = _last;
     }
     static FromInputString(str) {
-        const [firstName, lastName] = str.split(':');
+        const [firstName, lastName] = str.split(":");
         return new Attendee2(firstName, lastName);
     }
     get first() {
@@ -1017,7 +1082,9 @@ const stringSorter2 = (a, b) => {
     return 0;
 };
 function meeting6(s) {
-    const attendees = s.split(';').map(str => Attendee2.FromInputString(str));
+    const attendees = s
+        .split(";")
+        .map((str) => Attendee2.FromInputString(str));
     const sortedAttendees = attendees.sort((a, b) => {
         if (a.last === b.last) {
             return stringSorter(a.first, b.first);
@@ -1026,7 +1093,7 @@ function meeting6(s) {
             return stringSorter(a.last, b.last);
         }
     });
-    return sortedAttendees.join('');
+    return sortedAttendees.join("");
 }
 function thirt(n) {
     return 1;
@@ -1044,7 +1111,7 @@ const partsSums = (numArr) => {
 };
 function partsSums2(ls) {
     let total = ls.reduce((acc, cur) => acc + cur, 0);
-    return [...[total], ...ls.map(num => total -= num)];
+    return [...[total], ...ls.map((num) => (total -= num))];
 }
 function partsSums3(ls) {
     let summArr = [0];
@@ -1057,21 +1124,24 @@ function partsSums4(ls) {
     let length = ls.length;
     let total = ls.reduce((prev, curr) => prev + curr, 0);
     ls.unshift(0);
-    return ls.map((val, i) => total -= val);
+    return ls.map((val, i) => (total -= val));
 }
 function partsSums5(values) {
     let knownTotal = values.reduce((ac, n) => ac + n, 0);
     return values.reduce((output, value) => {
-        output.push(knownTotal -= value);
+        output.push((knownTotal -= value));
         return output;
     }, [knownTotal]);
 }
 function partsSums6(ls) {
-    return ls.reverse().reduce((acc, n, i) => {
+    return ls
+        .reverse()
+        .reduce((acc, n, i) => {
         const a = acc[i];
         acc.push(n + a);
         return acc;
-    }, [0]).reverse();
+    }, [0])
+        .reverse();
 }
 const parse = (str) => {
     let solution = [];
@@ -1096,18 +1166,18 @@ const parse = (str) => {
 function parse2(data) {
     var result = [];
     var current = 0;
-    data.split('').map((c) => {
+    data.split("").map((c) => {
         switch (c) {
-            case 'i':
+            case "i":
                 current++;
                 break;
-            case 'd':
+            case "d":
                 current--;
                 break;
-            case 's':
+            case "s":
                 current = current ** 2;
                 break;
-            case 'o':
+            case "o":
                 result.push(current);
                 break;
         }
@@ -1116,18 +1186,19 @@ function parse2(data) {
 }
 function parse3(data) {
     let v = 0, result = [];
-    for (let d of data.split('')) {
+    for (let d of data.split("")) {
         switch (d) {
-            case 'i':
+            case "i":
                 v++;
                 break;
-            case 'd':
+            case "d":
                 v--;
                 break;
-            case 's':
+            case "s":
                 v *= v;
                 break;
-            case 'o': result.push(v);
+            case "o":
+                result.push(v);
         }
     }
     return result;
@@ -1149,9 +1220,7 @@ G964C.stockList = (artList, catList) => {
         totalCounter += counter;
     });
     const solution = solutionArr.join(" - ");
-    return totalCounter
-        ? solution
-        : "";
+    return totalCounter ? solution : "";
 };
 var b, c;
 b = ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"];
