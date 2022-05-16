@@ -532,7 +532,7 @@ class G9644 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BUYING A CAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -583,47 +583,181 @@ const nbMonths = (
     savePerM: number,
     lossPCM: number
 ): number[] => {
+    // CURRENT DEBTH AFTER SELLING OLD AND BUYING NEW
     let balance: number = priceOld - priceNew;
     console.log("initial balance:", balance);
+    // ACCUMULATE MONTHLY SAVINGS HERE
+    let savings: number = 0;
+    // KEEP TRACK OF MONTHS
     let monthCount: number = 0;
 
-    while (balance <= 0) {
-        // while (true) {
-        // priceNew *= (100 - lossPCM) / 100;
-        // priceOld *= (100 - lossPCM) / 100;
-        // console.log("new / old:", priceNew, priceOld);
-        // balance = priceOld - priceNew;
-        // if (monthCount % 2 === 0 && monthCount > 1) lossPCM += 0.5;
-        if (monthCount % 2 === 0 && monthCount / 2 >= 1) lossPCM += 0.5;
-        console.log("   loss pc month:", lossPCM);
+    // WHILE IN DEBTH 
+    while (balance + savings <= 0) {
 
+        console.log("   loss pc month:", lossPCM);
+        // APPLY CURRENT LOSS PERCENTAGE TO BALANCE
         balance *= (100 - lossPCM) / 100;
         console.log("       balance:", balance);
 
-        balance += (savePerM * lossPCM) / 100;
-        console.log("       balance:", balance);
+        // ACCUMULATE SAVINGS
+        savings += savePerM;
+        console.log("savings accumulator:", savings);
 
-        balance += savePerM;
-        console.log("            balance after savings:", balance);
-
+        // INCREMENT MONTHS
         monthCount += 1;
         console.log("                  months count:", monthCount);
 
-        // if (balance >= 0) break;
-    }
+        // INCREASE LOSS PERCENTAGE BY 0.5 EVERY 2 MONTHS STARTING AT MOMTH 1
+        if (monthCount % 2 !== 0) lossPCM += 0.5;
 
-    return [1];
+        console.log("change left:", Math.round(savings + balance));
+
+
+    }
+    // CALCULATE MONEY LEFT AFTER MAKING PURCHASE
+    const change: number = Math.round(savings + balance);
+
+    return [monthCount, change];
 };
 
 // [6, 766]
-console.log(nbMonths(2000, 8000, 1000, 1.5));
+// console.log(nbMonths(2000, 8000, 1000, 1.5));
 // [0, 4000]
 // console.log(nbMonths((12000, 8000, 1000, 1.5));
 // console.log();
 // console.log();
 // console.log();
 
+/*
+console.log(nbMonths(2000, 8000, 1000, 1.5));
+
+initial balance: -6000
+   loss pc month: 1.5
+       balance: -5910
+savings accumulator: 1000
+                  months count: 1
+change left: -4910
+   loss pc month: 2
+       balance: -5791.8
+savings accumulator: 2000
+                  months count: 2
+change left: -3792
+   loss pc month: 2
+       balance: -5675.964
+savings accumulator: 3000
+                  months count: 3
+change left: -2676
+   loss pc month: 2.5
+       balance: -5534.064899999999
+savings accumulator: 4000
+                  months count: 4
+change left: -1534
+   loss pc month: 2.5
+       balance: -5395.713277499999
+savings accumulator: 5000
+                  months count: 5
+change left: -396
+   loss pc month: 3
+       balance: -5233.841879174999
+savings accumulator: 6000
+                  months count: 6
+change left: 766
+[ 6, 766 ]
+*/
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function nbMonths2(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+    var months = 0, moneySaved = 0;
+    while (startPriceNew > startPriceOld + moneySaved) {
+        moneySaved += savingperMonth;
+        startPriceOld -= (startPriceOld * (percentLossByMonth / 100));
+        startPriceNew -= (startPriceNew * (percentLossByMonth / 100));
+        months++;
+        if (months % 2 == 1) {
+            percentLossByMonth += .5;
+        }
+    }
+    return [months, Math.round(startPriceOld + moneySaved - startPriceNew)];
+}
+
+
+function nbMonths3(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+    let monthCount: number = 0;
+
+    let oldCarPrice: number = startPriceOld;
+    let newCarPrice: number = startPriceNew;
+
+    let savingMoneyAmount: number = oldCarPrice - newCarPrice;
+
+    while (Math.round(savingMoneyAmount) < 0) {
+        monthCount++;
+
+        oldCarPrice = oldCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+        newCarPrice = newCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+
+        savingMoneyAmount =
+            oldCarPrice
+            - newCarPrice
+            + savingperMonth * monthCount;
+    }
+
+    return [monthCount, Math.round(savingMoneyAmount)];
+}
+
+
+function nbMonths4(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+    let months = 0;
+    let balance = 0;
+    let percent = percentLossByMonth;
+
+    while (balance + startPriceOld < startPriceNew) {
+        balance += savingperMonth;
+        months += 1;
+
+        if (months % 2 === 0) {
+            percent += 0.5;
+        }
+
+        startPriceOld *= 1 - percent / 100;
+        startPriceNew *= 1 - percent / 100;
+    }
+
+    return [months, Math.round(balance + startPriceOld - startPriceNew)];
+}
+
+function nbMonths5(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+    let gap: number = startPriceOld - startPriceNew, gapPrice: number = gap, rate: number = 1.0, month: number = 0;
+    while (gapPrice < 0) {
+        month += 1;
+        if (month % 2 == 0) {
+            percentLossByMonth += 0.5;
+        }
+        rate *= 1 - percentLossByMonth / 100;
+        gapPrice = gap * rate + month * savingperMonth;
+    }
+    return [month, Math.round(gapPrice)];
+}
+
+
+// function nbMonths6(
+//     startPriceOld: number,
+//     startPriceNew: number,
+//     savingperMonth: number,
+//     percentLossByMonth: number,
+//     monthsPassed: number = 0
+// ): number[] {
+//     const result = startPriceOld + savingperMonth * monthsPassed - startPriceNew;
+
+//     if (result > 0) return [monthsPassed, Math.round(result)];
+
+//     const newPercentLossByMonth = (monthsPassed % 2 === 1) ? percentLossByMonth + 0.5 : percentLossByMonth,
+//         newPriceOld = startPriceOld * (1 - newPercentLossByMonth / 100),
+//         newPriceNew = startPriceNew * (1 - newPercentLossByMonth / 100);
+
+//     return nbMonths(newPriceOld, newPriceNew, savingperMonth, newPercentLossByMonth, monthsPassed + 1)
+// }
+
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // INCLUDE FROMCHARCODE IN EXAMPLES !!!
@@ -2553,7 +2687,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -2639,7 +2773,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -3500,15 +3634,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -3561,10 +3695,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -4140,7 +4274,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -4599,8 +4733,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -4893,7 +5027,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -5350,10 +5484,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -6653,9 +6787,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

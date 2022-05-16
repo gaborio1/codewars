@@ -86,23 +86,79 @@ G9644.stat = (str) => {
 const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
     let balance = priceOld - priceNew;
     console.log("initial balance:", balance);
+    let savings = 0;
     let monthCount = 0;
-    while (balance <= 0) {
-        if (monthCount % 2 === 0 && monthCount / 2 >= 1)
-            lossPCM += 0.5;
+    while (balance + savings <= 0) {
         console.log("   loss pc month:", lossPCM);
         balance *= (100 - lossPCM) / 100;
         console.log("       balance:", balance);
-        balance += (savePerM * lossPCM) / 100;
-        console.log("       balance:", balance);
-        balance += savePerM;
-        console.log("            balance after savings:", balance);
+        savings += savePerM;
+        console.log("savings accumulator:", savings);
         monthCount += 1;
         console.log("                  months count:", monthCount);
+        if (monthCount % 2 !== 0)
+            lossPCM += 0.5;
+        console.log("change left:", Math.round(savings + balance));
     }
-    return [1];
+    const change = Math.round(savings + balance);
+    return [monthCount, change];
 };
-console.log(nbMonths(2000, 8000, 1000, 1.5));
+function nbMonths2(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+    var months = 0, moneySaved = 0;
+    while (startPriceNew > startPriceOld + moneySaved) {
+        moneySaved += savingperMonth;
+        startPriceOld -= (startPriceOld * (percentLossByMonth / 100));
+        startPriceNew -= (startPriceNew * (percentLossByMonth / 100));
+        months++;
+        if (months % 2 == 1) {
+            percentLossByMonth += .5;
+        }
+    }
+    return [months, Math.round(startPriceOld + moneySaved - startPriceNew)];
+}
+function nbMonths3(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+    let monthCount = 0;
+    let oldCarPrice = startPriceOld;
+    let newCarPrice = startPriceNew;
+    let savingMoneyAmount = oldCarPrice - newCarPrice;
+    while (Math.round(savingMoneyAmount) < 0) {
+        monthCount++;
+        oldCarPrice = oldCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+        newCarPrice = newCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+        savingMoneyAmount =
+            oldCarPrice
+                - newCarPrice
+                + savingperMonth * monthCount;
+    }
+    return [monthCount, Math.round(savingMoneyAmount)];
+}
+function nbMonths4(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+    let months = 0;
+    let balance = 0;
+    let percent = percentLossByMonth;
+    while (balance + startPriceOld < startPriceNew) {
+        balance += savingperMonth;
+        months += 1;
+        if (months % 2 === 0) {
+            percent += 0.5;
+        }
+        startPriceOld *= 1 - percent / 100;
+        startPriceNew *= 1 - percent / 100;
+    }
+    return [months, Math.round(balance + startPriceOld - startPriceNew)];
+}
+function nbMonths5(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+    let gap = startPriceOld - startPriceNew, gapPrice = gap, rate = 1.0, month = 0;
+    while (gapPrice < 0) {
+        month += 1;
+        if (month % 2 == 0) {
+            percentLossByMonth += 0.5;
+        }
+        rate *= 1 - percentLossByMonth / 100;
+        gapPrice = gap * rate + month * savingperMonth;
+    }
+    return [month, Math.round(gapPrice)];
+}
 const myFirstInterpreter = (code) => {
     let cellStatus = 0;
     const commandArr = code.split("");
