@@ -5,7 +5,7 @@
 // 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SORT THE INNER CONTENT IN DESCENDING ORDER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -13,8 +13,26 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You have to sort the inner content of every word of a string in descending order.
 
+The inner content is the content of a word without first and the last char.
+
+Some examples:
+
+"sort the inner content in descending order"  -->  "srot the inner ctonnet in dsnnieedcg oredr"
+"wait for me"        -->  "wiat for me"
+"this kata is easy"  -->  "tihs ktaa is esay"
+Words are made up of lowercase letters.
+
+The string will never be null and will never be empty. In C/C++ the string is always nul-terminated.
 */
+function sortTheInnerContent(words: string): string {
+    return words;
+}
+
+// assert.equal(solution.sortTheInnerContent("sort the inner content in descending order"), "srot the inner ctonnet in dsnnieedcg oredr");
+//     assert.equal(solution.sortTheInnerContent("wait for me"), "wiat for me");
+//     assert.equal(solution.sortTheInnerContent("this kata is easy"), "tihs ktaa is esay");
 
 // console.log();
 // console.log();
@@ -24,7 +42,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: PRIMORIAL OF A NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -32,8 +50,40 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Definition (Primorial Of a Number)
+Is similar to factorial of a number, In primorial, not all the natural numbers get multiplied, only prime numbers are multiplied to calculate the primorial of a number. It's denoted with P# and it is the product of the first n prime numbers.
+
+Task
+Given a number N , calculate its primorial.!alt!alt
+Notes
+Only positive numbers will be passed (N > 0) .
+Input >> Output Examples:
+1- numPrimorial (3) ==> return (30)
+Explanation:
+Since the passed number is (3) ,Then the primorial should obtained by multiplying 2 * 3 * 5 = 30 .
+
+Mathematically written as , P3# = 30 .
+2- numPrimorial (5) ==> return (2310)
+Explanation:
+Since the passed number is (5) ,Then the primorial should obtained by multiplying 2 * 3 * 5 * 7 * 11 = 2310 .
+
+Mathematically written as , P5# = 2310 .
+3- numPrimorial (6) ==> return (30030)
+Explanation:
+Since the passed number is (6) ,Then the primorial should obtained by multiplying 2 * 3 * 5 * 7 * 11 * 13 = 30030 .
+
+Mathematically written as , P6# = 30030 .
 
 */
+function numPrimorial(n: number) {
+    // your code here
+}
+
+// it("Testing for 3", () => assert.strictEqual(numPrimorial(3), 30));
+//   it("Testing for 4", () => assert.strictEqual(numPrimorial(4), 210));
+//   it("Testing for 5", () => assert.strictEqual(numPrimorial(5), 2310));
+//   it("Testing for 8", () => assert.strictEqual(numPrimorial(8), 9699690));
+//   it("Testing for 9", () => assert.strictEqual(numPrimorial(9), 223092870));
 
 // console.log();
 // console.log();
@@ -43,7 +93,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: STEPS IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -51,8 +101,54 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The prime numbers are not regularly spaced. For example from 2 to 3 the step is 1. From 3 to 5 the step is 2. From 7 to 11 it is 4. Between 2 and 50 we have the following pairs of 2-steps primes:
 
+3, 5 - 5, 7, - 11, 13, - 17, 19, - 29, 31, - 41, 43
+
+We will write a function step with parameters:
+
+g (integer >= 2) which indicates the step we are looking for,
+
+m (integer >= 2) which gives the start of the search (m inclusive),
+
+n (integer >= m) which gives the end of the search (n inclusive)
+
+In the example above step(2, 2, 50) will return [3, 5] which is the first pair between 2 and 50 with a 2-steps.
+
+So this function should return the first pair of the two prime numbers spaced with a step of g between the limits m, n if these g-steps prime numbers exist otherwise nil or null or None or Nothing or [] or "0, 0" or {0, 0} or 0 0 or "" (depending on the language).
+
+Examples:
+step(2, 5, 7) --> [5, 7] or (5, 7) or {5, 7} or "5 7"
+
+step(2, 5, 5) --> nil or ... or [] in Ocaml or {0, 0} in C++
+
+step(4, 130, 200) --> [163, 167] or (163, 167) or {163, 167}
+
+See more examples for your language in "TESTS"
+
+Remarks:
+([193, 197] is also such a 4-steps primes between 130 and 200 but it's not the first pair).
+
+step(6, 100, 110) --> [101, 107] though there is a prime between 101 and 107 which is 103; the pair 101-103 is a 2-step.
+
+Notes:
+The idea of "step" is close to that of "gap" but it is not exactly the same. For those interested they can have a look at http://mathworld.wolfram.com/PrimeGaps.html.
+
+A "gap" is more restrictive: there must be no primes in between (101-107 is a "step" but not a "gap". Next kata will be about "gaps":-).
+
+For Go: nil slice is expected when there are no step between m and n. Example: step(2,4900,4919) --> nil
 */
+class G9647 {
+    public static step = (g: number, m: number, n: number) => {
+        // your code
+    };
+}
+
+// testing(solution.G964.step(2,100,110), [101, 103]);
+//         testing(solution.G964.step(4,100,110), [103, 107]);
+//         testing(solution.G964.step(6,100,110), [101, 107]);
+//         testing(solution.G964.step(8,300,400), [359, 367]);
+//         testing(solution.G964.step(10,300,400), [307, 317]);
 
 // console.log();
 // console.log();
@@ -62,7 +158,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: RAINFALL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -70,18 +166,88 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+dataand data1 are two strings with rainfall records of a few cities for months from January to December. The records of towns are separated by \n. The name of each town is followed by :.
 
+data and towns can be seen in "Your Test Cases:".
+
+Task:
+function: mean(town, strng) should return the average of rainfall for the city town and the strng data or data1 (In R and Julia this function is called avg).
+function: variance(town, strng) should return the variance of rainfall for the city town and the strng data or data1.
+Examples:
+mean("London", data), 51.19(9999999999996) 
+variance("London", data), 57.42(833333333374)
+Notes:
+if functions mean or variance have as parameter town a city which has no records return -1 or -1.0 (depending on the language)
+
+Don't truncate or round: the tests will pass if abs(your_result - test_result) <= 1e-2 or abs((your_result - test_result) / test_result) <= 1e-6 depending on the language.
+
+Shell tests only variance
+
+A ref: http://www.mathsisfun.com/data/standard-deviation.html
+
+data and data1 (can be named d0 and d1 depending on the language; see "Sample Tests:") are adapted from: http://www.worldclimate.com
 */
+class G9646 {
+    public static mean = (town: string, strng: string) => {
+        // your code
+    };
+    public static variance = (town: string, strng: string) => {
+        // your code
+    };
+}
 
-// console.log();
-// console.log();
+const data =
+    "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
+    "\n" +
+    "London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9" +
+    "\n" +
+    "Paris:Jan 182.3,Feb 120.6,Mar 158.1,Apr 204.9,May 323.1,Jun 300.5,Jul 236.8,Aug 192.9,Sep 66.3,Oct 63.3,Nov 83.2,Dec 154.7" +
+    "\n" +
+    "NY:Jan 108.7,Feb 101.8,Mar 131.9,Apr 93.5,May 98.8,Jun 93.6,Jul 102.2,Aug 131.8,Sep 92.0,Oct 82.3,Nov 107.8,Dec 94.2" +
+    "\n" +
+    "Vancouver:Jan 145.7,Feb 121.4,Mar 102.3,Apr 69.2,May 55.8,Jun 47.1,Jul 31.3,Aug 37.0,Sep 59.6,Oct 116.3,Nov 154.6,Dec 171.5" +
+    "\n" +
+    "Sydney:Jan 103.4,Feb 111.0,Mar 131.3,Apr 129.7,May 123.0,Jun 129.2,Jul 102.8,Aug 80.3,Sep 69.3,Oct 82.6,Nov 81.4,Dec 78.2" +
+    "\n" +
+    "Bangkok:Jan 10.6,Feb 28.2,Mar 30.7,Apr 71.8,May 189.4,Jun 151.7,Jul 158.2,Aug 187.0,Sep 319.9,Oct 230.8,Nov 57.3,Dec 9.4" +
+    "\n" +
+    "Tokyo:Jan 49.9,Feb 71.5,Mar 106.4,Apr 129.2,May 144.0,Jun 176.0,Jul 135.6,Aug 148.5,Sep 216.4,Oct 194.1,Nov 95.6,Dec 54.4" +
+    "\n" +
+    "Beijing:Jan 3.9,Feb 4.7,Mar 8.2,Apr 18.4,May 33.0,Jun 78.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 18.0,Nov 9.3,Dec 2.7" +
+    "\n" +
+    "Lima:Jan 1.2,Feb 0.9,Mar 0.7,Apr 0.4,May 0.6,Jun 1.8,Jul 4.4,Aug 3.1,Sep 3.3,Oct 1.7,Nov 0.5,Dec 0.7";
+const data1 =
+    "Rome:Jan 90.2,Feb 73.2,Mar 80.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 147.7,Nov 121.0,Dec 97.9" +
+    "\n" +
+    "London:Jan 58.0,Feb 38.9,Mar 49.9,Apr 42.2,May 67.3,Jun 52.1,Jul 59.5,Aug 77.2,Sep 55.4,Oct 62.0,Nov 69.0,Dec 52.9" +
+    "\n" +
+    "Paris:Jan 182.3,Feb 120.6,Mar 188.1,Apr 204.9,May 323.1,Jun 350.5,Jul 336.8,Aug 192.9,Sep 66.3,Oct 63.3,Nov 83.2,Dec 154.7" +
+    "\n" +
+    "NY:Jan 128.7,Feb 121.8,Mar 151.9,Apr 93.5,May 98.8,Jun 93.6,Jul 142.2,Aug 131.8,Sep 92.0,Oct 82.3,Nov 107.8,Dec 94.2" +
+    "\n" +
+    "Vancouver:Jan 155.7,Feb 121.4,Mar 132.3,Apr 69.2,May 85.8,Jun 47.1,Jul 31.3,Aug 37.0,Sep 69.6,Oct 116.3,Nov 154.6,Dec 171.5" +
+    "\n" +
+    "Sydney:Jan 123.4,Feb 111.0,Mar 151.3,Apr 129.7,May 123.0,Jun 159.2,Jul 102.8,Aug 90.3,Sep 69.3,Oct 82.6,Nov 81.4,Dec 78.2" +
+    "\n" +
+    "Bangkok:Jan 20.6,Feb 28.2,Mar 40.7,Apr 81.8,May 189.4,Jun 151.7,Jul 198.2,Aug 197.0,Sep 319.9,Oct 230.8,Nov 57.3,Dec 9.4" +
+    "\n" +
+    "Tokyo:Jan 59.9,Feb 81.5,Mar 106.4,Apr 139.2,May 144.0,Jun 186.0,Jul 155.6,Aug 148.5,Sep 216.4,Oct 194.1,Nov 95.6,Dec 54.4" +
+    "\n" +
+    "Beijing:Jan 13.9,Feb 14.7,Mar 18.2,Apr 18.4,May 43.0,Jun 88.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 38.0,Nov 19.3,Dec 2.7" +
+    "\n" +
+    "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
+
+// 51.199999999999996
+// console.log(G964.mean("London", data));
+// 57.42833333333374
+// console.log(G964.variance("London", data));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: BACKWARDS READ PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -89,18 +255,39 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Backwards Read Primes are primes that when read backwards in base 10 (from right to left) are a different prime. (This rules out primes which are palindromes.)
 
+Examples:
+13 17 31 37 71 73 are Backwards Read Primes
+13 is such because it's prime and read from right to left writes 31 which is prime too. Same for the others.
+
+Task
+Find all Backwards Read Primes between two positive given numbers (both inclusive), the second one always being greater than or equal to the first one. The resulting array or the resulting string will be ordered following the natural order of the prime numbers.
+
+Examples (in general form):
+backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] backwardsPrime(9900, 10000) => [9923, 9931, 9941, 9967] backwardsPrime(501, 599) => []
+
+See "Sample Tests" for your language.
+
+Notes
+Forth Return only the first backwards-read prime between start and end or 0 if you don't find any
+Ruby Don't use Ruby Prime class, it's disabled.
 */
+function backwardsPrime(start: number, stop: number): number[] {
+    return [1];
+}
 
-// console.log();
-// console.log();
+// [7027, 7043, 7057]
+// console.log(backwardsPrime(7000, 7100));
+// [70001, 70009, 70061, 70079, 70121, 70141, 70163, 70241]
+// console.log(backwardsPrime(70000, 70245));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: CHARACTER WITH LONGEST CONSECUTIVE REPETITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -108,8 +295,29 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+For a given string s find the character c (or C) with longest consecutive repetition and return:
 
+[c, l]: [string, number]
+where l (or L) is the length of the repetition. If there are two or more characters with the same l return the first in order of appearance.
+
+For empty string return:
+
+["", 0]
+In JavaScript: If you use Array.sort in your solution, you might experience issues with the random tests as Array.sort is not stable in the Node.js version used by CodeWars. This is not a kata issue.
+
+Happy coding! :)
 */
+function longestRepetition(text: string): [string, number] {
+    return ["hello", 1];
+}
+
+//   assert.deepStrictEqual(longestRepetition('aaaabb'), ['a', 4])
+//   assert.deepStrictEqual(longestRepetition('bbbaaabaaaa'), ['a', 4])
+//   assert.deepStrictEqual(longestRepetition('cbdeuuu900'), ['u', 3])
+//   assert.deepStrictEqual(longestRepetition('abbbbb'), ['b', 5])
+//   assert.deepStrictEqual(longestRepetition('aabb'), ['a', 2])
+//   assert.deepStrictEqual(longestRepetition('ba'), ['b', 1])
+//   assert.deepStrictEqual(longestRepetition(''), ['', 0])
 
 // console.log();
 // console.log();
