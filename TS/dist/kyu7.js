@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+function isNegativeZero(n) {
+    return true;
+}
+function dative(word) {
+    return "hello";
+}
 const calcType = (a, b, res) => {
     return "calculation";
 };
@@ -60,9 +66,11 @@ G9643.scale = (str, repeatChar, repeatSub) => {
     const subStrArr = str.split("\n");
     const horizontal = subStrArr
         .map((sub) => {
-        return sub.replace(/./g, function (match) {
+        return sub
+            .replace(/./g, function (match) {
             return Array(repeatChar + 1).join(match);
-        }).concat("\n");
+        })
+            .concat("\n");
     });
     const vertical = horizontal.map((sub) => {
         return Array(repeatSub + 1).join(sub);
@@ -70,16 +78,26 @@ G9643.scale = (str, repeatChar, repeatSub) => {
     const solution = vertical.join("").slice(0, -1);
     return solution;
 };
-;
-const scale2 = (strng, k, n) => strng.replace(/[^\n]/g, x => Array(k + 1).join(x))
-    .replace(/[^\n]+/g, x => Array(n + 1).join("\n" + x).trim());
+const scale2 = (strng, k, n) => strng
+    .replace(/[^\n]/g, (x) => Array(k + 1).join(x))
+    .replace(/[^\n]+/g, (x) => Array(n + 1)
+    .join("\n" + x)
+    .trim());
 const scale3 = (strng, k, n) => {
     if (strng.length === 0)
         return "";
-    var a = strng.split("\n").map(function (x) {
-        var y = x.split("").map(function (z) { return Array(k + 1).join(z); }).join("");
+    var a = strng
+        .split("\n")
+        .map(function (x) {
+        var y = x
+            .split("")
+            .map(function (z) {
+            return Array(k + 1).join(z);
+        })
+            .join("");
         return Array(n + 1).join(y + "\n");
-    }).join("");
+    })
+        .join("");
     return a.substring(0, a.length - 1);
 };
 class Kata1 {
