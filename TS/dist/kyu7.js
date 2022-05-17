@@ -55,9 +55,44 @@ class Kata6 {
 const numbersWithDigitInside = (x, d) => {
     return [];
 };
-const countLettersAndDigits = (input) => {
-    return 0;
+const countLettersAndDigits = (str) => {
+    if (!/[a-z0-9]/gi.test(str))
+        return 0;
+    const matches = str.match(/[a-z0-9]/gi);
+    return matches.length;
 };
+console.log(countLettersAndDigits("hel2!lo"));
+function countLettersAndDigits2(input) {
+    return [...input].map((it) => it.replace(/[^a-z0-9]/gi, "")).join("")
+        .length;
+}
+function countLettersAndDigits3(input) {
+    return input.replace(/[^A-Za-z0-9]/g, "").length;
+}
+function countLettersAndDigits4(input) {
+    let temp = 0;
+    input.split("").forEach((i) => (i.match(/^[a-z0-9]+$/i) ? temp++ : temp));
+    return temp;
+}
+function countLettersAndDigits5(input) {
+    let countArr = input.match(/[0-9A-Za-z]/g) || [];
+    return countArr.length;
+}
+function countLettersAndDigits6(input) {
+    const array = input.match(/[a-z0-9]/gi);
+    return array ? array.length : 0;
+}
+function countLettersAndDigits7(input) {
+    return input.split("").filter(function (v) {
+        if (48 <= v.charCodeAt(0) && v.charCodeAt(0) <= 57)
+            return true;
+        if (65 <= v.charCodeAt(0) && v.charCodeAt(0) <= 90)
+            return true;
+        if (97 <= v.charCodeAt(0) && v.charCodeAt(0) <= 122)
+            return true;
+        return false;
+    }).length;
+}
 class G9643 {
 }
 G9643.scale = (str, repeatChar, repeatSub) => {

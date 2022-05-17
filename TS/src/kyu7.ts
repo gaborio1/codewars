@@ -1115,10 +1115,10 @@ const numbersWithDigitInside = (x: number, d: number): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HELP BOB COUNT LETTERS AND DIGITS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: COUNT LETTERS AND DIGITS, REPLACE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1137,18 +1137,58 @@ Example:
 "!?..A" --> 1
 */
 
-const countLettersAndDigits = (input: string): number => {
-    return 0;
+const countLettersAndDigits = (str: string): number => {
+    if (!/[a-z0-9]/gi.test(str)) return 0;
+
+    const matches: string[] = str.match(/[a-z0-9]/gi)!;
+
+    return matches.length;
 };
 
-// 6
-// console.log(countLettersAndDigits("hel2!lo"));
+// 5
+console.log(countLettersAndDigits("hel2!lo"));
+// console.log(countLettersAndDigits("5>>a,!b!"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function countLettersAndDigits2(input: string): number {
+    return [...input].map((it) => it.replace(/[^a-z0-9]/gi, "")).join("")
+        .length;
+}
+
+function countLettersAndDigits3(input: string): number {
+    return input.replace(/[^A-Za-z0-9]/g, "").length;
+}
+
+function countLettersAndDigits4(input: string): number {
+    let temp: number = 0;
+    input.split("").forEach((i) => (i.match(/^[a-z0-9]+$/i) ? temp++ : temp));
+    return temp;
+}
+
+function countLettersAndDigits5(input: string): number {
+    let countArr: Array<any> = input.match(/[0-9A-Za-z]/g) || [];
+    return countArr.length;
+}
+
+function countLettersAndDigits6(input: string): number {
+    const array = input.match(/[a-z0-9]/gi);
+
+    return array ? array.length : 0;
+}
+
+function countLettersAndDigits7(input: string): number {
+    return input.split("").filter(function (v) {
+        if (48 <= v.charCodeAt(0) && v.charCodeAt(0) <= 57) return true; //1~9
+        if (65 <= v.charCodeAt(0) && v.charCodeAt(0) <= 90) return true; //A~Z
+        if (97 <= v.charCodeAt(0) && v.charCodeAt(0) <= 122) return true; //a~z
+
+        return false;
+    }).length;
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
