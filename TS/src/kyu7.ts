@@ -1074,10 +1074,10 @@ class Kata6 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NUMBERS WITH THIS DIGIT INSIDE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ VARRAY.FROM() TO REPLACE LOOP, NEW REGEXP() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1102,18 +1102,91 @@ Return: [3, 22, 110]
 
 If there are no numbers, which include the digit, return [0,0,0].
 */
-const numbersWithDigitInside = (x: number, d: number): number[] => {
-    return [];
+const numbersWithDigitInside = (range: number, digit: number): number[] => {
+
+    let matches: number[] = [];
+
+    for (let i = 1; i <= range; i += 1) {
+        if (i.toString().indexOf(digit.toString()) > -1) {
+            matches.push(i);
+        }
+    }
+    console.log(matches);
+
+    if (matches.length === 0) return [0, 0, 0];
+
+    const count: number = matches.length;
+    const sum: number = matches.reduce((acc, curr) => acc + curr);
+    const prod: number = matches.reduce((acc, curr) => acc * curr);
+
+    const solution: number[] = [count, sum, prod];
+
+    return solution;
 };
 
 // [ 0, 0, 0]
-// console.log(.numbersWithDigitInside(5,6));
+// console.log(numbersWithDigitInside(5, 6));
 // [ 1, 6, 6]
-// console.log(numbersWithDigitInside(7,6));
+// console.log(numbersWithDigitInside(7, 6));
+// [ 2, 30, 200]
+// console.log(numbersWithDigitInside(20, 0));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function numbersWithDigitInside2(x: number, d: number): number[] {
+    let numbers: number[] = [];
+    for (let i: number = 1; i <= x; i++) {
+        if (~i.toString().indexOf(d.toString())) {
+            numbers.push(i);
+        }
+    }
+    return [numbers.length,
+    numbers.reduce((a, b) => a + b, 0),
+    numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b)];
+}
+
+// ❗️❗️❗️ VARRAY.FROM() TO REPLACE LOOP, NEW REGEXP() ❗️❗️❗️
+// function numbersWithDigitInside3(x, d) {
+//     return Array
+//         .from(Array(x), (x, i) => i + 1)
+//         .reduce((r, e) => new RegExp(d).test(String(e)) ? [r[0] + 1, r[1] + e, r[2] ? r[2] * e : e] : r, [0, 0, 0]);
+// }
+
+function numbersWithDigitInside4(x: number, d: number): number[] {
+    let numbers: number[] = [];
+    for (let i = 1; i <= x; i++) {
+        if (String(i).indexOf(String(d)) !== -1) {
+            numbers.push(i);
+        }
+    }
+    return [numbers.length,
+    numbers.reduce(((a: number, b: number) => a + b), 0),
+    (numbers.length === 0) ? 0 : numbers.reduce((a: number, b: number) => a * b)];
+}
+
+
+function numbersWithDigitInside5(x: number, d: number): number[] {
+    let count = 0, sum = 0, product = 0;
+
+    for (let i = 1; i <= x; i++) {
+        if (("" + i).indexOf("" + d) != -1) {
+            count++;
+            sum += i;
+            product = (product == 0 ? 1 : product) * i;
+        }
+    }
+    return [count, sum, product];
+}
+
+function numbersWithDigitInside6(x: number, d: number): number[] {
+    const set: number[] = [];
+    for (let i = 1; i <= x; i++) set.push(i);
+    const match: number[] = set.filter(test => test.toString().indexOf(d.toString()) >= 0);
+    return match.length ? [match.length, match.reduce((a, b) => a + b), match.reduce((a, b) => a * b)] : [0, 0, 0];
+}
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HELP BOB COUNT LETTERS AND DIGITS
@@ -1145,8 +1218,8 @@ const countLettersAndDigits = (str: string): number => {
     return matches.length;
 };
 
-// 5
-console.log(countLettersAndDigits("hel2!lo"));
+// 6
+// console.log(countLettersAndDigits("hel2!lo"));
 // console.log(countLettersAndDigits("5>>a,!b!"));
 // console.log();
 // console.log();
@@ -1564,7 +1637,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2057,17 +2130,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2200,13 +2273,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -4808,10 +4881,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -5924,7 +5997,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7000,8 +7073,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -7151,10 +7224,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8151,11 +8224,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -8950,9 +9023,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -9234,8 +9307,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);

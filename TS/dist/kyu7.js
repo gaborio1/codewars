@@ -52,16 +52,68 @@ const spoonerize = (words) => {
 };
 class Kata6 {
 }
-const numbersWithDigitInside = (x, d) => {
-    return [];
+const numbersWithDigitInside = (range, digit) => {
+    let matches = [];
+    for (let i = 1; i <= range; i += 1) {
+        if (i.toString().indexOf(digit.toString()) > -1) {
+            matches.push(i);
+        }
+    }
+    console.log(matches);
+    if (matches.length === 0)
+        return [0, 0, 0];
+    const count = matches.length;
+    const sum = matches.reduce((acc, curr) => acc + curr);
+    const prod = matches.reduce((acc, curr) => acc * curr);
+    const solution = [count, sum, prod];
+    return solution;
 };
+function numbersWithDigitInside2(x, d) {
+    let numbers = [];
+    for (let i = 1; i <= x; i++) {
+        if (~i.toString().indexOf(d.toString())) {
+            numbers.push(i);
+        }
+    }
+    return [numbers.length,
+        numbers.reduce((a, b) => a + b, 0),
+        numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b)];
+}
+function numbersWithDigitInside4(x, d) {
+    let numbers = [];
+    for (let i = 1; i <= x; i++) {
+        if (String(i).indexOf(String(d)) !== -1) {
+            numbers.push(i);
+        }
+    }
+    return [numbers.length,
+        numbers.reduce(((a, b) => a + b), 0),
+        (numbers.length === 0) ? 0 : numbers.reduce((a, b) => a * b)];
+}
+function numbersWithDigitInside5(x, d) {
+    let count = 0, sum = 0, product = 0;
+    for (let i = 1; i <= x; i++) {
+        if (("" + i).indexOf("" + d) != -1) {
+            count++;
+            sum += i;
+            product = (product == 0 ? 1 : product) * i;
+        }
+    }
+    return [count, sum, product];
+}
+function numbersWithDigitInside6(x, d) {
+    const set = [];
+    for (let i = 1; i <= x; i++)
+        set.push(i);
+    const match = set.filter(test => test.toString().indexOf(d.toString()) >= 0);
+    return match.length ? [match.length, match.reduce((a, b) => a + b), match.reduce((a, b) => a * b)] : [0, 0, 0];
+}
 const countLettersAndDigits = (str) => {
     if (!/[a-z0-9]/gi.test(str))
         return 0;
     const matches = str.match(/[a-z0-9]/gi);
     return matches.length;
 };
-console.log(countLettersAndDigits("hel2!lo"));
 function countLettersAndDigits2(input) {
     return [...input].map((it) => it.replace(/[^a-z0-9]/gi, "")).join("")
         .length;
