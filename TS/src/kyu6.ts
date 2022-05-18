@@ -817,6 +817,8 @@ let maze = [
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ NEED TO PAD DIGITS TO TWO AND FORMAT OUTPUT STRING ❗️❗️❗️
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: STATISCTICS FOR AN ATHLETIC ASSOCIATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -853,18 +855,105 @@ if the given string is "" you will return ""
 */
 class G9644 {
     public static stat = (str: string): string => {
+
+        // [ '01|15|59', ' 1|47|16', ' 01|17|20', ' 1|32|34', ' 2|17|17' ]
+        const resultStrArr: string[] = str.split(",");
+        console.log(resultStrArr);
+
+        // [[ '01', '15', '59' ],[ ' 1', '47', '16' ],[ ' 01', '17', '20' ],[ ' 1', '32', '34' ],[ ' 2', '17', '17' ]]
+        const numResArr: string[][] = resultStrArr
+            .map((result) => result.split("|"));
+        console.log(numResArr);
+
+        const convToSec = (hmsArr: string[]): number => {
+            // [ 1, 15, 59 ]...
+            const numArr: number[] = hmsArr.map((strVal) => Number(strVal));
+            console.log(numArr);
+            const numSeconds: number = numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
+            console.log(numSeconds);
+            return numSeconds;
+        }
+        console.log(convToSec(['01', '15', '59']));
+
+        const convToHMS = (numSeconds: number) => {
+
+            let hours: number = 0, mins: number = 0, secs: number = 0;
+            if (numSeconds / 3600 >= 1) {
+                hours += Math.trunc(numSeconds / 3600);
+                numSeconds = numSeconds % 3600;
+            }
+            if (numSeconds / 60 >= 1) {
+                mins += Math.trunc(numSeconds / 60);
+                numSeconds = numSeconds % 60;
+            }
+            secs = numSeconds;
+            console.log(hours, mins, secs);
+            return [hours, mins, secs];
+        }
+
+        // [ 4559, 6436, 4640, 5554, 8237 ]
+        const secondsArr: number[] = numResArr.map((arr) => convToSec(arr));
+        console.log(secondsArr);
+
+        // 1️⃣ CALC RANGE:
+
+        // 4559 AND 7397
+        const lowest: number = Math.min(...secondsArr);
+        const highest: number = Math.max(...secondsArr);
+        console.log(lowest, highest);
+
+        // 2838
+        const secRange: number = highest - lowest;
+        console.log(secRange);
+
+        // [ 0, 47, 18 ]
+        const rangeHMS = convToHMS(secRange);
+        console.log(rangeHMS);
+
+        // 2️⃣ CALC AVARAGE:
+
+        // 5885.2 => 5885 (??? MAYBE USE Math.round() ???)
+        const aveSeconds: number = Math.floor(secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length);
+        console.log(aveSeconds);
+
+        // [ 1, 35, 15 ]
+        const aveHMS = convToHMS(aveSeconds)
+        console.log(aveHMS);
+
+        // 3️⃣  CALC MEDIAN:
+
+        // [ 4559, 4640, 5554, 6426, 7397 ]
+        const ascSecArr: number[] = secondsArr.sort((a, b) => a - b);
+        console.log(ascSecArr);
+
+        const getMedian = (numArr: number[]): number => {
+            return (numArr.length & 1)
+                ? numArr[(numArr.length - 1) / 2]
+                : Math.round((numArr[numArr.length / 2] + numArr[(numArr.length / 2) + 1]) / 2);
+        }
+
+        // 5554
+        const medSeconds: number = getMedian(ascSecArr);
+        console.log(medSeconds);
+
+        // [ 1, 32, 34 ]
+        const medHMS = convToHMS(medSeconds);
+        console.log(medHMS);
+
+
         return "hello";
     };
 }
 
-// dotest("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17",
+// ("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17",
 //             "Range: 01|01|18 Average: 01|38|05 Median: 01|32|34");
 //         dotest("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41",
 //             "Range: 00|31|17 Average: 02|26|18 Median: 02|22|00");
 //         dotest("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|32|34, 2|17|17",
 //             "Range: 00|31|17 Average: 02|27|10 Median: 02|24|57");
 
-// console.log();
+// "Range: 01|01|18 Average: 01|38|05 Median: 01|32|34");
+console.log(G9644.stat("01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"));
 // console.log();
 // console.log();
 // console.log();

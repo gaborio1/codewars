@@ -81,8 +81,60 @@ let maze = [
 class G9644 {
 }
 G9644.stat = (str) => {
+    const resultStrArr = str.split(",");
+    console.log(resultStrArr);
+    const numResArr = resultStrArr
+        .map((result) => result.split("|"));
+    console.log(numResArr);
+    const convToSec = (hmsArr) => {
+        const numArr = hmsArr.map((strVal) => Number(strVal));
+        console.log(numArr);
+        const numSeconds = numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
+        console.log(numSeconds);
+        return numSeconds;
+    };
+    console.log(convToSec(['01', '15', '59']));
+    const convToHMS = (numSeconds) => {
+        let hours = 0, mins = 0, secs = 0;
+        if (numSeconds / 3600 >= 1) {
+            hours += Math.trunc(numSeconds / 3600);
+            numSeconds = numSeconds % 3600;
+        }
+        if (numSeconds / 60 >= 1) {
+            mins += Math.trunc(numSeconds / 60);
+            numSeconds = numSeconds % 60;
+        }
+        secs = numSeconds;
+        console.log(hours, mins, secs);
+        return [hours, mins, secs];
+    };
+    const secondsArr = numResArr.map((arr) => convToSec(arr));
+    console.log(secondsArr);
+    const lowest = Math.min(...secondsArr);
+    const highest = Math.max(...secondsArr);
+    console.log(lowest, highest);
+    const secRange = highest - lowest;
+    console.log(secRange);
+    const rangeHMS = convToHMS(secRange);
+    console.log(rangeHMS);
+    const aveSeconds = Math.floor(secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length);
+    console.log(aveSeconds);
+    const aveHMS = convToHMS(aveSeconds);
+    console.log(aveHMS);
+    const ascSecArr = secondsArr.sort((a, b) => a - b);
+    console.log(ascSecArr);
+    const getMedian = (numArr) => {
+        return (numArr.length & 1)
+            ? numArr[(numArr.length - 1) / 2]
+            : Math.round((numArr[numArr.length / 2] + numArr[(numArr.length / 2) + 1]) / 2);
+    };
+    const medSeconds = getMedian(ascSecArr);
+    console.log(medSeconds);
+    const medHMS = convToHMS(medSeconds);
+    console.log(medHMS);
     return "hello";
 };
+console.log(G9644.stat("01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"));
 const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
     let balance = priceOld - priceNew;
     console.log("initial balance:", balance);
