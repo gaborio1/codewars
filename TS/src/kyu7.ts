@@ -1021,10 +1021,12 @@ const spoonerize = (words: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HEAD, TAIL, INIT AND LAST
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ARRAY METHODS, CLASS PROPERTIES(PRIVATE, PUBLIC, STATIC) ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1058,21 +1060,145 @@ head([1,2,3,4,5]); => 1
 tail([1,2,3,4,5]); => [2,3,4,5]
 Most tests consist of 100 randomly generated arrays, each with four tests, one for each operation. There are 400 tests overall. No empty arrays will be given. Haskell has QuickCheck tests
 */
+
+// ❗️❗️❗️ SLICE RETURNS ARRAY ❗️❗️❗️
 class Kata6 {
-    // Implement the four static functions specified.
+    // HEAD: 1
+    public static head = (arr: number[]): number => {
+        return arr[0];
+    };
+    // TAIL: [ 2, 3, 4, 5 ]
+    public static tail = (arr: number[]): number[] => {
+        return arr.slice(1);
+    };
+
+    // INIT: [ 1, 2, 3, 4 ]
+    public static init = (arr: number[]): number[] => {
+        return arr.slice(0, -1);
+    };
+
+    // LAST: 5
+    public static last = (arr: number[]): number => {
+        return arr[arr.length - 1];
+    };
 }
 
-// assert.strictEqual(Kata.head([5,1]), 5);
-//     assert.deepEqual(Kata.tail([1]), []);
-//     assert.deepEqual(Kata.init([1,5,7,9]), [1,5,7]);
-//     assert.strictEqual(Kata.last([7,2]), 2);
-
-// console.log(Kata.head([5,1]);
-// console.log(Kata.tail([1]));
-// console.log(Kata.init([1,5,7,9]));
-// console.log(Kata.last([7,2]));
+// console.log(Kata6.head([1, 2, 3, 4, 5]));
+// console.log(Kata6.tail([1, 2, 3, 4, 5]));
+// console.log(Kata6.init([1, 2, 3, 4, 5]));
+// console.log(Kata6.last([1, 2, 3, 4, 5]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// class Kata61 {
+//     public static head = (a) => a[0];
+//     public static tail = (a) => a.slice(1);
+//     public static init = (a) => a.slice(0, -1);
+//     public static last = (a) => a[a.length - 1];
+// }
+
+const Kata62 = {
+    head: <A>(arr: A[]): A => arr[0],
+    tail: <A>(arr: A[]): A[] => arr.slice(1),
+    init: <A>(arr: A[]): A[] => arr.slice(0, arr.length - 1),
+    last: <A>(arr: A[]): A => arr[arr.length - 1],
+};
+
+class Kata63 {
+    static head<T>([head, ..._]: T[]): T {
+        return head;
+    }
+    static tail<T>([_, ...tail]: T[]): T[] {
+        return tail;
+    }
+    static init<T>(arr: T[]): T[] {
+        return arr.slice(0, -1);
+    }
+    static last<T>(arr: T[]): T {
+        return arr.slice(-1)[0];
+    }
+}
+
+class Kata64 {
+    static tail = (arr: number[]): number[] => {
+        return arr.slice(1, arr.length);
+    };
+
+    static init = (arr: number[]): number[] => {
+        return arr.slice(0, -1);
+    };
+
+    static last = (arr: number[]): number => {
+        return arr[arr.length - 1];
+    };
+
+    static head = (arr: number[]): number => {
+        return arr[0];
+    };
+}
+
+class Kata65 {
+    static head(list: Array<Number> = []): Number {
+        const a = list[0];
+        return a;
+    }
+
+    static tail(list: Array<Number> = []): Array<Number> {
+        const c: Array<Number> = [];
+        for (let i = 1; i < list.length; i++) {
+            c.push(list[i]);
+        }
+        return c;
+    }
+
+    static init(list: Array<Number> = []): Array<Number> {
+        const c: Array<Number> = [];
+        for (let i = 0; i < list.length - 1; i++) {
+            c.push(list[i]);
+        }
+        return c;
+    }
+
+    static last(list: Array<Number> = []): Number {
+        const a = list[list.length - 1];
+        return a;
+    }
+}
+
+class Kata66 {
+    static head(array: Array<any>) {
+        return array[0];
+    }
+    static tail(array: Array<any>) {
+        let temp = [...array];
+        temp.shift();
+        return temp;
+    }
+    static init(array: Array<any>) {
+        let temp = [...array];
+        temp.pop();
+        return temp;
+    }
+    static last(array: Array<any>) {
+        let temp = [...array];
+        return temp.pop();
+    }
+}
+
+class Kata67 {
+    static head<T>([head, ..._]: T[]): T {
+        return head;
+    }
+    static tail<T>([_, ...tail]: T[]): T[] {
+        return tail;
+    }
+    static init<T>(arr: T[]): T[] {
+        return arr.slice(0, -1);
+    }
+    static last<T>(arr: T[]): T {
+        return arr.slice(-1)[0];
+    }
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: NUMBERS WITH THIS DIGIT INSIDE
@@ -1103,7 +1229,6 @@ Return: [3, 22, 110]
 If there are no numbers, which include the digit, return [0,0,0].
 */
 const numbersWithDigitInside = (range: number, digit: number): number[] => {
-
     let matches: number[] = [];
 
     for (let i = 1; i <= range; i += 1) {
@@ -1142,9 +1267,11 @@ function numbersWithDigitInside2(x: number, d: number): number[] {
             numbers.push(i);
         }
     }
-    return [numbers.length,
-    numbers.reduce((a, b) => a + b, 0),
-    numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b)];
+    return [
+        numbers.length,
+        numbers.reduce((a, b) => a + b, 0),
+        numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b),
+    ];
 }
 
 // ❗️❗️❗️ VARRAY.FROM() TO REPLACE LOOP, NEW REGEXP() ❗️❗️❗️
@@ -1161,14 +1288,19 @@ function numbersWithDigitInside4(x: number, d: number): number[] {
             numbers.push(i);
         }
     }
-    return [numbers.length,
-    numbers.reduce(((a: number, b: number) => a + b), 0),
-    (numbers.length === 0) ? 0 : numbers.reduce((a: number, b: number) => a * b)];
+    return [
+        numbers.length,
+        numbers.reduce((a: number, b: number) => a + b, 0),
+        numbers.length === 0
+            ? 0
+            : numbers.reduce((a: number, b: number) => a * b),
+    ];
 }
 
-
 function numbersWithDigitInside5(x: number, d: number): number[] {
-    let count = 0, sum = 0, product = 0;
+    let count = 0,
+        sum = 0,
+        product = 0;
 
     for (let i = 1; i <= x; i++) {
         if (("" + i).indexOf("" + d) != -1) {
@@ -1183,10 +1315,17 @@ function numbersWithDigitInside5(x: number, d: number): number[] {
 function numbersWithDigitInside6(x: number, d: number): number[] {
     const set: number[] = [];
     for (let i = 1; i <= x; i++) set.push(i);
-    const match: number[] = set.filter(test => test.toString().indexOf(d.toString()) >= 0);
-    return match.length ? [match.length, match.reduce((a, b) => a + b), match.reduce((a, b) => a * b)] : [0, 0, 0];
+    const match: number[] = set.filter(
+        (test) => test.toString().indexOf(d.toString()) >= 0
+    );
+    return match.length
+        ? [
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
+        : [0, 0, 0];
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HELP BOB COUNT LETTERS AND DIGITS
@@ -1637,7 +1776,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2130,17 +2269,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2273,13 +2412,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -4881,10 +5020,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -5997,7 +6136,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7073,8 +7212,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -7224,10 +7363,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8224,11 +8363,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9023,9 +9162,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -9307,8 +9446,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

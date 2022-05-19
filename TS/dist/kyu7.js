@@ -52,6 +52,109 @@ const spoonerize = (words) => {
 };
 class Kata6 {
 }
+Kata6.head = (arr) => {
+    return arr[0];
+};
+Kata6.tail = (arr) => {
+    return arr.slice(1);
+};
+Kata6.init = (arr) => {
+    return arr.slice(0, -1);
+};
+Kata6.last = (arr) => {
+    return arr[arr.length - 1];
+};
+const Kata62 = {
+    head: (arr) => arr[0],
+    tail: (arr) => arr.slice(1),
+    init: (arr) => arr.slice(0, arr.length - 1),
+    last: (arr) => arr[arr.length - 1],
+};
+class Kata63 {
+    static head([head, ..._]) {
+        return head;
+    }
+    static tail([_, ...tail]) {
+        return tail;
+    }
+    static init(arr) {
+        return arr.slice(0, -1);
+    }
+    static last(arr) {
+        return arr.slice(-1)[0];
+    }
+}
+class Kata64 {
+}
+Kata64.tail = (arr) => {
+    return arr.slice(1, arr.length);
+};
+Kata64.init = (arr) => {
+    return arr.slice(0, -1);
+};
+Kata64.last = (arr) => {
+    return arr[arr.length - 1];
+};
+Kata64.head = (arr) => {
+    return arr[0];
+};
+class Kata65 {
+    static head(list = []) {
+        const a = list[0];
+        return a;
+    }
+    static tail(list = []) {
+        const c = [];
+        for (let i = 1; i < list.length; i++) {
+            c.push(list[i]);
+        }
+        return c;
+    }
+    static init(list = []) {
+        const c = [];
+        for (let i = 0; i < list.length - 1; i++) {
+            c.push(list[i]);
+        }
+        return c;
+    }
+    static last(list = []) {
+        const a = list[list.length - 1];
+        return a;
+    }
+}
+class Kata66 {
+    static head(array) {
+        return array[0];
+    }
+    static tail(array) {
+        let temp = [...array];
+        temp.shift();
+        return temp;
+    }
+    static init(array) {
+        let temp = [...array];
+        temp.pop();
+        return temp;
+    }
+    static last(array) {
+        let temp = [...array];
+        return temp.pop();
+    }
+}
+class Kata67 {
+    static head([head, ..._]) {
+        return head;
+    }
+    static tail([_, ...tail]) {
+        return tail;
+    }
+    static init(arr) {
+        return arr.slice(0, -1);
+    }
+    static last(arr) {
+        return arr.slice(-1)[0];
+    }
+}
 const numbersWithDigitInside = (range, digit) => {
     let matches = [];
     for (let i = 1; i <= range; i += 1) {
@@ -75,9 +178,11 @@ function numbersWithDigitInside2(x, d) {
             numbers.push(i);
         }
     }
-    return [numbers.length,
+    return [
+        numbers.length,
         numbers.reduce((a, b) => a + b, 0),
-        numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b)];
+        numbers.length === 0 ? 0 : numbers.reduce((a, b) => a * b),
+    ];
 }
 function numbersWithDigitInside4(x, d) {
     let numbers = [];
@@ -86,9 +191,13 @@ function numbersWithDigitInside4(x, d) {
             numbers.push(i);
         }
     }
-    return [numbers.length,
-        numbers.reduce(((a, b) => a + b), 0),
-        (numbers.length === 0) ? 0 : numbers.reduce((a, b) => a * b)];
+    return [
+        numbers.length,
+        numbers.reduce((a, b) => a + b, 0),
+        numbers.length === 0
+            ? 0
+            : numbers.reduce((a, b) => a * b),
+    ];
 }
 function numbersWithDigitInside5(x, d) {
     let count = 0, sum = 0, product = 0;
@@ -105,8 +214,14 @@ function numbersWithDigitInside6(x, d) {
     const set = [];
     for (let i = 1; i <= x; i++)
         set.push(i);
-    const match = set.filter(test => test.toString().indexOf(d.toString()) >= 0);
-    return match.length ? [match.length, match.reduce((a, b) => a + b), match.reduce((a, b) => a * b)] : [0, 0, 0];
+    const match = set.filter((test) => test.toString().indexOf(d.toString()) >= 0);
+    return match.length
+        ? [
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
+        : [0, 0, 0];
 }
 const countLettersAndDigits = (str) => {
     if (!/[a-z0-9]/gi.test(str))
