@@ -81,11 +81,13 @@ let maze = [
 class G9644 {
 }
 G9644.stat = (str) => {
+    if (str.length === 0)
+        return "";
+    console.log("   ------input:", str, ":end of input-----");
     const resultStrArr = str.split(",");
-    console.log(resultStrArr);
-    const numResArr = resultStrArr
-        .map((result) => result.split("|"));
-    console.log(numResArr);
+    console.log("RESULT STR ARR", resultStrArr);
+    const numResArr = resultStrArr.map((result) => result.split("|"));
+    console.log("NUM RES ARR:", numResArr);
     const convToSec = (hmsArr) => {
         const numArr = hmsArr.map((strVal) => Number(strVal));
         console.log(numArr);
@@ -93,7 +95,6 @@ G9644.stat = (str) => {
         console.log(numSeconds);
         return numSeconds;
     };
-    console.log(convToSec(['01', '15', '59']));
     const convToHMS = (numSeconds) => {
         let hours = 0, mins = 0, secs = 0;
         if (numSeconds / 3600 >= 1) {
@@ -109,7 +110,7 @@ G9644.stat = (str) => {
         return [hours, mins, secs];
     };
     const secondsArr = numResArr.map((arr) => convToSec(arr));
-    console.log(secondsArr);
+    console.log("SECONDS ARR", secondsArr);
     const lowest = Math.min(...secondsArr);
     const highest = Math.max(...secondsArr);
     console.log(lowest, highest);
@@ -117,24 +118,41 @@ G9644.stat = (str) => {
     console.log(secRange);
     const rangeHMS = convToHMS(secRange);
     console.log(rangeHMS);
-    const aveSeconds = Math.floor(secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length);
+    const aveSeconds = Math.trunc(secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length);
     console.log(aveSeconds);
     const aveHMS = convToHMS(aveSeconds);
     console.log(aveHMS);
     const ascSecArr = secondsArr.sort((a, b) => a - b);
     console.log(ascSecArr);
     const getMedian = (numArr) => {
-        return (numArr.length & 1)
+        console.log("   numArr length:", numArr.length);
+        console.log("   numArr length & 1:", numArr.length & 1);
+        return numArr.length & 1
             ? numArr[(numArr.length - 1) / 2]
-            : Math.round((numArr[numArr.length / 2] + numArr[(numArr.length / 2) + 1]) / 2);
+            : Math.trunc((numArr[numArr.length / 2] +
+                numArr[numArr.length / 2 - 1]) /
+                2);
     };
     const medSeconds = getMedian(ascSecArr);
-    console.log(medSeconds);
+    console.log("   MEDIAN SECONDS:", medSeconds);
     const medHMS = convToHMS(medSeconds);
-    console.log(medHMS);
-    return "hello";
+    console.log("   MEDIAN HMS:", medHMS);
+    const format = (arr) => {
+        return arr
+            .map((num) => {
+            if (num < 10) {
+                return `0${num.toString()}`;
+            }
+            return num.toString();
+        })
+            .join("|");
+    };
+    const solution = `Range: ${format(rangeHMS)} Average: ${format(aveHMS)} Median: ${format(medHMS)}`;
+    console.log(solution);
+    return solution;
 };
-console.log(G9644.stat("01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"));
+console
+    .log();
 const nbMonths = (priceOld, priceNew, savePerM, lossPCM) => {
     let balance = priceOld - priceNew;
     console.log("initial balance:", balance);
@@ -159,11 +177,11 @@ function nbMonths2(startPriceOld, startPriceNew, savingperMonth, percentLossByMo
     var months = 0, moneySaved = 0;
     while (startPriceNew > startPriceOld + moneySaved) {
         moneySaved += savingperMonth;
-        startPriceOld -= (startPriceOld * (percentLossByMonth / 100));
-        startPriceNew -= (startPriceNew * (percentLossByMonth / 100));
+        startPriceOld -= startPriceOld * (percentLossByMonth / 100);
+        startPriceNew -= startPriceNew * (percentLossByMonth / 100);
         months++;
         if (months % 2 == 1) {
-            percentLossByMonth += .5;
+            percentLossByMonth += 0.5;
         }
     }
     return [months, Math.round(startPriceOld + moneySaved - startPriceNew)];
@@ -175,12 +193,16 @@ function nbMonths3(startPriceOld, startPriceNew, savingperMonth, percentLossByMo
     let savingMoneyAmount = oldCarPrice - newCarPrice;
     while (Math.round(savingMoneyAmount) < 0) {
         monthCount++;
-        oldCarPrice = oldCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
-        newCarPrice = newCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+        oldCarPrice =
+            oldCarPrice *
+                ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) /
+                    100);
+        newCarPrice =
+            newCarPrice *
+                ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) /
+                    100);
         savingMoneyAmount =
-            oldCarPrice
-                - newCarPrice
-                + savingperMonth * monthCount;
+            oldCarPrice - newCarPrice + savingperMonth * monthCount;
     }
     return [monthCount, Math.round(savingMoneyAmount)];
 }

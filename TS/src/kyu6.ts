@@ -816,12 +816,12 @@ let maze = [
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ NEED TO PAD DIGITS TO TWO AND FORMAT OUTPUT STRING ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR WITH OBJECT METHODS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STATISCTICS FOR AN ATHLETIC ASSOCIATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: NEW DATE,
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -855,29 +855,35 @@ if the given string is "" you will return ""
 */
 class G9644 {
     public static stat = (str: string): string => {
+        if (str.length === 0) return "";
+
+        console.log("   ------input:", str, ":end of input-----");
 
         // [ '01|15|59', ' 1|47|16', ' 01|17|20', ' 1|32|34', ' 2|17|17' ]
         const resultStrArr: string[] = str.split(",");
-        console.log(resultStrArr);
+        console.log("RESULT STR ARR", resultStrArr);
 
         // [[ '01', '15', '59' ],[ ' 1', '47', '16' ],[ ' 01', '17', '20' ],[ ' 1', '32', '34' ],[ ' 2', '17', '17' ]]
-        const numResArr: string[][] = resultStrArr
-            .map((result) => result.split("|"));
-        console.log(numResArr);
+        const numResArr: string[][] = resultStrArr.map((result) =>
+            result.split("|")
+        );
+        console.log("NUM RES ARR:", numResArr);
 
         const convToSec = (hmsArr: string[]): number => {
             // [ 1, 15, 59 ]...
             const numArr: number[] = hmsArr.map((strVal) => Number(strVal));
             console.log(numArr);
-            const numSeconds: number = numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
+            const numSeconds: number =
+                numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
             console.log(numSeconds);
             return numSeconds;
-        }
-        console.log(convToSec(['01', '15', '59']));
+        };
+        // console.log(convToSec(["01", "15", "59"]));
 
         const convToHMS = (numSeconds: number) => {
-
-            let hours: number = 0, mins: number = 0, secs: number = 0;
+            let hours: number = 0,
+                mins: number = 0,
+                secs: number = 0;
             if (numSeconds / 3600 >= 1) {
                 hours += Math.trunc(numSeconds / 3600);
                 numSeconds = numSeconds % 3600;
@@ -889,11 +895,11 @@ class G9644 {
             secs = numSeconds;
             console.log(hours, mins, secs);
             return [hours, mins, secs];
-        }
+        };
 
         // [ 4559, 6436, 4640, 5554, 8237 ]
         const secondsArr: number[] = numResArr.map((arr) => convToSec(arr));
-        console.log(secondsArr);
+        console.log("SECONDS ARR", secondsArr);
 
         // 1️⃣ CALC RANGE:
 
@@ -913,11 +919,13 @@ class G9644 {
         // 2️⃣ CALC AVARAGE:
 
         // 5885.2 => 5885 (??? MAYBE USE Math.round() ???)
-        const aveSeconds: number = Math.floor(secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length);
+        const aveSeconds: number = Math.trunc(
+            secondsArr.reduce((acc, curr) => acc + curr) / secondsArr.length
+        );
         console.log(aveSeconds);
 
         // [ 1, 35, 15 ]
-        const aveHMS = convToHMS(aveSeconds)
+        const aveHMS = convToHMS(aveSeconds);
         console.log(aveHMS);
 
         // 3️⃣  CALC MEDIAN:
@@ -927,21 +935,47 @@ class G9644 {
         console.log(ascSecArr);
 
         const getMedian = (numArr: number[]): number => {
-            return (numArr.length & 1)
+            console.log("   numArr length:", numArr.length);
+            console.log("   numArr length & 1:", numArr.length & 1);
+            return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
-                : Math.round((numArr[numArr.length / 2] + numArr[(numArr.length / 2) + 1]) / 2);
-        }
+                : Math.trunc(
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
+        };
 
         // 5554
         const medSeconds: number = getMedian(ascSecArr);
-        console.log(medSeconds);
+        console.log("   MEDIAN SECONDS:", medSeconds);
 
         // [ 1, 32, 34 ]
         const medHMS = convToHMS(medSeconds);
-        console.log(medHMS);
+        console.log("   MEDIAN HMS:", medHMS);
 
+        const format = (arr: number[]) => {
+            return arr
+                .map((num) => {
+                    if (num < 10) {
+                        //                         return num.toString().padStart(2, "0");
+                        return `0${num.toString()}`;
+                    }
+                    return num.toString();
+                })
+                .join("|");
+        };
 
-        return "hello";
+        // console.log("format test:", format(rangeHMS));
+        // console.log(`Range: ${rangeHMS} Average: ${aveHMS} Median: ${medHMS}`);
+
+        // Range: 00|47|18 Average: 01|35|15 Median: 01|32|34
+        const solution: string = `Range: ${format(rangeHMS)} Average: ${format(
+            aveHMS
+        )} Median: ${format(medHMS)}`;
+        console.log(solution);
+
+        return solution;
     };
 }
 
@@ -952,13 +986,179 @@ class G9644 {
 //         dotest("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|32|34, 2|17|17",
 //             "Range: 00|31|17 Average: 02|27|10 Median: 02|24|57");
 
-// "Range: 01|01|18 Average: 01|38|05 Median: 01|32|34");
-console.log(G9644.stat("01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"));
+// LOOK INT MEDIAN
+//  'Range: 00|31|17 Average: 02|27|10 Median: ❗️❗️❗️ 02|32|34' ❗️❗️❗️ === 9154
+// TO EQUAL:
+//  'Range: 00|31|17 Average: 02|27|10 Median: ❗️❗️❗️ 02|24|57' ❗️❗️❗️ === 8697
+
+console
+    .log
+    // G9644.stat("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|32|34, 2|17|17")
+    ();
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// class G96441 {
+//     public static stat = (strg) => {
+//         let result = "";
+//         if (strg === "") return result;
+
+//         //Convertion input to array of seconds
+//         const secsArray = strg
+//             .split(", ")
+//             .map((t) => t.split("|"))
+//             .map((x) => x.reduce((acc, time) => 60 * acc + +time, 0))
+//             .sort((a, b) => a - b);
+//         const middle = Math.floor(secsArray.length / 2);
+
+//         //Calculating required results
+//         const range = Math.max(...secsArray) - Math.min(...secsArray);
+//         const mean = Math.floor(
+//             secsArray.reduce((a, b) => a + b) / secsArray.length
+//         );
+//         const median = Math.floor(
+//             secsArray.length % 2 === 0
+//                 ? (secsArray[middle - 1] + secsArray[middle]) / 2
+//                 : secsArray[middle]
+//         );
+
+//         //Printing output
+//         result += `Range: ${new Date(range * 1000)
+//             .toISOString()
+//             .substr(11, 8)
+//             .replace(/:/g, "|")}`;
+//         result += ` Average: ${new Date(mean * 1000)
+//             .toISOString()
+//             .substr(11, 8)
+//             .replace(/:/g, "|")}`;
+//         result += ` Median: ${new Date(median * 1000)
+//             .toISOString()
+//             .substr(11, 8)
+//             .replace(/:/g, "|")}`;
+
+//         return result;
+//     };
+// }
+
+// class G964 {
+
+//     private static time2snd = (s) => {
+//         var arr = s.split('|').map(function (x) { return ~~x } );
+//         var snd = 3600 * arr[0] + 60 * arr[1] + arr[2];
+//         return snd;
+//     }
+
+//     private static pad = (num, size) => {
+//         var s = num + "";
+//         while (s.length < size) s = "0" + s;
+//         return s;
+//     }
+
+//     private static snd2time = (m) => {
+//         var n = ~~m;
+//         var h = Math.floor(m / 3600);
+//         var re = m % 3600;
+//         var mn = Math.floor(re / 60);
+//         var s = re % 60;
+//         return G964.pad(h, 2) + "|" + G964.pad(mn, 2) + "|" + G964.pad(s, 2)
+//     }
+
+//     public static stat = (strg) => {
+//         if (strg === "")
+//             return "";
+//         var r = strg.split(',').map(function(x) { return G964.time2snd(x) } ).sort(function(a, b) { return a-b } );
+//         var lg = r.length;
+//         var avg = ~~(r.reduce(function(s, x) { return (s + x) } ) / lg);
+//         var rge = ~~(r[lg - 1] -  r[0]);
+//         var md = ~~((r[ ~~((lg - 1) / 2) ] + r[ ~~(lg / 2) ]) / 2);
+//         return "Range: " + G964.snd2time(rge) + " Average: " + G964.snd2time(avg) + " Median: " + G964.snd2time(md);
+//     }
+// }
+
+// class G96441 {
+//     public static timeDivider = '|';
+//     public static statDivider = ', ';
+
+//     public static stat = (strg) => {
+//       if(!strg.length) return '';
+
+//       const arr = strg.split(G964.statDivider);
+//       const numArr = arr.map(G964.stringToSeconds);
+
+//       const range = G964.getRange(numArr);
+//       const average = G964.getAverage(numArr);
+//       const median = G964.getMedian(numArr);
+
+//       return `Range: ${G964.secondsToString(range)} Average: ${G964.secondsToString(average)} Median: ${G964.secondsToString(median)}`
+//     }
+
+//     public static getRange = (arr: number[]): number => {
+//       const max = Math.max(...arr);
+//       const min = Math.min(...arr);
+
+//       return max - min;
+//     }
+
+//     public static getAverage = (arr: number[]): number => {
+//       return arr.reduce((sum, el) => sum + el, 0) / arr.length;
+//     }
+
+//     public static getMedian = (arr: number[]): number => {
+//       const arrCopy = [...arr];
+//       const sortedArr = arrCopy.sort( (a, b) => a - b );
+//       const mid = Math.ceil(sortedArr.length / 2);
+
+//       return sortedArr.length % 2 == 0 ? (sortedArr[mid] + sortedArr[mid - 1]) / 2 : sortedArr[mid - 1];
+//     }
+
+//     public static stringToSeconds = (str: string): number => {
+//       const arr = str.split(G964.timeDivider);
+//       return (Number(arr[0]) * 3600) + (Number(arr[1]) * 60) + (Number(arr[2]));
+//     }
+
+//     public static secondsToString = (num: number) => {
+//       let time = num
+//       const hours = Math.floor(time/3600);
+//       time = time - hours * 3600;
+//       const minutes = Math.floor(time/60);
+//       time = time - minutes * 60;
+//       const seconds = Math.floor(time);
+
+//       return [
+//         G964.convertToStringWithZero(hours),
+//         G964.convertToStringWithZero(minutes),
+//         G964.convertToStringWithZero(seconds)
+//       ].join(G964.timeDivider);
+//     }
+
+//     public static convertToStringWithZero = (num: number): string => {
+//       return num < 10 ? '0' + num : '' + num;
+//     }
+//   }
+
+// class G96441 {
+
+//     public static stat = (strg) => {
+//       if (!strg) return strg;
+//       const times = strg.split(', ').map(t => {
+//         const [ hours, minutes, seconds ] = t.split('|').map(n => +n);
+//         return (hours * 3600) + (minutes * 60) + (seconds);
+//       }).sort((a, b) => a - b);
+//       const range = times[times.length-1] - times[0];
+//       const mean = times.reduce((total, t) => total + t, 0) / times.length;
+//       const middle = Math.floor(times.length / 2);
+//       const median = times.length % 2 !== 0 ? times[middle] : ((times[middle-1] + times[middle]) / 2);
+//       const pad = (num) => ('0' + Math.floor(num)).substr(-2);
+//       const formatTime = (time) => {
+//         const minutes = time % 3600;
+//         return `${pad(time / 3600)}|${pad(minutes / 60)}|${pad(minutes % 60)}`;
+//       };
+//       return `Range: ${formatTime(range)} Average: ${formatTime(mean)} Median: ${formatTime(median)}`;
+//     }
+// }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BUYING A CAR
@@ -1019,9 +1219,8 @@ const nbMonths = (
     // KEEP TRACK OF MONTHS
     let monthCount: number = 0;
 
-    // WHILE IN DEBTH 
+    // WHILE IN DEBTH
     while (balance + savings <= 0) {
-
         console.log("   loss pc month:", lossPCM);
         // APPLY CURRENT LOSS PERCENTAGE TO BALANCE
         balance *= (100 - lossPCM) / 100;
@@ -1039,8 +1238,6 @@ const nbMonths = (
         if (monthCount % 2 !== 0) lossPCM += 0.5;
 
         console.log("change left:", Math.round(savings + balance));
-
-
     }
     // CALCULATE MONEY LEFT AFTER MAKING PURCHASE
     const change: number = Math.round(savings + balance);
@@ -1095,22 +1292,32 @@ change left: 766
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function nbMonths2(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
-    var months = 0, moneySaved = 0;
+function nbMonths2(
+    startPriceOld: number,
+    startPriceNew: number,
+    savingperMonth: number,
+    percentLossByMonth: number
+): number[] {
+    var months = 0,
+        moneySaved = 0;
     while (startPriceNew > startPriceOld + moneySaved) {
         moneySaved += savingperMonth;
-        startPriceOld -= (startPriceOld * (percentLossByMonth / 100));
-        startPriceNew -= (startPriceNew * (percentLossByMonth / 100));
+        startPriceOld -= startPriceOld * (percentLossByMonth / 100);
+        startPriceNew -= startPriceNew * (percentLossByMonth / 100);
         months++;
         if (months % 2 == 1) {
-            percentLossByMonth += .5;
+            percentLossByMonth += 0.5;
         }
     }
     return [months, Math.round(startPriceOld + moneySaved - startPriceNew)];
 }
 
-
-function nbMonths3(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+function nbMonths3(
+    startPriceOld: number,
+    startPriceNew: number,
+    savingperMonth: number,
+    percentLossByMonth: number
+): number[] {
     let monthCount: number = 0;
 
     let oldCarPrice: number = startPriceOld;
@@ -1121,20 +1328,28 @@ function nbMonths3(startPriceOld: number, startPriceNew: number, savingperMonth:
     while (Math.round(savingMoneyAmount) < 0) {
         monthCount++;
 
-        oldCarPrice = oldCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
-        newCarPrice = newCarPrice * ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) / 100);
+        oldCarPrice =
+            oldCarPrice *
+            ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) /
+                100);
+        newCarPrice =
+            newCarPrice *
+            ((100 - (Math.floor(monthCount / 2) * 0.5 + percentLossByMonth)) /
+                100);
 
         savingMoneyAmount =
-            oldCarPrice
-            - newCarPrice
-            + savingperMonth * monthCount;
+            oldCarPrice - newCarPrice + savingperMonth * monthCount;
     }
 
     return [monthCount, Math.round(savingMoneyAmount)];
 }
 
-
-function nbMonths4(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+function nbMonths4(
+    startPriceOld: number,
+    startPriceNew: number,
+    savingperMonth: number,
+    percentLossByMonth: number
+): number[] {
     let months = 0;
     let balance = 0;
     let percent = percentLossByMonth;
@@ -1154,8 +1369,16 @@ function nbMonths4(startPriceOld: number, startPriceNew: number, savingperMonth:
     return [months, Math.round(balance + startPriceOld - startPriceNew)];
 }
 
-function nbMonths5(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
-    let gap: number = startPriceOld - startPriceNew, gapPrice: number = gap, rate: number = 1.0, month: number = 0;
+function nbMonths5(
+    startPriceOld: number,
+    startPriceNew: number,
+    savingperMonth: number,
+    percentLossByMonth: number
+): number[] {
+    let gap: number = startPriceOld - startPriceNew,
+        gapPrice: number = gap,
+        rate: number = 1.0,
+        month: number = 0;
     while (gapPrice < 0) {
         month += 1;
         if (month % 2 == 0) {
@@ -1166,7 +1389,6 @@ function nbMonths5(startPriceOld: number, startPriceNew: number, savingperMonth:
     }
     return [month, Math.round(gapPrice)];
 }
-
 
 // function nbMonths6(
 //     startPriceOld: number,
@@ -1185,7 +1407,6 @@ function nbMonths5(startPriceOld: number, startPriceNew: number, savingperMonth:
 
 //     return nbMonths(newPriceOld, newPriceNew, savingperMonth, newPercentLossByMonth, monthsPassed + 1)
 // }
-
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // INCLUDE FROMCHARCODE IN EXAMPLES !!!
@@ -3115,7 +3336,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -3201,7 +3422,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -4062,15 +4283,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -4123,10 +4344,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -4702,7 +4923,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -5161,8 +5382,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -5455,7 +5676,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -5912,10 +6133,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -7215,8 +7436,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
