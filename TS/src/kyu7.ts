@@ -990,10 +990,10 @@ const replaceNth = (
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPOONERIZE ME
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SWAP CHARACTERS IN WORDS, SLICE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1009,8 +1009,30 @@ Your task is to create a function that takes a string of two words, separated by
 
 NOTE: All input strings will contain only two words. Spoonerisms can be more complex. For example, three-word phrases in which the first letters of the first and last words are swapped: "pack of lies" --> "lack of pies" or more than one letter from a word is swapped: "flat battery --> "bat flattery" You are NOT expected to account for these, or any other nuances involved in spoonerisms.
 */
-const spoonerize = (words: string): string => {
-    return "hello";
+const spoonerize = (wordStr: string): string => {
+
+    // [ 'n', 'o', 't' ],['p', 'i', 'c','k', 'i', 'n','g']
+    const lettersArr: string[][] = wordStr
+        .split(" ")
+        .map((word) => word.split(""));
+
+    // n p
+    const first: string = lettersArr[0][0];
+    const second: string = lettersArr[1][0];
+
+    // // [ 'p', 'o', 't' ],['n', 'i', 'c','k', 'i', 'n','g']
+    lettersArr[0][0] = second;
+    lettersArr[1][0] = first;
+
+    // pot nicking
+    let solution: string = lettersArr
+        .map((arr) => {
+            return arr.join("");
+        })
+        .join(" ");
+
+    return solution;
+
 };
 
 // "pot nicking"
@@ -1021,6 +1043,53 @@ const spoonerize = (words: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function spoonerize2(words: string): string {
+    const [word1, word2] = words.split(' ');
+    const sword1 = `${word2[0]}` + word1.slice(1);
+    const sword2 = `${word1[0]}` + word2.slice(1);
+
+    return `${sword1} ${sword2}`
+}
+
+
+function spoonerize3(words: string): string {
+    let arr: string[] = words.split(" ")
+    let a = arr[0][0]
+    let b = arr[1][0]
+    return b + arr[0].slice(1) + ' ' + a + arr[1].slice(1)
+}
+
+const spoonerize4 = (words: string): string => {
+    const [a, b] = words.split(' ')
+    return `${b.charAt(0)}${a.substr(1)} ${a.charAt(0)}${b.substr(1)}`
+}
+
+
+// =====================================================
+function spoonerize5(words: string): string {
+    let [word1, word2]: string[] = words.split(" ");
+    let spoonerizedWord1: string = spoonerizeWord(word1, word2);
+    let spoonerizedWord2: string = spoonerizeWord(word2, word1);
+    return `${spoonerizedWord1} ${spoonerizedWord2}`;
+}
+
+function spoonerizeWord(word1: string, word2: string): string {
+    return `${word2[0]}${word1.slice(1)}`;
+}
+// =====================================================
+
+function spoonerize7(words: string): string {
+    let list: string[] = words.split(" ")
+    let a: string = list[0][0]
+    let b: string = list[1][0]
+    return `${b + list[0].slice(1)} ${a + list[1].slice(1)}`
+
+}
+
+function spoonerize8(words: string): string {
+    const arr = words.split(' ');
+    return [arr[1][0] + arr[0].slice(1), arr[0][0] + arr[1].slice(1)].join(' ');
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1320,10 +1389,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -1776,7 +1845,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2269,17 +2338,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2412,13 +2481,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5020,10 +5089,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6136,7 +6205,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7212,8 +7281,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -7363,10 +7432,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8363,11 +8432,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9162,9 +9231,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -9446,8 +9515,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);

@@ -172,7 +172,8 @@
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -744,10 +745,10 @@ function getLengthOfMissingArray(arrayOfArrays: any[]): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MAZE RUNNER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ SWITCH WITH IF ELSE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -786,8 +787,74 @@ Rules
 
 6. If you find yourself still in the maze after using all the moves, you should return Lost.
 */
-const mazeRunner = (maze: number[][], directions: string[]): string => {
-    return "hello";
+const mazeRunner = (maze: number[][], dirs: string[]): string => {
+
+    // LOCATE START POINT
+    let row: number = 0;
+    let col: number = 0;
+
+
+    for (let i = 0; i < maze.length; i += 1) {
+        if (maze[i].includes(2)) {
+            row = i;
+            col = maze[i].indexOf(2);
+            break;
+        }
+    }
+    let curr: number = maze[row][col];
+    // console.log("col:", col, "row:", row, "CURRENT:", curr);
+
+    // TRACK PATH
+    for (let i = 0; i < dirs.length; i += 1) {
+        // for (let i = 0; i < 1; i += 1) {
+        if (dirs[i] === "N") {
+            row -= 1;
+            if (row < 0) return "Dead";
+            curr = maze[row][col];
+            if (curr === 3) {
+                return "Finish";
+            } else if (curr === 1) {
+                return "Dead";
+            }
+        }
+
+        if (dirs[i] === "S") {
+            row += 1;
+            if (row > maze.length - 1) return "Dead";
+            curr = maze[row][col];
+            if (curr === 3) {
+                return "Finish";
+            } else if (curr === 1) {
+                return "Dead";
+            }
+        }
+
+        if (dirs[i] === "W") {
+            col -= 1;
+            if (col < 0) return "Dead";
+            curr = maze[row][col];
+            if (curr === 3) {
+                return "Finish";
+            } else if (curr === 1) {
+                return "Dead";
+            }
+        }
+
+        if (dirs[i] === "E") {
+            col += 1;
+            if (col > maze[row].length - 1) return "Dead";
+            curr = maze[row][col];
+            if (curr === 3) {
+                return "Finish";
+            } else if (curr === 1) {
+                return "Dead";
+            }
+        }
+    }
+    // console.log("col:", col, "row:", row, "CURRENT:", curr);
+
+    return "Lost";
+
 };
 
 let maze = [
@@ -809,13 +876,161 @@ let maze = [
 
 // assert.equal(mazeRunner(maze,["N","E","E","E","E"]), "Lost", "Expected Lost");
 
-// console.log();
+// console.log(mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E"]));
+// console.log(mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E"]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// Argument of type '{ x: number; y: number; } | undefined' is not assignable to parameter of type 'ICoordinates'.
+//   Type 'undefined' is not assignable to type 'ICoordinates'.ts(2345)
+/*
+enum RoomType { Safe = 0, Wall = 1, Start = 2, Finish = 3 }
+type Direction = "N" | "E" | "S" | "W";
+type Result = "Finish" | "Dead" | "Lost";
+type Maze = RoomType[][];
+interface ICoordinates { x: number; y: number; }
+
+const getStartingCoordinates = (maze: Maze) => {
+    for (let y = 0; y < maze.length; y++) {
+        const row = maze[y];
+
+        for (let x = 0; x < row.length; x++) {
+            if (row[x] === RoomType.Start) {
+                return { x, y };
+            }
+        }
+    }
+};
+
+const coordinateModifiers: { [K in Direction]: (coordinates: ICoordinates) => ICoordinates } = {
+    E: ({ x, y }) => ({ x: x + 1, y }),
+    N: ({ x, y }) => ({ x, y: y - 1 }),
+    S: ({ x, y }) => ({ x, y: y + 1 }),
+    W: ({ x, y }) => ({ x: x - 1, y }),
+};
+
+const mazeRunner2 = (maze: Maze, directions: Direction[]): Result => {
+    let coordinates = getStartingCoordinates(maze);
+
+    for (const direction of directions) {
+        const { x, y } = coordinateModifiers[direction](coordinates);
+
+        if (maze[y] === undefined) { return "Dead"; }
+
+        const room = maze[y][x];
+        if (room === undefined || room === RoomType.Wall) { return "Dead"; }
+        if (room === RoomType.Finish) { return "Finish"; }
+
+        coordinates = { x, y };
+    }
+
+    return "Lost";
+};
+*/
+
+function mazeRunner3(maze: number[][], directions: string[]): string {
+    let y = maze.findIndex(r => r.includes(2));
+    let x = maze[y].indexOf(2);
+
+    for (const d of directions) {
+        if (d === 'N') y -= 1;
+        if (d === 'S') y += 1;
+        if (d === 'W') x -= 1;
+        if (d === 'E') x += 1;
+
+        if (x < 0 || y < 0 || x >= maze[0].length || y >= maze.length || maze[y][x] === 1) { return 'Dead'; }
+        if (maze[y][x] === 3) { return 'Finish'; }
+    }
+
+    return 'Lost';
+}
+
+// ❗️❗️❗️ SWITCH WITH IF ELSE ❗️❗️❗️
+function mazeRunner4(maze: number[][], directions: string[]): string {
+    var y = 0, x = 0;
+    var maxY = maze.length, maxX = maze[0].length;
+
+    for (let i = 0; i < maxY; i++)
+        for (let j = 0; j < maxX; j++)
+            if (maze[i][j] === 2) { y = i; x = j; }
+
+    for (let direc of directions) {
+        switch (direc) {
+            case 'N':
+                if (y - 1 < 0) return 'Dead';
+                else y--;
+                break;
+
+            case 'S':
+                if (y + 1 >= maxY) return 'Dead';
+                else y++;
+                break;
+
+            case 'W':
+                if (x - 1 < 0) return 'Dead';
+                else x--;
+                break;
+
+            case 'E':
+                if (x + 1 >= maxX) return 'Dead';
+                else x++;
+                break;
+
+            default: return 'Lost';
+        }
+
+        if (maze[y][x] === 1) return 'Dead';
+        else if (maze[y][x] === 3) return 'Finish';
+    }
+
+    return 'Lost';
+}
+
+function mazeRunner5(maze: number[][], directions: string[]): string {
+    let runner: number[][] = [[]];
+    for (let i = 0; i < maze.length; i++)
+        for (let j = 0; j < maze[0].length; j++)
+            if (maze[i][j] == 2) runner = [[i], [j]];
+    let [[x], [y]] = runner;
+    for (let i of directions) {
+        if (i === 'N') x--;
+        if (i === 'S') x++;
+        if (i === 'W') y--;
+        if (i === 'E') y++;
+        if (maze[x] === undefined || maze[x][y] === undefined || maze[x][y] === 1) return 'Dead';
+        if (maze[x][y] === 3) return 'Finish';
+    }
+    return 'Lost';
+}
+
+
+function mazeRunner6(maze: number[][], directions: string[]): string {
+    let [row, column] = getStartingPoint(maze);
+    const [NORTH, SOUTH, WEST, EAST] = ['N', 'S', 'W', 'E']
+    const [WALL, FINISH] = [1, 3]
+    for (let direction of directions) {
+        if (direction == NORTH) row -= 1
+        if (direction == SOUTH) row += 1
+        if (direction == WEST) column -= 1
+        if (direction == EAST) column += 1
+
+        if (maze[row] === undefined || maze[row][column] === undefined || maze[row][column] === WALL) return 'Dead'
+        if (maze[row][column] === FINISH) return 'Finish'
+    }
+    return 'Lost'
+}
+
+const getStartingPoint = (maze: number[][]): [number, number] => {
+    for (let i in maze) {
+        for (let j in maze[i]) {
+            if (maze[i][j] === 2) return [Number(i), Number(j)]
+        }
+    }
+    return [-1, -1]
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR WITH OBJECT METHODS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -940,10 +1155,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -3336,7 +3551,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -3422,7 +3637,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -4283,15 +4498,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -4344,10 +4559,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -4923,7 +5138,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -5382,8 +5597,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -5676,7 +5891,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -6133,10 +6348,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -7436,9 +7651,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

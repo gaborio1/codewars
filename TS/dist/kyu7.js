@@ -47,9 +47,56 @@ const extraPerfect = (n) => {
 const replaceNth = (text, n, oldValue, newValue) => {
     return text;
 };
-const spoonerize = (words) => {
-    return "hello";
+const spoonerize = (wordStr) => {
+    const lettersArr = wordStr
+        .split(" ")
+        .map((word) => word.split(""));
+    const first = lettersArr[0][0];
+    const second = lettersArr[1][0];
+    lettersArr[0][0] = second;
+    lettersArr[1][0] = first;
+    let solution = lettersArr
+        .map((arr) => {
+        return arr.join("");
+    })
+        .join(" ");
+    return solution;
 };
+function spoonerize2(words) {
+    const [word1, word2] = words.split(' ');
+    const sword1 = `${word2[0]}` + word1.slice(1);
+    const sword2 = `${word1[0]}` + word2.slice(1);
+    return `${sword1} ${sword2}`;
+}
+function spoonerize3(words) {
+    let arr = words.split(" ");
+    let a = arr[0][0];
+    let b = arr[1][0];
+    return b + arr[0].slice(1) + ' ' + a + arr[1].slice(1);
+}
+const spoonerize4 = (words) => {
+    const [a, b] = words.split(' ');
+    return `${b.charAt(0)}${a.substr(1)} ${a.charAt(0)}${b.substr(1)}`;
+};
+function spoonerize5(words) {
+    let [word1, word2] = words.split(" ");
+    let spoonerizedWord1 = spoonerizeWord(word1, word2);
+    let spoonerizedWord2 = spoonerizeWord(word2, word1);
+    return `${spoonerizedWord1} ${spoonerizedWord2}`;
+}
+function spoonerizeWord(word1, word2) {
+    return `${word2[0]}${word1.slice(1)}`;
+}
+function spoonerize7(words) {
+    let list = words.split(" ");
+    let a = list[0][0];
+    let b = list[1][0];
+    return `${b + list[0].slice(1)} ${a + list[1].slice(1)}`;
+}
+function spoonerize8(words) {
+    const arr = words.split(' ');
+    return [arr[1][0] + arr[0].slice(1), arr[0][0] + arr[1].slice(1)].join(' ');
+}
 class Kata6 {
 }
 Kata6.head = (arr) => {
