@@ -44,9 +44,48 @@ const timeCorrect = (timestring) => {
 };
 const extraPerfect = (n) => {
 };
-const replaceNth = (text, n, oldValue, newValue) => {
-    return text;
+const replaceNth = (str, nth, oldVal, newVal) => {
+    const lettersArr = str.split("");
+    let counter = 0;
+    for (let i = 0; i < lettersArr.length; i += 1) {
+        const current = lettersArr[i];
+        if (current === oldVal) {
+            counter += 1;
+            console.log(current);
+            if (counter % nth === 0) {
+                lettersArr[i] = newVal;
+            }
+        }
+    }
+    console.log(counter);
+    console.log(lettersArr);
+    const solution = lettersArr.join("");
+    return solution;
 };
+console.log(replaceNth("Vader said: No, I am your father!", 2, "a", "o"));
+function replaceNth2(s, n, a, b, c = 0) {
+    return s
+        .split("")
+        .map((e) => (e === a ? (++c === n ? ((c = 0) ? b : b) : e) : e))
+        .join("");
+}
+function replaceNth3(text, n, oldValue, newValue) {
+    let count = 0;
+    return text.split("").reduce((acc, elm, index) => {
+        if (elm === oldValue && n > 0) {
+            count++;
+            if (!(count % n))
+                return acc.concat(newValue);
+        }
+        return acc.concat(elm);
+    }, "");
+}
+function replaceNth4(text, n, oldValue, newValue) {
+    if (n < 1)
+        return text;
+    let matches = 0;
+    return text.replace(new RegExp(oldValue, "g"), (match) => (matches++, matches % n ? match : newValue));
+}
 const spoonerize = (wordStr) => {
     const lettersArr = wordStr
         .split(" ")
@@ -63,7 +102,7 @@ const spoonerize = (wordStr) => {
     return solution;
 };
 function spoonerize2(words) {
-    const [word1, word2] = words.split(' ');
+    const [word1, word2] = words.split(" ");
     const sword1 = `${word2[0]}` + word1.slice(1);
     const sword2 = `${word1[0]}` + word2.slice(1);
     return `${sword1} ${sword2}`;
@@ -72,10 +111,10 @@ function spoonerize3(words) {
     let arr = words.split(" ");
     let a = arr[0][0];
     let b = arr[1][0];
-    return b + arr[0].slice(1) + ' ' + a + arr[1].slice(1);
+    return b + arr[0].slice(1) + " " + a + arr[1].slice(1);
 }
 const spoonerize4 = (words) => {
-    const [a, b] = words.split(' ');
+    const [a, b] = words.split(" ");
     return `${b.charAt(0)}${a.substr(1)} ${a.charAt(0)}${b.substr(1)}`;
 };
 function spoonerize5(words) {
@@ -94,8 +133,8 @@ function spoonerize7(words) {
     return `${b + list[0].slice(1)} ${a + list[1].slice(1)}`;
 }
 function spoonerize8(words) {
-    const arr = words.split(' ');
-    return [arr[1][0] + arr[0].slice(1), arr[0][0] + arr[1].slice(1)].join(' ');
+    const arr = words.split(" ");
+    return [arr[1][0] + arr[0].slice(1), arr[0][0] + arr[1].slice(1)].join(" ");
 }
 class Kata6 {
 }
