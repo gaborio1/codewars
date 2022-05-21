@@ -667,6 +667,8 @@ function longestRepetition(text: string): [string, number] {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ NOW SWAP 2ND AND LAST CHARS ❗️❗️❗️
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: DECIPHER THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -689,20 +691,38 @@ decipherThis('72olle 103doo 100ya'); // 'Hello good day'
 decipherThis('82yade 115te 103o'); // 'Ready set go'
 
 */
-function decipherThis(str: string): string {
+const decipherThis = (str: string): string => {
+    const wordsArr: string[] = str.split(" ");
+    console.log(wordsArr);
+
+    // FIND CHAR CODE AND REPLACE WITH ITS CHAR
+    wordsArr.forEach((word, idx) => {
+        let charCode: number = Number(word.match(/\d+/g));
+        console.log(charCode);
+        const char: string = String.fromCharCode(charCode);
+        console.log(char);
+        wordsArr[idx] = word.replace(/\d+/g, char);
+        console.log(word);
+    });
+
+    console.log(wordsArr);
+
     return "hello";
-}
+};
 
 // Test.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 
-// console.log();
+// 'Have a go at this and see how you do'
+console.log(
+    decipherThis("72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o")
+);
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LENGTH OF MISSING ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:

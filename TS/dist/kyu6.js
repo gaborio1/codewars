@@ -60,9 +60,21 @@ function backwardsPrime(start, stop) {
 function longestRepetition(text) {
     return ["hello", 1];
 }
-function decipherThis(str) {
+const decipherThis = (str) => {
+    const wordsArr = str.split(" ");
+    console.log(wordsArr);
+    wordsArr.forEach((word, idx) => {
+        let charCode = Number(word.match(/\d+/g));
+        console.log(charCode);
+        const char = String.fromCharCode(charCode);
+        console.log(char);
+        wordsArr[idx] = word.replace(/\d+/g, char);
+        console.log(word);
+    });
+    console.log(wordsArr);
     return "hello";
-}
+};
+console.log(decipherThis("72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o"));
 const getLengthOfMissingArray = (arrayOfArrays) => {
     if (arrayOfArrays.length === 0)
         return 0;
