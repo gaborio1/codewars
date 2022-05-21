@@ -912,10 +912,10 @@ const timeCorrect = (timestring: string | null): string | null => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: EXTRA PERFECT NUMBERS (Special Numbers Series #7)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ODD NUMBERS UP TO N INCLUSIVE, STARTSWITH, ENDSWITH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -927,8 +927,14 @@ Extra perfect number is the number that first and last bits are set bits.
 Task
 Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
 */
-const extraPerfect = (n: number) => {
-    // your code here
+const extraPerfect = (num: number): number[] => {
+    let solution: number[] = [];
+    for (let i = 0; i <= num; i += 1) {
+        if (i & 1) {
+            solution.push(i);
+        }
+    }
+    return solution;
 };
 
 // it("Testing for 3", () => assert.deepEqual(extraPerfect(3), [1, 3]));
@@ -937,13 +943,54 @@ const extraPerfect = (n: number) => {
 //   it("Testing for 28", () => assert.deepEqual(extraPerfect(28), [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]));
 //   it("Testing for 39", () =>
 
-// console.log(extraPerfect(3));
+// console.log(extraPerfect(15));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function extraPerfect2(n: number) {
+    let r = [];
+    for (let i = 1; i <= n; i++) {
+        let b = i.toString(2);
+        if (b[0] === "1" && b[b.length - 1] === "1") r.push(i);
+    }
+    return r;
+}
+
+function extraPerfect3(n: number) {
+    let output = [];
+    for (let i = 1; i <= n; i++) {
+        if (
+            i.toString(2).charAt(0) == "1" &&
+            i.toString(2).charAt(i.toString(2).length - 1) == "1"
+        ) {
+            output.push(i);
+        }
+    }
+    return output;
+}
+
+function extraPerfect4(n: number) {
+    let res: number[] = [];
+    for (let i = 1; i <= n; i++) {
+        let bin = i.toString(2);
+        if (bin.startsWith("1") && bin.endsWith("1")) res.push(i);
+    }
+    return res;
+}
+
+const extraPerfect5 = (n: number): number[] =>
+    [...Array(n)].map((_, i) => i + 1).filter((n) => n % 2);
+
+function extraPerfect6(n: number): number[] {
+    let numbers = new Array<number>(Math.ceil(n / 2));
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i] = 2 * i + 1;
+    }
+    return numbers;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: REPLACE EVERY NTH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

@@ -42,8 +42,51 @@ const flyBy = (lamps, drone) => {
 const timeCorrect = (timestring) => {
     return "?";
 };
-const extraPerfect = (n) => {
+const extraPerfect = (num) => {
+    let solution = [];
+    for (let i = 0; i <= num; i += 1) {
+        if (i & 1) {
+            solution.push(i);
+        }
+    }
+    return solution;
 };
+function extraPerfect2(n) {
+    let r = [];
+    for (let i = 1; i <= n; i++) {
+        let b = i.toString(2);
+        if (b[0] === "1" && b[b.length - 1] === "1")
+            r.push(i);
+    }
+    return r;
+}
+function extraPerfect3(n) {
+    let output = [];
+    for (let i = 1; i <= n; i++) {
+        if (i.toString(2).charAt(0) == "1" &&
+            i.toString(2).charAt(i.toString(2).length - 1) == "1") {
+            output.push(i);
+        }
+    }
+    return output;
+}
+function extraPerfect4(n) {
+    let res = [];
+    for (let i = 1; i <= n; i++) {
+        let bin = i.toString(2);
+        if (bin.startsWith("1") && bin.endsWith("1"))
+            res.push(i);
+    }
+    return res;
+}
+const extraPerfect5 = (n) => [...Array(n)].map((_, i) => i + 1).filter((n) => n % 2);
+function extraPerfect6(n) {
+    let numbers = new Array(Math.ceil(n / 2));
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i] = 2 * i + 1;
+    }
+    return numbers;
+}
 const replaceNth = (str, nth, oldVal, newVal) => {
     const lettersArr = str.split("");
     let counter = 0;
