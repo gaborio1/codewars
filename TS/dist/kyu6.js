@@ -62,19 +62,57 @@ function longestRepetition(text) {
 }
 const decipherThis = (str) => {
     const wordsArr = str.split(" ");
-    console.log(wordsArr);
     wordsArr.forEach((word, idx) => {
         let charCode = Number(word.match(/\d+/g));
-        console.log(charCode);
         const char = String.fromCharCode(charCode);
-        console.log(char);
         wordsArr[idx] = word.replace(/\d+/g, char);
-        console.log(word);
     });
-    console.log(wordsArr);
-    return "hello";
+    wordsArr.forEach((word, idx) => {
+        if (word.length > 2) {
+            const second = word[1];
+            const last = word[word.length - 1];
+            const lettersArr = word.split("");
+            lettersArr[1] = last;
+            lettersArr[lettersArr.length - 1] = second;
+            wordsArr[idx] = lettersArr.join("");
+        }
+    });
+    const solution = wordsArr.join(" ");
+    return solution;
 };
-console.log(decipherThis("72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o"));
+function decipherThis2(str) {
+    return str.split(' ').map(word => {
+        const asciiCode = parseInt(word);
+        const asciiCodeDigits = asciiCode.toString().length;
+        const newWord = String.fromCharCode(asciiCode) + word.substr(asciiCodeDigits);
+        if (newWord.length <= 2) {
+            return newWord;
+        }
+        else {
+            return newWord[0] + newWord[newWord.length - 1] + newWord.substring(2, newWord.length - 1) + newWord[1];
+        }
+    }).join(' ');
+}
+function decipherThis3(str) {
+    return str
+        .replace(/(\d+)/g, code => String.fromCharCode(+code))
+        .replace(/\b(\w)(\w?)(\w*)(\w)/g, '$1$4$3$2');
+}
+function decipherThis4(str) {
+    return str
+        .split(" ")
+        .map(word => word.replace(/^[0-9]{0,}/, e => String.fromCharCode(+e)))
+        .map(word => word.length <= 2 ?
+        word :
+        word[0] + word[word.length - 1] + word.slice(2, word.length - 1) + word[1])
+        .join(" ");
+}
+function decipherThis5(str) {
+    return str
+        .split(" ")
+        .map((word) => word.replace(/(^\d{2,3})([a-z]?)([a-z]*?)([a-z]?$)/, (match, p1, p2, p3, p4) => `${String.fromCharCode(p1)}${p4}${p3}${p2}`))
+        .join(" ");
+}
 const getLengthOfMissingArray = (arrayOfArrays) => {
     if (arrayOfArrays.length === 0)
         return 0;

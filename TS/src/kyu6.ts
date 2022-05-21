@@ -666,12 +666,10 @@ function longestRepetition(text: string): [string, number] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ NOW SWAP 2ND AND LAST CHARS ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DECIPHER THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: REPLACE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -693,34 +691,152 @@ decipherThis('82yade 115te 103o'); // 'Ready set go'
 */
 const decipherThis = (str: string): string => {
     const wordsArr: string[] = str.split(" ");
-    console.log(wordsArr);
 
     // FIND CHAR CODE AND REPLACE WITH ITS CHAR
     wordsArr.forEach((word, idx) => {
+        // EXTRACT CODE
         let charCode: number = Number(word.match(/\d+/g));
-        console.log(charCode);
+        // FIND CORRESPONDING CHAR
         const char: string = String.fromCharCode(charCode);
-        console.log(char);
+        // REPLACE
         wordsArr[idx] = word.replace(/\d+/g, char);
-        console.log(word);
     });
 
-    console.log(wordsArr);
+    // SWAP 2ND FOR LAST
+    wordsArr.forEach((word, idx) => {
+        if (word.length > 2) {
+            const second: string = word[1];
+            const last: string = word[word.length - 1];
+            const lettersArr: string[] = word.split("");
+            lettersArr[1] = last;
+            lettersArr[lettersArr.length - 1] = second;
+            wordsArr[idx] = lettersArr.join("");
+        }
+    })
+    // JOIN INTO STRING
+    const solution: string = wordsArr.join(" ");
 
-    return "hello";
+    return solution;
+
 };
+
+/*
+[
+  '72eva',  '97',
+  '103o',   '97t',
+  '116sih', '97dn',
+  '115ee',  '104wo',
+  '121uo',  '100o'
+]
+72
+H
+72eva
+97
+a
+97
+103
+g
+103o
+97
+a
+97t
+116
+t
+116sih
+97
+a
+97dn
+115
+s
+115ee
+104
+h
+104wo
+121
+y
+121uo
+100
+d
+100o
+[
+  'Heva', 'a',    'go',
+  'at',   'tsih', 'adn',
+  'see',  'hwo',  'yuo',
+  'do'
+]
+[ 'H', 'e', 'v', 'a' ]
+[ 't', 's', 'i', 'h' ]
+[ 'a', 'd', 'n' ]
+[ 's', 'e', 'e' ]
+[ 'h', 'w', 'o' ]
+[ 'y', 'u', 'o' ]
+[
+  'Have', 'a',    'go',
+  'at',   'this', 'and',
+  'see',  'how',  'you',
+  'do'
+]
+Have a go at this and see how you do
+*/
 
 // Test.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 
 // 'Have a go at this and see how you do'
-console.log(
-    decipherThis("72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o")
-);
+// console.log(
+//     decipherThis("72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o")
+// );
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function decipherThis2(str: string): string {
+
+    return str.split(' ').map(word => {
+        const asciiCode = parseInt(word);
+        const asciiCodeDigits = asciiCode.toString().length;
+        const newWord = String.fromCharCode(asciiCode) + word.substr(asciiCodeDigits);
+
+        if (newWord.length <= 2) {
+            return newWord;
+        }
+        else {
+            return newWord[0] + newWord[newWord.length - 1] + newWord.substring(2, newWord.length - 1) + newWord[1];
+        }
+    }).join(' ');
+}
+
+
+function decipherThis3(str: string): string {
+    return str
+        .replace(/(\d+)/g, code => String.fromCharCode(+code))
+        .replace(/\b(\w)(\w?)(\w*)(\w)/g, '$1$4$3$2');
+}
+
+
+function decipherThis4(str: string): string {
+    return str
+        .split(" ")
+        .map(word => word.replace(/^[0-9]{0,}/, e => String.fromCharCode(+e)))
+        .map(word => word.length <= 2 ?
+            word :
+            word[0] + word[word.length - 1] + word.slice(2, word.length - 1) + word[1]
+        )
+        .join(" ")
+}
+
+function decipherThis5(str: string): string {
+    return str
+        .split(" ")
+        .map((word) =>
+            word.replace(
+                /(^\d{2,3})([a-z]?)([a-z]*?)([a-z]?$)/,
+                (match, p1, p2, p3, p4) => `${String.fromCharCode(p1)}${p4}${p3}${p2}`,
+            ),
+        )
+        .join(" ");
+}
+
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LENGTH OF MISSING ARRAY
@@ -1270,10 +1386,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -3666,7 +3782,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -3752,7 +3868,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -4613,15 +4729,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -4674,10 +4790,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -5253,7 +5369,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -5712,8 +5828,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -6006,7 +6122,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -6463,10 +6579,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -7766,9 +7882,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
