@@ -1002,14 +1002,20 @@ const replaceNth = (
 };
 
 // "Vader soid: No, I am your fother!"
-console.log(replaceNth("Vader said: No, I am your father!", 2, "a", "o"));
+// console.log(replaceNth("Vader said: No, I am your father!", 2, "a", "o"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-function replaceNth2(s, n, a, b, c = 0): string {
+function replaceNth2(
+    s: string,
+    n: number,
+    a: string,
+    b: string,
+    c = 0
+): string {
     return s
         .split("")
         .map((e) => (e === a ? (++c === n ? ((c = 0) ? b : b) : e) : e))

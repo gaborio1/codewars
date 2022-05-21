@@ -62,7 +62,6 @@ const replaceNth = (str, nth, oldVal, newVal) => {
     const solution = lettersArr.join("");
     return solution;
 };
-console.log(replaceNth("Vader said: No, I am your father!", 2, "a", "o"));
 function replaceNth2(s, n, a, b, c = 0) {
     return s
         .split("")

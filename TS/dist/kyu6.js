@@ -63,8 +63,44 @@ function longestRepetition(text) {
 function decipherThis(str) {
     return "hello";
 }
-function getLengthOfMissingArray(arrayOfArrays) {
-    return 1;
+const getLengthOfMissingArray = (arrayOfArrays) => {
+    if (arrayOfArrays.length === 0)
+        return 0;
+    let solution = 0;
+    const ascLenArr = arrayOfArrays.sort((a, b) => a.length - b.length);
+    for (let i = 0; i < ascLenArr.length; i += 1) {
+        if (ascLenArr[i].length === 0)
+            return 0;
+        let currLen = ascLenArr[i].length;
+        if (currLen + 1 !== ascLenArr[i + 1].length) {
+            solution = currLen + 1;
+            break;
+        }
+    }
+    return solution;
+};
+function getLengthOfMissingArray2(arrayOfArrays) {
+    const sortedLengthArray = arrayOfArrays
+        .map((array) => array.length)
+        .sort((a, b) => a - b);
+    if (sortedLengthArray[0] === 0)
+        return 0;
+    return (--sortedLengthArray.filter((a, index, array) => a - array[index - 1] !== 1)[1] || 0);
+}
+function getLengthOfMissingArray5(arrayOfArrays) {
+    if (arrayOfArrays === null || arrayOfArrays.length === 0)
+        return 0;
+    for (let i = 0; i < arrayOfArrays.length; i++) {
+        if (arrayOfArrays[i] === null || arrayOfArrays[i].length === 0)
+            return 0;
+    }
+    arrayOfArrays = arrayOfArrays.sort(function (x, y) {
+        return x.length > y.length ? 1 : -1;
+    });
+    for (let i = 1; i < arrayOfArrays.length; i++) {
+        if (arrayOfArrays[i].length != arrayOfArrays[i - 1].length + 1)
+            return arrayOfArrays[i - 1].length + 1;
+    }
 }
 const mazeRunner = (maze, dirs) => {
     let row = 0;
@@ -139,25 +175,29 @@ let maze = [
     [1, 2, 1, 0, 1, 0, 1],
 ];
 function mazeRunner3(maze, directions) {
-    let y = maze.findIndex(r => r.includes(2));
+    let y = maze.findIndex((r) => r.includes(2));
     let x = maze[y].indexOf(2);
     for (const d of directions) {
-        if (d === 'N')
+        if (d === "N")
             y -= 1;
-        if (d === 'S')
+        if (d === "S")
             y += 1;
-        if (d === 'W')
+        if (d === "W")
             x -= 1;
-        if (d === 'E')
+        if (d === "E")
             x += 1;
-        if (x < 0 || y < 0 || x >= maze[0].length || y >= maze.length || maze[y][x] === 1) {
-            return 'Dead';
+        if (x < 0 ||
+            y < 0 ||
+            x >= maze[0].length ||
+            y >= maze.length ||
+            maze[y][x] === 1) {
+            return "Dead";
         }
         if (maze[y][x] === 3) {
-            return 'Finish';
+            return "Finish";
         }
     }
-    return 'Lost';
+    return "Lost";
 }
 function mazeRunner4(maze, directions) {
     var y = 0, x = 0;
@@ -170,38 +210,39 @@ function mazeRunner4(maze, directions) {
             }
     for (let direc of directions) {
         switch (direc) {
-            case 'N':
+            case "N":
                 if (y - 1 < 0)
-                    return 'Dead';
+                    return "Dead";
                 else
                     y--;
                 break;
-            case 'S':
+            case "S":
                 if (y + 1 >= maxY)
-                    return 'Dead';
+                    return "Dead";
                 else
                     y++;
                 break;
-            case 'W':
+            case "W":
                 if (x - 1 < 0)
-                    return 'Dead';
+                    return "Dead";
                 else
                     x--;
                 break;
-            case 'E':
+            case "E":
                 if (x + 1 >= maxX)
-                    return 'Dead';
+                    return "Dead";
                 else
                     x++;
                 break;
-            default: return 'Lost';
+            default:
+                return "Lost";
         }
         if (maze[y][x] === 1)
-            return 'Dead';
+            return "Dead";
         else if (maze[y][x] === 3)
-            return 'Finish';
+            return "Finish";
     }
-    return 'Lost';
+    return "Lost";
 }
 function mazeRunner5(maze, directions) {
     let runner = [[]];
@@ -211,24 +252,26 @@ function mazeRunner5(maze, directions) {
                 runner = [[i], [j]];
     let [[x], [y]] = runner;
     for (let i of directions) {
-        if (i === 'N')
+        if (i === "N")
             x--;
-        if (i === 'S')
+        if (i === "S")
             x++;
-        if (i === 'W')
+        if (i === "W")
             y--;
-        if (i === 'E')
+        if (i === "E")
             y++;
-        if (maze[x] === undefined || maze[x][y] === undefined || maze[x][y] === 1)
-            return 'Dead';
+        if (maze[x] === undefined ||
+            maze[x][y] === undefined ||
+            maze[x][y] === 1)
+            return "Dead";
         if (maze[x][y] === 3)
-            return 'Finish';
+            return "Finish";
     }
-    return 'Lost';
+    return "Lost";
 }
 function mazeRunner6(maze, directions) {
     let [row, column] = getStartingPoint(maze);
-    const [NORTH, SOUTH, WEST, EAST] = ['N', 'S', 'W', 'E'];
+    const [NORTH, SOUTH, WEST, EAST] = ["N", "S", "W", "E"];
     const [WALL, FINISH] = [1, 3];
     for (let direction of directions) {
         if (direction == NORTH)
@@ -239,12 +282,14 @@ function mazeRunner6(maze, directions) {
             column -= 1;
         if (direction == EAST)
             column += 1;
-        if (maze[row] === undefined || maze[row][column] === undefined || maze[row][column] === WALL)
-            return 'Dead';
+        if (maze[row] === undefined ||
+            maze[row][column] === undefined ||
+            maze[row][column] === WALL)
+            return "Dead";
         if (maze[row][column] === FINISH)
-            return 'Finish';
+            return "Finish";
     }
-    return 'Lost';
+    return "Lost";
 }
 const getStartingPoint = (maze) => {
     for (let i in maze) {
