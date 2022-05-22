@@ -626,12 +626,15 @@ function backwardsPrime(start: number, stop: number): number[] {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CHARACTER WITH LONGEST CONSECUTIVE REPETITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: REGEX, MATCH()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: https://stackoverflow.com/questions/1660694/regular-expression-to-match-any-character-being-repeated-more-than-10-times
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -647,25 +650,153 @@ In JavaScript: If you use Array.sort in your solution, you might experience issu
 
 Happy coding! :)
 */
-function longestRepetition(text: string): [string, number] {
-    return ["hello", 1];
+const longestRepetition = (str: string): [string, number] => {
+
+    if (!str) return ["", 0];
+
+    // const re = /([a-z])\1{0,}/g;
+    const re = /(.)\1{0,}/g;
+    // [ 'bbb', 'aaa', 'aaaa' ]
+    const matchesArr: string[] = str.match(re)!;
+    console.log(matchesArr);
+    // [ 'aaaa', 'bbb', 'aaa' ]
+    const descArr: string[] = matchesArr.sort((a, b) => b.length - a.length);
+    console.log(descArr);
+    // a 4 - FIRST CHAR OF LONGEST ELEMENT AND ITS LENGTH
+    console.log(descArr[0][0], descArr[0].length);
+
+    const solution: [string, number] = [descArr[0][0], descArr[0].length];
+
+
+    return solution;
 }
 
+// ❗️❗️❗️ MATCH REPEATING CHARACTERS: /(.)\1{1,}/ 
+// ❗️❗️❗️ MATCH REPEATING LETTERS, MORE THAN 1: ([a-z])\1{1,}  THIS DOES NOT MATCH "a", "b" IN "ab"
+// ❗️❗️❗️ MATCH ALL CONSECUTIVE LETTERS (SINGLE TO INFINITY), MORE THAN 0: ([a-z])\1{0,} ❗️❗️❗️ THIS MATCHES "a", "b" IN "ab" ❗️❗️❗️
+// ❗️❗️❗️ WORKS FOR ALL CHARACTERS /(.)\1{0,}/g ❗️❗️❗️
+
+
 //   assert.deepStrictEqual(longestRepetition('aaaabb'), ['a', 4])
-//   assert.deepStrictEqual(longestRepetition('bbbaaabaaaa'), ['a', 4])
+// assert.deepStrictEqual(longestRepetition('bbbaaabaaaa'), ['a', 4])
 //   assert.deepStrictEqual(longestRepetition('cbdeuuu900'), ['u', 3])
 //   assert.deepStrictEqual(longestRepetition('abbbbb'), ['b', 5])
 //   assert.deepStrictEqual(longestRepetition('aabb'), ['a', 2])
 //   assert.deepStrictEqual(longestRepetition('ba'), ['b', 1])
 //   assert.deepStrictEqual(longestRepetition(''), ['', 0])
 
-// console.log();
+// console.log(longestRepetition('ba'));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function longestRepetition2(text: string): [string, number] {
+    const output: [string, number] = ['', 0];
+    text.match(/(.)\1*/g)?.forEach(match => {
+        if (match?.length > output[1]) {
+            output[0] = match.charAt(0);
+            output[1] = match.length
+        }
+    });
+    return output;
+}
+
+
+function longestRepetition3(text: string): [string, number] {
+    let longest = { char: '', len: 0 };
+    let current = { ...longest };
+
+    text.split('').forEach(character => {
+        if (character === current.char) {
+            current.len += 1;
+        } else {
+            current.char = character;
+            current.len = 1;
+        }
+
+        if (current.len > longest.len) {
+            longest.char = current.char;
+            longest.len = current.len;
+        }
+    });
+
+    return [longest.char, longest.len];
+}
+
+
+function longestRepetition4(text: string): [string, number] {
+    let currentChar: string = '';
+    let currentCount: number = 0;
+    let maxChar: string = '';
+    let maxCount: number = 0;
+
+    for (let i = 0; i <= text.length; i++) {
+        let char: string = text[i];
+
+        if (char === currentChar) {
+            currentCount++;
+        } else {
+            if (currentCount > maxCount) {
+                maxCount = currentCount;
+                maxChar = currentChar;
+            }
+
+            currentChar = char;
+            currentCount = 1;
+        }
+    }
+
+    return [maxChar, maxCount];
+}
+
+
+function longestRepetition5(text: string): [string, number] {
+    let longest: { char: string, repeat: number } = { char: "", repeat: 0 };
+    let attempt: { char: string, repeat: number } = { char: "", repeat: 0 };
+
+    text.split('').forEach((alpha: string) => {
+        if (alpha === attempt.char) attempt.repeat += 1;
+        else attempt = { char: alpha, repeat: 1 }
+
+        if (attempt.repeat > longest.repeat) {
+            longest.repeat = attempt.repeat;
+            longest.char = attempt.char;
+        }
+    })
+
+    return [longest.char, longest.repeat];
+}
+
+
+function longestRepetition6(text: string): [string, number] {
+    // Implement me! :)
+
+    const match = text.match(/(\w)\1*/gm);
+    if (match) {
+        const res = match.sort((a, b) => b.length - a.length)[0];
+        return [res[0], res.length];
+    }
+
+    return ['', 0];
+}
+
+
+function longestRepetition7(text: string): [string, number] {
+    return text
+        .split("")
+        .reduce((acc: [string, number][], curr) => {
+            const last = acc[acc.length - 1];
+            if (!!last && last[0] === curr) {
+                last[1] += 1;
+            } else {
+                acc.push([curr, 1]);
+            }
+            return acc;
+        }, [])
+        .reduce((acc, curr) => (curr[1] > acc[1] ? curr : acc), ["", 0]);
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DECIPHER THIS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
