@@ -69,6 +69,72 @@ const timeCorrect = (timeStr) => {
     const solution = padSolArr.join(":");
     return solution;
 };
+function timeCorrect2(ts) {
+    if (ts === "")
+        return "";
+    if (ts === null || !ts.match(/^[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]$/))
+        return null;
+    let [h, m, s] = ts.split(':').map(v => parseInt(v));
+    let temp = 0;
+    [s, temp] = convToUp(s);
+    [m, temp] = convToUp(m + temp);
+    h = (h + temp) % 24;
+    return [h, m, s].map(v => (`0${v}`).substr(v.toString().length - 1)).join(':');
+}
+function convToUp(num) {
+    let s = num % 60;
+    let temp = (num - s) / 60;
+    return [s, temp];
+}
+function timeCorrect3(timestring) {
+    if (!timestring || timestring === "")
+        return timestring;
+    else if (!/^\d\d:\d\d:\d\d$/.test(timestring))
+        return null;
+    let [h, m, s] = timestring.split(":").map(x => +x);
+    m += Math.floor(s / 60);
+    h += Math.floor(m / 60);
+    return [h % 24, m % 60, s % 60].map(x => ("" + x).padStart(2, '0')).join(":");
+}
+function timeCorrect4(timestring) {
+    if (timestring === null || timestring === '')
+        return timestring;
+    if (!timestring.match(/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/))
+        return null;
+    let [h, m, s] = timestring.split(":").map(s => parseInt(s));
+    if (s >= 60) {
+        s -= 60;
+        m++;
+    }
+    if (m >= 60) {
+        m -= 60;
+        h++;
+    }
+    h = h % 24;
+    return `${(h < 10) ? "0" + h : h}:${(m < 10) ? "0" + m : m}:${(s < 10) ? "0" + s : s}`;
+}
+const timeCorrect5 = (timestring) => {
+    if (timestring == "")
+        return "";
+    else if (!timestring)
+        return null;
+    const [house, minutes, seconds] = timestring.split(":").map(Number);
+    if (!(house && minutes && seconds))
+        return null;
+    return new Date(0, 0, 0, house, minutes, seconds).toLocaleTimeString("en-GB", { hour12: false });
+};
+function timeCorrect6(timestring) {
+    if (timestring === "")
+        return "";
+    if (timestring === null || !/\d{2}:\d{2}:\d{2}/.test(timestring))
+        return null;
+    let timeArr = timestring.split(":");
+    let totalSeconds = ((+timeArr[0]) * 60 * 60 + (+timeArr[1]) * 60 + +timeArr[2]) % 86400;
+    let hours = Math.floor(totalSeconds / 3600);
+    let minutes = Math.floor((totalSeconds - hours * 3600) / 60);
+    let seconds = (totalSeconds - hours * 3600 - minutes * 60);
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
 const extraPerfect = (num) => {
     let solution = [];
     for (let i = 0; i <= num; i += 1) {
