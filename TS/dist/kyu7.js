@@ -40,21 +40,35 @@ const flyBy = (lamps, drone) => {
     return "hello";
 };
 const timeCorrect = (timeStr) => {
-    if (timeStr === null)
-        return null;
     if (!timeStr)
         return timeStr;
     const re = /\d{2}:\d{2}:\d{2}/;
     const isValidFormat = re.test(timeStr) && timeStr.length === 8;
-    console.log("isValidFormat:", isValidFormat);
     if (!isValidFormat)
         return null;
     const hmsArr = timeStr.split(":").map((str) => Number(str));
-    console.log(hmsArr);
-    return "?";
+    const getSeconds = (numArr) => {
+        return numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
+    };
+    let totalSeconds = getSeconds(hmsArr);
+    let hour = 0, min = 0, sec = 0;
+    if (totalSeconds > 3599) {
+        hour += Math.floor(totalSeconds / 3600) % 24;
+        totalSeconds = totalSeconds % 3600;
+    }
+    if (totalSeconds > 59) {
+        min += Math.floor(totalSeconds / 60);
+        totalSeconds = totalSeconds % 60;
+    }
+    sec = totalSeconds;
+    let solutionArr = [hour, min, sec];
+    const padToTwo = (num) => {
+        return num < 10 ? `0${num}` : num.toString();
+    };
+    const padSolArr = solutionArr.map((num) => padToTwo(num));
+    const solution = padSolArr.join(":");
+    return solution;
 };
-console.log(timeCorrect("001122"));
-console.log(timeCorrect("09:10:01"));
 const extraPerfect = (num) => {
     let solution = [];
     for (let i = 0; i <= num; i += 1) {

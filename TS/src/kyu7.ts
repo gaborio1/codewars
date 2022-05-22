@@ -862,7 +862,7 @@ const flyBy = (lamps: string, drone: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CORRECT THE TIME-STRING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -884,22 +884,57 @@ Examples
 If the input-string is null or empty return exactly this value! (empty string for C++) If the time-string-format is invalid, return null. (empty string for C++)
 */
 const timeCorrect = (timeStr: string | null): string | null => {
-    if (timeStr === null) return null;
+    // NOT NECESSARY
+    // if (timeStr === null) return null;
     if (!timeStr) return timeStr;
 
     // MATCH dd:dd:dd FORMAT
     const re = /\d{2}:\d{2}:\d{2}/;
     // ALSO, CHECK LENGTH IS 8
     const isValidFormat: boolean = re.test(timeStr) && timeStr.length === 8;
-    console.log("isValidFormat:", isValidFormat);
 
     if (!isValidFormat) return null;
 
     // [ 9, 10, 1 ]
     const hmsArr: number[] = timeStr.split(":").map((str) => Number(str));
-    console.log(hmsArr);
 
-    return "?";
+    // [ 9, 10, 1 ] => 33001
+    const getSeconds = (numArr: number[]) => {
+        return numArr[0] * 3600 + numArr[1] * 60 + numArr[2];
+    };
+
+    let totalSeconds: number = getSeconds(hmsArr);
+
+    // COUNT HOURS, MINS AND SECS:   33001 =>  9 10 1
+    let hour: number = 0,
+        min: number = 0,
+        sec: number = 0;
+
+    if (totalSeconds > 3599) {
+        hour += Math.floor(totalSeconds / 3600) % 24;
+        totalSeconds = totalSeconds % 3600;
+    }
+    if (totalSeconds > 59) {
+        min += Math.floor(totalSeconds / 60);
+        totalSeconds = totalSeconds % 60;
+    }
+    sec = totalSeconds;
+
+    // 9 10 1 - NEED TO PAD TO TWO AND FORMAT
+    let solutionArr: number[] = [hour, min, sec];
+
+    // 1 => "01"
+    const padToTwo = (num: number): string => {
+        return num < 10 ? `0${num}` : num.toString();
+    };
+
+    // [ '09', '10', '01' ]
+    const padSolArr: string[] = solutionArr.map((num) => padToTwo(num));
+
+    // 09:10:01
+    const solution: string = padSolArr.join(":");
+
+    return solution;
 };
 
 // it("Basic Tests", function() {
@@ -920,10 +955,11 @@ const timeCorrect = (timeStr: string | null): string | null => {
 //     assert.equal(solution.timeCorrect("24:01:01"), "00:01:01");
 //     assert.equal(solution.timeCorrect("52:01:01"), "04:01:01");
 
-console.log(timeCorrect("001122"));
+// console.log(timeCorrect("52:01:01"));
+// console.log(timeCorrect("001122"));
 // console.log(timeCorrect(""));
 // console.log(timeCorrect(null));
-console.log(timeCorrect("09:10:01"));
+// console.log(timeCorrect("09:10:01"));
 // console.log(timeCorrect("19:99:09"));
 // console.log();
 
