@@ -883,7 +883,22 @@ Examples
 "24:01:01" -> "00:01:01"  
 If the input-string is null or empty return exactly this value! (empty string for C++) If the time-string-format is invalid, return null. (empty string for C++)
 */
-const timeCorrect = (timestring: string | null): string | null => {
+const timeCorrect = (timeStr: string | null): string | null => {
+    if (timeStr === null) return null;
+    if (!timeStr) return timeStr;
+
+    // MATCH dd:dd:dd FORMAT
+    const re = /\d{2}:\d{2}:\d{2}/;
+    // ALSO, CHECK LENGTH IS 8
+    const isValidFormat: boolean = re.test(timeStr) && timeStr.length === 8;
+    console.log("isValidFormat:", isValidFormat);
+
+    if (!isValidFormat) return null;
+
+    // [ 9, 10, 1 ]
+    const hmsArr: number[] = timeStr.split(":").map((str) => Number(str));
+    console.log(hmsArr);
+
     return "?";
 };
 
@@ -905,9 +920,11 @@ const timeCorrect = (timestring: string | null): string | null => {
 //     assert.equal(solution.timeCorrect("24:01:01"), "00:01:01");
 //     assert.equal(solution.timeCorrect("52:01:01"), "04:01:01");
 
-// console.log();
-// console.log();
-// console.log();
+console.log(timeCorrect("001122"));
+// console.log(timeCorrect(""));
+// console.log(timeCorrect(null));
+console.log(timeCorrect("09:10:01"));
+// console.log(timeCorrect("19:99:09"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
@@ -915,7 +932,7 @@ const timeCorrect = (timestring: string | null): string | null => {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: EXTRA PERFECT NUMBERS (Special Numbers Series #7)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: ODD NUMBERS UP TO N INCLUSIVE, STARTSWITH, ENDSWITH
+// KEYWORDS: ODD NUMBERS UP TO N INCLUSIVE, STARTSWITH, ENDSWITHD
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

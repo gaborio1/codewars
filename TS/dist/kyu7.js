@@ -39,9 +39,22 @@ const change = (string) => {
 const flyBy = (lamps, drone) => {
     return "hello";
 };
-const timeCorrect = (timestring) => {
+const timeCorrect = (timeStr) => {
+    if (timeStr === null)
+        return null;
+    if (!timeStr)
+        return timeStr;
+    const re = /\d{2}:\d{2}:\d{2}/;
+    const isValidFormat = re.test(timeStr) && timeStr.length === 8;
+    console.log("isValidFormat:", isValidFormat);
+    if (!isValidFormat)
+        return null;
+    const hmsArr = timeStr.split(":").map((str) => Number(str));
+    console.log(hmsArr);
     return "?";
 };
+console.log(timeCorrect("001122"));
+console.log(timeCorrect("09:10:01"));
 const extraPerfect = (num) => {
     let solution = [];
     for (let i = 0; i <= num; i += 1) {
