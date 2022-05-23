@@ -34,8 +34,39 @@ const freqSeq = (str, sep) => {
     return "";
 };
 const change = (string) => {
-    return "hello";
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let solution = "";
+    for (let char of alphabet) {
+        solution += string.toLowerCase().indexOf(char) > -1
+            ? "1"
+            : "0";
+    }
+    return solution;
 };
+function change2(string) {
+    return 'abcdefghijklmnopqrstuvwxyz'.split('').map(x => new RegExp(`${x}`, "i").test(string) ? '1' : '0').join('');
+}
+function change3(str) {
+    const result = Array(26).fill(0);
+    for (const ch of str.toUpperCase()) {
+        if (ch >= 'A' && ch <= 'Z') {
+            result[ch.charCodeAt(0) - 65] = 1;
+        }
+    }
+    return result.join('');
+}
+function change5(s) {
+    let returnStr = '';
+    for (let i = 65; i < 91; i++) {
+        if (s.toUpperCase().includes(String.fromCharCode(i))) {
+            returnStr = returnStr.concat('1');
+        }
+        else {
+            returnStr = returnStr.concat('0');
+        }
+    }
+    return returnStr;
+}
 const flyBy = (lamps, drone) => {
     return "hello";
 };

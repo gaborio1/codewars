@@ -1125,8 +1125,8 @@ OUTPUT EXAMPLE:
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️ REFACTOR ❗️❗️❗️
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ TRY TO REFACTOR OTHER PRIME CHALLENGES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  GAP IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1190,14 +1190,23 @@ class G964b {
         // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
 
         // ISPRIME() FROM PREVIOUS CODEWARS EXAMPLE
+        // const isPrime = (num: number) => {
+        //     if (num === 1 || num === 2) return true;
+        //     for (let i = 2; i < num; i++) {
+        //         // console.table({num: num, divider: i});
+        //         if (num % i === 0) return false;
+        //     }
+        //     return true;
+        // };
         const isPrime = (num: number) => {
-            if (num === 1 || num === 2) return true;
-            for (let i = 2; i < num; i++) {
-                // console.table({num: num, divider: i});
-                if (num % i === 0) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
             }
             return true;
-        };
+        }
+
 
         //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
         for (let i = min; i <= max; i++) {
@@ -1260,6 +1269,81 @@ G964b.gap(2, 100, 110) LOGS:
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+class G964b1 {
+
+    public static gap = (g: number, m: number, n: number) => {
+        let lower = 0;
+        for (let i = m; i < n; i++) {
+            if (G964b1.isPrime(i)) {
+                if (lower === 0 || i - lower !== g) {
+                    lower = i;
+                } else {
+                    return [lower, i];
+                }
+            }
+        }
+        return null;
+    }
+
+    private static isPrime(n: number) {
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+// class G964b2 {
+
+//     public static gap = (g:number, m:number, n:number):number[] => {
+//       let store:number;
+//       for (let i = m; i <= n; i++) {
+//         if (G964b2.isPrime(i)) {
+//           if (i - store === g) {return [store, i]}
+//           else {store = i};
+//         };
+//       }
+//       return null;
+//     }
+
+//     public static isPrime = (n:number):boolean => {
+//       for (let x = Math.floor(Math.sqrt(n)); x > 1; x--) {
+//         if (n % x === 0) {return false};
+//       }
+//       return true;
+//     };
+//   }
+
+
+class G964b3 {
+
+    public static gap = (g: number, m: number, n: number) => {
+        const primes = [];
+
+        for (let i = m; i < n; i++) {
+            let prime = true;
+            for (let j = 2; j < (i) / 2; j++) {
+                if (i % j === 0) {
+                    prime = false;
+                    break;
+                }
+            }
+            if (prime) {
+                primes.push(i);
+                const length = primes.length;
+                if (length > 1) {
+                    if (primes[length - 1] - primes[length - 2] === g) {
+                        return [primes[length - 2], primes[length - 1]];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+}
+
 
 // ❗️❗️❗️ INCLUDE ISPRIME() IN CODEWARS EXAMPLES ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -1350,14 +1434,23 @@ const primeFactors = (num: number): string => {
     let numRemainder = num;
     let solution: string = "";
 
+    // const isPrime = (num: number) => {
+    //     if (num === 1 || num === 2) return true;
+    //     for (let i = 2; i < num; i++) {
+    //         // console.table({num: num, divider: i});
+    //         if (num % i === 0) return false;
+    //     }
+    //     return true;
+    // };
+
     const isPrime = (num: number) => {
-        if (num === 1 || num === 2) return true;
-        for (let i = 2; i < num; i++) {
-            // console.table({num: num, divider: i});
-            if (num % i === 0) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
         }
         return true;
-    };
+    }
 
     //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
     for (let i = 2; i < (num - 1) / 2; i++) {

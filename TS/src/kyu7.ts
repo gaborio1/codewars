@@ -797,10 +797,12 @@ const freqSeq = (str: string, sep: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SEARCH FOR LETTERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ARRAY.FILL, NEW REGEXP() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -817,7 +819,22 @@ For instance:
 "a   **&  cZ"  =>  "10100000000000000000000001"
 */
 const change = (string: string): string => {
-    return "hello";
+
+    const alphabet: string = "abcdefghijklmnopqrstuvwxyz";
+
+    let solution: string = "";
+
+    for (let char of alphabet) {
+        // console.log(char);
+        solution += string.toLowerCase().indexOf(char) > -1
+            ? "1"
+            : "0"
+    }
+
+    // console.log(solution);
+
+    return solution;
+
 };
 
 // "11000000000000000000000001"
@@ -828,6 +845,35 @@ const change = (string: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ NEW REGEXP() ❗️❗️❗️
+function change2(string: string): string {
+    // ❓❓❓  new RegExp(`${x}`, "i") ❓❓❓
+    return 'abcdefghijklmnopqrstuvwxyz'.split('').map(x => new RegExp(`${x}`, "i").test(string) ? '1' : '0').join('')
+}
+
+// ARRAY.FILL()
+function change3(str: string): string {
+    const result = Array(26).fill(0);
+    for (const ch of str.toUpperCase()) {
+        if (ch >= 'A' && ch <= 'Z') {
+            result[ch.charCodeAt(0) - 65] = 1;
+        }
+    }
+    return result.join('');
+}
+
+
+function change5(s: string): string {
+    let returnStr = '';
+    for (let i = 65; i < 91; i++) {
+        if (s.toUpperCase().includes(String.fromCharCode(i))) {
+            returnStr = returnStr.concat('1');
+        } else {
+            returnStr = returnStr.concat('0');
+        }
+    }
+    return returnStr;
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: DRONE FLY-BY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

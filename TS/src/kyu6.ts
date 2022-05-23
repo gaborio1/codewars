@@ -586,10 +586,10 @@ const data1 =
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BACKWARDS READ PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ISPRIME() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -613,20 +613,283 @@ Notes
 Forth Return only the first backwards-read prime between start and end or 0 if you don't find any
 Ruby Don't use Ruby Prime class, it's disabled.
 */
-function backwardsPrime(start: number, stop: number): number[] {
-    return [1];
+
+// 1️⃣
+const backwardsPrime = (min: number, max: number): number[] => {
+
+    let primesArr: number[] = [];
+
+    // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+    // DETERMINE WHETER NUM IS PRIME
+
+    const isPrime = (num: number) => {
+        if (num === 1 || num === 2) return true;
+        for (let i = 2; i < num; i++) {
+            // console.table({num: num, divider: i});
+            if (num % i === 0) return false;
+        }
+        return true;
+    };
+
+
+    //   FIND PRIMES 
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            // console.log("prime found: ", prime);
+            primesArr.push(prime);
+        }
+    }
+    // [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
+    console.log("PRIMES:", primesArr);
+
+    // REVERSE FOUND PRIMES
+    // 1007 3107 9107 7207 9307 3407 7507 9607 9707
+
+    const solution: number[] = primesArr.filter((prime) => {
+        const revPrime: number = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""))
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+
+    // console.log("   TEST:", solution2);
+    // [ 7207, 3407, 7507 ]
+    return solution;
+
 }
 
+// 2️⃣  https://www.tutorialspoint.com/prime-numbers-in-a-range-javascript
+
+const backwardsPrime2 = (min: number, max: number): number[] => {
+
+    let primesArr: number[] = [];
+
+    // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+    // DETERMINE WHETER NUM IS PRIME
+    const isPrime = (num: number) => {
+        let count = 2;
+        while (count < (num / 2) + 1) {
+            if (num % count !== 0) {
+                count++;
+                continue;
+            };
+            return false;
+        };
+        return true;
+    };
+
+    const primeBetween = (a: number, b: number) => {
+        // let count = 0;
+        for (let i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            if (isPrime(i)) {
+                //   count++;
+                primesArr.push(i);
+            };
+        };
+        // return count;
+    };
+
+    //   FIND PRIMES 
+    primeBetween(min, max);
+
+    // [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
+    console.log("PRIMES:", primesArr);
+
+    // REVERSE FOUND PRIMES
+    // 1007 3107 9107 7207 9307 3407 7507 9607 9707
+
+    const solution: number[] = primesArr.filter((prime) => {
+        const revPrime: number = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""))
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+
+    // console.log("   TEST:", solution2);
+    // [ 7207, 3407, 7507 ]
+    return solution;
+
+}
+
+// 3️⃣ https://www.programiz.com/javascript/examples/prime-number-intervals
+const backwardsPrime3 = (min: number, max: number): number[] => {
+
+    let primesArr: number[] = [];
+
+    function isPrime(num: number) {
+        for (var i = 2; i < num; i++)
+            if (num % i === 0) return false;
+        return num > 1;
+    }
+
+    // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+    // looping from lowerNumber to higherNumber
+    for (let i = min; i <= max; i++) {
+        let flag = 0;
+
+        // looping through 2 to user input number
+        for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+                flag = 1;
+                break;
+            }
+        }
+
+        // if number greater than 1 and not divisible by other numbers
+        if (i > 1 && flag == 0) {
+            // console.log(i);
+            primesArr.push(i);
+        }
+    }
+    // [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
+    console.log("PRIMES:", primesArr);
+
+    // REVERSE FOUND PRIMES
+    // 1007 3107 9107 7207 9307 3407 7507 9607 9707
+
+    const solution: number[] = primesArr.filter((prime) => {
+        const revPrime: number = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""))
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+
+    // console.log("   TEST:", solution2);
+    // [ 7207, 3407, 7507 ]
+    return solution;
+
+}
+
+// 4️⃣ ✅  ❗️❗️❗️ ISPRIME(): https://gist.github.com/sandrabosk/17319bb427dc4e457595d6670a455f57 ❗️❗️❗️
+const backwardsPrime4 = (min: number, max: number): number[] => {
+
+    let primesArr: number[] = [];
+
+    // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+    // ❗️❗️❗️ DETERMINE WHETER NUM IS PRIME ❗️❗️❗️
+    const isPrime = (num: number) => {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //   FIND PRIMES [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            primesArr.push(prime);
+        }
+    }
+
+    // FILTER OUT PRIMES THAT EQUAL TO THEIR REVERSED VERSIONS AND NOT PALINDROMES
+    // 1007 3107 9107 7207 9307 3407 7507 9607 9707
+    const solution: number[] = primesArr.filter((prime) => {
+        const revPrime: number = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""))
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+
+    // [ 7207, 3407, 7507 ]
+    return solution;
+
+}
 // [7027, 7043, 7057]
 // console.log(backwardsPrime(7000, 7100));
-// [70001, 70009, 70061, 70079, 70121, 70141, 70163, 70241]
-// console.log(backwardsPrime(70000, 70245));
+//  TO EQUAL [ 70001, 70009, 70061, 70079, 70121, 70141, 70163,        70241 ]
+console.log(backwardsPrime4(70000, 70245));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function backwardsPrime5(start: number, stop: number): number[] {
+    const prime = []
+    for (let i = start < 10 ? 11 : start; i <= stop; i++) {
+        if (isPrime(i)) {
+            if (isPrime(Number(i.toString().split('').reverse().join('')))) {
+                if (!isPalindrome(String(i))) {
+                    prime.push(i)
+                }
+            }
+        }
+    }
 
+    return prime
+}
 
+export const isPrime = (num: number): boolean => {
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++) if (num % i === 0) return false
+    return num > 1
+}
+
+export function isPalindrome(str: string): boolean {
+    return str == str.split('').reverse().join('')
+}
+
+// ===========================================================
+
+function isPrime2(num: number): boolean {
+    for (let i = 2; i * i <= num; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+export function backwardsPrime7(start: number, stop: number): number[] {
+    const result: number[] = [];
+    for (let num = start; num <= stop; num++) {
+        if (!isPrime2(num)) continue;
+        const backward = parseInt(num.toString().split('').reverse().join(''));
+        if (backward !== num && isPrime2(backward)) result.push(num);
+    }
+    return result;
+}
+// ===========================================================
+
+function isPrime3(n: number): boolean {
+    for (var x = 2; x <= Math.sqrt(n); x++) {
+        if (n % x === 0) {
+            return false;
+        }
+    }
+
+    return n > 1;
+}
+
+function reverseNumber(n: number): number {
+    return Number(String(n).split("").reverse().join(""));
+}
+
+export function backwardsPrime8(start: number, stop: number): number[] {
+    var output: number[] = [];
+
+    for (let n = start; n <= stop; n++) {
+        let m: number = reverseNumber(n);
+
+        if (m != n && isPrime3(n) && isPrime3(m)) {
+            output.push(n);
+        }
+    }
+
+    return output;
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

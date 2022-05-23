@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = void 0;
 function sortTheInnerContent(words) {
     return words;
 }
@@ -54,9 +54,195 @@ const data1 = "Rome:Jan 90.2,Feb 73.2,Mar 80.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17
     "Beijing:Jan 13.9,Feb 14.7,Mar 18.2,Apr 18.4,May 43.0,Jun 88.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 38.0,Nov 19.3,Dec 2.7" +
     "\n" +
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
-function backwardsPrime(start, stop) {
-    return [1];
+const backwardsPrime = (min, max) => {
+    let primesArr = [];
+    const isPrime = (num) => {
+        if (num === 1 || num === 2)
+            return true;
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0)
+                return false;
+        }
+        return true;
+    };
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            primesArr.push(prime);
+        }
+    }
+    console.log("PRIMES:", primesArr);
+    const solution = primesArr.filter((prime) => {
+        const revPrime = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""));
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+    return solution;
+};
+const backwardsPrime2 = (min, max) => {
+    let primesArr = [];
+    const isPrime = (num) => {
+        let count = 2;
+        while (count < (num / 2) + 1) {
+            if (num % count !== 0) {
+                count++;
+                continue;
+            }
+            ;
+            return false;
+        }
+        ;
+        return true;
+    };
+    const primeBetween = (a, b) => {
+        for (let i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            if (isPrime(i)) {
+                primesArr.push(i);
+            }
+            ;
+        }
+        ;
+    };
+    primeBetween(min, max);
+    console.log("PRIMES:", primesArr);
+    const solution = primesArr.filter((prime) => {
+        const revPrime = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""));
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+    return solution;
+};
+const backwardsPrime3 = (min, max) => {
+    let primesArr = [];
+    function isPrime(num) {
+        for (var i = 2; i < num; i++)
+            if (num % i === 0)
+                return false;
+        return num > 1;
+    }
+    for (let i = min; i <= max; i++) {
+        let flag = 0;
+        for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+                flag = 1;
+                break;
+            }
+        }
+        if (i > 1 && flag == 0) {
+            primesArr.push(i);
+        }
+    }
+    console.log("PRIMES:", primesArr);
+    const solution = primesArr.filter((prime) => {
+        const revPrime = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""));
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+    return solution;
+};
+const backwardsPrime4 = (min, max) => {
+    let primesArr = [];
+    const isPrime = (num) => {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    };
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            primesArr.push(prime);
+        }
+    }
+    const solution = primesArr.filter((prime) => {
+        const revPrime = Number(prime
+            .toString()
+            .split("")
+            .reverse()
+            .join(""));
+        return isPrime(revPrime) && revPrime !== prime;
+    });
+    return solution;
+};
+console.log(backwardsPrime4(70000, 70245));
+function backwardsPrime5(start, stop) {
+    const prime = [];
+    for (let i = start < 10 ? 11 : start; i <= stop; i++) {
+        if ((0, exports.isPrime)(i)) {
+            if ((0, exports.isPrime)(Number(i.toString().split('').reverse().join('')))) {
+                if (!isPalindrome(String(i))) {
+                    prime.push(i);
+                }
+            }
+        }
+    }
+    return prime;
 }
+const isPrime = (num) => {
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+        if (num % i === 0)
+            return false;
+    return num > 1;
+};
+exports.isPrime = isPrime;
+function isPalindrome(str) {
+    return str == str.split('').reverse().join('');
+}
+exports.isPalindrome = isPalindrome;
+function isPrime2(num) {
+    for (let i = 2; i * i <= num; i++) {
+        if (num % i === 0)
+            return false;
+    }
+    return true;
+}
+function backwardsPrime7(start, stop) {
+    const result = [];
+    for (let num = start; num <= stop; num++) {
+        if (!isPrime2(num))
+            continue;
+        const backward = parseInt(num.toString().split('').reverse().join(''));
+        if (backward !== num && isPrime2(backward))
+            result.push(num);
+    }
+    return result;
+}
+exports.backwardsPrime7 = backwardsPrime7;
+function isPrime3(n) {
+    for (var x = 2; x <= Math.sqrt(n); x++) {
+        if (n % x === 0) {
+            return false;
+        }
+    }
+    return n > 1;
+}
+function reverseNumber(n) {
+    return Number(String(n).split("").reverse().join(""));
+}
+function backwardsPrime8(start, stop) {
+    var output = [];
+    for (let n = start; n <= stop; n++) {
+        let m = reverseNumber(n);
+        if (m != n && isPrime3(n) && isPrime3(m)) {
+            output.push(n);
+        }
+    }
+    return output;
+}
+exports.backwardsPrime8 = backwardsPrime8;
 const longestRepetition = (str) => {
     if (!str)
         return ["", 0];

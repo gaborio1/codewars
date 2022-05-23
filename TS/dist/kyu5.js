@@ -358,11 +358,10 @@ G964b.gap = (gap, min, max) => {
     let primesArr = [];
     let allMatchesArr = [];
     const isPrime = (num) => {
-        if (num === 1 || num === 2)
-            return true;
-        for (let i = 2; i < num; i++) {
-            if (num % i === 0)
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
                 return false;
+            }
         }
         return true;
     };
@@ -393,6 +392,54 @@ G964b.gap = (gap, min, max) => {
     solution = allMatchesArr[0];
     return solution;
 };
+class G964b1 {
+    static isPrime(n) {
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+G964b1.gap = (g, m, n) => {
+    let lower = 0;
+    for (let i = m; i < n; i++) {
+        if (G964b1.isPrime(i)) {
+            if (lower === 0 || i - lower !== g) {
+                lower = i;
+            }
+            else {
+                return [lower, i];
+            }
+        }
+    }
+    return null;
+};
+class G964b3 {
+}
+G964b3.gap = (g, m, n) => {
+    const primes = [];
+    for (let i = m; i < n; i++) {
+        let prime = true;
+        for (let j = 2; j < (i) / 2; j++) {
+            if (i % j === 0) {
+                prime = false;
+                break;
+            }
+        }
+        if (prime) {
+            primes.push(i);
+            const length = primes.length;
+            if (length > 1) {
+                if (primes[length - 1] - primes[length - 2] === g) {
+                    return [primes[length - 2], primes[length - 1]];
+                }
+            }
+        }
+    }
+    return null;
+};
 const countPrimes = (primes) => {
     const counter = {};
     primes.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
@@ -404,11 +451,10 @@ const primeFactors = (num) => {
     let numRemainder = num;
     let solution = "";
     const isPrime = (num) => {
-        if (num === 1 || num === 2)
-            return true;
-        for (let i = 2; i < num; i++) {
-            if (num % i === 0)
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
                 return false;
+            }
         }
         return true;
     };
