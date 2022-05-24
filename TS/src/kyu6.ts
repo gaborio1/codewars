@@ -528,10 +528,38 @@ A ref: http://www.mathsisfun.com/data/standard-deviation.html
 data and data1 (can be named d0 and d1 depending on the language; see "Sample Tests:") are adapted from: http://www.worldclimate.com
 */
 class G9646 {
-    public static mean = (town: string, strng: string) => {
-        // your code
+
+    public static getFigures = (town: string, dataStr: string): string[] => {
+        // SPLIT DATA INTO ARRAYS FOR EACH TOWN
+        const townsArr: string[] = dataStr.split("\n");
+        console.log(townsArr);
+        // GET TARGET TOWN AND ITS MONTHLY READINGS
+        // ['London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9']
+        const townRec: string[] = townsArr.filter((townData) => townData.startsWith(town));
+        console.log(townRec);
+        // EXTRACT ALL NUMERIC FIGURES
+        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9']
+        const monthRec: string[] = townRec[0].match(/\d{0,}\.\d{0,}/g)!;
+        // console.log(monthRec);
+
+        return monthRec;
+    }
+
+    public static mean = (town: string, str: string) => {
+
+        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9'] 
+        // ==> 51.199999999999996
+        const solution: number = G9646.getFigures(town, str)
+            .map((figure) => Number(figure))
+            .reduce((acc, curr) => acc + curr) / G9646.getFigures(town, str).length;
+
+
+        // console.log(solution);
+        // 51.199999999999996
+        return solution;
+
     };
-    public static variance = (town: string, strng: string) => {
+    public static variance = (town: string, str: string) => {
         // your code
     };
 }
@@ -578,7 +606,7 @@ const data1 =
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
 
 // 51.199999999999996
-// console.log(G964.mean("London", data));
+console.log(G9646.mean("London", data));
 // 57.42833333333374
 // console.log(G964.variance("London", data));
 // console.log();
@@ -815,7 +843,7 @@ const backwardsPrime4 = (min: number, max: number): number[] => {
 // [7027, 7043, 7057]
 // console.log(backwardsPrime(7000, 7100));
 //  TO EQUAL [ 70001, 70009, 70061, 70079, 70121, 70141, 70163,        70241 ]
-console.log(backwardsPrime4(70000, 70245));
+// console.log(backwardsPrime4(70000, 70245));
 // console.log();
 // console.log();
 

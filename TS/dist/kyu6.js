@@ -12,9 +12,21 @@ G9647.step = (g, m, n) => {
 };
 class G9646 {
 }
-G9646.mean = (town, strng) => {
+G9646.getFigures = (town, dataStr) => {
+    const townsArr = dataStr.split("\n");
+    console.log(townsArr);
+    const townRec = townsArr.filter((townData) => townData.startsWith(town));
+    console.log(townRec);
+    const monthRec = townRec[0].match(/\d{0,}\.\d{0,}/g);
+    return monthRec;
 };
-G9646.variance = (town, strng) => {
+G9646.mean = (town, str) => {
+    const solution = G9646.getFigures(town, str)
+        .map((figure) => Number(figure))
+        .reduce((acc, curr) => acc + curr) / G9646.getFigures(town, str).length;
+    return solution;
+};
+G9646.variance = (town, str) => {
 };
 const data = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
     "\n" +
@@ -54,6 +66,7 @@ const data1 = "Rome:Jan 90.2,Feb 73.2,Mar 80.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17
     "Beijing:Jan 13.9,Feb 14.7,Mar 18.2,Apr 18.4,May 43.0,Jun 88.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 38.0,Nov 19.3,Dec 2.7" +
     "\n" +
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
+console.log(G9646.mean("London", data));
 const backwardsPrime = (min, max) => {
     let primesArr = [];
     const isPrime = (num) => {
@@ -177,7 +190,6 @@ const backwardsPrime4 = (min, max) => {
     });
     return solution;
 };
-console.log(backwardsPrime4(70000, 70245));
 function backwardsPrime5(start, stop) {
     const prime = [];
     for (let i = start < 10 ? 11 : start; i <= stop; i++) {
