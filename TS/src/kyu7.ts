@@ -819,22 +819,18 @@ For instance:
 "a   **&  cZ"  =>  "10100000000000000000000001"
 */
 const change = (string: string): string => {
-
     const alphabet: string = "abcdefghijklmnopqrstuvwxyz";
 
     let solution: string = "";
 
     for (let char of alphabet) {
         // console.log(char);
-        solution += string.toLowerCase().indexOf(char) > -1
-            ? "1"
-            : "0"
+        solution += string.toLowerCase().indexOf(char) > -1 ? "1" : "0";
     }
 
     // console.log(solution);
 
     return solution;
-
 };
 
 // "11000000000000000000000001"
@@ -848,36 +844,38 @@ const change = (string: string): string => {
 // ❗️❗️❗️ NEW REGEXP() ❗️❗️❗️
 function change2(string: string): string {
     // ❓❓❓  new RegExp(`${x}`, "i") ❓❓❓
-    return 'abcdefghijklmnopqrstuvwxyz'.split('').map(x => new RegExp(`${x}`, "i").test(string) ? '1' : '0').join('')
+    return "abcdefghijklmnopqrstuvwxyz"
+        .split("")
+        .map((x) => (new RegExp(`${x}`, "i").test(string) ? "1" : "0"))
+        .join("");
 }
 
 // ARRAY.FILL()
 function change3(str: string): string {
     const result = Array(26).fill(0);
     for (const ch of str.toUpperCase()) {
-        if (ch >= 'A' && ch <= 'Z') {
+        if (ch >= "A" && ch <= "Z") {
             result[ch.charCodeAt(0) - 65] = 1;
         }
     }
-    return result.join('');
+    return result.join("");
 }
 
-
 function change5(s: string): string {
-    let returnStr = '';
+    let returnStr = "";
     for (let i = 65; i < 91; i++) {
         if (s.toUpperCase().includes(String.fromCharCode(i))) {
-            returnStr = returnStr.concat('1');
+            returnStr = returnStr.concat("1");
         } else {
-            returnStr = returnStr.concat('0');
+            returnStr = returnStr.concat("0");
         }
     }
     return returnStr;
 }
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DRONE FLY-BY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: SUBSTRING(), REPEAT()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -893,20 +891,70 @@ The drone string represents the position of the drone T (any better suggestion f
 
 Return the resulting lamps string. See example tests for more clarity.
 */
-const flyBy = (lamps: string, drone: string): string => {
-    return "hello";
+// 1️⃣ THIS ONLY COUNTS "=" IN '====T'
+const flyBy = (lampsArr: string, droneArr: string): string => {
+    if (!/=/g.test(droneArr)) return lampsArr;
+
+    const dist: number = droneArr.match(/=/g)!.length;
+
+    const solution: string = `${"o".repeat(dist)}${lampsArr.substring(dist)}`;
+
+    return solution;
+};
+
+// 2️⃣ ✅ JUST GET DRONEARR.LENGTH !!!
+const flyBy2 = (lampsArr: string, droneArr: string): string => {
+    const dist: number =
+        lampsArr.length > droneArr.length ? droneArr.length : lampsArr.length;
+
+    const solution: string = `${"o".repeat(dist)}${lampsArr.substring(dist)}`;
+
+    return solution;
 };
 
 // assert.strictEqual(flyBy('xxxxxx', '====T'), 'ooooox');
 //     assert.strictEqual(flyBy('xxxxxxxxx', '==T'), 'oooxxxxxx');
 //     assert.strictEqual(flyBy('xxxxxxxxxxxxxxx', '=========T'), 'ooooooooooxxxxx');
 
-// console.log();
+// console.log(flyBy("xxxxxxxxx", "==T"));
+// console.log(flyBy2("xxxxxx", "12345"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+const flyBy3 = (lamps: string, drone: string): string =>
+    drone.length >= lamps.length
+        ? "o".repeat(lamps.length)
+        : "o".repeat(drone.length) + "x".repeat(lamps.length - drone.length);
+
+function flyBy4(lamps: string, drone: string): string {
+    const droneIndex = drone.length - 1;
+    const lampsArray = lamps.split("");
+    lampsArray.forEach((lamp, index) => {
+        if (index <= droneIndex) {
+            lampsArray[index] = "o";
+        }
+    });
+    return lampsArray.join("");
+}
+
+function flyBy5(lamps: string, drone: string): string {
+    return [...lamps].fill("o", 0, drone.length).join("");
+}
+
+function flyBy6(lamps: string, drone: string): string {
+    return (
+        "o".repeat(Math.min(drone.length, lamps.length)) +
+        "x".repeat(Math.max(0, lamps.length - drone.length))
+    );
+}
+
+function flyBy7(lamps: string, drone: string): string {
+    let l = drone.length;
+    while (l--) lamps = lamps.replace("x", "o");
+    return lamps;
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
@@ -1017,14 +1065,17 @@ const timeCorrect = (timeStr: string | null): string | null => {
 // ❗️❗️❗️ REGEX MATCH EXACT TIME FORMAT ❗️❗️❗️
 function timeCorrect2(ts: String): string | null {
     if (ts === "") return "";
-    if (ts === null || !ts.match(/^[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]$/)) return null;
+    if (ts === null || !ts.match(/^[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]$/))
+        return null;
     // ❗️❗️❗️ DECLARE ARRAY ELEMENTS TO VARIABLES ❗️❗️❗️
-    let [h, m, s] = ts.split(':').map(v => parseInt(v));
+    let [h, m, s] = ts.split(":").map((v) => parseInt(v));
     let temp: number = 0;
     [s, temp] = convToUp(s);
     [m, temp] = convToUp(m + temp);
     h = (h + temp) % 24;
-    return [h, m, s].map(v => (`0${v}`).substr(v.toString().length - 1)).join(':');
+    return [h, m, s]
+        .map((v) => `0${v}`.substr(v.toString().length - 1))
+        .join(":");
 }
 
 function convToUp(num: number): number[] {
@@ -1036,18 +1087,20 @@ function convToUp(num: number): number[] {
 
 // ❗️❗️❗️ MATCH EXACT TIME FORMAT ❗️❗️❗️
 function timeCorrect3(timestring: string | null): string | null {
-    if (!timestring || timestring === "") return timestring
-    else if (!/^\d\d:\d\d:\d\d$/.test(timestring)) return null
-    let [h, m, s]: number[] = timestring.split(":").map(x => +x)
-    m += Math.floor(s / 60)
-    h += Math.floor(m / 60)
-    return [h % 24, m % 60, s % 60].map(x => ("" + x).padStart(2, '0')).join(":")
+    if (!timestring || timestring === "") return timestring;
+    else if (!/^\d\d:\d\d:\d\d$/.test(timestring)) return null;
+    let [h, m, s]: number[] = timestring.split(":").map((x) => +x);
+    m += Math.floor(s / 60);
+    h += Math.floor(m / 60);
+    return [h % 24, m % 60, s % 60]
+        .map((x) => ("" + x).padStart(2, "0"))
+        .join(":");
 }
 
 function timeCorrect4(timestring: string): string | null {
-    if (timestring === null || timestring === '') return timestring;
+    if (timestring === null || timestring === "") return timestring;
     if (!timestring.match(/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/)) return null;
-    let [h, m, s] = timestring.split(":").map(s => parseInt(s));
+    let [h, m, s] = timestring.split(":").map((s) => parseInt(s));
     if (s >= 60) {
         s -= 60;
         m++;
@@ -1057,9 +1110,10 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${(h < 10) ? "0" + h : h}:${(m < 10) ? "0" + m : m}:${(s < 10) ? "0" + s : s}`
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
-
 
 const timeCorrect5 = (timestring: string | null): string | null => {
     if (timestring == "") return "";
@@ -1068,21 +1122,28 @@ const timeCorrect5 = (timestring: string | null): string | null => {
     const [house, minutes, seconds] = timestring.split(":").map(Number);
     if (!(house && minutes && seconds)) return null;
 
-    return new Date(0, 0, 0, house, minutes, seconds).toLocaleTimeString("en-GB", { hour12: false });
+    return new Date(0, 0, 0, house, minutes, seconds).toLocaleTimeString(
+        "en-GB",
+        { hour12: false }
+    );
 };
 
 function timeCorrect6(timestring: string | null): string | null {
     if (timestring === "") return "";
-    if (timestring === null || !/\d{2}:\d{2}:\d{2}/.test(timestring)) return null;
+    if (timestring === null || !/\d{2}:\d{2}:\d{2}/.test(timestring))
+        return null;
 
     let timeArr = timestring.split(":");
-    let totalSeconds = ((+timeArr[0]) * 60 * 60 + (+timeArr[1]) * 60 + +timeArr[2]) % 86400;
+    let totalSeconds =
+        (+timeArr[0] * 60 * 60 + +timeArr[1] * 60 + +timeArr[2]) % 86400;
 
     let hours = Math.floor(totalSeconds / 3600);
     let minutes = Math.floor((totalSeconds - hours * 3600) / 60);
-    let seconds = (totalSeconds - hours * 3600 - minutes * 60);
+    let seconds = totalSeconds - hours * 3600 - minutes * 60;
 
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+    return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: EXTRA PERFECT NUMBERS (Special Numbers Series #7)
@@ -1664,10 +1725,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -2120,7 +2181,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2613,17 +2674,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2756,13 +2817,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5364,10 +5425,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6480,7 +6541,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7556,8 +7617,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -7707,10 +7768,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8707,11 +8768,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9506,9 +9567,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -9790,8 +9851,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

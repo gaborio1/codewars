@@ -37,39 +37,75 @@ const change = (string) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     let solution = "";
     for (let char of alphabet) {
-        solution += string.toLowerCase().indexOf(char) > -1
-            ? "1"
-            : "0";
+        solution += string.toLowerCase().indexOf(char) > -1 ? "1" : "0";
     }
     return solution;
 };
 function change2(string) {
-    return 'abcdefghijklmnopqrstuvwxyz'.split('').map(x => new RegExp(`${x}`, "i").test(string) ? '1' : '0').join('');
+    return "abcdefghijklmnopqrstuvwxyz"
+        .split("")
+        .map((x) => (new RegExp(`${x}`, "i").test(string) ? "1" : "0"))
+        .join("");
 }
 function change3(str) {
     const result = Array(26).fill(0);
     for (const ch of str.toUpperCase()) {
-        if (ch >= 'A' && ch <= 'Z') {
+        if (ch >= "A" && ch <= "Z") {
             result[ch.charCodeAt(0) - 65] = 1;
         }
     }
-    return result.join('');
+    return result.join("");
 }
 function change5(s) {
-    let returnStr = '';
+    let returnStr = "";
     for (let i = 65; i < 91; i++) {
         if (s.toUpperCase().includes(String.fromCharCode(i))) {
-            returnStr = returnStr.concat('1');
+            returnStr = returnStr.concat("1");
         }
         else {
-            returnStr = returnStr.concat('0');
+            returnStr = returnStr.concat("0");
         }
     }
     return returnStr;
 }
-const flyBy = (lamps, drone) => {
-    return "hello";
+const flyBy = (lampsArr, droneArr) => {
+    if (!/=/g.test(droneArr))
+        return lampsArr;
+    const dist = droneArr.match(/=/g).length;
+    const solution = `${"o".repeat(dist)}${lampsArr.substring(dist)}`;
+    return solution;
 };
+const flyBy2 = (lampsArr, droneArr) => {
+    const dist = lampsArr.length > droneArr.length ? droneArr.length : lampsArr.length;
+    const solution = `${"o".repeat(dist)}${lampsArr.substring(dist)}`;
+    return solution;
+};
+const flyBy3 = (lamps, drone) => drone.length >= lamps.length
+    ? "o".repeat(lamps.length)
+    : "o".repeat(drone.length) + "x".repeat(lamps.length - drone.length);
+function flyBy4(lamps, drone) {
+    const droneIndex = drone.length - 1;
+    const lampsArray = lamps.split("");
+    lampsArray.forEach((lamp, index) => {
+        if (index <= droneIndex) {
+            lampsArray[index] = "o";
+        }
+    });
+    return lampsArray.join("");
+}
+function flyBy5(lamps, drone) {
+    return [...lamps].fill("o", 0, drone.length).join("");
+}
+function flyBy6(lamps, drone) {
+    return ("o".repeat(Math.min(drone.length, lamps.length)) +
+        "x".repeat(Math.max(0, lamps.length - drone.length)));
+}
+function flyBy7(lamps, drone) {
+    let l = drone.length;
+    while (l--)
+        lamps = lamps.replace("x", "o");
+    return lamps;
+}
 const timeCorrect = (timeStr) => {
     if (!timeStr)
         return timeStr;
@@ -105,12 +141,14 @@ function timeCorrect2(ts) {
         return "";
     if (ts === null || !ts.match(/^[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]$/))
         return null;
-    let [h, m, s] = ts.split(':').map(v => parseInt(v));
+    let [h, m, s] = ts.split(":").map((v) => parseInt(v));
     let temp = 0;
     [s, temp] = convToUp(s);
     [m, temp] = convToUp(m + temp);
     h = (h + temp) % 24;
-    return [h, m, s].map(v => (`0${v}`).substr(v.toString().length - 1)).join(':');
+    return [h, m, s]
+        .map((v) => `0${v}`.substr(v.toString().length - 1))
+        .join(":");
 }
 function convToUp(num) {
     let s = num % 60;
@@ -122,17 +160,19 @@ function timeCorrect3(timestring) {
         return timestring;
     else if (!/^\d\d:\d\d:\d\d$/.test(timestring))
         return null;
-    let [h, m, s] = timestring.split(":").map(x => +x);
+    let [h, m, s] = timestring.split(":").map((x) => +x);
     m += Math.floor(s / 60);
     h += Math.floor(m / 60);
-    return [h % 24, m % 60, s % 60].map(x => ("" + x).padStart(2, '0')).join(":");
+    return [h % 24, m % 60, s % 60]
+        .map((x) => ("" + x).padStart(2, "0"))
+        .join(":");
 }
 function timeCorrect4(timestring) {
-    if (timestring === null || timestring === '')
+    if (timestring === null || timestring === "")
         return timestring;
     if (!timestring.match(/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/))
         return null;
-    let [h, m, s] = timestring.split(":").map(s => parseInt(s));
+    let [h, m, s] = timestring.split(":").map((s) => parseInt(s));
     if (s >= 60) {
         s -= 60;
         m++;
@@ -142,7 +182,7 @@ function timeCorrect4(timestring) {
         h++;
     }
     h = h % 24;
-    return `${(h < 10) ? "0" + h : h}:${(m < 10) ? "0" + m : m}:${(s < 10) ? "0" + s : s}`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
 }
 const timeCorrect5 = (timestring) => {
     if (timestring == "")
@@ -160,11 +200,13 @@ function timeCorrect6(timestring) {
     if (timestring === null || !/\d{2}:\d{2}:\d{2}/.test(timestring))
         return null;
     let timeArr = timestring.split(":");
-    let totalSeconds = ((+timeArr[0]) * 60 * 60 + (+timeArr[1]) * 60 + +timeArr[2]) % 86400;
+    let totalSeconds = (+timeArr[0] * 60 * 60 + +timeArr[1] * 60 + +timeArr[2]) % 86400;
     let hours = Math.floor(totalSeconds / 3600);
     let minutes = Math.floor((totalSeconds - hours * 3600) / 60);
-    let seconds = (totalSeconds - hours * 3600 - minutes * 60);
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    let seconds = totalSeconds - hours * 3600 - minutes * 60;
+    return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 const extraPerfect = (num) => {
     let solution = [];
