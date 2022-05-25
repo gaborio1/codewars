@@ -31,7 +31,25 @@ const isVeryEvenNumber = (n) => {
     return true;
 };
 const freqSeq = (str, sep) => {
-    return "";
+    const numArr = [];
+    for (let char of str) {
+        let regex = new RegExp(char, "g");
+        let occurence = str.match(regex).length;
+        console.log(char, occurence);
+        numArr.push(occurence);
+    }
+    console.log(numArr);
+    const solution = numArr.join(sep);
+    return solution;
+};
+const freqSeq2 = (str, sep) => {
+    const numArr = [];
+    for (let char of str) {
+        const counter = [...str].filter(el => el === char).length;
+        numArr.push(counter);
+    }
+    const solution = numArr.join(sep);
+    return solution;
 };
 const change = (string) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";

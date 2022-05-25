@@ -641,6 +641,86 @@ class G9646 {
     };
 }
 
+/*
+ class G964 {
+
+   public static getFigures = (town: string, dataStr: string): string[] => {
+     
+        console.log("input-----------------------", town, dataStr, "-----------------------end");
+     
+        // SPLIT DATA INTO ARRAYS FOR EACH TOWN
+        const townsArr: string[] = dataStr.split("\n");
+        console.log(townsArr);
+        // GET TARGET TOWN AND ITS MONTHLY READINGS
+        // ['London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9']
+        const townRec: string[] = townsArr.filter((townData) =>
+//             townData.startsWith(town)
+            townData.indexOf(town) > -1                              
+        );
+     
+        if (townRec.length === 0) {
+          console.log("------------empty array-------------");
+        }
+     
+//         console.log(townRec);
+        // EXTRACT ALL NUMERIC FIGURES
+        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9']
+        const monthRec: string[] = townRec[0].match(/\d{0,}\.\d{0,}/g)!;
+        // console.log(monthRec);
+
+        return monthRec;
+    };
+
+    public static mean = (town: string, str: string) => {
+      
+//         if (G964.getFigures(town, str).length === 0) {
+//           return -1;
+//         }
+      
+        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9']
+        // ==> 51.199999999999996
+        const solution: number =
+            G964.getFigures(town, str)
+                .map((figure) => Number(figure))
+                .reduce((acc, curr) => acc + curr) /
+            G964.getFigures(town, str).length;
+
+        // console.log(solution);
+        // 51.199999999999996
+        return solution;
+    };
+    public static variance = (town: string, str: string) => {
+      
+//         if (G964.getFigures(town, str).length === 0) {
+//           return -1;
+//         }
+      
+        // 1. FIND MEAN:
+        const average: number = G964.mean(town, str);
+//         console.log(average);
+
+        // GET ALL NUMERIC FIGURES
+        const solution: number =
+            G964.getFigures(town, str)
+                .map((figure) => Number(figure))
+                // 2. FIND EACH EL'S DEVIATION FROM MEAN
+                .map((num) => num - average)
+                // 3. SQUARE EACH EL
+                .map((dev) => Math.pow(dev, 2))
+                // 4. GET SUM OF SQUARES
+                .reduce((acc, curr) => acc + curr) /
+            // 5. DIVIDE SUM OF SQUARES BY n (NUMBER OF ELEMENTS)
+            G964.getFigures(town, str).length;
+
+        // console.log(solution);
+
+        return solution;
+    };
+}
+*/
+
+
+
 const data =
     "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
     "\n" +
@@ -1302,9 +1382,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -1870,10 +1950,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -4266,7 +4346,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -4352,7 +4432,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -5213,15 +5293,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -5274,10 +5354,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -5853,7 +5933,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -6312,8 +6392,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -6606,7 +6686,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -7063,10 +7143,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -8366,9 +8446,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
