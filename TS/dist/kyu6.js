@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = void 0;
 function sortTheInnerContent(words) {
@@ -12,6 +13,7 @@ G9647.step = (g, m, n) => {
 };
 class G9646 {
 }
+_a = G9646;
 G9646.getFigures = (town, dataStr) => {
     const townsArr = dataStr.split("\n");
     console.log(townsArr);
@@ -23,10 +25,20 @@ G9646.getFigures = (town, dataStr) => {
 G9646.mean = (town, str) => {
     const solution = G9646.getFigures(town, str)
         .map((figure) => Number(figure))
-        .reduce((acc, curr) => acc + curr) / G9646.getFigures(town, str).length;
+        .reduce((acc, curr) => acc + curr) /
+        G9646.getFigures(town, str).length;
     return solution;
 };
 G9646.variance = (town, str) => {
+    const average = _a.mean(town, str);
+    console.log(average);
+    const solution = _a.getFigures(town, str)
+        .map((figure) => Number(figure))
+        .map((num) => num - average)
+        .map((dev) => Math.pow(dev, 2))
+        .reduce((acc, curr) => acc + curr) /
+        _a.getFigures(town, str).length;
+    return solution;
 };
 const data = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
     "\n" +
@@ -66,7 +78,7 @@ const data1 = "Rome:Jan 90.2,Feb 73.2,Mar 80.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17
     "Beijing:Jan 13.9,Feb 14.7,Mar 18.2,Apr 18.4,May 43.0,Jun 88.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 38.0,Nov 19.3,Dec 2.7" +
     "\n" +
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
-console.log(G9646.mean("London", data));
+console.log(G9646.variance("London", data));
 const backwardsPrime = (min, max) => {
     let primesArr = [];
     const isPrime = (num) => {
@@ -87,11 +99,7 @@ const backwardsPrime = (min, max) => {
     }
     console.log("PRIMES:", primesArr);
     const solution = primesArr.filter((prime) => {
-        const revPrime = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""));
+        const revPrime = Number(prime.toString().split("").reverse().join(""));
         return isPrime(revPrime) && revPrime !== prime;
     });
     return solution;
@@ -100,15 +108,13 @@ const backwardsPrime2 = (min, max) => {
     let primesArr = [];
     const isPrime = (num) => {
         let count = 2;
-        while (count < (num / 2) + 1) {
+        while (count < num / 2 + 1) {
             if (num % count !== 0) {
                 count++;
                 continue;
             }
-            ;
             return false;
         }
-        ;
         return true;
     };
     const primeBetween = (a, b) => {
@@ -116,18 +122,12 @@ const backwardsPrime2 = (min, max) => {
             if (isPrime(i)) {
                 primesArr.push(i);
             }
-            ;
         }
-        ;
     };
     primeBetween(min, max);
     console.log("PRIMES:", primesArr);
     const solution = primesArr.filter((prime) => {
-        const revPrime = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""));
+        const revPrime = Number(prime.toString().split("").reverse().join(""));
         return isPrime(revPrime) && revPrime !== prime;
     });
     return solution;
@@ -154,11 +154,7 @@ const backwardsPrime3 = (min, max) => {
     }
     console.log("PRIMES:", primesArr);
     const solution = primesArr.filter((prime) => {
-        const revPrime = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""));
+        const revPrime = Number(prime.toString().split("").reverse().join(""));
         return isPrime(revPrime) && revPrime !== prime;
     });
     return solution;
@@ -181,11 +177,7 @@ const backwardsPrime4 = (min, max) => {
         }
     }
     const solution = primesArr.filter((prime) => {
-        const revPrime = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""));
+        const revPrime = Number(prime.toString().split("").reverse().join(""));
         return isPrime(revPrime) && revPrime !== prime;
     });
     return solution;
@@ -194,7 +186,7 @@ function backwardsPrime5(start, stop) {
     const prime = [];
     for (let i = start < 10 ? 11 : start; i <= stop; i++) {
         if ((0, exports.isPrime)(i)) {
-            if ((0, exports.isPrime)(Number(i.toString().split('').reverse().join('')))) {
+            if ((0, exports.isPrime)(Number(i.toString().split("").reverse().join("")))) {
                 if (!isPalindrome(String(i))) {
                     prime.push(i);
                 }
@@ -211,7 +203,7 @@ const isPrime = (num) => {
 };
 exports.isPrime = isPrime;
 function isPalindrome(str) {
-    return str == str.split('').reverse().join('');
+    return str == str.split("").reverse().join("");
 }
 exports.isPalindrome = isPalindrome;
 function isPrime2(num) {
@@ -226,7 +218,7 @@ function backwardsPrime7(start, stop) {
     for (let num = start; num <= stop; num++) {
         if (!isPrime2(num))
             continue;
-        const backward = parseInt(num.toString().split('').reverse().join(''));
+        const backward = parseInt(num.toString().split("").reverse().join(""));
         if (backward !== num && isPrime2(backward))
             result.push(num);
     }
@@ -268,9 +260,9 @@ const longestRepetition = (str) => {
     return solution;
 };
 function longestRepetition2(text) {
-    var _a;
-    const output = ['', 0];
-    (_a = text.match(/(.)\1*/g)) === null || _a === void 0 ? void 0 : _a.forEach(match => {
+    var _b;
+    const output = ["", 0];
+    (_b = text.match(/(.)\1*/g)) === null || _b === void 0 ? void 0 : _b.forEach((match) => {
         if ((match === null || match === void 0 ? void 0 : match.length) > output[1]) {
             output[0] = match.charAt(0);
             output[1] = match.length;
@@ -279,9 +271,9 @@ function longestRepetition2(text) {
     return output;
 }
 function longestRepetition3(text) {
-    let longest = { char: '', len: 0 };
+    let longest = { char: "", len: 0 };
     let current = { ...longest };
-    text.split('').forEach(character => {
+    text.split("").forEach((character) => {
         if (character === current.char) {
             current.len += 1;
         }
@@ -297,9 +289,9 @@ function longestRepetition3(text) {
     return [longest.char, longest.len];
 }
 function longestRepetition4(text) {
-    let currentChar = '';
+    let currentChar = "";
     let currentCount = 0;
-    let maxChar = '';
+    let maxChar = "";
     let maxCount = 0;
     for (let i = 0; i <= text.length; i++) {
         let char = text[i];
@@ -320,7 +312,7 @@ function longestRepetition4(text) {
 function longestRepetition5(text) {
     let longest = { char: "", repeat: 0 };
     let attempt = { char: "", repeat: 0 };
-    text.split('').forEach((alpha) => {
+    text.split("").forEach((alpha) => {
         if (alpha === attempt.char)
             attempt.repeat += 1;
         else
@@ -338,7 +330,7 @@ function longestRepetition6(text) {
         const res = match.sort((a, b) => b.length - a.length)[0];
         return [res[0], res.length];
     }
-    return ['', 0];
+    return ["", 0];
 }
 function longestRepetition7(text) {
     return text
@@ -376,7 +368,9 @@ const decipherThis = (str) => {
     return solution;
 };
 function decipherThis2(str) {
-    return str.split(' ').map(word => {
+    return str
+        .split(" ")
+        .map((word) => {
         const asciiCode = parseInt(word);
         const asciiCodeDigits = asciiCode.toString().length;
         const newWord = String.fromCharCode(asciiCode) + word.substr(asciiCodeDigits);
@@ -384,22 +378,29 @@ function decipherThis2(str) {
             return newWord;
         }
         else {
-            return newWord[0] + newWord[newWord.length - 1] + newWord.substring(2, newWord.length - 1) + newWord[1];
+            return (newWord[0] +
+                newWord[newWord.length - 1] +
+                newWord.substring(2, newWord.length - 1) +
+                newWord[1]);
         }
-    }).join(' ');
+    })
+        .join(" ");
 }
 function decipherThis3(str) {
     return str
-        .replace(/(\d+)/g, code => String.fromCharCode(+code))
-        .replace(/\b(\w)(\w?)(\w*)(\w)/g, '$1$4$3$2');
+        .replace(/(\d+)/g, (code) => String.fromCharCode(+code))
+        .replace(/\b(\w)(\w?)(\w*)(\w)/g, "$1$4$3$2");
 }
 function decipherThis4(str) {
     return str
         .split(" ")
-        .map(word => word.replace(/^[0-9]{0,}/, e => String.fromCharCode(+e)))
-        .map(word => word.length <= 2 ?
-        word :
-        word[0] + word[word.length - 1] + word.slice(2, word.length - 1) + word[1])
+        .map((word) => word.replace(/^[0-9]{0,}/, (e) => String.fromCharCode(+e)))
+        .map((word) => word.length <= 2
+        ? word
+        : word[0] +
+            word[word.length - 1] +
+            word.slice(2, word.length - 1) +
+            word[1])
         .join(" ");
 }
 function decipherThis5(str) {
@@ -2117,7 +2118,7 @@ function camelCase7(str) {
 }
 const camelCase8 = (str) => str
     .split(" ")
-    .map((x) => { var _a; return (_a = x[0]) === null || _a === void 0 ? void 0 : _a.toUpperCase().concat(x.slice(1)); })
+    .map((x) => { var _b; return (_b = x[0]) === null || _b === void 0 ? void 0 : _b.toUpperCase().concat(x.slice(1)); })
     .join("");
 const camelCase9 = (str) => str
     .split(" ")
@@ -2198,7 +2199,7 @@ const solution0 = (roman) => {
     return result;
 };
 function solution1(roman) {
-    var _a, _b, _c, _d;
+    var _b, _c, _d, _e;
     var valRoman = {
         1: "I",
         4: "IV",
@@ -2293,16 +2294,16 @@ function solution1(roman) {
         result += romanStrVal.V;
         roman = roman.replace("V", "");
     }
-    const Ms = (_a = roman.match(/M/g)) === null || _a === void 0 ? void 0 : _a.length;
+    const Ms = (_b = roman.match(/M/g)) === null || _b === void 0 ? void 0 : _b.length;
     if (Ms)
         result += romanStrVal.M * Ms;
-    const Cs = (_b = roman.match(/C/g)) === null || _b === void 0 ? void 0 : _b.length;
+    const Cs = (_c = roman.match(/C/g)) === null || _c === void 0 ? void 0 : _c.length;
     if (Cs)
         result += romanStrVal.C * Cs;
-    const Xs = (_c = roman.match(/X/g)) === null || _c === void 0 ? void 0 : _c.length;
+    const Xs = (_d = roman.match(/X/g)) === null || _d === void 0 ? void 0 : _d.length;
     if (Xs)
         result += romanStrVal.X * Xs;
-    const Is = (_d = roman.match(/I/g)) === null || _d === void 0 ? void 0 : _d.length;
+    const Is = (_e = roman.match(/I/g)) === null || _e === void 0 ? void 0 : _e.length;
     if (Is)
         result += romanStrVal.I * Is;
     console.log("roman: ", roman);
@@ -3425,8 +3426,8 @@ function countBits6(n) {
 }
 exports.countBits6 = countBits6;
 function countBits7(n) {
-    var _a;
-    return ((_a = n.toString(2).match(/1/g)) === null || _a === void 0 ? void 0 : _a.length) || 0;
+    var _b;
+    return ((_b = n.toString(2).match(/1/g)) === null || _b === void 0 ? void 0 : _b.length) || 0;
 }
 exports.countBits7 = countBits7;
 const likes = (names) => {

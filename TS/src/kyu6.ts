@@ -497,6 +497,7 @@ class G9647 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// Time: 3309ms Passed: 4Failed: 1Errors: 1Exit Code: 1
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: RAINFALL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -526,16 +527,74 @@ Shell tests only variance
 A ref: http://www.mathsisfun.com/data/standard-deviation.html
 
 data and data1 (can be named d0 and d1 depending on the language; see "Sample Tests:") are adapted from: http://www.worldclimate.com
-*/
-class G9646 {
 
+❗️❗️❗️ VARIANCE ❗️❗️❗️
+https://www.scribbr.com/statistics/variance/
+
+Steps for calculating the variance
+The variance is usually calculated automatically by whichever software you use for your statistical analysis. But you can also calculate it by hand to better understand how the formula works.
+
+There are five main steps for finding the variance by hand. We’ll use a small data set of 6 scores to walk through the steps.
+
+Data set
+46	69	32	60	52	41
+Step 1: Find the mean
+To find the mean, add up all the scores, then divide them by the number of scores.
+
+Mean (\bar{x})
+\bar{x} = (46 + 69 + 32 + 60 + 52 + 41) \div 6 = 50
+Step 2: Find each score’s deviation from the mean
+Subtract the mean from each score to get the deviations from the mean.
+
+Since x̅ = 50, take away 50 from each score.
+
+Score	Deviation from the mean
+46	46 – 50 = -4
+69	69 – 50 = 19
+32	32 – 50 = -18
+60	60 – 50 = 10
+52	52 – 50 = 2
+41	41 – 50 = -9
+Step 3: Square each deviation from the mean
+Multiply each deviation from the mean by itself. This will result in positive numbers.
+
+Squared deviations from the mean
+(-4)2 = 4 × 4 = 16
+192 = 19 × 19 = 361
+(-18)2 = -18 × -18 = 324
+102 = 10 × 10 = 100
+22 = 2 × 2 = 4
+(-9)2 = -9 × -9 = 81
+Step 4: Find the sum of squares
+Add up all of the squared deviations. This is called the sum of squares.
+
+Sum of squares
+16 + 361 + 324 + 100 + 4 + 81 = 886
+Step 5: Divide the sum of squares by n – 1 or N
+Divide the sum of the squares by n – 1 (for a sample) or N (for a population).
+
+Since we’re working with a sample, we’ll use  n – 1, where n = 6.
+
+Variance
+ 886 \div (6 – 1) = 886 \div 5 = 177.2
+
+
+*/
+
+// ❗️❗️❗️ CODEWARS ERROR: 'this' cannot be referenced in a static property initializer. (2334) ❗️❗️❗️
+class G9646 {
     public static getFigures = (town: string, dataStr: string): string[] => {
         // SPLIT DATA INTO ARRAYS FOR EACH TOWN
         const townsArr: string[] = dataStr.split("\n");
         console.log(townsArr);
         // GET TARGET TOWN AND ITS MONTHLY READINGS
         // ['London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9']
-        const townRec: string[] = townsArr.filter((townData) => townData.startsWith(town));
+        const townRec: string[] = townsArr.filter(
+            (townData) =>
+                // ❗️❗️❗️ STARTSWITH NOT WORKING IN CODEWARS ❗️❗️❗️
+                townData.startsWith(town)
+            // townData.indexOf(town) > -1
+        );
         console.log(townRec);
         // EXTRACT ALL NUMERIC FIGURES
         // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9']
@@ -543,24 +602,42 @@ class G9646 {
         // console.log(monthRec);
 
         return monthRec;
-    }
+    };
 
     public static mean = (town: string, str: string) => {
-
-        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9'] 
+        // ['48.0', '38.9','39.9', '42.2','47.3', '52.1','59.5', '57.2','55.4', '62.0','59.0', '52.9']
         // ==> 51.199999999999996
-        const solution: number = G9646.getFigures(town, str)
-            .map((figure) => Number(figure))
-            .reduce((acc, curr) => acc + curr) / G9646.getFigures(town, str).length;
-
+        const solution: number =
+            G9646.getFigures(town, str)
+                .map((figure) => Number(figure))
+                .reduce((acc, curr) => acc + curr) /
+            G9646.getFigures(town, str).length;
 
         // console.log(solution);
         // 51.199999999999996
         return solution;
-
     };
     public static variance = (town: string, str: string) => {
-        // your code
+        // 1. FIND MEAN:
+        const average: number = this.mean(town, str);
+        console.log(average);
+
+        // GET ALL NUMERIC FIGURES
+        const solution: number =
+            this.getFigures(town, str)
+                .map((figure) => Number(figure))
+                // 2. FIND EACH EL'S DEVIATION FROM MEAN
+                .map((num) => num - average)
+                // 3. SQUARE EACH EL
+                .map((dev) => Math.pow(dev, 2))
+                // 4. GET SUM OF SQUARES
+                .reduce((acc, curr) => acc + curr) /
+            // 5 DIVIDE SUM OF SQUARES BY n (NUMBER OF ELEMENTS)
+            this.getFigures(town, str).length;
+
+        // console.log(solution);
+
+        return solution;
     };
 }
 
@@ -606,9 +683,9 @@ const data1 =
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
 
 // 51.199999999999996
-console.log(G9646.mean("London", data));
+// console.log(G9646.mean("London", data));
 // 57.42833333333374
-// console.log(G964.variance("London", data));
+console.log(G9646.variance("London", data));
 // console.log();
 // console.log();
 
@@ -644,7 +721,6 @@ Ruby Don't use Ruby Prime class, it's disabled.
 
 // 1️⃣
 const backwardsPrime = (min: number, max: number): number[] => {
-
     let primesArr: number[] = [];
 
     // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
@@ -660,8 +736,7 @@ const backwardsPrime = (min: number, max: number): number[] => {
         return true;
     };
 
-
-    //   FIND PRIMES 
+    //   FIND PRIMES
     for (let i = min; i <= max; i++) {
         let prime = 0;
         if (isPrime(i)) {
@@ -677,24 +752,20 @@ const backwardsPrime = (min: number, max: number): number[] => {
     // 1007 3107 9107 7207 9307 3407 7507 9607 9707
 
     const solution: number[] = primesArr.filter((prime) => {
-        const revPrime: number = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""))
+        const revPrime: number = Number(
+            prime.toString().split("").reverse().join("")
+        );
         return isPrime(revPrime) && revPrime !== prime;
     });
 
     // console.log("   TEST:", solution2);
     // [ 7207, 3407, 7507 ]
     return solution;
-
-}
+};
 
 // 2️⃣  https://www.tutorialspoint.com/prime-numbers-in-a-range-javascript
 
 const backwardsPrime2 = (min: number, max: number): number[] => {
-
     let primesArr: number[] = [];
 
     // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
@@ -702,13 +773,13 @@ const backwardsPrime2 = (min: number, max: number): number[] => {
     // DETERMINE WHETER NUM IS PRIME
     const isPrime = (num: number) => {
         let count = 2;
-        while (count < (num / 2) + 1) {
+        while (count < num / 2 + 1) {
             if (num % count !== 0) {
                 count++;
                 continue;
-            };
+            }
             return false;
-        };
+        }
         return true;
     };
 
@@ -718,12 +789,12 @@ const backwardsPrime2 = (min: number, max: number): number[] => {
             if (isPrime(i)) {
                 //   count++;
                 primesArr.push(i);
-            };
-        };
+            }
+        }
         // return count;
     };
 
-    //   FIND PRIMES 
+    //   FIND PRIMES
     primeBetween(min, max);
 
     // [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
@@ -733,28 +804,23 @@ const backwardsPrime2 = (min: number, max: number): number[] => {
     // 1007 3107 9107 7207 9307 3407 7507 9607 9707
 
     const solution: number[] = primesArr.filter((prime) => {
-        const revPrime: number = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""))
+        const revPrime: number = Number(
+            prime.toString().split("").reverse().join("")
+        );
         return isPrime(revPrime) && revPrime !== prime;
     });
 
     // console.log("   TEST:", solution2);
     // [ 7207, 3407, 7507 ]
     return solution;
-
-}
+};
 
 // 3️⃣ https://www.programiz.com/javascript/examples/prime-number-intervals
 const backwardsPrime3 = (min: number, max: number): number[] => {
-
     let primesArr: number[] = [];
 
     function isPrime(num: number) {
-        for (var i = 2; i < num; i++)
-            if (num % i === 0) return false;
+        for (var i = 2; i < num; i++) if (num % i === 0) return false;
         return num > 1;
     }
 
@@ -785,23 +851,19 @@ const backwardsPrime3 = (min: number, max: number): number[] => {
     // 1007 3107 9107 7207 9307 3407 7507 9607 9707
 
     const solution: number[] = primesArr.filter((prime) => {
-        const revPrime: number = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""))
+        const revPrime: number = Number(
+            prime.toString().split("").reverse().join("")
+        );
         return isPrime(revPrime) && revPrime !== prime;
     });
 
     // console.log("   TEST:", solution2);
     // [ 7207, 3407, 7507 ]
     return solution;
-
-}
+};
 
 // 4️⃣ ✅  ❗️❗️❗️ ISPRIME(): https://gist.github.com/sandrabosk/17319bb427dc4e457595d6670a455f57 ❗️❗️❗️
 const backwardsPrime4 = (min: number, max: number): number[] => {
-
     let primesArr: number[] = [];
 
     // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
@@ -814,7 +876,7 @@ const backwardsPrime4 = (min: number, max: number): number[] => {
             }
         }
         return true;
-    }
+    };
 
     //   FIND PRIMES [7001, 7013, 7019,7027, 7039, 7043,7057, 7069, 7079]
     for (let i = min; i <= max; i++) {
@@ -828,18 +890,15 @@ const backwardsPrime4 = (min: number, max: number): number[] => {
     // FILTER OUT PRIMES THAT EQUAL TO THEIR REVERSED VERSIONS AND NOT PALINDROMES
     // 1007 3107 9107 7207 9307 3407 7507 9607 9707
     const solution: number[] = primesArr.filter((prime) => {
-        const revPrime: number = Number(prime
-            .toString()
-            .split("")
-            .reverse()
-            .join(""))
+        const revPrime: number = Number(
+            prime.toString().split("").reverse().join("")
+        );
         return isPrime(revPrime) && revPrime !== prime;
     });
 
     // [ 7207, 3407, 7507 ]
     return solution;
-
-}
+};
 // [7027, 7043, 7057]
 // console.log(backwardsPrime(7000, 7100));
 //  TO EQUAL [ 70001, 70009, 70061, 70079, 70121, 70141, 70163,        70241 ]
@@ -849,27 +908,28 @@ const backwardsPrime4 = (min: number, max: number): number[] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function backwardsPrime5(start: number, stop: number): number[] {
-    const prime = []
+    const prime = [];
     for (let i = start < 10 ? 11 : start; i <= stop; i++) {
         if (isPrime(i)) {
-            if (isPrime(Number(i.toString().split('').reverse().join('')))) {
+            if (isPrime(Number(i.toString().split("").reverse().join("")))) {
                 if (!isPalindrome(String(i))) {
-                    prime.push(i)
+                    prime.push(i);
                 }
             }
         }
     }
 
-    return prime
+    return prime;
 }
 
 export const isPrime = (num: number): boolean => {
-    for (let i = 2, s = Math.sqrt(num); i <= s; i++) if (num % i === 0) return false
-    return num > 1
-}
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+        if (num % i === 0) return false;
+    return num > 1;
+};
 
 export function isPalindrome(str: string): boolean {
-    return str == str.split('').reverse().join('')
+    return str == str.split("").reverse().join("");
 }
 
 // ===========================================================
@@ -884,7 +944,7 @@ export function backwardsPrime7(start: number, stop: number): number[] {
     const result: number[] = [];
     for (let num = start; num <= stop; num++) {
         if (!isPrime2(num)) continue;
-        const backward = parseInt(num.toString().split('').reverse().join(''));
+        const backward = parseInt(num.toString().split("").reverse().join(""));
         if (backward !== num && isPrime2(backward)) result.push(num);
     }
     return result;
@@ -942,7 +1002,6 @@ In JavaScript: If you use Array.sort in your solution, you might experience issu
 Happy coding! :)
 */
 const longestRepetition = (str: string): [string, number] => {
-
     if (!str) return ["", 0];
 
     // const re = /([a-z])\1{0,}/g;
@@ -958,15 +1017,13 @@ const longestRepetition = (str: string): [string, number] => {
 
     const solution: [string, number] = [descArr[0][0], descArr[0].length];
 
-
     return solution;
-}
+};
 
-// ❗️❗️❗️ MATCH REPEATING CHARACTERS: /(.)\1{1,}/ 
+// ❗️❗️❗️ MATCH REPEATING CHARACTERS: /(.)\1{1,}/
 // ❗️❗️❗️ MATCH REPEATING LETTERS, MORE THAN 1: ([a-z])\1{1,}  THIS DOES NOT MATCH "a", "b" IN "ab"
 // ❗️❗️❗️ MATCH ALL CONSECUTIVE LETTERS (SINGLE TO INFINITY), MORE THAN 0: ([a-z])\1{0,} ❗️❗️❗️ THIS MATCHES "a", "b" IN "ab" ❗️❗️❗️
 // ❗️❗️❗️ WORKS FOR ALL CHARACTERS /(.)\1{0,}/g ❗️❗️❗️
-
 
 //   assert.deepStrictEqual(longestRepetition('aaaabb'), ['a', 4])
 // assert.deepStrictEqual(longestRepetition('bbbaaabaaaa'), ['a', 4])
@@ -984,22 +1041,21 @@ const longestRepetition = (str: string): [string, number] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function longestRepetition2(text: string): [string, number] {
-    const output: [string, number] = ['', 0];
-    text.match(/(.)\1*/g)?.forEach(match => {
+    const output: [string, number] = ["", 0];
+    text.match(/(.)\1*/g)?.forEach((match) => {
         if (match?.length > output[1]) {
             output[0] = match.charAt(0);
-            output[1] = match.length
+            output[1] = match.length;
         }
     });
     return output;
 }
 
-
 function longestRepetition3(text: string): [string, number] {
-    let longest = { char: '', len: 0 };
+    let longest = { char: "", len: 0 };
     let current = { ...longest };
 
-    text.split('').forEach(character => {
+    text.split("").forEach((character) => {
         if (character === current.char) {
             current.len += 1;
         } else {
@@ -1016,11 +1072,10 @@ function longestRepetition3(text: string): [string, number] {
     return [longest.char, longest.len];
 }
 
-
 function longestRepetition4(text: string): [string, number] {
-    let currentChar: string = '';
+    let currentChar: string = "";
     let currentCount: number = 0;
-    let maxChar: string = '';
+    let maxChar: string = "";
     let maxCount: number = 0;
 
     for (let i = 0; i <= text.length; i++) {
@@ -1042,24 +1097,22 @@ function longestRepetition4(text: string): [string, number] {
     return [maxChar, maxCount];
 }
 
-
 function longestRepetition5(text: string): [string, number] {
-    let longest: { char: string, repeat: number } = { char: "", repeat: 0 };
-    let attempt: { char: string, repeat: number } = { char: "", repeat: 0 };
+    let longest: { char: string; repeat: number } = { char: "", repeat: 0 };
+    let attempt: { char: string; repeat: number } = { char: "", repeat: 0 };
 
-    text.split('').forEach((alpha: string) => {
+    text.split("").forEach((alpha: string) => {
         if (alpha === attempt.char) attempt.repeat += 1;
-        else attempt = { char: alpha, repeat: 1 }
+        else attempt = { char: alpha, repeat: 1 };
 
         if (attempt.repeat > longest.repeat) {
             longest.repeat = attempt.repeat;
             longest.char = attempt.char;
         }
-    })
+    });
 
     return [longest.char, longest.repeat];
 }
-
 
 function longestRepetition6(text: string): [string, number] {
     // Implement me! :)
@@ -1070,9 +1123,8 @@ function longestRepetition6(text: string): [string, number] {
         return [res[0], res.length];
     }
 
-    return ['', 0];
+    return ["", 0];
 }
-
 
 function longestRepetition7(text: string): [string, number] {
     return text
@@ -1134,12 +1186,11 @@ const decipherThis = (str: string): string => {
             lettersArr[lettersArr.length - 1] = second;
             wordsArr[idx] = lettersArr.join("");
         }
-    })
+    });
     // JOIN INTO STRING
     const solution: string = wordsArr.join(" ");
 
     return solution;
-
 };
 
 /*
@@ -1213,38 +1264,49 @@ Have a go at this and see how you do
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function decipherThis2(str: string): string {
+    return str
+        .split(" ")
+        .map((word) => {
+            const asciiCode = parseInt(word);
+            const asciiCodeDigits = asciiCode.toString().length;
+            const newWord =
+                String.fromCharCode(asciiCode) + word.substr(asciiCodeDigits);
 
-    return str.split(' ').map(word => {
-        const asciiCode = parseInt(word);
-        const asciiCodeDigits = asciiCode.toString().length;
-        const newWord = String.fromCharCode(asciiCode) + word.substr(asciiCodeDigits);
-
-        if (newWord.length <= 2) {
-            return newWord;
-        }
-        else {
-            return newWord[0] + newWord[newWord.length - 1] + newWord.substring(2, newWord.length - 1) + newWord[1];
-        }
-    }).join(' ');
+            if (newWord.length <= 2) {
+                return newWord;
+            } else {
+                return (
+                    newWord[0] +
+                    newWord[newWord.length - 1] +
+                    newWord.substring(2, newWord.length - 1) +
+                    newWord[1]
+                );
+            }
+        })
+        .join(" ");
 }
-
 
 function decipherThis3(str: string): string {
     return str
-        .replace(/(\d+)/g, code => String.fromCharCode(+code))
-        .replace(/\b(\w)(\w?)(\w*)(\w)/g, '$1$4$3$2');
+        .replace(/(\d+)/g, (code) => String.fromCharCode(+code))
+        .replace(/\b(\w)(\w?)(\w*)(\w)/g, "$1$4$3$2");
 }
-
 
 function decipherThis4(str: string): string {
     return str
         .split(" ")
-        .map(word => word.replace(/^[0-9]{0,}/, e => String.fromCharCode(+e)))
-        .map(word => word.length <= 2 ?
-            word :
-            word[0] + word[word.length - 1] + word.slice(2, word.length - 1) + word[1]
+        .map((word) =>
+            word.replace(/^[0-9]{0,}/, (e) => String.fromCharCode(+e))
         )
-        .join(" ")
+        .map((word) =>
+            word.length <= 2
+                ? word
+                : word[0] +
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
+        )
+        .join(" ");
 }
 
 function decipherThis5(str: string): string {
@@ -1253,12 +1315,12 @@ function decipherThis5(str: string): string {
         .map((word) =>
             word.replace(
                 /(^\d{2,3})([a-z]?)([a-z]*?)([a-z]?$)/,
-                (match, p1, p2, p3, p4) => `${String.fromCharCode(p1)}${p4}${p3}${p2}`,
-            ),
+                (match, p1, p2, p3, p4) =>
+                    `${String.fromCharCode(p1)}${p4}${p3}${p2}`
+            )
         )
         .join(" ");
 }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: LENGTH OF MISSING ARRAY
@@ -1808,10 +1870,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -4204,7 +4266,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -4290,7 +4352,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -5151,15 +5213,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -5212,10 +5274,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -5791,7 +5853,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -6250,8 +6312,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -6544,7 +6606,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -7001,10 +7063,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -8304,8 +8366,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
