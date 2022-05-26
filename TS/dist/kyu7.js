@@ -27,9 +27,64 @@ const mean = (lst) => {
 const splitTheBill = (x) => {
     return x;
 };
-const isVeryEvenNumber = (n) => {
-    return true;
+const isVeryEvenNumber = (num) => {
+    if (num < 10 && !(num & 1)) {
+        return true;
+    }
+    else {
+        while (num > 9) {
+            const numArr = String(num)
+                .split("")
+                .map((el) => Number(el));
+            const sum = numArr.reduce((acc, curr) => acc + curr);
+            num = sum;
+        }
+    }
+    const solution = !(num & 1);
+    return solution;
 };
+const isVeryEvenNumber2 = (num) => {
+    const numArr = String(num)
+        .split("")
+        .map((el) => Number(el));
+    const sum = numArr.reduce((acc, curr) => acc + curr);
+    num = sum;
+    const solution = !(num & 1);
+    return num < 10 ? solution : isVeryEvenNumber(num);
+};
+function isVeryEvenNumber3(n) {
+    if (n < 10) {
+        return n % 2 === 0;
+    }
+    n = [...String(n)].reduce((acc, el) => acc + Number(el), 0);
+    return isVeryEvenNumber(n);
+}
+function isVeryEvenNumber4(n) {
+    return !n-- || (n % 9) % 2 === 1;
+}
+var isVeryEvenNumber5 = (n) => !!((--n % 9) % 2);
+const isVeryEvenNumber6 = (n) => !n-- || (n % 9) % 2 === 1;
+function isVeryEvenNumber7(n) {
+    while (n > 9) {
+        let sumDigits = 0;
+        while (n) {
+            const d = n % 10;
+            sumDigits += d;
+            n = (n - d) / 10;
+        }
+        n = sumDigits;
+    }
+    return n % 2 === 0;
+}
+function isVeryEvenNumber8(n) {
+    if (n < 10) {
+        return n % 2 === 0;
+    }
+    return isVeryEvenNumber(n
+        .toString()
+        .split("")
+        .reduce((p, c) => (p += parseInt(c)), 0));
+}
 const freqSeq = (str, sep) => {
     const numArr = [];
     for (let char of str) {
@@ -45,7 +100,7 @@ const freqSeq = (str, sep) => {
 const freqSeq2 = (str, sep) => {
     const numArr = [];
     for (let char of str) {
-        const counter = [...str].filter(el => el === char).length;
+        const counter = [...str].filter((el) => el === char).length;
         numArr.push(counter);
     }
     const solution = numArr.join(sep);

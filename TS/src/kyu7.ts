@@ -727,10 +727,10 @@ const splitTheBill = (x: { [k: string]: number }): { [k: string]: number } => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: VERY EVEN NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: RECURSION, WHILE()
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -753,11 +753,44 @@ number = 5 => returns false
 number = 841 => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
 Note: The numbers will always be 0 or positive integers!
 */
-const isVeryEvenNumber = (n: number): boolean => {
-    return true;
+
+// 1️⃣ WHILE LOOP
+const isVeryEvenNumber = (num: number): boolean => {
+    // SINGLE DIGIT:
+    if (num < 10 && !(num & 1)) {
+        return true;
+    } else {
+        // LARGER THAN 9: KEEP ADDING DIGITS UNTIL SINGLE DIGIT NUMBER IS PRODUCED
+        while (num > 9) {
+            const numArr: number[] = String(num)
+                .split("")
+                .map((el) => Number(el));
+            const sum: number = numArr.reduce((acc, curr) => acc + curr);
+            num = sum;
+        }
+    }
+
+    // NOW, CHECK IF SINGLE DIGIT NUMBER IS EVEN:
+    const solution: boolean = !(num & 1);
+
+    return solution;
+};
+
+// 2️⃣ RECURSION
+const isVeryEvenNumber2 = (num: number): boolean => {
+    const numArr: number[] = String(num)
+        .split("")
+        .map((el) => Number(el));
+    const sum: number = numArr.reduce((acc, curr) => acc + curr);
+    num = sum;
+
+    const solution: boolean = !(num & 1);
+
+    return num < 10 ? solution : isVeryEvenNumber(num);
 };
 
 // true
+// console.log(isVeryEvenNumber(3));
 // console.log(isVeryEvenNumber(222));
 // false
 // console.log(isVeryEvenNumber(88));
@@ -767,6 +800,46 @@ const isVeryEvenNumber = (n: number): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function isVeryEvenNumber3(n: number): boolean {
+    if (n < 10) {
+        return n % 2 === 0;
+    }
+    n = [...String(n)].reduce((acc, el) => acc + Number(el), 0);
+    return isVeryEvenNumber(n);
+}
+
+function isVeryEvenNumber4(n: number): boolean {
+    return !n-- || (n % 9) % 2 === 1;
+}
+
+var isVeryEvenNumber5 = (n: number): boolean => !!((--n % 9) % 2);
+
+const isVeryEvenNumber6 = (n: number): boolean => !n-- || (n % 9) % 2 === 1;
+
+function isVeryEvenNumber7(n: number): boolean {
+    while (n > 9) {
+        let sumDigits = 0;
+        while (n) {
+            const d = n % 10;
+            sumDigits += d;
+            n = (n - d) / 10;
+        }
+        n = sumDigits;
+    }
+    return n % 2 === 0;
+}
+
+function isVeryEvenNumber8(n: number): boolean {
+    if (n < 10) {
+        return n % 2 === 0;
+    }
+    return isVeryEvenNumber(
+        n
+            .toString()
+            .split("")
+            .reduce((p, c) => (p += parseInt(c)), 0)
+    );
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ FILTER()
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -788,7 +861,6 @@ freqSeq("^^^**$", "x"); // => "3x3x3x2x2x1"
 // 1️⃣ ERROR: SyntaxError: Invalid regular expression: /*/: Nothing to repeat
 // NOT WORKING WITH SPECIAL CHARACTERS !
 const freqSeq = (str: string, sep: string): string => {
-
     const numArr: number[] = [];
 
     for (let char of str) {
@@ -798,7 +870,6 @@ const freqSeq = (str: string, sep: string): string => {
         // h 1, e 1, l 3, l 3, o 2,...
         console.log(char, occurence);
         numArr.push(occurence);
-
     }
 
     // [1, 1, 3, 3, 2,1, 1, 2, 1, 3, 1]
@@ -812,18 +883,16 @@ const freqSeq = (str: string, sep: string): string => {
 
 // 2️⃣ ✅  ❗️❗️❗️ COUNT OCCURENCES OF CHAR IN STRING WITH FILTER() ❗️❗️❗️
 const freqSeq2 = (str: string, sep: string): string => {
-
     const numArr: number[] = [];
 
     for (let char of str) {
-        const counter = [...str].filter(el => el === char).length;
+        const counter = [...str].filter((el) => el === char).length;
         numArr.push(counter);
     }
 
     const solution: string = numArr.join(sep);
 
     return solution;
-
 };
 
 /*
@@ -867,8 +936,6 @@ console.log(count);
     Output: 4
 
 */
-
-
 
 // assert.equal(solution.freqSeq("hello world", "-"), "1-1-3-3-2-1-1-2-1-3-1");
 //     assert.equal(solution.freqSeq("19999999", ":"), "1:7:7:7:7:7:7:7");
@@ -1194,8 +1261,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -1808,10 +1876,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -2264,7 +2332,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2757,17 +2825,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2900,13 +2968,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5508,10 +5576,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6624,7 +6692,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7700,8 +7768,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -7851,10 +7919,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8851,11 +8919,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9650,9 +9718,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -9934,8 +10002,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
