@@ -710,16 +710,25 @@ var group = {
     C: 10
 }
 
+
 splitTheBill(group) // returns {A: 5, B: 0, C: -5}
 */
-const splitTheBill = (x: { [k: string]: number }): { [k: string]: number } => {
-    //code away...
+const splitTheBill = (obj: {
+    [k: string]: number;
+}): { [k: string]: number } => {
+    // [ 'A', 'B', 'C' ]
+    // console.log(Object.keys(obj));
 
-    return x;
+    for (let key in obj) {
+        // A 20 B 15 C 10
+        console.log(key, obj[key]);
+    }
+
+    return obj;
 };
 
 // {A: 5, B: 0, C: -5}
-// console.log(splitTheBill({A: 20, B: 15, C: 10}));
+console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
 // {A: 15, B: 0, X: -15}
 // console.log(splitTheBill({A: 40, B: 25, X: 10}));
 // console.log();

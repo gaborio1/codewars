@@ -24,9 +24,13 @@ class G9645 {
 const mean = (lst) => {
     return [1, "hello"];
 };
-const splitTheBill = (x) => {
-    return x;
+const splitTheBill = (obj) => {
+    for (let key in obj) {
+        console.log(key, obj[key]);
+    }
+    return obj;
 };
+console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
 const isVeryEvenNumber = (num) => {
     if (num < 10 && !(num & 1)) {
         return true;
