@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = void 0;
 function isNegativeZero(n) {
     return true;
 }
@@ -25,12 +25,77 @@ const mean = (lst) => {
     return [1, "hello"];
 };
 const splitTheBill = (obj) => {
+    console.log(Object.values(obj));
+    const aveCost = Object.values(obj).reduce((acc, curr) => {
+        return acc + curr;
+    }) / Object.values(obj).length;
     for (let key in obj) {
-        console.log(key, obj[key]);
+        obj[key] = Number((obj[key] - aveCost).toFixed(2));
     }
     return obj;
 };
-console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
+function splitTheBill3(x) {
+    const entries = Object.entries(x);
+    const sum = entries.reduce((s, [_, v]) => s + v, 0);
+    const average = sum / entries.length;
+    return entries.reduce((result, [k, v]) => {
+        result[k] = Number((v - average).toFixed(2));
+        return result;
+    }, {});
+}
+exports.splitTheBill3 = splitTheBill3;
+function splitTheBill5(x) {
+    const output = {};
+    let total = 0;
+    let cnt = 0;
+    for (const v of Object.values(x)) {
+        total += v;
+        cnt++;
+    }
+    let avg = total / cnt;
+    for (const [k, v] of Object.entries(x)) {
+        output[k] = Math.round((v - avg) * 100) / 100;
+    }
+    return output;
+}
+const isFloat = (num) => {
+    return num % 1 !== 0;
+};
+function splitTheBill6(x) {
+    const bills = [];
+    for (const key in x) {
+        bills.push([key, x[key]]);
+    }
+    const totalAmount = bills.reduce((acc, bill) => acc + bill[1], 0);
+    const amountPerPerson = totalAmount / bills.length;
+    bills.forEach((bill) => {
+        let diff = bill[1] - amountPerPerson;
+        if (isFloat(diff)) {
+            diff = parseFloat(diff.toFixed(2));
+        }
+        bill[1] = diff;
+        x[bill[0]] = bill[1];
+    });
+    return x;
+}
+exports.splitTheBill6 = splitTheBill6;
+function splitTheBill9(x) {
+    const avg = Object.keys(x).reduce((accumulator, key) => accumulator + x[key], 0) /
+        Object.keys(x).length;
+    return Object.keys(x).reduce((accumulator, key) => {
+        return {
+            ...accumulator,
+            [key]: +(x[key] - avg).toFixed(2)
+        };
+    }, {});
+}
+function splitTheBill7(x) {
+    const avg = Object.values(x).reduce((sum, num) => sum + num) / Object.values(x).length;
+    for (const key in x) {
+        x[key] = +(x[key] - avg).toFixed(2);
+    }
+    return x;
+}
 const isVeryEvenNumber = (num) => {
     if (num < 10 && !(num & 1)) {
         return true;

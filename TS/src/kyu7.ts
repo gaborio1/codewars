@@ -682,10 +682,14 @@ const mean = (lst: string[]): [number, string] => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// ❗️❗️❗️ LOOK INTO OBJECT.ENTRIES/VALUES/KEYS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPLIT THE BILL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: OBJECT.ENTRIES/VALUES/KEYS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -713,22 +717,26 @@ var group = {
 
 splitTheBill(group) // returns {A: 5, B: 0, C: -5}
 */
-const splitTheBill = (obj: {
-    [k: string]: number;
-}): { [k: string]: number } => {
-    // [ 'A', 'B', 'C' ]
-    // console.log(Object.keys(obj));
+const splitTheBill = (obj: { [k: string]: number }): { [k: string]: number } => {
+    // [ [ 'A', 20 ], [ 'B', 15 ], [ 'C', 10 ] ]
+    console.log(Object.values(obj));
 
+    // [ 20, 15, 10 ] => 45 / 3 => 15
+    const aveCost: number = Object.values(obj).reduce((acc, curr) => {
+        return acc + curr
+    }) / Object.values(obj).length;
+
+    // LOOP OVER VALUES AND SUBSTRACT AVECOST TO GET AMOUNT TO RECEIVE
     for (let key in obj) {
-        // A 20 B 15 C 10
-        console.log(key, obj[key]);
+        obj[key] = Number((obj[key] - aveCost).toFixed(2));
     }
 
+    // { A: 5, B: 0, C: -5 }
     return obj;
 };
 
 // {A: 5, B: 0, C: -5}
-console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
+// console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
 // {A: 15, B: 0, X: -15}
 // console.log(splitTheBill({A: 40, B: 25, X: 10}));
 // console.log();
@@ -736,6 +744,126 @@ console.log(splitTheBill({ A: 20, B: 15, C: 10 }));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// function splitTheBill2(x: Object): Object {
+//     let j = Object.keys(x).reduce((sum, key) => sum + x[key], 0);
+//     let average = j / Object.keys(x).length;
+//     const result = {};
+//     for (let key in x)
+//         result[key] = Number((x[key] - average).toFixed(2));
+//     return result;
+// }
+
+
+
+type NameValObj = { [k: string]: number }
+type MyTuple = [string, number]
+
+export function splitTheBill3(x: NameValObj): NameValObj {
+    const entries: MyTuple[] = Object.entries(x)
+    const sum = entries.reduce((s, [_, v]) => s + v, 0)
+    const average = sum / entries.length
+
+    return entries.reduce((result: NameValObj, [k, v]) => {
+        result[k] = Number((v - average).toFixed(2))
+        return result
+    }, {});
+}
+
+
+// function splitTheBill4(group: Record<string, number>): Record<string, number> {
+//     const names = Object.keys(group);
+
+//     const count = names.length;
+//     const total = names.map(name => group[name]).reduce((total, x) => total + x, 0);
+//     const average = total / count;
+
+//     const groupBalance = {};
+//     for (const name of names) {
+//         const value = group[name] - average;
+//         const roundedValue = Math.round(value * 100) / 100;
+//         groupBalance[name] = roundedValue;
+//     }
+
+
+//     return groupBalance;
+// }
+
+
+
+function splitTheBill5(x: { [k: string]: number }): { [k: string]: number } {
+    const output: { [k: string]: number } = {};
+    let total = 0;
+    let cnt = 0;
+    for (const v of Object.values(x)) {
+        total += v;
+        cnt++;
+    }
+    let avg = total / cnt;
+
+    for (const [k, v] of Object.entries(x)) {
+        output[k] = Math.round((v - avg) * 100) / 100;
+    }
+    return output;
+}
+
+
+
+interface Bills {
+    [P: string]: number;
+}
+
+const isFloat = (num: number): boolean => {
+    return num % 1 !== 0;
+}
+
+export function splitTheBill6(x: Bills): Bills {
+    //code away...
+
+    const bills: [string, number][] = [];
+    for (const key in x) {
+        bills.push([key, x[key]])
+    }
+
+    const totalAmount: number = bills.reduce((acc: number, bill: [string, number]) => acc + bill[1], 0);
+    const amountPerPerson: number = totalAmount / bills.length;
+
+    bills.forEach((bill: [string, number]) => {
+        let diff: number = bill[1] - amountPerPerson;
+        if (isFloat(diff)) {
+            diff = parseFloat(diff.toFixed(2))
+        }
+        bill[1] = diff;
+        x[bill[0]] = bill[1];
+    })
+
+
+    return x;
+}
+
+
+function splitTheBill9(x: { [k: string]: number }): {
+    [k: string]: number;
+} {
+    const avg =
+        Object.keys(x).reduce((accumulator, key) => accumulator + x[key], 0) /
+        Object.keys(x).length;
+
+    return Object.keys(x).reduce((accumulator, key) => {
+        return {
+            ...accumulator,
+            [key]: +(x[key] - avg).toFixed(2)
+        };
+    }, {});
+}
+
+
+function splitTheBill7(x: { [k: string]: number }): { [k: string]: number } {
+    const avg = Object.values(x).reduce((sum: number, num: number) => sum + num) / Object.values(x).length;
+    for (const key in x) {
+        x[key] = +(x[key] - avg).toFixed(2);
+    }
+    return x;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: VERY EVEN NUMBERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1270,9 +1398,8 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
-        s < 10 ? "0" + s : s
-    }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
+        }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -1885,10 +2012,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -2341,7 +2468,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2834,17 +2961,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -2977,13 +3104,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5585,10 +5712,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6701,7 +6828,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -7777,8 +7904,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -7928,10 +8055,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -8928,11 +9055,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9727,9 +9854,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -10011,8 +10138,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
