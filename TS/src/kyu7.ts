@@ -630,7 +630,7 @@ class G9645 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CALCULATE MEAN AND CONCAT STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -649,11 +649,34 @@ Here is an example of your return
 [3.6, "udiwstagwo"]
 In C# and Java the mean return is a double.
 */
-const mean = (lst: string[]): [number, string] => {
-    return [1, "hello"];
+const mean = (list: string[]): [number, string] => {
+
+    // list
+    // => ['6', '1', '6', '4','6', '1', '2', '8','2', '0']  
+    // => 36
+    // 3.6
+    const ave = list
+        .filter((el) => /\d/.test(el))
+        .map((numStr) => Number(numStr))
+        .reduce((acc, curr) => acc + curr) / list
+            .filter((el) => /\d/.test(el)).length;
+    console.log(ave);
+
+    // list
+    // => ['u', 'd', 'i', 'w','s', 't', 'a', 'g','w', 'o']
+    // => 
+    const charStr: string = list
+        .filter((el) => /[^0-9]/.test(el))
+        .join("");
+    console.log(charStr);
+
+    const solution: [number, string] = [ave, charStr];
+
+    return solution;
+
 };
 
-// let lst = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
+let list = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
 //   console.log(`Testing  ${lst}`);
 //   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([3.6, "udiwstagwo"]));
 //   lst = ["0", "c", "7", "x", "6", "2", "3", "5", "w", "7", "0", "y", "v", "u", "h", "i", "n", "u", "0", "0"];
@@ -675,16 +698,94 @@ const mean = (lst: string[]): [number, string] => {
 //   console.log(`Testing  ${lst}`);
 //   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([1.0, "aaddgquvyy"]));
 
-// console.log();
+// console.log(mean(list));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function mean2(lst: string[]): any[] {
+    let sum: number = 0;
+    let count: number = 0;
+    let str: string = "";
+
+    for (let ch of lst) {
+        if (ch >= '0' && ch <= '9') {
+            sum += +ch;
+            count += 1;
+        }
+        else {
+            str += ch;  // In JS/TS, '+=' operator may be fastest concat.
+        }
+    }
+
+    return [sum / count, str];
+}
+
+
+
+function mean3(lst: string[]): [number, string] {
+    const a: number = lst.reduce((sum, x) => sum + (/\d+/.test(x) ? +x : 0), 0) / 10
+    const b: string = lst.join('').replace(/\d/g, '')
+    return [a, b]
+}
+
+
+const mean4 = (arr: string[]): [number, string] => {
+    const [numbers, letters] = [/\d/, /[a-zA-Z]/].map((regex) =>
+        arr.filter((value) => regex.test(value))
+    );
+    return [
+        numbers.reduce((acc, n) => acc + parseInt(n), 0) / numbers.length,
+        letters.reduce((acc, s) => acc + s, ""),
+    ];
+};
+
+
+function mean5(lst: string[]): [number, string] {
+    let numbers: any[] = [];
+    let strings: any[] = [];
+    lst.forEach((it: any) => {
+        Number.isFinite(+it) ? numbers.push(+it) : strings.push(it);
+    });
+    return [numbers.reduce((n1, n2) => n1 + n2) / numbers.length, strings.join("")];
+}
+
+
+function mean6(lst: string[]): [number, string] {
+    let arrNum = lst.filter(x => x.match(/[0-9]/g)).map(Number);
+
+    let len = arrNum.length;
+    let valmis = arrNum.reduce((a, b) => a + b, 0);
+
+    let arrStr = lst.filter(x => x.match(/[a-z]/g)).map(String).join('');
+
+    return [valmis / len, arrStr];
+}
+
+
+//   function mean7(lst: string[]): [number, string] {
+//     let sum = 0, chars = "";
+//     for (let i = 0; i < lst.length; i++) {
+//       if (!isNaN(lst[i])) sum += parseInt(lst[i]); 
+//       else chars += lst[i];
+//     }
+//     return [sum / 10, chars];
+//   }
+
+
+function mean8(lst: string[]) {
+    var total: number = 0, str: string = '';
+    for (let val of lst) {
+        val.charCodeAt(0) > 64 ? str += val : total += parseInt(val);
+    }
+    return [(total / 10), str]
+}
+
+
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // ❗️❗️❗️ LOOK INTO OBJECT.ENTRIES/VALUES/KEYS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPLIT THE BILL

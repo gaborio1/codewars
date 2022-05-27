@@ -21,9 +21,70 @@ class G9645 {
         return [1];
     }
 }
-const mean = (lst) => {
-    return [1, "hello"];
+const mean = (list) => {
+    const ave = list
+        .filter((el) => /\d/.test(el))
+        .map((numStr) => Number(numStr))
+        .reduce((acc, curr) => acc + curr) / list
+        .filter((el) => /\d/.test(el)).length;
+    console.log(ave);
+    const charStr = list
+        .filter((el) => /[^0-9]/.test(el))
+        .join("");
+    console.log(charStr);
+    const solution = [ave, charStr];
+    return solution;
 };
+let list = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
+function mean2(lst) {
+    let sum = 0;
+    let count = 0;
+    let str = "";
+    for (let ch of lst) {
+        if (ch >= '0' && ch <= '9') {
+            sum += +ch;
+            count += 1;
+        }
+        else {
+            str += ch;
+        }
+    }
+    return [sum / count, str];
+}
+function mean3(lst) {
+    const a = lst.reduce((sum, x) => sum + (/\d+/.test(x) ? +x : 0), 0) / 10;
+    const b = lst.join('').replace(/\d/g, '');
+    return [a, b];
+}
+const mean4 = (arr) => {
+    const [numbers, letters] = [/\d/, /[a-zA-Z]/].map((regex) => arr.filter((value) => regex.test(value)));
+    return [
+        numbers.reduce((acc, n) => acc + parseInt(n), 0) / numbers.length,
+        letters.reduce((acc, s) => acc + s, ""),
+    ];
+};
+function mean5(lst) {
+    let numbers = [];
+    let strings = [];
+    lst.forEach((it) => {
+        Number.isFinite(+it) ? numbers.push(+it) : strings.push(it);
+    });
+    return [numbers.reduce((n1, n2) => n1 + n2) / numbers.length, strings.join("")];
+}
+function mean6(lst) {
+    let arrNum = lst.filter(x => x.match(/[0-9]/g)).map(Number);
+    let len = arrNum.length;
+    let valmis = arrNum.reduce((a, b) => a + b, 0);
+    let arrStr = lst.filter(x => x.match(/[a-z]/g)).map(String).join('');
+    return [valmis / len, arrStr];
+}
+function mean8(lst) {
+    var total = 0, str = '';
+    for (let val of lst) {
+        val.charCodeAt(0) > 64 ? str += val : total += parseInt(val);
+    }
+    return [(total / 10), str];
+}
 const splitTheBill = (obj) => {
     console.log(Object.values(obj));
     const aveCost = Object.values(obj).reduce((acc, curr) => {
