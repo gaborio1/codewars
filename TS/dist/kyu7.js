@@ -10,9 +10,19 @@ function dative(word) {
 const calcType = (a, b, res) => {
     return "calculation";
 };
-const fusc = (n) => {
-    return 1;
+const fusc = (num) => {
+    if (num === 0)
+        return 0;
+    if (num === 1)
+        return 1;
+    if (num % 2 === 0)
+        return fusc(num / 2);
+    if (num % 2 === 1)
+        return fusc((num - 1) / 2) + fusc((num - 1) / 2 + 1);
 };
+console.log(fusc(0));
+console.log(fusc(1));
+console.log(fusc(85));
 const potatoes = (p0, w0, p1) => {
     return 1;
 };
@@ -34,10 +44,9 @@ class G9645 {
         console.log("right;", rightWing);
         const solution = leftWing.concat(rightWing);
         console.log("solution:", solution);
-        return [1];
+        return solution;
     }
 }
-console.log(G9645.makeValley([20, 7, 6, 2]));
 const mean = (list) => {
     const ave = list
         .filter((el) => /\d/.test(el))
