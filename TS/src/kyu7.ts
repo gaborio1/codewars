@@ -614,6 +614,26 @@ The right wing is nearly as steep as the right one.
 */
 class G9645 {
     public static makeValley(arr: number[]): number[] {
+        const descArr: number[] = arr.sort((a, b) => b - a);
+        console.log(descArr);
+
+        let leftWing: number[] = [];
+        let rightWing: number[] = [];
+
+        for (let i = 0; i < descArr.length; i += 2) {
+            console.log(descArr[i]);
+            leftWing.push(descArr[i]);
+            descArr.splice(i, 1);
+            i -= 1;
+        }
+        console.log("left;", leftWing);
+        console.log(descArr);
+        rightWing = descArr.reverse();
+        console.log("right;", rightWing);
+
+        const solution: number[] = leftWing.concat(rightWing);
+        console.log("solution:", solution);
+
         return [1];
     }
 }
@@ -623,7 +643,10 @@ class G9645 {
 // testing(solution.G964.makeValley([14, 10, 8]), [14, 8, 10]);
 // testing(solution.G964.makeValley([20, 18, 17, 13, 12, 12, 10, 9, 4, 2, 2, 1, 1]), [20, 17, 12, 10, 4, 2, 1, 1, 2, 9, 12, 13, 18]);
 
-// console.log();
+// [17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]);
+// console.log(G9645.makeValley([17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]));
+// [20, 6, 2, 7]
+console.log(G9645.makeValley([20, 7, 6, 2]));
 // console.log();
 // console.log();
 // console.log();
@@ -650,33 +673,51 @@ Here is an example of your return
 In C# and Java the mean return is a double.
 */
 const mean = (list: string[]): [number, string] => {
-
     // list
-    // => ['6', '1', '6', '4','6', '1', '2', '8','2', '0']  
+    // => ['6', '1', '6', '4','6', '1', '2', '8','2', '0']
     // => 36
     // 3.6
-    const ave = list
-        .filter((el) => /\d/.test(el))
-        .map((numStr) => Number(numStr))
-        .reduce((acc, curr) => acc + curr) / list
-            .filter((el) => /\d/.test(el)).length;
+    const ave =
+        list
+            .filter((el) => /\d/.test(el))
+            .map((numStr) => Number(numStr))
+            .reduce((acc, curr) => acc + curr) /
+        list.filter((el) => /\d/.test(el)).length;
     console.log(ave);
 
     // list
     // => ['u', 'd', 'i', 'w','s', 't', 'a', 'g','w', 'o']
-    // => 
-    const charStr: string = list
-        .filter((el) => /[^0-9]/.test(el))
-        .join("");
+    // =>
+    const charStr: string = list.filter((el) => /[^0-9]/.test(el)).join("");
     console.log(charStr);
 
     const solution: [number, string] = [ave, charStr];
 
     return solution;
-
 };
 
-let list = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
+let list = [
+    "u",
+    "6",
+    "d",
+    "1",
+    "i",
+    "w",
+    "6",
+    "s",
+    "t",
+    "4",
+    "a",
+    "6",
+    "g",
+    "1",
+    "2",
+    "w",
+    "8",
+    "o",
+    "2",
+    "0",
+];
 //   console.log(`Testing  ${lst}`);
 //   assert.equal(JSON.stringify(solution.mean(lst)),JSON.stringify([3.6, "udiwstagwo"]));
 //   lst = ["0", "c", "7", "x", "6", "2", "3", "5", "w", "7", "0", "y", "v", "u", "h", "i", "n", "u", "0", "0"];
@@ -711,26 +752,23 @@ function mean2(lst: string[]): any[] {
     let str: string = "";
 
     for (let ch of lst) {
-        if (ch >= '0' && ch <= '9') {
+        if (ch >= "0" && ch <= "9") {
             sum += +ch;
             count += 1;
-        }
-        else {
-            str += ch;  // In JS/TS, '+=' operator may be fastest concat.
+        } else {
+            str += ch; // In JS/TS, '+=' operator may be fastest concat.
         }
     }
 
     return [sum / count, str];
 }
 
-
-
 function mean3(lst: string[]): [number, string] {
-    const a: number = lst.reduce((sum, x) => sum + (/\d+/.test(x) ? +x : 0), 0) / 10
-    const b: string = lst.join('').replace(/\d/g, '')
-    return [a, b]
+    const a: number =
+        lst.reduce((sum, x) => sum + (/\d+/.test(x) ? +x : 0), 0) / 10;
+    const b: string = lst.join("").replace(/\d/g, "");
+    return [a, b];
 }
-
 
 const mean4 = (arr: string[]): [number, string] => {
     const [numbers, letters] = [/\d/, /[a-zA-Z]/].map((regex) =>
@@ -742,50 +780,52 @@ const mean4 = (arr: string[]): [number, string] => {
     ];
 };
 
-
 function mean5(lst: string[]): [number, string] {
     let numbers: any[] = [];
     let strings: any[] = [];
     lst.forEach((it: any) => {
         Number.isFinite(+it) ? numbers.push(+it) : strings.push(it);
     });
-    return [numbers.reduce((n1, n2) => n1 + n2) / numbers.length, strings.join("")];
+    return [
+        numbers.reduce((n1, n2) => n1 + n2) / numbers.length,
+        strings.join(""),
+    ];
 }
 
-
 function mean6(lst: string[]): [number, string] {
-    let arrNum = lst.filter(x => x.match(/[0-9]/g)).map(Number);
+    let arrNum = lst.filter((x) => x.match(/[0-9]/g)).map(Number);
 
     let len = arrNum.length;
     let valmis = arrNum.reduce((a, b) => a + b, 0);
 
-    let arrStr = lst.filter(x => x.match(/[a-z]/g)).map(String).join('');
+    let arrStr = lst
+        .filter((x) => x.match(/[a-z]/g))
+        .map(String)
+        .join("");
 
     return [valmis / len, arrStr];
 }
 
-
 //   function mean7(lst: string[]): [number, string] {
 //     let sum = 0, chars = "";
 //     for (let i = 0; i < lst.length; i++) {
-//       if (!isNaN(lst[i])) sum += parseInt(lst[i]); 
+//       if (!isNaN(lst[i])) sum += parseInt(lst[i]);
 //       else chars += lst[i];
 //     }
 //     return [sum / 10, chars];
 //   }
 
-
 function mean8(lst: string[]) {
-    var total: number = 0, str: string = '';
+    var total: number = 0,
+        str: string = "";
     for (let val of lst) {
-        val.charCodeAt(0) > 64 ? str += val : total += parseInt(val);
+        val.charCodeAt(0) > 64 ? (str += val) : (total += parseInt(val));
     }
-    return [(total / 10), str]
+    return [total / 10, str];
 }
 
-
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️ 
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
 // ❗️❗️❗️ LOOK INTO OBJECT.ENTRIES/VALUES/KEYS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SPLIT THE BILL
@@ -818,14 +858,17 @@ var group = {
 
 splitTheBill(group) // returns {A: 5, B: 0, C: -5}
 */
-const splitTheBill = (obj: { [k: string]: number }): { [k: string]: number } => {
+const splitTheBill = (obj: {
+    [k: string]: number;
+}): { [k: string]: number } => {
     // [ [ 'A', 20 ], [ 'B', 15 ], [ 'C', 10 ] ]
     console.log(Object.values(obj));
 
     // [ 20, 15, 10 ] => 45 / 3 => 15
-    const aveCost: number = Object.values(obj).reduce((acc, curr) => {
-        return acc + curr
-    }) / Object.values(obj).length;
+    const aveCost: number =
+        Object.values(obj).reduce((acc, curr) => {
+            return acc + curr;
+        }) / Object.values(obj).length;
 
     // LOOP OVER VALUES AND SUBSTRACT AVECOST TO GET AMOUNT TO RECEIVE
     for (let key in obj) {
@@ -854,22 +897,19 @@ const splitTheBill = (obj: { [k: string]: number }): { [k: string]: number } => 
 //     return result;
 // }
 
-
-
-type NameValObj = { [k: string]: number }
-type MyTuple = [string, number]
+type NameValObj = { [k: string]: number };
+type MyTuple = [string, number];
 
 export function splitTheBill3(x: NameValObj): NameValObj {
-    const entries: MyTuple[] = Object.entries(x)
-    const sum = entries.reduce((s, [_, v]) => s + v, 0)
-    const average = sum / entries.length
+    const entries: MyTuple[] = Object.entries(x);
+    const sum = entries.reduce((s, [_, v]) => s + v, 0);
+    const average = sum / entries.length;
 
     return entries.reduce((result: NameValObj, [k, v]) => {
-        result[k] = Number((v - average).toFixed(2))
-        return result
+        result[k] = Number((v - average).toFixed(2));
+        return result;
     }, {});
 }
-
 
 // function splitTheBill4(group: Record<string, number>): Record<string, number> {
 //     const names = Object.keys(group);
@@ -885,11 +925,8 @@ export function splitTheBill3(x: NameValObj): NameValObj {
 //         groupBalance[name] = roundedValue;
 //     }
 
-
 //     return groupBalance;
 // }
-
-
 
 function splitTheBill5(x: { [k: string]: number }): { [k: string]: number } {
     const output: { [k: string]: number } = {};
@@ -907,40 +944,39 @@ function splitTheBill5(x: { [k: string]: number }): { [k: string]: number } {
     return output;
 }
 
-
-
 interface Bills {
     [P: string]: number;
 }
 
 const isFloat = (num: number): boolean => {
     return num % 1 !== 0;
-}
+};
 
 export function splitTheBill6(x: Bills): Bills {
     //code away...
 
     const bills: [string, number][] = [];
     for (const key in x) {
-        bills.push([key, x[key]])
+        bills.push([key, x[key]]);
     }
 
-    const totalAmount: number = bills.reduce((acc: number, bill: [string, number]) => acc + bill[1], 0);
+    const totalAmount: number = bills.reduce(
+        (acc: number, bill: [string, number]) => acc + bill[1],
+        0
+    );
     const amountPerPerson: number = totalAmount / bills.length;
 
     bills.forEach((bill: [string, number]) => {
         let diff: number = bill[1] - amountPerPerson;
         if (isFloat(diff)) {
-            diff = parseFloat(diff.toFixed(2))
+            diff = parseFloat(diff.toFixed(2));
         }
         bill[1] = diff;
         x[bill[0]] = bill[1];
-    })
-
+    });
 
     return x;
 }
-
 
 function splitTheBill9(x: { [k: string]: number }): {
     [k: string]: number;
@@ -952,14 +988,15 @@ function splitTheBill9(x: { [k: string]: number }): {
     return Object.keys(x).reduce((accumulator, key) => {
         return {
             ...accumulator,
-            [key]: +(x[key] - avg).toFixed(2)
+            [key]: +(x[key] - avg).toFixed(2),
         };
     }, {});
 }
 
-
 function splitTheBill7(x: { [k: string]: number }): { [k: string]: number } {
-    const avg = Object.values(x).reduce((sum: number, num: number) => sum + num) / Object.values(x).length;
+    const avg =
+        Object.values(x).reduce((sum: number, num: number) => sum + num) /
+        Object.values(x).length;
     for (const key in x) {
         x[key] = +(x[key] - avg).toFixed(2);
     }
@@ -1499,8 +1536,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -2113,10 +2151,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -2569,7 +2607,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -3062,17 +3100,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -3205,13 +3243,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5813,10 +5851,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6929,7 +6967,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -8005,8 +8043,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -8156,10 +8194,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -9156,11 +9194,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -9955,9 +9993,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -10239,8 +10277,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

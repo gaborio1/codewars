@@ -18,30 +18,66 @@ const potatoes = (p0, w0, p1) => {
 };
 class G9645 {
     static makeValley(arr) {
+        const descArr = arr.sort((a, b) => b - a);
+        console.log(descArr);
+        let leftWing = [];
+        let rightWing = [];
+        for (let i = 0; i < descArr.length; i += 2) {
+            console.log(descArr[i]);
+            leftWing.push(descArr[i]);
+            descArr.splice(i, 1);
+            i -= 1;
+        }
+        console.log("left;", leftWing);
+        console.log(descArr);
+        rightWing = descArr.reverse();
+        console.log("right;", rightWing);
+        const solution = leftWing.concat(rightWing);
+        console.log("solution:", solution);
         return [1];
     }
 }
+console.log(G9645.makeValley([20, 7, 6, 2]));
 const mean = (list) => {
     const ave = list
         .filter((el) => /\d/.test(el))
         .map((numStr) => Number(numStr))
-        .reduce((acc, curr) => acc + curr) / list
-        .filter((el) => /\d/.test(el)).length;
+        .reduce((acc, curr) => acc + curr) /
+        list.filter((el) => /\d/.test(el)).length;
     console.log(ave);
-    const charStr = list
-        .filter((el) => /[^0-9]/.test(el))
-        .join("");
+    const charStr = list.filter((el) => /[^0-9]/.test(el)).join("");
     console.log(charStr);
     const solution = [ave, charStr];
     return solution;
 };
-let list = ["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"];
+let list = [
+    "u",
+    "6",
+    "d",
+    "1",
+    "i",
+    "w",
+    "6",
+    "s",
+    "t",
+    "4",
+    "a",
+    "6",
+    "g",
+    "1",
+    "2",
+    "w",
+    "8",
+    "o",
+    "2",
+    "0",
+];
 function mean2(lst) {
     let sum = 0;
     let count = 0;
     let str = "";
     for (let ch of lst) {
-        if (ch >= '0' && ch <= '9') {
+        if (ch >= "0" && ch <= "9") {
             sum += +ch;
             count += 1;
         }
@@ -53,7 +89,7 @@ function mean2(lst) {
 }
 function mean3(lst) {
     const a = lst.reduce((sum, x) => sum + (/\d+/.test(x) ? +x : 0), 0) / 10;
-    const b = lst.join('').replace(/\d/g, '');
+    const b = lst.join("").replace(/\d/g, "");
     return [a, b];
 }
 const mean4 = (arr) => {
@@ -69,21 +105,27 @@ function mean5(lst) {
     lst.forEach((it) => {
         Number.isFinite(+it) ? numbers.push(+it) : strings.push(it);
     });
-    return [numbers.reduce((n1, n2) => n1 + n2) / numbers.length, strings.join("")];
+    return [
+        numbers.reduce((n1, n2) => n1 + n2) / numbers.length,
+        strings.join(""),
+    ];
 }
 function mean6(lst) {
-    let arrNum = lst.filter(x => x.match(/[0-9]/g)).map(Number);
+    let arrNum = lst.filter((x) => x.match(/[0-9]/g)).map(Number);
     let len = arrNum.length;
     let valmis = arrNum.reduce((a, b) => a + b, 0);
-    let arrStr = lst.filter(x => x.match(/[a-z]/g)).map(String).join('');
+    let arrStr = lst
+        .filter((x) => x.match(/[a-z]/g))
+        .map(String)
+        .join("");
     return [valmis / len, arrStr];
 }
 function mean8(lst) {
-    var total = 0, str = '';
+    var total = 0, str = "";
     for (let val of lst) {
-        val.charCodeAt(0) > 64 ? str += val : total += parseInt(val);
+        val.charCodeAt(0) > 64 ? (str += val) : (total += parseInt(val));
     }
-    return [(total / 10), str];
+    return [total / 10, str];
 }
 const splitTheBill = (obj) => {
     console.log(Object.values(obj));
@@ -146,12 +188,13 @@ function splitTheBill9(x) {
     return Object.keys(x).reduce((accumulator, key) => {
         return {
             ...accumulator,
-            [key]: +(x[key] - avg).toFixed(2)
+            [key]: +(x[key] - avg).toFixed(2),
         };
     }, {});
 }
 function splitTheBill7(x) {
-    const avg = Object.values(x).reduce((sum, num) => sum + num) / Object.values(x).length;
+    const avg = Object.values(x).reduce((sum, num) => sum + num) /
+        Object.values(x).length;
     for (const key in x) {
         x[key] = +(x[key] - avg).toFixed(2);
     }
