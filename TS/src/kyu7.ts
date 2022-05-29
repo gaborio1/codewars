@@ -433,8 +433,35 @@ Cases with just one possible answers are generated.
 Only valid arguments will be passed to the function.
 Only valid arguments will be passed to the function!
 */
+const calcType2 = (a: number, b: number, res: number): string => {
+    let solution: string = "";
+
+    if (res === a + b) solution = "addition";
+    if (res === a * b) solution = "multiplication";
+    if (res === a - b) solution = "substraction";
+    if (res === a / b) solution = "division";
+
+    return solution;
+};
+
 const calcType = (a: number, b: number, res: number): string => {
-    return "calculation"; // TODO: your solution here
+    let solution: string = "";
+
+    switch (true) {
+        case res === a + b:
+            solution = "addition";
+            break;
+        case res === a * b:
+            solution = "multiplication";
+            break;
+        case res === a - b:
+            solution = "substraction";
+            break;
+        case res === a / b:
+            solution = "division";
+    }
+
+    return solution;
 };
 
 //   it('Fixed test for addition', () => {
@@ -455,6 +482,64 @@ const calcType = (a: number, b: number, res: number): string => {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function calcType3(a: number, b: number, c: number): string {
+    return "addition|multiplication|subtraction|division".split("|")[
+        a + b == c ? 0 : a * b == c ? 1 : a - b == c ? 2 : 3
+    ];
+}
+
+// ===========================================================
+
+type Operation =
+    | "addition"
+    | "subtraction"
+    | "multiplication"
+    | "division"
+    | "operation";
+
+export const calcType4 = (a: number, b: number, res: number): Operation => {
+    if (a + b === res) return "addition";
+    if (a - b === res) return "subtraction";
+    if (a / b === res) return "division";
+    if (a * b === res) return "multiplication";
+    return "operation";
+};
+
+// ===========================================================
+
+function calcType5(a: number, b: number, res: number): string {
+    return a + b === res
+        ? "addition"
+        : a - b === res
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
+}
+
+function calcType6(a: number, b: number, res: number): string {
+    if (res >= a + b) {
+        return a + b === res ? "addition" : "multiplication";
+    }
+    return a - b === res ? "subtraction" : "division";
+}
+
+function calcType7(a: number, b: number, res: number): string {
+    const add = a + b;
+    const sub = a - b;
+    const mult = a * b;
+
+    if (add === res) {
+        return "addition";
+    } else if (mult === res) {
+        return "multiplication";
+    } else if (sub === res) {
+        return "subtraction";
+    }
+    return "division";
+}
+
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES : SWITCH(TRUE), RECURSION ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -616,14 +701,31 @@ potatoesshould return the final weight coming out of the oven w1 truncated as an
 Example:
 potatoes(99, 100, 98) --> 50
 */
-const potatoes = (p0: number, w0: number, p1: number): number => {
+const potatoes = (
+    inputCont: number,
+    inputWeight: number,
+    outputCont: number
+): number => {
+    // 104.14
+    let waterContent: number = (inputWeight * inputCont) / 100;
+    console.log(waterContent);
+
+    // 22.86
+    const dryWeight: number = inputWeight - (inputWeight * inputCont) / 100;
+    console.log(dryWeight);
+
+    const solution: number = inputWeight / (100 - outputCont);
+    console.log(solution);
+
     return 1;
 };
 
 // assert.strictEqual(potatoes(82, 127, 80), 114);
 //     assert.strictEqual(potatoes(93, 129, 91), 100);
 
-// console.log();
+// 114
+// console.log(potatoes(82, 127, 80));
+console.log(potatoes(99, 100, 98));
 // console.log();
 // console.log();
 // console.log();

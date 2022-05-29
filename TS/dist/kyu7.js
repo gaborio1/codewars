@@ -1,15 +1,86 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = void 0;
 function isNegativeZero(n) {
     return true;
 }
 function dative(word) {
     return "hello";
 }
-const calcType = (a, b, res) => {
-    return "calculation";
+const calcType2 = (a, b, res) => {
+    let solution = "";
+    if (res === a + b)
+        solution = "addition";
+    if (res === a * b)
+        solution = "multiplication";
+    if (res === a - b)
+        solution = "substraction";
+    if (res === a / b)
+        solution = "division";
+    return solution;
 };
+const calcType = (a, b, res) => {
+    let solution = "";
+    switch (true) {
+        case res === a + b:
+            solution = "addition";
+            break;
+        case res === a * b:
+            solution = "multiplication";
+            break;
+        case res === a - b:
+            solution = "substraction";
+            break;
+        case res === a / b:
+            solution = "division";
+    }
+    return solution;
+};
+function calcType3(a, b, c) {
+    return "addition|multiplication|subtraction|division".split("|")[a + b == c ? 0 : a * b == c ? 1 : a - b == c ? 2 : 3];
+}
+const calcType4 = (a, b, res) => {
+    if (a + b === res)
+        return "addition";
+    if (a - b === res)
+        return "subtraction";
+    if (a / b === res)
+        return "division";
+    if (a * b === res)
+        return "multiplication";
+    return "operation";
+};
+exports.calcType4 = calcType4;
+function calcType5(a, b, res) {
+    return a + b === res
+        ? "addition"
+        : a - b === res
+            ? "subtraction"
+            : a * b === res
+                ? "multiplication"
+                : "division";
+}
+function calcType6(a, b, res) {
+    if (res >= a + b) {
+        return a + b === res ? "addition" : "multiplication";
+    }
+    return a - b === res ? "subtraction" : "division";
+}
+function calcType7(a, b, res) {
+    const add = a + b;
+    const sub = a - b;
+    const mult = a * b;
+    if (add === res) {
+        return "addition";
+    }
+    else if (mult === res) {
+        return "multiplication";
+    }
+    else if (sub === res) {
+        return "subtraction";
+    }
+    return "division";
+}
 const fusc2 = (num) => {
     if (num === 0)
         return 0;
@@ -84,9 +155,16 @@ function fusc6(n, map = new Map([
         return result;
     }
 }
-const potatoes = (p0, w0, p1) => {
+const potatoes = (inputCont, inputWeight, outputCont) => {
+    let waterContent = (inputWeight * inputCont) / 100;
+    console.log(waterContent);
+    const dryWeight = inputWeight - (inputWeight * inputCont) / 100;
+    console.log(dryWeight);
+    const solution = inputWeight / (100 - outputCont);
+    console.log(solution);
     return 1;
 };
+console.log(potatoes(99, 100, 98));
 class G9645 {
     static makeValley(arr) {
         const descArr = arr.sort((a, b) => b - a);
