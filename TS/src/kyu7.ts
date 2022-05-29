@@ -455,13 +455,12 @@ const calcType = (a: number, b: number, res: number): string => {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ REFACTOR THIS ❗️❗️❗️
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES : SWITCH(TRUE), RECURSION ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: THE FUSC FUNCTION -- Part 1
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: RECURSION, SWITCH(TRUE)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -493,29 +492,96 @@ Well, 5 = 2 x 2 + 1, and fusc(2 x 2 + 1) = fusc(2) + fusc(3). fusc(3) = fusc(2 x
 Put these results together and you get fusc(5) = 3. Your job is to implement the function fusc.
 
 */
-const fusc = (num: number): any => {
-
+// 1️⃣
+const fusc2 = (num: number): any => {
     if (num === 0) return 0;
     if (num === 1) return 1;
     if (num % 2 === 0) return fusc(num / 2);
     if (num % 2 === 1) return fusc((num - 1) / 2) + fusc((num - 1) / 2 + 1);
+};
 
+// 2️⃣
+const fusc = (num: number): number => {
+    if (num < 2) return num;
 
+    return num & 1
+        ? fusc((num - 1) / 2) + fusc((num - 1) / 2 + 1)
+        : fusc(num / 2);
 };
 
 // assert.equal(fusc(0), 0, 'fusc(0)')
 // assert.equal(fusc(1), 1, 'fusc(1)')
 // assert.equal(fusc(85), 21, 'fusc(85)')
 
-console.log(fusc(0));
-console.log(fusc(1));
-console.log(fusc(85));
-// console.log();
-// console.log();
-// console.log();
+// console.log(fusc(0));
+// console.log(fusc(1));
+// console.log(fusc(85));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ SWITCH(TRUE), RECURSION ❗️❗️❗️
+
+function fusc7(n: number): number {
+    switch (true) {
+        case n === 0:
+            return 0;
+        case n === 1:
+            return 1;
+        case n % 2 === 0:
+            return fusc(n / 2);
+        case n % 2 === 1:
+            return fusc((n - 1) / 2) + fusc((n - 1) / 2 + 1);
+        default:
+            throw new Error("Invalid input");
+    }
+}
+
+const fusc3 = ($: number): number =>
+    $ < 2
+        ? $
+        : $ % 2 === 0
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+
+function fusc4(n: number): number {
+    if (n === 0 || n === 1) {
+        return n;
+    }
+    if (n % 2 === 0) {
+        return fusc(n / 2);
+    }
+    return fusc((n - 1) / 2) + fusc((n + 1) / 2);
+}
+
+function fusc5(n: number): number {
+    if (n === 0) return 0;
+    if (n === 1) return 1;
+    if (n % 2 === 0) return fusc(n / 2);
+    let x = (n - 1) / 2;
+    return fusc(x) + fusc(x + 1);
+}
+
+function fusc6(
+    n: number,
+    map = new Map<number, number>([
+        [0, 0],
+        [1, 1],
+    ])
+): number {
+    if (map.has(n)) {
+        return map.get(n)!;
+    }
+    const half = n >> 1;
+    if (n % 2 === 0) {
+        const result = fusc(half);
+        map.set(n, result);
+        return result;
+    } else {
+        const result = fusc(half) + fusc(half + 1);
+        map.set(n, result);
+        return result;
+    }
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: DRYING POTATOES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1565,8 +1631,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -2179,10 +2246,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -2635,7 +2702,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -3128,17 +3195,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -3271,13 +3338,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -5879,10 +5946,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -6995,7 +7062,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -8071,8 +8138,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -8222,10 +8289,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -9222,11 +9289,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -10021,9 +10088,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -10305,8 +10372,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

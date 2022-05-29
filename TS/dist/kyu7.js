@@ -10,7 +10,7 @@ function dative(word) {
 const calcType = (a, b, res) => {
     return "calculation";
 };
-const fusc = (num) => {
+const fusc2 = (num) => {
     if (num === 0)
         return 0;
     if (num === 1)
@@ -20,9 +20,70 @@ const fusc = (num) => {
     if (num % 2 === 1)
         return fusc((num - 1) / 2) + fusc((num - 1) / 2 + 1);
 };
-console.log(fusc(0));
-console.log(fusc(1));
-console.log(fusc(85));
+const fusc = (num) => {
+    if (num < 2)
+        return num;
+    return num & 1
+        ? fusc((num - 1) / 2) + fusc((num - 1) / 2 + 1)
+        : fusc(num / 2);
+};
+function fusc7(n) {
+    switch (true) {
+        case n === 0:
+            return 0;
+        case n === 1:
+            return 1;
+        case n % 2 === 0:
+            return fusc(n / 2);
+        case n % 2 === 1:
+            return fusc((n - 1) / 2) + fusc((n - 1) / 2 + 1);
+        default:
+            throw new Error("Invalid input");
+    }
+}
+const fusc3 = ($) => $ < 2
+    ? $
+    : $ % 2 === 0
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+function fusc4(n) {
+    if (n === 0 || n === 1) {
+        return n;
+    }
+    if (n % 2 === 0) {
+        return fusc(n / 2);
+    }
+    return fusc((n - 1) / 2) + fusc((n + 1) / 2);
+}
+function fusc5(n) {
+    if (n === 0)
+        return 0;
+    if (n === 1)
+        return 1;
+    if (n % 2 === 0)
+        return fusc(n / 2);
+    let x = (n - 1) / 2;
+    return fusc(x) + fusc(x + 1);
+}
+function fusc6(n, map = new Map([
+    [0, 0],
+    [1, 1],
+])) {
+    if (map.has(n)) {
+        return map.get(n);
+    }
+    const half = n >> 1;
+    if (n % 2 === 0) {
+        const result = fusc(half);
+        map.set(n, result);
+        return result;
+    }
+    else {
+        const result = fusc(half) + fusc(half + 1);
+        map.set(n, result);
+        return result;
+    }
+}
 const potatoes = (p0, w0, p1) => {
     return 1;
 };
