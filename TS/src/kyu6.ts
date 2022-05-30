@@ -432,10 +432,11 @@ function numPrimorial(n: number) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// !!! THIS IS SIMILAR TO 5KYU GAPS IN PRIMES !!!
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STEPS IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: PRIMES, ❗️❗️❗️ FUNCTION TYPE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -510,7 +511,7 @@ class G9647 {
         }
 
         // [ 101, 103, 107, 109 ]
-        console.log("primesArr", primesArr);
+        // console.log("primesArr", primesArr);
 
         // LOOP OVER PRIMES ARRAY AND CHECK IF SUCH STEP EXISTS BETWEEN ELEMENTS
         for (let i = 0; i < primesArr.length; i += 1) {
@@ -572,6 +573,92 @@ console.log(G9647.step(6, 100, 110));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// class G96472 {
+//     private static prime = (n) => {
+//         if (n == 2) {
+//             return true;
+//         } else if (n < 2 || n % 2 == 0) {
+//             return false;
+//         } else {
+//             for (var i = 3; i <= Math.sqrt(n); i += 2) {
+//                 if (n % i == 0) return false;
+//             }
+//             return true;
+//         }
+//     };
+
+//     public static step = (g, m, n) => {
+//         var res = [];
+//         var i = m;
+//         while (i <= n - g) {
+//             if (G96472.prime(i) && G96472.prime(i + g)) {
+//                 res.push(i);
+//                 res.push(i + g);
+//                 return res;
+//             }
+//             i++;
+//         }
+//         return null;
+//     };
+// }
+
+class G96473 {
+    public static step(
+        g: number,
+        start: number,
+        end: number
+    ): [number, number] | null {
+        for (let n = start; n <= end - g; n++) {
+            if (this.isPrime(n) && this.isPrime(n + g)) return [n, n + g];
+        }
+        return null;
+    }
+
+    private static isPrime(n: number): boolean {
+        if (n === 2) return true;
+        if (n % 2 === 0 || n < 2) return false;
+
+        for (let i = 3; i <= Math.trunc(Math.sqrt(n)); i += 2) {
+            if (n % i === 0) return false;
+        }
+
+        return true;
+    }
+}
+
+// ==============================================================
+
+// ❗️❗️❗️ FUNCTION TYPE ❗️❗️❗️
+
+type Step = (step: number, start: number, end: number) => number[];
+type GeneratePrimeNumber = (endNumber: number) => Boolean[];
+
+// class G96474 {
+//   static generatePrimeNumber: GeneratePrimeNumber = (endNumber) => {
+//     let arr: Boolean[] = new Array<Boolean>(endNumber).fill(true);
+//     for (let i = 2; i**2 <= endNumber; i++) {
+//       if (arr[i] === true) {
+//         for (let j = i**2, n = 1; j <= endNumber; j = i**2 + n*i, n++) {
+//           arr[j] = false;
+//         }
+//       }
+//     }
+
+//     return arr;
+//   }
+
+//   public static step: Step = (step, start, end)  => {
+//     const primeNumberArr = G96474.generatePrimeNumber(end);
+//     for (let i = start; i <= end; i++) {
+//       if (primeNumberArr[i] === true && primeNumberArr[i + step] === true) {
+//         return [i, i + step];
+//       }
+//     }
+
+//     return null;
+//   }
+// }
 
 // Time: 3309ms Passed: 4Failed: 1Errors: 1Exit Code: 1
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥

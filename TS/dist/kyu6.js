@@ -27,7 +27,6 @@ G9647.step = (step, min, max) => {
             primesArr.push(prime);
         }
     }
-    console.log("primesArr", primesArr);
     for (let i = 0; i < primesArr.length; i += 1) {
         console.log(primesArr[i]);
         for (let j = i + 1; j < primesArr.length; j += 1) {
@@ -41,6 +40,26 @@ G9647.step = (step, min, max) => {
     return null;
 };
 console.log(G9647.step(6, 100, 110));
+class G96473 {
+    static step(g, start, end) {
+        for (let n = start; n <= end - g; n++) {
+            if (this.isPrime(n) && this.isPrime(n + g))
+                return [n, n + g];
+        }
+        return null;
+    }
+    static isPrime(n) {
+        if (n === 2)
+            return true;
+        if (n % 2 === 0 || n < 2)
+            return false;
+        for (let i = 3; i <= Math.trunc(Math.sqrt(n)); i += 2) {
+            if (n % i === 0)
+                return false;
+        }
+        return true;
+    }
+}
 class G9646 {
 }
 _a = G9646;
