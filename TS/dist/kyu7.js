@@ -4,9 +4,22 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.
 function isNegativeZero(n) {
     return true;
 }
-function dative(word) {
-    return "hello";
-}
+const dative = (word) => {
+    let solution = word;
+    const lettersArr = word.split("");
+    for (let i = lettersArr.length - 1; i >= 0; i -= 1) {
+        console.log(lettersArr[i]);
+        if (/[eéiíöőüű]/.test(lettersArr[i])) {
+            solution += "nek";
+            break;
+        }
+        if (/[aáoóuú]/.test(lettersArr[i])) {
+            solution += "nak";
+            break;
+        }
+    }
+    return solution;
+};
 const calcType2 = (a, b, res) => {
     let solution = "";
     if (res === a + b)
@@ -164,7 +177,6 @@ const potatoes = (inputCont, inputWeight, outputCont) => {
     console.log(solution);
     return 1;
 };
-console.log(potatoes(99, 100, 98));
 class G9645 {
     static makeValley(arr) {
         const descArr = arr.sort((a, b) => b - a);

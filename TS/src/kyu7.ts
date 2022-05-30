@@ -357,7 +357,9 @@ function isNegativeZero(n: number): boolean {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ ADD OTHER SOLUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HUNGARIAN VOWEL HARMONY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -386,9 +388,26 @@ All strings are unicode strings.
 There are no grammatical exceptions in the tests.
 
 */
-function dative(word: string): string | undefined {
-    return "hello";
-}
+const dative = (word: string): string | undefined => {
+    let solution: string = word;
+    // GET LAST VOWEL
+    const lettersArr: string[] = word.split("");
+    // console.log(lettersArr);
+
+    for (let i = lettersArr.length - 1; i >= 0; i -= 1) {
+        console.log(lettersArr[i]);
+        if (/[eéiíöőüű]/.test(lettersArr[i])) {
+            solution += "nek";
+            break;
+        }
+        if (/[aáoóuú]/.test(lettersArr[i])) {
+            solution += "nak";
+            break;
+        }
+    }
+
+    return solution;
+};
 
 //   const tests: string[][] = [
 //     // [input, expected]
@@ -403,14 +422,14 @@ function dative(word: string): string | undefined {
 //     ['gonosz', 'gonosznak']
 //   ]
 
-// console.log();
+// console.log(dative("ablak"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FIND THE CALCULATION TYPE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -725,7 +744,7 @@ const potatoes = (
 
 // 114
 // console.log(potatoes(82, 127, 80));
-console.log(potatoes(99, 100, 98));
+// console.log(potatoes(99, 100, 98));
 // console.log();
 // console.log();
 // console.log();
