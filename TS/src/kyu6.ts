@@ -432,7 +432,7 @@ function numPrimorial(n: number) {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STEPS IN PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -478,11 +478,82 @@ A "gap" is more restrictive: there must be no primes in between (101-107 is a "s
 
 For Go: nil slice is expected when there are no step between m and n. Example: step(2,4900,4919) --> nil
 */
+
 class G9647 {
-    public static step = (g: number, m: number, n: number) => {
-        // your code
+    public static step = (
+        step: number,
+        min: number,
+        max: number
+    ): number[] | null => {
+        let solution: number[] = [];
+        let primesArr: number[] = [];
+
+        // GET ALL PRIMES WITHIN RANGE (MIN - MAX)
+
+        // ISPRIME() FROM PREVIOUS CODEWARS EXAMPLE
+        const isPrime = (num: number) => {
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        // FIND PRIMES RANGING FROM 2 TO HALF OF NUM [ 101, 103, 107, 109 ]
+        for (let i = min; i <= max; i++) {
+            let prime = 0;
+            if (isPrime(i)) {
+                prime = i;
+                primesArr.push(prime);
+            }
+        }
+
+        // [ 101, 103, 107, 109 ]
+        console.log("primesArr", primesArr);
+
+        // LOOP OVER PRIMES ARRAY AND CHECK IF SUCH STEP EXISTS BETWEEN ELEMENTS
+        for (let i = 0; i < primesArr.length; i += 1) {
+            console.log(primesArr[i]);
+            for (let j = i + 1; j < primesArr.length; j += 1) {
+                // console.log("difference", primesArr[j] - primesArr[i]);
+                const diff: number = primesArr[j] - primesArr[i];
+                if (diff === step) {
+                    solution = [primesArr[i], primesArr[j]];
+                    return solution;
+                }
+            }
+        }
+
+        // RETURN NULL IF NO SUCH STEP EXISTS
+        return null;
     };
 }
+
+/*
+
+❗️❗️❗️ ALL DIFFERENCES ❗️❗️❗️
+
+primesArr [ 101, 103, 107, 109 ]
+101
+difference 2
+difference 6
+103
+difference 4
+difference 6
+107
+difference 2
+109
+[ 103, 109 ]
+
+❗️❗️❗️ WE ONLY NEED THE FIRST ONE SO WE CAN RETURN AFTER 101- 6 IS FOUND ❗️❗️❗️
+primesArr [ 101, 103, 107, 109 ]
+101
+difference 2
+difference 6
+[ 101, 107 ]
+
+*/
 
 // testing(solution.G964.step(2,100,110), [101, 103]);
 //         testing(solution.G964.step(4,100,110), [103, 107]);
@@ -490,7 +561,12 @@ class G9647 {
 //         testing(solution.G964.step(8,300,400), [359, 367]);
 //         testing(solution.G964.step(10,300,400), [307, 317]);
 
-// console.log();
+// [101, 103]
+// console.log(G9647.step(2, 100, 110));
+// [103, 107]
+// console.log(G9647.step(4, 100, 110));
+// [101, 107]
+console.log(G9647.step(6, 100, 110));
 // console.log();
 // console.log();
 // console.log();
@@ -719,8 +795,6 @@ class G9646 {
 }
 */
 
-
-
 const data =
     "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
     "\n" +
@@ -765,7 +839,7 @@ const data1 =
 // 51.199999999999996
 // console.log(G9646.mean("London", data));
 // 57.42833333333374
-console.log(G9646.variance("London", data));
+// console.log(G9646.variance("London", data));
 // console.log();
 // console.log();
 
@@ -1382,9 +1456,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -1950,10 +2024,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -4346,7 +4420,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -4432,7 +4506,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -5293,15 +5367,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -5354,10 +5428,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -5933,7 +6007,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -6392,8 +6466,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -6686,7 +6760,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -7143,10 +7217,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -8446,8 +8520,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

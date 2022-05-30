@@ -9,8 +9,38 @@ function numPrimorial(n) {
 }
 class G9647 {
 }
-G9647.step = (g, m, n) => {
+G9647.step = (step, min, max) => {
+    let solution = [];
+    let primesArr = [];
+    const isPrime = (num) => {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    };
+    for (let i = min; i <= max; i++) {
+        let prime = 0;
+        if (isPrime(i)) {
+            prime = i;
+            primesArr.push(prime);
+        }
+    }
+    console.log("primesArr", primesArr);
+    for (let i = 0; i < primesArr.length; i += 1) {
+        console.log(primesArr[i]);
+        for (let j = i + 1; j < primesArr.length; j += 1) {
+            const diff = primesArr[j] - primesArr[i];
+            if (diff === step) {
+                solution = [primesArr[i], primesArr[j]];
+                return solution;
+            }
+        }
+    }
+    return null;
 };
+console.log(G9647.step(6, 100, 110));
 class G9646 {
 }
 _a = G9646;
@@ -78,7 +108,6 @@ const data1 = "Rome:Jan 90.2,Feb 73.2,Mar 80.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17
     "Beijing:Jan 13.9,Feb 14.7,Mar 18.2,Apr 18.4,May 43.0,Jun 88.1,Jul 224.3,Aug 170.0,Sep 58.4,Oct 38.0,Nov 19.3,Dec 2.7" +
     "\n" +
     "Lima:Jan 11.2,Feb 10.9,Mar 10.7,Apr 10.4,May 10.6,Jun 11.8,Jul 14.4,Aug 13.1,Sep 23.3,Oct 1.7,Nov 0.5,Dec 10.7";
-console.log(G9646.variance("London", data));
 const backwardsPrime = (min, max) => {
     let primesArr = [];
     const isPrime = (num) => {
