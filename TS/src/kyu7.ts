@@ -22,7 +22,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: GENETIC ALGORITHM SERIES  - #1 Generate
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -30,7 +30,193 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A genetic algorithm is based in groups of chromosomes, called populations. To start our population of chromosomes we need to generate random binary strings with a specified length.
 
+In this kata you have to implement a function generate that receives a length and has to return a random binary strign with length characters.
+
+
+
+Example:
+Generate a chromosome with length of 4 generate(4) could return the chromosome 0010, 1110, 1111... or any of 2^4 possibilities.
+
+Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
+*/
+function generate(length: number): string {
+    return "hello";
+}
+
+// assert.equal(generate(16).length, 16);
+// assert.equal(generate(32).length, 32);
+// assert.equal(generate(64).length, 64);
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: LARGEST SQUARE INSIDE A CIRCLE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Determine the area of the largest square that can fit inside a circle with radius r.
+*/
+function areaLargestSquare(r: number): number {
+    return 0;
+}
+
+// assert.strictEqual(areaLargestSquare(5), 50);
+// assert.strictEqual(areaLargestSquare(7), 98);
+// assert.strictEqual(areaLargestSquare(15), 450);
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: DIGITAL CYPHER - VOL 2
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Introduction
+Digital Cypher assigns to each letter of the alphabet unique number. For example:
+
+ a  b  c  d  e  f  g  h  i  j  k  l  m
+ 1  2  3  4  5  6  7  8  9 10 11 12 13
+ n  o  p  q  r  s  t  u  v  w  x  y  z
+14 15 16 17 18 19 20 21 22 23 24 25 26
+Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
+
+ s  c  o  u  t
+19  3 15 21 20
+Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
+
+   s  c  o  u  t
+  19  3 15 21 20
+ + 1  9  3  9  1
+ ---------------
+  20 12 18 30 21
+  
+   m  a  s  t  e  r  p  i  e  c  e
+  13  1 19 20  5 18 16  9  5  3  5
++  1  9  3  9  1  9  3  9  1  9  3
+  --------------------------------
+  14 10 22 29  6 27 19 18  6  12 8
+Task
+Write a function that accepts an array of integers code and a key number. As the result, it should return string containg a decoded message from the code.
+
+Input / Output
+The code is a array of positive integers.
+The key input is a positive integer.
+
+Example
+decode([ 20, 12, 18, 30, 21],1939);  ==> "scout"
+decode([ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8],1939);  ==>  "masterpiece"
+*/
+function decode(code: number[], n: number): String {
+    return "noidea";
+}
+
+//    assert.equal( solution.decode([ 20, 12, 18, 30, 21], 1939) , "scout");
+//    assert.equal( solution.decode([ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8], 1939) , "masterpiece");
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: CARTESIAN NEIGHBOR
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances to the point from two fixed perpendicular directed lines, measured in the same unit of length.
+
+The сoordinates of a point in the grid are written as (x,y). Each point in a coordinate system has eight neighboring points. Provided that the grid step = 1.
+
+It is necessary to write a function that takes a coordinate on the x-axis and y-axis and returns a list of all the neighboring points. Points inside your returned list need not be sorted (any order is valid).
+
+For Example:
+
+cartesianNeighbor(2,2) -> [[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]
+cartesianNeighbor(5,7) -> [[6,7],[6,6],[6,8],[4,7],[4,6],[4,8],[5,6],[5,8]]
+
+*/
+function cartesianNeighbor(x: number, y: number): number[][] {
+    return [];
+}
+
+// sortedList(cartesianNeighbor(2, 2)),[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: SORT THE VOWELS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Sort the Vowels!
+In this kata, we want to sort the vowels in a special format.
+
+Task
+Write a function which takes a input string s and return a string in the following way:
+
+   
+                  C|                          R|
+                  |O                          n|
+                  D|                          d|
+   "CODEWARS" =>  |E       "Rnd Te5T"  =>      |
+                  W|                          T|
+                  |A                          |e
+                  R|                          5|
+                  S|                          T|
+
+Notes:
+
+List all the Vowels on the right side of |
+List every character except Vowels on the left side of |
+for the purpose of this kata, the vowels are : a e i o u
+Return every character in its original case
+Each line is seperated with \n
+Invalid input ( undefined / null / integer ) should return an empty string
+*/
+function sortVowels(str?: number | string | null): string {
+    return "hello";
+}
+
+/*
+assert.equal(sortVowels('Codewars'), 'C|\n|o\nd|\n|e\nw|\n|a\nr|\ns|');
+    assert.equal(sortVowels('Is RubY dEad?'), '|I\ns|\n |\nR|\n|u\nb|\nY|\n |\nd|\n|E\n|a\nd|\n?|');
+    assert.equal(sortVowels('yo!'), 'y|\n|o\n!|');
+    assert.equal(sortVowels('LOrEm IpsUm dOlOr sIt AmEt'), 'L|\n|O\nr|\n|E\nm|\n |\n|I\np|\ns|\n|U\nm|\n |\nd|\n|O\nl|\n|O\nr|\n |\ns|\n|I\nt|\n |\n|A\nm|\n|E\nt|');
+  });
 */
 
 // console.log();
@@ -41,7 +227,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: FIND THE SQUARES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -49,7 +235,78 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Problem
+Complete the function that takes an odd integer (0 < n < 1000000) which is the difference between two consecutive perfect squares, and return these squares as a string in the format "bigger-smaller"
 
+Examples
+9  -->  "25-16"
+5  -->  "9-4"
+7  -->  "16-9"
+*/
+const findSquares = (num: number): string => {
+    return `${num}-${num}`;
+};
+
+// assert.strictEqual(findSquares(9), '25-16');
+// assert.strictEqual(findSquares(5), '9-4');
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: ODD ONES OUT
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The town sheriff dislikes odd numbers and wants all odd numbered families out of town! In town crowds can form and individuals are often mixed with other people and families. However you can distinguish the family they belong to by the number on the shirts they wear. As the sheriff's assistant it's your job to find all the odd numbered families and remove them from the town!
+
+Challenge: You are given a list of numbers. The numbers each repeat a certain number of times. Remove all numbers that repeat an odd number of times while keeping everything else the same.
+
+oddOnesOut([1, 2, 3, 1, 3, 3]) = [1, 1]
+In the above example:
+
+the number 1 appears twice
+the number 2 appears once
+the number 3 appears three times
+2 and 3 both appear an odd number of times, so they are removed from the list. The final result is: [1,1]
+
+Here are more examples:
+
+oddOnesOut([1, 1, 2, 2, 3, 3, 3]) = [1, 1, 2, 2]
+oddOnesOut([26, 23, 24, 17, 23, 24, 23, 26]) = [26, 24, 24, 26]
+oddOnesOut([1, 2, 3]) = []
+oddOnesOut([1]) = []
+Are you up to the challenge?
+*/
+
+function oddOnesOut(nums: number[]) {
+    // your code here
+}
+
+/*
+it("Testing for [1, 2, 3, 1, 3, 3]", function() {
+    assert.deepEqual(oddOnesOut([1, 2, 3, 1, 3, 3]), [1, 1]);
+  });
+  it("Testing for [75, 68, 75, 47, 68]", function() {
+    assert.deepEqual(oddOnesOut([75, 68, 75, 47, 68]), [75, 68, 75, 68]);
+  });
+  it("Testing for [42, 72, 32, 4, 94, 82, 67, 67]", function() {
+    assert.deepEqual(oddOnesOut([42, 72, 32, 4, 94, 82, 67, 67]), [67, 67]);
+  });
+  it("Testing for [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]", function() {
+    assert.deepEqual(oddOnesOut([100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]), [100, 100, 100, 100]);
+  });
+  it("Testing for [82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]", function() {
+    assert.deepEqual(oddOnesOut([82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]), [44, 79, 50, 44, 79, 50]);
+  });
 */
 
 // console.log();
@@ -60,7 +317,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: THE OFFICE VI - SABBATICAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -68,7 +325,32 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Learning to code around your full time job is taking over your life. You realise that in order to make significant steps quickly, it would help to go to a coding bootcamp in London.
 
+Problem is, many of them cost a fortune, and those that don't still involve a significant amount of time off work - who will pay your mortgage?!
+
+To offset this risk, you decide that rather than leaving work totally, you will request a sabbatical so that you can go back to work post bootcamp and be paid while you look for your next role.
+
+You need to approach your boss. Her decision will be based on three parameters:
+
+val = your value to the organisation
+happiness = her happiness level at the time of asking and finally
+The numbers of letters from 'sabbatical' that are present in string s.
+
+Note that if s contains three instances of the letter 'l', that still scores three points, even though there is only one in the word sabbatical.
+
+If the sum of the three parameters (as described above) is > 22, return 'Sabbatical! Boom!', else return 'Back to your desk, boy.'.
+*/
+function sabb(s: string, val: number, happiness: number): string {
+    return "";
+}
+
+/*
+assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
+    assert.strictEqual(sabb('Why are you shouting?', 7, 2), 'Back to your desk, boy.'); 
+    assert.strictEqual(sabb('What do you mean I cant learn to code??', 8, 9), 'Sabbatical! Boom!'); 
+    assert.strictEqual(sabb('Please calm down', 9, 1), 'Back to your desk, boy.'); 
+    assert.strictEqual(sabb('I can?! Nice. FaC..Im coming :D', 9, 9), 'Sabbatical! Boom!'); 
 */
 
 // console.log();
@@ -79,7 +361,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MOD 256 WITHOUT THE MOD OPERATOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -87,7 +369,46 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+MOD 256 without the MOD operator
+The MOD-operator % (aka mod/modulus/remainder):
 
+Returns the remainder of a division operation.
+The sign of the result is the same as the sign of the first operand.
+(Different behavior in Python!)
+The short unbelievable mad story for this kata:
+I wrote a program and needed the remainder of the division by 256. And then it happened: The "5"/"%"-Key did not react. It must be broken! So I needed a way to:
+
+Calculate the remainder of the division by 256 without the %-operator.
+Also here some examples:
+
+Input 254  -> Result 254
+Input 256  -> Result 0
+Input 258  -> Result 2 
+Input -258 -> Result -2 (in Python: Result: 254!)
+It is always expected the behavior of the MOD-Operator of the language!
+
+The input number will always between -10000 and 10000.
+
+For some languages the %-operator will be blocked. If it is not blocked and you know how to block it, tell me and I will include it.
+
+For all, who say, this would be a duplicate: No, this is no duplicate! There are two katas, in that you have to write a general method for MOD without %. But this kata is only for MOD 256. And so you can create also other specialized solutions. ;-)
+
+Of course you can use the digit "5" in your solution. :-)
+
+I'm very curious for your solutions and the way you solve it. I found several interesting "funny" ways.
+*/
+function mod256WithoutMod(n: number): number {
+    return 0;
+}
+
+/*
+assert.equal(solution.mod256WithoutMod(254), 254);
+    assert.equal(solution.mod256WithoutMod(256), 0);
+    assert.equal(solution.mod256WithoutMod(258), 2);
+    
+    assert.equal(solution.mod256WithoutMod(-254), -254);
+    assert.equal(solution.mod256WithoutMod(-256), 0);
+    assert.equal(solution.mod256WithoutMod(-258), -2);
 */
 
 // console.log();
@@ -98,7 +419,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: ABSENT VOWEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -106,7 +427,119 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Your job is to figure out the index of which vowel is missing from a given string:
 
+A has an index of 0,
+E has an index of 1,
+I has an index of 2,
+O has an index of 3,
+U has an index of 4.
+Notes: There is no need for string validation and every sentence given will contain all vowels but one. Also, you won't need to worry about capitals.
+
+Examples
+"John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
+"Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
+
+*/
+function absentVowel(x: string) {}
+
+// assert.equal(absentVowel("John Doe hs seven red pples under his bsket"), 0)
+// assert.equal(absentVowel("Bb Smith sent us six neatly arranged range bicycles"), 3)
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: PERIMETER SEQUENCE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Perimeter sequence
+The first three stages of a sequence are shown.
+
+blocks
+
+The blocksize is a by a and a ≥ 1.
+
+What is the perimeter of the nth shape in the sequence (n ≥ 1) ?
+*/
+function perimeterSequence(a: number, n: number): number {
+    return 0;
+}
+
+// 12
+// console.log(perimeterSequence(1,3));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: DRIVING LICENCE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Introduction
+In the United Kingdom, the driving licence is the official document which authorises its holder to operate various types of motor vehicle on highways and some other roads to which the public have access. In England, Scotland and Wales they are administered by the Driver and Vehicle Licensing Agency (DVLA) and in Northern Ireland by the Driver & Vehicle Agency (DVA). A driving licence is required in the UK by any person driving a vehicle on any highway or other road defined in s.192 Road Traffic Act 1988[1] irrespective of ownership of the land over which the road passes, thus including many which allow the public to pass over private land; similar requirements apply in Northern Ireland under the Road Traffic (Northern Ireland) Order 1981. (Source Wikipedia)
+Driving
+Task
+The UK driving number is made up from the personal details of the driver. The individual letters and digits can be code using the below information
+Rules
+1–5: The first five characters of the surname (padded with 9s if less than 5 characters)
+
+6: The decade digit from the year of birth (e.g. for 1987 it would be 8)
+
+7–8: The month of birth (7th character incremented by 5 if driver is female i.e. 51–62 instead of 01–12)
+
+9–10: The date within the month of birth
+
+11: The year digit from the year of birth (e.g. for 1987 it would be 7)
+
+12–13: The first two initials of the first name and middle name, padded with a 9 if no middle name
+
+14: Arbitrary digit – usually 9, but decremented to differentiate drivers with the first 13 characters in common. We will always use 9
+
+15–16: Two computer check digits. We will always use "AA"
+Your task is to code a UK driving license number using an Array of data. The Array will look like
+
+data = ["John","James","Smith","01-Jan-2000","M"]
+Where the elements are as follows
+
+0 = Forename
+1 = Middle Name (if any)
+2 = Surname
+3 = Date of Birth (In the format Day Month Year, this could include the full Month name or just shorthand ie September or Sep)
+4 = M-Male or F-Female
+You will need to output the full 16 digit driving license number.
+
+Good luck and enjoy!
+*/
+function driver(data: Array<string>): string {
+    return "hello";
+}
+
+/*
+data = ["John","James","Smith","01-Jan-2000","M"]
+    assert.equal(driver(data), "SMITH001010JJ9AA", "Should return 'SMITH001010JJ9AA'")
+    
+    data = ["Johanna","","Gibbs","13-Dec-1981","F"]
+    assert.equal(driver(data), "GIBBS862131J99AA", "Should return 'GIBBS862131J99AA'")
+    
+    data = ["Andrew","Robert","Lee","02-September-1981","M"]
+    assert.equal(driver(data), "LEE99809021AR9AA", "Should return 'LEE99809021AR9AA'")
 */
 
 // console.log();
@@ -117,7 +550,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: BILLIARDS TRIANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -125,7 +558,34 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Remember the triangle of balls in billiards? To build a classic triangle (5 levels) you need 15 balls. With 3 balls you can build a 2-level triangle, etc.
 
+For more examples,
+
+pyramid(1) == 1
+
+pyramid(3) == 2
+
+pyramid(6) == 3
+
+pyramid(10) == 4
+
+pyramid(15) == 5
+Write a function that takes number of balls (≥ 1) and calculates how many levels you can build a triangle.
+
+
+*/
+function pyramid(balls: number): number {
+    return 0;
+}
+
+/*
+ assert.strictEqual(pyramid(1) , 1); 
+    assert.strictEqual(pyramid(4) , 2); 
+    assert.strictEqual(pyramid(20) , 5); 
+    assert.strictEqual(pyramid(100) , 13);
+    assert.strictEqual(pyramid(2211) ,66); 
+    assert.strictEqual(pyramid(9999) , 140);
 */
 
 // console.log();
@@ -136,7 +596,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: THE POET AND THE PENDULUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -144,8 +604,126 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Scenario
+the rhythm of beautiful musical notes is drawing a Pendulum
+
+Beautiful musical notes are the Numbers!alt!alt
+Task
+Given an array/list [] of n integers , Arrange them in a way similar to the to-and-fro movement of a Pendulum
+
+The Smallest element of the list of integers , must come in center position of array/list.
+
+The Higher than smallest , goes to the right .
+The Next higher number goes to the left of minimum number and So on , in a to-and-fro manner similar to that of a Pendulum.
+
+!alt
+Notes
+Array/list size is at least 3 .
+
+In Even array size , The minimum element should be moved to (n-1)/2 index (considering that indexes start from 0)
+
+Repetition of numbers in the array/list could occur , So (duplications are included when Arranging).
+
+Input >> Output Examples:
+pendulum ([6, 6, 8 ,5 ,10]) ==> [10, 6, 5, 6, 8]
+Explanation:
+Since , 5 is the The Smallest element of the list of integers , came in The center position of array/list
+
+The Higher than smallest is 6 goes to the right of 5 .
+
+The Next higher number goes to the left of minimum number and So on .
+
+Remember , Duplications are included when Arranging , Don't Delete Them .
+
+pendulum ([-9, -2, -10, -6]) ==> [-6, -10, -9, -2]
+Explanation:
+Since , -10 is the The Smallest element of the list of integers , came in The center position of array/list
+
+The Higher than smallest is -9 goes to the right of it .
+
+The Next higher number goes to the left of -10 , and So on .
+
+Remeber , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
+
+pendulum ([11, -16, -18, 13, -11, -12, 3, 18 ]) ==> [13, 3, -12, -18, -16, -11, 11, 18]
+Explanation:
+Since , -18 is the The Smallest element of the list of integers , came in The center position of array/list
+
+The Higher than smallest is -16 goes to the right of it .
+
+The Next higher number goes to the left of -18 , and So on .
+
+Remember , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
+
+Tune Your Code , There are 200 Assertions , 60.000 element For Each .
 
 */
+function pendulum(values: number[]) {
+    // your code here
+}
+
+/*
+it("Check Short length Positives", function() {
+    doTest([4, 10, 9], [10, 4, 9]);
+    doTest([8, 7, 10, 3], [8, 3, 7, 10]);
+    doTest([6, 6, 8, 5, 10], [10, 6, 5, 6, 8]);
+    doTest([9, 4, 6, 4, 10, 5], [9, 5, 4, 4, 6, 10]);
+    doTest([4, 6, 8, 7, 5], [8, 6, 4, 5, 7]);
+    doTest([10, 5, 6, 10], [10, 5, 6, 10]);
+    doTest([11, 12, 12], [12, 11, 12]);
+  });
+  it("Check Medium length Positives", function() {
+    doTest([27, 27, 19, 21, 22, 28, 24], [28, 27, 22, 19, 21, 24, 27]);
+    doTest([20, 19, 25, 16, 19, 30, 18, 24], [25, 20, 19, 16, 18, 19, 24, 30]);
+    doTest([22, 26, 21, 27, 24, 21, 15, 26, 25], [27, 26, 24, 21, 15, 21, 22, 25, 26]);
+    doTest([19, 30, 16, 19, 28, 26, 28, 17, 21, 17], [28, 26, 19, 17, 16, 17, 19, 21, 28, 30]);
+    doTest([27, 28, 26, 28, 24, 22, 18, 16, 15, 24], [28, 26, 24, 18, 15, 16, 22, 24, 27, 28]);
+    doTest([17, 26, 15, 26, 26, 20, 16, 18, 15], [26, 26, 18, 16, 15, 15, 17, 20, 26]);
+    doTest([22, 21, 19, 27, 18, 15, 24, 24], [24, 22, 19, 15, 18, 21, 24, 27]);
+  });
+  it("Check lengthy Positives", function() {
+    doTest([33, 38, 38, 36, 43, 48, 32, 40, 47, 50, 33], [50, 47, 40, 38, 33, 32, 33, 36, 38, 43, 48]);
+    doTest([49, 40, 41, 41, 39, 43, 40, 46, 30, 47, 46, 40], [47, 46, 41, 40, 40, 30, 39, 40, 41, 43, 46, 49]);
+    doTest([48, 41, 38, 35, 50, 46, 38, 42, 37, 49, 44, 32, 37], [50, 48, 44, 41, 38, 37, 32, 35, 37, 38, 42, 46, 49]);
+    doTest([49, 30, 39, 30, 40, 44, 43, 48, 47, 50, 42, 48, 33], [50, 48, 47, 43, 40, 33, 30, 30, 39, 42, 44, 48, 49]);
+    doTest([48, 43, 35, 47, 39, 38, 38, 46, 49, 32, 42], [49, 47, 43, 39, 38, 32, 35, 38, 42, 46, 48]);
+  });
+  it("Check Short length Negatives", function() {
+    doTest([-9, -2, -10, -6], [-6, -10, -9, -2]);
+    doTest([-3, -6, -7], [-3, -7, -6]);
+    doTest([-7, -8, -2, -3, -4], [-2, -4, -8, -7, -3]);
+    doTest([-8, -8, -9, -10, -10, -3], [-8, -9, -10, -10, -8, -3]);
+    doTest([-7, -10, -1, -10, -8], [-1, -8, -10, -10, -7]);
+    doTest([-6, -2, -5], [-2, -6, -5]);
+  });
+  it("Check Medium length Negatives", function() {
+    doTest([-2, -11, -6, -11, -4, -3, -5], [-2, -4, -6, -11, -11, -5, -3]);
+    doTest([-19, -9, -5, -6, -15, -16, -5, -12], [-5, -9, -15, -19, -16, -12, -6, -5]);
+    doTest([-18, -2, -11, -10, -6, -7, -7, -12, -16], [-2, -7, -10, -12, -18, -16, -11, -7, -6]);
+    doTest([-10, -10, -12, -13, -5, -10, -4, -17, -5, -12], [-5, -10, -10, -12, -17, -13, -12, -10, -5, -4]);
+  });
+  it("Check lengthy Negatives", function() {
+    doTest([-33, -21, -6, -29, -24, -5, -50, -42, -43, -17, -17], [-5, -17, -21, -29, -42, -50, -43, -33, -24, -17, -6]);
+    doTest(
+      [-4, -50, -32, -23, -47, -44, -43, -24, -29, -44, -20, -35],
+      [-20, -24, -32, -43, -44, -50, -47, -44, -35, -29, -23, -4]
+    );
+    doTest(
+      [-36, -38, -44, -47, -41, -27, -10, -30, -22, -11, -23, -50, -23],
+      [-10, -22, -23, -30, -38, -44, -50, -47, -41, -36, -27, -23, -11]
+    );
+  });
+  it("Check Mixture Of Positives And Negatives", function() {
+    doTest([-15, 8, 11], [11, -15, 8]);
+    doTest([8, -1, -1, -10], [-1, -10, -1, 8]);
+    doTest([-8, 15, 8, -3, -11], [15, -3, -11, -8, 8]);
+    doTest([15, 17, 3, -20, -1, 3], [15, 3, -20, -1, 3, 17]);
+    doTest([-8, -13, -19, -8, 7, 15, -10], [15, -8, -10, -19, -13, -8, 7]);
+    doTest([11, -16, -18, 13, -11, -12, 3, 18], [13, 3, -12, -18, -16, -11, 11, 18]);
+    doTest([7, -5, -20, 15, 2, 10, 18, 4, -10], [18, 10, 4, -5, -20, -10, 2, 7, 15]);
+    doTest([-6, 1, 2, 12, 19, 12, 19, -10, 13, 1], [19, 12, 2, 1, -10, -6, 1, 12, 13, 19]);
+  });
+  */
 
 // console.log();
 // console.log();
@@ -154,8 +732,8 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: COLLATZ CONJECTURE LENGTH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -163,147 +741,54 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 and add 1. If you repeat the process continuously for n, n will eventually reach 1.
 
+For example, if n = 20, the resulting sequence will be:
+
+[20, 10, 5, 16, 8, 4, 2, 1]
+
+Write a program that will output the length of the Collatz Conjecture for any given n. In the example above, the output would be 8.
 */
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+const collatz = (num: number): number => {
+    let counter: number = 1;
 
-//============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+    while (num > 1) {
+        counter += 1;
+        if (num & 1) {
+            num = num * 3 + 1;
+            // console.log(num);
+        } else {
+            num /= 2;
+            // console.log(num);
+        }
+    }
 
-/*
+    return counter;
+};
 
-*/
+// assert.strictEqual(collatz(20), 8);
+// assert.strictEqual(collatz(15), 18);
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
+// console.log(collatz(20));
+// console.log(collatz(15));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+function collatz2(n: number): number {
+    let numSteps: number = 1;
+    while (n !== 1) {
+        n = n % 2 ? n * 3 + 1 : n / 2;
+        ++numSteps;
+    }
+    return numSteps;
+}
 
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
+const collatz3 = (n: number): number =>
+    n === 1 ? 1 : 1 + collatz(n & 1 ? n * 3 + 1 : n / 2);
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: IS IT NEGATIVE ZERO
@@ -357,8 +842,6 @@ function isNegativeZero(n: number): boolean {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ ADD OTHER SOLUTIONS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HUNGARIAN VOWEL HARMONY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -428,6 +911,26 @@ const dative = (word: string): string | undefined => {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function dative2(word: string): string | undefined {
+    return word + (/[aáoóuú]+/.test(word) ? "nak" : "nek");
+}
+
+function dative3(word: string): string | undefined {
+    let front = ["e", "é", "i", "í", "ö", "ő", "ü", "ű"];
+    let back = ["a", "á", "o", "ó", "u", "ú"];
+    for (let i = word.length - 1; i >= 0; i--) {
+        if (front.includes(word[i])) return word + "nek";
+        else if (back.includes(word[i])) return word + "nak";
+    }
+}
+
+// ❓❓❓
+const dative4 = (word: string) =>
+    word +
+    (/[aáoóuú]/.test(word.replace(/[b-dghj-np-tv-z]/g, "").slice(-1))
+        ? "nak"
+        : "nek");
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: FIND THE CALCULATION TYPE

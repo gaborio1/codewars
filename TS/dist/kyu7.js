@@ -1,6 +1,66 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = void 0;
+function generate(length) {
+    return "hello";
+}
+function areaLargestSquare(r) {
+    return 0;
+}
+function decode(code, n) {
+    return "noidea";
+}
+function cartesianNeighbor(x, y) {
+    return [];
+}
+function sortVowels(str) {
+    return "hello";
+}
+const findSquares = (num) => {
+    return `${num}-${num}`;
+};
+function oddOnesOut(nums) {
+}
+function sabb(s, val, happiness) {
+    return "";
+}
+function mod256WithoutMod(n) {
+    return 0;
+}
+function absentVowel(x) { }
+function perimeterSequence(a, n) {
+    return 0;
+}
+function driver(data) {
+    return "hello";
+}
+function pyramid(balls) {
+    return 0;
+}
+function pendulum(values) {
+}
+const collatz = (num) => {
+    let counter = 1;
+    while (num > 1) {
+        counter += 1;
+        if (num & 1) {
+            num = num * 3 + 1;
+        }
+        else {
+            num /= 2;
+        }
+    }
+    return counter;
+};
+function collatz2(n) {
+    let numSteps = 1;
+    while (n !== 1) {
+        n = n % 2 ? n * 3 + 1 : n / 2;
+        ++numSteps;
+    }
+    return numSteps;
+}
+const collatz3 = (n) => n === 1 ? 1 : 1 + collatz(n & 1 ? n * 3 + 1 : n / 2);
 function isNegativeZero(n) {
     return true;
 }
@@ -20,6 +80,23 @@ const dative = (word) => {
     }
     return solution;
 };
+function dative2(word) {
+    return word + (/[aáoóuú]+/.test(word) ? "nak" : "nek");
+}
+function dative3(word) {
+    let front = ["e", "é", "i", "í", "ö", "ő", "ü", "ű"];
+    let back = ["a", "á", "o", "ó", "u", "ú"];
+    for (let i = word.length - 1; i >= 0; i--) {
+        if (front.includes(word[i]))
+            return word + "nek";
+        else if (back.includes(word[i]))
+            return word + "nak";
+    }
+}
+const dative4 = (word) => word +
+    (/[aáoóuú]/.test(word.replace(/[b-dghj-np-tv-z]/g, "").slice(-1))
+        ? "nak"
+        : "nek");
 const calcType2 = (a, b, res) => {
     let solution = "";
     if (res === a + b)
