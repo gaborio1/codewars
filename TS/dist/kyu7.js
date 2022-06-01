@@ -37,8 +37,23 @@ function driver(data) {
 function pyramid(balls) {
     return 0;
 }
-function pendulum(values) {
-}
+const pendulum = (values) => {
+    const ascArr = values.sort((a, b) => a - b);
+    console.log(ascArr);
+    let solution = [ascArr[0]];
+    console.log(solution);
+    ascArr.slice(1).forEach((el, idx) => {
+        console.log(el, idx);
+        if (!(idx & 1)) {
+            solution.push(el);
+        }
+        else {
+            solution.unshift(el);
+        }
+    });
+    console.log(solution);
+    return solution;
+};
 const collatz = (num) => {
     let counter = 1;
     while (num > 1) {
