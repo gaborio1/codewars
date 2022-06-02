@@ -441,7 +441,7 @@ Examples
 "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
 
 */
-function absentVowel(x: string) { }
+function absentVowel(x: string) {}
 
 // assert.equal(absentVowel("John Doe hs seven red pples under his bsket"), 0)
 // assert.equal(absentVowel("Bb Smith sent us six neatly arranged range bicycles"), 3)
@@ -549,7 +549,7 @@ data = ["John","James","Smith","01-Jan-2000","M"]
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BILLIARDS TRIANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -574,10 +574,41 @@ pyramid(15) == 5
 Write a function that takes number of balls (≥ 1) and calculates how many levels you can build a triangle.
 
 
+*/ const pyramid = (numBalls: number): number => {
+    // SOLUTION:
+    let levCount: number = 0;
+    // NUMBER OF BALLS IN EACH ROW (1-2-3-4-5...)
+    let currentRow: number = 0;
+
+    while (true) {
+        currentRow += 1;
+        // console.log("row:", currentRow);
+        numBalls -= currentRow;
+        // console.log("numBalls:", numBalls);
+        if (numBalls < 0) break;
+        levCount += 1;
+    }
+
+    // console.log(levCount);
+
+    return levCount;
+};
+
+/*
+row: 1
+numBalls: 19
+row: 2
+numBalls: 17
+row: 3
+numBalls: 14
+row: 4
+numBalls: 10
+row: 5
+numBalls: 5
+row: 6
+numBalls: -1
+5
 */
-function pyramid(balls: number): number {
-    return 0;
-}
 
 /*
  assert.strictEqual(pyramid(1) , 1); 
@@ -588,14 +619,26 @@ function pyramid(balls: number): number {
     assert.strictEqual(pyramid(9999) , 140);
 */
 
-// console.log();
+// console.log(pyramid(20));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// !!! ADD SOLUTIONS AND COMMENTS !!!
+function pyramid2(balls: number): number {
+    let level: number = 0;
+    while (balls > level) {
+        level += 1;
+        balls -= level;
+    }
+    return level;
+}
+
+function pyramid3(balls: number): number {
+    return Math.floor((-1 + (1 + 4 * balls * 2) ** 0.5) / 2);
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: THE POET AND THE PENDULUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -660,26 +703,28 @@ Tune Your Code , There are 200 Assertions , 60.000 element For Each .
 
 */
 const pendulum = (values: number[]) => {
-
+    // SORT ASCENDING
     const ascArr: number[] = values.sort((a, b) => a - b);
-    console.log(ascArr);
+    // console.log(ascArr);
 
+    // INI9TIALIZE SOLUTION WITH SMALLEST ELEMENT
     let solution: number[] = [ascArr[0]];
-    console.log(solution);
+    // console.log(solution);
 
+    // ALTERNATE BETWEEN PUSH/UNSHIFT
     ascArr.slice(1).forEach((el, idx) => {
-        console.log(el, idx);
+        // console.log(el, idx);
         if (!(idx & 1)) {
             solution.push(el);
         } else {
             solution.unshift(el);
         }
-    })
+    });
 
-    console.log(solution);
+    // console.log(solution);
 
     return solution;
-}
+};
 
 /*
 it("Check Short length Positives", function() {
@@ -750,6 +795,49 @@ it("Check Short length Positives", function() {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function pendulum2(values: number[]) {
+    const solution: number[] = [];
+    values
+        .sort((x: number, y: number) => (x > y ? 1 : x === y ? 0 : -1))
+        .forEach((x, i) => {
+            const fun = i % 2 ? "push" : "unshift";
+            solution[fun](x);
+        });
+    return solution;
+}
+
+function pendulum3(values: number[]) {
+    return values
+        .sort((a, b) => a - b)
+        .reduce((previousValue, currentValue, index) => {
+            if (index % 2 == 0) {
+                previousValue.unshift(currentValue);
+            } else {
+                previousValue.push(currentValue);
+            }
+
+            return previousValue;
+        }, [] as Array<number>);
+}
+
+function pendulum4(values: number[]) {
+    return values
+        .sort((a, b) => a - b)
+        .reduce<number[]>((result, v, i) => {
+            if (i % 2 === 0) result.unshift(v);
+            else result.push(v);
+            return result;
+        }, []);
+}
+
+function pendulum5(values: number[]): number[] {
+    let fin: any[] = [];
+    values
+        .sort((a, b) => a - b)
+        .forEach((n, i) => (!(i % 2) ? fin.unshift(n) : fin.push(n)));
+    return fin;
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: COLLATZ CONJECTURE LENGTH
@@ -1053,10 +1141,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -1166,8 +1254,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -2274,8 +2362,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -2888,10 +2977,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -3344,7 +3433,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -3837,17 +3926,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -3980,13 +4069,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -6588,10 +6677,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -7704,7 +7793,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -8780,8 +8869,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -8931,10 +9020,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -9931,11 +10020,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -10730,9 +10819,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -11014,8 +11103,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

@@ -34,16 +34,33 @@ function perimeterSequence(a, n) {
 function driver(data) {
     return "hello";
 }
-function pyramid(balls) {
-    return 0;
+const pyramid = (numBalls) => {
+    let levCount = 0;
+    let currentRow = 0;
+    while (true) {
+        currentRow += 1;
+        numBalls -= currentRow;
+        if (numBalls < 0)
+            break;
+        levCount += 1;
+    }
+    return levCount;
+};
+function pyramid2(balls) {
+    let level = 0;
+    while (balls > level) {
+        level += 1;
+        balls -= level;
+    }
+    return level;
+}
+function pyramid3(balls) {
+    return Math.floor((-1 + (1 + 4 * balls * 2) ** 0.5) / 2);
 }
 const pendulum = (values) => {
     const ascArr = values.sort((a, b) => a - b);
-    console.log(ascArr);
     let solution = [ascArr[0]];
-    console.log(solution);
     ascArr.slice(1).forEach((el, idx) => {
-        console.log(el, idx);
         if (!(idx & 1)) {
             solution.push(el);
         }
@@ -51,9 +68,49 @@ const pendulum = (values) => {
             solution.unshift(el);
         }
     });
-    console.log(solution);
     return solution;
 };
+function pendulum2(values) {
+    const solution = [];
+    values
+        .sort((x, y) => (x > y ? 1 : x === y ? 0 : -1))
+        .forEach((x, i) => {
+        const fun = i % 2 ? "push" : "unshift";
+        solution[fun](x);
+    });
+    return solution;
+}
+function pendulum3(values) {
+    return values
+        .sort((a, b) => a - b)
+        .reduce((previousValue, currentValue, index) => {
+        if (index % 2 == 0) {
+            previousValue.unshift(currentValue);
+        }
+        else {
+            previousValue.push(currentValue);
+        }
+        return previousValue;
+    }, []);
+}
+function pendulum4(values) {
+    return values
+        .sort((a, b) => a - b)
+        .reduce((result, v, i) => {
+        if (i % 2 === 0)
+            result.unshift(v);
+        else
+            result.push(v);
+        return result;
+    }, []);
+}
+function pendulum5(values) {
+    let fin = [];
+    values
+        .sort((a, b) => a - b)
+        .forEach((n, i) => (!(i % 2) ? fin.unshift(n) : fin.push(n)));
+    return fin;
+}
 const collatz = (num) => {
     let counter = 1;
     while (num > 1) {
