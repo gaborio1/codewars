@@ -720,7 +720,8 @@ const ad =
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// COMMENT AND ADD SOLUTIONS !!!
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT THE INNER CONTENT IN DESCENDING ORDER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -742,15 +743,29 @@ Words are made up of lowercase letters.
 
 The string will never be null and will never be empty. In C/C++ the string is always nul-terminated.
 */
-function sortTheInnerContent(words: string): string {
-    return words;
-}
+const sortTheInnerContent = (words: string): string => {
+    const wordsArr: string[] = words.split(" ");
+    console.log(wordsArr);
+
+    wordsArr.forEach((word, idx) => {
+        if (word.length > 3) {
+            const lettersArr: string[] = word.split("");
+            const innerLetters: string[] = lettersArr.slice(1, -1);
+            console.log(innerLetters);
+            const innerSortRev: string = innerLetters.sort().reverse().join("");
+            console.log(innerSortRev);
+            wordsArr[idx] = `${word[0]}${innerSortRev}${word[word.length - 1]}`;
+        }
+    });
+    return wordsArr.join(" ");
+};
 
 // assert.equal(solution.sortTheInnerContent("sort the inner content in descending order"), "srot the inner ctonnet in dsnnieedcg oredr");
 //     assert.equal(solution.sortTheInnerContent("wait for me"), "wiat for me");
 //     assert.equal(solution.sortTheInnerContent("this kata is easy"), "tihs ktaa is esay");
 
-// console.log();
+// "srot the inner ctonnet in dsnnieedcg oredr");
+// console.log(sortTheInnerContent("sort the inner content in descending order"));
 // console.log();
 // console.log();
 // console.log();

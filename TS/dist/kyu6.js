@@ -25,9 +25,21 @@ const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louis
     "2200 Tokyo Av. Tedmondville SW 43198,67 Paris St. Abbeville AA 45522,11 Surta Avenue Goodville GG 30655," +
     "2222 Tokyo Av. Tedmondville SW 43198,670 Paris St. Abbeville AA 45522,114 Surta Avenue Goodville GG 30655," +
     "2 Holy Grail Street Niagara Town ZP 32908,3 Main Rd. Bern AE 56210,77 Gordon St. Atlanta RE 13000";
-function sortTheInnerContent(words) {
-    return words;
-}
+const sortTheInnerContent = (words) => {
+    const wordsArr = words.split(" ");
+    console.log(wordsArr);
+    wordsArr.forEach((word, idx) => {
+        if (word.length > 3) {
+            const lettersArr = word.split("");
+            const innerLetters = lettersArr.slice(1, -1);
+            console.log(innerLetters);
+            const innerSortRev = innerLetters.sort().reverse().join("");
+            console.log(innerSortRev);
+            wordsArr[idx] = `${word[0]}${innerSortRev}${word[word.length - 1]}`;
+        }
+    });
+    return wordsArr.join(" ");
+};
 const numPrimorial = (num) => {
     let primesArr = [];
     const isPrime = (num) => {
