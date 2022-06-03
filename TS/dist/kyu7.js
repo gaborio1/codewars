@@ -146,9 +146,34 @@ function collatz2(n) {
 }
 const collatz3 = (n) => n === 1 ? 1 : 1 + collatz(n & 1 ? n * 3 + 1 : n / 2);
 const isNegativeZero = (num) => {
-    return num === -0;
+    return Object.is(-0, num);
 };
-console.log(isNegativeZero(-0));
+function isNegativeZero2(n) {
+    return Object.is(n, -0);
+}
+function isNegativeZero3(n) {
+    return n != 0 ? false : 1 / n == -Infinity;
+}
+function isNegativeZero4(n) {
+    return n === 0 && 1 / n === -Infinity;
+}
+function isNegativeZero5(n) {
+    const isZero = n === 0;
+    const isNegative = 1 / n === -Infinity;
+    return isNegative && isZero;
+}
+function isNegativeZero6(n) {
+    return n === -0 && 1 / n === -Infinity;
+}
+const isNegativeZero7 = (n) => 1 / n === -Infinity && n === -0;
+function isNegativeZero8(n) {
+    if (n === 0) {
+        return 1 / n === -Infinity;
+    }
+    else {
+        return false;
+    }
+}
 const dative = (word) => {
     let solution = word;
     const lettersArr = word.split("");

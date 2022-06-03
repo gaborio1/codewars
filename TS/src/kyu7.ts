@@ -918,7 +918,9 @@ function collatz2(n: number): number {
 const collatz3 = (n: number): number =>
     n === 1 ? 1 : 1 + collatz(n & 1 ? n * 3 + 1 : n / 2);
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES : OBJECT.IS(),  MATH.SIGN() ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: IS IT NEGATIVE ZERO
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -935,9 +937,16 @@ In JavaScript / TypeScript / Coffeescript the input will be a number.
 
 In Python / Java / C / NASM / Haskell / the input will be a float.
 */
-const isNegativeZero = (num: number): boolean => {
-    if (num === 0) return false;
-    return num === -0;
+// const isNegativeZero = (num: number): boolean => {
+const isNegativeZero = (num: number) => {
+
+    // NOT STRICT ENOUGH:
+    // console.log(Math.sign(num));
+
+    // console.log(Object.is(-0, num));
+
+    return Object.is(-0, num);
+
 }
 
 // describe("Basic Tests", function() {
@@ -964,13 +973,49 @@ const isNegativeZero = (num: number): boolean => {
 //     });
 //   });
 
-console.log(isNegativeZero(-0));
+// console.log(isNegativeZero(-0));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function isNegativeZero2(n: number): boolean {
+    return Object.is(n, -0)
+}
+
+
+function isNegativeZero3(n: number): boolean {
+    return n != 0 ? false : 1 / n == -Infinity;
+}
+
+
+function isNegativeZero4(n: number): boolean {
+    return n === 0 && 1 / n === -Infinity;
+}
+
+
+function isNegativeZero5(n: number): boolean {
+    const isZero = n === 0;
+    const isNegative = 1 / n === -Infinity;
+    return isNegative && isZero;
+}
+
+
+function isNegativeZero6(n: number): boolean {
+    return n === -0 && 1 / n === -Infinity;
+}
+
+const isNegativeZero7 = (n: number): boolean => 1 / n === -Infinity && n === -0;
+
+
+function isNegativeZero8(n: number): boolean {
+    if (n === 0) {
+        return 1 / n === -Infinity;
+    } else {
+        return false;
+    }
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HUNGARIAN VOWEL HARMONY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
