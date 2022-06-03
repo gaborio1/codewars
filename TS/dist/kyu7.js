@@ -31,9 +31,21 @@ function absentVowel(x) { }
 function perimeterSequence(a, n) {
     return 0;
 }
-function driver(data) {
+const driver = (data) => {
+    console.log(data);
+    const surname = data[2];
+    console.log(surname);
+    let validSurname = "";
+    if (surname.length > 5) {
+        validSurname = surname.substring(0, 5);
+    }
+    if (surname.length < 5) {
+        validSurname = `${surname}${"x".repeat(5 - surname.length)}`;
+    }
+    console.log(validSurname);
     return "hello";
-}
+};
+const data = ["John", "James", "J", "01-Jan-2000", "M"];
 const pyramid = (numBalls) => {
     let levCount = 0;
     let currentRow = 0;
@@ -133,9 +145,10 @@ function collatz2(n) {
     return numSteps;
 }
 const collatz3 = (n) => n === 1 ? 1 : 1 + collatz(n & 1 ? n * 3 + 1 : n / 2);
-function isNegativeZero(n) {
-    return true;
-}
+const isNegativeZero = (num) => {
+    return num === -0;
+};
+console.log(isNegativeZero(-0));
 const dative = (word) => {
     let solution = word;
     const lettersArr = word.split("");
