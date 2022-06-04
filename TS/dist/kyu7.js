@@ -33,23 +33,59 @@ function perimeterSequence(a, n) {
 }
 const driver = (data) => {
     console.log(data);
-    const surname = data[2];
-    console.log(surname);
-    let validSurname = "";
-    if (surname.length > 5) {
-        validSurname = surname.substring(0, 5);
+    const inputSurname = data[2];
+    console.log(inputSurname);
+    let surname = "";
+    if (inputSurname.length >= 5) {
+        surname = inputSurname.substring(0, 5);
     }
-    if (surname.length < 5) {
-        validSurname = `${surname}${"x".repeat(5 - surname.length)}`;
+    if (inputSurname.length < 5) {
+        surname = `${inputSurname}${"x".repeat(5 - inputSurname.length)}`;
     }
-    console.log(validSurname);
+    console.log("surname", surname);
     const dob = data[3].match(/\d{4}/)[0];
     console.log(dob);
     const decadeDigit = dob.toString()[2];
     console.log(decadeDigit);
-    let monthStr = data[3].match(/[a-z]{3,}/gi)[0];
+    let monthStr = data[3].match(/[a-z]{3,}/gi)[0].toLowerCase().slice(0, 3);
     console.log(monthStr);
-    return "hello";
+    let months;
+    (function (months) {
+        months[months["jan"] = 1] = "jan";
+        months[months["feb"] = 2] = "feb";
+        months[months["mar"] = 3] = "mar";
+        months[months["apr"] = 4] = "apr";
+        months[months["may"] = 5] = "may";
+        months[months["jun"] = 6] = "jun";
+        months[months["jul"] = 7] = "jul";
+        months[months["aug"] = 8] = "aug";
+        months[months["sep"] = 9] = "sep";
+        months[months["oct"] = 10] = "oct";
+        months[months["nov"] = 11] = "nov";
+        months[months["dec"] = 12] = "dec";
+    })(months || (months = {}));
+    let monthDigit = Number(months[monthStr]);
+    console.log(typeof (monthDigit));
+    if (monthDigit < 10) {
+        monthDigit = `0${monthDigit}`;
+    }
+    else {
+        monthDigit = monthDigit.toString();
+    }
+    if (data[4].toLowerCase() === "f") {
+        monthDigit = (Number(monthDigit) + 50).toString();
+    }
+    console.log(monthDigit);
+    const date = data[3].match(/\d{2}/)[0];
+    console.log(date);
+    const yearDigit = dob.toString()[3];
+    console.log(yearDigit);
+    let initials = data[0][0];
+    initials += data[1] ? data[1][0] : "9";
+    console.log(initials);
+    console.log(surname);
+    const solution = `${surname.toUpperCase()}${decadeDigit}${monthDigit}${date}${yearDigit}${initials}9AA`;
+    return solution;
 };
 const data = ["John", "James", "Smith", "01-Jan-2000", "M"];
 console.log(driver(data));
