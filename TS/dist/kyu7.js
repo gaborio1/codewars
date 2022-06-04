@@ -43,9 +43,16 @@ const driver = (data) => {
         validSurname = `${surname}${"x".repeat(5 - surname.length)}`;
     }
     console.log(validSurname);
+    const dob = data[3].match(/\d{4}/)[0];
+    console.log(dob);
+    const decadeDigit = dob.toString()[2];
+    console.log(decadeDigit);
+    let monthStr = data[3].match(/[a-z]{3,}/gi)[0];
+    console.log(monthStr);
     return "hello";
 };
-const data = ["John", "James", "J", "01-Jan-2000", "M"];
+const data = ["John", "James", "Smith", "01-Jan-2000", "M"];
+console.log(driver(data));
 const pyramid = (numBalls) => {
     let levCount = 0;
     let currentRow = 0;
