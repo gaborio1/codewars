@@ -695,6 +695,8 @@ class G9645 {
             console.log(detailsArr);
         });
 
+        // BUILD SOLUTION
+
         return "hello";
     };
 }
