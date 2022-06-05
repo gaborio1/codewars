@@ -16,18 +16,38 @@ function isValidCoordinates(coordinates) {
 class G9645 {
 }
 G9645.travel = (dataStr, zip) => {
+    console.log("----------zip: " + zip + " zip-----------");
+    if (zip === "")
+        return ":/";
+    if (dataStr.indexOf(zip) < 0)
+        return zip + ":/";
+    let solution = zip + ":";
     const addressArr = dataStr.split(",");
     console.log(addressArr);
     const zipMatchArr = addressArr.filter((address) => {
         return address.includes(zip);
     });
     console.log(zipMatchArr);
+    let cityStreetArr = [];
+    let houseNumberArr = [];
     zipMatchArr.forEach((adStr) => {
         console.log(adStr);
         const detailsArr = adStr.split(" ");
         console.log(detailsArr);
+        const cityStreet = detailsArr.slice(1, -2).join(" ");
+        console.log(cityStreet);
+        cityStreetArr.push(cityStreet);
+        houseNumberArr.push(detailsArr[0]);
     });
-    return "hello";
+    console.log(cityStreetArr);
+    const cityStreetStr = cityStreetArr.join(",");
+    console.log(cityStreetStr);
+    console.log(houseNumberArr);
+    const houseNumberStr = houseNumberArr.join(",");
+    console.log(houseNumberStr);
+    solution += cityStreetStr + "/" + houseNumberStr;
+    console.log(solution);
+    return solution;
 };
 const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louisville OH 43071,786 High Street Pollocksville NY 56432," +
     "54 Holy Grail Street Niagara Town ZP 32908,3200 Main Rd. Bern AE 56210,1 Gordon St. Atlanta RE 13000," +
@@ -41,7 +61,7 @@ const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louis
     "2200 Tokyo Av. Tedmondville SW 43198,67 Paris St. Abbeville AA 45522,11 Surta Avenue Goodville GG 30655," +
     "2222 Tokyo Av. Tedmondville SW 43198,670 Paris St. Abbeville AA 45522,114 Surta Avenue Goodville GG 30655," +
     "2 Holy Grail Street Niagara Town ZP 32908,3 Main Rd. Bern AE 56210,77 Gordon St. Atlanta RE 13000";
-console.log(G9645.travel(ad, "AA 45522"));
+console.log(G9645.travel(ad, "EX 34342"));
 const sortTheInnerContent = (words) => {
     const wordsArr = words.split(" ");
     console.log(wordsArr);

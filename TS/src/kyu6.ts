@@ -635,6 +635,7 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ ZIP CODE MUST BE EXACT MATCT ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: SALESMAN TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -677,27 +678,69 @@ You can see a few addresses and zipcodes in the test cases.
 */
 class G9645 {
     public static travel = (dataStr: string, zip: string) => {
+
+        console.log("----------zip: " + zip + " zip-----------");
+
+        if (zip === "") return ":/";
+
+        if (dataStr.indexOf(zip) < 0) return zip + ":/";
+
+
+        // INITIALIZE SOLUTION WITH ZIP: "EX 34342:"
+        let solution: string = zip + ":";
+
         // GET ARRAY OF ADDRESSES
+        // '123 Main Street St. Louisville OH 43071',
+        // '432 Main Long Road St. Louisville OH 43071',
+        // '786 High Street Pollocksville NY 56432',
+        // ...
         const addressArr: string[] = dataStr.split(",");
         console.log(addressArr);
 
-        // FILTER BY ZIP CODE
+        // FILTER BY ZIP CODE ['10 Pussy Cat Rd. Chicago EX 34342','100 Pussy Cat Rd. Chicago EX 34342']
         const zipMatchArr: string[] = addressArr.filter((address) => {
             // return address.indexOf(zip) > -1;
+            // !!! includes() NOT WORKING IN CODEWARS !!!
             return address.includes(zip);
         });
         console.log(zipMatchArr);
 
         // EXTRACT STREET AND HOUSE NUMBER
+        let cityStreetArr: string[] = [];
+        let houseNumberArr: string[] = [];
         zipMatchArr.forEach((adStr) => {
+            // 100 Pussy Cat Rd. Chicago EX 34342
             console.log(adStr);
+            // ['100', 'Pussy','Cat','Rd.','Chicago', 'EX','34342']
             const detailsArr: string[] = adStr.split(" ");
             console.log(detailsArr);
+            // Pussy Cat Rd. Chicago
+            const cityStreet: string = detailsArr.slice(1, -2).join(" ");
+            console.log(cityStreet);
+            cityStreetArr.push(cityStreet);
+            houseNumberArr.push(detailsArr[0]);
         });
 
-        // BUILD SOLUTION
+        // [ 'Pussy Cat Rd. Chicago', 'Pussy Cat Rd. Chicago' ]
+        console.log(cityStreetArr);
+        // Pussy Cat Rd. Chicago,Pussy Cat Rd. Chicago
+        const cityStreetStr: string = cityStreetArr.join(",");
+        console.log(cityStreetStr);
 
-        return "hello";
+        // [ '10', '100' ]
+        console.log(houseNumberArr);
+        // 10,100
+        const houseNumberStr: string = houseNumberArr.join(",");
+        console.log(houseNumberStr);
+
+        // BUILD SOLUTION
+        // EX 34342:Pussy Cat Rd. Chicago,Pussy Cat Rd. Chicago/
+        solution += cityStreetStr + "/" + houseNumberStr;
+        console.log(solution);
+
+        // EXTRACT HOUSE NUMBERS
+
+        return solution;
     };
 }
 
@@ -734,7 +777,10 @@ const ad =
 // testing(ad, "AE 56215", "AE 56215:Main Al. Bern/320");
 
 // "AA 45522:Paris St. Abbeville,Paris St. Abbeville/67,670"
-console.log(G9645.travel(ad, "AA 45522"));
+// console.log(G9645.travel(ad, "AA 45522"));
+
+// "EX 34342:Pussy Cat Rd. Chicago,Pussy Cat Rd. Chicago/10,100"
+console.log(G9645.travel(ad, "EX 34342"));
 // console.log();
 // console.log();
 // console.log();
@@ -2138,9 +2184,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -2706,10 +2752,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -5102,7 +5148,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -5188,7 +5234,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -6049,15 +6095,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -6110,10 +6156,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -6689,7 +6735,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -7148,8 +7194,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -7442,7 +7488,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -7899,10 +7945,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -9202,9 +9248,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
