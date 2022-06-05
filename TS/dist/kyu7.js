@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
 function generate(length) {
     return "hello";
 }
@@ -47,7 +47,10 @@ const driver = (data) => {
     console.log(dob);
     const decadeDigit = dob.toString()[2];
     console.log(decadeDigit);
-    let monthStr = data[3].match(/[a-z]{3,}/gi)[0].toLowerCase().slice(0, 3);
+    let monthStr = data[3]
+        .match(/[a-z]{3,}/gi)[0]
+        .toLowerCase()
+        .slice(0, 3);
     console.log(monthStr);
     let months;
     (function (months) {
@@ -65,7 +68,7 @@ const driver = (data) => {
         months[months["dec"] = 12] = "dec";
     })(months || (months = {}));
     let monthDigit = Number(months[monthStr]);
-    console.log(typeof (monthDigit));
+    console.log(typeof monthDigit);
     if (monthDigit < 10) {
         monthDigit = `0${monthDigit}`;
     }
@@ -88,7 +91,197 @@ const driver = (data) => {
     return solution;
 };
 const data = ["John", "James", "Smith", "01-Jan-2000", "M"];
-console.log(driver(data));
+function driver2(data) {
+    var r = data[2].toUpperCase().substring(0, 5);
+    var i;
+    console.log(data[2]);
+    for (i = data[2].length; i < 5; i++) {
+        r += "9";
+    }
+    var date = new Date(data[3]);
+    r += date.getFullYear().toString().charAt(2);
+    r += ("0" + (date.getMonth() + 1 + (data[4] === "M" ? 0 : 50))).slice(-2);
+    r += ("0" + date.getDate()).slice(-2);
+    r += date.getFullYear().toString().charAt(3);
+    r +=
+        (data[0].length ? data[0].charAt(0) : "9") +
+            (data[1].length ? data[1].charAt(0) : "9");
+    r += "9AA";
+    return r;
+}
+function driver3(data) {
+    let output = "";
+    data[2] = data[2].toUpperCase();
+    output += data[2].substr(0, 5);
+    while (output.length < 5) {
+        output += "9";
+    }
+    output += data[3].substr(-2, 1);
+    let date = new Date(data[3]);
+    let month = (date.getMonth() + 1).toString();
+    if (month.length < 2) {
+        month = 0 + month;
+    }
+    if (data[4] == "F") {
+        output += parseInt(month[0]) + 5 + month[1];
+    }
+    else {
+        output += month;
+    }
+    let dateDay = date.getDate().toString();
+    if (dateDay.length < 2) {
+        dateDay = "0" + dateDay;
+    }
+    output += dateDay;
+    output += date.getFullYear().toString().substr(-1);
+    output += data[0].substr(0, 1);
+    if (data[1] == "") {
+        output += "9";
+    }
+    else {
+        output += data[1].substr(0, 1);
+    }
+    output += "9AA";
+    return output;
+}
+function driver4(data) {
+    let date = new Date(data[3]);
+    let apellido = data[2].toUpperCase().substring(0, 5);
+    if (apellido.length < 5) {
+        for (let i = 0; i < 5 - data[2].toUpperCase().substring(0, 4).length; i++) {
+            apellido = apellido.concat("9");
+        }
+    }
+    return (apellido +
+        data[3].split("-")[2].substring(2, 3) +
+        (data[4] === "F"
+            ? String(date.getMonth() + 51)
+            : date.getMonth() + 1 < 10
+                ? "0" + String(date.getMonth() + 1)
+                : String(date.getMonth() + 1)) +
+        (date.getDate() < 10
+            ? "0" + String(date.getDate())
+            : String(date.getDate())) +
+        data[3].split("-")[2].substring(3, 4) +
+        data[0].substring(0, 1) +
+        (data[1] !== "" ? data[1].substring(0, 1) : "9") +
+        "9AA");
+}
+function driver5(data) {
+    const [name, middleName, surname, birthDate, sex] = data;
+    const [day, month, year] = birthDate.split("-");
+    let result = "";
+    const monthsAlphabet = {
+        January: "01",
+        Jan: "01",
+        February: "02",
+        Feb: "02",
+        March: "03",
+        Mar: "03",
+        April: "04",
+        Apr: "04",
+        May: "05",
+        June: "06",
+        Jun: "06",
+        Jule: "07",
+        Jul: "07",
+        August: "08",
+        Aug: "08",
+        September: "09",
+        Sep: "09",
+        October: "10",
+        Oct: "10",
+        November: "11",
+        Nov: "11",
+        December: "12",
+        Dec: "12",
+    };
+    result += surname.slice(0, 5).padEnd(5, "9");
+    result += birthDate.substr(-2, 1);
+    const monthNumber = monthsAlphabet[month];
+    if (sex === "M") {
+        result += monthNumber;
+    }
+    else {
+        const femaleNumber = "" + (Number(monthNumber[0]) + 5) + monthNumber[1];
+        result += femaleNumber;
+    }
+    result += day;
+    result += year.substr(-1);
+    const initials = (name[0] || "9") + (middleName[0] || "9");
+    result += initials;
+    result += "9";
+    result += "AA";
+    return result.toUpperCase();
+}
+function driver6(data) {
+    const [first_name, middle_name, last_name, birth, sex] = data;
+    return [
+        last_name.slice(0, 5).toUpperCase().padEnd(5, "9"),
+        birth.charAt(birth.length - 2),
+        String(new Date(birth).getMonth() + 1 + (sex === "F" ? 50 : 0)).padStart(2, "0"),
+        String(new Date(birth).getDate()).padStart(2, "0"),
+        birth.charAt(birth.length - 1),
+        first_name.charAt(0) +
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        "9AA",
+    ].join("");
+}
+const months = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+};
+function driver7(data) {
+    return ""
+        .concat(data[2].toUpperCase().slice(0, 5), data[2].length < 5 ? "9".repeat(5 - data[2].length) : "")
+        .concat(data[3].slice(-2, -1))
+        .concat(data[4] === "F"
+        ? (50 + Number(months[data[3].split("-")[1]])).toString()
+        : months[data[3].split("-")[1].slice(0, 3)])
+        .concat(data[3].split("-")[0])
+        .concat(data[3].slice(-1))
+        .concat(data[0].slice(0, 1), data[1].length ? data[1].slice(0, 1) : "9")
+        .concat("9", "AA");
+}
+exports.driver7 = driver7;
+function driver8(data) {
+    const getMonth = (dateStr, shouldIncrement) => {
+        const date = new Date(dateStr);
+        const month = date.getMonth() + 1;
+        const monthString = month < 10 ? "0" + month : "" + month;
+        if (!shouldIncrement)
+            return monthString;
+        return `${Number(monthString[0]) + 5}${monthString[1]}`;
+    };
+    const oneToFive = Array(5)
+        .fill(null)
+        .map((e, i) => (data[2][i] ? data[2][i] : "9"))
+        .join("");
+    const six = data[3].split("-")[2][2];
+    const sevenEight = getMonth(data[3], data[4] === "F");
+    const nineTen = data[3].split("-")[0];
+    const eleven = data[3].split("-")[2][3];
+    const twelveThirteen = [data[0][0], data[1][0]]
+        .map((elem) => elem || "9")
+        .join("");
+    return (oneToFive +
+        six +
+        sevenEight +
+        nineTen +
+        eleven +
+        twelveThirteen +
+        "9AA").toUpperCase();
+}
 const pyramid = (numBalls) => {
     let levCount = 0;
     let currentRow = 0;

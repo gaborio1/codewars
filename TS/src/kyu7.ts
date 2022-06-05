@@ -441,7 +441,7 @@ Examples
 "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
 
 */
-function absentVowel(x: string) { }
+function absentVowel(x: string) {}
 
 // assert.equal(absentVowel("John Doe hs seven red pples under his bsket"), 0)
 // assert.equal(absentVowel("Bb Smith sent us six neatly arranged range bicycles"), 3)
@@ -483,10 +483,12 @@ function perimeterSequence(a: number, n: number): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ LOOK INTO THIS  ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DRIVING LICENCE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: EXTRACT BITS FROM DATA STRING, ❗️❗️❗️ DATE.GETFULLYEAR() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -530,7 +532,7 @@ Good luck and enjoy!
 const driver = (data: Array<string>): string => {
     console.log(data);
 
-    // 1-5 SURNAME 
+    // 1-5 SURNAME
     const inputSurname: string = data[2];
     console.log(inputSurname);
     let surname: string = "";
@@ -544,15 +546,18 @@ const driver = (data: Array<string>): string => {
     }
     console.log("surname", surname);
 
-    // 6 DECADE DIGIT FROM DOB 
+    // 6 DECADE DIGIT FROM DOB
     const dob: string = data[3].match(/\d{4}/)![0];
     // const year: string = dob.match;
     console.log(dob);
     const decadeDigit: string = dob.toString()[2];
     console.log(decadeDigit);
 
-    // 7-8 MONTH OF BIRTH 
-    let monthStr: any = data[3].match(/[a-z]{3,}/gi)![0].toLowerCase().slice(0, 3);
+    // 7-8 MONTH OF BIRTH
+    let monthStr: any = data[3]
+        .match(/[a-z]{3,}/gi)![0]
+        .toLowerCase()
+        .slice(0, 3);
     console.log(monthStr);
 
     enum months {
@@ -567,13 +572,13 @@ const driver = (data: Array<string>): string => {
         sep,
         oct,
         nov,
-        dec
+        dec,
     }
 
     // HAVE TO MAKE MONTHSTRING ANY, OTHERWISE WE GET THIS ERROR:
     // error TS7015: Element implicitly has an 'any' type because index expression is not of type 'number'.
     let monthDigit: any = Number(months[monthStr]); // NUMBER
-    console.log(typeof (monthDigit));
+    console.log(typeof monthDigit);
     // CONVERT TO STRING AND ADD LEADING "0" IF LENGTH IS 1
     if (monthDigit < 10) {
         // TYR PADSTART
@@ -625,13 +630,263 @@ const data = ["John", "James", "Smith", "01-Jan-2000", "M"];
 // const data = ["John", "James", "J", "01-Jan-2010", "M"];
 
 // 'SMITH 0 01 01 0 JJ 9 AA'
-console.log(driver(data));
+// console.log(driver(data));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ DATE.GETFULLYEAR() ❗️❗️❗️
+function driver2(data: Array<string>): string {
+    var r = data[2].toUpperCase().substring(0, 5);
+    var i;
+    console.log(data[2]);
+    for (i = data[2].length; i < 5; i++) {
+        r += "9";
+    }
+    var date = new Date(data[3]);
+    r += date.getFullYear().toString().charAt(2); // 6
+    r += ("0" + (date.getMonth() + 1 + (data[4] === "M" ? 0 : 50))).slice(-2); // 7-8
+    r += ("0" + date.getDate()).slice(-2); //9 - 10
+    r += date.getFullYear().toString().charAt(3); // 11
+    r +=
+        (data[0].length ? data[0].charAt(0) : "9") +
+        (data[1].length ? data[1].charAt(0) : "9");
+    r += "9AA";
+
+    return r;
+}
+
+function driver3(data: Array<string>): string {
+    let output: string = "";
+
+    data[2] = data[2].toUpperCase();
+
+    // 5 letters of surname + ending 9s
+    output += data[2].substr(0, 5);
+    while (output.length < 5) {
+        output += "9";
+    }
+
+    // Decade digit
+    output += data[3].substr(-2, 1);
+
+    // Month
+    let date = new Date(data[3]);
+    let month = (date.getMonth() + 1).toString();
+    if (month.length < 2) {
+        month = 0 + month;
+    }
+    if (data[4] == "F") {
+        output += parseInt(month[0]) + 5 + month[1];
+    } else {
+        output += month;
+    }
+
+    // Date
+    let dateDay = date.getDate().toString();
+    if (dateDay.length < 2) {
+        dateDay = "0" + dateDay;
+    }
+    output += dateDay;
+
+    // Year digit
+    output += date.getFullYear().toString().substr(-1);
+
+    // Initials
+    output += data[0].substr(0, 1);
+
+    if (data[1] == "") {
+        output += "9";
+    } else {
+        output += data[1].substr(0, 1);
+    }
+
+    // Arbitrary + Check
+    output += "9AA";
+
+    return output;
+}
+
+function driver4(data: Array<string>): string {
+    let date = new Date(data[3]);
+    let apellido = data[2].toUpperCase().substring(0, 5);
+
+    if (apellido.length < 5) {
+        for (
+            let i = 0;
+            i < 5 - data[2].toUpperCase().substring(0, 4).length;
+            i++
+        ) {
+            apellido = apellido.concat("9");
+        }
+    }
+
+    return (
+        apellido +
+        data[3].split("-")[2].substring(2, 3) +
+        (data[4] === "F"
+            ? String(date.getMonth() + 51)
+            : date.getMonth() + 1 < 10
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
+        (date.getDate() < 10
+            ? "0" + String(date.getDate())
+            : String(date.getDate())) +
+        data[3].split("-")[2].substring(3, 4) +
+        data[0].substring(0, 1) +
+        (data[1] !== "" ? data[1].substring(0, 1) : "9") +
+        "9AA"
+    );
+}
+
+function driver5(data: Array<string>): string {
+    const [name, middleName, surname, birthDate, sex] = data;
+    const [day, month, year] = birthDate.split("-");
+    let result = "";
+    const monthsAlphabet = {
+        January: "01",
+        Jan: "01",
+        February: "02",
+        Feb: "02",
+        March: "03",
+        Mar: "03",
+        April: "04",
+        Apr: "04",
+        May: "05",
+        June: "06",
+        Jun: "06",
+        Jule: "07",
+        Jul: "07",
+        August: "08",
+        Aug: "08",
+        September: "09",
+        Sep: "09",
+        October: "10",
+        Oct: "10",
+        November: "11",
+        Nov: "11",
+        December: "12",
+        Dec: "12",
+    };
+    // 1-5
+    result += surname.slice(0, 5).padEnd(5, "9");
+    // 6
+    result += birthDate.substr(-2, 1);
+    // 7-8
+    const monthNumber = monthsAlphabet[month as keyof typeof monthsAlphabet];
+    if (sex === "M") {
+        result += monthNumber;
+    } else {
+        const femaleNumber = "" + (Number(monthNumber[0]) + 5) + monthNumber[1];
+        result += femaleNumber;
+    }
+    // 9-10
+    result += day;
+    // 11
+    result += year.substr(-1);
+    // 12-13
+    const initials = (name[0] || "9") + (middleName[0] || "9");
+    result += initials;
+    // 14
+    result += "9";
+    // 15-16
+    result += "AA";
+
+    return result.toUpperCase();
+}
+
+function driver6(data: Array<string>): string {
+    const [first_name, middle_name, last_name, birth, sex] = data;
+    return [
+        last_name.slice(0, 5).toUpperCase().padEnd(5, "9"),
+        birth.charAt(birth.length - 2),
+        String(
+            new Date(birth).getMonth() + 1 + (sex === "F" ? 50 : 0)
+        ).padStart(2, "0"),
+        String(new Date(birth).getDate()).padStart(2, "0"),
+        birth.charAt(birth.length - 1),
+        first_name.charAt(0) +
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        "9AA",
+    ].join("");
+}
+
+// =============================================================
+
+interface month {
+    [key: string]: string;
+}
+
+const months: month = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+};
+
+export function driver7(data: Array<string>): string {
+    return ""
+        .concat(
+            data[2].toUpperCase().slice(0, 5),
+            data[2].length < 5 ? "9".repeat(5 - data[2].length) : ""
+        )
+        .concat(data[3].slice(-2, -1))
+        .concat(
+            data[4] === "F"
+                ? (50 + Number(months[data[3].split("-")[1]])).toString()
+                : months[data[3].split("-")[1].slice(0, 3)]
+        )
+        .concat(data[3].split("-")[0])
+        .concat(data[3].slice(-1))
+        .concat(data[0].slice(0, 1), data[1].length ? data[1].slice(0, 1) : "9")
+        .concat("9", "AA");
+}
+
+// =============================================================
+
+function driver8(data: Array<string>): string {
+    const getMonth = (dateStr: string, shouldIncrement: boolean) => {
+        const date = new Date(dateStr);
+        const month = date.getMonth() + 1;
+        const monthString = month < 10 ? "0" + month : "" + month;
+        if (!shouldIncrement) return monthString;
+
+        return `${Number(monthString[0]) + 5}${monthString[1]}`;
+    };
+    // Good luck
+
+    const oneToFive = Array(5)
+        .fill(null)
+        .map((e, i) => (data[2][i] ? data[2][i] : "9"))
+        .join("");
+    const six = data[3].split("-")[2][2];
+    const sevenEight = getMonth(data[3], data[4] === "F");
+    const nineTen = data[3].split("-")[0];
+    const eleven = data[3].split("-")[2][3];
+    const twelveThirteen = [data[0][0], data[1][0]]
+        .map((elem) => elem || "9")
+        .join("");
+
+    return (
+        oneToFive +
+        six +
+        sevenEight +
+        nineTen +
+        eleven +
+        twelveThirteen +
+        "9AA"
+    ).toUpperCase();
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BILLIARDS TRIANGLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1263,10 +1518,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -1376,8 +1631,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -2484,8 +2739,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -3098,10 +3354,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -3554,7 +3810,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -4047,17 +4303,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -4190,13 +4446,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -6798,10 +7054,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -7914,7 +8170,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -8990,8 +9246,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -9141,10 +9397,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -10141,11 +10397,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -10940,9 +11196,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -11224,8 +11480,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
