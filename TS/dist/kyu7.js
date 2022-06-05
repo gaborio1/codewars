@@ -29,8 +29,9 @@ function mod256WithoutMod(n) {
 }
 function absentVowel(x) { }
 function perimeterSequence(a, n) {
-    return 0;
+    return n * 4 * a;
 }
+const perimeterSequence2 = (a, n) => (a * n) << 2;
 const driver = (data) => {
     console.log(data);
     const inputSurname = data[2];

@@ -13,6 +13,22 @@ function stringTransformer(str) {
 function isValidCoordinates(coordinates) {
     return true;
 }
+class G9645 {
+}
+G9645.travel = (dataStr, zip) => {
+    const addressArr = dataStr.split(",");
+    console.log(addressArr);
+    const zipMatchArr = addressArr.filter((address) => {
+        return address.includes(zip);
+    });
+    console.log(zipMatchArr);
+    zipMatchArr.forEach((adStr) => {
+        console.log(adStr);
+        const detailsArr = adStr.split(" ");
+        console.log(detailsArr);
+    });
+    return "hello";
+};
 const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louisville OH 43071,786 High Street Pollocksville NY 56432," +
     "54 Holy Grail Street Niagara Town ZP 32908,3200 Main Rd. Bern AE 56210,1 Gordon St. Atlanta RE 13000," +
     "10 Pussy Cat Rd. Chicago EX 34342,10 Gordon St. Atlanta RE 13000,58 Gordon Road Atlanta RE 13000," +
@@ -25,6 +41,7 @@ const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louis
     "2200 Tokyo Av. Tedmondville SW 43198,67 Paris St. Abbeville AA 45522,11 Surta Avenue Goodville GG 30655," +
     "2222 Tokyo Av. Tedmondville SW 43198,670 Paris St. Abbeville AA 45522,114 Surta Avenue Goodville GG 30655," +
     "2 Holy Grail Street Niagara Town ZP 32908,3 Main Rd. Bern AE 56210,77 Gordon St. Atlanta RE 13000";
+console.log(G9645.travel(ad, "AA 45522"));
 const sortTheInnerContent = (words) => {
     const wordsArr = words.split(" ");
     console.log(wordsArr);

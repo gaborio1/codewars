@@ -675,11 +675,29 @@ In Elixir the empty addresses' input is an empty list, not an empty string.
 Note:
 You can see a few addresses and zipcodes in the test cases.
 */
-// class G9645 {
-//     public static travel = (r, zipcode) => {
-//         // your code
-//     };
-// }
+class G9645 {
+    public static travel = (dataStr: string, zip: string) => {
+        // GET ARRAY OF ADDRESSES
+        const addressArr: string[] = dataStr.split(",");
+        console.log(addressArr);
+
+        // FILTER BY ZIP CODE
+        const zipMatchArr: string[] = addressArr.filter((address) => {
+            // return address.indexOf(zip) > -1;
+            return address.includes(zip);
+        });
+        console.log(zipMatchArr);
+
+        // EXTRACT STREET AND HOUSE NUMBER
+        zipMatchArr.forEach((adStr) => {
+            console.log(adStr);
+            const detailsArr: string[] = adStr.split(" ");
+            console.log(detailsArr);
+        });
+
+        return "hello";
+    };
+}
 
 const ad =
     "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louisville OH 43071,786 High Street Pollocksville NY 56432," +
@@ -713,7 +731,8 @@ const ad =
 // );
 // testing(ad, "AE 56215", "AE 56215:Main Al. Bern/320");
 
-// console.log();
+// "AA 45522:Paris St. Abbeville,Paris St. Abbeville/67,670"
+console.log(G9645.travel(ad, "AA 45522"));
 // console.log();
 // console.log();
 // console.log();
