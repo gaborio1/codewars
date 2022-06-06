@@ -635,13 +635,13 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ❗️❗️❗️ ZIP CODE MUST BE EXACT MATCT ❗️❗️❗️
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SALESMAN TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: REGEX MATCT PATTERN NOT FOLLOWED BY, 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: https://stackoverflow.com/questions/31201690/find-word-not-followed-by-a-certain-character
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -681,9 +681,11 @@ class G9645 {
 
         console.log("----------zip: " + zip + " zip-----------");
 
-        if (zip === "") return ":/";
+        // ❗️❗️❗️ MATCH ZIP FORMAT, (AA 12345 NOT FOLLOWED BY ANY CHAR) ❗️❗️❗️
+        const zipFormat = /[A-Z]{2}\s[0-9]{5}(?!\.)/g;
 
-        if (dataStr.indexOf(zip) < 0) return zip + ":/";
+        // RETURN IF INPUT ZIP IS INVALID 
+        if (!zipFormat.test(zip)) return zip + ":/";
 
 
         // INITIALIZE SOLUTION WITH ZIP: "EX 34342:"
@@ -744,6 +746,9 @@ class G9645 {
     };
 }
 
+// ❗️❗️❗️ MATCH ZIP FORMAT NOT FOLLOWED BY ANY CHAR ❗️❗️❗️
+// The (?!@) negative look-ahead will make word match only if @ does not appear immediately after word: word(?!@)
+
 const ad =
     "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louisville OH 43071,786 High Street Pollocksville NY 56432," +
     "54 Holy Grail Street Niagara Town ZP 32908,3200 Main Rd. Bern AE 56210,1 Gordon St. Atlanta RE 13000," +
@@ -780,14 +785,144 @@ const ad =
 // console.log(G9645.travel(ad, "AA 45522"));
 
 // "EX 34342:Pussy Cat Rd. Chicago,Pussy Cat Rd. Chicago/10,100"
-console.log(G9645.travel(ad, "EX 34342"));
+// console.log(G9645.travel(ad, "EX 34342"));
+// console.log(G9645.travel(ad, "EX 343"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// COMMENT AND ADD SOLUTIONS !!!
+
+// class G9645a {
+
+//     public static travel = (r: string, zipcode: string) => {
+//         // your code
+//         let streets = [];
+//         let numbers = [];
+//         let entries = r.split(",");
+//         entries.map(entry => {
+//             let words = entry.split(" ")
+//             let zip = words.slice(-2).join(" ");
+//             if (zip == zipcode) {
+//                 streets.push(words.slice(1, -2).join(" "));
+//                 numbers.push(words[0]);
+//             }
+//         });
+//         let sol = zipcode + ":" + streets.join(",") + "/" + numbers.join(",");
+//         return sol;
+//     }
+// }
+
+
+// class G9645b {
+//     public static travel = (r, zipcode) => {
+//         const arr = zipcode ? r.split(',').filter(e => e.endsWith(zipcode)) : [];
+//         const numbers = arr.map(e => e.substr(0, e.indexOf(' ')));
+//         const addresses = arr.map(e => e.slice(e.indexOf(' '), -zipcode.length).trim());
+//         return `${zipcode}:${addresses}/${numbers}`;
+//     }
+// }
+
+
+// class G9645c {
+//     public static travel = (r: string, zipcode: string): string => {
+//         const list = r.split(',').map((x: string) => {
+//             const addr = x.match(/(^\d+) ([a-zA-z.\s]+) ([A-Z]{2} \d+)$/);
+//             return {
+//                 house: addr[1],
+//                 street: addr[2],
+//                 zip: addr[3],
+//             };
+//         });
+
+//         let streets: string[] = [];
+//         let houses: string[] = [];
+//         list.forEach((record) => {
+//             if (record.zip === zipcode) {
+//                 streets.push(record.street);
+//                 houses.push(record.house);
+//             }
+//         });
+//         return `${zipcode}:${streets.join(',')}/${houses.join(',')}`;
+//     };
+// }
+
+
+// class G9645d {
+
+//     private static work_one = (r, srch) => {
+//         var res = [];
+//         var searched = r.indexOf(srch);
+//         if (searched < 0) return res;
+//         var a = r.match(/[A-Z]{1,2}\s\d+\s*$/g);
+//         if ((a === null) || (a[0] !== srch)) return res;
+//         var b = r.match(/^\s*\d+/);
+//         var c = r.replace(/[A-Z]{1,2}\s\d+$/, "");
+//         var d = c.replace(/^\s*\d+\s*/, " ").trim();
+//         res.push(b); res.push([d]); res.push(a);
+//         return res;
+//     }
+
+//     public static travel = (r, zipcode) => {
+//         if (zipcode === "") return ":/";
+//         var result = [[], []];
+//         var arr = r.split(",");
+//         arr.forEach(
+//             function (u) {
+//                 var res = G964.work_one(u, zipcode);
+//                 if (res.length !== 0) {
+//                     result[0] = result[0].concat(res[0]);
+//                     result[1] = result[1].concat(res[1]);
+//                 }
+//                 return result;
+//             })
+//         return zipcode + ":" + result[1].join(",") + "/" + result[0].join(",");
+//     }
+// }
+
+
+// class G9645e {
+
+//     public static travel = (r, zipcode) => {
+//         if (!zipcode) return ':/';
+
+//         const list = r.split(',')
+//             .filter(str => new RegExp(`${zipcode}$`).test(str))
+//             .map(str => {
+//                 const s = str.replace(zipcode, '');
+//                 const reg = /^(\d+)(.*)/;
+//                 return {
+//                     street: s.replace(reg, '$2').trim(),
+//                     code: s.replace(reg, '$1').trim()
+//                 }
+//             });
+//         return `${zipcode}:${list.map(i => i.street)}/${list.map(i => i.code)}`;
+//     }
+// }
+
+
+// class G9645f {
+//     public static travel = (r, zipcode) =>
+//         (arr => `${zipcode}:${arr.map(x => x[2])}/${arr.map(x => x[1])}`)
+//             (r.split`,`.map(x => x.match(/(\d+) (.+) (\w{2} \d{5})/)).filter(x => x[3] === zipcode))
+// }
+
+
+// class G9645g {
+//     public static travel = (r: string, zipcode: string) => {
+//         if (zipcode.length !== 8) {
+//             return `${zipcode}:/`;
+//         }
+//         const locations = r.split(",");
+//         const filtered = locations.filter(location => location.includes(zipcode));
+//         const numbers = filtered.map(x => x.match(/\d+/)[0]);
+//         const streets = filtered.map(x => x.match(/\d+\s(.+)\s[A-Z]{2}/)[1]);
+//         return `${zipcode}:${streets.join(",")}/${numbers.join(",")}`
+//     }
+// }
+
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT THE INNER CONTENT IN DESCENDING ORDER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -839,6 +974,51 @@ const sortTheInnerContent = (words: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function sortTheInnerContent2(words: string): string {
+    return words.split(' ').map(w => w.length < 2 ? w : w[0] + w.slice(1, -1).split('').sort().reverse().join('') + w.slice(-1)).join(' ');
+}
+
+
+
+function sortTheInnerContent3(w: string): string {
+    return w.split(' ').map((x, i, arr) =>
+        (x.length < 2) ? x : arr[i][0] + x.slice(1, -1).split('').sort().reverse().join('') + arr[i].slice(-1)
+    ).join(' ');
+}
+
+
+const sortTheInnerContent4 = (phrase: string): string =>
+    phrase.split(' ')
+        .map(([start, ...rest]) => {
+            const end = rest.pop();
+            return [start, ...rest.sort().reverse(), end].join('');
+        }).join(' ');
+
+
+function sortTheInnerContent5(words: string): string {
+    return words.replace(/\S+/g, x => x.replace(/^(.)(.{2,})(.)$/g, (a, b, c, d) => b + c.split("").sort().reverse().join("") + d));
+}
+
+
+function sortTheInnerContent6(words: string): string {
+    return words.split(' ').map((word) => {
+        if (word.length < 4) {
+            return word;
+        } else {
+            var middle = word.substring(1, word.length - 1);
+            return word.charAt(0) + middle.split('').sort().reverse().join('') + word.charAt(word.length - 1);
+        }
+    }).join(' ');
+}
+
+function sortTheInnerContent7(input: string): string {
+    const words = input.split(' ');
+    return words.map((word: string) => {
+        if (word.length <= 3) return word;
+        const chars = word.split('');
+        return chars[0] + chars.slice(1, chars.length - 1).sort().reverse().join('') + chars[chars.length - 1];
+    }).join(' ');
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PRIMORIAL OF A NUMBER - PRODUCT OF PRIMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

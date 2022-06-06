@@ -17,9 +17,8 @@ class G9645 {
 }
 G9645.travel = (dataStr, zip) => {
     console.log("----------zip: " + zip + " zip-----------");
-    if (zip === "")
-        return ":/";
-    if (dataStr.indexOf(zip) < 0)
+    const zipFormat = /[A-Z]{2}\s[0-9]{5}(?!\.)/g;
+    if (!zipFormat.test(zip))
         return zip + ":/";
     let solution = zip + ":";
     const addressArr = dataStr.split(",");
@@ -61,7 +60,6 @@ const ad = "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louis
     "2200 Tokyo Av. Tedmondville SW 43198,67 Paris St. Abbeville AA 45522,11 Surta Avenue Goodville GG 30655," +
     "2222 Tokyo Av. Tedmondville SW 43198,670 Paris St. Abbeville AA 45522,114 Surta Avenue Goodville GG 30655," +
     "2 Holy Grail Street Niagara Town ZP 32908,3 Main Rd. Bern AE 56210,77 Gordon St. Atlanta RE 13000";
-console.log(G9645.travel(ad, "EX 34342"));
 const sortTheInnerContent = (words) => {
     const wordsArr = words.split(" ");
     console.log(wordsArr);
@@ -77,6 +75,40 @@ const sortTheInnerContent = (words) => {
     });
     return wordsArr.join(" ");
 };
+function sortTheInnerContent2(words) {
+    return words.split(' ').map(w => w.length < 2 ? w : w[0] + w.slice(1, -1).split('').sort().reverse().join('') + w.slice(-1)).join(' ');
+}
+function sortTheInnerContent3(w) {
+    return w.split(' ').map((x, i, arr) => (x.length < 2) ? x : arr[i][0] + x.slice(1, -1).split('').sort().reverse().join('') + arr[i].slice(-1)).join(' ');
+}
+const sortTheInnerContent4 = (phrase) => phrase.split(' ')
+    .map(([start, ...rest]) => {
+    const end = rest.pop();
+    return [start, ...rest.sort().reverse(), end].join('');
+}).join(' ');
+function sortTheInnerContent5(words) {
+    return words.replace(/\S+/g, x => x.replace(/^(.)(.{2,})(.)$/g, (a, b, c, d) => b + c.split("").sort().reverse().join("") + d));
+}
+function sortTheInnerContent6(words) {
+    return words.split(' ').map((word) => {
+        if (word.length < 4) {
+            return word;
+        }
+        else {
+            var middle = word.substring(1, word.length - 1);
+            return word.charAt(0) + middle.split('').sort().reverse().join('') + word.charAt(word.length - 1);
+        }
+    }).join(' ');
+}
+function sortTheInnerContent7(input) {
+    const words = input.split(' ');
+    return words.map((word) => {
+        if (word.length <= 3)
+            return word;
+        const chars = word.split('');
+        return chars[0] + chars.slice(1, chars.length - 1).sort().reverse().join('') + chars[chars.length - 1];
+    }).join(' ');
+}
 const numPrimorial = (num) => {
     let primesArr = [];
     const isPrime = (num) => {
