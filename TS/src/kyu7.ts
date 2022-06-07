@@ -417,11 +417,12 @@ assert.equal(solution.mod256WithoutMod(254), 254);
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES  ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ABSENT VOWEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️  FINDINDEX() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -441,18 +442,95 @@ Examples
 "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
 
 */
-function absentVowel(x: string) { }
+const absentVowel = (text: string): number => {
+
+    let solution: number = 0;
+
+    const vowels: string = "aeiou";
+
+    // ['i', 'e', 'u', 'i','e', 'a', 'a', 'a','e', 'a', 'e', 'i','e']
+    const allVowels: string[] = text.match(/[aeiou]/g)!;
+    // console.log(allVowels);
+    // Set(4) { 'o', 'e', 'u', 'i' }
+    const uniqueVowels = new Set(allVowels);
+    // console.log(uniqueVowels);
+
+    for (let i = 0; i < vowels.length; i += 1) {
+        if (!uniqueVowels.has(vowels[i])) {
+            solution = i;
+            break;
+        }
+    }
+    // console.log(solution);
+    return solution;
+}
 
 // assert.equal(absentVowel("John Doe hs seven red pples under his bsket"), 0)
 // assert.equal(absentVowel("Bb Smith sent us six neatly arranged range bicycles"), 3)
 
-// console.log();
-// console.log();
+// console.log(absentVowel("John Doe hs seven red pples under his bsket"));
+// console.log(absentVowel("Bb Smith sent us six neatly arranged range bicycles"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️  FINDINDEX() ❗️❗️❗️
+const absentVowel2 = (str: string): number => [...'aeiou'].findIndex(v => !str.includes(v));
+
+// ❗️❗️❗️  FINDINDEX() ❗️❗️❗️
+function absentVowel3(x: string): number {
+    return [..."aeiou"].findIndex(c => !x.toLowerCase().includes(c))
+}
+
+
+function absentVowel4(x: string) {
+    let vowels: Array<string> = ['a', 'e', 'i', 'o', 'u']
+    let result: number = 0
+    vowels.forEach((v) => {
+        if (!x.includes(v)) {
+            result = vowels.indexOf(v)
+            return
+        }
+    })
+    return result
+}
+
+function absentVowel5(x: string): number | undefined {
+    var vowels: string = 'aeiou';
+    for (let i in [...vowels]) {
+        if (x.toLowerCase().indexOf(vowels[i]) === -1) {
+            return Number(i);
+        }
+    }
+}
+
+
+function absentVowel6(x: string) {
+
+    if (/a/i.test(x) === false) return 0
+    if (/e/i.test(x) === false) return 1
+    if (/i/i.test(x) === false) return 2
+    if (/o/i.test(x) === false) return 3
+    if (/u/i.test(x) === false) return 4
+}
+
+
+function absentVowel7(x: string): number {
+    switch (true) {
+        case (!x.includes('a')): return 0;
+            break;
+        case (!x.includes('e')): return 1;
+            break;
+        case (!x.includes('i')): return 2;
+            break;
+        case (!x.includes('o')): return 3;
+            break;
+        case (!x.includes('u')): return 4;
+            break;
+        default: return NaN
+    }
+}
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ LOOK INTO THIS  ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

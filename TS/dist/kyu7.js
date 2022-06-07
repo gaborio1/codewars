@@ -27,7 +27,74 @@ function sabb(s, val, happiness) {
 function mod256WithoutMod(n) {
     return 0;
 }
-function absentVowel(x) { }
+const absentVowel = (text) => {
+    let solution = 0;
+    const vowels = "aeiou";
+    const allVowels = text.match(/[aeiou]/g);
+    const uniqueVowels = new Set(allVowels);
+    for (let i = 0; i < vowels.length; i += 1) {
+        if (!uniqueVowels.has(vowels[i])) {
+            solution = i;
+            break;
+        }
+    }
+    return solution;
+};
+const absentVowel2 = (str) => [...'aeiou'].findIndex(v => !str.includes(v));
+function absentVowel3(x) {
+    return [..."aeiou"].findIndex(c => !x.toLowerCase().includes(c));
+}
+function absentVowel4(x) {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let result = 0;
+    vowels.forEach((v) => {
+        if (!x.includes(v)) {
+            result = vowels.indexOf(v);
+            return;
+        }
+    });
+    return result;
+}
+function absentVowel5(x) {
+    var vowels = 'aeiou';
+    for (let i in [...vowels]) {
+        if (x.toLowerCase().indexOf(vowels[i]) === -1) {
+            return Number(i);
+        }
+    }
+}
+function absentVowel6(x) {
+    if (/a/i.test(x) === false)
+        return 0;
+    if (/e/i.test(x) === false)
+        return 1;
+    if (/i/i.test(x) === false)
+        return 2;
+    if (/o/i.test(x) === false)
+        return 3;
+    if (/u/i.test(x) === false)
+        return 4;
+}
+function absentVowel7(x) {
+    switch (true) {
+        case (!x.includes('a')):
+            return 0;
+            break;
+        case (!x.includes('e')):
+            return 1;
+            break;
+        case (!x.includes('i')):
+            return 2;
+            break;
+        case (!x.includes('o')):
+            return 3;
+            break;
+        case (!x.includes('u')):
+            return 4;
+            break;
+        default: return NaN;
+    }
+}
 function perimeterSequence(a, n) {
     return n * 4 * a;
 }
