@@ -557,10 +557,12 @@ describe("Fixed tests", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: COORDINATES VALIDATOR
+// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR THIS, SUBMIT AND ADD SOLUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩// TITLE: COORDINATES VALIDATOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ISNAN(),
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -593,53 +595,45 @@ N23.43345, E32.6457
 0, 1,2
 0.342q0832, 1.2324
 */
-function isValidCoordinates(coordinates: string): boolean {
-    return true; // do your thing!
-}
+const isValidCoordinates = (coordinates: string) => {
+    const coordsArr: string[] = coordinates.split(",");
+    console.log(coordsArr);
 
-/*
-describe("solution", function(){
-    it("exampleTests", function(){
-      var ValidCoordinates = [
-      "-23, 25",
-      "4, -3",
-      "24.53525235, 23.45235",
-      "04, -23.234235",
-      "43.91343345, 143"
-    ];
-    for(var i=0;i<ValidCoordinates.length;i++) {
-      assert.equal(solution.isValidCoordinates(ValidCoordinates[i]), true, ValidCoordinates[i] + " validation failed.");
-    }
-  
-    var InvalidCoordinates = [
-      "23.234, - 23.4234",
-      "2342.43536, 34.324236",
-      "N23.43345, E32.6457",
-      "99.234, 12.324",
-      "6.325624, 43.34345.345",
-      "0, 1,2",
-      "0.342q0832, 1.2324",
-      "23.245, 1e1"
-    ];
-    for(var i=0;i<ValidCoordinates.length;i++) {
-      assert.equal(solution.isValidCoordinates(InvalidCoordinates[i]), false, InvalidCoordinates[i] + " validation failed.");
-    }
-    });
-  });
+    // FILTER OUT "0, 1,2" => [ '0', ' 1', '2' ]
+    if (coordsArr.length !== 2) return false;
 
-*/
-// console.log();
+    // CHECK FOR NUMBER AND ISNAN - Number("- 23.4234") WILL BE FALSE !!!
+    const latNum: number = Number(coordsArr[0]);
+    const longNum: number = Number(coordsArr[1]);
+    console.log(latNum, longNum);
+    // console.log(isNaN(latNum), isNaN(longNum));
+    if (isNaN(latNum) || isNaN(longNum)) return false;
+
+    // CHECK FOR RANGE
+    if (Math.abs(latNum) > 90 || Math.abs(longNum) > 180) return false;
+
+    return true;
+};
+
+// FALSE:
+// console.log(isValidCoordinates("23.234, - 23.4234"));
+// console.log(isValidCoordinates("2342.43536, 34.324236"));
+// console.log(isValidCoordinates("N23.43345, E32.6457"));
+// console.log(isValidCoordinates("99.234, 12.324"));
+// console.log(isValidCoordinates("6.325624, 43.34345.345"));
+// console.log(isValidCoordinates("0, 1,2"));
+// console.log(isValidCoordinates("0.342q0832, 1.2324"));
+
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SALESMAN TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: REGEX MATCT PATTERN NOT FOLLOWED BY, 
+// KEYWORDS: REGEX MATCT PATTERN NOT FOLLOWED BY,
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: https://stackoverflow.com/questions/31201690/find-word-not-followed-by-a-certain-character
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -678,15 +672,13 @@ You can see a few addresses and zipcodes in the test cases.
 */
 class G9645 {
     public static travel = (dataStr: string, zip: string) => {
-
         console.log("----------zip: " + zip + " zip-----------");
 
         // ❗️❗️❗️ MATCH ZIP FORMAT, (AA 12345 NOT FOLLOWED BY ANY CHAR) ❗️❗️❗️
         const zipFormat = /[A-Z]{2}\s[0-9]{5}(?!\.)/g;
 
-        // RETURN IF INPUT ZIP IS INVALID 
+        // RETURN IF INPUT ZIP IS INVALID
         if (!zipFormat.test(zip)) return zip + ":/";
-
 
         // INITIALIZE SOLUTION WITH ZIP: "EX 34342:"
         let solution: string = zip + ":";
@@ -793,7 +785,6 @@ const ad =
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 // class G9645a {
 
 //     public static travel = (r: string, zipcode: string) => {
@@ -814,7 +805,6 @@ const ad =
 //     }
 // }
 
-
 // class G9645b {
 //     public static travel = (r, zipcode) => {
 //         const arr = zipcode ? r.split(',').filter(e => e.endsWith(zipcode)) : [];
@@ -823,7 +813,6 @@ const ad =
 //         return `${zipcode}:${addresses}/${numbers}`;
 //     }
 // }
-
 
 // class G9645c {
 //     public static travel = (r: string, zipcode: string): string => {
@@ -847,7 +836,6 @@ const ad =
 //         return `${zipcode}:${streets.join(',')}/${houses.join(',')}`;
 //     };
 // }
-
 
 // class G9645d {
 
@@ -881,7 +869,6 @@ const ad =
 //     }
 // }
 
-
 // class G9645e {
 
 //     public static travel = (r, zipcode) => {
@@ -901,13 +888,11 @@ const ad =
 //     }
 // }
 
-
 // class G9645f {
 //     public static travel = (r, zipcode) =>
 //         (arr => `${zipcode}:${arr.map(x => x[2])}/${arr.map(x => x[1])}`)
 //             (r.split`,`.map(x => x.match(/(\d+) (.+) (\w{2} \d{5})/)).filter(x => x[3] === zipcode))
 // }
-
 
 // class G9645g {
 //     public static travel = (r: string, zipcode: string) => {
@@ -921,7 +906,6 @@ const ad =
 //         return `${zipcode}:${streets.join(",")}/${numbers.join(",")}`
 //     }
 // }
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT THE INNER CONTENT IN DESCENDING ORDER
@@ -975,49 +959,84 @@ const sortTheInnerContent = (words: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function sortTheInnerContent2(words: string): string {
-    return words.split(' ').map(w => w.length < 2 ? w : w[0] + w.slice(1, -1).split('').sort().reverse().join('') + w.slice(-1)).join(' ');
+    return words
+        .split(" ")
+        .map((w) =>
+            w.length < 2
+                ? w
+                : w[0] +
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
+        )
+        .join(" ");
 }
-
-
 
 function sortTheInnerContent3(w: string): string {
-    return w.split(' ').map((x, i, arr) =>
-        (x.length < 2) ? x : arr[i][0] + x.slice(1, -1).split('').sort().reverse().join('') + arr[i].slice(-1)
-    ).join(' ');
+    return w
+        .split(" ")
+        .map((x, i, arr) =>
+            x.length < 2
+                ? x
+                : arr[i][0] +
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
+        )
+        .join(" ");
 }
-
 
 const sortTheInnerContent4 = (phrase: string): string =>
-    phrase.split(' ')
+    phrase
+        .split(" ")
         .map(([start, ...rest]) => {
             const end = rest.pop();
-            return [start, ...rest.sort().reverse(), end].join('');
-        }).join(' ');
-
+            return [start, ...rest.sort().reverse(), end].join("");
+        })
+        .join(" ");
 
 function sortTheInnerContent5(words: string): string {
-    return words.replace(/\S+/g, x => x.replace(/^(.)(.{2,})(.)$/g, (a, b, c, d) => b + c.split("").sort().reverse().join("") + d));
+    return words.replace(/\S+/g, (x) =>
+        x.replace(
+            /^(.)(.{2,})(.)$/g,
+            (a, b, c, d) => b + c.split("").sort().reverse().join("") + d
+        )
+    );
 }
 
-
 function sortTheInnerContent6(words: string): string {
-    return words.split(' ').map((word) => {
-        if (word.length < 4) {
-            return word;
-        } else {
-            var middle = word.substring(1, word.length - 1);
-            return word.charAt(0) + middle.split('').sort().reverse().join('') + word.charAt(word.length - 1);
-        }
-    }).join(' ');
+    return words
+        .split(" ")
+        .map((word) => {
+            if (word.length < 4) {
+                return word;
+            } else {
+                var middle = word.substring(1, word.length - 1);
+                return (
+                    word.charAt(0) +
+                    middle.split("").sort().reverse().join("") +
+                    word.charAt(word.length - 1)
+                );
+            }
+        })
+        .join(" ");
 }
 
 function sortTheInnerContent7(input: string): string {
-    const words = input.split(' ');
-    return words.map((word: string) => {
-        if (word.length <= 3) return word;
-        const chars = word.split('');
-        return chars[0] + chars.slice(1, chars.length - 1).sort().reverse().join('') + chars[chars.length - 1];
-    }).join(' ');
+    const words = input.split(" ");
+    return words
+        .map((word: string) => {
+            if (word.length <= 3) return word;
+            const chars = word.split("");
+            return (
+                chars[0] +
+                chars
+                    .slice(1, chars.length - 1)
+                    .sort()
+                    .reverse()
+                    .join("") +
+                chars[chars.length - 1]
+            );
+        })
+        .join(" ");
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PRIMORIAL OF A NUMBER - PRODUCT OF PRIMES
@@ -2364,9 +2383,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -2932,10 +2951,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -5328,7 +5347,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -5414,7 +5433,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -6275,15 +6294,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -6336,10 +6355,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -6915,7 +6934,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -7374,8 +7393,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -7668,7 +7687,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -8125,10 +8144,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -9428,8 +9447,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

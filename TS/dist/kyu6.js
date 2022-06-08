@@ -10,9 +10,20 @@ function maxBall(v0) {
 }
 function stringTransformer(str) {
 }
-function isValidCoordinates(coordinates) {
+const isValidCoordinates = (coordinates) => {
+    const coordsArr = coordinates.split(",");
+    console.log(coordsArr);
+    if (coordsArr.length !== 2)
+        return false;
+    const latNum = Number(coordsArr[0]);
+    const longNum = Number(coordsArr[1]);
+    console.log(latNum, longNum);
+    if (isNaN(latNum) || isNaN(longNum))
+        return false;
+    if (Math.abs(latNum) > 90 || Math.abs(longNum) > 180)
+        return false;
     return true;
-}
+};
 class G9645 {
 }
 G9645.travel = (dataStr, zip) => {
@@ -76,38 +87,67 @@ const sortTheInnerContent = (words) => {
     return wordsArr.join(" ");
 };
 function sortTheInnerContent2(words) {
-    return words.split(' ').map(w => w.length < 2 ? w : w[0] + w.slice(1, -1).split('').sort().reverse().join('') + w.slice(-1)).join(' ');
+    return words
+        .split(" ")
+        .map((w) => w.length < 2
+        ? w
+        : w[0] +
+            w.slice(1, -1).split("").sort().reverse().join("") +
+            w.slice(-1))
+        .join(" ");
 }
 function sortTheInnerContent3(w) {
-    return w.split(' ').map((x, i, arr) => (x.length < 2) ? x : arr[i][0] + x.slice(1, -1).split('').sort().reverse().join('') + arr[i].slice(-1)).join(' ');
+    return w
+        .split(" ")
+        .map((x, i, arr) => x.length < 2
+        ? x
+        : arr[i][0] +
+            x.slice(1, -1).split("").sort().reverse().join("") +
+            arr[i].slice(-1))
+        .join(" ");
 }
-const sortTheInnerContent4 = (phrase) => phrase.split(' ')
+const sortTheInnerContent4 = (phrase) => phrase
+    .split(" ")
     .map(([start, ...rest]) => {
     const end = rest.pop();
-    return [start, ...rest.sort().reverse(), end].join('');
-}).join(' ');
+    return [start, ...rest.sort().reverse(), end].join("");
+})
+    .join(" ");
 function sortTheInnerContent5(words) {
-    return words.replace(/\S+/g, x => x.replace(/^(.)(.{2,})(.)$/g, (a, b, c, d) => b + c.split("").sort().reverse().join("") + d));
+    return words.replace(/\S+/g, (x) => x.replace(/^(.)(.{2,})(.)$/g, (a, b, c, d) => b + c.split("").sort().reverse().join("") + d));
 }
 function sortTheInnerContent6(words) {
-    return words.split(' ').map((word) => {
+    return words
+        .split(" ")
+        .map((word) => {
         if (word.length < 4) {
             return word;
         }
         else {
             var middle = word.substring(1, word.length - 1);
-            return word.charAt(0) + middle.split('').sort().reverse().join('') + word.charAt(word.length - 1);
+            return (word.charAt(0) +
+                middle.split("").sort().reverse().join("") +
+                word.charAt(word.length - 1));
         }
-    }).join(' ');
+    })
+        .join(" ");
 }
 function sortTheInnerContent7(input) {
-    const words = input.split(' ');
-    return words.map((word) => {
+    const words = input.split(" ");
+    return words
+        .map((word) => {
         if (word.length <= 3)
             return word;
-        const chars = word.split('');
-        return chars[0] + chars.slice(1, chars.length - 1).sort().reverse().join('') + chars[chars.length - 1];
-    }).join(' ');
+        const chars = word.split("");
+        return (chars[0] +
+            chars
+                .slice(1, chars.length - 1)
+                .sort()
+                .reverse()
+                .join("") +
+            chars[chars.length - 1]);
+    })
+        .join(" ");
 }
 const numPrimorial = (num) => {
     let primesArr = [];
