@@ -24,9 +24,19 @@ function oddOnesOut(nums) {
 function sabb(s, val, happiness) {
     return "";
 }
-function mod256WithoutMod(n) {
-    return 0;
-}
+const mod256WithoutMod = (num) => {
+    const divisor = 256;
+    const isPositive = num > 0;
+    if (Math.abs(num) < divisor)
+        return num;
+    while (Math.abs(num) >= divisor) {
+        num = Math.abs(num) - divisor;
+    }
+    if (num === 0)
+        return 0;
+    return isPositive ? num : -num;
+};
+console.log(mod256WithoutMod(-254));
 const absentVowel = (text) => {
     let solution = 0;
     const vowels = "aeiou";
@@ -40,12 +50,12 @@ const absentVowel = (text) => {
     }
     return solution;
 };
-const absentVowel2 = (str) => [...'aeiou'].findIndex(v => !str.includes(v));
+const absentVowel2 = (str) => [..."aeiou"].findIndex((v) => !str.includes(v));
 function absentVowel3(x) {
-    return [..."aeiou"].findIndex(c => !x.toLowerCase().includes(c));
+    return [..."aeiou"].findIndex((c) => !x.toLowerCase().includes(c));
 }
 function absentVowel4(x) {
-    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let vowels = ["a", "e", "i", "o", "u"];
     let result = 0;
     vowels.forEach((v) => {
         if (!x.includes(v)) {
@@ -56,7 +66,7 @@ function absentVowel4(x) {
     return result;
 }
 function absentVowel5(x) {
-    var vowels = 'aeiou';
+    var vowels = "aeiou";
     for (let i in [...vowels]) {
         if (x.toLowerCase().indexOf(vowels[i]) === -1) {
             return Number(i);
@@ -77,22 +87,23 @@ function absentVowel6(x) {
 }
 function absentVowel7(x) {
     switch (true) {
-        case (!x.includes('a')):
+        case !x.includes("a"):
             return 0;
             break;
-        case (!x.includes('e')):
+        case !x.includes("e"):
             return 1;
             break;
-        case (!x.includes('i')):
+        case !x.includes("i"):
             return 2;
             break;
-        case (!x.includes('o')):
+        case !x.includes("o"):
             return 3;
             break;
-        case (!x.includes('u')):
+        case !x.includes("u"):
             return 4;
             break;
-        default: return NaN;
+        default:
+            return NaN;
     }
 }
 function perimeterSequence(a, n) {

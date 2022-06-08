@@ -360,7 +360,10 @@ assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR THIS, SUBMIT AND ADD SOLUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MOD 256 WITHOUT THE MOD OPERATOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -397,9 +400,19 @@ Of course you can use the digit "5" in your solution. :-)
 
 I'm very curious for your solutions and the way you solve it. I found several interesting "funny" ways.
 */
-function mod256WithoutMod(n: number): number {
-    return 0;
-}
+const mod256WithoutMod = (num: number): number => {
+    const divisor: number = 256;
+    const isPositive: boolean = num > 0;
+
+    if (Math.abs(num) < divisor) return num;
+
+    while (Math.abs(num) >= divisor) {
+        num = Math.abs(num) - divisor;
+    }
+
+    if (num === 0) return 0;
+    return isPositive ? num : -num;
+};
 
 /*
 assert.equal(solution.mod256WithoutMod(254), 254);
@@ -411,7 +424,7 @@ assert.equal(solution.mod256WithoutMod(254), 254);
     assert.equal(solution.mod256WithoutMod(-258), -2);
 */
 
-// console.log();
+console.log(mod256WithoutMod(-254));
 // console.log();
 // console.log();
 // console.log();
@@ -443,7 +456,6 @@ Examples
 
 */
 const absentVowel = (text: string): number => {
-
     let solution: number = 0;
 
     const vowels: string = "aeiou";
@@ -463,7 +475,7 @@ const absentVowel = (text: string): number => {
     }
     // console.log(solution);
     return solution;
-}
+};
 
 // assert.equal(absentVowel("John Doe hs seven red pples under his bsket"), 0)
 // assert.equal(absentVowel("Bb Smith sent us six neatly arranged range bicycles"), 3)
@@ -476,28 +488,28 @@ const absentVowel = (text: string): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️  FINDINDEX() ❗️❗️❗️
-const absentVowel2 = (str: string): number => [...'aeiou'].findIndex(v => !str.includes(v));
+const absentVowel2 = (str: string): number =>
+    [..."aeiou"].findIndex((v) => !str.includes(v));
 
 // ❗️❗️❗️  FINDINDEX() ❗️❗️❗️
 function absentVowel3(x: string): number {
-    return [..."aeiou"].findIndex(c => !x.toLowerCase().includes(c))
+    return [..."aeiou"].findIndex((c) => !x.toLowerCase().includes(c));
 }
 
-
 function absentVowel4(x: string) {
-    let vowels: Array<string> = ['a', 'e', 'i', 'o', 'u']
-    let result: number = 0
+    let vowels: Array<string> = ["a", "e", "i", "o", "u"];
+    let result: number = 0;
     vowels.forEach((v) => {
         if (!x.includes(v)) {
-            result = vowels.indexOf(v)
-            return
+            result = vowels.indexOf(v);
+            return;
         }
-    })
-    return result
+    });
+    return result;
 }
 
 function absentVowel5(x: string): number | undefined {
-    var vowels: string = 'aeiou';
+    var vowels: string = "aeiou";
     for (let i in [...vowels]) {
         if (x.toLowerCase().indexOf(vowels[i]) === -1) {
             return Number(i);
@@ -505,30 +517,33 @@ function absentVowel5(x: string): number | undefined {
     }
 }
 
-
 function absentVowel6(x: string) {
-
-    if (/a/i.test(x) === false) return 0
-    if (/e/i.test(x) === false) return 1
-    if (/i/i.test(x) === false) return 2
-    if (/o/i.test(x) === false) return 3
-    if (/u/i.test(x) === false) return 4
+    if (/a/i.test(x) === false) return 0;
+    if (/e/i.test(x) === false) return 1;
+    if (/i/i.test(x) === false) return 2;
+    if (/o/i.test(x) === false) return 3;
+    if (/u/i.test(x) === false) return 4;
 }
-
 
 function absentVowel7(x: string): number {
     switch (true) {
-        case (!x.includes('a')): return 0;
+        case !x.includes("a"):
+            return 0;
             break;
-        case (!x.includes('e')): return 1;
+        case !x.includes("e"):
+            return 1;
             break;
-        case (!x.includes('i')): return 2;
+        case !x.includes("i"):
+            return 2;
             break;
-        case (!x.includes('o')): return 3;
+        case !x.includes("o"):
+            return 3;
             break;
-        case (!x.includes('u')): return 4;
+        case !x.includes("u"):
+            return 4;
             break;
-        default: return NaN
+        default:
+            return NaN;
     }
 }
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
@@ -799,8 +814,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -878,7 +893,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -1589,10 +1604,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -1702,8 +1717,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -2810,8 +2825,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -3424,10 +3440,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -3880,7 +3896,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -4373,17 +4389,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -4516,13 +4532,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -7124,10 +7140,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -8240,7 +8256,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -9316,8 +9332,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -9467,10 +9483,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -10467,11 +10483,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -11266,9 +11282,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -11550,8 +11566,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
