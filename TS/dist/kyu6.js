@@ -24,6 +24,28 @@ const isValidCoordinates = (coordinates) => {
         return false;
     return true;
 };
+function isValidCoordinates2(coordinates) {
+    const pattern = /^-?(90|[0-8]\d|\d)(?:\.\d*)?,\s-?(1[0-7]\d|180|\d{1,2})(?:\.\d*)?$/;
+    return pattern.test(coordinates);
+}
+function isValidCoordinates3(coordinates) {
+    const [lat, lng] = coordinates.split(', ').map(Number);
+    return lat > -90 && lat < 90 && lng > -180 && lng < 180;
+}
+function isValidCoordinates4(coordinates) {
+    const [lat, long] = coordinates.split(', ');
+    const validLat = Number(lat) >= -90 && Number(lat) <= 90;
+    const validLong = Number(long) >= -180 && Number(long) <= 180;
+    return validLat && validLong;
+}
+function isValidCoordinates5(coordinates) {
+    if (coordinates.match(/^(-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)$/g)) {
+        let [a, b] = coordinates.split(", ").map(num => parseInt(num, 10));
+        return (90 >= a && a >= -90) && (180 >= b && b >= -180);
+    }
+    return false;
+}
+const isValidCoordinates7 = (c) => /^-?([0-8]\d|90|\d)(\.\d+)?,\s-?(180|1[0-7]\d|\d{2}|\d)(\.\d+)?$/.test(c);
 class G9645 {
 }
 G9645.travel = (dataStr, zip) => {

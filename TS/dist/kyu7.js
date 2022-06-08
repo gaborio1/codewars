@@ -36,7 +36,27 @@ const mod256WithoutMod = (num) => {
         return 0;
     return isPositive ? num : -num;
 };
-console.log(mod256WithoutMod(-254));
+function mod256WithoutMod2(n) {
+    return n % 256;
+}
+function mod256WithoutMod3(n) {
+    if (n < 0) {
+        return -mod256WithoutMod(-n);
+    }
+    return n & 255;
+}
+function mod256WithoutMod4(n) {
+    return n < 0 ? -mod256WithoutMod(-n) : n & 0xff;
+}
+function mod256WithoutMod5(n) {
+    return n < 0 ? -(-n & 255) : (n & 255);
+}
+function mod256WithoutMod6(n) {
+    return n >= 0 ? (n / 256 - Math.floor(n / 256)) * 256 : ((n / 256 - Math.ceil(n / 256))) * 256;
+}
+function mod256WithoutMod7(n) {
+    return n - ~~(n / 256) * 256;
+}
 const absentVowel = (text) => {
     let solution = 0;
     const vowels = "aeiou";
