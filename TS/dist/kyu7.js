@@ -19,7 +19,47 @@ function sortVowels(str) {
 const findSquares = (num) => {
     return `${num}-${num}`;
 };
-function oddOnesOut(nums) {
+const oddOnesOut = (numsArr) => {
+    let solution = [];
+    const counter = {};
+    numsArr.forEach((number) => (counter[number] = (counter[number] || 0) + 1));
+    console.log(counter);
+    solution = numsArr.filter((num) => {
+        const occurrence = counter[num.toString()];
+        const isOdd = (occurrence & 1) === 1;
+        console.log("num:", num, "occurrence:", occurrence, "isOdd:", isOdd);
+        return !isOdd;
+    });
+    return solution;
+};
+const oddOnesOut2 = (nums) => nums.filter((x) => nums.filter((n) => n == x).length % 2 == 0);
+function oddOnesOut3(nums) {
+    let count = nums.reduce((a, c) => {
+        a[c] = (a[c] | 0) + 1;
+        return a;
+    }, {});
+    return nums.filter((v) => count[v] % 2 === 0);
+}
+function oddOnesOut4(nums) {
+    let interfaceArray = [];
+    for (let singleValue of nums) {
+        let foundObject = interfaceArray.find((data) => data.key == singleValue);
+        if (foundObject) {
+            foundObject.value++;
+        }
+        else {
+            interfaceArray.push({ key: singleValue, value: 1 });
+        }
+    }
+    return nums.filter((num) => {
+        let foundObject = interfaceArray.find((element) => element.key === num);
+        return foundObject && foundObject.value % 2 == 0;
+    });
+}
+function oddOnesOut5(nums) {
+    const obj = {};
+    nums.forEach((num) => (obj[num] ? obj[num]++ : (obj[num] = 1)));
+    return nums.filter((num) => obj[num] % 2 === 0);
 }
 function sabb(s, val, happiness) {
     return "";
@@ -49,10 +89,12 @@ function mod256WithoutMod4(n) {
     return n < 0 ? -mod256WithoutMod(-n) : n & 0xff;
 }
 function mod256WithoutMod5(n) {
-    return n < 0 ? -(-n & 255) : (n & 255);
+    return n < 0 ? -(-n & 255) : n & 255;
 }
 function mod256WithoutMod6(n) {
-    return n >= 0 ? (n / 256 - Math.floor(n / 256)) * 256 : ((n / 256 - Math.ceil(n / 256))) * 256;
+    return n >= 0
+        ? (n / 256 - Math.floor(n / 256)) * 256
+        : (n / 256 - Math.ceil(n / 256)) * 256;
 }
 function mod256WithoutMod7(n) {
     return n - ~~(n / 256) * 256;
