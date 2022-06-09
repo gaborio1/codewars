@@ -537,9 +537,28 @@ You may assume the input only contain English alphabet and spaces.
 
 
 */
-function stringTransformer(str: string) {
-    // Your code here
-}
+const stringTransformer = (str: string): string => {
+    console.log(str);
+
+    // const changeCase = (str: string) => {
+
+    // }
+
+    let solution: string[] = [];
+
+    // CHANGE CASE
+    let strArr: string[] = str.split("");
+    console.log(strArr);
+
+    strArr = strArr.map((char) => {
+        return char === char.toLowerCase()
+            ? char.toUpperCase()
+            : char.toLowerCase();
+    });
+
+    console.log(strArr);
+    return "hello";
+};
 
 /*
 describe("Fixed tests", function() {
@@ -550,7 +569,9 @@ describe("Fixed tests", function() {
   it("Testing for ' A b C d E f G '", () => assert.strictEqual(stringTransformer(' A b C d E f G '), ' g F e D c B a '));
 });
 */
-// console.log();
+
+// 'iNPUT eXAMPLE'
+console.log(stringTransformer("Example Input"));
 // console.log();
 // console.log();
 // console.log();
@@ -632,33 +653,31 @@ const isValidCoordinates = (coordinates: string) => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function isValidCoordinates2(coordinates: string): boolean {
-    const pattern = /^-?(90|[0-8]\d|\d)(?:\.\d*)?,\s-?(1[0-7]\d|180|\d{1,2})(?:\.\d*)?$/
+    const pattern =
+        /^-?(90|[0-8]\d|\d)(?:\.\d*)?,\s-?(1[0-7]\d|180|\d{1,2})(?:\.\d*)?$/;
     return pattern.test(coordinates);
 }
 
-
 function isValidCoordinates3(coordinates: string): boolean {
-    const [lat, lng] = coordinates.split(', ').map(Number);
+    const [lat, lng] = coordinates.split(", ").map(Number);
     return lat > -90 && lat < 90 && lng > -180 && lng < 180;
 }
 
-
 function isValidCoordinates4(coordinates: string): boolean {
-    const [lat, long] = coordinates.split(', ')
+    const [lat, long] = coordinates.split(", ");
 
-    const validLat = Number(lat) >= -90 && Number(lat) <= 90
-    const validLong = Number(long) >= -180 && Number(long) <= 180
+    const validLat = Number(lat) >= -90 && Number(lat) <= 90;
+    const validLong = Number(long) >= -180 && Number(long) <= 180;
 
-    return validLat && validLong
+    return validLat && validLong;
 }
-
 
 function isValidCoordinates5(coordinates: string): boolean {
     if (coordinates.match(/^(-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)$/g)) {
-        let [a, b] = coordinates.split(", ").map(num => parseInt(num, 10))
-        return (90 >= a && a >= -90) && (180 >= b && b >= -180)
+        let [a, b] = coordinates.split(", ").map((num) => parseInt(num, 10));
+        return 90 >= a && a >= -90 && 180 >= b && b >= -180;
     }
-    return false
+    return false;
 }
 
 // function isValidCoordinates6(coordinates:string):boolean{
@@ -674,8 +693,8 @@ function isValidCoordinates5(coordinates: string): boolean {
 //     return (lat <= 90 && lon <= 180);
 //   }
 
-
-const isValidCoordinates7 = (c: string) => /^-?([0-8]\d|90|\d)(\.\d+)?,\s-?(180|1[0-7]\d|\d{2}|\d)(\.\d+)?$/.test(c);
+const isValidCoordinates7 = (c: string) =>
+    /^-?([0-8]\d|90|\d)(\.\d+)?,\s-?(180|1[0-7]\d|\d{2}|\d)(\.\d+)?$/.test(c);
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SALESMAN TRAVEL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1011,8 +1030,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1024,8 +1043,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -2429,9 +2448,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -2997,10 +3016,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -5393,7 +5412,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -5479,7 +5498,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -6340,15 +6359,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -6401,10 +6420,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -6980,7 +6999,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -7439,8 +7458,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -7733,7 +7752,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -8190,10 +8209,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -9493,8 +9512,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

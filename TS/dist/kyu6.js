@@ -8,8 +8,20 @@ function grabscrab(anagram, dictionary) {
 function maxBall(v0) {
     return 1;
 }
-function stringTransformer(str) {
-}
+const stringTransformer = (str) => {
+    console.log(str);
+    let solution = [];
+    let strArr = str.split("");
+    console.log(strArr);
+    strArr = strArr.map((char) => {
+        return char === char.toLowerCase()
+            ? char.toUpperCase()
+            : char.toLowerCase();
+    });
+    console.log(strArr);
+    return "hello";
+};
+console.log(stringTransformer("Example Input"));
 const isValidCoordinates = (coordinates) => {
     const coordsArr = coordinates.split(",");
     console.log(coordsArr);
@@ -29,19 +41,19 @@ function isValidCoordinates2(coordinates) {
     return pattern.test(coordinates);
 }
 function isValidCoordinates3(coordinates) {
-    const [lat, lng] = coordinates.split(', ').map(Number);
+    const [lat, lng] = coordinates.split(", ").map(Number);
     return lat > -90 && lat < 90 && lng > -180 && lng < 180;
 }
 function isValidCoordinates4(coordinates) {
-    const [lat, long] = coordinates.split(', ');
+    const [lat, long] = coordinates.split(", ");
     const validLat = Number(lat) >= -90 && Number(lat) <= 90;
     const validLong = Number(long) >= -180 && Number(long) <= 180;
     return validLat && validLong;
 }
 function isValidCoordinates5(coordinates) {
     if (coordinates.match(/^(-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)$/g)) {
-        let [a, b] = coordinates.split(", ").map(num => parseInt(num, 10));
-        return (90 >= a && a >= -90) && (180 >= b && b >= -180);
+        let [a, b] = coordinates.split(", ").map((num) => parseInt(num, 10));
+        return 90 >= a && a >= -90 && 180 >= b && b >= -180;
     }
     return false;
 }
