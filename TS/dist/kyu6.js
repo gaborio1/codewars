@@ -9,8 +9,7 @@ function maxBall(v0) {
     return 1;
 }
 const stringTransformer = (str) => {
-    console.log(str);
-    let solution = [];
+    let solutionArr = [];
     let strArr = str.split("");
     console.log(strArr);
     strArr = strArr.map((char) => {
@@ -19,9 +18,58 @@ const stringTransformer = (str) => {
             : char.toLowerCase();
     });
     console.log(strArr);
-    return "hello";
+    console.log(strArr.join(""));
+    let wordArr = [];
+    for (let i = strArr.length - 1; i >= 0; i -= 1) {
+        const current = strArr[i];
+        if (current === " ") {
+            solutionArr.push(wordArr.join(""));
+            wordArr = [];
+            console.log("   space");
+            solutionArr.push(current);
+        }
+        if (/[a-zA-Z]/.test(current)) {
+            wordArr.unshift(current);
+            console.log("current word:", wordArr);
+        }
+        if (strArr[i - 1] === undefined) {
+            solutionArr.push(wordArr.join(""));
+        }
+    }
+    console.log("solution: ", solutionArr.join(""));
+    return solutionArr.join("");
 };
-console.log(stringTransformer("Example Input"));
+function stringTransformer2(str) {
+    return str
+        .split(' ')
+        .reverse()
+        .join(' ')
+        .split('')
+        .map(v => v == v.toUpperCase() ?
+        v.toLowerCase() :
+        v.toUpperCase())
+        .join('');
+}
+function stringTransformer3(str) {
+    return str.split(' ').reverse().map(x => x.replace(/./g, y => /[A-Z]/.test(y) ? y.toLowerCase() : y.toUpperCase())).join(' ');
+}
+function stringTransformer4(str) {
+    return str
+        .split("")
+        .map((l) => (l === l.toUpperCase() ? l.toLowerCase() : l.toUpperCase()))
+        .join("")
+        .split(" ")
+        .reverse()
+        .join(" ");
+}
+function stringTransformer5(str) {
+    return str.replace(/./g, c => {
+        if (c.match(/[A-Z]/g))
+            return c.toLowerCase();
+        else
+            return c.toUpperCase();
+    }).split(' ').reverse().join(' ');
+}
 const isValidCoordinates = (coordinates) => {
     const coordsArr = coordinates.split(",");
     console.log(coordsArr);
