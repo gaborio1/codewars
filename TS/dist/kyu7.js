@@ -61,9 +61,25 @@ function oddOnesOut5(nums) {
     nums.forEach((num) => (obj[num] ? obj[num]++ : (obj[num] = 1)));
     return nums.filter((num) => obj[num] % 2 === 0);
 }
-function sabb(s, val, happiness) {
-    return "";
+function sabb(str, val, happy) {
+    const testWord = "sabbatical";
+    const uniqueChars = new Set(testWord.split(""));
+    console.log(uniqueChars);
+    let counter = 0;
+    uniqueChars.forEach((char) => {
+        var _a;
+        let re = new RegExp(char, "g");
+        let occurence = (_a = str.match(re)) === null || _a === void 0 ? void 0 : _a.length;
+        console.log(str.match(re));
+        console.log("occurence:", occurence);
+        counter += occurence;
+    });
+    console.log("counter", counter);
+    const totalScore = val + happy + counter;
+    console.log(totalScore);
+    return totalScore > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
 }
+console.log(sabb("Why are you shouting?", 7, 2));
 const mod256WithoutMod = (num) => {
     const divisor = 256;
     const isPositive = num > 0;

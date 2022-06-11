@@ -440,8 +440,32 @@ Note that if s contains three instances of the letter 'l', that still scores thr
 
 If the sum of the three parameters (as described above) is > 22, return 'Sabbatical! Boom!', else return 'Back to your desk, boy.'.
 */
-function sabb(s: string, val: number, happiness: number): string {
-    return "";
+function sabb(str: string, val: number, happy: number): string {
+    // GET UNUQUE LETTERS FROM TEST WORD "SABBATICAL"
+    const testWord: string = "sabbatical";
+    const uniqueChars = new Set(testWord.split(""));
+    console.log(uniqueChars);
+
+    // FIND HOW MANY OF THEM ARE PRESENT IN str
+    let counter: number = 0;
+    uniqueChars.forEach((char) => {
+        let re = new RegExp(char, "g"); //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
+        // console.log(char);
+        let occurence: number = str.match(re)?.length;
+        console.log(str.match(re));
+        console.log("occurence:", occurence);
+        // if (str.includes(char)) {
+        //     counter += 1;
+        // }
+        counter += occurence;
+    });
+
+    console.log("counter", counter);
+
+    const totalScore: number = val + happy + counter;
+    console.log(totalScore);
+
+    return totalScore > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
 }
 
 /*
@@ -452,7 +476,11 @@ assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
     assert.strictEqual(sabb('I can?! Nice. FaC..Im coming :D', 9, 9), 'Sabbatical! Boom!'); 
 */
 
-// console.log();
+// 'Sabbatical! Boom!'
+// console.log(sabb("Can I have a sabbatical?", 5, 5));
+
+// 'Back to your desk, boy.
+console.log(sabb("Why are you shouting?", 7, 2));
 // console.log();
 // console.log();
 // console.log();
