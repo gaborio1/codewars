@@ -10,9 +10,14 @@ function maxBall(v0) {
 }
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
+        const namesArr = namesStr.split("");
+        console.log(namesArr);
+        const alphabet = "abcdefghijklmnopqrstuvwxyz".split(",");
+        const getValue = (str) => { };
         return "hello";
     }
 }
+console.log(G9643.rank("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 2], 4));
 const stringTransformer = (str) => {
     let solutionArr = [];
     let strArr = str.split("");

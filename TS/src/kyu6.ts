@@ -502,6 +502,13 @@ class G9643 {
         weightsArr: number[],
         rank: number
     ): string {
+        const namesArr: string[] = namesStr.split("");
+        console.log(namesArr);
+
+        const alphabet = "abcdefghijklmnopqrstuvwxyz".split(",");
+
+        const getValue = (str: string) => {};
+
         return "hello";
     }
 }
@@ -513,7 +520,13 @@ testing("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 
         testing("Lagon,Lily", [1, 5], 2, "Lagon");
 */
 
-// console.log();
+console.log(
+    G9643.rank(
+        "Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin",
+        [4, 2, 1, 4, 3, 1, 2],
+        4
+    )
+);
 // console.log();
 // console.log();
 // console.log();
