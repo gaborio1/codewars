@@ -8,6 +8,11 @@ function grabscrab(anagram, dictionary) {
 function maxBall(v0) {
     return 1;
 }
+class G9643 {
+    static rank(namesStr, weightsArr, rank) {
+        return "hello";
+    }
+}
 const stringTransformer = (str) => {
     let solutionArr = [];
     let strArr = str.split("");
@@ -41,17 +46,19 @@ const stringTransformer = (str) => {
 };
 function stringTransformer2(str) {
     return str
-        .split(' ')
+        .split(" ")
         .reverse()
-        .join(' ')
-        .split('')
-        .map(v => v == v.toUpperCase() ?
-        v.toLowerCase() :
-        v.toUpperCase())
-        .join('');
+        .join(" ")
+        .split("")
+        .map((v) => (v == v.toUpperCase() ? v.toLowerCase() : v.toUpperCase()))
+        .join("");
 }
 function stringTransformer3(str) {
-    return str.split(' ').reverse().map(x => x.replace(/./g, y => /[A-Z]/.test(y) ? y.toLowerCase() : y.toUpperCase())).join(' ');
+    return str
+        .split(" ")
+        .reverse()
+        .map((x) => x.replace(/./g, (y) => /[A-Z]/.test(y) ? y.toLowerCase() : y.toUpperCase()))
+        .join(" ");
 }
 function stringTransformer4(str) {
     return str
@@ -63,12 +70,16 @@ function stringTransformer4(str) {
         .join(" ");
 }
 function stringTransformer5(str) {
-    return str.replace(/./g, c => {
+    return str
+        .replace(/./g, (c) => {
         if (c.match(/[A-Z]/g))
             return c.toLowerCase();
         else
             return c.toUpperCase();
-    }).split(' ').reverse().join(' ');
+    })
+        .split(" ")
+        .reverse()
+        .join(" ");
 }
 const isValidCoordinates = (coordinates) => {
     const coordsArr = coordinates.split(",");

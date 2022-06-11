@@ -495,12 +495,17 @@ If n is greater than the number of participants then return "Not enough particip
 
 See Examples Test Cases for more examples.
 */
-// class G964 {
 
-//     public static rank(st, we, n) {
-//         // your code
-//     }
-// }
+class G9643 {
+    public static rank(
+        namesStr: string,
+        weightsArr: number[],
+        rank: number
+    ): string {
+        return "hello";
+    }
+}
+
 /*
 testing("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 2], 4, "Benjamin");
         testing("Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden", [1, 3, 5, 5, 3, 6], 2, "Matthew");
@@ -540,7 +545,6 @@ You may assume the input only contain English alphabet and spaces.
 
 */
 const stringTransformer = (str: string): string => {
-
     let solutionArr: string[] = [];
 
     // CHANGE CASE
@@ -559,32 +563,26 @@ const stringTransformer = (str: string): string => {
     let wordArr: string[] = [];
 
     for (let i = strArr.length - 1; i >= 0; i -= 1) {
-
         const current: string = strArr[i];
 
         if (current === " ") {
-
             solutionArr.push(wordArr.join(""));
             // console.log("current word:", wordArr);
             wordArr = [];
 
             console.log("   space");
             solutionArr.push(current);
-
         }
 
         if (/[a-zA-Z]/.test(current)) {
             // console.log("letter :", current);
             wordArr.unshift(current);
             console.log("current word:", wordArr);
-
         }
-
 
         if (strArr[i - 1] === undefined) {
             solutionArr.push(wordArr.join(""));
         }
-
     }
 
     console.log("solution: ", solutionArr.join(""));
@@ -617,24 +615,27 @@ describe("Fixed tests", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 function stringTransformer2(str: string) {
     return str
-        .split(' ')
+        .split(" ")
         .reverse()
-        .join(' ')
-        .split('')
-        .map(v => v == v.toUpperCase() ?
-            v.toLowerCase() :
-            v.toUpperCase())
-        .join('');
+        .join(" ")
+        .split("")
+        .map((v) => (v == v.toUpperCase() ? v.toLowerCase() : v.toUpperCase()))
+        .join("");
 }
-
 
 function stringTransformer3(str: string): string {
-    return str.split(' ').reverse().map(x => x.replace(/./g, y => /[A-Z]/.test(y) ? y.toLowerCase() : y.toUpperCase())).join(' ')
+    return str
+        .split(" ")
+        .reverse()
+        .map((x) =>
+            x.replace(/./g, (y) =>
+                /[A-Z]/.test(y) ? y.toLowerCase() : y.toUpperCase()
+            )
+        )
+        .join(" ");
 }
-
 
 function stringTransformer4(str: string) {
     return str
@@ -646,14 +647,16 @@ function stringTransformer4(str: string) {
         .join(" ");
 }
 
-
 function stringTransformer5(str: string): string {
-    return str.replace(/./g, c => {
-        if (c.match(/[A-Z]/g)) return c.toLowerCase()
-        else return c.toUpperCase()
-    }).split(' ').reverse().join(' ')
+    return str
+        .replace(/./g, (c) => {
+            if (c.match(/[A-Z]/g)) return c.toLowerCase();
+            else return c.toUpperCase();
+        })
+        .split(" ")
+        .reverse()
+        .join(" ");
 }
-
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ LOOK UP ISNAN ❗️❗️❗️
@@ -1107,8 +1110,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1120,8 +1123,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -2525,9 +2528,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -3093,10 +3096,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -5489,7 +5492,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -5575,7 +5578,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -6436,15 +6439,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -6497,10 +6500,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -7076,7 +7079,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -7535,8 +7538,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -7829,7 +7832,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -8286,10 +8289,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -9589,8 +9592,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

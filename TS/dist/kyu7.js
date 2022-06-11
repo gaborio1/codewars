@@ -61,25 +61,46 @@ function oddOnesOut5(nums) {
     nums.forEach((num) => (obj[num] ? obj[num]++ : (obj[num] = 1)));
     return nums.filter((num) => obj[num] % 2 === 0);
 }
-function sabb(str, val, happy) {
+const sabb = (str, val, happy) => {
     const testWord = "sabbatical";
     const uniqueChars = new Set(testWord.split(""));
-    console.log(uniqueChars);
     let counter = 0;
     uniqueChars.forEach((char) => {
         var _a;
         let re = new RegExp(char, "g");
         let occurence = (_a = str.match(re)) === null || _a === void 0 ? void 0 : _a.length;
-        console.log(str.match(re));
-        console.log("occurence:", occurence);
-        counter += occurence;
+        counter += occurence ? occurence : 0;
     });
-    console.log("counter", counter);
     const totalScore = val + happy + counter;
-    console.log(totalScore);
     return totalScore > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
+};
+const sabb2 = (s, val, happiness) => (s.match(/[sabticl]/gi) || []).length + val + happiness > 23 - 1
+    ? "Sabbatical! Boom!"
+    : "Back to your desk, boy.";
+function sabb3(s, v, h) {
+    return v + h + [...s].filter((e) => "sabticl".includes(e)).length < 23
+        ? "Back to your desk, boy."
+        : "Sabbatical! Boom!";
 }
-console.log(sabb("Why are you shouting?", 7, 2));
+function sabb4(s, v, h) {
+    const c = (s.match(/[sabticl]/gi) || []).length;
+    return c + v + h > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
+}
+function sabb5(s, val, happiness) {
+    const t = [...s.toLowerCase()].reduce((a, c) => ("sabticl".includes(c) ? a + 1 : a), 0);
+    const score = t + val + happiness;
+    return score > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
+}
+function sabb6(s, val, happiness) {
+    let char_arr = ["s", "a", "b", "t", "i", "c", "l"];
+    return s.split("").filter((char) => char_arr.includes(char))
+        .length +
+        val +
+        happiness >
+        22
+        ? "Sabbatical! Boom!"
+        : "Back to your desk, boy.";
+}
 const mod256WithoutMod = (num) => {
     const divisor = 256;
     const isPositive = num > 0;

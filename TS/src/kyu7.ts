@@ -415,10 +415,10 @@ function oddOnesOut5(nums: number[]) {
     return nums.filter((num) => obj[num] % 2 === 0);
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: THE OFFICE VI - SABBATICAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS:  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️ COUNT OCCURENCES IN STRING WITH MATCH().LENTGTH
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -440,33 +440,27 @@ Note that if s contains three instances of the letter 'l', that still scores thr
 
 If the sum of the three parameters (as described above) is > 22, return 'Sabbatical! Boom!', else return 'Back to your desk, boy.'.
 */
-function sabb(str: string, val: number, happy: number): string {
+const sabb = (str: string, val: number, happy: number): string => {
     // GET UNUQUE LETTERS FROM TEST WORD "SABBATICAL"
     const testWord: string = "sabbatical";
     const uniqueChars = new Set(testWord.split(""));
-    console.log(uniqueChars);
 
-    // FIND HOW MANY OF THEM ARE PRESENT IN str
+    // FIND HOW MANY TIMES char APPEARS IN str
     let counter: number = 0;
     uniqueChars.forEach((char) => {
-        let re = new RegExp(char, "g"); //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
-        // console.log(char);
-        let occurence: number = str.match(re)?.length;
-        console.log(str.match(re));
-        console.log("occurence:", occurence);
-        // if (str.includes(char)) {
-        //     counter += 1;
-        // }
-        counter += occurence;
+        // MATCH CURRENT CHAR GLOBALLY
+        //  ❗️❗️❗️ JS REGEX OBJECT ❗️❗️❗️
+        let re = new RegExp(char, "g");
+        let occurence: number | undefined = str.match(re)?.length;
+        // ONLY INCREMENT COUNTER IF MATCH ARRAY HAS LENGTH
+        counter += occurence ? occurence : 0;
     });
 
-    console.log("counter", counter);
-
+    // GET TOTAL
     const totalScore: number = val + happy + counter;
-    console.log(totalScore);
-
+    // CALC SOLUTION
     return totalScore > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
-}
+};
 
 /*
 assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
@@ -480,13 +474,53 @@ assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
 // console.log(sabb("Can I have a sabbatical?", 5, 5));
 
 // 'Back to your desk, boy.
-console.log(sabb("Why are you shouting?", 7, 2));
+// console.log(sabb("Why are you shouting?", 7, 2));
 // console.log();
 // console.log();
 // console.log();
+
+// Test.assertEquals(sabb('Can I have a sabbatical?', 5, 5), 'Back to your desk, boy.');
+//                          ^     ^   ^ ^^^^^^^^^^           ... => 13+5+5 == 23 !
+// Test.assertEquals(sabb('Why are you shouting?', 7, 2), 'Sabbatical! Boom!');
+//                             ^       ^   ^^                ... 4+7+2 == 13 !
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const sabb2 = (s: string, val: number, happiness: number): string =>
+    (s.match(/[sabticl]/gi) || []).length + val + happiness > 23 - 1
+        ? "Sabbatical! Boom!"
+        : "Back to your desk, boy.";
+
+function sabb3(s: string, v: number, h: number): string {
+    return v + h + [...s].filter((e) => "sabticl".includes(e)).length < 23
+        ? "Back to your desk, boy."
+        : "Sabbatical! Boom!";
+}
+
+function sabb4(s: string, v: number, h: number): string | any {
+    const c: number = (s.match(/[sabticl]/gi) || []).length;
+    return c + v + h > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
+}
+
+function sabb5(s: string, val: number, happiness: number): string {
+    const t = [...s.toLowerCase()].reduce(
+        (a, c) => ("sabticl".includes(c) ? a + 1 : a),
+        0
+    );
+    const score = t + val + happiness;
+    return score > 22 ? "Sabbatical! Boom!" : "Back to your desk, boy.";
+}
+
+function sabb6(s: string, val: number, happiness: number): string {
+    let char_arr: string[] = ["s", "a", "b", "t", "i", "c", "l"];
+    return s.split("").filter((char: string) => char_arr.includes(char))
+        .length +
+        val +
+        happiness >
+        22
+        ? "Sabbatical! Boom!"
+        : "Back to your desk, boy.";
+}
 // INCLUDE THIS IN EXAMPLES: ❗️❗️❗️ ~~ ❗️❗️❗️
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR WITH MATH.FLOOR AND DIVISION ❗️❗️❗️
