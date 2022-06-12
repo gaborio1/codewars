@@ -17,7 +17,17 @@ function sortVowels(str) {
     return "hello";
 }
 const findSquares = (num) => {
-    return `${num}-${num}`;
+    return `${Math.pow(((num - 1) / 2) + 1, 2)}-${Math.pow((num - 1) / 2, 2)}`;
+};
+const findSquares2 = ($) => `${Math.round($ / 2) ** 2}-${Math.floor($ / 2) ** 2}`;
+const findSquares3 = (num) => {
+    for (let i = 1; i < 100000; i++) {
+        let m = (i + 1) ** 2;
+        let l = i ** 2;
+        if (m - l === num)
+            return `${m}-${l}`;
+    }
+    return '';
 };
 const oddOnesOut = (numsArr) => {
     let solution = [];
