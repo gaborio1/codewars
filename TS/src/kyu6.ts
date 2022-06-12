@@ -502,9 +502,13 @@ class G9643 {
         weightsArr: number[],
         rank: number
     ): string {
+        if (namesStr === "") return "No participants";
+
         let nameValArr: [string, number][] = [];
         const namesArr: string[] = namesStr.split(",");
         console.log(namesArr);
+
+        if (namesArr.length < rank) return "Not enough participants";
 
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -539,7 +543,7 @@ class G9643 {
 
         console.log(solution);
 
-        return "hello";
+        return solution;
     }
 }
 
@@ -557,6 +561,7 @@ console.log(
         4
     )
 );
+// console.log(G9643.rank("", [4, 2, 1, 4, 3, 1, 2], 4));
 // console.log();
 // console.log();
 // console.log();

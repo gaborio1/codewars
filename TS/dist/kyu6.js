@@ -10,9 +10,13 @@ function maxBall(v0) {
 }
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
+        if (namesStr === "")
+            return "No participants";
         let nameValArr = [];
         const namesArr = namesStr.split(",");
         console.log(namesArr);
+        if (namesArr.length < rank)
+            return "Not enough participants";
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
         const getValue = (str) => {
             let value = 0;
@@ -32,7 +36,7 @@ class G9643 {
         console.log(descWinArr);
         const solution = descWinArr[rank - 1][0];
         console.log(solution);
-        return "hello";
+        return solution;
     }
 }
 console.log(G9643.rank("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 2], 4));
