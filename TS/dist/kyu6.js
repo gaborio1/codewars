@@ -10,10 +10,28 @@ function maxBall(v0) {
 }
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
-        const namesArr = namesStr.split("");
+        let nameValArr = [];
+        const namesArr = namesStr.split(",");
         console.log(namesArr);
-        const alphabet = "abcdefghijklmnopqrstuvwxyz".split(",");
-        const getValue = (str) => { };
+        const alphabet = "abcdefghijklmnopqrstuvwxyz";
+        const getValue = (str) => {
+            let value = 0;
+            for (let letter of str) {
+                value += alphabet.indexOf(letter.toLowerCase()) + 1;
+            }
+            return value;
+        };
+        namesArr.forEach((name, idx) => {
+            const winNum = getValue(name) * weightsArr[idx];
+            nameValArr.push([name, winNum]);
+        });
+        console.log(nameValArr);
+        const descWinArr = nameValArr.sort((a, b) => {
+            return b[1] - a[1];
+        });
+        console.log(descWinArr);
+        const solution = descWinArr[rank - 1][0];
+        console.log(solution);
         return "hello";
     }
 }

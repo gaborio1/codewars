@@ -502,12 +502,42 @@ class G9643 {
         weightsArr: number[],
         rank: number
     ): string {
-        const namesArr: string[] = namesStr.split("");
+        let nameValArr: [string, number][] = [];
+        const namesArr: string[] = namesStr.split(",");
         console.log(namesArr);
 
-        const alphabet = "abcdefghijklmnopqrstuvwxyz".split(",");
+        const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        const getValue = (str: string) => {};
+        // CALCULATE NAME VALUE: 'Addison' => 66
+        const getValue = (str: string): number => {
+            let value: number = 0;
+            for (let letter of str) {
+                // console.log(letter);
+                value += alphabet.indexOf(letter.toLowerCase()) + 1;
+            }
+            return value;
+        };
+
+        // ASSIGN VALUE/WINNING NUMBER TO EACH NAME:
+        // ['Addison', 66], ['Jayden', 59] ETC... =>
+        // ['Addison', 264], ['Jayden', 118]ETC...
+        namesArr.forEach((name, idx) => {
+            // console.log(getValue(name));
+            const winNum: number = getValue(name) * weightsArr[idx];
+            nameValArr.push([name, winNum]);
+        });
+        console.log(nameValArr);
+
+        // SORT NAMES DESCENDING BY VALUE
+        const descWinArr: [string, number][] = nameValArr.sort((a, b) => {
+            return b[1] - a[1];
+        });
+
+        console.log(descWinArr);
+
+        const solution: string = descWinArr[rank - 1][0];
+
+        console.log(solution);
 
         return "hello";
     }
