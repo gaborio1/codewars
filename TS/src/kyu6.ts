@@ -512,13 +512,19 @@ class G9643 {
 
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        // CALCULATE NAME VALUE: 'Addison' => 66
+        // CALCULATE NAME VALUE: Addison 115  =>  460
         const getValue = (str: string): number => {
             let value: number = 0;
+            console.log("length:", str.length);
             for (let letter of str) {
                 // console.log(letter);
+
                 value += alphabet.indexOf(letter.toLowerCase()) + 1;
+
+                // alphabet.indexOf(letter.toLowerCase()) + 1;
             }
+            // ADD LENGTH VALUE ONLY ONCE AFTER LOOP
+            value += str.length;
             return value;
         };
 
@@ -526,8 +532,10 @@ class G9643 {
         // ['Addison', 66], ['Jayden', 59] ETC... =>
         // ['Addison', 264], ['Jayden', 118]ETC...
         namesArr.forEach((name, idx) => {
-            // console.log(getValue(name));
             const winNum: number = getValue(name) * weightsArr[idx];
+
+            console.log(name, getValue(name), " => ", winNum);
+
             nameValArr.push([name, winNum]);
         });
         console.log(nameValArr);
@@ -539,9 +547,24 @@ class G9643 {
 
         console.log(descWinArr);
 
-        const solution: string = descWinArr[rank - 1][0];
+        // const solution: string = descWinArr[rank - 1][0];
 
-        console.log(solution);
+        // GET WINNING NUMBER
+        const winningNum: number = descWinArr[rank - 1][1];
+        console.log("winning number:", winningNum);
+
+        // ALL WINNER(S) WITH SAME WINNING NUMBER
+        const winnersArr: [string, number][] = descWinArr
+            .filter((runnerUp) => {
+                return runnerUp[1] === winningNum;
+            })
+            .sort();
+
+        console.log(winnersArr);
+
+        const solution: string = winnersArr[0][0];
+
+        // console.log(solution);
 
         return solution;
     }
@@ -554,14 +577,24 @@ testing("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 
         testing("Lagon,Lily", [1, 5], 2, "Lagon");
 */
 
-console.log(
-    G9643.rank(
-        "Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin",
-        [4, 2, 1, 4, 3, 1, 2],
-        4
-    )
-);
-// console.log(G9643.rank("", [4, 2, 1, 4, 3, 1, 2], 4));
+// console.log(
+//     G9643.rank(
+//         "Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin",
+//         [4, 2, 1, 4, 3, 1, 2],
+//         4
+//     )
+// );
+
+// expected 'Andrew' to equal 'Abigail'
+// console.log(
+//     G9643.rank(
+//         "Aubrey,Olivai,Abigail,Chloe,Andrew,Elizabeth",
+//         [3, 1, 4, 4, 3, 2],
+//         4
+//     )
+// );
+
+console.log(G9643.rank("bbB,abc,f,F,Abc,db", [1, 1, 1, 1, 1, 1], 2));
 // console.log();
 // console.log();
 // console.log();

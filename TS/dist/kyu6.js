@@ -20,13 +20,16 @@ class G9643 {
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
         const getValue = (str) => {
             let value = 0;
+            console.log("length:", str.length);
             for (let letter of str) {
                 value += alphabet.indexOf(letter.toLowerCase()) + 1;
             }
+            value += str.length;
             return value;
         };
         namesArr.forEach((name, idx) => {
             const winNum = getValue(name) * weightsArr[idx];
+            console.log(name, getValue(name), " => ", winNum);
             nameValArr.push([name, winNum]);
         });
         console.log(nameValArr);
@@ -34,12 +37,19 @@ class G9643 {
             return b[1] - a[1];
         });
         console.log(descWinArr);
-        const solution = descWinArr[rank - 1][0];
-        console.log(solution);
+        const winningNum = descWinArr[rank - 1][1];
+        console.log("winning number:", winningNum);
+        const winnersArr = descWinArr
+            .filter((runnerUp) => {
+            return runnerUp[1] === winningNum;
+        })
+            .sort();
+        console.log(winnersArr);
+        const solution = winnersArr[0][0];
         return solution;
     }
 }
-console.log(G9643.rank("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 2], 4));
+console.log(G9643.rank("bbB,abc,f,F,Abc,db", [1, 1, 1, 1, 1, 1], 2));
 const stringTransformer = (str) => {
     let solutionArr = [];
     let strArr = str.split("");
