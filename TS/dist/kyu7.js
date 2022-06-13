@@ -13,11 +13,58 @@ function decode(code, n) {
 function cartesianNeighbor(x, y) {
     return [];
 }
-function sortVowels(str) {
-    return "hello";
+const sortVowels = (str) => {
+    if (!str || typeof str === "number")
+        return "";
+    let solutionArr = [];
+    for (let char of str) {
+        const currentChar = /[aeiou]/.test(char.toLowerCase())
+            ? `|${char}`
+            : `${char}|`;
+        solutionArr.push(currentChar);
+    }
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+function sortVowels2(str) {
+    return typeof str != "string"
+        ? ""
+        : [...str]
+            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+            .join("\n");
+}
+function sortVowels3(str) {
+    return typeof str != "string"
+        ? ""
+        : Array.from(str)
+            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+            .join("\n");
+}
+function sortVowels4(str) {
+    if (typeof str !== "string" || !str)
+        return "";
+    return [...str]
+        .map((ch) => ("aeiouAEIOU".includes(ch) ? `|${ch}` : `${ch}|`))
+        .join("\n");
+}
+function sortVowels5(str) {
+    if (!str || typeof str === "number") {
+        return "";
+    }
+    const constantants = str.replace(/[^aeiou]/gi, (match) => match + "|" + "\n");
+    const result = constantants.replace(/[aeiou]/gi, (match) => "|" + match + "\n");
+    return result.slice(0, result.length - 1);
+}
+function sortVowels6(s) {
+    if (s === undefined || typeof s != "string") {
+        return "";
+    }
+    return [...s]
+        .map((c) => ("aeoiu".includes(c.toLowerCase()) ? "|" + c : c + "|"))
+        .join("\n");
 }
 const findSquares = (num) => {
-    return `${Math.pow(((num - 1) / 2) + 1, 2)}-${Math.pow((num - 1) / 2, 2)}`;
+    return `${Math.pow((num - 1) / 2 + 1, 2)}-${Math.pow((num - 1) / 2, 2)}`;
 };
 const findSquares2 = ($) => `${Math.round($ / 2) ** 2}-${Math.floor($ / 2) ** 2}`;
 const findSquares3 = (num) => {
@@ -27,7 +74,7 @@ const findSquares3 = (num) => {
         if (m - l === num)
             return `${m}-${l}`;
     }
-    return '';
+    return "";
 };
 const oddOnesOut = (numsArr) => {
     let solution = [];
