@@ -49,7 +49,7 @@ class G9643 {
         return solution;
     }
 }
-console.log(G9643.rank("bbB,abc,f,F,Abc,db", [1, 1, 1, 1, 1, 1], 2));
+console.log(G9643.rank("Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden", [1, 3, 5, 5, 3, 6], 2));
 const stringTransformer = (str) => {
     let solutionArr = [];
     let strArr = str.split("");
