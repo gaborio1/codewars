@@ -434,22 +434,86 @@ Remember to convert the velocity from km/h to m/s or from m/s in km/h when neces
 The maximum height recorded by the device is not necessarily the maximum height reached by the ball.
 */
 
-function maxBall(v0: number): number {
+// h = v*t - 0.5*g*t*t
+const maxBall = (v0: number): number => {
+    const G: number = 9.81;
+    // const mS: number = v0 * 1000 / 3600;
+    const vMS: number = v0 / 3.6;
+    console.log("v m/s", vMS);
+    let t: number = 0;
+    // const height: number = vMS * t - 0.5 * G * t ** 2;
+    // console.log(height);
+
+    // for (let i = 0; i < 27; i += 1) {
+    //     let height: number = vMS * t - 0.5 * G * t ** 2;
+    //     console.log("1/10sec:", i, "height:", height);
+    //     t += 0.1;
+    // }
+
+    let heightsArr: number[] = [];
+    let height: number = 0;
+
+    // while (true) {
+    //     // t += 0.1;
+    //     height = vMS * t - 0.5 * G * t ** 2;
+    //     heightsArr.push(height);
+    //     if (height < heightsArr[heightsArr.length - 1]) break;
+    //     t += 0.1;
+    //     console.log(height);
+    // }
+
+    // console.log(heightsArr);
+
     return 1;
-}
+};
+
+/*
+console.log(maxBall(45)); WITH FOR LOOP, 27 ITERATIONS
+
+v m/s 12.5
+1/10sec: 0 height: 0
+1/10sec: 1 height: 1.20095
+1/10sec: 2 height: 2.3038
+1/10sec: 3 height: 3.3085500000000003
+1/10sec: 4 height: 4.215199999999999
+1/10sec: 5 height: 5.02375
+1/10sec: 6 height: 5.7341999999999995
+1/10sec: 7 height: 6.346550000000001
+1/10sec: 8 height: 6.8608
+1/10sec: 9 height: 7.276949999999999
+1/10sec: 10 height: 7.594999999999999
+1/10sec: 11 height: 7.81495
+1/10sec: 12 height: 7.9368
+1/10sec: 13 height: 7.96055
+1/10sec: 14 height: 7.886199999999997
+1/10sec: 15 height: 7.713749999999999
+1/10sec: 16 height: 7.443199999999999
+1/10sec: 17 height: 7.074549999999995
+1/10sec: 18 height: 6.607799999999999
+1/10sec: 19 height: 6.042949999999998
+1/10sec: 20 height: 5.379999999999999
+1/10sec: 21 height: 4.618949999999998
+1/10sec: 22 height: 3.759799999999995
+1/10sec: 23 height: 2.8025499999999894
+1/10sec: 24 height: 1.7471999999999888
+1/10sec: 25 height: 0.5937499999999858
+1/10sec: 26 height: -0.6578000000000159
+*/
+
 /*
 assert.strictEqual(maxBall(37), 10);
     assert.strictEqual(maxBall(45), 13);
     assert.strictEqual(maxBall(99), 28);
     assert.strictEqual(maxBall(85), 24);
 */
-// console.log();
+console.log(maxBall(45));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+//❗️❗️❗️  FAILS ONE FIXED TEST ❗️❗️❗️ LOOK INTO WHEN WINNERS ARE TIED ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: PRIZE DRAW
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -590,12 +654,14 @@ testing("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin", [4, 2, 1, 4, 3, 1, 
 //     )
 // );
 
-// expected 'Andrew' to equal 'Abigail'
-console.log(
-    G9643.rank(
-        "Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden", [1, 3, 5, 5, 3, 6], 2
-    )
-);
+//❗️❗️❗️  FAILS ONE FIXED TEST ❗️❗️❗️ LOOK INTO WHEN WINNERS ARE TIED ❗️❗️❗️
+// console.log(
+//     G9643.rank(
+//         "Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden",
+//         [1, 3, 5, 5, 3, 6],
+//         2
+//     )
+// );
 
 // console.log(G9643.rank("bbB,abc,f,F,Abc,db", [1, 1, 1, 1, 1, 1], 2));
 // console.log();
@@ -1194,8 +1260,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1207,8 +1273,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -2612,9 +2678,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -3180,10 +3246,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -5576,7 +5642,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -5662,7 +5728,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -6523,15 +6589,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -6584,10 +6650,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -7163,7 +7229,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -7622,8 +7688,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -7916,7 +7982,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -8373,10 +8439,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -9676,8 +9742,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

@@ -10,8 +10,47 @@ function areaLargestSquare(r) {
 function decode(code, n) {
     return "noidea";
 }
-function cartesianNeighbor(x, y) {
-    return [];
+const cartesianNeighbor = (x, y) => {
+    let solution = [];
+    solution.push([x - 1, y - 1], [x - 1, y], [x - 1, y + 1], [x, y - 1], [x, y + 1], [x + 1, y - 1], [x + 1, y], [x + 1, y + 1]);
+    return solution;
+};
+function cartesianNeighbor2(x, y) {
+    let DIRS = [
+        [1, 1],
+        [1, -1],
+        [1, 0],
+        [0, 1],
+        [-1, 1],
+        [-1, -1],
+        [-1, 0],
+        [0, -1],
+    ];
+    return DIRS.map((direction) => {
+        return [x + direction[0], y + direction[1]];
+    });
+}
+function cartesianNeighbor3(x, y) {
+    return [
+        [x - 1, y + 1],
+        [x, y + 1],
+        [x + 1, y + 1],
+        [x - 1, y],
+        [x + 1, y],
+        [x - 1, y - 1],
+        [x, y - 1],
+        [x + 1, y - 1],
+    ];
+}
+function cartesianNeighbor4(x, y) {
+    let result = [];
+    for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+            if (i || j)
+                result.push([x + i, y + j]);
+        }
+    }
+    return result;
 }
 const sortVowels = (str) => {
     if (!str || typeof str === "number")

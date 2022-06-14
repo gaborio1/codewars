@@ -5,9 +5,16 @@ exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits
 function grabscrab(anagram, dictionary) {
     return ["hello"];
 }
-function maxBall(v0) {
+const maxBall = (v0) => {
+    const G = 9.81;
+    const vMS = v0 / 3.6;
+    console.log("v m/s", vMS);
+    let t = 0;
+    let heightsArr = [];
+    let height = 0;
     return 1;
-}
+};
+console.log(maxBall(45));
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
         if (namesStr === "")
@@ -49,7 +56,6 @@ class G9643 {
         return solution;
     }
 }
-console.log(G9643.rank("Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden", [1, 3, 5, 5, 3, 6], 2));
 const stringTransformer = (str) => {
     let solutionArr = [];
     let strArr = str.split("");
