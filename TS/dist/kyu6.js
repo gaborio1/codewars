@@ -14,7 +14,6 @@ const maxBall = (v0) => {
     let height = 0;
     return 1;
 };
-console.log(maxBall(45));
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
         if (namesStr === "")

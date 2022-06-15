@@ -7,8 +7,37 @@ function generate(length) {
 function areaLargestSquare(r) {
     return 0;
 }
-function decode(code, n) {
-    return "noidea";
+const decode = (code, key) => {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const keyArr = key.toString().split("").map((digit) => Number(digit));
+    const solutionArr = code.map((num, idx) => {
+        return alphabet[num - keyArr[idx % keyArr.length] - 1];
+    });
+    const solution = solutionArr.join("");
+    return solution;
+};
+function decode2(code, n) {
+    let digits = n.toString().split('').map(d => +d);
+    let alphabet = ' abcdefghijklmnopqrstuvwxyz';
+    return code.map((c, i) => alphabet.charAt(c - digits[i % digits.length])).join('');
+}
+function decode3(code, n) {
+    const k = [..."" + n].map(Number);
+    return String.fromCharCode(...code.map((v, i) => v + 96 - k[i % k.length]));
+}
+function decode4(code, n) {
+    return String.fromCharCode(...code.map((chr, idx) => chr - Number(String(n)[idx % String(n).length]) + 96));
+}
+;
+function decode5(code, n) {
+    const alphabetNumber = {
+        1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm',
+        14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'
+    };
+    let nStringList = String(n).split('');
+    return code.map((v, i) => v - Number(nStringList[i % nStringList.length]))
+        .map(v => alphabetNumber[v])
+        .join('');
 }
 const cartesianNeighbor = (x, y) => {
     let solution = [];
