@@ -22,7 +22,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ RANDOM TESTS: Time: 4928ms Passed: 2Failed: 2Exit Code: 2 ❗️❗️❗️
+// ❗️❗️❗️ FAILING RANDOM TESTS: Time: 4928ms Passed: 2Failed: 2Exit Code: 2 ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: GENETIC ALGORITHM SERIES  - #1 Generate
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

@@ -8,12 +8,24 @@ function grabscrab(anagram, dictionary) {
 const maxBall = (v0) => {
     const G = 9.81;
     const vMS = v0 / 3.6;
-    console.log("v m/s", vMS);
     let t = 0;
     let heightsArr = [];
-    let height = 0;
-    return 1;
+    let currHeight = 0;
+    let counter = 0;
+    while (true) {
+        const lastReading = heightsArr[heightsArr.length - 1];
+        currHeight = vMS * t - 0.5 * G * t ** 2;
+        if (currHeight < lastReading)
+            break;
+        console.log("current:", currHeight, "last:", lastReading);
+        console.log("ball is now falling:", currHeight < lastReading);
+        counter += 1;
+        heightsArr.push(currHeight);
+        t += 0.1;
+    }
+    return counter - 1;
 };
+console.log(maxBall(99));
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
         if (namesStr === "")
