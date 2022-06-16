@@ -17,15 +17,55 @@ const maxBall = (v0) => {
         currHeight = vMS * t - 0.5 * G * t ** 2;
         if (currHeight < lastReading)
             break;
-        console.log("current:", currHeight, "last:", lastReading);
-        console.log("ball is now falling:", currHeight < lastReading);
         counter += 1;
-        heightsArr.push(currHeight);
         t += 0.1;
+        heightsArr.push(currHeight);
     }
+    console.log(heightsArr, heightsArr.length);
     return counter - 1;
 };
-console.log(maxBall(99));
+function maxBall2(v0) {
+    const g = 9.81;
+    let v = v0 / 3.6;
+    let t = v / g;
+    return Math.round(t * 10);
+}
+function maxBall3(v0) {
+    const t = Math.round((v0 * 1000 * 10) / 9.81 / 3600);
+    return t;
+}
+function maxBall4(input) {
+    const gravity = 9.81;
+    const ratio = 5 / 18;
+    const velocity = input * ratio;
+    return Math.round((velocity / gravity) * 10);
+}
+function maxBall5(v0) {
+    const v = (v0 * 1000) / 3600;
+    let h1 = -Infinity;
+    let t = 0.1;
+    let h2 = v * t - 0.5 * 9.81 * t * t;
+    while (h2 > h1) {
+        h1 = h2;
+        t += 0.1;
+        h2 = v * t - 0.5 * 9.81 * t * t;
+    }
+    return Math.round(t * 10) - 1;
+}
+function maxBall6(v0) {
+    const records = [0];
+    const g = 9.81;
+    let t = 0.1;
+    let h = (v0 / 3.6) * t - 0.5 * g * t * t;
+    records.push(h);
+    while (h > 0) {
+        t += 0.1;
+        h = (v0 / 3.6) * t - 0.5 * g * t * t;
+        records.push(h);
+    }
+    const max = Math.max(...records);
+    return records.indexOf(max);
+}
 class G9643 {
     static rank(namesStr, weightsArr, rank) {
         if (namesStr === "")

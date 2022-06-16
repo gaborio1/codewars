@@ -439,30 +439,37 @@ The maximum height recorded by the device is not necessarily the maximum height 
 // h = v*t - 0.5*g*t*t
 const maxBall = (v0: number): number => {
     const G: number = 9.81;
+    // GET METER/SEC
     const vMS: number = v0 / 3.6;
+    // TIME ELAPSED IN 1/10 INCREMENTS
     let t: number = 0;
-
+    // KEEP TRACK OF HEIGTH SNAPSHOTS
     let heightsArr: number[] = [];
-
+    // CURRENT HEIGHT AND COUNTER
     let currHeight: number = 0;
     let counter: number = 0;
 
     while (true) {
+        // LAST HEIGHT READING
         const lastReading: number = heightsArr[heightsArr.length - 1];
-
+        // CALC CURRENT HEIGHT
         currHeight = vMS * t - 0.5 * G * t ** 2;
-
+        // STOP LOOP IF BALL HAS STARTED TO FALL
         if (currHeight < lastReading) break;
-        console.log("current:", currHeight, "last:", lastReading);
-        console.log("ball is now falling:", currHeight < lastReading);
+        // console.log("current:", currHeight, "last:", lastReading);
+        // console.log("ball is now falling:", currHeight < lastReading);
 
+        // INCREMENT COUNTER
         counter += 1;
-        heightsArr.push(currHeight);
+        // INCREMENT TIME BY 1/10 SEC
         t += 0.1;
+        // PUSH CURRENT INTO ARRAY
+        heightsArr.push(currHeight);
     }
 
-    // console.log(heightsArr, heightsArr.length);
+    console.log(heightsArr, heightsArr.length);
 
+    // RETURN SOLUTION, CAN USE HEIGHTSARR.LENGTH-1 AS WELL
     return counter - 1;
 };
 
@@ -497,6 +504,29 @@ v m/s 12.5
 1/10sec: 24 height: 1.7471999999999888
 1/10sec: 25 height: 0.5937499999999858
 1/10sec: 26 height: -0.6578000000000159
+
+
+
+console.log(maxBall(15));
+
+current: 0 last: undefined
+ball is now falling: false
+current: 0.3676166666666667 last: 0
+ball is now falling: false
+current: 0.6371333333333334 last: 0.3676166666666667
+ball is now falling: false
+current: 0.8085500000000001 last: 0.6371333333333334
+ball is now falling: false
+current: 0.8818666666666668 last: 0.8085500000000001
+ball is now falling: false
+[
+  0,
+  0.3676166666666667,
+  0.6371333333333334,
+  0.8085500000000001,
+  0.8818666666666668
+] 5
+4
 */
 
 /*
@@ -505,12 +535,60 @@ assert.strictEqual(maxBall(37), 10);
     assert.strictEqual(maxBall(99), 28);
     assert.strictEqual(maxBall(85), 24);
 */
-console.log(maxBall(99));
+// console.log(maxBall(15));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function maxBall2(v0: number): number {
+    const g = 9.81;
+    let v = v0 / 3.6;
+    let t = v / g;
+
+    return Math.round(t * 10);
+}
+
+function maxBall3(v0: number): number {
+    const t = Math.round((v0 * 1000 * 10) / 9.81 / 3600);
+
+    return t;
+}
+
+function maxBall4(input: number): number {
+    const gravity: number = 9.81;
+    const ratio: number = 5 / 18; // ratio to convert input from km/h to m/s
+    const velocity: number = input * ratio;
+    return Math.round((velocity / gravity) * 10);
+}
+
+function maxBall5(v0: number): number {
+    const v: number = (v0 * 1000) / 3600;
+    let h1: number = -Infinity;
+    let t: number = 0.1;
+    let h2: number = v * t - 0.5 * 9.81 * t * t;
+    while (h2 > h1) {
+        h1 = h2;
+        t += 0.1;
+        h2 = v * t - 0.5 * 9.81 * t * t;
+    }
+    return Math.round(t * 10) - 1;
+}
+
+function maxBall6(v0: number): number {
+    const records = [0];
+    const g = 9.81;
+    let t = 0.1;
+    let h = (v0 / 3.6) * t - 0.5 * g * t * t;
+    records.push(h);
+    while (h > 0) {
+        t += 0.1;
+        h = (v0 / 3.6) * t - 0.5 * g * t * t;
+        records.push(h);
+    }
+    const max = Math.max(...records);
+    return records.indexOf(max);
+}
 
 //❗️❗️❗️  FAILS ONE FIXED TEST ❗️❗️❗️ LOOK INTO WHEN WINNERS ARE TIED ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥

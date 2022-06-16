@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
+function rakeGarden(garden) {
+    return "hello";
+}
 const generate = (length) => {
     let solution = "";
     for (let i = 0; i < length; i += 1) {
