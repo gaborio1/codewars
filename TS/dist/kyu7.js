@@ -1,8 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
-function rakeGarden(garden) {
-    return "hello";
+const rakeGarden = (garden) => {
+    let gardenArr = garden.split(" ");
+    gardenArr = gardenArr.map((item) => {
+        return item !== "rock" && item !== "gravel" ?
+            "gravel"
+            : item;
+    });
+    return gardenArr.join(" ");
+};
+const rakeGarden2 = (garden) => {
+    return garden
+        .split(" ")
+        .map((item) => {
+        return item !== "rock" && item !== "gravel" ?
+            "gravel"
+            : item;
+    })
+        .join(" ");
+};
+const rakeGarden3 = (garden) => garden.split(" ").map((item) => item !== "rock" && item !== "gravel" ? "gravel" : item).join(" ");
+var garden1 = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel';
+function rakeGarden4(garden) {
+    return garden.split(" ").map(a => { if (a != "gravel" && a != "rock")
+        return "gravel"; return a; }).join(" ");
+}
+function rakeGarden5(garden) {
+    return garden.replace(/((?!\brock\b|\bgravel\b)\b\w+\b)/g, 'gravel');
+}
+function rakeGarden6(garden) {
+    return garden.split(" ").map((it) => /^gravel$|^rock$/.test(it) ? it : it.replace(it, "gravel")).join(" ");
 }
 const generate = (length) => {
     let solution = "";
@@ -12,14 +40,12 @@ const generate = (length) => {
     }
     return solution;
 };
-console.log(generate(16));
 const areaLargestSquare = (rad) => {
     const side = Math.sqrt(2 * Math.pow(rad, 2));
     console.log(side);
     const solution = Math.round(Math.pow(side, 2));
     return solution;
 };
-console.log(areaLargestSquare(5));
 function areaLargestSquare2(r) {
     return r ** 2 * 2;
 }
