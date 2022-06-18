@@ -135,7 +135,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: FACTORIAL DECOMPOSITION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -143,8 +143,36 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The aim of the kata is to decompose n! (factorial n) into its prime factors.
+
+Examples:
+
+n = 12; decomp(12) -> "2^10 * 3^5 * 5^2 * 7 * 11"
+since 12! is divisible by 2 ten times, by 3 five times, by 5 two times and by 7 and 11 only once.
+
+n = 22; decomp(22) -> "2^19 * 3^9 * 5^4 * 7^3 * 11^2 * 13 * 17 * 19"
+
+n = 25; decomp(25) -> 2^22 * 3^10 * 5^6 * 7^3 * 11^2 * 13 * 17 * 19 * 23
+Prime numbers should be in increasing order. When the exponent of a prime is 1 don't put the exponent.
+
+Notes
+
+the function is decomp(n) and should return the decomposition of n! into its prime factors in increasing order of the primes, as a string.
+factorial can be a very big number (4000! has 12674 digits, n can go from 300 to 4000).
+In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
 
 */
+function decomp(n: number): string {
+    return "your code";
+}
+
+/*
+ assert.equal(decomp(17), "2^15 * 3^6 * 5^3 * 7^2 * 11 * 13 * 17")
+        assert.equal(decomp(5), "2^3 * 3 * 5")
+        assert.equal(decomp(22), "2^19 * 3^9 * 5^4 * 7^3 * 11^2 * 13 * 17 * 19")
+        assert.equal(decomp(14), "2^11 * 3^5 * 5^2 * 7^2 * 11 * 13")
+        assert.equal(decomp(25), "2^22 * 3^10 * 5^6 * 7^3 * 11^2 * 13 * 17 * 19 * 23")
+        */
 
 // console.log();
 // console.log();
@@ -154,7 +182,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: BEERAMID
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -162,8 +190,101 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Let's pretend your company just hired your friend from college and paid you a referral bonus. Awesome! To celebrate, you're taking your team out to the terrible dive bar next door and using the referral bonus to buy, and build, the largest three-dimensional beer can pyramid you can. And then probably drink those beers, because let's pretend it's Friday too.
+
+A beer can pyramid will square the number of cans in each level - 1 can in the top level, 4 in the second, 9 in the next, 16, 25...
+
+Complete the beeramid function to return the number of complete levels of a beer can pyramid you can make, given the parameters of:
+
+your referral bonus, and
+
+the price of a beer can
+
+For example:
+
+beeramid(1500, 2); // should === 12
+beeramid(5000, 3); // should === 16
 
 */
+function beeramid(bonus: number, price: number): number {
+    return 0;
+}
+
+/*
+assert.strictEqual(beeramid(9, 2), 1);
+    assert.strictEqual(beeramid(10, 2), 2);
+    assert.strictEqual(beeramid(11, 2), 2);
+    assert.strictEqual(beeramid(21, 1.5), 3);
+    assert.strictEqual(beeramid(454, 5), 5);
+    assert.strictEqual(beeramid(455, 5), 6);
+    assert.strictEqual(beeramid(4, 4), 1);
+    assert.strictEqual(beeramid(3, 4), 0);
+    assert.strictEqual(beeramid(0, 4), 0);
+    assert.strictEqual(beeramid(-1, 4), 0);
+*/
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: SNAKES AND LADDERS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+ntroduction
+Snakes and Ladders is an ancient Indian board game regarded today as a worldwide classic. It is played between two or more players on a gameboard having numbered, gridded squares. A number of "ladders" and "snakes" are pictured on the board, each connecting two specific board squares. (Source Wikipedia)
+
+Task
+Your task is to make a simple class called SnakesLadders. The test cases will call the method play(die1, die2) independantly of the state of the game or the player turn. The variables die1 and die2 are the die thrown in a turn and are both integers between 1 and 6. The player will move the sum of die1 and die2.
+The Board
+
+Rules
+1.  There are two players and both start off the board on square 0.
+
+2.  Player 1 starts and alternates with player 2.
+
+3.  You follow the numbers up the board in order 1=>100
+
+4.  If the value of both die are the same then that player will have another go.
+
+5.  Climb up ladders. The ladders on the game board allow you to move upwards and get ahead faster. If you land exactly on a square that shows an image of the bottom of a ladder, then you may move the player all the way up to the square at the top of the ladder. (even if you roll a double).
+
+6.  Slide down snakes. Snakes move you back on the board because you have to slide down them. If you land exactly at the top of a snake, slide move the player all the way to the square at the bottom of the snake or chute. (even if you roll a double).
+
+7.  Land exactly on the last square to win. The first person to reach the highest square on the board wins. But there's a twist! If you roll too high, your player "bounces" off the last square and moves back. You can only win by rolling the exact number needed to land on the last square. For example, if you are on square 98 and roll a five, move your game piece to 100 (two moves), then "bounce" back to 99, 98, 97 (three, four then five moves.)
+
+8.  If the Player rolled a double and lands on the finish square “100” without any remaining moves then the Player wins the game and does not have to roll again.
+Returns
+Return Player n Wins!. Where n is winning player that has landed on square 100 without any remainding moves left.
+
+Return Game over! if a player has won and another player tries to play.
+
+Otherwise return Player n is on square x. Where n is the current player and x is the sqaure they are currently on.
+Good luck and enjoy!
+*/
+class SnakesLadders {
+    constructor() {
+        // Good luck
+    }
+
+    play(die1: number, die2: number): string {
+        return "HELLO";
+    }
+}
+
+/*
+assert.equal(game.play(1, 1), "Player 1 is on square 38", "Should return: 'Player 1 is on square 38'");
+    assert.equal(game.play(1, 5), "Player 1 is on square 44", "Should return: 'Player 1 is on square 44'");
+    assert.equal(game.play(6, 2), "Player 2 is on square 31", "Should return: 'Player 2 is on square 31'");
+    assert.equal(game.play(1, 1), "Player 1 is on square 25", "Should return: 'Player 1 is on square 25'");
+    */
 
 // console.log();
 // console.log();
@@ -173,26 +294,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: MOLECULE TO ATOMS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -221,8 +323,7 @@ Note that brackets may be round, square or curly and can also be nested. Index a
 
 const parseMolecule = (formula: string) => {
     // TODO: do your science here
-}
-
+};
 
 // {H: 2, O: 1}
 // console.log(parseMolecule("H2O"));
@@ -265,7 +366,6 @@ Notes and tips: using the solution to the other kata to check your function may 
 */
 
 const josephusSurvivor = (num: number, gap: number): number => {
-
     // if (num === 1) return num;
 
     let items: number[] = [];
@@ -279,7 +379,6 @@ const josephusSurvivor = (num: number, gap: number): number => {
     //     : gap - 1;
 
     // console.log("targetIdx:", targetIdx);
-
 
     // INITIALIZE SEQ ARR WITH COPY OF ITEMS
     let solutionArr: number[] = [],
@@ -300,14 +399,12 @@ const josephusSurvivor = (num: number, gap: number): number => {
         if (solutionArr.length === items.length) break;
         // IF LOOP REACHES LENGTH OF ITEMS, CONCAT ANOTHER COPY TO EXTEND SEQUENCE
         if (i === seqArr.length - 1) seqArr = seqArr.concat(items);
-
     }
 
     return solutionArr[solutionArr.length - 1];
 
     // return 1;
-
-}
+};
 
 //  4
 // console.log(josephusSurvivor(7, 3));
@@ -357,10 +454,10 @@ josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 
 // 2️⃣ SECOND SOLUTION, DYNAMIC SEQ ARR LENGTH !!!
 const josephus2 = (items: any[], gap: number): any[] => {
-
     if (items.length === 1) return items;
     // INITIALIZE SEQ ARR WITH COPY OF ITEMS
-    let solutionArr: any[] = [], seqArr: any[] = [...items];
+    let solutionArr: any[] = [],
+        seqArr: any[] = [...items];
     // CONUNT VALID STEPS (IGNORE DEAD)
     let validSteps: number = 0;
 
@@ -377,12 +474,10 @@ const josephus2 = (items: any[], gap: number): any[] => {
         if (solutionArr.length === items.length) break;
         // IF LOOP REACHES LENGTH OF ITEMS, CONCAT ANOTHER COPY TO EXTEND SEQUENCE
         if (i === seqArr.length - 1) seqArr = seqArr.concat(items);
-
     }
 
     return solutionArr;
-
-}
+};
 
 //   [3, 6, 2, 7, 5, 1, 4]
 // console.log(josephus2([1, 2, 3, 4, 5, 6, 7], 3));
@@ -401,7 +496,6 @@ const josephus2 = (items: any[], gap: number): any[] => {
 
 // 1️⃣  FIRST SOLUTION, UNUSED CODE, HARD CODED SEQ ARR LENGTH !!!
 const josephus3 = (items: any[], gap: number): any[] => {
-
     if (items.length === 1) return items;
     // NUMBER OF VALID STEPS TO NEXT ITEM
     // const validGap: number = gap <= items.length
@@ -409,7 +503,8 @@ const josephus3 = (items: any[], gap: number): any[] => {
     //     : gap % items.length;
     // console.log(validGap);
 
-    let solutionArr: any[] = [], sequenceArr: any[] = [];
+    let solutionArr: any[] = [],
+        sequenceArr: any[] = [];
 
     for (let i = 0; i < items.length * 40; i += 1) {
         sequenceArr = sequenceArr.concat(items);
@@ -430,10 +525,7 @@ const josephus3 = (items: any[], gap: number): any[] => {
         if (solutionArr.length === items.length) break;
     }
     return solutionArr;
-
-}
-
-
+};
 
 //   [3, 6, 2, 7, 5, 1, 4]
 // console.log(josephus3([1, 2, 3, 4, 5, 6, 7], 3));
@@ -453,31 +545,29 @@ const josephus3 = (items: any[], gap: number): any[] => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const josephus4 = (items: any[], k: number): any[] => {
-    let lst: any[] = []
-    let i: number = (k - 1) % items.length
+    let lst: any[] = [];
+    let i: number = (k - 1) % items.length;
     while (items.length) {
-        lst.push(items[i])
-        items.splice(i, 1)
-        i = (i + k - 1) % items.length
+        lst.push(items[i]);
+        items.splice(i, 1);
+        i = (i + k - 1) % items.length;
     }
-    return lst
-}
-
+    return lst;
+};
 
 const josephus5 = (items: any[], k: number): any[] => {
-    const alive = [...items]
-    const dead = []
-    let i = (k - 1) % alive.length
+    const alive = [...items];
+    const dead = [];
+    let i = (k - 1) % alive.length;
 
     while (alive.length) {
-        const killed = alive.splice(i, 1)
-        dead.push(...killed)
-        i = (i + k - 1) % alive.length
+        const killed = alive.splice(i, 1);
+        dead.push(...killed);
+        i = (i + k - 1) % alive.length;
     }
 
-    return dead
-}
-
+    return dead;
+};
 
 function josephus6(items: any[], k: number): any[] {
     const result = [];
@@ -491,7 +581,6 @@ function josephus6(items: any[], k: number): any[] {
 
     return result;
 }
-
 
 const josephus7 = (items: any[], k: number): any[] => {
     let result: any[] = [];
@@ -507,7 +596,7 @@ const josephus7 = (items: any[], k: number): any[] => {
         items.splice(currentIndex - 1, 1);
     }
     return result;
-}
+};
 
 const josephus8 = (items: any[], k: number): any[] => {
     let res = [];
@@ -518,7 +607,7 @@ const josephus8 = (items: any[], k: number): any[] => {
         i = (i + k - 1) % items.length;
     }
     return res;
-}
+};
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN EXAMPLES (REPLACE) ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -561,14 +650,13 @@ Due to the fact that the first translations were written long ago - more than 6 
 Newer translations have some reducible fractions. To be on the safe side it is better to do a bit more work by simplifying fractions even if they don't have to be.
 */
 const convertFrac = (list: [number, number][]): string => {
-
     let solution: string = "";
     let denomsArr: number[] = [];
     // FIND COMMON DENOMINATOR
     list.forEach((frac) => {
         denomsArr.push(frac[1]);
     });
-    // console.log("denomsArr: ", denomsArr); 
+    // console.log("denomsArr: ", denomsArr);
     // denomsArr:  [ 2, 5, 4, 9, 10 ]
 
     let commDenom: number = 0;
@@ -590,7 +678,7 @@ const convertFrac = (list: [number, number][]): string => {
         // (90,180) AND SO ON...
         solution += `(${frac[0] * (commDenom / frac[1])},${commDenom})`;
         uniqueComps.add(frac[0] * (commDenom / frac[1]));
-    })
+    });
     // console.log(uniqueComps);
     // Set(5) { 90, 144, 135, 120, 126 }
 
@@ -605,8 +693,9 @@ const convertFrac = (list: [number, number][]): string => {
     for (let i = 2; i <= commDenom / 2; i++) {
         if (allCompsArr.every((comp) => comp % i === 0)) {
             // ❗️❗️❗️ REPLACE EVERY NUMBER IN STRING WITH ITSELF DIVIDED BY i (COMMON DIVIDER)
-            simplifiedSolution = solution
-                .replace(/\d+/g, (num: string) => (Number(num) / i).toString());
+            simplifiedSolution = solution.replace(/\d+/g, (num: string) =>
+                (Number(num) / i).toString()
+            );
         }
     }
 
@@ -614,10 +703,8 @@ const convertFrac = (list: [number, number][]): string => {
     // simplifiedSolution:  (30,60)(48,60)(45,60)(40,60)(42,60)
 
     // IF SIMPLIFIED SOLUTION EXIST, RETURN IT, OTHERWISE RETURN SOLUTION
-    return simplifiedSolution
-        ? simplifiedSolution
-        : solution;
-}
+    return simplifiedSolution ? simplifiedSolution : solution;
+};
 
 // "(6,12)(4,12)(3,12)"
 // console.log(convertFrac([[1, 2], [1, 3], [1, 4]]));
@@ -639,10 +726,9 @@ const convertFrac2 = (lst: [number, number][]): string => {
     const lcm = (a: number, b: number): number => (a * b) / gcd(a, b);
     const cd = lst.reduce((a, [_, d]) => lcm(d, a), 1);
     const lcd = lst.reduce((d, [a, c]) => gcd(d, (a * cd) / c), cd);
-    return lst.map(([n, d]) => `(${(n * cd) / d / lcd},${cd / lcd})`).join('');
-}
+    return lst.map(([n, d]) => `(${(n * cd) / d / lcd},${cd / lcd})`).join("");
+};
 // ============================================================
-
 
 const gcd = (x: number, y: number): number => {
     while (y != 0) {
@@ -652,62 +738,59 @@ const gcd = (x: number, y: number): number => {
     }
 
     return x;
-}
+};
 
-const lcm = (x: number, y: number): number =>
-    x * y / gcd(x, y);
-
+const lcm = (x: number, y: number): number => (x * y) / gcd(x, y);
 
 const convertFrac3 = (lst: [number, number][]): string => {
-    const common = lst
-        .map(([x, y]) => y)
-        .reduce(lcm, 1);
+    const common = lst.map(([x, y]) => y).reduce(lcm, 1);
 
-    const acc = lst
-        .map(([x, y]) => x * (common / y))
+    const acc = lst.map(([x, y]) => x * (common / y));
 
-    const least = acc
-        .reduce(gcd, common);
+    const least = acc.reduce(gcd, common);
 
-    return acc
-        .map(x => `(${x / least},${common / least})`)
-        .join('');
-}
+    return acc.map((x) => `(${x / least},${common / least})`).join("");
+};
 // ============================================================
-const findGcd = (a: number, b: number): number => b ? findGcd(b, a % b) : a;
+const findGcd = (a: number, b: number): number => (b ? findGcd(b, a % b) : a);
 
-const findLcm = (a: number, b: number): number => a * b / findGcd(a, b)
+const findLcm = (a: number, b: number): number => (a * b) / findGcd(a, b);
 
-const findLcmOfList = (arr: number[]): number => arr.reduce((lcm, num) => findLcm(lcm, num), 1)
+const findLcmOfList = (arr: number[]): number =>
+    arr.reduce((lcm, num) => findLcm(lcm, num), 1);
 
 const simplify = (a: number, b: number): [number, number] => {
-    const gcd = findGcd(a, b)
-    return gcd === 1 ? [a, b] : [a / gcd, b / gcd]
-}
+    const gcd = findGcd(a, b);
+    return gcd === 1 ? [a, b] : [a / gcd, b / gcd];
+};
 
 export const convertFrac4 = (lst: [number, number][]): string => {
     let denoms: number[] = [];
     const list = lst.map(([n0, n1]) => {
-        const simpleArr = simplify(n0, n1)
-        denoms.push(simpleArr[1])
-        return simpleArr
-    })
+        const simpleArr = simplify(n0, n1);
+        denoms.push(simpleArr[1]);
+        return simpleArr;
+    });
 
-    const lcm = findLcmOfList(denoms)
+    const lcm = findLcmOfList(denoms);
 
-    return list.reduce((result, [n0, n1]) => `${result}(${n0 * lcm / n1},${lcm})`, '')
-
-}
+    return list.reduce(
+        (result, [n0, n1]) => `${result}(${(n0 * lcm) / n1},${lcm})`,
+        ""
+    );
+};
 // ============================================================
 interface IFactorized {
     [key: number]: number;
 }
 
 export const convertFrac5 = (lst: [number, number][]): string => {
-    if (lst.length == 0)
-        return "";
+    if (lst.length == 0) return "";
     const getPrimes = function (maxNum: number) {
-        const candidates: boolean[] = Array.from({ length: maxNum }, i => true);
+        const candidates: boolean[] = Array.from(
+            { length: maxNum },
+            (i) => true
+        );
         const maxi = Math.floor(Math.sqrt(maxNum));
         for (let i = 2; i <= maxi; i++) {
             if (candidates[i]) {
@@ -727,43 +810,47 @@ export const convertFrac5 = (lst: [number, number][]): string => {
         }
         return primes;
     };
-    const max_denom = lst.map(i => i[1]).reduce((carry, item) => {
-        if (carry < item) return item;
-        return carry;
-    });
+    const max_denom = lst
+        .map((i) => i[1])
+        .reduce((carry, item) => {
+            if (carry < item) return item;
+            return carry;
+        });
     const primes = getPrimes(max_denom + 1);
     const factorize = function (num: number) {
         const res: IFactorized = {};
-        primes.forEach(prime => {
+        primes.forEach((prime) => {
             let cnt = 0;
             while (num > 1) {
-                if ((num % prime) === 0) {
+                if (num % prime === 0) {
                     num = Math.floor(num / prime);
                     cnt++;
                 } else {
                     break;
                 }
             }
-            if (cnt > 0)
-                res[prime] = cnt;
+            if (cnt > 0) res[prime] = cnt;
         });
         return res;
     };
-    const simplified_lst = lst.map(item => {
+    const simplified_lst = lst.map((item) => {
         const fnum = factorize(item[0]);
         const fdenom = factorize(item[1]);
         const cfactors: IFactorized = {};
-        Object.keys(fnum).forEach(prime => {
+        Object.keys(fnum).forEach((prime) => {
             if (fdenom[parseInt(prime)]) {
-                cfactors[parseInt(prime)] = (fnum[parseInt(prime)] <= fdenom[parseInt(prime)]) ? fnum[parseInt(prime)] : fdenom[parseInt(prime)];
+                cfactors[parseInt(prime)] =
+                    fnum[parseInt(prime)] <= fdenom[parseInt(prime)]
+                        ? fnum[parseInt(prime)]
+                        : fdenom[parseInt(prime)];
             }
         });
         const div = Object.keys(cfactors).reduce((carry, prime) => {
-            return carry * Math.pow(parseInt(prime), cfactors[parseInt(prime)])
+            return carry * Math.pow(parseInt(prime), cfactors[parseInt(prime)]);
         }, 1);
         return [Math.floor(item[0] / div), Math.floor(item[1]) / div];
     });
-    const fdenoms: IFactorized[] = simplified_lst.map(item => {
+    const fdenoms: IFactorized[] = simplified_lst.map((item) => {
         return factorize(item[1]);
     });
     const lcm_factors: IFactorized = {};
@@ -780,11 +867,13 @@ export const convertFrac5 = (lst: [number, number][]): string => {
     const lcd = Object.keys(lcm_factors).reduce((carry, prime) => {
         return carry * Math.pow(parseInt(prime), lcm_factors[parseInt(prime)]);
     }, 1);
-    return simplified_lst.map(item => {
-        const num = Math.floor(item[0] * lcd / item[1]);
-        return `(${num},${lcd})`;
-    }).join('');
-}
+    return simplified_lst
+        .map((item) => {
+            const num = Math.floor((item[0] * lcd) / item[1]);
+            return `(${num},${lcd})`;
+        })
+        .join("");
+};
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: MY SMALLEST CODE INTERPRETER (aka Brainf**k)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -893,23 +982,21 @@ function add2(x: number): any {
     return fn;
 }
 
-
 function add3(x: number): any {
     // receives the next number in the sequence
     const addNum = (next: any) => {
         // returns the outer function, with cumulative number so far as the argument
-        return add(x + next)
-    }
+        return add(x + next);
+    };
 
     // sets value of method of inner function to return value of x for final number
     addNum.valueOf = () => {
-        return x
-    }
+        return x;
+    };
 
     // returns addNum function which will be called with next number as argument
-    return addNum
+    return addNum;
 }
-
 
 /**
  * Calculates the sum of numbers.
@@ -922,7 +1009,7 @@ function add4(x: number): any {
     let currentSum: number = x;
 
     function f(y: number): any {
-        if (typeof (y) === "number") {
+        if (typeof y === "number") {
             currentSum += y;
             return f;
         }
@@ -936,8 +1023,9 @@ function add4(x: number): any {
     return f;
 }
 
-function add5(n: number): any { return Object.assign((i: any) => add(i + n), { valueOf: () => n }) }
-
+function add5(n: number): any {
+    return Object.assign((i: any) => add(i + n), { valueOf: () => n });
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: IS MY FRIEND CHEATING
@@ -1029,16 +1117,26 @@ try not to modify the input list of distances ls
 in some languages this "list" is in fact a string (see the Sample Tests).
 */
 
-const chooseBestSum = (maxDist: number, numTowns: number, list: number[]): number | null => {
-
+const chooseBestSum = (
+    maxDist: number,
+    numTowns: number,
+    list: number[]
+): number | null => {
     // if ()
 
-    const generatePermutations = (list: number[], size = list.length): number[][] => {
+    const generatePermutations = (
+        list: number[],
+        size = list.length
+    ): number[][] => {
         if (size > list.length) return [];
-        else if (size == 1) return list.map(d => [d]);
-        return list.flatMap(d => generatePermutations(list.filter(a => a !== d), size - 1).map(item => [d, ...item]));
-    }
-
+        else if (size == 1) return list.map((d) => [d]);
+        return list.flatMap((d) =>
+            generatePermutations(
+                list.filter((a) => a !== d),
+                size - 1
+            ).map((item) => [d, ...item])
+        );
+    };
 
     const allPermutations: number[][] = generatePermutations(list, numTowns);
     console.log(allPermutations);
@@ -1046,14 +1144,14 @@ const chooseBestSum = (maxDist: number, numTowns: number, list: number[]): numbe
         return arr.reduce((acc, curr) => acc + curr);
     });
     console.log(allDistances);
-    const distsInRange: number[] = allDistances.filter((dist) => dist <= maxDist);
+    const distsInRange: number[] = allDistances.filter(
+        (dist) => dist <= maxDist
+    );
     console.log(distsInRange);
     const solution: number = Math.max(...distsInRange, 0);
     console.log(solution);
-    return solution
-        ? solution
-        : null;
-}
+    return solution ? solution : null;
+};
 
 //   163
 // console.log(chooseBestSum(163, 3, [50, 55, 56, 57, 58]));
@@ -1205,8 +1303,7 @@ class G964b {
                 }
             }
             return true;
-        }
-
+        };
 
         //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
         for (let i = min; i <= max; i++) {
@@ -1270,7 +1367,6 @@ G964b.gap(2, 100, 110) LOGS:
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 class G964b1 {
-
     public static gap = (g: number, m: number, n: number) => {
         let lower = 0;
         for (let i = m; i < n; i++) {
@@ -1283,7 +1379,7 @@ class G964b1 {
             }
         }
         return null;
-    }
+    };
 
     private static isPrime(n: number) {
         for (let i = 2; i < n; i++) {
@@ -1316,15 +1412,13 @@ class G964b1 {
 //     };
 //   }
 
-
 class G964b3 {
-
     public static gap = (g: number, m: number, n: number) => {
         const primes = [];
 
         for (let i = m; i < n; i++) {
             let prime = true;
-            for (let j = 2; j < (i) / 2; j++) {
+            for (let j = 2; j < i / 2; j++) {
                 if (i % j === 0) {
                     prime = false;
                     break;
@@ -1341,9 +1435,8 @@ class G964b3 {
             }
         }
         return null;
-    }
+    };
 }
-
 
 // ❗️❗️❗️ INCLUDE ISPRIME() IN CODEWARS EXAMPLES ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -1450,7 +1543,7 @@ const primeFactors = (num: number): string => {
             }
         }
         return true;
-    }
+    };
 
     //   FIND PRIMES RANGING FROM 2 TO HALF OF NUM
     for (let i = 2; i < (num - 1) / 2; i++) {

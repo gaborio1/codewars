@@ -2,6 +2,25 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = void 0;
+function encode(text) {
+    return "bits";
+}
+function decode(bits) {
+    return "text";
+}
+function binaryToString(binary) {
+    return "";
+}
+class G96412 {
+    static game(n) {
+        return [1];
+    }
+}
+class G96411 {
+    static iterPi(epsilon) {
+        return [1];
+    }
+}
 function grabscrab(anagram, dictionary) {
     return ["hello"];
 }

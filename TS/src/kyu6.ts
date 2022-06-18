@@ -136,7 +136,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Error correction #1 - Hamming Code
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -144,9 +144,202 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Background information
+The Hamming Code is used to correct errors, so-called bit flips, in data transmissions. Later in the description follows a detailed explanation of how it works.
+In this Kata we will implement the Hamming Code with bit length 3; this has some advantages and disadvantages:
+
+[ + ] It's simple to implement
+[ + ] Compared to other versions of hamming code, we can correct more mistakes
+[ - ] The size of the input triples
+Task 1: Encode function
+Implement the encode function, using the following steps:
+
+convert every letter of the text to its ASCII value;
+convert ASCII values to 8-bit binary;
+triple every bit;
+concatenate the result;
+For example:
+
+input: "hey"
+--> 104, 101, 121                  // ASCII values
+--> 01101000, 01100101, 01111001   // binary
+--> 000111111000111000000000 000111111000000111000111 000111111111111000000111  // tripled
+--> "000111111000111000000000000111111000000111000111000111111111111000000111"  // concatenated
+Task 2: Decode function:
+Check if any errors happened and correct them. Errors will be only bit flips, and not a loss of bits:
+
+111 --> 101 : this can and will happen
+111 --> 11 : this cannot happen
+Note: the length of the input string is also always divisible by 24 so that you can convert it to an ASCII value.
+
+Steps:
+
+Split the input into groups of three characters;
+Check if an error occurred: replace each group with the character that occurs most often, e.g. 010 --> 0, 110 --> 1, etc;
+Take each group of 8 characters and convert that binary number;
+Convert the binary values to decimal (ASCII);
+Convert the ASCII values to characters and concatenate the result
+For example:
+
+input: "100111111000111001000010000111111000000111001111000111110110111000010111"
+--> 100, 111, 111, 000, 111, 001, ...  // triples
+-->  0,   1,   1,   0,   1,   0,  ...  // corrected bits
+--> 01101000, 01100101, 01111001       // bytes
+--> 104, 101, 121                      // ASCII values
+--> "hey"
+*/
+function encode(text: string): string {
+    return "bits";
+}
+
+function decode(bits: string): string {
+    return "text";
+}
+/*
+describe("Test encode function", function() {
+  it("Should work with short word", function() {
+    assert.deepEqual(encode("hey"), "000111111000111000000000000111111000000111000111000111111111111000000111");
+  });
+  it("Should work with long word", function() {
+    assert.deepEqual(encode("The Sensei told me that i can do this kata"), "000111000111000111000000000111111000111000000000000111111000000111000111000000111000000000000000000111000111000000111111000111111000000111000111000111111000111111111000000111111111000000111111000111111000000111000111000111111000111000000111000000111000000000000000000111111111000111000000000111111000111111111111000111111000111111000000000111111000000111000000000000111000000000000000000111111000111111000111000111111000000111000111000000111000000000000000000111111111000111000000000111111000111000000000000111111000000000000111000111111111000111000000000000111000000000000000000111111000111000000111000000111000000000000000000111111000000000111111000111111000000000000111000111111000111111111000000000111000000000000000000111111000000111000000000111111000111111111111000000111000000000000000000111111111000111000000000111111000111000000000000111111000111000000111000111111111000000111111000000111000000000000000000111111000111000111111000111111000000000000111000111111111000111000000000111111000000000000111");
+  });
+  it("Should work with numbers", function() {
+    assert.deepEqual(encode("T3st"), "000111000111000111000000000000111111000000111111000111111111000000111111000111111111000111000000");
+  });
+  it("Should work with special characters", function() {
+    assert.deepEqual(encode("T?st!%"), "000111000111000111000000000000111111111111111111000111111111000000111111000111111111000111000000000000111000000000000111000000111000000111000111");
+  });
+});
+
+describe ("Test decode function", function() {
+  it("Should work with short word", function() {
+    assert.deepEqual(decode("100111111000111001000010000111111000000111001111000111110110111000010111"), "hey");
+  });
+  it("Should work with long word", function() {
+    assert.deepEqual(decode("000111000111000111000100000111111000111000001000000111111000000111000111000100111000000000000000000111000111000000111111000111111000000111000111000111111000111111111000000111111111000000111111000110111000010111000111000111111000111001000111000000111000000000000000000111111111000111000000000111111000111111111111000111111000111111000000000111111000000111000001000000111000000000001000000111111000111111000111000111111000000111000111000000111000000000000000000111111111000111000000000111111000111000000000000111111000000010000111000111111111000111000000000100111000000000000000000111111000111000000111000000111000000000000000000111111000000000111111000111111000000000000111000111111000111111111000000000111000000000000010000111111000000111000000000111111000111111110111000000111000000000000000000111111111000111000000000111111000111000000000000111111000111000000111000111111111000000111111000000111000000000000000000111111000111000111111000111111000000000000111000111111111000111000000000111111000000000000111"), "The Sensei told me that i can do this kata");
+  });
+  it("Should work with numbers", function() {
+    assert.deepEqual(decode("000111000111000111000001000000111111000000111111000111111111000000111011000111111111000111000000"), "T3st");
+  });
+  it("Should work with special characters", function() {
+    assert.deepEqual(decode("000111000111000111000010000000111111111111011111000111111111000000111111000111101111000111000000000000111000000000000111000000111000000111000111"), "T?st!%");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Binary to Text (ASCII) Conversion
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Write a function that takes in a binary string and returns the equivalent decoded text (the text is ASCII encoded).
+
+Each 8 bits on the binary string represent 1 character on the ASCII table.
+
+The input string will always be a valid binary string.
+
+Characters can be in the range from "00000000" to "11111111" (inclusive)
+
+Note: In the case of an empty binary string your function should return an empty string.
+
 
 */
+function binaryToString(binary: string) {
+    return "";
+}
 /*
+assert.equal(binaryToString('01100001'), 'a')
+    assert.equal(binaryToString('01001011010101000100100001011000010000100101100101000101'), 'KTHXBYE')
+
+    //Test numeric
+    assert.equal(binaryToString('00110001001100000011000100110001'), '1011')
+
+    //Test special chars
+    assert.equal(binaryToString('001111000011101000101001'), '<:)')
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: PLAYING ON A CHESSBOARD
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+With a friend we used to play the following game on a chessboard (8, rows, 8 columns). On the first row at the bottom we put numbers:
+
+1/2, 2/3, 3/4, 4/5, 5/6, 6/7, 7/8, 8/9
+
+On row 2 (2nd row from the bottom) we have:
+
+1/3, 2/4, 3/5, 4/6, 5/7, 6/8, 7/9, 8/10
+
+On row 3:
+
+1/4, 2/5, 3/6, 4/7, 5/8, 6/9, 7/10, 8/11
+
+until last row:
+
+1/9, 2/10, 3/11, 4/12, 5/13, 6/14, 7/15, 8/16
+
+When all numbers are on the chessboard each in turn we toss a coin. The one who get "head" wins and the other gives him, in dollars, the sum of the numbers on the chessboard. We play for fun, the dollars come from a monopoly game!
+
+Task
+How much can I (or my friend) win or loses for each game if the chessboard has n rows and n columns? Add all of the fractional values on an n by n sized board and give the answer as a simplified fraction.
+
+See Sample Tests for each language
+Ruby, Python, JS, Coffee, Clojure, PHP, Elixir, Crystal, Typescript, Go:
+The function called 'game' with parameter n (integer >= 0) returns as result an irreducible fraction written as an array of integers: [numerator, denominator]. If the denominator is 1 return [numerator].
+
+Haskell, Elm:
+'game' returns either a "Left Integer" if denominator is 1 otherwise "Right (Integer, Integer)"
+
+Prolog, COBOL:
+'game' returns an irreducible fraction written as an array of integers: [numerator, denominator]. If the denominator is 1 return [numerator, 1].
+
+Java, C#, C++, F#, Swift, Reason, Kotlin, Pascal, Perl:
+'game' returns a string that mimicks the array returned in Ruby, Python, JS, etc...
+
+Fortran, Bash: 'game' returns a string
+
+Forth:
+
+return on the stack the numerator and the denominator (even if the denominator is 1)
+
+In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
+*/
+class G96412 {
+    public static game(n: number): number[] {
+        return [1];
+    }
+}
+/*
+describe("Fixed Tests game", function() {
+    it("Basic tests", function() {        
+        testing(0, [0]);
+        testing(1, [1, 2]);
+        testing(8, [32]);
+    });
+});
 
 */
 
@@ -158,7 +351,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: PI APPROXIMATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -166,53 +359,40 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The aim of the kata is to try to show how difficult it can be to calculate decimals of an irrational number with a certain precision. We have chosen to get a few decimals of the number "pi" using the following infinite series (Leibniz 1646–1716):
 
+PI / 4 = 1 - 1/3 + 1/5 - 1/7 + ... which gives an approximation of PI / 4.
+
+http://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80
+
+To have a measure of the difficulty we will count how many iterations are needed to calculate PI with a given precision of epsilon.
+
+There are several ways to determine the precision of the calculus but to keep things easy we will calculate PI within epsilon of your language Math::PI constant.
+
+In other words, given as input a precision of epsilon we will stop the iterative process when the absolute value of the difference between our calculation using the Leibniz series and the Math::PI constant of your language is less than epsilon.
+
+Your function returns an array or a string or a tuple depending on the language (See sample tests) with
+
+your number of iterations
+your approximation of PI with 10 decimals
+Example :
+Given epsilon = 0.001 your function gets an approximation of 3.140592653839794 for PI at the end of 1000 iterations : since you are within epsilon of Math::PI you return
+
+iter_pi(0.001) --> [1000, 3.1405926538]
+Notes :
+Unfortunately, this series converges too slowly to be useful, as it takes over 300 terms to obtain a 2 decimal place precision. To obtain 100 decimal places of PI, it was calculated that one would need to use at least 10^50 terms of this expansion!
+
+About PI : http://www.geom.uiuc.edu/~huberty/math5337/groupe/expresspi.html
 */
+class G96411 {
+    public static iterPi(epsilon: number): number[] {
+        return [1];
+    }
+}
 /*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
+ testIt(0.1, [10, 3.0418396189]);
+    testIt(0.01,  [100, 3.1315929036]);
+    testIt(0.001,  [1000, 3.1405926538]);
 */
 
 // console.log();

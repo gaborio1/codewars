@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextBigger7 = exports.sumOfIntervals3 = void 0;
+function isInteresting(n, awesomePhrases) {
+    return 1;
+}
+function determinant(m) {
+}
 class G965A {
     static sumOfDivided(lst) {
         return [[1]];
