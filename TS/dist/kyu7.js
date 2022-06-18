@@ -1,12 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
+const golfScoreCalculator = (parList, scoreList) => {
+    const scoreMinPar = scoreList.split("").map((score, idx) => {
+        return Number(score) - Number(parList[idx]);
+    });
+    const solution = scoreMinPar.reduce((acc, curr) => acc + curr);
+    return solution;
+};
+function golfScoreCalculator2(parList, scoreList) {
+    return scoreList.split("").reduce((sum, x, i) => sum + +x - +parList[i], 0);
+}
+function golfScoreCalculator3(parList, scoreList) {
+    let score = scoreList.split("").map((x) => Number(x));
+    let par = parList.split("").map((x) => Number(x));
+    let difference = score.map((num, idx) => num - par[idx]);
+    return difference.reduce((sum, x) => sum + x);
+}
+function golfScoreCalculator4(parList, scoreList) {
+    let sum = 0;
+    for (let i = 0; i < parList.length; i++) {
+        sum += scoreList.charCodeAt(i) - parList.charCodeAt(i);
+    }
+    return sum;
+}
+function golfScoreCalculator5(parList, scoreList) {
+    let golfScore = 0;
+    for (let i = 0; i < 18; i++) {
+        golfScore += +scoreList[i] - +parList[i];
+    }
+    return golfScore;
+}
 const rakeGarden = (garden) => {
     let gardenArr = garden.split(" ");
     gardenArr = gardenArr.map((item) => {
-        return item !== "rock" && item !== "gravel" ?
-            "gravel"
-            : item;
+        return item !== "rock" && item !== "gravel" ? "gravel" : item;
     });
     return gardenArr.join(" ");
 };
@@ -14,23 +42,33 @@ const rakeGarden2 = (garden) => {
     return garden
         .split(" ")
         .map((item) => {
-        return item !== "rock" && item !== "gravel" ?
-            "gravel"
-            : item;
+        return item !== "rock" && item !== "gravel" ? "gravel" : item;
     })
         .join(" ");
 };
-const rakeGarden3 = (garden) => garden.split(" ").map((item) => item !== "rock" && item !== "gravel" ? "gravel" : item).join(" ");
-var garden1 = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel';
+const rakeGarden3 = (garden) => garden
+    .split(" ")
+    .map((item) => (item !== "rock" && item !== "gravel" ? "gravel" : item))
+    .join(" ");
+var garden1 = "slug spider rock gravel gravel gravel gravel gravel gravel gravel";
 function rakeGarden4(garden) {
-    return garden.split(" ").map(a => { if (a != "gravel" && a != "rock")
-        return "gravel"; return a; }).join(" ");
+    return garden
+        .split(" ")
+        .map((a) => {
+        if (a != "gravel" && a != "rock")
+            return "gravel";
+        return a;
+    })
+        .join(" ");
 }
 function rakeGarden5(garden) {
-    return garden.replace(/((?!\brock\b|\bgravel\b)\b\w+\b)/g, 'gravel');
+    return garden.replace(/((?!\brock\b|\bgravel\b)\b\w+\b)/g, "gravel");
 }
 function rakeGarden6(garden) {
-    return garden.split(" ").map((it) => /^gravel$|^rock$/.test(it) ? it : it.replace(it, "gravel")).join(" ");
+    return garden
+        .split(" ")
+        .map((it) => /^gravel$|^rock$/.test(it) ? it : it.replace(it, "gravel"))
+        .join(" ");
 }
 const generate = (length) => {
     let solution = "";
