@@ -179,7 +179,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Composing squared strings
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -187,74 +187,63 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A squared string is a string of n lines, each substring being n characters long. We are given two n-squared strings. For example:
 
+s1 = "abcd\nefgh\nijkl\nmnop" s2 = "qrst\nuvwx\nyz12\n3456"
+
+Let us build a new string strng of size (n + 1) x n in the following way:
+
+The first line of strng has the first char of the first line of s1 plus the chars of the last line of s2.
+The second line of strng has the first two chars of the second line of s1 plus the chars of the penultimate line of s2 except the last char
+and so on until the nth line of strng has the n chars of the nth line of s1 plus the first char of the first line of s2.
+Calling this function compose(s1, s2) we have:
+
+compose(s1, s2) -> "a3456\nefyz1\nijkuv\nmnopq"
+or printed:
+abcd    qrst  -->  a3456
+efgh    uvwx       efyz1
+ijkl    yz12       ijkuv
+mnop    3456       mnopq
 */
+function compose(s1: string, s2: string): string {
+    return "hello";
+}
 /*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
+ assert.strictEqual(
+      compose(
+        "byGt\nhTts\nRTFF\nCnnI",
+        "jIRl\nViBu\nrWOb\nNkTB"
+      ),
+      "bNkTB\nhTrWO\nRTFVi\nCnnIj"
+    );
+    assert.strictEqual(
+      compose(
+        "HXxA\nTGBf\nIPhg\nuUMD",
+        "Hcbj\nqteH\nGbMJ\ngYPW"
+      ),
+      "HgYPW\nTGGbM\nIPhqt\nuUMDH"
+    );
+    assert.strictEqual(
+      compose(
+        "tSrJ\nOONy\nsqPF\nxMkB",
+        "hLqw\nEZuh\nmYFl\nzlYf"
+      ),
+      "tzlYf\nOOmYF\nsqPEZ\nxMkBh"
+    );
+    assert.strictEqual(
+      compose(
+        "fn\nlr",
+        "Kz\nmO"
+      ),
+      "fmO\nlrK"
+    );
+    assert.strictEqual(
+      compose(
+        "fctRKq\nBCorKQ\nZKGbDO\nbhHohe\nUjyNSg\nPCOiuM",
+        "elSYAB\nLQMYuN\nTzQtaM\nFutqip\nwSAjZX\nuOPhSJ"
+      ),
+      "fuOPhSJ\nBCwSAjZ\nZKGFutq\nbhHoTzQ\nUjyNSLQ\nPCOiuMe"
+    );
 */
 
 // console.log();
@@ -265,7 +254,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Simple Fun #87: Shuffled Array
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -273,10 +262,85 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+A noob programmer was given two simple tasks: sum and sort the elements of the given array arr = [a1, a2, ..., an].
+
+He started with summing and did it easily, but decided to store the sum he found in some random position of the original array which was a bad idea. Now he needs to cope with the second task, sorting the original array arr, and it's giving him trouble since he modified it.
+
+Given the array shuffled, consisting of elements a1, a2, ..., an, and their sumvalue in random order, return the sorted array of original elements a1, a2, ..., an.
+
+Example
+For shuffled = [1, 12, 3, 6, 2], the output should be [1, 2, 3, 6].
+
+1 + 3 + 6 + 2 = 12, which means that 1, 3, 6 and 2 are original elements of the array.
+
+For shuffled = [1, -3, -5, 7, 2], the output should be [-5, -3, 2, 7].
+
+Input/Output
+[input] integer array shuffled
+
+Array of at least two integers. It is guaranteed that there is an index i such that shuffled[i] = shuffled[0] + ... + shuffled[i - 1] + shuffled[i + 1] + ... + shuffled[n].
+
+Constraints:
+
+2 ≤ shuffled.length ≤ 30,
+
+-300 ≤ shuffled[i] ≤ 300.
+
+[output] an integer array
+
+A sorted array of shuffled.length - 1 elements.
+*/
+// function shuffledArray(shuffled: number[]): number[] {
+//     return null; //replace with your code
+//   }
+/*
+expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
+    expect(solution.shuffledArray([1, -3, -5, 7, 2])).to.deep.equal([-5, -3, 2, 7]);
+    expect(solution.shuffledArray([2, -1, 2, 2, -1])).to.deep.equal([-1, -1, 2, 2]);
+    expect(solution.shuffledArray([-3, -3])).to.deep.equal([-3]);
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Strings: swap vowels' case
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Special thanks to SteffenVogel_79 for the idea.
+
+Challenge:
+
+Given a string, return a copy of the string with the vowels' case swapped.
+
+For this kata, assume that vowels are in the set "aeouiAEOUI".
+
+Example: Given a string "C is alive!", your function should return "C Is AlIvE!"
+
+Addendum: Your solution is only required to work for the ASCII character set.
+
+Please make sure you only swap cases for the vowels.
+
 
 */
-/*
+// function swapVowelCase(str: string): string {
+//     // your code here
+//   };
 
+/*
+ assert.equal(swapVowelCase(' '), ' ');
+    assert.equal(swapVowelCase('Is RubY dEad?'), 'is RUbY deAd?');
+    assert.equal(swapVowelCase('yo!'), 'yO!');
+    assert.equal(swapVowelCase('The'), 'ThE');
+    assert.equal(swapVowelCase('Lorem ipsum dolor sit amet'), 'LOrEm IpsUm dOlOr sIt AmEt');
 */
 
 // console.log();
@@ -287,7 +351,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Ninja vs Samurai: Strike
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -295,10 +359,37 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Something is wrong with our Warrior class. The strike method does not work correctly. The following shows an example of this code being used:
+
+var ninja = new Warrior('Ninja');
+var samurai = new Warrior('Samurai');
+
+samurai.strike(ninja, 3);
+// ninja.health should == 70
+Can you figure out what is wrong?
+
 
 */
-/*
+// class Warrior{
+//     private name:string;
+//       public health:number;
+//     constructor(name:string){
+//       this.name=name;
+//       this.health=100;
+//     }
 
+//   }
+
+//   Warrior.prototype.strike= function(enemy:Warrior, swings:number){
+//       enemy.health = Math.max(0, enemy.health - (swings * 10));
+//   }
+
+/*
+var ninja = new solution.Warrior('Ninja')
+    var samurai = new solution.Warrior('Samurai')
+    
+    samurai.strike(ninja, 4);
+    assert.equal(ninja.health, 60, "Ninja's health is not correct");
 */
 
 // console.log();
@@ -309,7 +400,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Integer Difference
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -317,10 +408,22 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Write a function that accepts two arguments: an array/list of integers and another integer (n).
+
+Determine the number of times where two integers in the array have a difference of n.
+
+For example:
+
+[1, 1, 5, 6, 9, 16, 27], n=4  -->  3  # (1,5), (1,5), (5,9)
+[1, 1, 3, 3], n=2             -->  4  # (1,3), (1,3), (1,3), (1,3)
 
 */
+// const intDiff = (arr: number[], n: number): number => {
+//     // your code goes here
+//   }
 /*
-
+assert.equal(intDiff([1, 1, 5, 6, 9, 16, 27], 4), 3);
+    assert.equal(intDiff([1, 1, 3, 3], 2), 4);
 */
 
 // console.log();
@@ -331,7 +434,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Sort an array by value and index
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -339,10 +442,45 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Sort an array by value and index
+Your task is to sort an array of integer numbers by the product of the value and the index of the positions.
+
+For sorting the index starts at 1, NOT at 0!
+The sorting has to be ascending.
+The array will never be null and will always contain numbers.
+
+Example:
+
+Input: 23, 2, 3, 4, 5
+Product of value and index:
+23 => 23 * 1 = 23  -> Output-Pos 4
+ 2 =>  2 * 2 = 4   -> Output-Pos 1
+ 3 =>  3 * 3 = 9   -> Output-Pos 2
+ 4 =>  4 * 4 = 16  -> Output-Pos 3
+ 5 =>  5 * 5 = 25  -> Output-Pos 5
+
+Output: 2, 3, 4, 23, 5
 
 */
+function sortByValueAndIndex(array: number[]): number[] {
+    return array;
+}
 /*
-
+var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
+    var expected = [ 1, 2, 3, 4, 5 ];    
+    assert.deepEqual(actual, expected);
+      
+    actual = solution.sortByValueAndIndex([ 23, 2, 3, 4, 5 ]);
+    expected = [ 2, 3, 4, 23, 5 ];    
+    assert.deepEqual(actual, expected);
+      
+    actual = solution.sortByValueAndIndex([ 26, 2, 3, 4, 5 ]);
+    expected = [ 2, 3, 4, 5, 26 ];    
+    assert.deepEqual(actual, expected);
+      
+    actual = solution.sortByValueAndIndex([ 9, 5, 1, 4, 3 ]);
+    expected = [ 1, 9, 5, 3, 4 ];    
+    assert.deepEqual(actual, expected);    
 */
 
 // console.log();
@@ -353,7 +491,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Number of Divisions
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -361,10 +499,32 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Calculate how many times a number can be divided by a given number.
 
+Example
+For example the number 6 can be divided by 2 two times:
+
+1. 6 / 2 = 3
+2. 3 / 2 = 1 remainder = 1
+100 can be divided by 2 six times:
+
+1. 100 / 2 = 50
+2. 50 / 2 = 25
+3. 25 / 2 = 12 remainder 1
+4. 12 / 2 = 6
+5. 6 / 2 = 3
+6. 3 / 2 = 1 remainder 1
 */
+function divisions(n: number, divisor: number): number {
+    throw new Error("This method or operations is not implemented.");
+}
 /*
-
+ assert.strictEqual(divisions(6, 2), 2);
+    assert.strictEqual(divisions(100, 2), 6);
+    assert.strictEqual(divisions(2450, 5), 4);
+    assert.strictEqual(divisions(9999, 3), 8);
+    assert.strictEqual(divisions(2, 3), 0);
+    assert.strictEqual(divisions(5, 5), 1);
 */
 
 // console.log();
@@ -375,7 +535,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Single digit
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -383,10 +543,125 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The goal of this Kata is to reduce the passed integer to a single digit (if not already) by converting the number to binary, taking the sum of the binary digits, and if that sum is not a single digit then repeat the process.
+
+If the passed integer is already a single digit there is no need to reduce
+For example given 5665 the function should return 5:
+
+5665 --> (binary) 1011000100001
+1011000100001 --> (sum of binary digits) 5
+Given 123456789 the function should return 1:
+
+123456789 --> (binary) 111010110111100110100010101
+111010110111100110100010101 --> (sum of binary digits) 16
+16 --> (binary) 10000
+10000 --> (sum of binary digits) 1
+*/
+// function singleDigit(n: number): number {
+//     //your code here
+//   }
+/*
+assert.strictEqual(singleDigit(5), 5)
+    assert.strictEqual(singleDigit(999), 8)
+    assert.strictEqual(singleDigit(1234444123), 1)
+    assert.strictEqual(singleDigit(443566), 2)
+    assert.strictEqual(singleDigit(565656565), 3)
+    assert.strictEqual(singleDigit(4868872), 8)
+    assert.strictEqual(singleDigit(234234235), 2)
+    assert.strictEqual(singleDigit(567448), 7)
+    assert.strictEqual(singleDigit(1000000000), 3)
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Easy wallpaper
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+John wants to decorate the walls of a room with wallpaper. He wants a fool-proof method for getting it right.
+
+John knows that the rectangular room has a length of l meters, a width of w meters, a height of h meters. The standard width of the rolls he wants to buy is 52 centimeters. The length of a roll is 10 meters. He bears in mind however, that it’s best to have an extra length of wallpaper handy in case of mistakes or miscalculations so he wants to buy a length 15% greater than the one he needs.
+
+Last time he did these calculations he got a headache, so could you help John?
+
+Task
+Your function wallpaper(l, w, h) should return as a plain English word in lower case the number of rolls he must buy.
+
+Example:
+wallpaper(4.0, 3.5, 3.0) should return "ten"
+
+wallpaper(0.0, 3.5, 3.0) should return "zero"
+
+Notes:
+all rolls (even with incomplete width) are put edge to edge
+
+0 <= l, w, h (floating numbers); it can happens that w * h * l is zero
+
+the integer r (number of rolls) will always be less or equal to 20
+
+FORTH: the number of rolls will be a positive or null integer (not a plain English word; this number can be greater than 20)
+
+In Javascript English numbers are preloaded and can be accessed as:
+
+numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+For other languages it is not preloaded but you can use the above one if you need it.
+
 
 */
+// function wallpaper(l: number, w: number, h: number): string {
+//     // your code
+//   }
 /*
+ assert.strictEqual(wallpaper(6.3, 4.5, 3.29), "sixteen");
+    assert.strictEqual(wallpaper(6.3, 5.8, 3.13), "seventeen");
+    assert.strictEqual(wallpaper(6.1, 6.7, 2.81), "sixteen");
+    assert.strictEqual(wallpaper(6.1, 2.0, 3.15), "twelve");
+*/
 
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Cryptanalysis Word Patterns
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+In cryptanalysis, words patterns can be a useful tool in cracking simple ciphers.
+
+A word pattern is a description of the patterns of letters occurring in a word, where each letter is given an integer code in order of appearance. So the first letter is given the code 0, and second is then assigned 1 if it is different to the first letter or 0 otherwise, and so on.
+
+As an example, the word "hello" would become "0.1.2.2.3". For this task case-sensitivity is ignored, so "hello", "helLo" and "heLlo" will all return the same word pattern.
+
+Your task is to return the word pattern for a given word. All words provided will be non-empty strings of alphabetic characters only, i.e. matching the regex "[a-zA-Z]+".
+
+
+*/
+function wordPattern(word: string): string {
+    return "";
+}
+/*
+ assert.deepEqual(wordPattern("hello"), "0.1.2.2.3");
+    assert.deepEqual(wordPattern("heLlo"), "0.1.2.2.3");
+    assert.deepEqual(wordPattern("helLo"), "0.1.2.2.3");
+    assert.deepEqual(wordPattern("Hippopotomonstrosesquippedaliophobia"), "0.1.2.2.3.2.3.4.3.5.3.6.7.4.8.3.7.9.7.10.11.1.2.2.9.12.13.14.1.3.2.0.3.15.1.13");
 */
 
 // console.log();

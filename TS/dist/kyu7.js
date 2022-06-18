@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
+function compose(s1, s2) {
+    return "hello";
+}
+function sortByValueAndIndex(array) {
+    return array;
+}
+function divisions(n, divisor) {
+    throw new Error("This method or operations is not implemented.");
+}
+function wordPattern(word) {
+    return "";
+}
 const golfScoreCalculator = (parList, scoreList) => {
     const scoreMinPar = scoreList.split("").map((score, idx) => {
         return Number(score) - Number(parList[idx]);
