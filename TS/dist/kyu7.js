@@ -10,9 +10,14 @@ function sortByValueAndIndex(array) {
 function divisions(n, divisor) {
     throw new Error("This method or operations is not implemented.");
 }
-function wordPattern(word) {
+const wordPattern = (word) => {
+    let solution = "";
+    for (let letter of word) {
+        console.log(letter);
+    }
     return "";
-}
+};
+console.log(wordPattern("hello"));
 const golfScoreCalculator = (parList, scoreList) => {
     const scoreMinPar = scoreList.split("").map((score, idx) => {
         return Number(score) - Number(parList[idx]);
