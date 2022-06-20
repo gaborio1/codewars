@@ -11,13 +11,31 @@ function divisions(n, divisor) {
     throw new Error("This method or operations is not implemented.");
 }
 const wordPattern = (word) => {
-    let solution = "";
-    for (let letter of word) {
-        console.log(letter);
-    }
-    return "";
+    const counterObj = {};
+    let solutionArr = [];
+    let counter = 0;
+    word.toLowerCase().split("").forEach((char, i) => {
+        console.log("-----ITERATION:", i, "char:", char, "-----");
+        if (!counterObj.hasOwnProperty(char)) {
+            counterObj[char] = counter;
+            solutionArr.push(counterObj[char]);
+            counter += 1;
+        }
+        else if (counterObj.hasOwnProperty(char)) {
+            console.log("duplicate:", char);
+            solutionArr.push(counterObj[char]);
+        }
+        console.log("       object:", counterObj);
+    });
+    console.log(counterObj);
+    console.log(solutionArr);
+    const solution = solutionArr.join(".");
+    return solution;
 };
 console.log(wordPattern("hello"));
+console.log(wordPattern("helLo"));
+console.log(wordPattern("heLlo"));
+console.log(wordPattern("Hippopotomonstrosesquippedaliophobia"));
 const golfScoreCalculator = (parList, scoreList) => {
     const scoreMinPar = scoreList.split("").map((score, idx) => {
         return Number(score) - Number(parList[idx]);
