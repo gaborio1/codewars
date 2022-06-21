@@ -10,6 +10,41 @@ function sortByValueAndIndex(array) {
 function divisions(n, divisor) {
     throw new Error("This method or operations is not implemented.");
 }
+const singleDigit = (num) => {
+    if (num < 10)
+        return num;
+    const binary = num.toString(2);
+    const bitArr = binary.split("").map((bit) => Number(bit));
+    const sum = bitArr.reduce((acc, curr) => acc + curr);
+    return sum < 10
+        ? sum
+        : singleDigit(sum);
+};
+function singleDigit2(n) {
+    function bitCount(m) {
+        return (m.toString(2).match(/1/g) || []).length;
+    }
+    return n > 9 ? singleDigit(bitCount(n)) : n;
+}
+function singleDigit3(n) {
+    while (n > 9) {
+        n = n.toString(2).replace(/0/g, "").length;
+    }
+    return n;
+}
+const singleDigit4 = (n, s = n.toString(2)) => {
+    if (n <= 9)
+        return n;
+    const addOnes = (s) => s.split('').reduce((sum, curr) => (curr === '1') ? ++sum : sum, 0);
+    let digit = addOnes(s);
+    while (digit > 9) {
+        s = digit.toString(2);
+        digit = addOnes(s);
+    }
+    return digit;
+};
+const singleDigit5 = (n) => n < 10 ? n : singleDigit([...n.toString(2)].reduce((a, b) => a + +b, 0));
+let singleDigit6 = (n) => (n < 10) ? n : singleDigit((n.toString(2).match(/1/g) || []).length);
 const wordPattern = (word) => {
     const counterObj = {};
     let solutionArr = [];
@@ -17,27 +52,94 @@ const wordPattern = (word) => {
     word.toLowerCase()
         .split("")
         .forEach((char, i) => {
-        console.log("-----ITERATION:", i, "char:", char, "-----");
         if (!counterObj.hasOwnProperty(char)) {
             counterObj[char] = counter;
             solutionArr.push(counterObj[char]);
             counter += 1;
         }
         else if (counterObj.hasOwnProperty(char)) {
-            console.log("duplicate:", char);
             solutionArr.push(counterObj[char]);
         }
-        console.log("       object:", counterObj);
     });
-    console.log(counterObj);
-    console.log(solutionArr);
     const solution = solutionArr.join(".");
     return solution;
 };
-console.log(wordPattern("hello"));
-console.log(wordPattern("helLo"));
-console.log(wordPattern("heLlo"));
-console.log(wordPattern("Hippopotomonstrosesquippedaliophobia"));
+const wordPatternA = (word) => {
+    const counterObj = {};
+    let solutionArr = [];
+    let counter = 0;
+    word.toLowerCase()
+        .split("")
+        .forEach((char, i) => {
+        if (!counterObj.hasOwnProperty(char)) {
+            solutionArr.push(counter);
+            counter += 1;
+        }
+        else if (counterObj.hasOwnProperty(char)) {
+            solutionArr.push(counter);
+        }
+    });
+    const solution = solutionArr.join(".");
+    return solution;
+};
+const wordPattern2 = (word) => {
+    const splitted = word.toLowerCase().split('');
+    const alphabet = {};
+    let counter = 0;
+    splitted.forEach((symbol) => {
+        if (!alphabet[symbol] && alphabet[symbol] !== 0) {
+            alphabet[symbol] = counter;
+            counter += 1;
+        }
+    });
+    return splitted.map((symbol) => alphabet[symbol]).join('.');
+};
+function wordPattern3(word) {
+    const usedLetters = {};
+    let counter = 0;
+    const pattern = [];
+    word.split('')
+        .forEach((c) => {
+        const char = c.toLowerCase();
+        if (usedLetters[char] === undefined) {
+            usedLetters[char] = counter++;
+        }
+        pattern.push(usedLetters[char]);
+    });
+    return pattern.join('.');
+}
+const wordPattern4 = (word, chars = [...new Set(word.toLowerCase())]) => [...word.toLowerCase()].map(c => chars.indexOf(c)).join('.');
+function wordPattern5(word) {
+    const letters = [...new Set(word.toLowerCase())];
+    return word.toLowerCase().split('').map(l => letters.indexOf(l)).join('.');
+}
+function wordPattern6(word) {
+    return word
+        .toLowerCase()
+        .split("")
+        .reduce(({ chars, res }, c) => {
+        if (!chars.includes(c))
+            chars.push(c);
+        res.push(chars.indexOf(c));
+        return { chars, res };
+    }, { chars: [], res: [] })
+        .res
+        .join(".");
+}
+function wordPattern7(word) {
+    let n = [];
+    return word.toLowerCase().split('').map(c => {
+        if (n.indexOf(c) < 0) {
+            n.push(c);
+        }
+        return n.indexOf(c);
+    }).join('.');
+}
+function wordPattern8(word) {
+    let arr = word.toLowerCase().split('');
+    let unique = [...new Set(arr)];
+    return arr.map(v => unique.indexOf(v)).join('.');
+}
 const golfScoreCalculator = (parList, scoreList) => {
     const scoreMinPar = scoreList.split("").map((score, idx) => {
         return Number(score) - Number(parList[idx]);
