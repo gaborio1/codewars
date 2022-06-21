@@ -14,7 +14,9 @@ const wordPattern = (word) => {
     const counterObj = {};
     let solutionArr = [];
     let counter = 0;
-    word.toLowerCase().split("").forEach((char, i) => {
+    word.toLowerCase()
+        .split("")
+        .forEach((char, i) => {
         console.log("-----ITERATION:", i, "char:", char, "-----");
         if (!counterObj.hasOwnProperty(char)) {
             counterObj[char] = counter;
