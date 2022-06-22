@@ -15,7 +15,10 @@ class SnakesLadders {
     }
 }
 const parseMolecule = (formula) => {
+    const elementMatch = /[A-Z]{1}[a-z]?/g;
+    console.log(formula.match(elementMatch));
 };
+console.log(parseMolecule("H2O"));
 const josephusSurvivor = (num, gap) => {
     let items = [];
     for (let i = 1; i <= num; i += 1) {
@@ -38,7 +41,6 @@ const josephusSurvivor = (num, gap) => {
     }
     return solutionArr[solutionArr.length - 1];
 };
-console.log(josephusSurvivor(11, 19));
 const josephus2 = (items, gap) => {
     if (items.length === 1)
         return items;

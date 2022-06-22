@@ -21,6 +21,46 @@ class G96411 {
         return [1];
     }
 }
+class G001 {
+    static howmuch(m, n) {
+        let solution = [];
+        let min = m, max = n;
+        if (m > n) {
+            min = n;
+            max = m;
+        }
+        for (let i = min; i <= max; i += 1) {
+            if (Number.isInteger((i - 1) / 9) &&
+                Number.isInteger((i - 2) / 7)) {
+                console.log("match:", i);
+                solution.push([
+                    `M: ${i}`,
+                    `B: ${(i - 2) / 7}`,
+                    `C: ${(i - 1) / 9}`,
+                ]);
+            }
+        }
+        return solution;
+    }
+}
+class G0012 {
+    static howmuch(m, n) {
+        let i = Math.min(m, n);
+        let j = Math.max(m, n);
+        let result = [];
+        while (i <= j) {
+            if (i % 9 == 1 && i % 7 == 2) {
+                result.push([
+                    `M: ${i}`,
+                    `B: ${(i - 2) / 7}`,
+                    `C: ${(i - 1) / 9}`,
+                ]);
+            }
+            i++;
+        }
+        return result;
+    }
+}
 function grabscrab(anagram, dictionary) {
     return ["hello"];
 }

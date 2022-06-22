@@ -322,11 +322,14 @@ Note that brackets may be round, square or curly and can also be nested. Index a
 */
 
 const parseMolecule = (formula: string) => {
-    // TODO: do your science here
+    // MATCH STANDALONE ELELMENT ( ONE UPPERCASE FOLLOWED BY OPTIONAL LOWERCASE)
+    const elementMatch = /[A-Z]{1}[a-z]?/g;
+
+    console.log(formula.match(elementMatch));
 };
 
 // {H: 2, O: 1}
-// console.log(parseMolecule("H2O"));
+console.log(parseMolecule("H2O"));
 // {Mg: 1, O: 2, H: 2}
 // console.log(parseMolecule("Mg(OH)2"));
 // {K: 4, O: 14, N: 2, S: 4}
@@ -409,7 +412,8 @@ const josephusSurvivor = (num: number, gap: number): number => {
 //  4
 // console.log(josephusSurvivor(7, 3));
 // 10
-console.log(josephusSurvivor(11, 19));
+// ❗️❗️❗️
+// console.log(josephusSurvivor(11, 19));
 // console.log(josephusSurvivor(7, 8));
 // console.log();
 // console.log();

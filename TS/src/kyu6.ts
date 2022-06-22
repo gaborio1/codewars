@@ -402,10 +402,11 @@ class G96411 {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ COMMENT AND ADD SOLOUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HOW MUCH?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: DECLARE MULTIPLE VARIABLES WITH ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -445,23 +446,100 @@ See "Sample Tests" to know the format of the return.
 
 
 */
-// class G001 {
-//     public static howmuch(m: number, n: number): string[][] {
-//         // your code
-//     }
-// }
+class G001 {
+    public static howmuch(m: number, n: number): string[][] {
+        let solution: string[][] = [];
+
+        let min: number = m,
+            max: number = n;
+        if (m > n) {
+            min = n;
+            max = m;
+        }
+
+        // DECLARE MULTIPLE VARIABLES WITH ARRAY
+        //❗️❗️❗️ const [min, max] = [Math.min(m, n), Math.max(m, n)]; ❗️❗️❗️
+
+        for (let i = min; i <= max; i += 1) {
+            if (
+                Number.isInteger((i - 1) / 9) &&
+                Number.isInteger((i - 2) / 7)
+            ) {
+                console.log("match:", i);
+                solution.push([
+                    `M: ${i}`,
+                    `B: ${(i - 2) / 7}`,
+                    `C: ${(i - 1) / 9}`,
+                ]);
+            }
+        }
+
+        return solution;
+    }
+}
 /*
  testing(1, 100, [["M: 37", "B: 5", "C: 4"], ["M: 100", "B: 14", "C: 11"]]);
         testing(1000, 1100, [["M: 1045", "B: 149", "C: 116"]]);
         testing(10000, 9950, [["M: 9991", "B: 1427", "C: 1110"]]);
 */
 
-// console.log();
+// console.log(G001.howmuch(1, 100));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+// class G0012 {
+//     public static howmuch(m: number, n: number): string[][] {
+//         var i = Math.min(m, n);
+//         var j = Math.max(m, n);
+//         var res = [];
+//         while (i <= j) {
+//             if ((i % 9 == 1) && (i % 7 == 2)) {
+//                 res = res.concat([["M: " + i, "B: " + ~~(i / 7), "C: " + ~~(i / 9)]]);
+//             }
+//             i++;
+//         }
+//         return res;
+//     }
+// }
+
+class G0012 {
+    public static howmuch(m: number, n: number): string[][] {
+        let i = Math.min(m, n);
+        let j = Math.max(m, n);
+        let result: string[][] = [];
+        while (i <= j) {
+            if (i % 9 == 1 && i % 7 == 2) {
+                result.push([
+                    `M: ${i}`,
+                    `B: ${(i - 2) / 7}`,
+                    `C: ${(i - 1) / 9}`,
+                ]);
+            }
+            i++;
+        }
+        return result;
+    }
+}
+
+// class G0013 {
+//     public static howmuch(m: number, n: number): string[][] {
+//         const [min, max] = [Math.min(m, n), Math.max(m, n)];
+//         return [...Array(max - min + 1).keys()]
+//             .map((e) => e + min)
+//             .reduce((r, e, min) => {
+//                 if (e % 7 == 2 && e % 9 == 1) {
+//                     r.push([
+//                         "M: " + e,
+//                         "B: " + Math.floor(e / 7),
+//                         "C: " + Math.floor(e / 9),
+//                     ]);
+//                 }
+//                 return r;
+//             }, []);
+//     }
+// }
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: GRABSCRAB
@@ -591,7 +669,7 @@ The input strings are separated by , instead of \n. The ouput strings should be 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️ REFACTOR WITHOUT SOLUTION-1, ADD COMMENTS AND SOLUTIONS ❗️❗️❗️
+// ❗️❗️❗️ REFACTOR WITHOUT SOLUTION-1 ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: BALL UPWARDS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
