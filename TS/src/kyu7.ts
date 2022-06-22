@@ -537,7 +537,7 @@ function divisions(n: number, divisor: number): number {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Single digit
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: RECURSION, CONVERT TO BINARY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -558,7 +558,6 @@ Given 123456789 the function should return 1:
 10000 --> (sum of binary digits) 1
 */
 const singleDigit = (num: number): number => {
-
     if (num < 10) return num;
 
     const binary: string = num.toString(2);
@@ -568,11 +567,8 @@ const singleDigit = (num: number): number => {
     const sum: number = bitArr.reduce((acc, curr) => acc + curr);
     // console.log(sum);
 
-    return sum < 10
-        ? sum
-        : singleDigit(sum);
-
-}
+    return sum < 10 ? sum : singleDigit(sum);
+};
 
 /*
 console.log(singleDigit(123456789));
@@ -594,7 +590,6 @@ CYCLE COUNT: 2
 
 1 RETURN VALUE
 */
-
 
 /*
 assert.strictEqual(singleDigit(5), 5)
@@ -623,19 +618,18 @@ function singleDigit2(n: number): number {
     return n > 9 ? singleDigit(bitCount(n)) : n;
 }
 
-
 function singleDigit3(n: number): number {
     while (n > 9) {
-        n = n.toString(2).replace(/0/g, "").length
+        n = n.toString(2).replace(/0/g, "").length;
     }
-    return n
+    return n;
 }
 
 const singleDigit4 = (n: number, s = n.toString(2)): number => {
-
     if (n <= 9) return n;
 
-    const addOnes = (s: string): number => s.split('').reduce((sum, curr) => (curr === '1') ? ++sum : sum, 0);
+    const addOnes = (s: string): number =>
+        s.split("").reduce((sum, curr) => (curr === "1" ? ++sum : sum), 0);
 
     let digit = addOnes(s);
 
@@ -645,18 +639,18 @@ const singleDigit4 = (n: number, s = n.toString(2)): number => {
     }
 
     return digit;
-
-}
+};
 
 const singleDigit5 = (n: number): number =>
     n < 10 ? n : singleDigit([...n.toString(2)].reduce((a, b) => a + +b, 0));
 
-let singleDigit6 = (n: number): number => (n < 10) ? n : singleDigit((n.toString(2).match(/1/g) || []).length);
+let singleDigit6 = (n: number): number =>
+    n < 10 ? n : singleDigit((n.toString(2).match(/1/g) || []).length);
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Easy wallpaper
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: RECURSION, CONVERT TO BINARY
+// KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -692,9 +686,45 @@ For other languages it is not preloaded but you can use the above one if you nee
 
 
 */
-// function wallpaper(l: number, w: number, h: number): string {
-//     // your code
-//   }
+
+const wallpaper = (l: number, w: number, h: number): string => {
+    const numbers: string[] = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+    ];
+
+    if (w * l * h === 0) return numbers[0];
+
+    const ROLL: number = 5.2;
+    const sideWalls: number = 2 * (w + l) * h * 1.15;
+    // console.log(sideWalls);
+    const numRolls: number = sideWalls / ROLL;
+    // console.log(numRolls);
+    // console.log(Math.ceil(numRolls));
+    const solution: string = numbers[Math.ceil(numRolls)];
+
+    return solution;
+};
+
 /*
  assert.strictEqual(wallpaper(6.3, 4.5, 3.29), "sixteen");
     assert.strictEqual(wallpaper(6.3, 5.8, 3.13), "seventeen");
@@ -702,18 +732,82 @@ For other languages it is not preloaded but you can use the above one if you nee
     assert.strictEqual(wallpaper(6.1, 2.0, 3.15), "twelve");
 */
 
-// console.log();
+// console.log(wallpaper(0, 4.5, 3.29));
+// 15.716076923076923
+// 16
+
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ❗️❗️❗️ COMMENT THIS ❗️❗️❗️
+function wallpaper2(l: number, w: number, h: number): string {
+    const numbers = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+    ];
+    return l === 0 || w === 0 || h === 0
+        ? "zero"
+        : numbers[Math.ceil(((l * h + w * h) * 2 * 1.15) / (10 * 0.52))];
+}
+
+const numbers = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+];
+
+export function wallpaper3(l: number, w: number, h: number): string {
+    const roomArea = (l * h + w * h) * 2;
+    const rollArea = 0.52 * 10;
+
+    const rolls = Math.ceil(roomArea / rollArea + (roomArea / rollArea) * 0.15);
+
+    return numbers[rolls];
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Cryptanalysis Word Patterns
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: INTERFACE
+// KEYWORDS: INTERFACE, OBJECT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -732,7 +826,7 @@ const wordPattern = (word: string): string => {
     interface StrKey {
         [key: string]: number;
     }
-
+    // KEEP TRACK OF UNIQUE LETTERS
     const counterObj: StrKey = {};
 
     let solutionArr: number[] = [];
@@ -743,10 +837,14 @@ const wordPattern = (word: string): string => {
         .forEach((char, i) => {
             // console.log("-----ITERATION:", i, "char:", char, "-----");
 
+            // IF PROPERTY DOES NOT EXIST, CREATE IT, ASSIGN VALUE OF COUNTER
+            // PUSH ITS COUNTER VALUE TO SOLUTION
+            // AND INCREMENT COUNTER
             if (!counterObj.hasOwnProperty(char)) {
                 counterObj[char] = counter;
                 solutionArr.push(counterObj[char]);
                 counter += 1;
+                // IF IT EXISTS, JUST PUSH ITS VALUE TO SOLUTION
             } else if (counterObj.hasOwnProperty(char)) {
                 // console.log("duplicate:", char);
                 solutionArr.push(counterObj[char]);
@@ -759,37 +857,7 @@ const wordPattern = (word: string): string => {
 
     // console.log(solutionArr);
 
-    const solution: string = solutionArr.join(".");
-
-    return solution;
-};
-
-const wordPatternA = (word: string): string => {
-    interface StrKey {
-        [key: string]: number;
-    }
-
-    const counterObj: StrKey = {};
-
-    let solutionArr: number[] = [];
-    let counter: number = 0;
-
-    word.toLowerCase()
-        .split("")
-        .forEach((char, i) => {
-
-            if (!counterObj.hasOwnProperty(char)) {
-                // counterObj[char] = counter;
-                // solutionArr.push(counterObj[char]);
-                solutionArr.push(counter);
-
-                counter += 1;
-            } else if (counterObj.hasOwnProperty(char)) {
-                solutionArr.push(counter);
-            }
-
-        });
-
+    // FORMAT SOLUTION
     const solution: string = solutionArr.join(".");
 
     return solution;
@@ -834,7 +902,7 @@ duplicate: l
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const wordPattern2 = (word: string): string => {
-    const splitted: string[] = word.toLowerCase().split('');
+    const splitted: string[] = word.toLowerCase().split("");
     const alphabet: { [key: string]: number } = {};
     let counter: number = 0;
 
@@ -846,62 +914,68 @@ const wordPattern2 = (word: string): string => {
         }
     });
 
-    return splitted.map((symbol: string) => alphabet[symbol]).join('.');
+    return splitted.map((symbol: string) => alphabet[symbol]).join(".");
 };
-
 
 function wordPattern3(word: string): string {
     const usedLetters: { [letter: string]: number } = {};
     let counter: number = 0;
     const pattern: number[] = [];
-    word.split('')
-        .forEach((c: string) => {
-            const char = c.toLowerCase();
-            if (usedLetters[char] === undefined) {
-                usedLetters[char] = counter++;
-            }
-            pattern.push(usedLetters[char])
-        })
-    return pattern.join('.');
+    word.split("").forEach((c: string) => {
+        const char = c.toLowerCase();
+        if (usedLetters[char] === undefined) {
+            usedLetters[char] = counter++;
+        }
+        pattern.push(usedLetters[char]);
+    });
+    return pattern.join(".");
 }
 
-
-const wordPattern4 = (word: string, chars = [...new Set(word.toLowerCase())]) => [...word.toLowerCase()].map(c => chars.indexOf(c)).join('.');
-
+const wordPattern4 = (word: string, chars = [...new Set(word.toLowerCase())]) =>
+    [...word.toLowerCase()].map((c) => chars.indexOf(c)).join(".");
 
 function wordPattern5(word: string): string {
     const letters: string[] = [...new Set(word.toLowerCase())];
-    return word.toLowerCase().split('').map(l => letters.indexOf(l)).join('.')
+    return word
+        .toLowerCase()
+        .split("")
+        .map((l) => letters.indexOf(l))
+        .join(".");
 }
-
 
 function wordPattern6(word: string): string {
     return word
         .toLowerCase()
         .split("")
-        .reduce(({ chars, res }, c) => {
-            if (!chars.includes(c)) chars.push(c);
-            res.push(chars.indexOf(c));
-            return { chars, res }
-        }, { chars: [], res: [] } as { chars: string[], res: number[] })
-        .res
-        .join(".")
+        .reduce(
+            ({ chars, res }, c) => {
+                if (!chars.includes(c)) chars.push(c);
+                res.push(chars.indexOf(c));
+                return { chars, res };
+            },
+            { chars: [], res: [] } as { chars: string[]; res: number[] }
+        )
+        .res.join(".");
 }
 
 function wordPattern7(word: string): string {
     let n: string[] = [];
-    return word.toLowerCase().split('').map(c => {
-        if (n.indexOf(c) < 0) {
-            n.push(c);
-        }
-        return n.indexOf(c);
-    }).join('.');
+    return word
+        .toLowerCase()
+        .split("")
+        .map((c) => {
+            if (n.indexOf(c) < 0) {
+                n.push(c);
+            }
+            return n.indexOf(c);
+        })
+        .join(".");
 }
 
 function wordPattern8(word: string): string {
-    let arr = word.toLowerCase().split('')
-    let unique = [...new Set(arr)]
-    return arr.map(v => unique.indexOf(v)).join('.')
+    let arr = word.toLowerCase().split("");
+    let unique = [...new Set(arr)];
+    return arr.map((v) => unique.indexOf(v)).join(".");
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: WHATS MY GOLF SCORE
@@ -1492,16 +1566,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -2337,8 +2411,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -2416,7 +2490,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -3127,10 +3201,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -3240,8 +3314,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -4348,8 +4422,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -4962,10 +5037,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -5418,7 +5493,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -5911,17 +5986,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -6054,13 +6129,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -8662,10 +8737,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -9778,7 +9853,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -10854,8 +10929,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -11005,10 +11080,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -12005,11 +12080,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -12804,9 +12879,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -13088,8 +13163,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

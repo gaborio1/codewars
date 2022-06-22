@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = void 0;
 function compose(s1, s2) {
     return "hello";
 }
@@ -16,9 +16,7 @@ const singleDigit = (num) => {
     const binary = num.toString(2);
     const bitArr = binary.split("").map((bit) => Number(bit));
     const sum = bitArr.reduce((acc, curr) => acc + curr);
-    return sum < 10
-        ? sum
-        : singleDigit(sum);
+    return sum < 10 ? sum : singleDigit(sum);
 };
 function singleDigit2(n) {
     function bitCount(m) {
@@ -35,7 +33,7 @@ function singleDigit3(n) {
 const singleDigit4 = (n, s = n.toString(2)) => {
     if (n <= 9)
         return n;
-    const addOnes = (s) => s.split('').reduce((sum, curr) => (curr === '1') ? ++sum : sum, 0);
+    const addOnes = (s) => s.split("").reduce((sum, curr) => (curr === "1" ? ++sum : sum), 0);
     let digit = addOnes(s);
     while (digit > 9) {
         s = digit.toString(2);
@@ -44,7 +42,97 @@ const singleDigit4 = (n, s = n.toString(2)) => {
     return digit;
 };
 const singleDigit5 = (n) => n < 10 ? n : singleDigit([...n.toString(2)].reduce((a, b) => a + +b, 0));
-let singleDigit6 = (n) => (n < 10) ? n : singleDigit((n.toString(2).match(/1/g) || []).length);
+let singleDigit6 = (n) => n < 10 ? n : singleDigit((n.toString(2).match(/1/g) || []).length);
+const wallpaper = (l, w, h) => {
+    const numbers = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+    ];
+    if (w * l * h === 0)
+        return numbers[0];
+    const ROLL = 5.2;
+    const sideWalls = 2 * (w + l) * h * 1.15;
+    const numRolls = sideWalls / ROLL;
+    const solution = numbers[Math.ceil(numRolls)];
+    return solution;
+};
+function wallpaper2(l, w, h) {
+    const numbers = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+    ];
+    return l === 0 || w === 0 || h === 0
+        ? "zero"
+        : numbers[Math.ceil(((l * h + w * h) * 2 * 1.15) / (10 * 0.52))];
+}
+const numbers = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+];
+function wallpaper3(l, w, h) {
+    const roomArea = (l * h + w * h) * 2;
+    const rollArea = 0.52 * 10;
+    const rolls = Math.ceil(roomArea / rollArea + (roomArea / rollArea) * 0.15);
+    return numbers[rolls];
+}
+exports.wallpaper3 = wallpaper3;
 const wordPattern = (word) => {
     const counterObj = {};
     let solutionArr = [];
@@ -64,26 +152,8 @@ const wordPattern = (word) => {
     const solution = solutionArr.join(".");
     return solution;
 };
-const wordPatternA = (word) => {
-    const counterObj = {};
-    let solutionArr = [];
-    let counter = 0;
-    word.toLowerCase()
-        .split("")
-        .forEach((char, i) => {
-        if (!counterObj.hasOwnProperty(char)) {
-            solutionArr.push(counter);
-            counter += 1;
-        }
-        else if (counterObj.hasOwnProperty(char)) {
-            solutionArr.push(counter);
-        }
-    });
-    const solution = solutionArr.join(".");
-    return solution;
-};
 const wordPattern2 = (word) => {
-    const splitted = word.toLowerCase().split('');
+    const splitted = word.toLowerCase().split("");
     const alphabet = {};
     let counter = 0;
     splitted.forEach((symbol) => {
@@ -92,26 +162,29 @@ const wordPattern2 = (word) => {
             counter += 1;
         }
     });
-    return splitted.map((symbol) => alphabet[symbol]).join('.');
+    return splitted.map((symbol) => alphabet[symbol]).join(".");
 };
 function wordPattern3(word) {
     const usedLetters = {};
     let counter = 0;
     const pattern = [];
-    word.split('')
-        .forEach((c) => {
+    word.split("").forEach((c) => {
         const char = c.toLowerCase();
         if (usedLetters[char] === undefined) {
             usedLetters[char] = counter++;
         }
         pattern.push(usedLetters[char]);
     });
-    return pattern.join('.');
+    return pattern.join(".");
 }
-const wordPattern4 = (word, chars = [...new Set(word.toLowerCase())]) => [...word.toLowerCase()].map(c => chars.indexOf(c)).join('.');
+const wordPattern4 = (word, chars = [...new Set(word.toLowerCase())]) => [...word.toLowerCase()].map((c) => chars.indexOf(c)).join(".");
 function wordPattern5(word) {
     const letters = [...new Set(word.toLowerCase())];
-    return word.toLowerCase().split('').map(l => letters.indexOf(l)).join('.');
+    return word
+        .toLowerCase()
+        .split("")
+        .map((l) => letters.indexOf(l))
+        .join(".");
 }
 function wordPattern6(word) {
     return word
@@ -123,22 +196,25 @@ function wordPattern6(word) {
         res.push(chars.indexOf(c));
         return { chars, res };
     }, { chars: [], res: [] })
-        .res
-        .join(".");
+        .res.join(".");
 }
 function wordPattern7(word) {
     let n = [];
-    return word.toLowerCase().split('').map(c => {
+    return word
+        .toLowerCase()
+        .split("")
+        .map((c) => {
         if (n.indexOf(c) < 0) {
             n.push(c);
         }
         return n.indexOf(c);
-    }).join('.');
+    })
+        .join(".");
 }
 function wordPattern8(word) {
-    let arr = word.toLowerCase().split('');
+    let arr = word.toLowerCase().split("");
     let unique = [...new Set(arr)];
-    return arr.map(v => unique.indexOf(v)).join('.');
+    return arr.map((v) => unique.indexOf(v)).join(".");
 }
 const golfScoreCalculator = (parList, scoreList) => {
     const scoreMinPar = scoreList.split("").map((score, idx) => {
