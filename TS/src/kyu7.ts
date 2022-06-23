@@ -462,9 +462,32 @@ Product of value and index:
 Output: 2, 3, 4, 23, 5
 
 */
-function sortByValueAndIndex(array: number[]): number[] {
-    return array;
-}
+const sortByValueAndIndex = (numArr: number[]): number[] => {
+    interface StrKey {
+        [key: number]: number;
+    }
+    // KEEP TRACK OF VALUES
+    const counterObj: StrKey = {};
+
+    let numValuesArr: number[][] = [];
+
+    numArr.forEach((num, idx) => {
+        // console.log(num * (idx + 1));
+
+        // counterObj[num] = num * (idx + 1);
+
+        numValuesArr.push([num, num * (idx + 1)]);
+    });
+
+    // console.log(counterObj);
+    console.log(numValuesArr.sort((a, b) => a[1] - b[1]).map((arr) => arr[0]));
+
+    const solution: number[] = numValuesArr
+        .sort((a, b) => a[1] - b[1])
+        .map((arr) => arr[0]);
+
+    return solution;
+};
 /*
 var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
     var expected = [ 1, 2, 3, 4, 5 ];    
@@ -483,14 +506,17 @@ var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
     assert.deepEqual(actual, expected);    
 */
 
-// console.log();
+// expected = [ 2, 3, 4, 23, 5 ];
+console.log(sortByValueAndIndex([23, 2, 3, 4, 5]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ LOOK INTO MATH.LOG AND EULER NUMBER MATHEMATICAL CONSTANT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Number of Divisions
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -515,10 +541,17 @@ For example the number 6 can be divided by 2 two times:
 5. 6 / 2 = 3
 6. 3 / 2 = 1 remainder 1
 */
-function divisions(n: number, divisor: number): number {
-    throw new Error("This method or operations is not implemented.");
-}
-/*
+const divisions = (num: number, div: number): number => {
+    let counter: number = 0;
+
+    while (num >= div) {
+        num = Math.floor(num / div);
+        counter += 1;
+    }
+
+    return counter;
+};
+/*j
  assert.strictEqual(divisions(6, 2), 2);
     assert.strictEqual(divisions(100, 2), 6);
     assert.strictEqual(divisions(2450, 5), 4);
@@ -527,12 +560,18 @@ function divisions(n: number, divisor: number): number {
     assert.strictEqual(divisions(5, 5), 1);
 */
 
-// console.log();
+// 6
+// console.log(divisions(100, 2));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ LOOK INTO MATH.LOG ❗️❗️❗️
+function divisions2(n: number, divisor: number): number {
+    return Math.floor(Math.log(n) / Math.log(divisor));
+}
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Single digit

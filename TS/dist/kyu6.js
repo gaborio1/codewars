@@ -64,6 +64,9 @@ class G0012 {
 function grabscrab(anagram, dictionary) {
     return ["hello"];
 }
+const rot = (s) => {
+    return "hello";
+};
 const maxBall = (v0) => {
     const G = 9.81;
     const vMS = v0 / 3.6;

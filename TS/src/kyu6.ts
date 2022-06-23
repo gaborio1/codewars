@@ -638,6 +638,21 @@ Forthcoming katas will study other tranformations.
 Bash Note:
 The input strings are separated by , instead of \n. The ouput strings should be separated by \r instead of \n. See "Sample Tests".
 */
+const rot = (s: string): string => {
+
+
+    return "hello";
+
+}
+
+// const selfieAndRot = (s: string): string => {
+//     return "hello";
+// }
+
+// const oper = (fn: (s: string) => string, s: string): string => {
+//     return "hello";
+// }
+
 
 /*
  assert.strictEqual(

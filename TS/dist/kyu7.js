@@ -4,11 +4,29 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.
 function compose(s1, s2) {
     return "hello";
 }
-function sortByValueAndIndex(array) {
-    return array;
-}
-function divisions(n, divisor) {
-    throw new Error("This method or operations is not implemented.");
+const sortByValueAndIndex = (numArr) => {
+    const counterObj = {};
+    let numValuesArr = [];
+    numArr.forEach((num, idx) => {
+        numValuesArr.push([num, num * (idx + 1)]);
+    });
+    console.log(numValuesArr.sort((a, b) => a[1] - b[1]).map((arr) => arr[0]));
+    const solution = numValuesArr
+        .sort((a, b) => a[1] - b[1])
+        .map((arr) => arr[0]);
+    return solution;
+};
+console.log(sortByValueAndIndex([23, 2, 3, 4, 5]));
+const divisions = (num, div) => {
+    let counter = 0;
+    while (num >= div) {
+        num = Math.floor(num / div);
+        counter += 1;
+    }
+    return counter;
+};
+function divisions2(n, divisor) {
+    return Math.floor(Math.log(n) / Math.log(divisor));
 }
 const singleDigit = (num) => {
     if (num < 10)
