@@ -5,7 +5,6 @@ function compose(s1, s2) {
     return "hello";
 }
 const sortByValueAndIndex = (numArr) => {
-    const counterObj = {};
     let numValuesArr = [];
     numArr.forEach((num, idx) => {
         numValuesArr.push([num, num * (idx + 1)]);
@@ -16,7 +15,30 @@ const sortByValueAndIndex = (numArr) => {
         .map((arr) => arr[0]);
     return solution;
 };
-console.log(sortByValueAndIndex([23, 2, 3, 4, 5]));
+function sortByValueAndIndex2(array) {
+    return array.map((elem, index, _array) => [elem, elem * (1 + index)])
+        .sort((a, b) => a[1] - b[1])
+        .map((elem, index, _array) => elem[0]);
+}
+function sortByValueAndIndex3(array) {
+    return array.map((x, i) => [x, x * (i + 1)]).sort(([a, b], [c, d]) => b - d).map(([y, z]) => y);
+}
+function sortByValueAndIndex4(array) {
+    return array
+        .map((n, i) => [n, n * i + n])
+        .sort((a, b) => a[1] - b[1])
+        .map(n => n[0]);
+}
+function sortByValueAndIndex5(array) {
+    let indexCalculationList = array.map((v, i) => [v, (i + 1) * v]);
+    let sortedList = indexCalculationList.sort((a, b) => a[1] - b[1]);
+    return sortedList.map(v => v[0]);
+}
+function sortByValueAndIndex6(array) {
+    const indexed = array.map((el, i) => { return { n: el, i: (i + 1) }; });
+    indexed.sort((a, b) => a.n * a.i - b.n * b.i);
+    return indexed.map(el => el.n);
+}
 const divisions = (num, div) => {
     let counter = 0;
     while (num >= div) {
