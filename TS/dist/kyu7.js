@@ -4,40 +4,151 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.
 function compose(s1, s2) {
     return "hello";
 }
+const swapVowelCase = (str) => {
+    const lettersArr = str.split("");
+    const vowelsReg = /[aeiou]/i;
+    lettersArr.forEach((letter, idx) => {
+        if (vowelsReg.test(letter)) {
+            console.log("vowel found: ", letter);
+            lettersArr[idx] =
+                letter === letter.toLowerCase()
+                    ? letter.toUpperCase()
+                    : letter.toLowerCase();
+        }
+    });
+    const solution = lettersArr.join("");
+    return solution;
+};
+const swapVowelCase2 = ($) => $.replace(/[aeiou]/gi, (x) => x === x.toUpperCase() ? x.toLowerCase() : x.toUpperCase());
+function swapVowelCase3(str) {
+    return str.replace(/[aeiou]/gi, (x) => /[AEIOU]/.test(x) ? x.toLowerCase() : x.toUpperCase());
+}
+function swapVowelCase4(str) {
+    let result = "";
+    let charCode = 0;
+    for (let i = 0; i < str.length; i++) {
+        charCode = str.charCodeAt(i);
+        switch (charCode) {
+            case 97:
+                result += String.fromCharCode(65);
+                break;
+            case 101:
+                result += String.fromCharCode(69);
+                break;
+            case 105:
+                result += String.fromCharCode(73);
+                break;
+            case 111:
+                result += String.fromCharCode(79);
+                break;
+            case 117:
+                result += String.fromCharCode(85);
+                break;
+            case 65:
+                result += String.fromCharCode(97);
+                break;
+            case 69:
+                result += String.fromCharCode(101);
+                break;
+            case 73:
+                result += String.fromCharCode(105);
+                break;
+            case 79:
+                result += String.fromCharCode(111);
+                break;
+            case 85:
+                result += String.fromCharCode(117);
+                break;
+            default:
+                result += String.fromCharCode(charCode);
+        }
+    }
+    return result;
+}
+function swapVowelCase5(str) {
+    let mapping = {
+        a: "A",
+        e: "E",
+        i: "I",
+        o: "O",
+        u: "U",
+        A: "a",
+        E: "e",
+        I: "i",
+        O: "o",
+        U: "u",
+    };
+    return str.replace(new RegExp(/[aeoui]/gi), (c) => mapping[c]);
+}
+const intDiff = (intArr, num) => {
+    let counter = 0;
+    for (let i = 0; i < intArr.length; i += 1) {
+        console.log("outer loop:    ", intArr[i]);
+        for (let j = 0; j < intArr.length; j += 1) {
+            if (i === j)
+                continue;
+            console.log("   inner loop:   ", intArr[j]);
+            if (j - i === num || i - j === num) {
+                counter += 1;
+            }
+        }
+    }
+    return counter;
+};
+const intDiff2 = (intArr, num) => {
+    let counter = 0;
+    for (let i = 0; i < intArr.length; i += 1) {
+        console.log("outer loop:    ", intArr[i]);
+        for (let j = 0; j < intArr.length; j += 1) {
+            if (i === j)
+                continue;
+            console.log("   inner loop:   ", intArr[j]);
+            if (j - i === num || i - j === num) {
+                counter += 1;
+            }
+        }
+    }
+    return counter;
+};
 const sortByValueAndIndex = (numArr) => {
     let numValuesArr = [];
     numArr.forEach((num, idx) => {
         numValuesArr.push([num, num * (idx + 1)]);
     });
-    console.log(numValuesArr.sort((a, b) => a[1] - b[1]).map((arr) => arr[0]));
     const solution = numValuesArr
         .sort((a, b) => a[1] - b[1])
         .map((arr) => arr[0]);
     return solution;
 };
 function sortByValueAndIndex2(array) {
-    return array.map((elem, index, _array) => [elem, elem * (1 + index)])
+    return array
+        .map((elem, index, _array) => [elem, elem * (1 + index)])
         .sort((a, b) => a[1] - b[1])
         .map((elem, index, _array) => elem[0]);
 }
 function sortByValueAndIndex3(array) {
-    return array.map((x, i) => [x, x * (i + 1)]).sort(([a, b], [c, d]) => b - d).map(([y, z]) => y);
+    return array
+        .map((x, i) => [x, x * (i + 1)])
+        .sort(([a, b], [c, d]) => b - d)
+        .map(([y, z]) => y);
 }
 function sortByValueAndIndex4(array) {
     return array
         .map((n, i) => [n, n * i + n])
         .sort((a, b) => a[1] - b[1])
-        .map(n => n[0]);
+        .map((n) => n[0]);
 }
 function sortByValueAndIndex5(array) {
     let indexCalculationList = array.map((v, i) => [v, (i + 1) * v]);
     let sortedList = indexCalculationList.sort((a, b) => a[1] - b[1]);
-    return sortedList.map(v => v[0]);
+    return sortedList.map((v) => v[0]);
 }
 function sortByValueAndIndex6(array) {
-    const indexed = array.map((el, i) => { return { n: el, i: (i + 1) }; });
+    const indexed = array.map((el, i) => {
+        return { n: el, i: i + 1 };
+    });
     indexed.sort((a, b) => a.n * a.i - b.n * b.i);
-    return indexed.map(el => el.n);
+    return indexed.map((el) => el.n);
 }
 const divisions = (num, div) => {
     let counter = 0;

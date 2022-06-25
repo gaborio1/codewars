@@ -306,10 +306,11 @@ expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Strings: swap vowels' case
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Strings: SWAP VOWELS CASE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH OBJECT ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -331,10 +332,49 @@ Please make sure you only swap cases for the vowels.
 
 
 */
-// function swapVowelCase(str: string): string {
-//     // your code here
-//   };
+const swapVowelCase = (str: string): string => {
+    const lettersArr: string[] = str.split("");
 
+    const vowelsReg = /[aeiou]/i;
+
+    lettersArr.forEach((letter, idx) => {
+        if (vowelsReg.test(letter)) {
+            console.log("vowel found: ", letter);
+            // if (letter === letter.toLowerCase()) {
+            //     lettersArr[idx] = letter.toUpperCase();
+            // } else {
+            //     lettersArr[idx] = letter.toLowerCase();
+            // }
+
+            lettersArr[idx] =
+                letter === letter.toLowerCase()
+                    ? letter.toUpperCase()
+                    : letter.toLowerCase();
+        }
+    });
+
+    const solution: string = lettersArr.join("");
+
+    return solution;
+};
+
+// const swapVowelCase2 = (str: string): string => {
+//     const vowelsReg = /[aeiou]/i;
+
+//     return str
+//         .split("")
+//         .forEach((letter, idx) => {
+//             if (vowelsReg.test(letter)) {
+//                 console.log("vowel found: ", letter);
+//                 if (letter === letter.toLowerCase()) {
+//                     str.split("")[idx] = letter.toUpperCase();
+//                 } else {
+//                     str.split("")[idx] = letter.toLowerCase();
+//                 }
+//             }
+//         })
+//         .join("");
+// };
 /*
  assert.equal(swapVowelCase(' '), ' ');
     assert.equal(swapVowelCase('Is RubY dEad?'), 'is RUbY deAd?');
@@ -343,13 +383,86 @@ Please make sure you only swap cases for the vowels.
     assert.equal(swapVowelCase('Lorem ipsum dolor sit amet'), 'LOrEm IpsUm dOlOr sIt AmEt');
 */
 
-// console.log();
+// is RUbY deAd?'
+// console.log(swapVowelCase("Is RubY dEad?"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const swapVowelCase2 = ($: string): string =>
+    $.replace(/[aeiou]/gi, (x) =>
+        x === x.toUpperCase() ? x.toLowerCase() : x.toUpperCase()
+    );
+
+function swapVowelCase3(str: string): string {
+    return str.replace(/[aeiou]/gi, (x) =>
+        /[AEIOU]/.test(x) ? x.toLowerCase() : x.toUpperCase()
+    );
+}
+
+function swapVowelCase4(str: string): string {
+    // check if string includes vowels
+    // check the casing or ascii values of each vowel
+    let result = "";
+    let charCode = 0;
+    for (let i = 0; i < str.length; i++) {
+        charCode = str.charCodeAt(i);
+        switch (charCode) {
+            case 97:
+                result += String.fromCharCode(65);
+                break;
+            case 101:
+                result += String.fromCharCode(69);
+                break;
+            case 105:
+                result += String.fromCharCode(73);
+                break;
+            case 111:
+                result += String.fromCharCode(79);
+                break;
+            case 117:
+                result += String.fromCharCode(85);
+                break;
+            case 65:
+                result += String.fromCharCode(97);
+                break;
+            case 69:
+                result += String.fromCharCode(101);
+                break;
+            case 73:
+                result += String.fromCharCode(105);
+                break;
+            case 79:
+                result += String.fromCharCode(111);
+                break;
+            case 85:
+                result += String.fromCharCode(117);
+                break;
+            default:
+                result += String.fromCharCode(charCode);
+        }
+    }
+    return result;
+}
+
+// ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH OBJECT ❗️❗️❗️
+function swapVowelCase5(str: string): string {
+    let mapping: { [key: string]: string } = {
+        a: "A",
+        e: "E",
+        i: "I",
+        o: "O",
+        u: "U",
+        A: "a",
+        E: "e",
+        I: "i",
+        O: "o",
+        U: "u",
+    };
+    return str.replace(new RegExp(/[aeoui]/gi), (c) => mapping[c]);
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Ninja vs Samurai: Strike
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -399,8 +512,9 @@ var ninja = new solution.Warrior('Ninja')
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ DONT GET DESCRIPTION ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Integer Difference
+// TITLE: INTEGER DIFFERENCE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -418,15 +532,124 @@ For example:
 [1, 1, 3, 3], n=2             -->  4  # (1,3), (1,3), (1,3), (1,3)
 
 */
-// const intDiff = (arr: number[], n: number): number => {
-//     // your code goes here
-//   }
+// ❗️❗️❗️ THIS WILL GET ALL POSSIBLE COMBINATIONS ❗️❗️❗️
+const intDiff = (intArr: number[], num: number): number => {
+    let counter: number = 0;
+
+    for (let i = 0; i < intArr.length; i += 1) {
+        console.log("outer loop:    ", intArr[i]);
+        for (let j = 0; j < intArr.length; j += 1) {
+            if (i === j) continue;
+            console.log("   inner loop:   ", intArr[j]);
+            if (j - i === num || i - j === num) {
+                counter += 1;
+            }
+        }
+    }
+
+    return counter;
+};
+
+/*
+intDiff([1, 1, 5, 6, 9, 16, 27], 4)
+
+outer loop:     1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    6
+   inner loop:    9
+   inner loop:    16
+   inner loop:    27
+outer loop:     1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    6
+   inner loop:    9
+   inner loop:    16
+   inner loop:    27
+outer loop:     5
+   inner loop:    1
+   inner loop:    1
+   inner loop:    6
+   inner loop:    9
+   inner loop:    16
+   inner loop:    27
+outer loop:     6
+   inner loop:    1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    9
+   inner loop:    16
+   inner loop:    27
+outer loop:     9
+   inner loop:    1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    6
+   inner loop:    16
+   inner loop:    27
+outer loop:     16
+   inner loop:    1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    6
+   inner loop:    9
+   inner loop:    27
+outer loop:     27
+   inner loop:    1
+   inner loop:    1
+   inner loop:    5
+   inner loop:    6
+   inner loop:    9
+   inner loop:    16
+❗️❗️❗️ expected 6 to equal 3 ❗️❗️❗️
+*/
+
+/*
+console.log(intDiff([1, 1, 3, 3], 2));
+
+outer loop:     1
+   inner loop:    1
+   inner loop:    3
+   inner loop:    3
+outer loop:     1
+   inner loop:    1
+   inner loop:    3
+   inner loop:    3
+outer loop:     3
+   inner loop:    1
+   inner loop:    1
+   inner loop:    3
+outer loop:     3
+   inner loop:    1
+   inner loop:    1
+   inner loop:    3
+4
+*/
+const intDiff2 = (intArr: number[], num: number): number => {
+    let counter: number = 0;
+
+    for (let i = 0; i < intArr.length; i += 1) {
+        console.log("outer loop:    ", intArr[i]);
+        for (let j = 0; j < intArr.length; j += 1) {
+            if (i === j) continue;
+            console.log("   inner loop:   ", intArr[j]);
+            if (j - i === num || i - j === num) {
+                counter += 1;
+            }
+        }
+    }
+
+    return counter;
+};
 /*
 assert.equal(intDiff([1, 1, 5, 6, 9, 16, 27], 4), 3);
     assert.equal(intDiff([1, 1, 3, 3], 2), 4);
 */
 
-// console.log();
+// console.log(intDiff([1, 1, 3, 3], 2));
+
+// console.log(intDiff([1, 2, 3, 4], 2));
 // console.log();
 // console.log();
 // console.log();
@@ -477,7 +700,8 @@ const sortByValueAndIndex = (numArr: number[]): number[] => {
     });
 
     // console.log(counterObj);
-    console.log(numValuesArr.sort((a, b) => a[1] - b[1]).map((arr) => arr[0]));
+
+    // console.log(numValuesArr.sort((a, b) => a[1] - b[1]).map((arr) => arr[0]));
 
     const solution: number[] = numValuesArr
         .sort((a, b) => a[1] - b[1])
@@ -512,34 +736,39 @@ var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function sortByValueAndIndex2(array: number[]): number[] {
-    return array.map((elem, index, _array) => [elem, elem * (1 + index)])
+    return array
+        .map((elem, index, _array) => [elem, elem * (1 + index)])
         .sort((a, b) => a[1] - b[1])
         .map((elem, index, _array) => elem[0]);
 }
 
 function sortByValueAndIndex3(array: number[]): number[] {
-    return array.map((x, i) => [x, x * (i + 1)]).sort(([a, b], [c, d]) => b - d).map(([y, z]) => y);
+    return array
+        .map((x, i) => [x, x * (i + 1)])
+        .sort(([a, b], [c, d]) => b - d)
+        .map(([y, z]) => y);
 }
-
 
 function sortByValueAndIndex4(array: number[]): number[] {
     return array
         .map((n, i) => [n, n * i + n])
         .sort((a, b) => a[1] - b[1])
-        .map(n => n[0]);
+        .map((n) => n[0]);
 }
 
 function sortByValueAndIndex5(array: number[]): number[] {
     let indexCalculationList = array.map((v, i) => [v, (i + 1) * v]);
     let sortedList = indexCalculationList.sort((a, b) => a[1] - b[1]);
 
-    return sortedList.map(v => v[0]);
+    return sortedList.map((v) => v[0]);
 }
 
 function sortByValueAndIndex6(array: number[]): number[] {
-    const indexed = array.map((el, i) => { return { n: el, i: (i + 1) } });
+    const indexed = array.map((el, i) => {
+        return { n: el, i: i + 1 };
+    });
     indexed.sort((a, b) => a.n * a.i - b.n * b.i);
-    return indexed.map(el => el.n);
+    return indexed.map((el) => el.n);
 }
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ LOOK INTO MATH.LOG AND EULER NUMBER MATHEMATICAL CONSTANT ❗️❗️❗️
@@ -1632,16 +1861,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -2477,8 +2706,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -2556,7 +2785,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -3267,10 +3496,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -3380,8 +3609,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -4488,8 +4717,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -5102,10 +5332,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -5558,7 +5788,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -6051,17 +6281,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -6194,13 +6424,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -8802,10 +9032,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -9918,7 +10148,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -10994,8 +11224,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -11145,10 +11375,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -12145,11 +12375,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -12944,9 +13174,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -13228,8 +13458,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
