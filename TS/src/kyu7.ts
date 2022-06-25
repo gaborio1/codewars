@@ -290,9 +290,9 @@ Constraints:
 
 A sorted array of shuffled.length - 1 elements.
 */
-// function shuffledArray(shuffled: number[]): number[] {
-//     return null; //replace with your code
-//   }
+function shuffledArray(shuffled: number[]): number[] {
+    return [6]; //replace with your code
+}
 /*
 expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
     expect(solution.shuffledArray([1, -3, -5, 7, 2])).to.deep.equal([-5, -3, 2, 7]);
@@ -300,7 +300,7 @@ expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
     expect(solution.shuffledArray([-3, -3])).to.deep.equal([-3]);
 */
 
-// console.log();
+console.log(shuffledArray([1, 12, 3, 6, 2]));
 // console.log();
 // console.log();
 // console.log();
@@ -463,10 +463,12 @@ function swapVowelCase5(str: string): string {
     };
     return str.replace(new RegExp(/[aeoui]/gi), (c) => mapping[c]);
 }
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Ninja vs Samurai: Strike
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ LOOK INTO CLASS/PUBLIC, PRIVATE PROPERTIES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩// TITLE: Ninja vs Samurai: Strike
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ INTERFACE, IMPLEMENTS, ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -483,19 +485,39 @@ Can you figure out what is wrong?
 
 
 */
-// class Warrior{
-//     private name:string;
-//       public health:number;
-//     constructor(name:string){
-//       this.name=name;
-//       this.health=100;
-//     }
 
-//   }
+/*
+ORIGINAL CODE:
 
-//   Warrior.prototype.strike= function(enemy:Warrior, swings:number){
-//       enemy.health = Math.max(0, enemy.health - (swings * 10));
-//   }
+class Warrior{
+    private name:string;
+      public health:number;
+    constructor(name:string){
+      this.name=name;
+      this.health=100;
+    }
+
+  }
+
+  Warrior.prototype.strike= function(enemy:Warrior, swings:number){
+      enemy.health = Math.max(0, enemy.health - (swings * 10));
+  }
+*/
+
+// ❗️❗️❗️ MOVE strike FUNCTION INTO CLASS AS A PROPERTY ❗️❗️❗️
+class Warrior {
+    private name: string;
+    public health: number;
+
+    constructor(name: string) {
+        this.name = name;
+        this.health = 100;
+    }
+
+    public strike = function (enemy: Warrior, swings: number) {
+        enemy.health = Math.max(0, enemy.health - swings * 10);
+    };
+}
 
 /*
 var ninja = new solution.Warrior('Ninja')
@@ -510,8 +532,30 @@ var ninja = new solution.Warrior('Ninja')
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+//============= OTHER CODEWARS SOLUTIONS: ====================
 
+// ❗️❗️❗️ INTERFACE, IMPLEMENTS, ❗️❗️❗️
+interface IStrike {
+    strike(enemy: Warrior, swings: number): void;
+}
+
+class Warrior2 implements IStrike {
+    private name: string;
+    public health: number;
+
+    constructor(name: string) {
+        this.name = name;
+        this.health = 100;
+    }
+
+    strike(enemy: Warrior, swings: number): void {}
+}
+
+Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
+    enemy.health = Math.max(0, enemy.health - swings * 10);
+};
+
+// ============================================================
 // ❗️❗️❗️ DONT GET DESCRIPTION ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: INTEGER DIFFERENCE

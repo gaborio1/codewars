@@ -4,6 +4,10 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.
 function compose(s1, s2) {
     return "hello";
 }
+function shuffledArray(shuffled) {
+    return [6];
+}
+console.log(shuffledArray([1, 12, 3, 6, 2]));
 const swapVowelCase = (str) => {
     const lettersArr = str.split("");
     const vowelsReg = /[aeiou]/i;
@@ -80,6 +84,25 @@ function swapVowelCase5(str) {
     };
     return str.replace(new RegExp(/[aeoui]/gi), (c) => mapping[c]);
 }
+class Warrior {
+    constructor(name) {
+        this.strike = function (enemy, swings) {
+            enemy.health = Math.max(0, enemy.health - swings * 10);
+        };
+        this.name = name;
+        this.health = 100;
+    }
+}
+class Warrior2 {
+    constructor(name) {
+        this.name = name;
+        this.health = 100;
+    }
+    strike(enemy, swings) { }
+}
+Warrior2.prototype.strike = function (enemy, swings) {
+    enemy.health = Math.max(0, enemy.health - swings * 10);
+};
 const intDiff = (intArr, num) => {
     let counter = 0;
     for (let i = 0; i < intArr.length; i += 1) {
