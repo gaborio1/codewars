@@ -61,9 +61,28 @@ class G0012 {
         return result;
     }
 }
-function grabscrab(anagram, dictionary) {
-    return ["hello"];
+const grabscrab = (anagram, dict) => {
+    let solution = [];
+    const sortedAnagram = anagram.split("").sort().join();
+    for (let i = 0; i < dict.length; i += 1) {
+        const sortedWord = dict[i].split("").sort().join();
+        if (sortedWord === sortedAnagram) {
+            solution.push(dict[i]);
+        }
+    }
+    return solution;
+};
+function grabscrab2(anagram, dictionary) {
+    let s = [...anagram].sort().join("");
+    return dictionary.filter(x => [...x].sort().join("") === s);
 }
+const grabscrab3 = (() => {
+    const sortWord = (word) => [...word].sort().join('');
+    return (anagram, dictionary) => {
+        return dictionary.filter(word => sortWord(word) === sortWord(anagram));
+    };
+})();
+const grabscrab4 = (anagram, dictionary) => dictionary.filter((word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word));
 const rot = (s) => {
     return "hello";
 };

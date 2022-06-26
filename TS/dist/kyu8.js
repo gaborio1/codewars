@@ -1,6 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countSheeps = exports.basicOp = exports.greet3 = exports.max3 = exports.min3 = exports.max2 = exports.min2 = exports.expressionsMatter6 = exports.name = exports.howManyLightsabersDoYouOwn5 = void 0;
+function makeUpperCase(str) {
+    let newStr;
+    const map = {
+        a: 'A',
+        b: 'B',
+        c: 'C',
+        d: 'D',
+        e: 'E',
+        f: 'F',
+        g: 'G',
+        h: 'H',
+        i: 'I',
+        j: 'J',
+        k: 'K',
+        l: 'L',
+        m: 'M',
+        n: 'N',
+        o: 'O',
+        p: 'P',
+        q: 'Q',
+        r: 'R',
+        s: 'S',
+        t: 'T',
+        u: 'U',
+        v: 'V',
+        w: 'W',
+        x: 'X',
+        y: 'Y',
+        z: 'Z'
+    };
+    return str.split('').map(char => map[char] || char).join('');
+}
 const var1Boolean = true;
 console.log(var1Boolean);
 const var2Decimal = 13;
