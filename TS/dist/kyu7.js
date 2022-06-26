@@ -4,10 +4,26 @@ exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.
 function compose(s1, s2) {
     return "hello";
 }
-function shuffledArray(shuffled) {
-    return [6];
-}
-console.log(shuffledArray([1, 12, 3, 6, 2]));
+const shuffledArray = (shuffled) => {
+    let solution = [];
+    const shuffledArr = shuffled;
+    console.log("shuffed array:", shuffledArr);
+    let sumOfArr = 0;
+    shuffled.forEach((number) => {
+        shuffled = [...shuffledArr];
+        console.log("number:", number);
+        shuffled.splice(shuffled.indexOf(number), 1);
+        console.log("   shuffled:", shuffled);
+        const sum = shuffled.reduce((acc, curr) => acc + curr);
+        console.log(sum);
+        if (sum === number) {
+            sumOfArr = number;
+            solution = shuffled.sort((a, b) => a - b);
+        }
+        sum === number && console.log("Match found:", number);
+    });
+    return solution;
+};
 const swapVowelCase = (str) => {
     const lettersArr = str.split("");
     const vowelsReg = /[aeiou]/i;

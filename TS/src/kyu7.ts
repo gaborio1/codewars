@@ -253,10 +253,13 @@ function compose(s1: string, s2: string): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ LOOK INTO CLASS/PUBLIC, PRIVATE PROPERTIES, COMMENT, ADD SOLUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Simple Fun #87: Shuffled Array
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ DELETE ITEMS FROM ARRAY WITH SPLICE ❗️❗️❗️
+// KEYWORDS: ❗️❗️❗️ GET ARRAY MINUS CURRENT ELEMENT IN LOOP ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -290,9 +293,38 @@ Constraints:
 
 A sorted array of shuffled.length - 1 elements.
 */
-function shuffledArray(shuffled: number[]): number[] {
-    return [6]; //replace with your code
-}
+const shuffledArray = (shuffled: number[]): number[] => {
+    let solution: number[] = [];
+    const shuffledArr: number[] = shuffled;
+    console.log("shuffed array:", shuffledArr);
+
+    let sumOfArr: number = 0;
+
+    // ❗️❗️❗️ GET ARRAY MINUS CURRENT ELEMENT IN LOOP ❗️❗️❗️
+    shuffled.forEach((number) => {
+        shuffled = [...shuffledArr];
+        console.log("number:", number);
+        // console.log(shuffled.splice(shuffled.indexOf(number), 1));
+        // shuffled = shuffledArr;
+        shuffled.splice(shuffled.indexOf(number), 1);
+        // console.log(numbers.splice(numbers.indexOf(number), 1));
+        console.log("   shuffled:", shuffled);
+
+        const sum: number = shuffled.reduce((acc, curr) => acc + curr);
+        console.log(sum);
+        if (sum === number) {
+            sumOfArr = number;
+            solution = shuffled.sort((a, b) => a - b);
+        }
+        sum === number && console.log("Match found:", number);
+    });
+
+    // console.log(sumOfArr);
+
+    // console.log(solution);
+
+    return solution;
+};
 /*
 expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
     expect(solution.shuffledArray([1, -3, -5, 7, 2])).to.deep.equal([-5, -3, 2, 7]);
@@ -300,7 +332,13 @@ expect(solution.shuffledArray([1, 12, 3, 6, 2])).to.deep.equal([1, 2, 3, 6]);
     expect(solution.shuffledArray([-3, -3])).to.deep.equal([-3]);
 */
 
-console.log(shuffledArray([1, 12, 3, 6, 2]));
+//  [1, 2, 3, 6]
+// console.log(shuffledArray([1, 12, 3, 6, 2]));
+
+// [-5, -3, 2, 7]
+// console.log(shuffledArray([1, -3, -5, 7, 2]));
+
+// console.log(shuffledArray([1, 2, 3, 4]));
 // console.log();
 // console.log();
 // console.log();
@@ -466,7 +504,8 @@ function swapVowelCase5(str: string): string {
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ LOOK INTO CLASS/PUBLIC, PRIVATE PROPERTIES ❗️❗️❗️
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩// TITLE: Ninja vs Samurai: Strike
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Ninja vs Samurai: Strike
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: ❗️❗️❗️ INTERFACE, IMPLEMENTS, ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
