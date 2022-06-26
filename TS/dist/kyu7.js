@@ -11,19 +11,60 @@ const shuffledArray = (shuffled) => {
     let sumOfArr = 0;
     shuffled.forEach((number) => {
         shuffled = [...shuffledArr];
-        console.log("number:", number);
         shuffled.splice(shuffled.indexOf(number), 1);
-        console.log("   shuffled:", shuffled);
         const sum = shuffled.reduce((acc, curr) => acc + curr);
-        console.log(sum);
         if (sum === number) {
             sumOfArr = number;
             solution = shuffled.sort((a, b) => a - b);
         }
-        sum === number && console.log("Match found:", number);
+        sum === number && console.log("     Match found:", number);
     });
     return solution;
 };
+function shuffledArray2(shuffled) {
+    let result = [];
+    shuffled.forEach((num, index) => {
+        let sum = shuffled.filter((x, i) => i !== index).reduce((p, c) => p + c, 0);
+        if (sum === num)
+            result = shuffled.filter((x, i) => i !== index).sort((a, b) => a - b);
+    });
+    return result;
+}
+;
+function shuffledArray3(shuffled) {
+    let sum = shuffled.reduce((acc, cur) => acc + cur, 0) / 2;
+    shuffled.splice(shuffled.indexOf(sum), 1);
+    return shuffled.sort((a, b) => a - b);
+}
+function shuffledArray4(shuffled) {
+    const sum = shuffled.reduce((a, b) => a + b);
+    const idx = shuffled.findIndex(num => (sum - num) === num);
+    shuffled.splice(idx, 1);
+    return shuffled.sort((a, b) => a - b);
+}
+function shuffledArray5(shuffled) {
+    for (let i = 0; i < shuffled.length; i++) {
+        const removed = [...shuffled];
+        removed.splice(i, 1);
+        const sum = removed.reduce((acc, cur) => acc + cur, 0);
+        if (shuffled[i] === sum) {
+            shuffled.splice(i, 1);
+            break;
+        }
+    }
+    return shuffled.sort((a, b) => a - b);
+}
+function shuffledArray6(shuffled) {
+    for (let i = 0; i < shuffled.length; ++i) {
+        if (shuffled[i] === shuffled.reduce((sum, val, j) => i !== j ? sum + val : sum, 0)) {
+            return shuffled
+                .slice(0, i)
+                .concat(shuffled.slice(i + 1))
+                .sort((a, b) => a - b);
+        }
+    }
+    return [1, 2];
+}
 const swapVowelCase = (str) => {
     const lettersArr = str.split("");
     const vowelsReg = /[aeiou]/i;
