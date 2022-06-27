@@ -1,8 +1,61 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = void 0;
-function compose(s1, s2) {
-    return "hello";
+const compose = (str1, str2) => {
+    const strArr1 = str1.split("\n");
+    const strArr2 = str2.split("\n").reverse();
+    let solutionArr = [];
+    for (let i = 0; i < strArr1.length; i += 1) {
+        const currentWordArr = strArr1[i]
+            .split("")
+            .slice(0, i + 1)
+            .concat(strArr2[i].split("").slice(0, strArr2[i].length - i));
+        solutionArr.push(currentWordArr.join(""));
+    }
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+function compose2(s1, s2) {
+    let res = [];
+    let arr1 = s1.split("\n"), arr2 = s2.split("\n");
+    for (let i = 0; i < arr1.length; i++) {
+        res[i] =
+            arr1[i].slice(0, i + 1) +
+                arr2[arr2.length - 1 - i].slice(0, arr2.length - i);
+    }
+    return res.join("\n");
+}
+function compose3(s1, s2) {
+    const arr1 = s1.split("\n");
+    const arr2 = s2.split("\n");
+    const result = [];
+    for (let i = 0; i < arr1.length; i++) {
+        let j = arr2.length - i - 1;
+        const left = arr1[i].substring(0, i + 1);
+        const right = arr2[j].substring(0, arr2[j].length - i);
+        result.push(left + right);
+    }
+    return result.join("\n");
+}
+function compose4(s1, s2) {
+    const s1s = s1.split("\n");
+    const s2s = s2.split("\n");
+    const n = s1s.length;
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result.push(s1s[i].substring(0, i + 1) + s2s[n - i - 1].substring(0, n - i));
+    }
+    return result.join("\n");
+}
+function compose5(s1, s2) {
+    var a2 = s2.split("\n").reverse();
+    var l = a2.length, a1 = s1.split("\n"), res = "";
+    for (var i = 0; i < l; i++) {
+        res += a1[i].slice(0, i + 1) + a2[i].slice(0, l - i);
+        if (i < l - 1)
+            res += "\n";
+    }
+    return res;
 }
 const shuffledArray = (shuffled) => {
     let solution = [];
@@ -24,13 +77,16 @@ const shuffledArray = (shuffled) => {
 function shuffledArray2(shuffled) {
     let result = [];
     shuffled.forEach((num, index) => {
-        let sum = shuffled.filter((x, i) => i !== index).reduce((p, c) => p + c, 0);
+        let sum = shuffled
+            .filter((x, i) => i !== index)
+            .reduce((p, c) => p + c, 0);
         if (sum === num)
-            result = shuffled.filter((x, i) => i !== index).sort((a, b) => a - b);
+            result = shuffled
+                .filter((x, i) => i !== index)
+                .sort((a, b) => a - b);
     });
     return result;
 }
-;
 function shuffledArray3(shuffled) {
     let sum = shuffled.reduce((acc, cur) => acc + cur, 0) / 2;
     shuffled.splice(shuffled.indexOf(sum), 1);
@@ -38,7 +94,7 @@ function shuffledArray3(shuffled) {
 }
 function shuffledArray4(shuffled) {
     const sum = shuffled.reduce((a, b) => a + b);
-    const idx = shuffled.findIndex(num => (sum - num) === num);
+    const idx = shuffled.findIndex((num) => sum - num === num);
     shuffled.splice(idx, 1);
     return shuffled.sort((a, b) => a - b);
 }
@@ -56,7 +112,8 @@ function shuffledArray5(shuffled) {
 }
 function shuffledArray6(shuffled) {
     for (let i = 0; i < shuffled.length; ++i) {
-        if (shuffled[i] === shuffled.reduce((sum, val, j) => i !== j ? sum + val : sum, 0)) {
+        if (shuffled[i] ===
+            shuffled.reduce((sum, val, j) => (i !== j ? sum + val : sum), 0)) {
             return shuffled
                 .slice(0, i)
                 .concat(shuffled.slice(i + 1))
