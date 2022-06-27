@@ -18,9 +18,29 @@ class G96412 {
 }
 class G96411 {
     static iterPi(epsilon) {
-        return [1];
+        const PI = Math.PI;
+        console.log(PI);
+        let approxPi = 0;
+        let iterCounter = 0;
+        const numIterations = 1 / epsilon;
+        console.log(numIterations);
+        for (let i = 0, step = 1; i < numIterations; i += 1, step += 2) {
+            console.log(i, step);
+            const fract = i & 1 ? -1 / step : 1 / step;
+            console.log("   fract:", fract);
+            approxPi += fract;
+            iterCounter = i + 1;
+        }
+        approxPi *= 4;
+        console.log(iterCounter);
+        console.log(approxPi);
+        approxPi = Number(approxPi.toFixed(10));
+        console.log(approxPi);
+        const solution = [iterCounter, approxPi];
+        return solution;
     }
 }
+console.log(G96411.iterPi(0.001));
 class G001 {
     static howmuch(m, n) {
         let solution = [];
@@ -74,12 +94,12 @@ const grabscrab = (anagram, dict) => {
 };
 function grabscrab2(anagram, dictionary) {
     let s = [...anagram].sort().join("");
-    return dictionary.filter(x => [...x].sort().join("") === s);
+    return dictionary.filter((x) => [...x].sort().join("") === s);
 }
 const grabscrab3 = (() => {
-    const sortWord = (word) => [...word].sort().join('');
+    const sortWord = (word) => [...word].sort().join("");
     return (anagram, dictionary) => {
-        return dictionary.filter(word => sortWord(word) === sortWord(anagram));
+        return dictionary.filter((word) => sortWord(word) === sortWord(anagram));
     };
 })();
 const grabscrab4 = (anagram, dictionary) => dictionary.filter((word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word));

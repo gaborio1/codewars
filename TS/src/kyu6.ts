@@ -386,7 +386,34 @@ About PI : http://www.geom.uiuc.edu/~huberty/math5337/groupe/expresspi.html
 */
 class G96411 {
     public static iterPi(epsilon: number): number[] {
-        return [1];
+        const PI: number = Math.PI;
+        console.log(PI);
+
+        let approxPi: number = 0;
+        let iterCounter: number = 0;
+
+        const numIterations: number = 1 / epsilon;
+        console.log(numIterations);
+
+        for (let i = 0, step = 1; i < numIterations; i += 1, step += 2) {
+            console.log(i, step);
+            const fract: number = i & 1 ? -1 / step : 1 / step;
+            console.log("   fract:", fract);
+
+            approxPi += fract;
+            iterCounter = i + 1;
+        }
+
+        approxPi *= 4;
+
+        console.log(iterCounter);
+        console.log(approxPi);
+        approxPi = Number(approxPi.toFixed(10));
+        console.log(approxPi);
+
+        const solution: number[] = [iterCounter, approxPi];
+
+        return solution;
     }
 }
 /*
@@ -395,7 +422,7 @@ class G96411 {
     testIt(0.001,  [1000, 3.1405926538]);
 */
 
-// console.log();
+console.log(G96411.iterPi(0.001));
 // console.log();
 // console.log();
 // console.log();
@@ -568,7 +595,6 @@ Good luck!
 
 */
 const grabscrab = (anagram: string, dict: string[]): string[] => {
-
     let solution: string[] = [];
 
     const sortedAnagram: string = anagram.split("").sort().join();
@@ -579,11 +605,10 @@ const grabscrab = (anagram: string, dict: string[]): string[] => {
         if (sortedWord === sortedAnagram) {
             solution.push(dict[i]);
         }
-
     }
 
     return solution;
-}
+};
 /*
 assert.deepEqual(grabscrab("trisf", ["first"]), ["first"], "Should have found 'first'");
     assert.deepEqual(grabscrab("oob", ["bob", "baobab"]), [], "Should not have found anything");
@@ -601,21 +626,24 @@ assert.deepEqual(grabscrab("trisf", ["first"]), ["first"], "Should have found 'f
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function grabscrab2(anagram: string, dictionary: string[]): string[] {
-    let s: string = [...anagram].sort().join("")
-    return dictionary.filter(x => [...x].sort().join("") === s)
+    let s: string = [...anagram].sort().join("");
+    return dictionary.filter((x) => [...x].sort().join("") === s);
 }
 
 // ❗️❗️❗️  IMMEDIATELY INVOKED FUNCTION ❗️❗️❗️
 const grabscrab3 = (() => {
-    const sortWord = (word: string) => [...word].sort().join('');
+    const sortWord = (word: string) => [...word].sort().join("");
     return (anagram: string, dictionary: string[]): string[] => {
-        return dictionary.filter(word => sortWord(word) === sortWord(anagram));
-    }
+        return dictionary.filter(
+            (word) => sortWord(word) === sortWord(anagram)
+        );
+    };
 })();
 
-
 const grabscrab4 = (anagram: string, dictionary: string[]): string[] =>
-    dictionary.filter((word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word));
+    dictionary.filter(
+        (word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word)
+    );
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: MOVES IN SQARED STRINGS - (II)
@@ -670,11 +698,8 @@ Bash Note:
 The input strings are separated by , instead of \n. The ouput strings should be separated by \r instead of \n. See "Sample Tests".
 */
 const rot = (s: string): string => {
-
-
     return "hello";
-
-}
+};
 
 // const selfieAndRot = (s: string): string => {
 //     return "hello";
@@ -683,7 +708,6 @@ const rot = (s: string): string => {
 // const oper = (fn: (s: string) => string, s: string): string => {
 //     return "hello";
 // }
-
 
 /*
  assert.strictEqual(
@@ -1641,8 +1665,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1654,8 +1678,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -3059,9 +3083,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -3627,10 +3651,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -6023,7 +6047,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -6109,7 +6133,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -6970,15 +6994,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -7031,10 +7055,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -7610,7 +7634,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -8069,8 +8093,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -8363,7 +8387,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -8820,10 +8844,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -10123,8 +10147,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
