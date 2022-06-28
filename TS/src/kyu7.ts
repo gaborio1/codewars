@@ -91,7 +91,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: SPINNING RINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -99,9 +99,208 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Imagine two rings with numbers on them. The inner ring spins clockwise (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing by 1 each spin). We start with both rings aligned on 0 at the top, and on each move we spin each ring one increment. How many moves will it take before both rings show the same number at the top again?
+
+The inner ring has integers from 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax and outerMax are integers >= 1.
+
+e.g. if innerMax is 2 and outerMax is 3 then after
+1 move: inner = 2, outer = 1
+2 moves: inner = 1, outer = 2
+3 moves: inner = 0, outer = 3
+4 moves: inner = 2, outer = 0
+5 moves: inner = 1, outer = 1
+Therefore it takes 5 moves for the two rings to reach the same number
+Therefore spinningRings(2, 3) = 5
+e.g. if innerMax is 3 and outerMax is 2 then after
+1 move: inner = 3, outer = 1
+2 moves: inner = 2, outer = 2
+Therefore it takes 2 moves for the two rings to reach the same number
+spinningRings(3, 2) = 2
+for a bigger challenge, check out the Performance Version of this kata by @Voile
+
 
 */
+function spinningRings(innerMax: number, outerMax: number): number {
+    let numberOfSpinsTillRingsAreEqual = 0;
+    // your code here
+    return numberOfSpinsTillRingsAreEqual;
+}
 /*
+describe("Spinning Rings", function() {
+  it("should work for a few cases", function() {
+    assert.strictEqual(spinningRings(2, 3), 5);
+    assert.strictEqual(spinningRings(3, 2), 2);
+    assert.strictEqual(spinningRings(1, 1), 1);
+    assert.strictEqual(spinningRings(2, 2), 3);
+    assert.strictEqual(spinningRings(3, 3), 2);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: WHICH SECTION DID U SCROLL TO
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Your website is divided vertically in sections, and each can be of different size (height).
+You need to establish the section index (starting at 0) you are at, given the scrollY and sizes of all sections.
+Sections start with 0, so if first section is 200 high, it takes 0-199 "pixels" and second starts at 200.
+
+Example:
+getSectionIdFromScroll( 300, [300,200,400,600,100] )
+
+will output number 1 as it's the second section.
+
+getSectionIdFromScroll( 1600, [300,200,400,600,100] )
+
+will output number -1 as it's past last section.
+
+Given the scrollY integer (always non-negative) and an array of non-negative integers (with at least one element), calculate the index (starting at 0) or -1 if scrollY falls beyond last section (indication of an error).
+
+
+*/
+function getSectionId(scroll: number, sizes: number[]) {
+    // your code here
+}
+/*
+describe("Basic tests", function() {
+  testing(1, [300, 200, 400, 600, 100], 0);
+  testing(299, [300, 200, 400, 600, 100], 0);
+  testing(300, [300, 200, 400, 600, 100], 1);
+  testing(1599, [300, 200, 400, 600, 100], 4);
+  testing(1600, [300, 200, 400, 600, 100], -1);
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: COLLISION DETECTION
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Create a function to determine whether or not two circles are colliding. You will be given the position of both circles in addition to their radii:
+
+function collision(x1, y1, radius1, x2, y2, radius2) {
+  // collision?
+}
+If a collision is detected, return true. If not, return false.
+
+Here's a geometric diagram of what the circles passed in represent:
+
+alt text
+*/
+function collision(
+    x1: number,
+    y1: number,
+    r1: number,
+    x2: number,
+    y2: number,
+    r2: number
+): boolean {
+    throw new Error("Not implemented");
+}
+/*
+describe("Solution", function() {
+  it("Collisions", function() {
+    assert.strictEqual(collision(1, 1, 1, 1.1, 1.1, 0.1), true, "Expected true.");
+    assert.strictEqual(collision(-1, 1, 10, -10.1, 1.1, 1), true, "Expected true.");
+    assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 5*Math.sqrt(5)), true, "Expected true.");
+  });
+  it("Not Collisions", function() {
+    assert.strictEqual(collision(1, 1, 0.01, 1, 1.1, 0.01), false, "Expected false.");
+    assert.strictEqual(collision(-1, 1, 6, -10.1, 1.1, 1), false, "Expected false.");
+    assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 4*Math.sqrt(5)), false, "Expected false.");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: POLYDIVISEBLE NUMBERS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Most of this problem is by the original author of the harder kata, I just made it simpler.
+
+I read a book recently, titled "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker ( Youtube ), and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
+
+The problem he talks about relates to polydivisible numbers, and I thought a kata should be written on the subject as it's quite interesting. (Well it's interesting to me, so there!)
+
+Polydivisib... huh what?
+So what are they?
+
+A polydivisible number is divisible in an unusual way. The first digit is cleanly divisible by 1, the first two digits are cleanly divisible by 2, the first three by 3, and so on.
+
+Examples
+Let's take the number 1232 as an example.
+
+1     / 1 = 1     // Works
+12    / 2 = 6     // Works
+123   / 3 = 41    // Works
+1232  / 4 = 308   // Works
+1232 is a polydivisible number.
+
+However, let's take the number 123220 and see what happens.
+
+ 1      /1 = 1    // Works
+ 12     /2 = 6    // Works
+ 123    /3 = 41   // Works
+ 1232   /4 = 308  // Works
+ 12322  /5 = 2464.4         // Doesn't work
+ 123220 /6 = 220536.333...  // Doesn't work
+123220 is not polydivisible.
+
+Your job: check if a number is polydivisible or not.
+Return true if it is, and false if it isn't.
+
+Note: All inputs will be valid numbers between 0 and 2^53-1 (9,007,199,254,740,991) (inclusive).
+Note: All single digit numbers (including 0) are trivially polydivisible. Note: Except for 0, no numbers will start with 0.
+
+
+*/
+function polydivisible(x: number): boolean {
+    throw new Error("Not implemented yet");
+    // return false;
+}
+
+/*
+describe("Example Cases", (): void => {
+  it("sample test", (): void => {
+    assert.strictEqual(polydivisible(1232), true);
+    assert.strictEqual(polydivisible(123220), false);
+  });
+});
 
 */
 
@@ -113,7 +312,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: DOUBLETON NUMBER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -121,9 +320,88 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+We will call a natural number a "doubleton number" if it contains exactly two distinct digits. For example, 23, 35, 100, 12121 are doubleton numbers, and 123 and 9980 are not.
+
+For a given natural number n (from 1 to 1 000 000), you need to find the next doubleton number. If n itself is a doubleton, return the next bigger than n.
+
+Examples:
+doubleton(120) == 121
+doubleton(1234) == 1311
+doubleton(10) == 12
+*/
+function doubleton(num: number): number {
+    return 1;
+}
+/*
+describe("Fixed tests",()=>{
+   it(`Testing for number 120: received ${doubleton(120)}`,()=>{
+      assert.equal(doubleton(120), 121, "Wrong result. It should be 121" );
+   });
+   it(`Testing for number 1234: received ${doubleton(1234)}`,()=>{
+      assert.equal(doubleton(1234), 1311, "Wrong result. It should be 1311" );
+   });
+   it(`Testing for number 1: received ${doubleton(1)}`,()=>{
+      assert.equal(doubleton(1), 10, "Wrong result. It should be 10" );
+   });
+   it(`Testing for number 10: received ${doubleton(10)}`,()=>{
+      assert.equal(doubleton(10), 12, "Wrong result. It should be 12" );
+   });
+});  
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: HERO'S ROOT
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+One of the first algorithm used for approximating the integer square root of a positive integer n is known as "Hero's method", named after the first-century Greek mathematician Hero of Alexandria who gave the first description of the method. Hero's method can be obtained from Newton's method which came 16 centuries after.
+
+We approximate the square root of a number n by taking an initial guess x, an error e and repeatedly calculating a new approximate integer value x using: (x + n / x) / 2; we are finished when the previous x and the new x have an absolute difference less than e.
+
+We supply to a function (int_rac) a number n (positive integer) and a parameter guess (positive integer) which will be our initial x. For this kata the parameter 'e' is set to 1.
+
+Hero's algorithm is not always going to come to an exactly correct result! For instance: if n = 25 we get 5 but for n = 26 we also get 5. Nevertheless 5 is the integer square root of 26.
+
+The kata is to return the count of the progression of integer approximations that the algorithm makes.
+
+Reference:
+
+https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
+
+Some examples:
+
+int_rac(25,1): follows a progression of [1,13,7,5] so our function should return 4.
+
+int_rac(125348,300): has a progression of [300,358,354] so our function should return 3.
+
+int_rac(125348981764,356243): has a progression of [356243,354053,354046] so our function should return 3.
 
 */
+class G964AA {
+    public static intRac(n: number, guess: number): number {
+        return 1;
+    }
+}
 /*
+describe("Fixed Tests intRac", function() {
+    it("Basic tests", function() {
+        testing(25, 1, 4);
+        testing(125348, 300, 3);
+        testing(236, 12, 2);
+        testing(48981764, 8000, 3);
+    });
+});
 
 */
 
@@ -135,7 +413,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: POINT IN A UNIT CIRCLE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -143,9 +421,29 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Task
+Write a function that returns true if a given point (x,y) is inside of a unit circle (that is, a "normal" circle with a radius of one) centered at the origin (0,0) and returns false if the point is outside.
 
+Input
+x: The first coordinate of the given point.
+y: The second coordinate of the given point.
+Notes
+The region bounded by the circle is considered to be an open disk, so points on the boundary of the circle should return false.
+We are using the euclidean metric.
 */
+function pointInCircle(x: number, y: number): boolean {
+    return true;
+}
 /*
+describe("Tests", () => {
+  it("test", () => {
+    assert.isTrue(pointInCircle(0,0), 'Origin is inside');
+    assert.isFalse(pointInCircle(0, -1), '(0, -1) is outside');
+    assert.isFalse(pointInCircle(2,0), '(2, 0) is outside');
+    assert.isTrue(pointInCircle(0,0.9), '(0, 0.9) is inside');
+    assert.isTrue(pointInCircle(0.5,0.5), '(0.5, 0.5) is inside');
+  });
+});
 
 */
 
@@ -157,7 +455,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: ADDING VALUES OF ARRAYS IN A SHIFTED WAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -165,10 +463,976 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+#Adding values of arrays in a shifted way
+
+You have to write a method, that gets two parameter:
+
+1. An array of arrays with int-numbers
+2. The shifting value
+#The method should add the values of the arrays to one new array.
+
+The arrays in the array will all have the same size and this size will always be greater than 0.
+The shifting value is always a value from 0 up to the size of the arrays.
+There are always arrays in the array, so you do not need to check for null or empty.
+
+#1. Example:
+
+[[1,2,3,4,5,6], [7,7,7,7,7,-7]], 0
+
+1,2,3,4,5,6
+7,7,7,7,7,-7
+
+--> [8,9,10,11,12,-1]
+#2. Example
+
+[[1,2,3,4,5,6], [7,7,7,7,7,7]], 3
+
+1,2,3,4,5,6
+      7,7,7,7,7,7
+
+--> [1,2,3,11,12,13,7,7,7]
+#3. Example
+
+[[1,2,3,4,5,6], [7,7,7,-7,7,7], [1,1,1,1,1,1]], 3
+
+
+1,2,3,4,5,6
+      7,7,7,-7,7,7
+            1,1,1,1,1,1
+
+--> [1,2,3,11,12,13,-6,8,8,1,1,1]
+*/
+function addingShifted(arrayOfArrays: number[][], shift: number): number[] {
+    return arrayOfArrays[0];
+}
+/*
+describe("Kata Tests", function(){
+  it("Basic Tests", function(){
+    var arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, 7, 7, -7]];
+    var expected = [8, 9, 10, 11, 12, -1 ];
+    var result = addingShifted(arrayOfArrays, 0);
+    assert.deepEqual(result, expected);
+    
+    arrayOfArrays = [[1, 2, 3, 4, 5, 6],[7, 7, 7, 7, 7, 7]];
+    expected = [ 1, 2, 3, 11, 12, 13, 7, 7, 7];
+    var result = addingShifted(arrayOfArrays, 3);
+    assert.deepEqual(result, expected);
+      
+    arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, -7, 7, 7],[1, 1, 1, 1, 1, 1]];
+    expected = [1, 2, 3, 11, 12, 13, -6, 8, 8, 1, 1, 1];
+    var result = addingShifted(arrayOfArrays, 3);
+    assert.deepEqual(result, expected);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: UNFLATTEN A LIST (EASY)
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+#Unflatten a list (Easy)
+
+There are several katas like "Flatten a list". These katas are done by so many warriors, that the count of available list to flattin goes down!
+
+So you have to build a method, that creates new arrays, that can be flattened!
+
+#Shorter: You have to unflatten a list/an array.
+
+You get an array of integers and have to unflatten it by these rules:
+
+- You start at the first number.
+- If this number x is smaller than 3, take this number x direct 
+  for the new array and continue with the next number.
+- If this number x is greater than 2, take the next x numbers (inclusive this number) as a 
+  sub-array in the new array. Continue with the next number AFTER this taken numbers.
+- If there are too few numbers to take by number, take the last available numbers.
+The given array will always contain numbers. There will only be numbers > 0.
+
+Example:
+
+ [1,4,5,2,1,2,4,5,2,6,2,3,3] -> [1,[4,5,2,1],2,[4,5,2,6],2,[3,3]]
+
+Steps: 
+1. The 1 is added directly to the new array.
+2. The next number is 4. So the next 4 numbers (4,5,2,1) are added as sub-array in the new array.
+3. The 2 is added directly to the new array.
+4. The next number is 4. So the next 4 numbers (4,5,2,6) are added as sub-array in the new array.
+5. The 2 is added directly to the new array.
+6. The next number is 3. So the next 3 numbers would be taken. There are only 2, 
+   so take these (3,3) as sub-array in the new array.
+There is a harder version of this kata!
+<a href="https://www.codewars.com/kata/57e5aa1d7fbcc988800001ae"taget=_blank>Unflatten a list (Harder than easy)
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+
 
 */
+function unflatten(flatArray: any[]): any[] {
+    return flatArray;
+}
 /*
+describe("solution", function(){
+  it("Basic Tests", function(){
+    var input = [ 3, 5, 2, 1 ];
+    var expected = [[ 3,5,2 ], 1 ];
 
+    assert.deepEqual(unflatten(input), expected);
+    
+    input = [ 1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3 ];
+    expected = [1, [4,5,2,1], 2, [4,5,2,6], 2, [3, 3] ];
+
+    assert.deepEqual(unflatten(input), expected);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: TEST YOUR KNOWLEDGE ON FUNCTION SCOPE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Write a function that adds from two invocations.
+
+All inputs will be integers.
+
+add(3)(4)  // 7
+add(12)(20) // 32
+*/
+/*
+describe("Basic tests", function() {
+  it("Testing : ", function() {
+    assert.strictEqual(add(2)(5), 7, 'Should return the addition of these invocations!');
+    assert.strictEqual(add(14)(25), 39, 'Should return the addition of these invocations!');
+    assert.strictEqual(add(10)(10), 20, 'Should return the addition of these invocations!');
+    assert.strictEqual(add(0)(0), 0, 'Should return the addition of these invocations!');
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: TARGET DATE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+You have an amount of money a0 > 0 and you deposit it with an interest rate of p percent divided by 360 per day on the 1st of January 2016. You want to have an amount a >= a0.
+
+Task:
+The function date_nb_days (or dateNbDays...) with parameters a0, a, p will return, as a string, the date on which you have just reached a.
+
+Example:
+date_nb_days(100, 101, 0.98) --> "2017-01-01" (366 days)
+
+date_nb_days(100, 150, 2.00) --> "2035-12-26" (7299 days)
+
+Notes:
+The return format of the date is "YYYY-MM-DD"
+The deposit is always on the "2016-01-01"
+Don't forget to take the rate for a day to be p divided by 36000 since banks consider that there are 360 days in a year.
+You have: a0 > 0, p% > 0, a >= a0
+*/
+function dateNbDays(a0: number, a: number, p: number): string {
+    return "hello";
+}
+/*
+describe("Fixed Tests dateNbDays", function() {
+  it("Basic tests", function() {
+    assert.strictEqual(dateNbDays(4281, 5087, 2), "2024-07-03");
+    assert.strictEqual(dateNbDays(4620, 5188, 2), "2021-09-19");
+    assert.strictEqual(dateNbDays(9999, 11427, 6), "2018-03-13");
+    assert.strictEqual(dateNbDays(3525, 4822, 3), "2026-04-18");
+    assert.strictEqual(dateNbDays(5923, 6465, 6), "2017-06-10");
+    assert.strictEqual(dateNbDays(4254, 4761, 8), "2017-05-22");
+    assert.strictEqual(dateNbDays(1244, 2566, 4), "2033-11-04");
+    assert.strictEqual(dateNbDays(6328, 7517, 5), "2019-05-25");
+    assert.strictEqual(dateNbDays(2920, 3834, 2), "2029-06-03");
+    assert.strictEqual(dateNbDays(7792, 8987, 4), "2019-07-09");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: ALL STAR CHALLENGE #14 - FIND THE MEDIAN
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Your non-profit company has assigned you the task of calculating some simple statistics on donations. You have an array of integers, representing various amounts of donations your company has been given. In particular, you're interested in the median value for donations.
+
+The median is the middle number of a sorted list of numbers. If the list is of even length, the 2 middle values are averaged.
+
+Write a function that takes an array of integers as an argument and returns the median of those integers.
+
+Notes:
+
+The sorting step is vital.
+Input arrays are non-empty.
+Examples
+Median of [33,99,100,30,29,50] is 41.5.
+Median of [3,2,1] is 2.
+
+
+*/
+function median(n: number[]): number {
+    return 1;
+}
+/*
+describe("solution", function(){
+  it("basic Tests", function(){
+    assert.equal(median([1,2,3,4]),2.5)
+    assert.equal(median([3,4,1,2,5]),3)
+    assert.equal(median([10,29,23,94,76,96,5,85,4,33,47,41,87]),41)
+  });
+})
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Ch4113ng3
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l' with 1 e.g. "Fundamentals" --> "Fund4m3nt41s"
+
+
+*/
+function nerdify(txt: string): string {
+    return "";
+}
+/*
+describe("nerdify", function() {
+  it("Sample Tests", function() {
+    assert.strictEqual(nerdify("Fund4m3nt41s"),"Fund4m3nt41s");
+    assert.strictEqual(nerdify("Seven"),"S3v3n");
+    assert.strictEqual(nerdify("Los Angeles"),"Los 4ng313s");
+    assert.strictEqual(nerdify("Seoijselawuue"),"S3oijs314wuu3");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: COUNT SALUTES
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Description
+There is a narrow hallway in which people can go right and left only. When two people meet in the hallway, by tradition they must salute each other. People move at the same speed left and right.
+
+Your task is to write a function that, given a string representation of people moving in the hallway, will count the number of salutes that will occur.
+Note: 2 salutes occur when people meet, one to the other and vice versa.
+
+Input
+People moving right will be represented by >; people moving left will be represented by <. An example input would be >--<--->->. The - character represents empty space, which you need not worry about.
+
+Examples
+Input: >----->-----<--<
+Output: 8
+
+Explanation: Both guys moving right will meet both guys moving left.
+Hence a total of 4 meetings will occur and 8 salutes will occur.
+
+Input: <---<--->----<
+Output: 2
+
+Explanation: Only one meeting occurs.
+
+
+*/
+function countSalutes(hallway: String): number {
+    return 1;
+}
+/*
+describe('Solution test', () => {
+  const act = (hallway: String, expected: number) => {
+    const actual: number = countSalutes(hallway);
+    const input: String = hallway;
+    it(`input: ${input} expected: ${expected} actual: ${actual}`,
+       () => assert.strictEqual(actual, expected));
+  }
+  describe('Fixed tests', () => {
+    act('<---->---<---<-->', 4);
+    act('------', 0);
+    act('>>>>>>>>>>>>>>>>>>>>>----<->', 42);
+    act('<<----<>---<', 2);
+    act('>', 0);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: COUNTING POWER SETS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+In this kata, you must create a function powers/Powers that takes an array, and returns the number of subsets possible to create from that list. In other words, counts the power sets.
+
+For instance
+
+powers([1,2,3]) => 8
+...due to...
+
+powers([1,2,3]) =>
+[[],
+ [1],
+ [2],
+ [3],
+ [1,2],
+ [2,3],
+ [1,3],
+ [1,2,3]]
+Your function should be able to count sets up to the size of 500, so watch out; pretty big numbers occur there!
+
+For comparison, my Haskell solution can compute the number of sets for an array of length 90 000 in less than a second, so be quick!
+
+You should treat each array passed as a set of unique values for this kata.
+
+###Examples:
+
+powers([])        => 1
+powers([1])       => 2
+powers([1,2])     => 4
+powers([1,2,3,4]) => 16
+
+*/
+function powers<T>(list: T[]): number {
+    throw new Error("The method or operation is not implemented.");
+}
+/*
+describe("solution", function() {
+  it("Sample Tests", function() {
+      assert.strictEqual(powers([]), 1, "An empty array should return 1!");
+      assert.strictEqual(powers([1]), 2);
+      assert.strictEqual(powers([1,2,3,4,5]), 32);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: POSSIBILITIES ARRAY
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A non-empty array a of length n is called an array of all possibilities if it contains all numbers between [0,a.length-1].Write a method named isAllPossibilities that accepts an integer array and returns true if the array is an array of all possibilities, else false.
+
+Example:
+
+a=[1,2,0,3]
+a.length-1=3 
+a includes [0,3] ,hence the function should return true
+*/
+function isAllPossibilities(x: number[]): boolean {
+    throw new Error("This method or operation is not implemented.");
+}
+/*
+describe("Possiblities Array", function() {
+  it("simple test", function() {
+    assert.strictEqual(isAllPossibilities([0,2,19,4,4]),false)
+    assert.strictEqual(isAllPossibilities([3,2,1,0]),true)
+    assert.strictEqual(isAllPossibilities([0,1,2,3]),true)
+    assert.strictEqual(isAllPossibilities([1,2,3,4]),false)
+    assert.strictEqual(isAllPossibilities([0,2,3]),false)
+    assert.strictEqual(isAllPossibilities([0]),true)
+    assert.strictEqual(isAllPossibilities([]),false)
+    assert.strictEqual(isAllPossibilities([0,1,2,3,4,5,6,7,8,9]),true)
+    assert.strictEqual(isAllPossibilities([0,1,3,-2,5,4]),false)
+    assert.strictEqual(isAllPossibilities([1,-1,2,-2,3,-3,6]),false)
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: GENETIC ALGORITHM SERIES  - #2 Mutation
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next.
+
+Mutation
+
+A mutation here may happen on zero or more positions in a chromosome. It is going to check every position and by a given probability it will decide if a mutation will occur.
+
+A mutation is the change from 0 to 1 or from 1 to 0.
+
+Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
+*/
+const mutate = (chromosome: string, p: number): string => {
+    return "hello";
+};
+
+/*
+describe('mutate', () => {
+  const zero = '0'.repeat(9);
+  const one  = '1'.repeat(9);
+
+  it('100% mutate', () => {
+    assert.equal(mutate(zero, 1), one);
+    assert.equal(mutate(one, 1), zero);
+  });
+  
+  it('0% mutate', () => {
+    assert.equal(mutate(zero, 0), zero);
+    assert.equal(mutate(one, 0), one);
+  });
+
+  it('50% mutate', () => {
+    assert(mutate(zero, 0.5).split('').some(x => x == '1'));
+    assert(mutate(one, 0.5).split('').some(x => x == '1'));
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: SELECTIVE FEAR OF NUMBERS
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+I've got a crazy mental illness. I dislike numbers a lot. But it's a little complicated: The number I'm afraid of depends on which day of the week it is... This is a concrete description of my mental illness:
+
+Monday --> 12
+
+Tuesday --> numbers greater than 95
+
+Wednesday --> 34
+
+Thursday --> 0
+
+Friday --> numbers divisible by 2
+
+Saturday --> 56
+
+Sunday --> 666 or -666
+
+Write a function which takes a string (day of the week) and an integer (number to be tested) so it tells the doctor if I'm afraid or not. (return a boolean)
+*/
+function amIAfraid(day: string, num: number): boolean {
+    return true;
+}
+/*
+describe("example", function() {
+  it("test", function() {
+    assert.equal(amIAfraid("Monday", 13), false, "Should return false");
+    assert.equal(amIAfraid("Sunday", -666), true, "Should return true");
+    assert.equal(amIAfraid("Tuesday", 2), false, "Should return false");
+    assert.equal(amIAfraid("Tuesday", 965), true, "Should return true");
+    assert.equal(amIAfraid("Friday", 2), true, "Should return true");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: TRANSPOSE TWO STRINGS IN AN ARRAY
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+You will be given an array that contains two strings. Your job is to create a function that will take those two strings and transpose them, so that the strings go from top to bottom instead of left to right.
+
+e.g. transposeTwoStrings(['Hello','World']);
+
+should return
+
+H W  
+e o  
+l r  
+l l  
+o d
+A few things to note:
+
+There should be one space in between the two characters
+You don't have to modify the case (i.e. no need to change to upper or lower)
+If one string is longer than the other, there should be a space where the character would be
+*/
+function transposeTwoStrings(arr: string[]): string {
+    return "hello";
+}
+/*
+describe("solution", function(){
+  it("basicTests", function(){
+    assert.strictEqual(transposeTwoStrings(['Hello','World']), "H W\ne o\nl r\nl l\no d", "Should return H W\ne o\nl r\nl l\no d");
+    assert.strictEqual(transposeTwoStrings(['joey','louise']), "j l\no o\ne u\ny i\n  s\n  e", "Should return j l\no o\ne u\ny i\n  s\n  e");
+    assert.strictEqual(transposeTwoStrings(['a','cat']), "a c\n  a\n  t", "Should return a c\n  a\n  t");
+    assert.strictEqual(transposeTwoStrings(['cat','']), "c  \na  \nt  ", "Should return c  \na  \nt  ");
+    assert.strictEqual(transposeTwoStrings(['!a!a!','?b?b']), "! ?\na b\n! ?\na b\n!  ", "Should return ! ?\na b\n! ?\na b\n!  ");
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: GA-DE-RY-PO-LU-KI cypher
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Introduction
+The GADERYPOLUKI is a simple substitution cypher used in scouting to encrypt messages. The encryption is based on short, easy to remember key. The key is written as paired letters, which are in the cipher simple replacement.
+
+The most frequently used key is "GA-DE-RY-PO-LU-KI".
+
+ G => A
+ g => a
+ a => g
+ A => G
+ D => E
+  etc.
+The letters, which are not on the list of substitutes, stays in the encrypted text without changes.
+
+Task
+Your task is to help scouts to encrypt and decrypt thier messages. Write the Encode and Decode functions.
+
+Input/Output
+The input string consists of lowercase and uperrcase characters and white . The substitution has to be case-sensitive.
+
+Example
+ Encode("ABCD")          // => GBCE 
+ Encode("Ala has a cat") // => Gug hgs g cgt 
+ Encode("gaderypoluki"); // => agedyropulik
+ Decode("Gug hgs g cgt") // => Ala has a cat 
+ Decode("agedyropulik")  // => gaderypoluki
+ Decode("GBCE")          // => ABCD
+*/
+function encodeA(str: String): String {
+    return "noidea";
+}
+
+function decodeA(str: String): String {
+    return "noidea";
+}
+/*
+describe("Scouts are waiting!", function(){
+  it("Basic Tests", function(){
+    assert.strictEqual( encode("Ala has a cat") , "Gug hgs g cgt" );
+    assert.strictEqual( decode("Gug hgs g cgt") , "Ala has a cat" );
+    assert.strictEqual( encode("ABCD") , "GBCE" );
+    assert.strictEqual( encode("gaderypoluki") , "agedyropulik" );
+    assert.strictEqual( decode("agedyropulik") , "gaderypoluki" );
+    assert.strictEqual( decode("GBCE") , "ABCD" );
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: FUNCTIONS OF INTEGERS ON CARTESIAN PLANE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Consider integer coordinates x, y in the Cartesian plan and three functions f, g, h defined by:
+
+f: 1 <= x <= n, 1 <= y <= n --> f(x, y) = min(x, y)
+g: 1 <= x <= n, 1 <= y <= n --> g(x, y) = max(x, y)
+h: 1 <= x <= n, 1 <= y <= n --> h(x, y) = x + y
+where n is a given integer (n >= 1, guaranteed) and x, y are integers.
+
+In the table below you can see the value of the function f with n = 6.
+
+---	0	1	2	3	4	5	6
+6	-	1	2	3	4	5	6
+5	-	1	2	3	4	5	5
+4	-	1	2	3	4	4	4
+3	-	1	2	3	3	3	3
+2	-	1	2	2	2	2	2
+1	-	1	1	1	1	1	1
+0	-	-	-	-	-	-	-
+The task is to calculate the sum of f(x, y), g(x, y) and h(x, y) for all integers x and y such that (1 <= x <= n, 1 <= y <= n).
+
+The function sumin (sum of f) will take n as a parameter and return the sum of min(x, y) in the domain 1 <= x <= n, 1 <= y <= n. The function sumax (sum of g) will take n as a parameter and return the sum of max(x, y) in the same domain. The function sumsum (sum of h) will take n as a parameter and return the sum of x + y in the same domain.
+
+Examples:
+sumin(6) --> 91
+sumin(45) --> 31395
+sumin(999) --> 332833500
+sumin(5000) --> 41679167500
+
+sumax(6) --> 161
+sumax(45) --> 61755
+sumax(999) --> 665167500
+sumax(5000) --> 83345832500
+
+sumsum(6) --> 252
+sumsum(45) --> 93150
+sumsum(999) --> 998001000
+sumsum(5000) --> 125025000000
+
+*/
+function sumin(n: number): number {
+    throw new Error("TODO");
+}
+function sumax(n: number): number {
+    throw new Error("TODO");
+}
+function sumsum(n: number): number {
+    throw new Error("TODO");
+}
+/*
+describe("Fixed Tests sumin, sumax, sumsum", function() {
+    it("Basic tests", function() {
+        assert.equal(sumin(5), 55);
+        assert.equal(sumax(8), 372);
+        assert.equal(sumsum(8), 576);
+    });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: GENETIC ALGORITHM SERIES - #3 Crossover
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+In genetic algorithms, crossover is a genetic operator used to vary the programming of chromosomes from one generation to the next.
+
+The one-point crossover consists in swapping one's cromosome part with another in a specific given point. The image bellow shows the crossover being applied on chromosomes 1011011001111 and 1011100100110 with the cut point (index) 4:
+
+
+
+In this kata you have to implement a function crossover that receives two chromosomes chromosome1, chromosome2 and a zero-based index and it has to return an array with the crossover result on both chromosomes [chromosome1, chromosome2].
+
+Example:
+crossover('111000', '000110', 3) should return ['111110', 000000']
+*/
+const crossover = (chromosome1: string, chromosome2: string, index: number) => {
+    return [];
+};
+
+/*
+describe('crossover', () => {
+  it('Basic tests', () => {
+    assert(crossover('110','001',2)[0] === '111' && crossover('110','001',2)[1] === '000');
+    assert(crossover('111000','000110',3)[0] === '111110' && crossover('111000','000110',3)[1] === '000000');
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: EASY LINE
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+In the drawing below we have a part of the Pascal's triangle, horizontal lines are numbered from zero (top).
+
+We want to calculate the sum of the squares of the binomial coefficients on a given horizontal line with a function called easyline (or easyLine or easy-line).
+
+Can you write a program which calculate easyline(n) where n is the horizontal line number?
+
+The function will take n (with: n>= 0) as parameter and will return the sum of the squares of the binomial coefficients on line n.
+
+Examples:
+easyline(0) => 1
+easyline(1) => 2
+easyline(4) => 70
+easyline(50) => 100891344545564193334812497256
+Ref:
+http://mathworld.wolfram.com/BinomialCoefficient.html
+
+alternative text
+
+Note:
+In Javascript, Coffeescript, Typescript, C++, PHP, C, R, Nim, Fortran to get around the fact that we have no big integers the function easyLine(n) will in fact return
+
+round(log(easyline(n)))
+
+and not the easyline(n) of the other languages.
+
+So, in Javascript, Coffeescript, Typescript, C++, PHP, R, Nim, C, Fortran:
+
+easyLine(0) => 0
+easyLine(1) => 1
+easyLine(4) => 4
+easyLine(50) => 67
+*/
+function easyLine(n: number): number {
+    return 1;
+}
+/*
+describe("Fixed Tests easyLine", function() {
+  it("Basic tests", function() {
+    assert.strictEqual(easyLine(7), 8);
+    assert.strictEqual(easyLine(13), 16);
+    assert.strictEqual(easyLine(17), 22);
+    assert.strictEqual(easyLine(19), 24);
+  });
+});
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: TETRIS SERIES#1 - SCORING SYSTEM
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A History Lesson
+Tetris is a puzzle video game originally designed and programmed by Soviet Russian software engineer Alexey Pajitnov. The first playable version was completed on June 6, 1984. Pajitnov derived its name from combining the Greek numerical prefix tetra- (the falling pieces contain 4 segments) and tennis, Pajitnov's favorite sport.
+
+About scoring system
+The scoring formula is built on the idea that more difficult line clears should be awarded more points. For example, a single line clear is worth 40 points, clearing four lines at once (known as a Tetris) is worth 1200.
+
+A level multiplier is also used. The game starts at level 0. The level increases every ten lines you clear. Note that after increasing the level, the total number of cleared lines is not reset.
+
+For our task you can use this table:
+
+Level	Points for 1 line
+Points for 2 lines	Points for 3 lines	Points for 4 lines
+0	40	100
+300	1200
+1	80	200	600	2400
+2	120	300	900	3600
+3	160	400	1200	4800
+...
+7	320	800	2400	9600
+...	For level n you must determine the formula by yourself using given examples from the table.
+Task
+Calculate the final score of the game using original Nintendo scoring system
+
+Input
+Array with cleaned lines.
+Example: [4, 2, 2, 3, 3, 4, 2]
+Input will always be valid: array of random length (from 0 to 5000) with numbers from 0 to 4.
+
+Ouput
+Calculated final score.
+def get_score(arr) -> int: return 0
+
+Example
+getScore([4, 2, 2, 3, 3, 4, 2]); // returns 4900
+Step 1: +1200 points for 4 lines (current level 0). Score: 0+1200=1200;
+Step 2: +100 for 2 lines. Score: 1200+100=1300;
+Step 3: +100. Score: 1300+100=1400;
+Step 4: +300 for 3 lines (current level still 0). Score: 1400+300=1700.
+Total number of cleaned lines 11 (4 + 2 + 2 + 3), so level goes up to 1 (level ups each 10 lines);
+Step 5: +600 for 3 lines (current level 1). Score: 1700+600=2300;
+Step 6: +2400. Score: 2300+2400=4700;
+Step 7: +200. Total score: 4700+200=4900 points.
+*/
+function getScore(arr: number[]) {
+    // your code here
+}
+/*
+describe("Basic tests", () => {
+  const testing = (arr: number[], exp: number) => it(`Testing for [${arr.join(', ')}]`, () => assert.equal(getScore(arr), exp));
+  testing([0, 1, 2, 3, 4], 1640);
+  testing([0, 1, 1, 3, 0, 2, 1, 2], 620);
+  testing([2, 0, 4, 2, 2, 3, 0, 0, 3, 3], 3300);
+  testing([0], 0);
+  testing([], 0);
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: STRING PREFIX AND SUFFIX
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+In this Kata, you will be given a string and your task will be to return the length of the longest prefix that is also a suffix. A prefix is the start of a string while the suffix is the end of a string. For instance, the prefixes of the string "abcd" are ["a","ab","abc"]. The suffixes are ["bcd", "cd", "d"]. You should not overlap the prefix and suffix.
+
+for example:
+solve("abcd") = 0, because no prefix == suffix. 
+solve("abcda") = 1, because the longest prefix which == suffix is "a".
+solve("abcdabc") = 3. Longest prefix which == suffix is "abc".
+solve("aaaa") = 2. Longest prefix which == suffix is "aa". You should not overlap the prefix and suffix
+solve("aa") = 1. You should not overlap the prefix and suffix.
+solve("a") = 0. You should not overlap the prefix and suffix.
+All strings will be lowercase and string lengths are 1 <= length <= 500
+
+More examples in test cases. Good luck!
+*/
+function solveAA(s: string) {
+    // your code here
+}
+/*
+describe("Basic tests", function() {
+  it("Testing for abcd", () => assert.strictEqual(solve("abcd"), 0));
+  it("Testing for abcda", () => assert.strictEqual(solve("abcda"), 1));
+  it("Testing for abcdabc", () => assert.strictEqual(solve("abcdabc"), 3));
+  it("Testing for abcabc", () => assert.strictEqual(solve("abcabc"), 3));
+  it("Testing for abcabca", () => assert.strictEqual(solve("abcabca"), 1));
+  it("Testing for abcdabcc", () => assert.strictEqual(solve("abcdabcc"), 0));
+  it("Testing for aaaaa", () => assert.strictEqual(solve("aaaaa"), 2));
+  it("Testing for aaaa", () => assert.strictEqual(solve("aaaa"), 2));
+  it("Testing for aaa", () => assert.strictEqual(solve("aaa"), 1));
+  it("Testing for aa", () => assert.strictEqual(solve("aa"), 1));
+  it("Testing for a", () => assert.strictEqual(solve("a"), 0));
+  it("Testing for acbacc", () => assert.strictEqual(solve("acbacc"), 0));
+});
 */
 
 // console.log();

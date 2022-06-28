@@ -19,28 +19,22 @@ class G96412 {
 class G96411 {
     static iterPi(epsilon) {
         const PI = Math.PI;
-        console.log(PI);
         let approxPi = 0;
         let iterCounter = 0;
-        const numIterations = 1 / epsilon;
-        console.log(numIterations);
-        for (let i = 0, step = 1; i < numIterations; i += 1, step += 2) {
-            console.log(i, step);
+        const numIterations = 1 / epsilon + 1;
+        for (let i = 0, step = 1; i < numIterations + 1; i += 1, step += 2) {
             const fract = i & 1 ? -1 / step : 1 / step;
-            console.log("   fract:", fract);
             approxPi += fract;
             iterCounter = i + 1;
+            if (Math.abs(PI - approxPi * 4) < epsilon)
+                break;
         }
         approxPi *= 4;
-        console.log(iterCounter);
-        console.log(approxPi);
         approxPi = Number(approxPi.toFixed(10));
-        console.log(approxPi);
         const solution = [iterCounter, approxPi];
         return solution;
     }
 }
-console.log(G96411.iterPi(0.001));
 class G001 {
     static howmuch(m, n) {
         let solution = [];

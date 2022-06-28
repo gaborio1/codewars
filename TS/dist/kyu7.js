@@ -1,6 +1,87 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = void 0;
+function spinningRings(innerMax, outerMax) {
+    let numberOfSpinsTillRingsAreEqual = 0;
+    return numberOfSpinsTillRingsAreEqual;
+}
+function getSectionId(scroll, sizes) {
+}
+function collision(x1, y1, r1, x2, y2, r2) {
+    throw new Error("Not implemented");
+}
+function polydivisible(x) {
+    throw new Error("Not implemented yet");
+}
+function doubleton(num) {
+    return 1;
+}
+class G964AA {
+    static intRac(n, guess) {
+        return 1;
+    }
+}
+function pointInCircle(x, y) {
+    return true;
+}
+function addingShifted(arrayOfArrays, shift) {
+    return arrayOfArrays[0];
+}
+function unflatten(flatArray) {
+    return flatArray;
+}
+function dateNbDays(a0, a, p) {
+    return "hello";
+}
+function median(n) {
+    return 1;
+}
+function nerdify(txt) {
+    return "";
+}
+function countSalutes(hallway) {
+    return 1;
+}
+function powers(list) {
+    throw new Error("The method or operation is not implemented.");
+}
+function isAllPossibilities(x) {
+    throw new Error("This method or operation is not implemented.");
+}
+const mutate = (chromosome, p) => {
+    return "hello";
+};
+function amIAfraid(day, num) {
+    return true;
+}
+function transposeTwoStrings(arr) {
+    return "hello";
+}
+function encodeA(str) {
+    return "noidea";
+}
+function decodeA(str) {
+    return "noidea";
+}
+function sumin(n) {
+    throw new Error("TODO");
+}
+function sumax(n) {
+    throw new Error("TODO");
+}
+function sumsum(n) {
+    throw new Error("TODO");
+}
+const crossover = (chromosome1, chromosome2, index) => {
+    return [];
+};
+function easyLine(n) {
+    return 1;
+}
+function getScore(arr) {
+}
+function solveAA(s) {
+}
 const compose = (str1, str2) => {
     const strArr1 = str1.split("\n");
     const strArr2 = str2.split("\n").reverse();

@@ -350,7 +350,8 @@ describe("Fixed Tests game", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️  ADD SOLOUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: PI APPROXIMATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -387,45 +388,118 @@ About PI : http://www.geom.uiuc.edu/~huberty/math5337/groupe/expresspi.html
 class G96411 {
     public static iterPi(epsilon: number): number[] {
         const PI: number = Math.PI;
-        console.log(PI);
 
         let approxPi: number = 0;
         let iterCounter: number = 0;
 
-        const numIterations: number = 1 / epsilon;
-        console.log(numIterations);
+        // HAD TO ADD +1 FOR epsilon 0.00001 OR LESS AS WE NEED AN EXTRA ITERATION,
+        // BREAK OUT OF LOOP IN OTHER CASES !!!
+        const numIterations: number = 1 / epsilon + 1;
 
-        for (let i = 0, step = 1; i < numIterations; i += 1, step += 2) {
-            console.log(i, step);
+        // CALC CURRENT DENOM AND USE FORMULA TO GET CURRENT approxPi
+        for (let i = 0, step = 1; i < numIterations + 1; i += 1, step += 2) {
+            // console.log("iterarions:", i, "denom:", step);
             const fract: number = i & 1 ? -1 / step : 1 / step;
-            console.log("   fract:", fract);
+            // console.log("   fract:", fract);
 
             approxPi += fract;
             iterCounter = i + 1;
+
+            // console.log("approxPi:", approxPi);
+
+            // STOP LOOP IF WE ARE WITHIN RANGE
+            if (Math.abs(PI - approxPi * 4) < epsilon) break;
         }
 
+        // COMPLETE CALCULATING PI
         approxPi *= 4;
 
-        console.log(iterCounter);
-        console.log(approxPi);
-        approxPi = Number(approxPi.toFixed(10));
-        console.log(approxPi);
+        // console.log(iterCounter);
+        // console.log("approxPi:", approxPi);
 
+        // TRIM DOWN TO 10 DECEMALS
+        approxPi = Number(approxPi.toFixed(10));
+        // console.log("approxPi:", approxPi);
+
+        // FORMAT SOLUTON
         const solution: number[] = [iterCounter, approxPi];
 
         return solution;
     }
 }
-/*
- testIt(0.1, [10, 3.0418396189]);
-    testIt(0.01,  [100, 3.1315929036]);
-    testIt(0.001,  [1000, 3.1405926538]);
-*/
 
-console.log(G96411.iterPi(0.001));
+/*
+console.log(G96411.iterPi(0.1));
+
+iterarions: 0 denom: 1
+   fract: 1
+iterarions: 1 denom: 3
+   fract: -0.3333333333333333
+iterarions: 2 denom: 5
+   fract: 0.2
+iterarions: 3 denom: 7
+   fract: -0.14285714285714285
+iterarions: 4 denom: 9
+   fract: 0.1111111111111111
+iterarions: 5 denom: 11
+   fract: -0.09090909090909091
+iterarions: 6 denom: 13
+   fract: 0.07692307692307693
+iterarions: 7 denom: 15
+   fract: -0.06666666666666667
+iterarions: 8 denom: 17
+   fract: 0.058823529411764705
+iterarions: 9 denom: 19
+   fract: -0.05263157894736842
+10
+[ 10, 3.0418396189 ]
+*./
+
+// expected [ 100000, 3.1415826536 ] to deeply equal [ 100001, 3.1416026535 ]
+// console.log(G96411.iterPi(0.00001));
+// [ 100000, 3.1415826536 ]
+
 // console.log();
 // console.log();
 // console.log();
+
+/*
+https://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80
+
+Leibniz formula for π
+From Wikipedia, the free encyclopedia
+Jump to navigationJump to search
+Part of a series of articles on the
+mathematical constant π
+3.1415926535897932384626433...
+Uses
+Area of a circleCircumferenceUse in other formulae
+Properties
+IrrationalityTranscendence
+Value
+Less than 22/7ApproximationsMemorization
+People
+ArchimedesLiu HuiZu ChongzhiAryabhataMadhavaJamshīd al-KāshīLudolph van CeulenFrançois VièteSeki TakakazuTakebe KenkoWilliam JonesJohn MachinWilliam ShanksSrinivasa RamanujanJohn WrenchChudnovsky brothersYasumasa Kanada
+History
+ChronologyA History of Pi
+In culture
+LegislationPi Day
+Related topics
+Squaring the circleBasel problemSix nines in πOther topics related to π
+vte
+For other formulas known under the same name, see List of things named after Gottfried Leibniz.
+In mathematics, the Leibniz formula for π, named after Gottfried Leibniz, states that
+
+{\displaystyle 1-{\frac {1}{3}}+{\frac {1}{5}}-{\frac {1}{7}}+{\frac {1}{9}}-\cdots ={\frac {\pi }{4}},}{\displaystyle 1-{\frac {1}{3}}+{\frac {1}{5}}-{\frac {1}{7}}+{\frac {1}{9}}-\cdots ={\frac {\pi }{4}},}
+an alternating series. It is also called the Madhava–Leibniz series as it is a special case of a more general series expansion for the inverse tangent function, first discovered by the Indian mathematician Madhava of Sangamagrama in the 14th century,[1] the specific case first published by Leibniz around 1676.[2] The series for the inverse tangent function, which is also known as Gregory's series, can be given by:
+
+{\displaystyle \arctan x=x-{\frac {x^{3}}{3}}+{\frac {x^{5}}{5}}-{\frac {x^{7}}{7}}+\cdots }\arctan x=x-{\frac {x^{3}}{3}}+{\frac {x^{5}}{5}}-{\frac {x^{7}}{7}}+\cdots 
+The Leibniz formula for 
+π
+/
+4
+ can be obtained by putting x = 1 into this series.[3]
+ */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
