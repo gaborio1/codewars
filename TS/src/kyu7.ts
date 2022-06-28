@@ -289,7 +289,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: The Baum-Sweet sequence
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -297,10 +297,29 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Wikipedia: The Baum–Sweet sequence is an infinite automatic sequence of 0s and 1s defined by the rule:
 
+bn = 1 if the binary representation of n contains no block of consecutive 0s of odd length;
+bn = 0 otherwise;
+
+for n ≥ 0.
+
+Define a generator function baumSweet that sequentially generates the values of this sequence.
+
+It will be tested for up to 1 000 000 values.
+
+Note that the binary representation of 0 used here is not 0 but the empty string ( which does not contain any blocks of consecutive 0s ).
 */
+function* baumSweet(): Generator {
+    // your code here
+  }
 /*
-
+describe("Baum-Sweet", function() {
+  describe("sequence", () => {
+    it("20 elements", () => assert.deepEqual(take(20)(baumSweet()), [1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1]));
+    it("1 000 elements", () => assert.deepEqual(take(1e3)(baumSweet()), [1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1]));
+  });
+});
 */
 
 // console.log();
@@ -311,7 +330,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Upstream/Downstream
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -319,10 +338,31 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Chingel is practicing for a rowing competition to be held on this saturday. He is trying his best to win this tournament for which he needs to figure out how much time it takes to cover a certain distance.
+
+Input
+
+You will be provided with the total distance of the journey, speed of the boat and whether he is going downstream or upstream. The speed of the stream and direction of rowing will be given as a string. Check example test cases!
+
+Output
+
+The output returned should be the time taken to cover the distance. If the result has decimal places, round them to 2 fixed positions.
+
+Show some love ;) Rank and Upvote!
+
 
 */
+function time(distance: number, boatSpeed: number, stream: String): number {
+    return 0;
+}
 /*
-
+describe("solution", function(){
+  it("Basic Tests", function() {
+    assert.equal(time(24,10,"Downstream 2"),2);
+    assert.equal(time(24,14,"Upstream 2"),2);
+    assert.equal(time(54,28,"Downstream 3"),1.74);
+  });
+});
 */
 
 // console.log();
@@ -333,7 +373,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Hëävÿ Mëtäl Ümläüts
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -341,10 +381,29 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Your retro heavy metal band, VÄxën, originally started as kind of a joke, just because why would anyone want to use the crappy foosball table in your startup's game room when they could be rocking out at top volume in there instead? Yes, a joke, but now all the top tech companies are paying you top dollar to play at their conferences and big product-release events. And just as how in the early days of the Internet companies were naming everything "i"-this and "e"-that, now that VÄxënmänïä has conquered the tech world, any company that doesn't use Hëävÿ Mëtäl Ümläüts in ëvëry pössïblë pläcë is looking hopelessly behind the times.
 
+Well, with great power chords there must also come great responsibility! You need to help these companies out by writing a function that will guarantee that their web sites and ads and everything else will RÖCK ÄS MÜCH ÄS PÖSSÏBLË! Just think about it -- with the licensing fees you'll be getting from Gööglë, Fäcëböök, Äpplë, and Ämäzön alone, you'll probably be able to end world hunger, make college and Marshall stacks free to all, and invent self-driving bumper cars. Sö lët's gët röckïng and röllïng! Pëdal tö thë MËTÄL!
+
+Here's a little cheatsheet that will help you write your function to replace the so-last-year letters a-e-i-o-u-and-sometimes-y with the following totally rocking letters:
+
+A = Ä = \u00c4     E = Ë = \u00cb     I = Ï = \u00cf
+O = Ö = \u00d6     U = Ü = \u00dc     Y = Ÿ = \u0178
+a = ä = \u00e4     e = ë = \u00eb     i = ï = \u00ef
+o = ö = \u00f6     u = ü = \u00fc     y = ÿ = \u00ff
 */
+function heavyMetalUmlauts(boringText: String): String {
+    return "";
+}
 /*
-
+describe("solution", function(){
+  it("Example tests", function() {
+    assert.equal(solution.heavyMetalUmlauts("Announcing the Macbook Air Guitar"), "Ännöüncïng thë Mäcböök Äïr Güïtär");
+    assert.equal(solution.heavyMetalUmlauts("Facebook introduces new heavy metal reaction buttons"), "Fäcëböök ïntrödücës nëw hëävÿ mëtäl rëäctïön büttöns");
+    assert.equal(solution.heavyMetalUmlauts("Strong sales of Google's VR Metalheadsets send tech stock prices soaring"), "Ströng sälës öf Gööglë's VR Mëtälhëädsëts sënd tëch stöck prïcës söärïng");
+    assert.equal(solution.heavyMetalUmlauts("Vegan Black Metal Chef hits the big time on Amazon TV"), "Vëgän Bläck Mëtäl Chëf hïts thë bïg tïmë ön Ämäzön TV");
+  });
+});
 */
 
 // console.log();
@@ -355,7 +414,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Remove Empty Items of Array
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -363,10 +422,38 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+In this Kata, you will learn how to remove all empty items in an Array.
 
+In JavaScript, empty items in arrays can be declared by [1, 2,,,3, 4] (Multiple commas without a value in that index)
+
+The values that are not given a value are empty items, and usually add up with others to form <# empty items>; In the example, <2 empty items>
+
+[1, 2, <2 empty items>, 3, 4] should be cleared such that it should be [1, 2, 3, 4]
+
+Example:
+
+Before: [1, 2, 3, <5 empty items>, 4, <1 empty item>, null, undefined];
+
+After: [1, 2, 3, 4, null, undefined];
 */
+function clean(array: any[]): any[] {
+    return [];
+}
 /*
-
+describe("Basic Tests", (): void => {
+  it("Good stuff", (): void => {
+    assert.deepEqual(clean([]), [], "Empty Array");
+    assert.deepEqual(clean(Array(500000)), [], "5000000 empty items");
+    assert.deepEqual(clean([1, 2]), [1, 2], "No empty items here");
+    assert.deepEqual(clean([1, 2, , , 3, 4,]), [1, 2, 3, 4], "Two Empty Items");
+    assert.deepEqual(clean([1, 2, [],, 3]), [1, 2, [], 3], "Sub-Arrays");
+  });
+  
+  it("Works Against Falsey Values", (): void => {
+    assert.deepEqual(clean([undefined, null, NaN, false, '', 0]), [undefined, null, NaN, false, '', 0], "Falsey Values");
+    assert.deepEqual(clean([undefined,,,, null,, NaN,, false, '', 4, 3, 2, 1, 0]), [undefined, null, NaN, false, '', 4, 3, 2, 1, 0], "Falsey, Empty, Truthy");
+  });
+});
 */
 
 // console.log();
@@ -377,7 +464,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Help Suzuki complete his chores!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -385,10 +472,45 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Suzuki has a long list of chores required to keep the monastery in good order. Each chore can be completed independent of the others and assigned to any student. He needs to assign two chores to each student in a way which minimizes the total duration of the day's work. There will always be an even number of chores and enough students to complete them.
+
+You will be given an array containing the estimated duration of each chore such as:
+
+10 ≤ chores length ≤ 30
+
+chores = [1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]
+
+Return an array with each students work duration in ascending order such that the last element represents the total duration of the day's work. Each integer in the return array is the sum of each students two assigned chores.
+
+chores = [1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]
+
+Chore 1 = 2hrs 
+Chore 2 = 9hrs
+
+2 + 9 = 11 hours duration
+
+return [7, 8, 8, 10, 10, 11]
 
 */
+function choreAssignment(chores: number[]): number[] {
+    //code here
+    return [];
+}
 /*
-
+describe("Testing...", function(){
+  it("Basic tests", function(){
+    const TESTS:number[][][] =[
+      [[5, 2, 1, 6, 4, 4],[7, 7, 8]],
+      [[1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9],[7, 8, 8, 10, 10, 11]],
+      [[5, 8, 3, 5, 3, 10, 5, 3, 10, 2, 4, 8, 7, 3, 9, 6],[10, 11, 11, 11, 11, 12, 12, 13]],
+      [[9, 2, 10, 10, 5, 5, 8, 7, 4, 2, 8, 3, 6, 8, 7, 3, 6, 2],[11, 11, 11, 12, 12, 12, 12, 12, 12]],
+      [[1, 6, 5, 5, 1, 10, 10, 9, 2, 10, 3, 9, 5, 4, 5, 6, 1, 9, 1, 8],[10, 10, 11, 11, 11, 11, 11, 11, 12, 12]],
+    ]
+    for(const [inp,exp] of TESTS){
+      assert.deepEqual(choreAssignment(inp), exp);
+    }
+  });
+});
 */
 
 // console.log();
@@ -399,7 +521,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Turn the Mars rover to take pictures
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -407,10 +529,50 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Mars rover is on an important mission to take pictures of Mars.
 
+In order to take pictures of all directions it needs an algorithm to help it turn to face the correct position.
+
+Mars rover can face 4 different directions, that would be N, S, E, W. Every time it needs to turn it will call a command turn passing the current position it is facing and the position it wants to face.
+
+For example:
+
+if it asks turn N E the expected result would be right
+if it asks turn N W the expected result would be left
+Mars rover can only make one move at a time and it will only request positions that require a single move.
+
+Can you write an algorithm that tells if it should move left or right?
+
+mars rover
 */
-/*
 
+type MoveDirection = "left" | "right";
+type Direction = "N" | "S" | "E" | "W";
+
+function turn(current: Direction, target: Direction): MoveDirection {
+    return "right";
+}
+
+/*
+describe('turn', () => {
+  describe('facing N', () => {
+    it('should turn right to face E', () => {
+      const actual = turn('N', 'E');
+      const expected = 'right';
+      
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('facing S', () => {
+    it('should turn left to face E', () => {
+      const actual = turn('S', 'E');
+      const expected = 'left';
+      
+      assert.equal(actual, expected);
+    });
+  });
+});
 */
 
 // console.log();
@@ -421,7 +583,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Hex Word Sum
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -429,10 +591,40 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Description
+As hex values can include letters A through to F, certain English words can be spelled out, such as CAFE, BEEF, or FACADE. This vocabulary can be extended by using numbers to represent other letters, such as 5EAF00D, or DEC0DE5.
+
+Given a string, your task is to return the decimal sum of all words in the string that can be interpreted as such hex values.
+
+Example
+Working with the string "BAG OF BEES":
+
+"BAG"  =  0, as it is not a valid hex value  
+"OF"   =  0F   =  15
+"BEES" =  BEE5 =  48869
+So the result is the sum of these: 48884 (0 + 15 + 48869)
+
+Notes
+Inputs are all uppercase and contain no punctuation
+0 can be substituted for O
+5 can be substituted for S
 
 */
+function hexWordSum(string: string): number {
+    return 1;
+}
 /*
-
+describe('Basic', function() {
+  it('Test', function() {
+    assert.equal(hexWordSum('DEFACE'), 14613198, 'Should convert hex to decimal correctly')
+    assert.equal(hexWordSum('SAFE'), 23294, 'Should be able to interpret "S" as "5"')
+    assert.equal(hexWordSum('CODE'), 49374, 'Should be able to interpret "O" as "0"')
+    assert.equal(hexWordSum('BUGS'), 0, 'A word that cannot be converted to hex has value of 0')
+    assert.equal(hexWordSum(''), 0, 'Empty string returns 0')
+    assert.equal(hexWordSum('DO YOU SEE THAT BEE DRINKING DECAF COFFEE'), 13565769, 'Should work with multiple words')
+    assert.equal(hexWordSum('ASSESS ANY BAD CODE AND TRY AGAIN'), 10889952, 'Should work with multiple words')
+  })
+})
 */
 
 // console.log();
@@ -443,7 +635,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Help Suzuki count his vegetables....
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -451,10 +643,47 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Help Suzuki count his vegetables....
 
+Suzuki is the master monk of his monastery so it is up to him to ensure the kitchen is operating at full capacity to feed his students and the villagers that come for lunch on a daily basis.
+
+This week there was a problem with his deliveries and all the vegetables became mixed up. There are two important aspects of cooking in his kitchen, it must be done in harmony and nothing can be wasted. Since the monks are a record keeping people the first order of business is to sort the mixed up vegetables and then count them to ensure there is enough to feed all the students and villagers.
+
+You will be given a string with the following vegetables:
+
+"cabbage", "carrot", "celery", "cucumber", "mushroom", "onion", "pepper", "potato", "tofu", "turnip"
+Return a list of tuples with the count of each vegetable in descending order. If there are any non vegetables mixed in discard them. If the count of two vegetables is the same sort in reverse alphabetical order (Z->A).
+
+(119, "pepper"),
+(114, "carrot"),
+(113, "turnip"),
+(102, "onion"),
+(101, "tofu"),
+(100, "cabbage"),
+(93, "mushroom"),
+(90, "cucumber"),
+(88, "potato"),
+(80, "celery")
 */
+function countVegetables(s: string) {
+    //your code here
+}
 /*
-
+describe("solution", function(){
+  it("Basic Tests", function() {
+  let lst1 = [[2, 'tofu'], [2, 'potato'], [2, 'cucumber'], [2, 'cabbage'], [1, 'turnip'], [1, 'pepper'], [1, 'onion'], [1, 'mushroom'], [1, 'celery'], [1, 'carrot']];
+  let s1 = "potato tofu cucumber cabbage turnip pepper onion carrot celery mushroom potato tofu cucumber cabbage";
+  assert.equal(JSON.stringify(solution.countVegetables(s1)), JSON.stringify((lst1)));
+  let lst2 = [[15, 'turnip'], [15, 'mushroom'], [13, 'cabbage'], [10, 'carrot'], [9, 'potato'], [7, 'onion'], [6, 'tofu'], [6, 'pepper'], [5, 'cucumber'], [4, 'celery']];
+  let s2 = `mushroom chopsticks chopsticks turnip mushroom carrot mushroom cabbage mushroom carrot tofu pepper cabbage potato cucumber 
+        mushroom mushroom mushroom potato turnip chopsticks cabbage celery celery turnip pepper chopsticks potato potato onion cabbage cucumber
+        onion pepper onion cabbage potato tofu carrot cabbage cabbage turnip mushroom cabbage cabbage cucumber cabbage chopsticks turnip pepper
+        onion pepper onion mushroom turnip carrot carrot tofu onion tofu chopsticks chopsticks chopsticks mushroom cucumber chopsticks carrot
+        potato cabbage cabbage carrot mushroom chopsticks mushroom celery turnip onion carrot turnip cucumber carrot potato mushroom turnip 
+        mushroom cabbage tofu turnip turnip turnip mushroom tofu potato pepper turnip potato turnip celery carrot turnip`;
+  assert.equal(JSON.stringify(solution.countVegetables(s2)), JSON.stringify((lst2)));
+  });
+});
 */
 
 // console.log();
@@ -465,7 +694,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: New £5 notes collectors!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -473,10 +702,25 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+The new £5 notes have been recently released in the UK and they've certainly became a sensation! Even those of us who haven't been carrying any cash around for a while, having given in to the convenience of cards, suddenly like to have some of these in their purses and pockets. But how many of them could you get with what's left from your salary after paying all bills? The programme that you're about to write will count this for you!
 
+Given a salary and the array of bills, calculate your disposable income for a month and return it as a number of new £5 notes you can get with that amount. If the money you've got (or do not!) doesn't allow you to get any £5 notes return 0.
+
+£££ GOOD LUCK! £££
 */
-/*
 
+function getNewNotes(salary: number, bills: number[]): number {
+    return 0;
+}
+/*
+describe("solution", function(){
+  it("BasicTests", function(){
+    assert.equal(solution.getNewNotes(2000, [500, 160, 400]),188);
+    assert.equal(solution.getNewNotes(1260, [500, 50, 100]),122);
+    assert.equal(solution.getNewNotes(3600, [1800, 350, 460, 500, 15]),95);
+    assert.equal(solution.getNewNotes(1995, [1500, 19, 44]),86);
+  });
+});
 */
 
 // console.log();
@@ -487,7 +731,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Equalize the array!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -495,10 +739,27 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+No description!!!
+
+Input :: [10,20,25,0]
+
+Output :: ["+0", "+10", "+15", "-10"]
+
+Show some love, rank and upvote!
+
 
 */
+function equalize(array: number[]): string[] {
+    return ["hello"];
+}
 /*
-
+describe("solution", function(){
+  it("basicTests", function(){
+    assert.deepEqual(solution.equalize([20,30,35,10]),(["+0","+10","+15","-10"]));
+    assert.deepEqual(solution.equalize([]),([]));
+    assert.deepEqual(solution.equalize([10,12,24,50,0,15,20]),(["+0","+2","+14","+40","-10","+5","+10"]));
+  });
+});
 */
 
 // console.log();
@@ -509,7 +770,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Regexp Basics - is it a six bit unsigned number?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -517,10 +778,31 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+mplement String#six_bit_number?, which should return true if given object is a number representable by 6 bit unsigned integer (0-63), false otherwise.
+
+It should only accept numbers in canonical representation, so no leading +, extra 0s, spaces etc.
+
 
 */
+// String.prototype.sixBitNumber = function(): boolean {
+//     // Your code here
+//     return true;
+//   }
 /*
-
+describe("Fixed tests", () => {
+  it("Basic tests", () => {
+    assert.equal("".sixBitNumber(), false);
+    assert.equal("0".sixBitNumber(), true);
+    assert.equal("00".sixBitNumber(), false);
+    assert.equal("55".sixBitNumber(), true);
+    assert.equal("63".sixBitNumber(), true);
+    assert.equal("64".sixBitNumber(), false);
+    assert.equal("-0".sixBitNumber(), false);
+    assert.equal("-5".sixBitNumber(), false);
+    assert.equal("05".sixBitNumber(), false);
+    assert.equal("5".sixBitNumber(), true);
+  });
+});
 */
 
 // console.log();
@@ -531,7 +813,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: How many urinals are free?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -539,10 +821,51 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+How many urinals are free?
+In men's public toilets with urinals, there is this unwritten rule that you leave at least one urinal free between you and the next person peeing. For example if there are 3 urinals and one person is already peeing in the left one, you will choose the urinal on the right and not the one in the middle. That means that a maximum of 3 people can pee at the same time on public toilets with 5 urinals when following this rule (Only 2 if the first person pees into urinal 2 or 4).
 
+Imgur Urinals
+
+Your task:
+You need to write a function that returns the maximum of free urinals as an integer according to the unwritten rule.
+
+Input
+A String containing 1s and 0s (Example: 10001) (1 <= Length <= 20)
+A one stands for a taken urinal and a zero for a free one.
+
+Examples
+10001 returns 1 (10101)
+1001 returns 0 (1001)
+00000 returns 3 (10101)
+0000 returns 2 (1001)
+01000 returns 1 (01010 or 01001)
+
+Note
+When there is already a mistake in the input string (for example 011), then return -1
+
+Have fun and don't pee into the wrong urinal ;)
 */
+function getFreeUrinals(urinals: string): number {
+    return 1;
+}
 /*
+describe("SampleTestsValid", function() {
+  it("given 10001", function() { assert.deepEqual(getFreeUrinals("10001"), 1); });
+  it("given 1001", function() { assert.deepEqual(getFreeUrinals("1001"), 0); });
+  it("given 00000", function() { assert.deepEqual(getFreeUrinals("00000"), 3); });
+  it("given 0000", function() { assert.deepEqual(getFreeUrinals("0000"), 2); });
+  it("given 01000", function() { assert.deepEqual(getFreeUrinals("01000"), 1); });
+  it("given 00010", function() { assert.deepEqual(getFreeUrinals("00010"), 1); });
+  it("given 10000", function() { assert.deepEqual(getFreeUrinals("10000"), 2); });
+  it("given 1", function() { assert.deepEqual(getFreeUrinals("1"), 0); });
+  it("given 0", function() { assert.deepEqual(getFreeUrinals("0"), 1); });
+  it("given 10", function() { assert.deepEqual(getFreeUrinals("10"), 0); });
+});
 
+describe("SampleTestsWrong", function() {
+  it("given 110", function() { assert.deepEqual(getFreeUrinals("110"), -1); });
+  it("given 101100001", function() { assert.deepEqual(getFreeUrinals("101100001"), -1); });
+});
 */
 
 // console.log();
@@ -553,7 +876,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Closure Counter
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -561,10 +884,46 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Closure Counter
+Define the function counter that returns a function that returns an increasing value.
+The first value should be 1.
+You're going to have to use closures.
+Example:
+const newCounter = counter();
+newCounter() // 1
+newCounter() // 2
+Closure:
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+
 
 */
+// function counter(): Function {
+//     return;
+//   };
 /*
-
+describe("Testing counter", function() {
+  it("should return a function", function() {
+    assert.strictEqual(typeof(counter()), "function");
+  });
+  it("should return 1 when the returned function is invoked", function() {
+    assert.strictEqual(counter()(), 1);
+  });
+  it("should increment and return the number each time the function is invoked", function() {
+    const counterFunction = counter();
+    assert.strictEqual(counterFunction(), 1);
+    assert.strictEqual(counterFunction(), 2);
+  });
+  it("should have two different accumulators if two counters are created", function() {
+    const counterOne = counter();
+    const counterTwo = counter();
+    assert.strictEqual(counterOne(), 1);
+    assert.strictEqual(counterOne(), 2);
+    assert.strictEqual(counterTwo(), 1);
+    assert.strictEqual(counterTwo(), 2);
+  });
+});
 */
 
 // console.log();
@@ -575,7 +934,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Do you know how to make Query String?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -583,10 +942,62 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Query string is a way to serialize object, which is used in HTTP requests. You may see it in URL:
 
+codewars.com/kata/search/?q=querystring
+The part q=querystring represents that parameter q has value querystring. Also sometimes querystring used in HTTP POST body:
+
+POST /api/users
+Content-Type: application/x-www-form-urlencoded
+
+username=warrior&kyu=1&age=28
+The string username=warrior&kyu=1&age=28 represents an entity (user in this example) with username equals warrior, kyu equals 1 and age equals 28. The entity may be represented as object:
+
+{
+  "username": "warrior",
+  "kyu": 1,
+  "age": 28
+}
+Sometimes there are more than one value for property:
+
+{
+  "name": "shirt",
+  "colors": [ "white", "black" ]
+}
+Then it represents as repeated param:
+
+name=shirt&colors=white&colors=black
+So, your task is to write a function that convert an object to query string:
+
+to_query_string({ "bar": [ 2, 3 ], "foo": 1 }) # => "bar=2&bar=3&foo=1"
+Next you may enjoy kata Objectify a URL Query String.
 */
+const toQueryString = (obj: object): string => {
+    return "";
+};
 /*
+describe('toQueryString', () => {
+  it('should stringify some objects', () => {
+    assert.strictEqual(
+      toQueryString({ foo: 1, bar: 2 }),
+      'foo=1&bar=2'
+    )
+  })
 
+  it('should stringify array values too', () => {
+    assert.strictEqual(
+      toQueryString({ foo: [1, 3], bar: [2, 4] }),
+      'foo=1&foo=3&bar=2&bar=4'
+    )
+  })
+
+  it('should stringify not only foo and bar', () => {
+    assert.strictEqual(
+      toQueryString({ a: 'Z', b: 'Y', c: 'X', d: 'W', e: 'V', f: 'U', g: 'T' }),
+      'a=Z&b=Y&c=X&d=W&e=V&f=U&g=T'
+    )
+  })
+})
 */
 
 // console.log();
@@ -597,7 +1008,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Ranking position
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -605,10 +1016,217 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+n some ranking people collects points. The challenge is sort by points and calulate position for every person. But remember if two or more persons have same number of points, they should have same position number and sorted by name (name is unique).
 
+For example: Input structure:
+
+[
+  {
+    name: "John",
+    points: 100,
+  },
+  {
+    name: "Bob",
+    points: 130,
+  },
+  {
+    name: "Mary",
+    points: 120,
+  },
+  {
+    name: "Kate",
+    points: 120,
+  },
+]
+Output should be:
+
+[
+  {
+    name: "Bob",
+    points: 130,
+    position: 1,
+  },
+  {
+    name: "Kate",
+    points: 120,
+    position: 2,
+  },
+  {
+    name: "Mary",
+    points: 120,
+    position: 2,
+  },
+  {
+    name: "John",
+    points: 100,
+    position: 4,
+  },
+]
 */
-/*
 
+type inputMan = {
+    name: string;
+    points: number;
+};
+
+type outputMan = {
+    name: string;
+    points: number;
+    position: number;
+};
+
+function ranking(people: inputMan[]): outputMan[] {
+    return [];
+}
+
+/*
+describe("ranking", function() {
+  it("Basic test, no. 1", () =>  {
+    const input: inputMan[] = [
+      {
+        name: "John",
+        points: 100,
+      },
+      {
+        name: "Bob",
+        points: 130,
+      },
+      {
+        name: "Mary",
+        points: 120,
+      },
+      {
+        name: "Kate",
+        points: 120,
+      },
+    ];
+    
+    const output: outputMan[] = [
+      {
+        name: "Bob",
+        points: 130,
+        position: 1,
+      },
+      {
+        name: "Kate",
+        points: 120,
+        position: 2,
+      },
+      {
+        name: "Mary",
+        points: 120,
+        position: 2,
+      },
+      {
+        name: "John",
+        points: 100,
+        position: 4,
+      },
+    ]
+  
+    assert.deepEqual(ranking(input), output);
+  });
+  
+  it("Basic test, no. 2", () =>  {
+    const input: inputMan[] = [
+      {
+        name: "Bob",
+        points: 130,
+      },
+      {
+        name: "Mary",
+        points: 120,
+      },
+      {
+        name: "John",
+        points: 100,
+      },
+    ];
+    
+    const output: outputMan[] = [
+      {
+        name: "Bob",
+        points: 130,
+        position: 1,
+      },
+      {
+        name: "Mary",
+        points: 120,
+        position: 2,
+      },
+      {
+        name: "John",
+        points: 100,
+        position: 3,
+      },
+    ]
+  
+    assert.deepEqual(ranking(input), output);
+  });
+  
+  it("Basic test, no. 3", () =>  {
+    const input: inputMan[] = [
+      {
+        name: "Bob",
+        points: 100,
+      },
+      {
+        name: "Mary",
+        points: 100,
+      },
+      {
+        name: "John",
+        points: 100,
+      },
+    ];
+    
+    const output: outputMan[] = [
+      {
+        name: "Bob",
+        points: 100,
+        position: 1,
+      },
+      {
+        name: "John",
+        points: 100,
+        position: 1,
+      },
+      {
+        name: "Mary",
+        points: 100,
+        position: 1,
+      },
+    ]
+  
+    assert.deepEqual(ranking(input), output);
+  });
+  
+  it("Basic test, no. 4", () =>  {
+    const input: inputMan[] = [
+      {
+        name: "John",
+        points: 100,
+      },
+    ];
+    
+    const output: outputMan[] = [
+      {
+        name: "John",
+        points: 100,
+        position: 1,
+      },
+    ];
+  
+    assert.deepEqual(ranking(input), output);
+  });
+  
+  it("Basic test, no. 5", () =>  {
+    const input: inputMan[] = [];
+    const output: outputMan[] = [];
+  
+    assert.deepEqual(ranking(input), output);
+  });
+});
 */
 
 // console.log();
@@ -619,7 +1237,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: GRACEFUL TIPPING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -627,10 +1245,37 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Adding tip to a restaurant bill in a graceful way can be tricky, thats why you need make a function for it.
 
+The function will receive the restaurant bill (always a positive number) as an argument. You need to 1) add at least 15% in tip, 2) round that number up to an elegant value and 3) return it.
+
+What is an elegant number? It depends on the magnitude of the number to be rounded. Numbers below 10 should simply be rounded to whole numbers. Numbers 10 and above should be rounded like this:
+
+10 - 99.99... ---> Round to number divisible by 5
+
+100 - 999.99... ---> Round to number divisible by 50
+
+1000 - 9999.99... ---> Round to number divisible by 500
+
+And so on...
+
+Good luck!
 */
 /*
-
+describe("graceful tipping", function() {
+  
+  it("given 7", function() {
+    assert.equal(gracefulTipping(7), 9);
+  });
+  
+  it("given 12", function() {
+    assert.equal(gracefulTipping(12), 15);
+  });
+  
+  it("given 86", function() {
+    assert.equal(gracefulTipping(86), 100);
+  });
+});
 */
 
 // console.log();
@@ -641,7 +1286,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Regexp Basics - is it a eight bit unsigned number?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -649,10 +1294,30 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Implement String#eight_bit_number?, which should return true if given object is a number representable by 8 bit unsigned integer (0-255), false otherwise.
+
+It should only accept numbers in canonical representation, so no leading +, extra 0s, spaces etc.
+
 
 */
+// String.prototype.eightBitNumber = function(): boolean {
+//     // Your code here
+//     return true;
+//   }
 /*
-
+describe("Sample tests", () => {
+  it("Basic tests", () => {
+    assert.equal("".eightBitNumber(), false);
+    assert.equal("0".eightBitNumber(), true);
+    assert.equal("00".eightBitNumber(), false);
+    assert.equal("55".eightBitNumber(), true);
+    assert.equal("042".eightBitNumber(), false);
+    assert.equal("123".eightBitNumber(), true);
+    assert.equal("255".eightBitNumber(), true);
+    assert.equal("256".eightBitNumber(), false);
+    assert.equal("999".eightBitNumber(), false);
+  });
+});
 */
 
 // console.log();
