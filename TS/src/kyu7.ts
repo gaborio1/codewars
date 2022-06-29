@@ -2,8 +2,10 @@
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Learning TypeScript. Mixins
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -11,9 +13,93 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Overview
+Along with traditional object-oriented hierarchies, another popular way of building up classes from reusable components is to build them by combining simpler partial classes. You may be familiar with the idea of mixins or traits for languages like Scala, and the pattern has also reached some popularity in the JavaScript community.
+
+Introduction to mixins
+Generally speaking a mixin class is a class that implements a distinct aspect of functionality. Other classes can then include the mixin and access its methods and properties. That way, mixins provide a form of code reuse that is based on composing behavior.
+
+Now let’s see how you can model mixins in TypeScript. First of all we’ll define two classes Disposable and Activatable that will act as our mixins. You can see each one is focused on a particular activity or capability. We’ll later mix these together to form a new class from both capabilities.
+
+class Disposable {
+    isDisposed: boolean;
+    dispose() {
+        this.isDisposed = true;
+    }
+}
+
+class Activatable {
+    isActive: boolean;
+    activate() {
+        this.isActive = true;
+    }
+    deactivate() {
+        this.isActive = false;
+    }
+}
+Next, we’ll create the class that will handle the combination of the two mixins. Let’s look at this in more detail to see how it does this:
+
+class SmartObject implements Disposable, Activatable {
+The first thing you may notice in the above is that instead of using extends, we use implements. This treats the classes as interfaces, and only uses the types behind Disposable and Activatable rather than the implementation. This means that we’ll have to provide the implementation in class. Except, that’s exactly what we want to avoid by using mixins.
+
+To satisfy this requirement, we create stand-in properties and their types for the members that will come from our mixins. This satisfies the compiler that these members will be available at runtime. This lets us still get the benefit of the mixins, albeit with some bookkeeping overhead.
+
+// Disposable
+isDisposed: boolean = false;
+dispose: () => void;
+// Activatable
+isActive: boolean = false;
+activate: () => void;
+deactivate: () => void;
+Finally, we mix our mixins into the class, creating the full implementation.
+
+applyMixins(SmartObject, [Disposable, Activatable]);
+Lastly, we create a helper function that will do the mixing for us. This will run through the properties of each of the mixins and copy them over to the target of the mixins, filling out the stand-in properties with their implementations.
+
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+    baseCtors.forEach(baseCtor => {
+        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+            derivedCtor.prototype[name] = baseCtor.prototype[name];
+        });
+    });
+}
+Hint: You can find the complete source code for this sample here: https://www.typescriptlang.org/docs/handbook/mixins.html
+
+Task
+You're required to implement mixin Serializable which should contain:
+
+method public serialize(): string - this method must serialize all properties of the object (i.e. return object converted to string).
+method public deserialize(source: string): void - this is the opposite method, that converts string to object properties and assigns them to current object.
+For simplicity's sake let's consider that objects won't contain any circular references. The function applyMixins is defined in tests and you don't need to change it.
+
 
 */
+
+
+class Serializable {
+    serialize(): string {
+
+        return "hello";
+
+    }
+
+    deserialize(source: string): void {
+        // TODO:
+    }
+}
+
+
 /*
+describe('Person', () => {
+  it("should serialize/deserialize correctly", () => {
+    const sourcePerson = new Person('John', 'Galt');
+    const serializedPerson = sourcePerson.serialize();
+    const resultPerson = new Person();
+    resultPerson.deserialize(serializedPerson);
+    expect(resultPerson.firstName).to.equal("John");
+    expect(resultPerson.lastName).to.equal("Galt");
+  });
+});
 
 */
 
@@ -25,7 +111,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Learning TypeScript. Advanced Types. Union Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -33,9 +119,68 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Overview
+Union types are closely related to intersection types, but they are used very differently. Occasionally, you’ll run into a library that expects a parameter to be either a number or a string. For instance, take the following function:
+
+ function padLeft(value: string, padding: any) {
+    if (typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+    if (typeof padding === "string") {
+        return padding + value;
+    }
+    throw new Error(`Expected string or number, got '${padding}'.`);
+}
+
+padLeft("Hello world", 4); // returns "    Hello world"
+The problem with padLeft is that its padding parameter is typed as any. That means that we can call it with an argument that’s neither a number nor a string, but TypeScript will be okay with it.
+
+let indentedString = padLeft("Hello world", true); // passes at compile time, fails at runtime.
+In traditional object-oriented code, we might abstract over the two types by creating a hierarchy of types. While this is much more explicit, it’s also a little bit overkill. One of the nice things about the original version of padLeft was that we were able to just pass in primitives. That meant that usage was simple and concise. This new approach also wouldn’t help if we were just trying to use a function that already exists elsewhere.
+
+Instead of any, we can use a union type for the padding parameter:
+
+
+function padLeft(value: string, padding: string | number) {
+    // ...
+}
+
+let indentedString = padLeft("Hello world", true); // errors during compilation
+A union type describes a value that can be one of several types. We use the vertical bar (|) to separate each type, so number | string | boolean is the type of a value that can be a number, a string, or a boolean.
+
+Task
+Let’s have a look at some properties of TypeScript union types:
+
+Identity: A|A is equivalent to A
+Commutativity: A|B is equivalent to B|A
+Associativity: (A|B)|C is equivalent to A|(B|C)
+Subtype collapsing: A|B is equivalent to A if B is a subtype of A
+I.e. if we have a value that has a union type, we can only access members that are common to all types in the union. If a value has the type A | B, we only know for certain that it has members that both A and B have.
+
+Your task is to create function join(tokens: string | string[], glue?: string): string which can accept both string and string[] and return one string in which tokens are concatenated with the glue.
+
+Hint: Use typeof before calling join method.
+
+P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
 
 */
+
+function join(tokens: string | string[], glue?: string): string {
+
+    return "hello";
+
+}
+
 /*
+describe('join', () => {
+  it("should return string as it is", () => {
+    expect(join("Hello")).to.equal("Hello");
+  });
+  it("should return joined string in case of string[]", () => {
+    let arr = ["Hello", "world!"];
+    expect(join(arr, ", ")).to.equal("Hello, world!");
+  });
+});
 
 */
 
@@ -47,7 +192,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Ping Pong
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -55,9 +200,109 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Return a number sequence replacing multiples of the following with words: 3 = Ping 5 = Pong
 
+For example 1 2 Ping 4 Pong
+
+Parameters will be start number and end number
+
+N.B In the event of a number being a multiple of either insert both words without spaces
 */
+
+function pingPong(startNumber: number, endNumber: number): string {
+    return '';
+}
+
 /*
+describe('pingPong', () => {
+  it('basic tests', () => {
+    Test.assertEquals(pingPong(1, 5), "1 2 Ping 4 Pong");
+    Test.assertEquals(pingPong(10, 15), "Pong 11 Ping 13 14 PingPong");
+    
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Learning TypeScript. Classes & Interfaces. Abstract classes
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+You're given an abstract class Animal and stubs for classes Animal, Boa, Parrot and Monkey:
+
+export abstract class Animal {
+  protected constructor(public value: number) {}
+
+  convertTo (someone: Animal) {
+    // TODO:
+  }
+}
+
+export class Boa extends Animal {
+  // TODO:
+}
+
+export class Parrot extends Animal {
+  // TODO:
+}
+
+export class Monkey extends Animal {
+  // TODO:
+}
+Your task is to implement these classes. Boa, Parrot and Monkey must convert to each other correctly.
+
+Have fun! )
+
+P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
+*/
+
+
+/*
+export abstract class Animal {
+    protected constructor(public value: number) {}
+  
+    convertTo (someone: Animal): number {
+      // TODO:
+    }
+  }
+  
+   class Boa extends Animal {
+    // TODO:
+  }
+  
+   class Parrot extends Animal {
+    // TODO:
+  }
+  
+   class Monkey extends Animal {
+    // TODO:
+  }
+*/
+
+/*
+describe("Boa", () => {
+  it("should be measured in Monkeys correctly", () => {
+    const boa = new Boa();
+    const monkey = new Monkey();
+    expect(boa.convertTo(monkey)).to.equal(5);
+  });
+  it("should be measured in Parrots correctly", () => {
+    const boa = new Boa();
+    const parrot = new Parrot();
+    expect(boa.convertTo(parrot)).to.equal(38);
+  });
+});
 
 */
 
@@ -69,7 +314,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Learning TypeScript. Classes & Interfaces. Setters
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -77,9 +322,74 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+N.B.: To solve this kata you need to choose "2.4/ES6" target.
 
+Overview
+In "Learning TypeScript. Classes & Interfaces. Getters", we learned that if we knew all the dimensions (i.e. length, width, height) of a cuboid, we could easily work out its corresponding volume and surface area. The way we achieved this in our code was by the use of getters which automatically computed the volume and surface area of the cuboid whenever either one of length, width, height changed. However, in the previouos exercise, one thing we could not do is define setters for surface area or volume of a cuboid because for a given volume/SA, there were an infinite number of possibilities to the dimensions of the cuboid.
+
+However, for cubes (a special type of cuboid), since their length, width and height are always the same, it is possible to figure out the side length of a cube given its surface area and/or volume. Therefore, in this Kata, you will be asked to define setters as well as getters for both the surface area and volume of a cube.
+
+Task
+You're given the ICuboid interface. Define a class Cube that implements ICuboid. Constructor function of Cube takes exactly one parameter length and stores the value of the argument into this.length. You will then define both a getter and a setter for the surfaceArea and volume of the cube.
+
+Articles of Interest
+Below are some articles of interest that may help you complete this Kata:
+
+Setters - Mozilla Developer
+What are getters and setters? - Stack Overflow
+ES6 Classes Intro (includes section on getters and setters)
+Credits
+This is TypeScript version of kata "Fun with ES6 Classes #4 - Cubes and Setters" by @donaldsebleung
+
+P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
 */
+
+// declare var ICuboid: {
+//     new (length: number): ICuboid;
+//   }
+
+//   interface ICuboid {
+//     /** Length of the cube */
+//     length: number;
+//     /** Surface area of the cube */
+//     surfaceArea: number;
+//     /** Volume of the cube */
+//     volume: number;
+//   }
+
+//    class Cube implements ICuboid {
+//     // TODO:
+//   }
+
 /*
+describe("The Cube class", () => {
+  it("should initialize properly and have working getters and setters", () => {
+    var cube = new Cube(1);
+    expect(cube.length).to.equal(1);
+    expect(cube.surfaceArea).to.equal(6);
+    expect(cube.volume).to.equal(1);
+
+    cube.length = 2;
+    expect(cube.surfaceArea).to.equal(24);
+    expect(cube.volume).to.equal(8);
+
+    cube.surfaceArea = 54;
+    expect(cube.length).to.equal(3);
+    expect(cube.volume).to.equal(27);
+
+    cube.surfaceArea = 96;
+    expect(cube.length).to.equal(4);
+    expect(cube.volume).to.equal(64);
+    
+    cube.volume = 125;
+    expect(cube.length).to.approximately(5, 0.000001);
+    expect(cube.surfaceArea).to.approximately(150, 0.000001);
+    
+    cube.volume = 1000;
+    expect(cube.length).to.approximately(10, 0.000001);
+    expect(cube.surfaceArea).to.approximately(600, 0.000001);
+  });
+});
 
 */
 
@@ -91,7 +401,108 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Learning TypeScript. Classes & Interfaces. Getters
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+N.B.: To solve this kata you need to choose "2.4/ES6" target.
+
+Task
+Define the following classes:
+
+I. Cuboid
+The object constructor for the class Cuboid should receive exactly three arguments in the following order: length, width, height and store these three values in this.length, this.width and this.height respectively.
+
+The class Cuboid should then have a getter surfaceArea which returns the surface area of the cuboid and a getter volume which returns the volume of the cuboid.
+
+II. Cube
+Class Cube is a subclass of class Cuboid. The constructor function of Cube should receive one argument only, its length, and use that value passed in to set this.length, this.width and this.height.
+
+Hint: Make a call to super, passing in the correct arguments, to make life easier ;)
+
+Articles of Interest
+Below are some articles of interest that may help you complete this Kata:
+
+Stack Overflow - What are getters and setters in ES6?
+getter - Javascript | MDN
+Credits
+This is TypeScript version of kata "Fun with ES6 Classes #3 - Cuboids, Cubes and Getters" by @donaldsebleung
+
+P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
+
+
+*/
+
+// class Cuboid {
+//     // TODO:
+// }
+
+// class Cube extends Cuboid {
+//     // TODO:
+// }
+
+
+/*
+describe("class Cuboid", () => {
+  it("should initialize properly and have working getters", () => {
+    var cuboid = new Cuboid(1, 2, 3);
+    expect(cuboid.length).to.equal(1);
+    expect(cuboid.width).to.equal(2);
+    expect(cuboid.height).to.equal(3);
+    expect(cuboid.volume).to.equal(6);
+    expect(cuboid.surfaceArea).to.equal(22);
+    cuboid.length = 4;
+    expect(cuboid.volume).to.equal(24);
+    expect(cuboid.surfaceArea).to.equal(52);
+    cuboid.width = 5;
+    expect(cuboid.volume).to.equal(60);
+    expect(cuboid.surfaceArea).to.equal(94);
+    cuboid.height = 6;
+    expect(cuboid.volume).to.equal(120);
+    expect(cuboid.surfaceArea).to.equal(148);
+    [cuboid.length, cuboid.width, cuboid.height] = [7, 8, 9];
+    expect(cuboid.volume).to.equal(504);
+    expect(cuboid.surfaceArea).to.equal(382);
+  });
+});
+
+describe("class Cube extends Cuboid", () => {
+  it("should initialize properly and have the same getters as the parent class", () => {
+    var cube = new Cube(1);
+    expect(cube.length).to.equal(1);
+    expect(cube.width).to.equal(1);
+    expect(cube.height).to.equal(1);
+    expect(cube.volume).to.equal(1);
+    expect(cube.surfaceArea).to.equal(6);
+    cube.length = cube.width = cube.height = 2;
+    expect(cube.volume).to.equal(8);
+    expect(cube.surfaceArea).to.equal(24);
+    cube.length = cube.width = cube.height = 3;
+    expect(cube.volume).to.equal(27);
+    expect(cube.surfaceArea).to.equal(54);
+    cube.length = cube.width = cube.height = 5;
+    expect(cube.volume).to.equal(125);
+    expect(cube.surfaceArea).to.equal(150);
+    cube.length = cube.width = cube.height = 10;
+    expect(cube.volume).to.equal(1000);
+    expect(cube.surfaceArea).to.equal(600);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Learning TypeScript. Classes & Interfaces. Implement interface methods
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -100,8 +511,63 @@
 
 /*
 
+One of TypeScript’s core principles is that type-checking focuses on the shape that values have. This is sometimes called “duck typing” or “structural subtyping”. In TypeScript, interfaces fill the role of naming these types, and are a powerful way of defining contracts within your code as well as contracts with code outside of your project.
+
+Task
+You are given an interface IGeometricFigure:
+
+interface IGeometricFigure {
+  area: () => number;
+  perimeter: () => number;
+}
+Your task is to implement classes Square and Circle:
+
+export class Square implements IGeometricFigure {
+  // TODO:
+}
+
+export class Circle implements IGeometricFigure {
+  // TODO:
+}
+
 */
+
+
+
+
+// interface IGeometricFigure {
+//     area: () => number;
+//     perimeter: () => number;
+// }
+
+// class Square implements IGeometricFigure {
+//     // TODO:
+// }
+
+// class Circle implements IGeometricFigure {
+//     // TODO:
+// }
+
+
+
 /*
+
+describe("The Square class", () => {
+  it("should calculate area and perimeter correctly", () => {
+    var square = new Square(1);
+    expect(square.area()).to.equal(1);
+    expect(square.perimeter()).to.equal(4);
+  });
+});
+
+describe("The Circle class", () => {
+  it("should calculate area and perimeter correctly", () => {
+    var circle = new Circle(1);
+    expect(circle.area()).to.equal(Math.PI);
+    expect(circle.perimeter()).to.equal(2*Math.PI);
+  });
+});
+
 
 */
 
@@ -113,7 +579,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Dice Rotation
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -121,9 +587,125 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+There are any number of dice, and the input array contains the number on the dice's face up.
+
+A dice is 6 faced.
+
+Calculate the total number of minimum rotations of dice, to make all faces the same.
+
+1 will require only one rotation to have 2, 3, 4 and 5 face up, but would require minimum two rotations to make it the face 6, as 6 is the opposite side of 1.
+
+The opposite side of 2 is 5 and 3 is 4.
+
+For example:
+
+dieArray = {1,1,6}, Answer = 2. Rotate 6 two times to get 1.
+
+dieArray = {1,2,3}, Answer = 2. Rotate 1 and 2 and make them 3 (or make them all 1 or 2 as all three would require the same number of rotations.
+
+dieArray = {3, 3, 3}, Answer = 0.
+
+dieArray = {1,6,2,3}, Answer = 3. Rotate 1, 6 and 3 to make them all 2.
+
 
 */
+function rotations(dieArray: number[]): number {
+    return 1
+}
 /*
+describe("Solution", function () {
+   describe("Fixed Tests", function () {
+      act(2, [1, 1, 6]);
+      act(2, [1, 2, 3]);
+      act(0, [3, 3, 3]);
+      act(3, [1, 6, 2, 3]);
+   });
+});
+
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Pure Functions 
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A function is pure when:
+
+It always return the same value given the same arguments (it doesn't update or depend on out of the scope variables);
+Evaluation of the result does not cause side effect (mutations...) or output
+Task
+You are given a function that is impure, and your job is to purify it.
+
+This function must:
+
+return a new array where each value is itself plus 2 times the "modifier"
+Example:
+
+Array = 1, 2, 3
+Modifier = 5
+
+Should return = 11, 12, 13
+
+*/
+// const state = {
+//     modifier: 2,
+// };
+
+// function solution11(arr: number[], options) {
+//     for (let i = 0; i < arr.length; ++i) {
+//         arr[i] += 2 * state.modifier;
+//     }
+
+//     console.log(arr);
+
+//     return arr;
+// }
+
+/*
+describe('pure', () => {
+  it('should not mutate arr', () => {
+    const arr = [1, 2, 3];
+    const newArr = solution(arr, { modifier: 2 });
+    
+    assert.notEqual(newArr, arr);
+  });
+  
+  it('should not mutate options', () => {
+    const options = { modifier: 2 };
+    const newArr = solution([1, 2, 3], options);
+    
+    assert.deepEqual(options, { modifier: 2 });
+  });
+  
+  it('should not depend on out of scope variables', () => {
+    let source = 'return ' + solution.toString();
+    
+    const sol = Function('arr', 'options', source)();
+    sol([1, 2], { modifier: 1 });
+    
+    assert.isOk('Looks OK');
+  });
+  
+  it('should not output (no-console)', () => {
+    const source = solution.toString();
+    
+    if (/console/.test(source)) {
+      assert.fail();
+    }
+  });
+});
 
 */
 
@@ -135,7 +717,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Merge overlapping strings
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -143,9 +725,184 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+This kata requires you to write a function which merges two strings together. It does so by merging the end of the first string with the start of the second string together when they are an exact match.
+
+"abcde" + "cdefgh" => "abcdefgh"
+"abaab" + "aabab" => "abaabab"
+"abc" + "def" => "abcdef"
+"abc" + "abc" => "abc"
+NOTE: The algorithm should always use the longest possible overlap.
+
+"abaabaab" + "aabaabab" would be "abaabaabab" and not "abaabaabaabab"
+*/
+const mergeStrings = (first: string, second: string): string => {
+    // Do your thing
+    return ""
+}
+/*
+describe("mergeStrings", function() {
+  it('"Example 1"', () => {
+    const expected = 'abcdefgh'
+    const actual = mergeStrings('abcde', 'cdefgh')
+    assert.equal(actual, expected)
+  })
+
+  it('"Example 2"', () => {
+    const expected = 'abaabab'
+    const actual = mergeStrings('abaab', 'aabab')
+
+    assert.equal(actual, expected)
+  })
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: The 12 Days of Christmas
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Oh No!
+
+The song sheets have been dropped in the snow and the lines of each verse have become all jumbled up.
+
+Task
+You have to write a comparator function which can sort the lines back into their correct order, otherwise Christmas will be cancelled!
+
+Reminder: Below is what the final verse should look like
+
+On the 12th day of Christmas my true love gave to me
+12 drummers drumming,
+11 pipers piping, 
+10 lords a leaping, 
+9 ladies dancing, 
+8 maids a milking,
+7 swans a swimming, 
+6 geese a laying, 
+5 golden rings, 
+4 calling birds,
+3 French hens, 
+2 turtle doves and 
+a partridge in a pear tree.
 
 */
+const comparator = function (a: string, b: string): number {
+
+
+
+    return 0
+}
+
 /*
+describe("SolutionTests", function() {
+
+  var shuffle = function(list:string[]) {
+    var shuffled = []
+    for (let i = 0; i < list.length; i++) shuffled.push(list[i]);
+    for (let i = 0; i < shuffled.length; i++) {
+      if (Math.random() > 0.5) {
+        const j:number = (i+3) % shuffled.length;
+        // swap lines i & j
+        const tmp:string = shuffled[i] as string
+        shuffled[i] = shuffled[j] as string
+        shuffled[j] = tmp
+      }
+    }
+    return shuffled
+  }
+  
+  var display = function(list:string[]) {
+    for (var i in list) {
+      console.log(list[i])
+    }
+    return list
+  }
+
+  var doTest = function(lines:string[]) {
+    var shuffled = shuffle(lines);
+    console.log("SHUFFLED:"); display(shuffled);
+    var actual = shuffled.sort(comparator);
+    var expected = lines;    
+    assert.deepEqual(actual, expected, "Christmas is cancelled!");
+  }
+  
+  it("verse12", function() {
+    var lines = [
+        "On the 12th day of Christmas my true love gave to me",
+        "12 drummers drumming,",
+        "11 pipers piping,",
+        "10 lords a leaping,",
+        "9 ladies dancing,",
+        "8 maids a milking,",
+        "7 swans a swimming,", 
+        "6 geese a laying,", 
+        "5 golden rings,", 
+        "4 calling birds,",
+        "3 French hens,", 
+        "2 turtle doves and", 
+        "a partridge in a pear tree."    
+    ];
+    doTest(lines)  
+  });
+  
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Decrypt this school cipher
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+School students Alice and Bob send messages to each other. To ensure that their messages are not readable by teachers they encrypt text with simple algorythm. Every message contains only latin letters (lowercase and uppercase), digits from 0 to 9 and space symbol.
+
+So, the encryption algorythm is:
+
+Reverse the whole string.
+Replace every letter with it ASCII code in quotes (A to '65', h to '104' and so on).
+Insert digits and spaces as is.
+E.g. this message:
+
+9Hi Alice4
+is encrypted as
+
+4'101''99''105''108''65' '105''72'9
+Your task is to write function decrypt to get source messages from encrypted strings.
+
+
+*/
+const decrypt = (str: string): string => {
+    return str;
+}
+
+/*
+describe('decrypt', () => {
+  it('should decrypt any messages', () => {
+    assert.strictEqual(decrypt("'101''99''105''108''65'"), "Alice")
+    assert.strictEqual(decrypt("'98''111''66'"), "Bob")
+    assert.strictEqual(decrypt("30 71"), "17 03")
+  });
+});
 
 */
 
@@ -157,7 +914,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: 2D Vector Mapping
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -165,9 +922,432 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+ntroduction
+Imagine a function that maps a number from a given range, to another, desired one. If this is too vague - let me explain a little bit further: let's take an arbitrary number - 2 for instance - and map it with this function from range 0-5 to, let's say - 10-20. Our number lies in 2/5 of the way in it's original range, so in order to map it to the desired one we need to find a number that lies exactly in the same place, but in our new range. This number, in this case, is 14. You can visualize this as taking a 5cm piece of rubber, putting it next to the ruler, marking the dot on the second centimeter, then stretching the rubber between 10th and 20th centimeter and reading the value next to the dot.
+
+Task
+The task in this kata is, unfortunately, a little bit more complex. We will take the same idea, but apply it to the 2-dimensional plane, so instead of single numbers, we will consider vectors with their x-position and y-position, instead of ranges, we will look at the circles with given centers and radii.
+
+You need to write a function called map_vector (or mapVector) that takes 3 arguments - vector, circle1, circle2 and returns a tuple/array/slice of x, y positions of the mapped vector. All three arguments will be tuples (arrays), the first one with x, y positions of a base vector, the second and third with x, y positions of the center of a circle and it's radius. The base vector will always be within the first circle and you need to map it from the first circle to the second. The coordinates should be precise up to second decimal place.
+
+Examples
+Let's take a look at a simple example:
+
+vector = 5, 5
+circle1 = 10, 20, 42
+circle2 = -100, -42, 69
+As we see, the vector's cartesian coordinates are x=5, y=5, first's circle's center is in x=10, y=20, it's radius is 42, and so on. Let's visualize it:
+
+The red dot is our given vector. After running our function we should get our new, mapped vector with coordinates x=-108.21, y=-66.64. Take a look at the light-blue dot here:
+
+So, to represent this with code:
+
+mapVector([5, 5], [10, 20, 42], [-100, -42, 69]) === [-108.21, -66.64]
+Two, very important things to notice here are:
+
+The distance between a vector and a circle's center is scaled accordingly to the second circle's radius
+The angle between the vector and the line x=c1.x is preserved (c1.x == first circle's center's x position)
+It is also worth to mention, that when both circles' radii are equal, this is equivalent of just translating the vector by the distance between them, and when the circles are concentric this is roughly equivalent to the mapping function mentioned in the introduction.
+
+Notes
+Although it is not really a problem, but for simplicity the given vector will always be contained within the first circle. The plane in random tests is a square with sides ranging between -400 to 400.
+
+Tip
+It may not be necessary, but if you're stuck, think about the most iconic animal that pops to mind when thinking about the negative influence of the climate changes on our planet's habitat.
+
+Enjoy, and don't hesitate to comment on any mistakes or problems with this kata.
+
 
 */
+function mapVector(vector: [number, number], circle1: [number, number, number], circle2: [number, number, number]): [number, number] {
+    return [0, 0];
+}
 /*
+describe("Basic tests", function() {
+  it("Should handle simple cases", () => {
+    const examples = [
+      {
+          input: [[46, 58], [0, 0, 100], [0, 0, 100]],
+          output: [46, 58]
+      },
+      {
+          input: [[50, 88], [-25, 128, 100], [50, 50, 100]],
+          output: [125, 10]
+      },
+      {
+          input: [[120, 58], [100, 76, 36], [120, -62, 50]],
+          output: [147.78, -87.0]
+      },
+      {
+          input: [[5, 5], [10, 20, 42], [-100, -42, 60]],
+          output: [-107.14, -63.43]
+      },
+    ];
+  
+    for (const example of examples) {
+      const got = mapVector(<[number, number]>example.input[0], <[number, number, number]>example.input[1], <[number, number, number]>example.input[2]);
+      const expected = <[number, number]>example.output;
+      assert.approximately(got[0], expected[0], margin,
+        `x coordinate is off - ${got[0]} is not ${expected[0]}. Error margin: ${margin}.`
+      );
+      assert.approximately(got[1], expected[1], margin,
+        `y coordinate is off - ${got[1]} is not ${expected[1]}. Error margin: ${margin}.`
+      );
+    }
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: List of all Rationals
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Here's a way to construct a list containing every positive rational number:
+
+Build a binary tree where each node is a rational and the root is 1/1, with the following rules for creating the nodes below:
+
+The value of the left-hand node below a/b is a/a+b
+The value of the right-hand node below a/b is a+b/b
+So the tree will look like this:
+
+                       1/1
+                  /           \ 
+            1/2                  2/1
+           /    \              /     \
+       1/3        3/2        2/3       3/1
+      /   \      /   \      /   \     /   \
+   1/4    4/3  3/5   5/2  2/5   5/3  3/4   4/1
+
+ ...
+Now traverse the tree, breadth first, to get a list of rationals.
+
+[ 1/1, 1/2, 2/1, 1/3, 3/2, 2/3, 3/1, 1/4, 4/3, 3/5, 5/2, .. ]
+Every positive rational will occur, in its reduced form, exactly once in the list, at a finite index.
+
+In the kata, we will use tuples of type [number, number] to represent rationals, where [a, b] represents a / b
+
+Use this method to create an infinite list of tuples:
+
+function* allRationals(): IterableIterator<[number, number]>
+matching the list described above:
+
+allRationals() => [[1, 1], [1, 2], [2, 1], [1, 3], [3, 2], ...]
+*/
+function* allRationals(): IterableIterator<[number, number]> {
+    yield [1, 1];
+}
+/*
+describe("List of all Rationals", () => {
+  const gen = allRationals();
+  const a = [...Array(100001)].map(() => gen.next().value);
+  it("Basic tests", () => {
+    assert.deepStrictEqual(a[0], [1, 1]);
+    assert.deepStrictEqual(a[3], [1, 3]);
+    assert.deepStrictEqual(a[4], [3, 2]);
+    assert.deepStrictEqual(a[10], [5, 2]);
+  });
+  it("Larger indices", () => {
+    assert.deepStrictEqual(a[100], [19, 12]);
+    assert.deepStrictEqual(a[1000], [39, 28]);
+    assert.deepStrictEqual(a[10000], [205, 162]);
+    assert.deepStrictEqual(a[100000], [713, 586]);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Anchorize me!
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Parse the text and replace Globally url with corresponding html syntax.
+
+Supported protocols:
+
+http
+https
+ftp
+ftps
+file
+smb
+NOTE: Ideal will be with ** Regex **
+
+Input
+'hello FTP://world.com !'
+
+Output
+'hello <a href="FTP://world.com">FTP://world.com</a> !'
+
+Input
+'hello http://world.com !'
+
+Output
+'hello <a href="http://world.com">http://world.com</a> !'
+*/
+function anchorize(text: string) {
+    // show me the code!!
+}
+/*
+describe("Basic tests", function() {
+  it("Should return anchorized samples", function() {
+    assert.strictEqual('<xmp>'+anchorize('hello http://world.com !')+'</xmp>','<xmp>'+'hello <a href="http://world.com">http://world.com</a> !'+'</xmp>');
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Smoking Timmy
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Timothy (age: 16) really likes to smoke. Unfortunately, he is too young to buy his own cigarettes and that's why he has to be extremely efficient in smoking.
+
+It's now your task to create a function that calculates how many cigarettes Timothy can smoke out of the given amounts of bars and boxes:
+
+a bar has 10 boxes of cigarettes,
+a box has 18 cigarettes,
+out of 5 stubs (cigarettes ends) Timothy is able to roll a new one,
+of course the self made cigarettes also have an end which can be used to create a new one...
+Please note that Timothy never starts smoking cigarettes that aren't "full size" so the amount of smoked cigarettes is always an integer.
+
+
+*/
+function startSmoking(bars: number, boxes: number): number {
+    return 0;
+}
+/*
+describe("Example Cases", function() {
+  
+  it("startSmoking(0,1) should return 22", function() {
+     assert.deepEqual(startSmoking(0,1), 22);
+  });
+
+  it("startSmoking(1,0) should return 224", function() {
+     assert.deepEqual(startSmoking(1,0),224);
+  });
+  
+  it("startSmoking(1,1) should return 247", function() {
+     assert.deepEqual(startSmoking(1,1),247);
+  });
+  it("startSmoking(10,2) should return 2294", function() {
+     assert.deepEqual(startSmoking(10,2),2294);
+  });
+  it("More tests", function() {
+     assert.deepEqual(startSmoking(0,0),0);
+     assert.deepEqual(startSmoking(1,0),224);
+     assert.deepEqual(startSmoking(1,1),247);
+     assert.deepEqual(startSmoking(10,2),2294);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Truthy and Falsy
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+n JavaScript there are truthy and falsy values:
+
+truthy: a value that when evaluated in a boolean context returns true
+falsy: a value that when evaluated in a boolean context returns false
+MDN links:
+
+https://developer.mozilla.org/en/docs/Glossary/Truthy
+https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+Your task
+You are given two empty arrays (truthy and falsy) and you have to fill this array with at least 5 elements in each which will evaluate to true or false accordingly.
+
+
+*/
+const truthy = [];
+const falsy = [];
+
+/*
+describe('length', () => {
+  it('truthy array should have at least 5 unique elements', () => {
+    assert.isAtLeast(new Set(truthy).size, 5);
+  });
+  
+  it('falsy array should have at least 5 unique elements', () => {
+    assert.isAtLeast(new Set(falsy).size, 5);
+  });
+});
+
+describe('truthy', () => {
+  it('elements should evaluate to true', () => {
+    for (const element of truthy) {
+      assert.isTrue(!!element, `Value ${element} is falsy`);
+    }
+  });
+});
+
+describe('falsy', () => {
+  it('elements should evaluate to false', () => {
+    for (const element of falsy) {
+      assert.isFalse(!!element, `Value ${element} is truthy`);
+    }
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: AD2070: Help Lorimar troubleshoot his robots- ultrasonic distance analysis
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The year is 2070 and intelligent connected machines have replaced humans in most things. There are still a few critical jobs for mankind including machine software developer, for writing and maintaining the AI software, and machine forward deployed engineer for controlling the intelligent machines in the field. Lorimar is a forward deployed machine engineer and at any given time he controls thousands of BOT robots through real time interfaces and intelligent automation software. These interfaces are directly connected to his own brain so at all times his mind and the robots are one. They are pre-trained to think on their own but on occasion the human will direct the robot to perform a task.
+
+There is an issue with the ultrasonic sensor data feed from BOT785 currently connected to Lorimar through a real time interface. The data feed from sensor five should be a series of floats representing the relative distance of objects within BOT785's path. The sensor error log has been saved for triage and Lorimar needs to search through the data to determine the mean and standard deviation of the distance variables.
+
+You will be given a list of tuples extracted from the sensor logs:
+
+sensor_data = [('Distance:', 116.28, 'Meters', 'Sensor 5 malfunction =>lorimar'), ('Distance:', 117.1, 'Meters', 'Sensor 5 malfunction =>lorimar'), ('Distance:', 123.96, 'Meters', 'Sensor 5 malfunction =>lorimar'), ('Distance:', 117.17, 'Meters', 'Sensor 5 malfunction =>lorimar')]
+Return a tuple with the mean and standard deviation of the distance variables rounded to four decimal places. The variance should be computed using the formula for samples (dividing by N-1).
+
+|Mean| |Standard Deviation|
+
+(118.6275, 3.5779)
+*/
+type SensorLog = ["Distance:", number, "Meters", string];
+type SensorLogs = SensorLog[];
+function sensorAnalysis(sensorData: SensorLogs): [number, number] {
+    // your code
+    return [0, 0];
+}
+/*
+describe("solution", function() {
+  it("Basic Tests", function() {
+    let sensorData1: SensorLogs = [['Distance:', 116.28, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 117.1, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 123.96, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 117.17, 'Meters', 'Sensor 5 malfunction =>lorimar']];
+    assert.deepEqual(sensorAnalysis(sensorData1),[118.6275, 3.5779]);
+    let sensorData2: SensorLogs = [['Distance:', 295.68, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 294.78, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 298.21, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 294.84, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 296.54, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 133.84, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 294.41, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 294.82, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 134.61, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 294.86, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.88, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.87, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.47, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 135.5, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.9, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.08, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 171.36, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.08, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.92, 'Meters', 'Sensor 5 malfunction =>lorimar'], ['Distance:', 170.88, 'Meters', 'Sensor 5 malfunction =>lorimar']];
+    assert.deepEqual(sensorAnalysis(sensorData2),[215.2265, 68.4014]);
+  });
+});
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Wealth equality, finally!
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+The year is 2088 and the Radical Marxist Socialist People's Party (RMSPP) has just seized power in Brazil.
+
+Their first act in power is absolute wealth equality through coercive redistribution.
+
+Create a function that redistributes all wealth equally among all citizens.
+
+Wealth is represented as an array/list where every index is the wealth of a single citizen.
+The function should mutate the input such that every index has the same amount of wealth.
+MUTATE the input array/list, don't return anything.
+
+See example:
+
+wealth = [5, 10, 6]  # This represents:
+                     # citizen 1 has wealth 5
+                     # citizen 2 has wealth 10
+                     # citizen 3 has wealth 6
+                     
+redistribute_wealth(wealth) # mutates wealth list
+wealth => [7, 7, 7] # wealth has now been equally redistributed
+Info:
+
+MUTATE the input array/list, don't return anything
+Input is garantueed to hold at least 1 citizen
+Wealth of citizen will an integer with minimum 0 (negative wealth not possible)
+Handling of floating point error will not be tested
+
+*/
+function redistributeWealth(wealth: number[]): void {
+    // Mutate wealth
+}
+/*
+describe("Example test cases", function(){
+    it ("Simple tests", function(){
+    
+      let wealthEqual = [5,5,5,5,5]; // already equal
+      redistributeWealth(wealthEqual);
+      assert.deepEqual(wealthEqual, [5,5,5,5,5])
+
+      let wealthUnequal = [0, 10]; // unequal
+      redistributeWealth(wealthUnequal);
+      assert.deepEqual(wealthUnequal, [5, 5])
+
+      let wealthSingle = [5]; // single citizen
+      redistributeWealth(wealthSingle);
+      assert.deepEqual(wealthSingle, [5])
+
+      let wealthFloat = [3,2,2]; // floating point result
+      redistributeWealth(wealthFloat);
+      assert.deepEqual(wealthFloat, [2.3333333333333335,2.3333333333333335, 2.3333333333333335])
+    });
+});
 
 */
 
@@ -179,7 +1359,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Authenticate a list of usernames
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -187,10 +1367,48 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Given an array of strings representing a list of usernames, return true only if all usernames comply with your company's guidelines. Return false otherwise.
+
+The guidelines say that the username is valid only if:
+
+it is between 6-10 characters long;
+contains at least 1 lowercase letter;
+contains at least 1 number;
+contains only numbers and lowercase letters.
+Examples of arrays that will be tested:
+
+const usernames1 = ['john123', 'alex222', 'sandra1']; // returns true
+
+const usernames2 = ['john123', 'alex222', 'sandraW']; // returns false because sandraW has no number
+
+const usernames3 = ['john_123', 'alex222', 'sandra1']; // returns false because john_123 contains an invalid character
+
+Notes:
+
+You will always be given an array with at least 1 string to check.
 
 */
+function authList(arr: string[]): boolean {
+    return false;
+}
 /*
-
+describe("solution", function(){
+  it("fixed tests", function() {
+    const usernames1 = ['john123', 'alex222', 'sandra1'];
+    const usernames2 = ['john123', 'alex222', 'sandraW'];
+    const usernames3 = ['john_123', 'alex222', 'sandra1'];
+    const usernames4 = [''];
+    const usernames5 = ['123456'];
+    const usernames6 = ['abcdef'];
+  
+    assert.equal(solution.authList(usernames1), true);
+    assert.equal(solution.authList(usernames2), false);
+    assert.equal(solution.authList(usernames3), false);
+    assert.equal(solution.authList(usernames4), false);
+    assert.equal(solution.authList(usernames5), false);
+    assert.equal(solution.authList(usernames6), false);
+  });
+});
 */
 
 // console.log();
@@ -201,7 +1419,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Boxlines
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -209,75 +1427,26 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Boxlines
+Given a X*Y*Z box built by arranging 1*1*1 unit boxes, write a function f(X,Y,Z) that returns the number of edges (hence, boxlines) of length 1 (both inside and outside of the box)
 
+Notes
+Adjacent unit boxes share the same edges, so a 2*1*1 box will have 20 edges, not 24 edges
+X,Y and Z are strictly positive, and can go as large as 2^16 - 1
+This is my first kata, so I hope every one will enjoy it <3
 */
+function f(x: number, y: number, z: number): number {
+
+    return 1
+}
 /*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
+describe("Boxlines", () => {
+  it("Fixed tests", () => {
+    assert.strictEqual(f(2,1,1), 20);
+    assert.strictEqual(f(1,2,3), 46);
+    assert.strictEqual(f(2,2,2), 54);
+  });
+});
 
 */
 
@@ -312,7 +1481,7 @@ Note that the binary representation of 0 used here is not 0 but the empty string
 */
 function* baumSweet(): Generator {
     // your code here
-  }
+}
 /*
 describe("Baum-Sweet", function() {
   describe("sequence", () => {
@@ -3706,7 +4875,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void {}
+    strike(enemy: Warrior, swings: number): void { }
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -5063,16 +6232,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-              .join("\n");
+            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+            .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-              .join("\n");
+            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+            .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -5908,8 +7077,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-            ? "0" + String(date.getMonth() + 1)
-            : String(date.getMonth() + 1)) +
+                ? "0" + String(date.getMonth() + 1)
+                : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -5987,7 +7156,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -6698,10 +7867,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-        ? "subtraction"
-        : a * b === res
-        ? "multiplication"
-        : "division";
+            ? "subtraction"
+            : a * b === res
+                ? "multiplication"
+                : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -6811,8 +7980,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-        ? fusc($ / 2)
-        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+            ? fusc($ / 2)
+            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -7919,9 +9088,8 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
-        s < 10 ? "0" + s : s
-    }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
+        }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -8534,10 +9702,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -8990,7 +10158,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -9483,17 +10651,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -9626,13 +10794,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -12234,10 +13402,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -13350,7 +14518,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -14426,8 +15594,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -14577,10 +15745,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -15577,11 +16745,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -16376,9 +17544,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -16660,8 +17828,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
