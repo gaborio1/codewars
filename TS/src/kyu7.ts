@@ -3,7 +3,6 @@
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Learning TypeScript. Mixins
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -75,19 +74,15 @@ For simplicity's sake let's consider that objects won't contain any circular ref
 
 */
 
-
 class Serializable {
     serialize(): string {
-
         return "hello";
-
     }
 
     deserialize(source: string): void {
         // TODO:
     }
 }
-
 
 /*
 describe('Person', () => {
@@ -166,9 +161,7 @@ P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" colle
 */
 
 function join(tokens: string | string[], glue?: string): string {
-
     return "hello";
-
 }
 
 /*
@@ -210,7 +203,7 @@ N.B In the event of a number being a multiple of either insert both words withou
 */
 
 function pingPong(startNumber: number, endNumber: number): string {
-    return '';
+    return "";
 }
 
 /*
@@ -266,7 +259,6 @@ Have fun! )
 
 P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
 */
-
 
 /*
 export abstract class Animal {
@@ -445,7 +437,6 @@ P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" colle
 //     // TODO:
 // }
 
-
 /*
 describe("class Cuboid", () => {
   it("should initialize properly and have working getters", () => {
@@ -532,9 +523,6 @@ export class Circle implements IGeometricFigure {
 
 */
 
-
-
-
 // interface IGeometricFigure {
 //     area: () => number;
 //     perimeter: () => number;
@@ -547,8 +535,6 @@ export class Circle implements IGeometricFigure {
 // class Circle implements IGeometricFigure {
 //     // TODO:
 // }
-
-
 
 /*
 
@@ -610,7 +596,7 @@ dieArray = {1,6,2,3}, Answer = 3. Rotate 1, 6 and 3 to make them all 2.
 
 */
 function rotations(dieArray: number[]): number {
-    return 1
+    return 1;
 }
 /*
 describe("Solution", function () {
@@ -631,9 +617,8 @@ describe("Solution", function () {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Pure Functions 
+// TITLE: Pure Functions
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -737,8 +722,8 @@ NOTE: The algorithm should always use the longest possible overlap.
 */
 const mergeStrings = (first: string, second: string): string => {
     // Do your thing
-    return ""
-}
+    return "";
+};
 /*
 describe("mergeStrings", function() {
   it('"Example 1"', () => {
@@ -797,11 +782,8 @@ a partridge in a pear tree.
 
 */
 const comparator = function (a: string, b: string): number {
-
-
-
-    return 0
-}
+    return 0;
+};
 
 /*
 describe("SolutionTests", function() {
@@ -893,7 +875,7 @@ Your task is to write function decrypt to get source messages from encrypted str
 */
 const decrypt = (str: string): string => {
     return str;
-}
+};
 
 /*
 describe('decrypt', () => {
@@ -959,7 +941,11 @@ Enjoy, and don't hesitate to comment on any mistakes or problems with this kata.
 
 
 */
-function mapVector(vector: [number, number], circle1: [number, number, number], circle2: [number, number, number]): [number, number] {
+function mapVector(
+    vector: [number, number],
+    circle1: [number, number, number],
+    circle2: [number, number, number]
+): [number, number] {
     return [0, 0];
 }
 /*
@@ -1436,8 +1422,7 @@ X,Y and Z are strictly positive, and can go as large as 2^16 - 1
 This is my first kata, so I hope every one will enjoy it <3
 */
 function f(x: number, y: number, z: number): number {
-
-    return 1
+    return 1;
 }
 /*
 describe("Boxlines", () => {
@@ -4200,10 +4185,10 @@ describe("Fixed Tests easyLine", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: TETRIS SERIES#1 - SCORING SYSTEM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: INTERFACE, OBJECT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -4252,19 +4237,152 @@ Step 5: +600 for 3 lines (current level 1). Score: 1700+600=2300;
 Step 6: +2400. Score: 2300+2400=4700;
 Step 7: +200. Total score: 4700+200=4900 points.
 */
-function getScore(arr: number[]) {
-    // your code here
-}
+
 /*
-describe("Basic tests", () => {
-  const testing = (arr: number[], exp: number) => it(`Testing for [${arr.join(', ')}]`, () => assert.equal(getScore(arr), exp));
-  testing([0, 1, 2, 3, 4], 1640);
-  testing([0, 1, 1, 3, 0, 2, 1, 2], 620);
-  testing([2, 0, 4, 2, 2, 3, 0, 0, 3, 3], 3300);
-  testing([0], 0);
-  testing([], 0);
-});
+// CODEPEN JAVASCRIPT SOLUTION:
+
+const getScore2 = (arr) => {
+    console.log(arr);
+
+    let currLev = 0,
+        clearedLines = 0,
+        score = 0;
+    // let levMultiplier = 1;
+
+    const scoreObj = {
+        0: 0,
+        1: 40,
+        2: 100,
+        3: 300,
+        4: 1200,
+    };
+
+    arr.forEach((lines, idx) => {
+        console.log("iteration:", idx);
+
+        let levMultiplier = currLev + 1;
+        console.log("   level multiplier:", levMultiplier);
+
+        console.log("   current score:", scoreObj[lines] * levMultiplier);
+
+        score += scoreObj[lines] * levMultiplier;
+        console.log("       total score:", score);
+        clearedLines += lines;
+        console.log("       cleared lines:", clearedLines);
+
+        currLev = Math.floor(clearedLines / 10);
+        console.log("       current level:", currLev);
+    });
+
+    return score;
+};
+
 */
+
+const getScore = (arr: number[]): number => {
+    console.log(arr);
+
+    let currLev: number = 0,
+        clearedLines: number = 0,
+        score: number = 0;
+
+    interface NumKey {
+        [key: number]: number;
+    }
+
+    const scoreObj: NumKey = {
+        0: 0,
+        1: 40,
+        2: 100,
+        3: 300,
+        4: 1200,
+    };
+
+    arr.forEach((lines, idx) => {
+        console.log("iteration:", idx);
+
+        let levMultiplier: number = currLev + 1;
+        console.log("   level multiplier:", levMultiplier);
+
+        console.log("   current score:", scoreObj[lines] * levMultiplier);
+
+        score += scoreObj[lines] * levMultiplier;
+        console.log("       total score:", score);
+        clearedLines += lines;
+        console.log("       cleared lines:", clearedLines);
+
+        currLev = Math.floor(clearedLines / 10);
+        console.log("       current level:", currLev);
+    });
+
+    return score;
+};
+
+/*
+
+console.log(getScore([4, 2, 2, 3, 3, 4, 2]));
+
+
+[
+  4, 2, 2, 3,
+  3, 4, 2
+]
+
+iteration: 0
+   level multiplier: 1
+   current score: 1200
+       total score: 1200
+       cleared lines: 4
+       current level: 0
+
+iteration: 1
+   level multiplier: 1
+   current score: 100
+       total score: 1300
+       cleared lines: 6
+       current level: 0
+
+iteration: 2
+   level multiplier: 1
+   current score: 100
+       total score: 1400
+       cleared lines: 8
+       current level: 0
+
+iteration: 3
+   level multiplier: 1
+   current score: 300
+       total score: 1700
+       cleared lines: 11
+       current level: 1
+
+iteration: 4
+   level multiplier: 2
+   current score: 600
+       total score: 2300
+       cleared lines: 14
+       current level: 1
+
+iteration: 5
+   level multiplier: 2
+   current score: 2400
+       total score: 4700
+       cleared lines: 18
+       current level: 1
+
+iteration: 6
+   level multiplier: 2
+   current score: 200
+       total score: 4900
+       cleared lines: 20
+       current level: 2
+
+4900
+
+*/
+
+// 4900
+// console.log(getScore([4, 2, 2, 3, 3, 4, 2]));
 
 // console.log();
 // console.log();
@@ -4273,6 +4391,74 @@ describe("Basic tests", () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function getScore3(arr: number[]) {
+    let cleared = 0,
+        score = 0;
+    const level = () => Math.floor(cleared / 10) + 1;
+    for (let a of arr) {
+        score += [0, 40, 100, 300, 1200][a] * level();
+        cleared += a;
+    }
+    return score;
+}
+
+function getScore4(arr: number[]) {
+    const SCORES = [0, 40, 100, 300, 1200];
+    let score: number = 0;
+    let total_lines: number = 0;
+    arr.forEach((nb_lines) => {
+        score += SCORES[nb_lines] * (1 + Math.floor(total_lines / 10));
+        total_lines += nb_lines;
+    });
+    return score;
+}
+
+const getScore5 = (arr: number[]): number =>
+    arr.reduce(
+        (o, c) => (
+            (o.s += [0, 40, 100, 300, 1200][c] * ~~(o.t / 10)), (o.t += c), o
+        ),
+        { s: 0, t: 10 }
+    ).s;
+
+function getScore6(arr: number[]) {
+    return arr.reduce(
+        (a, e) => [
+            a[0] + [0, 40, 100, 300, 1200][e] * Math.trunc(a[1] / 10 + 1),
+            a[1] + e,
+        ],
+        [0, 0]
+    )[0];
+}
+
+function getScore7(arr: number[]) {
+    const calculatePoints = (lines: number, level: number): number => {
+        switch (lines) {
+            case 1:
+                return 40 * (level + 1);
+            case 2:
+                return 100 * (level + 1);
+            case 3:
+                return 300 * (level + 1);
+            case 4:
+                return 1200 * (level + 1);
+            default:
+                return 0;
+        }
+    };
+    let level = 0;
+    let score = 0;
+    let cleared = 0;
+    for (let el of arr) {
+        cleared += el;
+        score += calculatePoints(el, level);
+        if (cleared >= 10) {
+            level++;
+            cleared -= 10;
+        }
+    }
+    return score;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STRING PREFIX AND SUFFIX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -4296,7 +4482,6 @@ All strings will be lowercase and string lengths are 1 <= length <= 500
 More examples in test cases. Good luck!
 */
 const solveAA = (str: string) => {
-
     const numIterations: number = Math.floor(str.length / 2);
     let solution: number = 0;
 
@@ -4309,8 +4494,7 @@ const solveAA = (str: string) => {
     }
 
     return solution;
-
-}
+};
 /*
 describe("Basic tests", function() {
   it("Testing for abcd", () => assert.strictEqual(solve("abcd"), 0));
@@ -4329,7 +4513,7 @@ describe("Basic tests", function() {
 */
 
 // console.log(solveAA("abcdabc"));
-console.log(solveAA("aaaaaaa"));
+// console.log(solveAA("aaaaaaa"));
 // console.log();
 // console.log();
 // console.log();
@@ -4344,29 +4528,24 @@ function solveAA2(s: string) {
     return result;
 }
 
-
 function solveAA3(s: string): number {
     return s.match(/^(.*).*\1$/)![1].length;
 }
-
 
 function solveAA4(s: string): number {
     let num = 0;
     let halfStr = s.length / 2;
     for (let i = 1; i <= halfStr; i++) {
-        if (s.slice(0, i) == s.slice(-i))
-            num = i
+        if (s.slice(0, i) == s.slice(-i)) num = i;
     }
-    return num
+    return num;
 }
 
-
 function solveAA5(s: string): number {
-
     for (let i = s.length / 2; i >= 1; i--) {
-        let prefix = s.slice(0, i)
+        let prefix = s.slice(0, i);
         if (prefix == s.slice(-i)) {
-            return prefix.length
+            return prefix.length;
         }
     }
 
@@ -4925,7 +5104,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void { }
+    strike(enemy: Warrior, swings: number): void {}
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -6282,16 +6461,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -7127,8 +7306,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -7206,7 +7385,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -7917,10 +8096,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -8030,8 +8209,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -9138,8 +9317,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -9752,10 +9932,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -10208,7 +10388,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -10701,17 +10881,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -10844,13 +11024,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -13452,10 +13632,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -14568,7 +14748,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -15644,8 +15824,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -15795,10 +15975,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -16795,11 +16975,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -17594,9 +17774,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -17878,8 +18058,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

@@ -12,7 +12,7 @@ function join(tokens, glue) {
     return "hello";
 }
 function pingPong(startNumber, endNumber) {
-    return '';
+    return "";
 }
 function rotations(dieArray) {
     return 1;
@@ -189,7 +189,83 @@ const crossover = (chromosome1, chromosome2, index) => {
 function easyLine(n) {
     return 1;
 }
-function getScore(arr) {
+const getScore = (arr) => {
+    console.log(arr);
+    let currLev = 0, clearedLines = 0, score = 0;
+    const scoreObj = {
+        0: 0,
+        1: 40,
+        2: 100,
+        3: 300,
+        4: 1200,
+    };
+    arr.forEach((lines, idx) => {
+        console.log("iteration:", idx);
+        let levMultiplier = currLev + 1;
+        console.log("   level multiplier:", levMultiplier);
+        console.log("   current score:", scoreObj[lines] * levMultiplier);
+        score += scoreObj[lines] * levMultiplier;
+        console.log("       total score:", score);
+        clearedLines += lines;
+        console.log("       cleared lines:", clearedLines);
+        currLev = Math.floor(clearedLines / 10);
+        console.log("       current level:", currLev);
+    });
+    return score;
+};
+function getScore3(arr) {
+    let cleared = 0, score = 0;
+    const level = () => Math.floor(cleared / 10) + 1;
+    for (let a of arr) {
+        score += [0, 40, 100, 300, 1200][a] * level();
+        cleared += a;
+    }
+    return score;
+}
+function getScore4(arr) {
+    const SCORES = [0, 40, 100, 300, 1200];
+    let score = 0;
+    let total_lines = 0;
+    arr.forEach((nb_lines) => {
+        score += SCORES[nb_lines] * (1 + Math.floor(total_lines / 10));
+        total_lines += nb_lines;
+    });
+    return score;
+}
+const getScore5 = (arr) => arr.reduce((o, c) => ((o.s += [0, 40, 100, 300, 1200][c] * ~~(o.t / 10)), (o.t += c), o), { s: 0, t: 10 }).s;
+function getScore6(arr) {
+    return arr.reduce((a, e) => [
+        a[0] + [0, 40, 100, 300, 1200][e] * Math.trunc(a[1] / 10 + 1),
+        a[1] + e,
+    ], [0, 0])[0];
+}
+function getScore7(arr) {
+    const calculatePoints = (lines, level) => {
+        switch (lines) {
+            case 1:
+                return 40 * (level + 1);
+            case 2:
+                return 100 * (level + 1);
+            case 3:
+                return 300 * (level + 1);
+            case 4:
+                return 1200 * (level + 1);
+            default:
+                return 0;
+        }
+    };
+    let level = 0;
+    let score = 0;
+    let cleared = 0;
+    for (let el of arr) {
+        cleared += el;
+        score += calculatePoints(el, level);
+        if (cleared >= 10) {
+            level++;
+            cleared -= 10;
+        }
+    }
+    return score;
 }
 const solveAA = (str) => {
     const numIterations = Math.floor(str.length / 2);
@@ -203,7 +279,6 @@ const solveAA = (str) => {
     }
     return solution;
 };
-console.log(solveAA("aaaaaaa"));
 function solveAA2(s) {
     let result = Math.floor(s.length / 2);
     while (!s.endsWith(s.slice(0, result))) {
