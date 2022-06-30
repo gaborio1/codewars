@@ -4273,7 +4273,7 @@ describe("Basic tests", () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STRING PREFIX AND SUFFIX
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -4295,8 +4295,21 @@ All strings will be lowercase and string lengths are 1 <= length <= 500
 
 More examples in test cases. Good luck!
 */
-function solveAA(s: string) {
-    // your code here
+const solveAA = (str: string) => {
+
+    const numIterations: number = Math.floor(str.length / 2);
+    let solution: number = 0;
+
+    for (let i = 0; i < numIterations; i += 1) {
+        // console.log(str[i], str[str.length - 1 - i]);
+        const prefix: string = str.slice(0, i + 1);
+        const suffix: string = str.slice(str.length - 1 - i);
+        console.log("prefix: ", prefix, "suffix:", suffix);
+        if (prefix === suffix) solution = i + 1;
+    }
+
+    return solution;
+
 }
 /*
 describe("Basic tests", function() {
@@ -4315,13 +4328,50 @@ describe("Basic tests", function() {
 });
 */
 
-// console.log();
+// console.log(solveAA("abcdabc"));
+console.log(solveAA("aaaaaaa"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function solveAA2(s: string) {
+    let result = Math.floor(s.length / 2);
+    while (!s.endsWith(s.slice(0, result))) {
+        result--;
+    }
+    return result;
+}
+
+
+function solveAA3(s: string): number {
+    return s.match(/^(.*).*\1$/)![1].length;
+}
+
+
+function solveAA4(s: string): number {
+    let num = 0;
+    let halfStr = s.length / 2;
+    for (let i = 1; i <= halfStr; i++) {
+        if (s.slice(0, i) == s.slice(-i))
+            num = i
+    }
+    return num
+}
+
+
+function solveAA5(s: string): number {
+
+    for (let i = s.length / 2; i >= 1; i--) {
+        let prefix = s.slice(0, i)
+        if (prefix == s.slice(-i)) {
+            return prefix.length
+        }
+    }
+
+    return 0;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: COMPOSING SQUARED STRINGS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

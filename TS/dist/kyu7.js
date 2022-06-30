@@ -1,6 +1,92 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = void 0;
+class Serializable {
+    serialize() {
+        return "hello";
+    }
+    deserialize(source) {
+    }
+}
+function join(tokens, glue) {
+    return "hello";
+}
+function pingPong(startNumber, endNumber) {
+    return '';
+}
+function rotations(dieArray) {
+    return 1;
+}
+const mergeStrings = (first, second) => {
+    return "";
+};
+const comparator = function (a, b) {
+    return 0;
+};
+const decrypt = (str) => {
+    return str;
+};
+function mapVector(vector, circle1, circle2) {
+    return [0, 0];
+}
+function* allRationals() {
+    yield [1, 1];
+}
+function anchorize(text) {
+}
+function startSmoking(bars, boxes) {
+    return 0;
+}
+const truthy = [];
+const falsy = [];
+function sensorAnalysis(sensorData) {
+    return [0, 0];
+}
+function redistributeWealth(wealth) {
+}
+function authList(arr) {
+    return false;
+}
+function f(x, y, z) {
+    return 1;
+}
+function* baumSweet() {
+}
+function time(distance, boatSpeed, stream) {
+    return 0;
+}
+function heavyMetalUmlauts(boringText) {
+    return "";
+}
+function clean(array) {
+    return [];
+}
+function choreAssignment(chores) {
+    return [];
+}
+function turn(current, target) {
+    return "right";
+}
+function hexWordSum(string) {
+    return 1;
+}
+function countVegetables(s) {
+}
+function getNewNotes(salary, bills) {
+    return 0;
+}
+function equalize(array) {
+    return ["hello"];
+}
+function getFreeUrinals(urinals) {
+    return 1;
+}
+const toQueryString = (obj) => {
+    return "";
+};
+function ranking(people) {
+    return [];
+}
 const say = (string1) => function gematria(str) {
     return 0;
 };
@@ -105,7 +191,46 @@ function easyLine(n) {
 }
 function getScore(arr) {
 }
-function solveAA(s) {
+const solveAA = (str) => {
+    const numIterations = Math.floor(str.length / 2);
+    let solution = 0;
+    for (let i = 0; i < numIterations; i += 1) {
+        const prefix = str.slice(0, i + 1);
+        const suffix = str.slice(str.length - 1 - i);
+        console.log("prefix: ", prefix, "suffix:", suffix);
+        if (prefix === suffix)
+            solution = i + 1;
+    }
+    return solution;
+};
+console.log(solveAA("aaaaaaa"));
+function solveAA2(s) {
+    let result = Math.floor(s.length / 2);
+    while (!s.endsWith(s.slice(0, result))) {
+        result--;
+    }
+    return result;
+}
+function solveAA3(s) {
+    return s.match(/^(.*).*\1$/)[1].length;
+}
+function solveAA4(s) {
+    let num = 0;
+    let halfStr = s.length / 2;
+    for (let i = 1; i <= halfStr; i++) {
+        if (s.slice(0, i) == s.slice(-i))
+            num = i;
+    }
+    return num;
+}
+function solveAA5(s) {
+    for (let i = s.length / 2; i >= 1; i--) {
+        let prefix = s.slice(0, i);
+        if (prefix == s.slice(-i)) {
+            return prefix.length;
+        }
+    }
+    return 0;
 }
 const compose = (str1, str2) => {
     const strArr1 = str1.split("\n");
