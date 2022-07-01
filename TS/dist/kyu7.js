@@ -162,9 +162,24 @@ function isAllPossibilities(x) {
 const mutate = (chromosome, p) => {
     return "hello";
 };
-function amIAfraid(day, num) {
-    return true;
-}
+const amIAfraid = (day, num) => {
+    let solution = false;
+    if (day === "Monday" && num === 12)
+        solution = true;
+    if (day === "Tuesday" && num > 95)
+        solution = true;
+    if (day === "Wednesday" && num === 34)
+        solution = true;
+    if (day === "Thursday" && num === 0)
+        solution = true;
+    if (day === "Friday" && ((num & 1) === 0))
+        solution = true;
+    if (day === "Saturday" && num === 56)
+        solution = true;
+    if (day === "Sunday" && Math.abs(num) === 666)
+        solution = true;
+    return solution;
+};
 function transposeTwoStrings(arr) {
     return "hello";
 }
