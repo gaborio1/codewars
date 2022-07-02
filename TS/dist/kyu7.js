@@ -420,9 +420,56 @@ function sumax(n) {
 function sumsum(n) {
     throw new Error("TODO");
 }
-const crossover = (chromosome1, chromosome2, index) => {
-    return [];
+const crossover = (chrom1, chrom2, idx) => {
+    const tail1 = chrom1.slice(idx);
+    const tail2 = chrom2.slice(idx);
+    console.log(tail1, tail2);
+    const newChrom1 = chrom1.substring(0, idx).concat(tail2);
+    const newChrom2 = chrom2.substring(0, idx).concat(tail1);
+    console.log(newChrom1, newChrom2);
+    const solution = [newChrom1, newChrom2];
+    return solution;
 };
+const crossover2 = (chromosome1, chromosome2, index) => {
+    const head = (s) => s.substr(0, index);
+    const tail = (s) => s.substr(index);
+    return [
+        head(chromosome1) + tail(chromosome2),
+        head(chromosome2) + tail(chromosome1),
+    ];
+};
+const crossover3 = (chromosome1, chromosome2, index) => {
+    return [
+        chromosome1.slice(0, index) + chromosome2.slice(index),
+        chromosome2.slice(0, index) + chromosome1.slice(index),
+    ];
+};
+const crossover4 = (chromosome1, chromosome2, index) => {
+    const firstChromosome = new Chromosome(chromosome1);
+    const secondChromosome = new Chromosome(chromosome2);
+    firstChromosome.crossover(secondChromosome, index);
+    return [firstChromosome.toString(), secondChromosome.toString()];
+};
+class Chromosome {
+    constructor(chromosome) {
+        this.nucleobases = Array.from(chromosome);
+    }
+    crossover(chromosome, cutPoint) {
+        const geneToGive = this.gene(cutPoint);
+        const geneToTake = chromosome.gene(cutPoint);
+        this.apply(geneToTake, cutPoint);
+        chromosome.apply(geneToGive, cutPoint);
+    }
+    gene(cutPoint) {
+        return this.nucleobases.slice(cutPoint);
+    }
+    apply(gene, cutPoint) {
+        this.nucleobases = this.nucleobases.slice(0, cutPoint).concat(gene);
+    }
+    toString() {
+        return this.nucleobases.join("");
+    }
+}
 function easyLine(n) {
     return 1;
 }
