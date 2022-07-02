@@ -4337,7 +4337,7 @@ describe("Fixed Tests sumin, sumax, sumsum", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GENETIC ALGORITHM SERIES - #3 Crossover
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -4357,8 +4357,17 @@ In this kata you have to implement a function crossover that receives two chromo
 Example:
 crossover('111000', '000110', 3) should return ['111110', 000000']
 */
-const crossover = (chromosome1: string, chromosome2: string, index: number) => {
-    return [];
+const crossover = (chrom1: string, chrom2: string, idx: number) => {
+    const tail1: string = chrom1.slice(idx);
+    const tail2: string = chrom2.slice(idx);
+    console.log(tail1, tail2);
+    const newChrom1: string = chrom1.substring(0, idx).concat(tail2);
+    const newChrom2: string = chrom2.substring(0, idx).concat(tail1);
+    console.log(newChrom1, newChrom2);
+
+    const solution: string[] = [newChrom1, newChrom2];
+
+    return solution;
 };
 
 /*
@@ -4370,12 +4379,80 @@ describe('crossover', () => {
 });
 */
 
-// console.log();
+// console.log(crossover("111000", "000110", 3));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const crossover2 = (
+    chromosome1: string,
+    chromosome2: string,
+    index: number
+) => {
+    const head = (s: string) => s.substr(0, index);
+    const tail = (s: string) => s.substr(index);
+
+    return [
+        head(chromosome1) + tail(chromosome2),
+        head(chromosome2) + tail(chromosome1),
+    ];
+};
+
+const crossover3 = (
+    chromosome1: string,
+    chromosome2: string,
+    index: number
+) => {
+    return [
+        chromosome1.slice(0, index) + chromosome2.slice(index),
+        chromosome2.slice(0, index) + chromosome1.slice(index),
+    ];
+};
+
+// ============================================================
+
+// ❗️❗️❗️
+const crossover4 = (
+    chromosome1: string,
+    chromosome2: string,
+    index: number
+): Array<string> => {
+    const firstChromosome = new Chromosome(chromosome1);
+    const secondChromosome = new Chromosome(chromosome2);
+    firstChromosome.crossover(secondChromosome, index);
+    return [firstChromosome.toString(), secondChromosome.toString()];
+};
+
+class Chromosome {
+    nucleobases: Array<string>;
+
+    constructor(chromosome: string) {
+        this.nucleobases = Array.from(chromosome);
+    }
+
+    crossover(chromosome: Chromosome, cutPoint: number): void {
+        const geneToGive = this.gene(cutPoint);
+        const geneToTake = chromosome.gene(cutPoint);
+        this.apply(geneToTake, cutPoint);
+        chromosome.apply(geneToGive, cutPoint);
+    }
+
+    gene(cutPoint: number): Array<string> {
+        return this.nucleobases.slice(cutPoint);
+    }
+
+    apply(gene: Array<string>, cutPoint: number): void {
+        this.nucleobases = this.nucleobases.slice(0, cutPoint).concat(gene);
+    }
+
+    toString(): string {
+        return this.nucleobases.join("");
+    }
+}
+
+// ============================================================
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: EASY LINE
