@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.amIAfraid10 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -172,7 +172,7 @@ const amIAfraid = (day, num) => {
         solution = true;
     if (day === "Thursday" && num === 0)
         solution = true;
-    if (day === "Friday" && ((num & 1) === 0))
+    if (day === "Friday" && (num & 1) === 0)
         solution = true;
     if (day === "Saturday" && num === 56)
         solution = true;
@@ -180,6 +180,228 @@ const amIAfraid = (day, num) => {
         solution = true;
     return solution;
 };
+const amIAfraid2 = (day, num) => {
+    return ((day === "Monday" && num === 12) ||
+        (day === "Tuesday" && num > 95) ||
+        (day === "Wednesday" && num === 34) ||
+        (day === "Thursday" && num === 0) ||
+        (day === "Friday" && (num & 1) === 0) ||
+        (day === "Saturday" && num === 56) ||
+        (day === "Sunday" && Math.abs(num) === 666));
+};
+function amIAfraid3(day, num) {
+    switch (day) {
+        case "Monday":
+            return num == 12;
+        case "Tuesday":
+            return num > 95;
+        case "Wednesday":
+            return num == 34;
+        case "Thursday":
+            return num == 0;
+        case "Friday":
+            return !(num % 2);
+        case "Saturday":
+            return num == 56;
+        case "Sunday":
+            return Math.abs(num) == 666;
+        default:
+            return false;
+    }
+}
+function amIAfraid4(day, num) {
+    switch (day) {
+        case "Monday": {
+            return !!(num == 12);
+        }
+        case "Tuesday": {
+            return !!(num > 95);
+        }
+        case "Wednesday": {
+            return !!(num == 34);
+        }
+        case "Thursday": {
+            return !!(num == 0);
+        }
+        case "Friday": {
+            return !!(num % 2 == 0);
+        }
+        case "Saturday": {
+            return !!(num == 56);
+        }
+        case "Sunday": {
+            return !!(num == 666 || num == -666);
+        }
+        default: {
+            return false;
+        }
+    }
+}
+function amIAfraid5(day, num) {
+    switch (day) {
+        case "Monday":
+            return num === 12;
+        case "Tuesday":
+            return num > 95;
+        case "Wednesday":
+            return num === 34;
+        case "Thursday":
+            return num === 0;
+        case "Friday":
+            return num % 2 === 0;
+        case "Saturday":
+            return num === 56;
+        case "Sunday":
+            return Math.abs(num) === 666;
+        default:
+            return false;
+    }
+}
+function amIAfraid6(day, num) {
+    const fearfulValues = {
+        Monday: 12,
+        Wednesday: 34,
+        Thursday: 0,
+        Saturday: 56,
+        Sunday: 666,
+    };
+    if (day === "Tuesday") {
+        if (num > 95)
+            return true;
+        else
+            return false;
+    }
+    if (day === "Friday") {
+        if (num % 2 === 0)
+            return true;
+        else
+            return false;
+    }
+    return Math.abs(num) === fearfulValues[day];
+}
+function amIAfraid7(day, num) {
+    let res = false;
+    switch (day) {
+        case "Monday":
+            res = num == 12 ? true : false;
+            break;
+        case "Tuesday":
+            res = num > 95 ? true : false;
+            break;
+        case "Wednesday":
+            res = num == 34 ? true : false;
+            break;
+        case "Thursday":
+            res = num == 0 ? true : false;
+            break;
+        case "Friday":
+            res = num % 2 == 0 ? true : false;
+            break;
+        case "Saturday":
+            res = num == 56 ? true : false;
+            break;
+        case "Sunday":
+            res = num == 666 || num == -666 ? true : false;
+            break;
+    }
+    return res;
+}
+function amIAfraid8(day, num) {
+    if (day === "Monday" && num === 12) {
+        return true;
+    }
+    else if (day === "Tuesday" && num > 95) {
+        return true;
+    }
+    else if (day === "Wednesday" && num == 34) {
+        return true;
+    }
+    else if (day === "Thursday" && num === 0) {
+        return true;
+    }
+    else if (day === "Friday" && num % 2 == 0) {
+        return true;
+    }
+    else if (day === "Saturday" && num === 56) {
+        return true;
+    }
+    else if (day === "Sunday" && (num == 666 || num == -666)) {
+        return true;
+    }
+    return false;
+}
+function amIAfraid9(day, num) {
+    const afraidDict = {
+        Monday: (value) => value === 12,
+        Tuesday: (value) => value > 95,
+        Wednesday: (value) => value === 34,
+        Thursday: (value) => value === 0,
+        Friday: (value) => value % 2 === 0,
+        Saturday: (value) => value === 56,
+        Sunday: (value) => Math.abs(value) === 666,
+    };
+    const afraidCondition = afraidDict[day];
+    return afraidCondition(num);
+}
+function amIAfraid10(day, num) {
+    const dayTests = {
+        Monday: (i) => i === 12,
+        Tuesday: (i) => i > 98,
+        Wednesday: (i) => i === 34,
+        Thursday: (i) => i === 0,
+        Friday: (i) => !(i % 2),
+        Saturday: (i) => i === 56,
+        Sunday: (i) => Math.abs(i) === 666,
+    };
+    const dayTest = dayTests[day];
+    if (dayTest) {
+        return dayTest(num);
+    }
+    return false;
+}
+exports.amIAfraid10 = amIAfraid10;
+function amIAfraid11(day, num) {
+    switch (day) {
+        case "Monday":
+            if (num === 12) {
+                return true;
+            }
+            break;
+        case "Tuesday":
+            if (num > 95) {
+                return true;
+            }
+            break;
+        case "Wednesday":
+            if (num === 34) {
+                return true;
+            }
+            break;
+        case "Thursday":
+            if (num === 0) {
+                return true;
+            }
+            break;
+        case "Friday":
+            if (num % 2 === 0) {
+                return true;
+            }
+            break;
+        case "Saturday":
+            if (num === 56) {
+                return true;
+            }
+            break;
+        case "Sunday":
+            if (num === 666 || num === -666) {
+                return true;
+            }
+            break;
+        default:
+            return false;
+    }
+    return false;
+}
 function transposeTwoStrings(arr) {
     return "hello";
 }
