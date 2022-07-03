@@ -402,8 +402,44 @@ function amIAfraid11(day, num) {
     }
     return false;
 }
-function transposeTwoStrings(arr) {
-    return "hello";
+const transposeTwoStrings = (arr) => {
+    const numIterations = Math.max(arr[0].length, arr[1].length);
+    console.log(numIterations);
+    let solutionArr = [];
+    for (let i = 0; i < numIterations; i += 1) {
+        const char1 = arr[0][i] === undefined
+            ? " "
+            : arr[0][i];
+        const char2 = arr[1][i] === undefined
+            ? " "
+            : arr[1][i];
+        const currentRow = char1 + " " + char2;
+        console.log("char 1:", char1, "char 2:", char2, "current row: ", currentRow);
+        solutionArr.push(currentRow);
+    }
+    console.log(solutionArr);
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+function transposeTwoStrings2([a, b]) {
+    const res = [];
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        res.push(`${a[i] || ' '} ${b[i] || ' '}`);
+    }
+    return res.join('\n');
+}
+function transposeTwoStrings3(array) {
+    let res = [];
+    let m = Math.max(...array.map(s => s.length));
+    for (let i = 0; i < m; i++) {
+        res.push(array.map(s => i < s.length ? s[i] : ' ').join(' '));
+    }
+    return res.join("\n");
+}
+function transposeTwoStrings4(arr) {
+    const [left, right] = arr;
+    return Array.from({ length: Math.max(left.length, right.length) }, (_, i) => (left[i] || ' ') + ' ' + (right[i] || ' '))
+        .join('\n');
 }
 function encodeA(str) {
     return "noidea";
