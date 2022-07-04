@@ -3600,10 +3600,10 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Ch4113ng3
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH OBJECT ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3613,8 +3613,23 @@ Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l'
 
 
 */
-function nerdify(txt: string): string {
-    return "";
+const nerdify = (str: string): string => {
+
+    interface KeyVal {
+        [key: string]: string;
+    }
+
+    const nerdyObj: KeyVal = {
+        a: "4",
+        A: "4",
+        e: "3",
+        E: "3",
+        l: "1",
+        L: "1",
+    };
+
+    return str.replace(new RegExp(/[ael]/gi), (el) => nerdyObj[el]);
+
 }
 /*
 describe("nerdify", function() {
@@ -3627,12 +3642,100 @@ describe("nerdify", function() {
 });
 */
 
-// console.log();
+// console.log(nerdify("Fund4m3nt41s"));
+// console.log(nerdify("Fundamentals"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function nerdify2(txt: string) {
+    return txt.replace(/[aA]/g, '4').replace(/[eE]/g, '3').replace(/l/g, '1');
+}
+
+// function nerdify3(txt: string) {
+//     var replacements = { 'a': 4, 'A': 4, 'e': 3, 'E': 3, 'l': 1 };
+//     return txt.split('').map(c => replacements[c] || c).join('');
+// }
+
+function nerdify4(txt: string): string {
+    return txt.replace(/A/ig, '4').replace(/E/ig, '3').replace(/l/g, '1');
+}
+
+
+// function nerdify5(txt: string): string {
+//     let map: Object = { "a": 4, "e": 3, "l": 1 };
+//     return txt.replace(/[AaEel]/g, (it: string) => map[it.toLowerCase()]);
+// };
+
+function nerdify6(txt: string): string {
+    var answer: string = "";
+    for (var i = 0; i < txt.length; i++) {
+        if (txt[i] == "a" || txt[i] == "A") {
+            answer += "4";
+        } else if (txt[i] == "e" || txt[i] == "E") {
+            answer += "3";
+        } else if (txt[i] == "l") {
+            answer += "1";
+        } else {
+            answer += txt[i]
+        }
+    }
+    return answer
+}
+
+
+function nerdify7(txt: string): string {
+    return txt.replace(/a/gi, '4').replace(/e/gi, '3').replace(/l/g, '1');
+}
+
+function nerdify8(txt: string) {
+    let txtList = txt.split('');
+    let newWord = [];
+    for (let letter of txtList) {
+        if (letter === 'a' || letter === 'A') {
+            letter = '4'
+        }
+        if (letter === 'e' || letter === 'E') {
+            letter = '3'
+        }
+        if (letter === 'l') {
+            letter = '1'
+        }
+        newWord.push(letter);
+    }
+    return newWord.join('');
+}
+
+// function nerdify9(txt: string) {
+//     txt = txt.split('');
+//     for (let i = 0; i < txt.length; i++) {
+//         if (txt[i] === 'a' || txt[i] === 'A') txt[i] = '4';
+//         if (txt[i] === 'e' || txt[i] === 'E') txt[i] = '3';
+//         if (txt[i] === 'l') txt[i] = '1';
+//     }
+//     return txt.join('');
+// }
+
+
+// function nerdify10(txt: string): string {
+//     const nerdLetters = { "A": "4", "a": "4", "E": "3", "e": "3", "l": "1" };
+//     return txt.replace(/[AaEel]/g, letter => nerdLetters[letter]);
+// }
+
+
+// function nerdify11(txt: string) {
+//     return txt.replace(/[aelAE]/g, a => ({ 'a': 4, 'e': 3, 'l': 1 }[a.toLowerCase()]));
+// }
+
+// =============================================================
+const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 }
+const regex = new RegExp(`[${Object.keys(replace).join('')}]`, 'g')
+
+// function nerdify12(txt: string) {
+//     return txt.replace(regex, (char) => replace[char]);
+// }
+// =============================================================
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: COUNT SALUTES
@@ -3694,10 +3797,10 @@ describe('Solution test', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: COUNTING POWER SETS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ GENERICS ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3733,8 +3836,16 @@ powers([1,2])     => 4
 powers([1,2,3,4]) => 16
 
 */
+
+
+// SOLUTION: NUMBER OF SETS ARE SIMPLY 2 RAISED TO THE POWER OF ARR.LENGTH
+// [1,2,3] => 2**3, [1,2,3,4,] => 2**4 
+
+// ❗️❗️❗️ GENERICS ❗️❗️❗️
 function powers<T>(list: T[]): number {
-    throw new Error("The method or operation is not implemented.");
+
+    return Math.pow(2, list.length);
+
 }
 /*
 describe("solution", function() {
@@ -3752,6 +3863,19 @@ describe("solution", function() {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function powers2<T>(list: T[]): number {
+    return 2 ** list.length;
+}
+
+// ❗️❗️❗️ GENERICS ❗️❗️❗️
+const powers3 = <T>(list: T[]): number => 2 ** list.length;
+
+
+function powers4<T>(list: T[]): number {
+    return list.length > 0 ? 2 ** list.length : 1;
+}
+
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: POSSIBILITIES ARRAY

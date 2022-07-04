@@ -147,14 +147,75 @@ function dateNbDays(a0, a, p) {
 function median(n) {
     return 1;
 }
-function nerdify(txt) {
-    return "";
+const nerdify = (str) => {
+    const nerdyObj = {
+        a: "4",
+        A: "4",
+        e: "3",
+        E: "3",
+        l: "1",
+        L: "1",
+    };
+    return str.replace(new RegExp(/[ael]/gi), (el) => nerdyObj[el]);
+};
+function nerdify2(txt) {
+    return txt.replace(/[aA]/g, '4').replace(/[eE]/g, '3').replace(/l/g, '1');
 }
+function nerdify4(txt) {
+    return txt.replace(/A/ig, '4').replace(/E/ig, '3').replace(/l/g, '1');
+}
+function nerdify6(txt) {
+    var answer = "";
+    for (var i = 0; i < txt.length; i++) {
+        if (txt[i] == "a" || txt[i] == "A") {
+            answer += "4";
+        }
+        else if (txt[i] == "e" || txt[i] == "E") {
+            answer += "3";
+        }
+        else if (txt[i] == "l") {
+            answer += "1";
+        }
+        else {
+            answer += txt[i];
+        }
+    }
+    return answer;
+}
+function nerdify7(txt) {
+    return txt.replace(/a/gi, '4').replace(/e/gi, '3').replace(/l/g, '1');
+}
+function nerdify8(txt) {
+    let txtList = txt.split('');
+    let newWord = [];
+    for (let letter of txtList) {
+        if (letter === 'a' || letter === 'A') {
+            letter = '4';
+        }
+        if (letter === 'e' || letter === 'E') {
+            letter = '3';
+        }
+        if (letter === 'l') {
+            letter = '1';
+        }
+        newWord.push(letter);
+    }
+    return newWord.join('');
+}
+const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 };
+const regex = new RegExp(`[${Object.keys(replace).join('')}]`, 'g');
 function countSalutes(hallway) {
     return 1;
 }
 function powers(list) {
-    throw new Error("The method or operation is not implemented.");
+    return Math.pow(2, list.length);
+}
+function powers2(list) {
+    return 2 ** list.length;
+}
+const powers3 = (list) => 2 ** list.length;
+function powers4(list) {
+    return list.length > 0 ? 2 ** list.length : 1;
 }
 function isAllPossibilities(x) {
     throw new Error("This method or operation is not implemented.");
