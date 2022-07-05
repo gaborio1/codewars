@@ -3614,7 +3614,6 @@ Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l'
 
 */
 const nerdify = (str: string): string => {
-
     interface KeyVal {
         [key: string]: string;
     }
@@ -3629,8 +3628,7 @@ const nerdify = (str: string): string => {
     };
 
     return str.replace(new RegExp(/[ael]/gi), (el) => nerdyObj[el]);
-
-}
+};
 /*
 describe("nerdify", function() {
   it("Sample Tests", function() {
@@ -3650,7 +3648,7 @@ describe("nerdify", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function nerdify2(txt: string) {
-    return txt.replace(/[aA]/g, '4').replace(/[eE]/g, '3').replace(/l/g, '1');
+    return txt.replace(/[aA]/g, "4").replace(/[eE]/g, "3").replace(/l/g, "1");
 }
 
 // function nerdify3(txt: string) {
@@ -3659,9 +3657,8 @@ function nerdify2(txt: string) {
 // }
 
 function nerdify4(txt: string): string {
-    return txt.replace(/A/ig, '4').replace(/E/ig, '3').replace(/l/g, '1');
+    return txt.replace(/A/gi, "4").replace(/E/gi, "3").replace(/l/g, "1");
 }
-
 
 // function nerdify5(txt: string): string {
 //     let map: Object = { "a": 4, "e": 3, "l": 1 };
@@ -3678,33 +3675,32 @@ function nerdify6(txt: string): string {
         } else if (txt[i] == "l") {
             answer += "1";
         } else {
-            answer += txt[i]
+            answer += txt[i];
         }
     }
-    return answer
+    return answer;
 }
 
-
 function nerdify7(txt: string): string {
-    return txt.replace(/a/gi, '4').replace(/e/gi, '3').replace(/l/g, '1');
+    return txt.replace(/a/gi, "4").replace(/e/gi, "3").replace(/l/g, "1");
 }
 
 function nerdify8(txt: string) {
-    let txtList = txt.split('');
+    let txtList = txt.split("");
     let newWord = [];
     for (let letter of txtList) {
-        if (letter === 'a' || letter === 'A') {
-            letter = '4'
+        if (letter === "a" || letter === "A") {
+            letter = "4";
         }
-        if (letter === 'e' || letter === 'E') {
-            letter = '3'
+        if (letter === "e" || letter === "E") {
+            letter = "3";
         }
-        if (letter === 'l') {
-            letter = '1'
+        if (letter === "l") {
+            letter = "1";
         }
         newWord.push(letter);
     }
-    return newWord.join('');
+    return newWord.join("");
 }
 
 // function nerdify9(txt: string) {
@@ -3717,20 +3713,18 @@ function nerdify8(txt: string) {
 //     return txt.join('');
 // }
 
-
 // function nerdify10(txt: string): string {
 //     const nerdLetters = { "A": "4", "a": "4", "E": "3", "e": "3", "l": "1" };
 //     return txt.replace(/[AaEel]/g, letter => nerdLetters[letter]);
 // }
-
 
 // function nerdify11(txt: string) {
 //     return txt.replace(/[aelAE]/g, a => ({ 'a': 4, 'e': 3, 'l': 1 }[a.toLowerCase()]));
 // }
 
 // =============================================================
-const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 }
-const regex = new RegExp(`[${Object.keys(replace).join('')}]`, 'g')
+const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 };
+const regex = new RegExp(`[${Object.keys(replace).join("")}]`, "g");
 
 // function nerdify12(txt: string) {
 //     return txt.replace(regex, (char) => replace[char]);
@@ -3837,15 +3831,12 @@ powers([1,2,3,4]) => 16
 
 */
 
-
 // SOLUTION: NUMBER OF SETS ARE SIMPLY 2 RAISED TO THE POWER OF ARR.LENGTH
-// [1,2,3] => 2**3, [1,2,3,4,] => 2**4 
+// [1,2,3] => 2**3, [1,2,3,4,] => 2**4
 
 // ❗️❗️❗️ GENERICS ❗️❗️❗️
 function powers<T>(list: T[]): number {
-
     return Math.pow(2, list.length);
-
 }
 /*
 describe("solution", function() {
@@ -3871,11 +3862,9 @@ function powers2<T>(list: T[]): number {
 // ❗️❗️❗️ GENERICS ❗️❗️❗️
 const powers3 = <T>(list: T[]): number => 2 ** list.length;
 
-
 function powers4<T>(list: T[]): number {
     return list.length > 0 ? 2 ** list.length : 1;
 }
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: POSSIBILITIES ARRAY
@@ -4304,7 +4293,6 @@ You don't have to modify the case (i.e. no need to change to upper or lower)
 If one string is longer than the other, there should be a space where the character would be
 */
 const transposeTwoStrings = (arr: string[]): string => {
-
     // DETERMINE LENGTH OF LONGERST WORD FOR NUMBER OF ITERATIONS
     const numIterations: number = Math.max(arr[0].length, arr[1].length);
     console.log(numIterations);
@@ -4312,23 +4300,24 @@ const transposeTwoStrings = (arr: string[]): string => {
     let solutionArr: string[] = [];
 
     for (let i = 0; i < numIterations; i += 1) {
-
         // REPLACE UNDEFINED WITH A SPACE FOR THE SHORTEST WORD
-        const char1: string = arr[0][i] === undefined
-            ? " "
-            : arr[0][i];
+        const char1: string = arr[0][i] === undefined ? " " : arr[0][i];
 
-        const char2: string = arr[1][i] === undefined
-            ? " "
-            : arr[1][i];
+        const char2: string = arr[1][i] === undefined ? " " : arr[1][i];
 
         const currentRow: string = char1 + " " + char2;
 
-        console.log("char 1:", char1, "char 2:", char2, "current row: ", currentRow);
+        console.log(
+            "char 1:",
+            char1,
+            "char 2:",
+            char2,
+            "current row: ",
+            currentRow
+        );
 
         // PUSH CURRENT PAIR TO SOLUTION ARRAY
         solutionArr.push(currentRow);
-
     }
 
     console.log(solutionArr);
@@ -4337,8 +4326,7 @@ const transposeTwoStrings = (arr: string[]): string => {
     const solution: string = solutionArr.join("\n");
 
     return solution;
-
-}
+};
 /*
 console.log(transposeTwoStrings(['Hello', 'World!']));
 
@@ -4374,32 +4362,34 @@ function transposeTwoStrings2([a, b]: [string, string]): string {
     const res: string[] = [];
 
     for (let i = 0; i < Math.max(a.length, b.length); i++) {
-        res.push(`${a[i] || ' '} ${b[i] || ' '}`);
+        res.push(`${a[i] || " "} ${b[i] || " "}`);
     }
 
-    return res.join('\n');
+    return res.join("\n");
 }
-
 
 function transposeTwoStrings3(array: string[]): string {
     let res = [];
-    let m = Math.max(...array.map(s => s.length));
+    let m = Math.max(...array.map((s) => s.length));
     for (let i = 0; i < m; i++) {
-        res.push(array.map(s => i < s.length ? s[i] : ' ').join(' '));
+        res.push(array.map((s) => (i < s.length ? s[i] : " ")).join(" "));
     }
     return res.join("\n");
 }
 
-
 function transposeTwoStrings4(arr: [string, string]): string {
     const [left, right] = arr;
-    return Array.from({ length: Math.max(left.length, right.length) }, (_, i) => (left[i] || ' ') + ' ' + (right[i] || ' '))
-        .join('\n')
+    return Array.from(
+        { length: Math.max(left.length, right.length) },
+        (_, i) => (left[i] || " ") + " " + (right[i] || " ")
+    ).join("\n");
 }
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GA-DE-RY-PO-LU-KI cypher
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH OBJECT ❗️❗️❗️
+// KEYWORDS: ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH SPLIT / MAP / OBJECT ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -4432,13 +4422,49 @@ Example
  Decode("agedyropulik")  // => gaderypoluki
  Decode("GBCE")          // => ABCD
 */
-function encodeA(str: String): String {
-    return "noidea";
-}
+const encodeA = (str: string): string => {
+    interface KeyVal {
+        [key: string]: string;
+    }
 
-function decodeA(str: String): String {
-    return "noidea";
-}
+    const swapObj: KeyVal = {
+        a: "g",
+        A: "G",
+        e: "d",
+        E: "D",
+        y: "r",
+        Y: "R",
+        o: "p",
+        O: "P",
+        u: "l",
+        U: "L",
+        i: "k",
+        I: "K",
+
+        g: "a",
+        G: "A",
+        d: "e",
+        D: "E",
+        r: "y",
+        R: "Y",
+        p: "o",
+        P: "O",
+        l: "u",
+        L: "U",
+        k: "i",
+        K: "I",
+    };
+
+    // return str.replace(new RegExp(/[aAeEyYoOuUiI]/gi), (char) => swapObj[char]);
+    return str.replace(
+        new RegExp(/[gGaAdDeErRyYpPoOlLuUkKiI]/g),
+        (char) => swapObj[char]
+    );
+};
+
+const decodeA = (str: string): string => {
+    return encodeA(str);
+};
 /*
 describe("Scouts are waiting!", function(){
   it("Basic Tests", function(){
@@ -4452,12 +4478,176 @@ describe("Scouts are waiting!", function(){
 });
 */
 
-// console.log();
+// "Gug hgs g cgt"
+// console.log(encodeA("Ala has a cat"));
+// console.log(encodeA("Gug hgs g cgt"));
+// "agedyropulik"
+// console.log(encodeA("gaderypoluki"));
+
+// "gaderypoluki"
+// console.log(encodeA("agedyropulik"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ REGEXP, REPLACE MULTIPLE WITH SPLIT / MAP / OBJECT ❗️❗️❗️
+function encodeA1(s: String): String {
+    return s
+        .split("")
+        .map(
+            (c) =>
+                ({
+                    G: "A",
+                    A: "G",
+                    g: "a",
+                    a: "g",
+                    D: "E",
+                    E: "D",
+                    d: "e",
+                    e: "d",
+                    R: "Y",
+                    Y: "R",
+                    r: "y",
+                    y: "r",
+                    P: "O",
+                    O: "P",
+                    p: "o",
+                    o: "p",
+                    L: "U",
+                    U: "L",
+                    l: "u",
+                    u: "l",
+                    K: "I",
+                    I: "K",
+                    k: "i",
+                    i: "k",
+                }[c] || c)
+        )
+        .join("");
+}
+var decodeA2: Function = encodeA1;
+
+// ============================================================
+
+const crypt = ["GA", "DE", "RY", "PO", "LU", "KI"];
+
+function encodeA3(str: String): String {
+    return str
+        .split("")
+        .map((x) => {
+            const isLower = x.match(/[a-z]/) ? true : false;
+
+            for (let i = 0; i < crypt.length; i++) {
+                if (crypt[i][0] === x.toUpperCase()) {
+                    return isLower ? crypt[i][1].toLowerCase() : crypt[i][1];
+                } else if (crypt[i][1] === x.toUpperCase()) {
+                    return isLower ? crypt[i][0].toLowerCase() : crypt[i][0];
+                }
+            }
+            return x;
+        })
+        .join("");
+}
+
+function decodeA3(str: String): String {
+    return encodeA3(str);
+}
+
+// ============================================================
+
+var keys: { [key: string]: string } = {
+    G: "A",
+    A: "G",
+    g: "a",
+    a: "g",
+    D: "E",
+    E: "D",
+    d: "e",
+    e: "d",
+    R: "Y",
+    Y: "R",
+    r: "y",
+    y: "r",
+    P: "O",
+    O: "P",
+    p: "o",
+    o: "p",
+    L: "U",
+    U: "L",
+    l: "u",
+    u: "l",
+    K: "I",
+    I: "K",
+    k: "i",
+    i: "k",
+};
+
+export function encodeA4(str: string) {
+    return str
+        .split("")
+        .map((e) => (keys[e] ? keys[e] : e))
+        .join("");
+}
+
+export function decodeA4(str: string) {
+    return str
+        .split("")
+        .map((e) => (keys[e] ? keys[e] : e))
+        .join("");
+}
+
+// ============================================================
+const RE: RegExp = RegExp(/[GADERYPOLUKI]/, "gi"),
+    KEY: { [key: string]: string } = {
+        A: "G",
+        G: "A",
+        a: "g",
+        g: "a",
+        D: "E",
+        E: "D",
+        d: "e",
+        e: "d",
+        R: "Y",
+        Y: "R",
+        r: "y",
+        y: "r",
+        P: "O",
+        O: "P",
+        p: "o",
+        o: "p",
+        L: "U",
+        U: "L",
+        l: "u",
+        u: "l",
+        K: "I",
+        I: "K",
+        k: "i",
+        i: "k",
+    };
+
+const encodeA5 = (str: String): String => str.replace(RE, ($) => KEY[$]),
+    decodeA5 = encodeA5;
+// ============================================================
+const cypher = "GADERYPOLUKIgaderypoluki";
+
+function encodeA6(str: String): String {
+    let result = "";
+    for (const ch of str) {
+        const index = cypher.indexOf(ch);
+        if (index === -1) {
+            result += ch;
+        } else {
+            result += index % 2 === 0 ? cypher[index + 1] : cypher[index - 1];
+        }
+    }
+    return result;
+}
+
+function decodeA6(str: String): String {
+    return encodeA6(str);
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: FUNCTIONS OF INTEGERS ON CARTESIAN PLANE
@@ -5631,7 +5821,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void { }
+    strike(enemy: Warrior, swings: number): void {}
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -6988,16 +7178,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -7833,8 +8023,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -7912,7 +8102,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -8623,10 +8813,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -8736,8 +8926,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -9844,8 +10034,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -10458,10 +10649,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -10914,7 +11105,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -11407,17 +11598,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -11550,13 +11741,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -14158,10 +14349,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -15274,7 +15465,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -16350,8 +16541,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -16501,10 +16692,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -17501,11 +17692,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -18300,9 +18491,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -18584,8 +18775,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.amIAfraid10 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.decodeA4 = exports.encodeA4 = exports.amIAfraid10 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -159,10 +159,10 @@ const nerdify = (str) => {
     return str.replace(new RegExp(/[ael]/gi), (el) => nerdyObj[el]);
 };
 function nerdify2(txt) {
-    return txt.replace(/[aA]/g, '4').replace(/[eE]/g, '3').replace(/l/g, '1');
+    return txt.replace(/[aA]/g, "4").replace(/[eE]/g, "3").replace(/l/g, "1");
 }
 function nerdify4(txt) {
-    return txt.replace(/A/ig, '4').replace(/E/ig, '3').replace(/l/g, '1');
+    return txt.replace(/A/gi, "4").replace(/E/gi, "3").replace(/l/g, "1");
 }
 function nerdify6(txt) {
     var answer = "";
@@ -183,27 +183,27 @@ function nerdify6(txt) {
     return answer;
 }
 function nerdify7(txt) {
-    return txt.replace(/a/gi, '4').replace(/e/gi, '3').replace(/l/g, '1');
+    return txt.replace(/a/gi, "4").replace(/e/gi, "3").replace(/l/g, "1");
 }
 function nerdify8(txt) {
-    let txtList = txt.split('');
+    let txtList = txt.split("");
     let newWord = [];
     for (let letter of txtList) {
-        if (letter === 'a' || letter === 'A') {
-            letter = '4';
+        if (letter === "a" || letter === "A") {
+            letter = "4";
         }
-        if (letter === 'e' || letter === 'E') {
-            letter = '3';
+        if (letter === "e" || letter === "E") {
+            letter = "3";
         }
-        if (letter === 'l') {
-            letter = '1';
+        if (letter === "l") {
+            letter = "1";
         }
         newWord.push(letter);
     }
-    return newWord.join('');
+    return newWord.join("");
 }
 const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 };
-const regex = new RegExp(`[${Object.keys(replace).join('')}]`, 'g');
+const regex = new RegExp(`[${Object.keys(replace).join("")}]`, "g");
 function countSalutes(hallway) {
     return 1;
 }
@@ -468,12 +468,8 @@ const transposeTwoStrings = (arr) => {
     console.log(numIterations);
     let solutionArr = [];
     for (let i = 0; i < numIterations; i += 1) {
-        const char1 = arr[0][i] === undefined
-            ? " "
-            : arr[0][i];
-        const char2 = arr[1][i] === undefined
-            ? " "
-            : arr[1][i];
+        const char1 = arr[0][i] === undefined ? " " : arr[0][i];
+        const char2 = arr[1][i] === undefined ? " " : arr[1][i];
         const currentRow = char1 + " " + char2;
         console.log("char 1:", char1, "char 2:", char2, "current row: ", currentRow);
         solutionArr.push(currentRow);
@@ -485,28 +481,190 @@ const transposeTwoStrings = (arr) => {
 function transposeTwoStrings2([a, b]) {
     const res = [];
     for (let i = 0; i < Math.max(a.length, b.length); i++) {
-        res.push(`${a[i] || ' '} ${b[i] || ' '}`);
+        res.push(`${a[i] || " "} ${b[i] || " "}`);
     }
-    return res.join('\n');
+    return res.join("\n");
 }
 function transposeTwoStrings3(array) {
     let res = [];
-    let m = Math.max(...array.map(s => s.length));
+    let m = Math.max(...array.map((s) => s.length));
     for (let i = 0; i < m; i++) {
-        res.push(array.map(s => i < s.length ? s[i] : ' ').join(' '));
+        res.push(array.map((s) => (i < s.length ? s[i] : " ")).join(" "));
     }
     return res.join("\n");
 }
 function transposeTwoStrings4(arr) {
     const [left, right] = arr;
-    return Array.from({ length: Math.max(left.length, right.length) }, (_, i) => (left[i] || ' ') + ' ' + (right[i] || ' '))
-        .join('\n');
+    return Array.from({ length: Math.max(left.length, right.length) }, (_, i) => (left[i] || " ") + " " + (right[i] || " ")).join("\n");
 }
-function encodeA(str) {
-    return "noidea";
+const encodeA = (str) => {
+    const swapObj = {
+        a: "g",
+        A: "G",
+        e: "d",
+        E: "D",
+        y: "r",
+        Y: "R",
+        o: "p",
+        O: "P",
+        u: "l",
+        U: "L",
+        i: "k",
+        I: "K",
+        g: "a",
+        G: "A",
+        d: "e",
+        D: "E",
+        r: "y",
+        R: "Y",
+        p: "o",
+        P: "O",
+        l: "u",
+        L: "U",
+        k: "i",
+        K: "I",
+    };
+    return str.replace(new RegExp(/[gGaAdDeErRyYpPoOlLuUkKiI]/g), (char) => swapObj[char]);
+};
+const decodeA = (str) => {
+    return encodeA(str);
+};
+function encodeA1(s) {
+    return s
+        .split("")
+        .map((c) => ({
+        G: "A",
+        A: "G",
+        g: "a",
+        a: "g",
+        D: "E",
+        E: "D",
+        d: "e",
+        e: "d",
+        R: "Y",
+        Y: "R",
+        r: "y",
+        y: "r",
+        P: "O",
+        O: "P",
+        p: "o",
+        o: "p",
+        L: "U",
+        U: "L",
+        l: "u",
+        u: "l",
+        K: "I",
+        I: "K",
+        k: "i",
+        i: "k",
+    }[c] || c))
+        .join("");
 }
-function decodeA(str) {
-    return "noidea";
+var decodeA2 = encodeA1;
+const crypt = ["GA", "DE", "RY", "PO", "LU", "KI"];
+function encodeA3(str) {
+    return str
+        .split("")
+        .map((x) => {
+        const isLower = x.match(/[a-z]/) ? true : false;
+        for (let i = 0; i < crypt.length; i++) {
+            if (crypt[i][0] === x.toUpperCase()) {
+                return isLower ? crypt[i][1].toLowerCase() : crypt[i][1];
+            }
+            else if (crypt[i][1] === x.toUpperCase()) {
+                return isLower ? crypt[i][0].toLowerCase() : crypt[i][0];
+            }
+        }
+        return x;
+    })
+        .join("");
+}
+function decodeA3(str) {
+    return encodeA3(str);
+}
+var keys = {
+    G: "A",
+    A: "G",
+    g: "a",
+    a: "g",
+    D: "E",
+    E: "D",
+    d: "e",
+    e: "d",
+    R: "Y",
+    Y: "R",
+    r: "y",
+    y: "r",
+    P: "O",
+    O: "P",
+    p: "o",
+    o: "p",
+    L: "U",
+    U: "L",
+    l: "u",
+    u: "l",
+    K: "I",
+    I: "K",
+    k: "i",
+    i: "k",
+};
+function encodeA4(str) {
+    return str
+        .split("")
+        .map((e) => (keys[e] ? keys[e] : e))
+        .join("");
+}
+exports.encodeA4 = encodeA4;
+function decodeA4(str) {
+    return str
+        .split("")
+        .map((e) => (keys[e] ? keys[e] : e))
+        .join("");
+}
+exports.decodeA4 = decodeA4;
+const RE = RegExp(/[GADERYPOLUKI]/, "gi"), KEY = {
+    A: "G",
+    G: "A",
+    a: "g",
+    g: "a",
+    D: "E",
+    E: "D",
+    d: "e",
+    e: "d",
+    R: "Y",
+    Y: "R",
+    r: "y",
+    y: "r",
+    P: "O",
+    O: "P",
+    p: "o",
+    o: "p",
+    L: "U",
+    U: "L",
+    l: "u",
+    u: "l",
+    K: "I",
+    I: "K",
+    k: "i",
+    i: "k",
+};
+const encodeA5 = (str) => str.replace(RE, ($) => KEY[$]), decodeA5 = encodeA5;
+const cypher = "GADERYPOLUKIgaderypoluki";
+function encodeA6(str) {
+    let result = "";
+    for (const ch of str) {
+        const index = cypher.indexOf(ch);
+        if (index === -1) {
+            result += ch;
+        }
+        else {
+            result += index % 2 === 0 ? cypher[index + 1] : cypher[index - 1];
+        }
+    }
+    return result;
+}
+function decodeA6(str) {
+    return encodeA6(str);
 }
 function sumin(n) {
     throw new Error("TODO");
