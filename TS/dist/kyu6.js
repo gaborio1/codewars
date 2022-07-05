@@ -99,7 +99,6 @@ const grabscrab3 = (() => {
 const grabscrab4 = (anagram, dictionary) => dictionary.filter((word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word));
 const rotate = (str) => {
     const wordArr = str.split("\n");
-    console.log(wordArr);
     return wordArr
         .map((word) => word.split("").reverse().join(""))
         .reverse()
@@ -110,22 +109,66 @@ const selfieAndRot = (str) => {
     let topArr = [], bottomArr = [];
     wordArr.forEach((word) => {
         const topCurrent = word + ".".repeat(word.length);
-        console.log("top current:", topCurrent);
         topArr.push(topCurrent);
         const bottomCurrent = topCurrent.split("").reverse().join("");
-        console.log("bottom current:", bottomCurrent);
         bottomArr.unshift(bottomCurrent);
     });
-    console.log("top array:", topArr);
-    console.log("bottom array:", bottomArr);
     const solutionArr = [...topArr, ...bottomArr];
-    console.log(solutionArr);
     const solution = solutionArr.join("\n");
     return solution;
 };
 const oper = (func, str) => {
     return func(str);
 };
+function rot1(s) {
+    return s.split("").reverse().join("");
+}
+function selfieAndRot1(s) {
+    return (s = s.replace(/.+/g, t => t + t.replace(/./g, "."))) + "\n" + rot1(s);
+}
+function oper1(fn, s) {
+    return fn(s);
+}
+function rot2(s) {
+    return [...s].reverse().join("");
+}
+function selfieAndRot2(s) {
+    return s.split("\n").map(x => x + ".".repeat(x.length)).join("\n") + "\n" + rot2(s).split("\n").map(x => ".".repeat(x.length) + x).join("\n");
+}
+function oper2(fn, s) {
+    return fn(s);
+}
+function rot3(s) {
+    return s
+        .split("\n")
+        .map((x) => x.split("").reverse().join(""))
+        .reverse()
+        .join("\n");
+}
+function selfieAndRot3(s) {
+    return (s
+        .split("\n")
+        .map((x) => x + ".".repeat(x.length))
+        .join("\n") +
+        "\n" +
+        rot3(s)
+            .split("\n")
+            .map((x) => ".".repeat(x.length) + x)
+            .join("\n"));
+}
+function oper3(fn, s) {
+    return fn(s);
+}
+function rot4(s) {
+    return s.split("\n").map(word => word.split("").reverse().join("")).reverse().join("\n");
+}
+function selfieAndRot4(s) {
+    const dots = s.split("\n")[0].length;
+    return `${s.split("\n").join(`${".".repeat(dots)}\n`)}${".".repeat(dots)}\n${".".repeat(dots)}${rot4(s).split("\n").join(`\n${".".repeat(dots)}`)}`;
+}
+function oper4(fn, s) {
+    return fn(s);
+}
 const maxBall = (v0) => {
     const G = 9.81;
     const vMS = v0 / 3.6;
