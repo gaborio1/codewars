@@ -642,7 +642,7 @@ class G0012 {
 //     }
 // }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GRABSCRAB
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:❗️❗️❗️  IMMEDIATELY INVOKED FUNCTION ❗️❗️❗️ FILTER !!!
@@ -719,7 +719,9 @@ const grabscrab4 = (anagram: string, dictionary: string[]): string[] =>
         (word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word)
     );
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ COMMENT AND ADD SOLUTIONS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: MOVES IN SQARED STRINGS - (II)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -771,17 +773,53 @@ Forthcoming katas will study other tranformations.
 Bash Note:
 The input strings are separated by , instead of \n. The ouput strings should be separated by \r instead of \n. See "Sample Tests".
 */
-const rot = (s: string): string => {
-    return "hello";
+const rotate = (str: string): string => {
+    const wordArr: string[] = str.split("\n");
+
+    console.log(wordArr);
+
+    // console.log(
+    //     wordArr.map((word) => word.split("").reverse().join()).reverse()
+    // );
+
+    // ROTATION: REVERSE ARRAY AND EACH WORD IN ARRAY
+    return wordArr
+        .map((word) => word.split("").reverse().join(""))
+        .reverse()
+        .join("\n");
 };
 
-// const selfieAndRot = (s: string): string => {
-//     return "hello";
-// }
+const selfieAndRot = (str: string): string => {
+    const wordArr: string[] = str.split("\n");
+    let topArr: string[] = [],
+        bottomArr: string[] = [];
 
-// const oper = (fn: (s: string) => string, s: string): string => {
-//     return "hello";
-// }
+    wordArr.forEach((word) => {
+        // ADD MATCHING NUMBER OF DOTS TO CURRENT
+        const topCurrent: string = word + ".".repeat(word.length);
+        console.log("top current:", topCurrent);
+        topArr.push(topCurrent);
+
+        // REVERSE topCurrent "abcd...." => "....dcba"
+        const bottomCurrent: string = topCurrent.split("").reverse().join("");
+        console.log("bottom current:", bottomCurrent);
+        bottomArr.unshift(bottomCurrent);
+    });
+
+    console.log("top array:", topArr);
+    console.log("bottom array:", bottomArr);
+
+    const solutionArr: string[] = [...topArr, ...bottomArr];
+    console.log(solutionArr);
+
+    const solution: string = solutionArr.join("\n");
+
+    return solution;
+};
+
+const oper = (func: (str: string) => string, str: string): string => {
+    return func(str);
+};
 
 /*
  assert.strictEqual(
@@ -805,7 +843,9 @@ const rot = (s: string): string => {
     );
 */
 
-// console.log();
+// console.log(rotate("abcd\nefgh\nijkl\nmnop"));
+// console.log(oper(rotate, "abcd\nefgh\nijkl\nmnop"));
+// console.log(oper(selfieAndRot, "abcd\nefgh\nijkl\nmnop"));
 // console.log();
 // console.log();
 // console.log();

@@ -97,8 +97,34 @@ const grabscrab3 = (() => {
     };
 })();
 const grabscrab4 = (anagram, dictionary) => dictionary.filter((word) => ![...anagram].reduce((acc, c) => acc.replace(c, ""), word));
-const rot = (s) => {
-    return "hello";
+const rotate = (str) => {
+    const wordArr = str.split("\n");
+    console.log(wordArr);
+    return wordArr
+        .map((word) => word.split("").reverse().join(""))
+        .reverse()
+        .join("\n");
+};
+const selfieAndRot = (str) => {
+    const wordArr = str.split("\n");
+    let topArr = [], bottomArr = [];
+    wordArr.forEach((word) => {
+        const topCurrent = word + ".".repeat(word.length);
+        console.log("top current:", topCurrent);
+        topArr.push(topCurrent);
+        const bottomCurrent = topCurrent.split("").reverse().join("");
+        console.log("bottom current:", bottomCurrent);
+        bottomArr.unshift(bottomCurrent);
+    });
+    console.log("top array:", topArr);
+    console.log("bottom array:", bottomArr);
+    const solutionArr = [...topArr, ...bottomArr];
+    console.log(solutionArr);
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+const oper = (func, str) => {
+    return func(str);
 };
 const maxBall = (v0) => {
     const G = 9.81;
