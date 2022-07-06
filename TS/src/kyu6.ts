@@ -188,9 +188,24 @@ input: "100111111000111001000010000111111000000111001111000111110110111000010111
 --> 104, 101, 121                      // ASCII values
 --> "hey"
 */
-function encode(text: string): string {
+const encode = (text: string): string => {
+    // console.log(text);
+
+    // GET ARRAY OF CHARCODES [ 104, 101, 121 ]
+    const asciiArr: number[] = text
+        .split("")
+        .map((char, idx) => char.charCodeAt(0));
+    console.log(asciiArr);
+
+    // CONVERT TO BINARY [ '1101000', '1100101', '1111001' ]
+    const binaryArr: string[] = asciiArr.map((ascii) => ascii.toString(2));
+    console.log(binaryArr);
+
+    // REPEAT EVERY BIT 3 TIMES
+    // const tripledBinaryArr: string[] =
+
     return "bits";
-}
+};
 
 function decode(bits: string): string {
     return "text";
@@ -227,7 +242,7 @@ describe ("Test decode function", function() {
 });
 */
 
-// console.log();
+console.log(encode("hey"));
 // console.log();
 // console.log();
 // console.log();
@@ -866,7 +881,9 @@ function rot1(s: string) {
 }
 
 function selfieAndRot1(s: string) {
-    return (s = s.replace(/.+/g, t => t + t.replace(/./g, "."))) + "\n" + rot1(s);
+    return (
+        (s = s.replace(/.+/g, (t) => t + t.replace(/./g, "."))) + "\n" + rot1(s)
+    );
 }
 
 function oper1(fn: (s: string) => string, s: string) {
@@ -876,15 +893,25 @@ function oper1(fn: (s: string) => string, s: string) {
 // ============================================================
 
 function rot2(s: string): string {
-    return [...s].reverse().join("")
+    return [...s].reverse().join("");
 }
 
 function selfieAndRot2(s: string): string {
-    return s.split("\n").map(x => x + ".".repeat(x.length)).join("\n") + "\n" + rot2(s).split("\n").map(x => ".".repeat(x.length) + x).join("\n")
+    return (
+        s
+            .split("\n")
+            .map((x) => x + ".".repeat(x.length))
+            .join("\n") +
+        "\n" +
+        rot2(s)
+            .split("\n")
+            .map((x) => ".".repeat(x.length) + x)
+            .join("\n")
+    );
 }
 
 function oper2(fn: (s: string) => string, s: string): string {
-    return fn(s)
+    return fn(s);
 }
 
 // ============================================================
@@ -915,16 +942,23 @@ function oper3(fn: (s: string) => string, s: string): string {
     return fn(s);
 }
 
-
 // ============================================================
 
 function rot4(s: string): string {
-    return s.split("\n").map(word => word.split("").reverse().join("")).reverse().join("\n");
+    return s
+        .split("\n")
+        .map((word) => word.split("").reverse().join(""))
+        .reverse()
+        .join("\n");
 }
 
 function selfieAndRot4(s: string): string {
     const dots = s.split("\n")[0].length;
-    return `${s.split("\n").join(`${".".repeat(dots)}\n`)}${".".repeat(dots)}\n${".".repeat(dots)}${rot4(s).split("\n").join(`\n${".".repeat(dots)}`)}`;
+    return `${s.split("\n").join(`${".".repeat(dots)}\n`)}${".".repeat(
+        dots
+    )}\n${".".repeat(dots)}${rot4(s)
+        .split("\n")
+        .join(`\n${".".repeat(dots)}`)}`;
 }
 
 function oper4(fn: (s: string) => string, s: string): string {
@@ -933,14 +967,9 @@ function oper4(fn: (s: string) => string, s: string): string {
 
 // ============================================================
 
-
-
 // ============================================================
 
-
-
 // ============================================================
-
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR WITHOUT SOLUTION-1 ❗️❗️❗️
@@ -1869,8 +1898,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1882,8 +1911,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -3287,9 +3316,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -3855,10 +3884,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -6251,7 +6280,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -6337,7 +6366,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -7198,15 +7227,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -7259,10 +7288,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -7838,7 +7867,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -8297,8 +8326,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -8591,7 +8620,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -9048,10 +9077,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -10351,8 +10380,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

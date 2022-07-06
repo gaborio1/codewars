@@ -204,8 +204,61 @@ function nerdify8(txt) {
 }
 const replace = { a: 4, A: 4, e: 3, E: 3, l: 1 };
 const regex = new RegExp(`[${Object.keys(replace).join("")}]`, "g");
-function countSalutes(hallway) {
-    return 1;
+const countSalutes = (hallway) => {
+    let solution = 0;
+    const lineOfPeople = hallway
+        .split("")
+        .filter((el) => el === "<" || el === ">");
+    console.log("line of people:", lineOfPeople);
+    for (let i = 0; i < lineOfPeople.length; i += 1) {
+        const current = lineOfPeople[i];
+        if (current === ">") {
+            const tailSubArr = lineOfPeople.slice(i + 1);
+            console.log("people to right:", tailSubArr);
+            const peopleToMeet = tailSubArr.filter((el) => el === "<").length;
+            console.log("people to meet:", peopleToMeet);
+            solution += peopleToMeet * 2;
+        }
+    }
+    return solution;
+};
+console.log(countSalutes("<---->---<---<-->"));
+function countSalutes1(hallway) {
+    let right = 0;
+    let salutes = 0;
+    for (let p of hallway) {
+        if (p === ">")
+            right += 1;
+        else if (p === "<")
+            salutes += 2 * right;
+    }
+    return salutes;
+}
+function countSalutes2(hallway) {
+    let r = 0;
+    let l = 0;
+    for (let x of hallway) {
+        switch (x) {
+            case ">":
+                r++;
+                break;
+            case "<":
+                l += r;
+                break;
+        }
+    }
+    return l * 2;
+}
+function countSalutes3(hallway) {
+    let cnt = 0;
+    let numPeople = 0;
+    for (const ch of hallway) {
+        if (ch === ">")
+            numPeople++;
+        else if (ch === "<")
+            cnt += 2 * numPeople;
+    }
+    return cnt;
 }
 function powers(list) {
     return Math.pow(2, list.length);

@@ -2,12 +2,19 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = void 0;
-function encode(text) {
+const encode = (text) => {
+    const asciiArr = text
+        .split("")
+        .map((char, idx) => char.charCodeAt(0));
+    console.log(asciiArr);
+    const binaryArr = asciiArr.map((ascii) => ascii.toString(2));
+    console.log(binaryArr);
     return "bits";
-}
+};
 function decode(bits) {
     return "text";
 }
+console.log(encode("hey"));
 function binaryToString(binary) {
     return "";
 }
@@ -124,7 +131,7 @@ function rot1(s) {
     return s.split("").reverse().join("");
 }
 function selfieAndRot1(s) {
-    return (s = s.replace(/.+/g, t => t + t.replace(/./g, "."))) + "\n" + rot1(s);
+    return ((s = s.replace(/.+/g, (t) => t + t.replace(/./g, "."))) + "\n" + rot1(s));
 }
 function oper1(fn, s) {
     return fn(s);
@@ -133,7 +140,15 @@ function rot2(s) {
     return [...s].reverse().join("");
 }
 function selfieAndRot2(s) {
-    return s.split("\n").map(x => x + ".".repeat(x.length)).join("\n") + "\n" + rot2(s).split("\n").map(x => ".".repeat(x.length) + x).join("\n");
+    return (s
+        .split("\n")
+        .map((x) => x + ".".repeat(x.length))
+        .join("\n") +
+        "\n" +
+        rot2(s)
+            .split("\n")
+            .map((x) => ".".repeat(x.length) + x)
+            .join("\n"));
 }
 function oper2(fn, s) {
     return fn(s);
@@ -160,11 +175,17 @@ function oper3(fn, s) {
     return fn(s);
 }
 function rot4(s) {
-    return s.split("\n").map(word => word.split("").reverse().join("")).reverse().join("\n");
+    return s
+        .split("\n")
+        .map((word) => word.split("").reverse().join(""))
+        .reverse()
+        .join("\n");
 }
 function selfieAndRot4(s) {
     const dots = s.split("\n")[0].length;
-    return `${s.split("\n").join(`${".".repeat(dots)}\n`)}${".".repeat(dots)}\n${".".repeat(dots)}${rot4(s).split("\n").join(`\n${".".repeat(dots)}`)}`;
+    return `${s.split("\n").join(`${".".repeat(dots)}\n`)}${".".repeat(dots)}\n${".".repeat(dots)}${rot4(s)
+        .split("\n")
+        .join(`\n${".".repeat(dots)}`)}`;
 }
 function oper4(fn, s) {
     return fn(s);

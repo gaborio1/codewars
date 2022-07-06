@@ -3731,7 +3731,7 @@ const regex = new RegExp(`[${Object.keys(replace).join("")}]`, "g");
 // }
 // =============================================================
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: COUNT SALUTES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -3763,34 +3763,102 @@ Explanation: Only one meeting occurs.
 
 
 */
-function countSalutes(hallway: String): number {
-    return 1;
-}
+const countSalutes = (hallway: String): number => {
+    let solution: number = 0;
+    // FILTER OUT SPACES
+    const lineOfPeople: string[] = hallway
+        .split("")
+        .filter((el) => el === "<" || el === ">");
+    console.log("line of people:", lineOfPeople);
+
+    for (let i = 0; i < lineOfPeople.length; i += 1) {
+        const current: string = lineOfPeople[i];
+
+        // AS WE SCAN FROM LEFT, LOOK FOR PEOPLE THAT ARE GOING RIGHT
+        // GET SUB ARRAY ON THE RIGHT OF CURRENT (ALL PEOPLE AHEAD)
+        if (current === ">") {
+            // GET SUB ARRAY ON THE RIGHT OF CURRENT (ALL PEOPLE AHEAD)
+            const tailSubArr: string[] = lineOfPeople.slice(i + 1);
+            console.log("people to right:", tailSubArr);
+            // COUNT HOW MANY OF THOSE PEOPLE CURRENT IS GOING TO MEET (ONES THAT ARE GOING LEFT)
+            const peopleToMeet: number = tailSubArr.filter(
+                (el) => el === "<"
+            ).length;
+            console.log("people to meet:", peopleToMeet);
+
+            // CALC NUMBER OF GREETINGS AND INCREMENT SOLUTION
+            solution += peopleToMeet * 2;
+        }
+    }
+
+    return solution;
+};
+
 /*
-describe('Solution test', () => {
-  const act = (hallway: String, expected: number) => {
-    const actual: number = countSalutes(hallway);
-    const input: String = hallway;
-    it(`input: ${input} expected: ${expected} actual: ${actual}`,
-       () => assert.strictEqual(actual, expected));
-  }
-  describe('Fixed tests', () => {
+
+console.log(countSalutes("<---->---<---<-->"));
+
+line of people: [ '<', '>', '<', '<', '>' ]
+
+people to right: [ '<', '<', '>' ]
+people to meet: 2
+
+people to right: []
+people to meet: 0
+
+4
+
+
     act('<---->---<---<-->', 4);
     act('------', 0);
     act('>>>>>>>>>>>>>>>>>>>>>----<->', 42);
     act('<<----<>---<', 2);
-    act('>', 0);
-  });
-});
+ 
 */
 
-// console.log();
+console.log(countSalutes("<---->---<---<-->"));
+// console.log(countSalutes(">>>>>>>>>>>>>>>>>>>>>----<->"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function countSalutes1(hallway: String): number {
+    let right = 0;
+    let salutes = 0;
+    for (let p of hallway) {
+        if (p === ">") right += 1;
+        else if (p === "<") salutes += 2 * right;
+    }
+    return salutes;
+}
+
+function countSalutes2(hallway: String): number {
+    let r: number = 0;
+    let l: number = 0;
+    for (let x of hallway) {
+        switch (x) {
+            case ">":
+                r++;
+                break;
+            case "<":
+                l += r;
+                break;
+        }
+    }
+    return l * 2;
+}
+
+function countSalutes3(hallway: String): number {
+    let cnt = 0;
+    let numPeople = 0;
+    for (const ch of hallway) {
+        if (ch === ">") numPeople++;
+        else if (ch === "<") cnt += 2 * numPeople;
+    }
+    return cnt;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: COUNTING POWER SETS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
