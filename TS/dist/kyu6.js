@@ -7,14 +7,59 @@ const encode = (text) => {
         .split("")
         .map((char, idx) => char.charCodeAt(0));
     console.log(asciiArr);
-    const binaryArr = asciiArr.map((ascii) => ascii.toString(2));
+    const binaryArr = asciiArr.map((ascii) => {
+        let zeros = "0";
+        if (ascii.toString(2).length === 6)
+            zeros = "00";
+        return zeros + ascii.toString(2);
+    });
     console.log(binaryArr);
-    return "bits";
+    const tripledBinaryArr = binaryArr.map((binary) => {
+        let currTripled = "";
+        for (let bit of binary) {
+            currTripled += bit.repeat(3);
+        }
+        return currTripled;
+    });
+    console.log(tripledBinaryArr);
+    const solution = tripledBinaryArr.join("");
+    return solution;
 };
-function decode(bits) {
-    return "text";
-}
-console.log(encode("hey"));
+const decode = (bits) => {
+    console.log(bits);
+    console.log(bits.length);
+    const triplesArr = [];
+    for (let i = 0; i < bits.length; i += 3) {
+        console.log("index:", i);
+        console.log(bits.slice(i, i + 3));
+        triplesArr.push(bits.slice(i, i + 3));
+    }
+    console.log(triplesArr);
+    const correctedBits = triplesArr.map((triple) => {
+        var _b;
+        if (triple.indexOf("1") < 0)
+            return "0";
+        return ((_b = triple.match(/1/g)) === null || _b === void 0 ? void 0 : _b.length) > 1
+            ? "1"
+            : "0";
+    });
+    console.log(correctedBits);
+    let bytesArr = [];
+    for (let i = 0; i < correctedBits.length; i += 8) {
+        console.log(correctedBits.slice(i, i + 8));
+        bytesArr.push(correctedBits.slice(i, i + 8).join(""));
+    }
+    console.log(bytesArr);
+    const asciiArr = bytesArr.map((byte) => {
+        return parseInt(byte, 2);
+    });
+    console.log(asciiArr);
+    const solution = asciiArr.map((ascii) => {
+        return String.fromCharCode(ascii);
+    }).join("");
+    return solution;
+};
+console.log(decode("100111111000111001000010000111111000000111001111000111110110111000010111"));
 function binaryToString(binary) {
     return "";
 }
