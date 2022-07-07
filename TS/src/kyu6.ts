@@ -135,11 +135,10 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-// ❗️❗️❗️  ADD SOLOUTIONS AND REFACTOR, SUBMIT ❗️❗️❗️
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩// TITLE: Error correction #1 - Hamming Code
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Error correction #1 - HUMMING CODE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: CONVERT TO BINARY/DECIMAL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -190,13 +189,11 @@ input: "100111111000111001000010000111111000000111001111000111110110111000010111
 --> "hey"
 */
 const encode = (text: string): string => {
-    // console.log(text);
-
     // GET ARRAY OF CHARCODES [ 104, 101, 121 ]
     const asciiArr: number[] = text
         .split("")
         .map((char, idx) => char.charCodeAt(0));
-    console.log(asciiArr);
+    // console.log(asciiArr);
 
     // CONVERT TO BINARY [ '1101000', '1100101', '1111001' ]
     // ADD LEADING ZERO [ '01101000', '01100101', '01111001' ]
@@ -216,7 +213,7 @@ const encode = (text: string): string => {
             currTripled += bit.repeat(3);
         }
         return currTripled;
-    })
+    });
 
     console.log(tripledBinaryArr);
 
@@ -224,20 +221,15 @@ const encode = (text: string): string => {
     const solution: string = tripledBinaryArr.join("");
 
     return solution;
-
 };
 
-
 const decode = (bits: string): string => {
-
-    console.log(bits);
-    console.log(bits.length);
+    // console.log(bits);
+    // console.log(bits.length);
 
     // SPLIT INPUT INTO TRIPLES ['100', '111', '111', '000'... ETC...]
     const triplesArr: string[] = [];
     for (let i = 0; i < bits.length; i += 3) {
-        console.log("index:", i);
-        console.log(bits.slice(i, i + 3));
         triplesArr.push(bits.slice(i, i + 3));
     }
 
@@ -245,14 +237,13 @@ const decode = (bits: string): string => {
 
     // GET CORRECTED BITS (GET BIT THAT OCCURS MORE) ['0', '1', '1', '0', '1'.ETC...]
     const correctedBits: string[] = triplesArr.map((triple) => {
+        // ❗️❗️❗️CHECK FOR EMPTY ARRAY ❗️❗️❗️
+        // if (triple.indexOf("1") < 0) return "0";
 
-        if (triple.indexOf("1") < 0) return "0";
+        if (triple.match(/1/g) === null) return "0";
 
-        // ❗️❗️❗️ FIX THIS ❗️❗️❗️
-        return triple.match(/1/g)?.length > 1
-            ? "1"
-            : "0";
-    })
+        return triple.match(/1/g)!.length > 1 ? "1" : "0";
+    });
 
     console.log(correctedBits);
 
@@ -263,23 +254,22 @@ const decode = (bits: string): string => {
         bytesArr.push(correctedBits.slice(i, i + 8).join(""));
     }
 
-    console.log(bytesArr);
+    // console.log(bytesArr);
 
-    // GET ASCII VALUES
+    // GET ASCII VALUES [ 104, 101, 121 ]
     const asciiArr: number[] = bytesArr.map((byte) => {
         return parseInt(byte, 2);
-    })
-
-    // [ 104, 101, 121 ]
-    console.log(asciiArr);
+    });
 
     // "hey"
-    const solution: string = asciiArr.map((ascii) => {
-        return String.fromCharCode(ascii)
-    }).join("");
+    const solution: string = asciiArr
+        .map((ascii) => {
+            return String.fromCharCode(ascii);
+        })
+        .join("");
 
     return solution;
-}
+};
 /*
 describe("Test encode function", function() {
   it("Should work with short word", function() {
@@ -313,23 +303,138 @@ describe ("Test decode function", function() {
 */
 
 // ENCODE:
-// ✅ SHORT WORD: console.log(encode("hey")); 
+// ✅ SHORT WORD:console.log(encode("hey"));
 // ✅ MULTIPLE WORDS: console.log(encode("The Sensei told me that i can do this kata"));
 // ✅ NUMBERS: console.log(encode("T3st"));
 // ✅ SPEC CHARS: console.log(encode("T?st!%"));
 
 // DECODE:
 
-console.log(decode("100111111000111001000010000111111000000111001111000111110110111000010111"));
-// console.log();
-// console.log();
+// ✅
+// console.log(
+//     decode(
+//         "100111111000111001000010000111111000000111001111000111110110111000010111"
+//     )
+// );
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Binary to Text (ASCII) Conversion
+export function encode1(text: string): string {
+    return text
+        .split("")
+        .map((character) => character.charCodeAt(0))
+        .map((charCode) => (charCode >>> 0).toString(2))
+        .map(
+            (binaryString) => "0".repeat(8 - binaryString.length) + binaryString
+        )
+        .map((eightBitBinaryString) =>
+            eightBitBinaryString
+                .split("")
+                .map((bit) => bit.repeat(3))
+                .join("")
+        )
+        .join("");
+}
+
+export function decod1e(bits: string): string {
+    return (
+        (bits.match(/.{3}/g) || [])
+            .map((group) => decodeGroup(group))
+            .join("")
+            .match(/.{8}/g) || []
+    )
+        .map((eightBitBinary) => parseInt(eightBitBinary, 2))
+        .map((charCode) => String.fromCharCode(charCode))
+        .join("");
+}
+
+function decodeGroup(group: string): string {
+    const groupSum = group.split("").reduce((acc, cv) => acc + parseInt(cv), 0);
+    return groupSum > 1 ? "1" : "0";
+}
+
+//   ==========================================================
+
+function encode2(text: string): string {
+    return [...text]
+        .map((c) =>
+            [...c.charCodeAt(0).toString(2).padStart(8, "0")]
+                .map((x) => x.repeat(3))
+                .join("")
+        )
+        .join("");
+}
+
+function decode2(bits: string): string {
+    return bits
+        .match(/.{3}/g)!
+        .map((t) => +((t.match(/1/g) || []).length > 1))
+        .join("")
+        .match(/.{8}/g)!
+        .map((b) => String.fromCharCode(parseInt(b, 2)))
+        .join("");
+}
+
+//   ==========================================================
+
+function encode3(text: string): string {
+    return text.replace(/./g, (x) =>
+        x
+            .charCodeAt(0)
+            .toString(2)
+            .padStart(8, "0")
+            .replace(/./g, (y) => y.repeat(3))
+    );
+}
+
+function decode3(bits: string): string {
+    return bits
+        .replace(/.../g, (x) => ((x.match(/1/g) || []).length < 2 ? "0" : "1"))
+        .replace(/.{8}/g, (y) => String.fromCharCode(parseInt(y, 2)));
+}
+
+//   ==========================================================
+
+function encode4(text: string): string {
+    return text
+        .split("")
+        .map((val) => val.charCodeAt(0).toString(2).padStart(8, "0"))
+        .join("")
+        .split("")
+        .map((val) => val.repeat(3))
+        .join("");
+}
+
+function decode4(bits: string): string {
+    return bits
+        .match(/.{1,24}/g)!
+        .map((val) =>
+            String.fromCharCode(
+                parseInt(
+                    val
+                        .match(/.{1,3}/g)!
+                        .map((triplet) => {
+                            return Math.round(
+                                triplet
+                                    .split("")
+                                    .reduce(
+                                        (prev, curr) => prev + parseInt(curr),
+                                        0
+                                    ) / 3
+                            );
+                        })
+                        .join(""),
+                    2
+                )
+            )
+        )
+        .join("");
+}
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: BINARY TO TEXT (ASCII) Conversion
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: DIVIDE STR/ARR INTO N LENGTH SUBS, BINARY TO DECIMAL/TEXT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -347,9 +452,42 @@ Note: In the case of an empty binary string your function should return an empty
 
 
 */
-function binaryToString(binary: string) {
-    return "";
-}
+const binaryToString = (binaryStr: string) => {
+    console.log(binaryStr.length);
+
+    const binaryArr: string[] = [];
+
+    for (let i = 0; i < binaryStr.length; i += 8) {
+        binaryArr.push(binaryStr.slice(i, i + 8));
+    }
+
+    console.log(binaryArr);
+
+    const asciiArr: number[] = binaryArr.map((str) => parseInt(str, 2));
+    console.log(asciiArr);
+
+    const charArr: string[] = asciiArr.map((ascii) =>
+        String.fromCharCode(ascii)
+    );
+    console.log(charArr);
+
+    const solution: string = charArr.join("");
+
+    return solution;
+};
+
+const binaryToString2 = (binaryStr: string) => {
+    const binaryArr: string[] = [];
+
+    for (let i = 0; i < binaryStr.length; i += 8) {
+        binaryArr.push(binaryStr.slice(i, i + 8));
+    }
+
+    return binaryArr
+        .map((str) => parseInt(str, 2))
+        .map((ascii) => String.fromCharCode(ascii))
+        .join("");
+};
 /*
 assert.equal(binaryToString('01100001'), 'a')
     assert.equal(binaryToString('01001011010101000100100001011000010000100101100101000101'), 'KTHXBYE')
@@ -361,12 +499,66 @@ assert.equal(binaryToString('01100001'), 'a')
     assert.equal(binaryToString('001111000011101000101001'), '<:)')
 */
 
-// console.log();
+// console.log(
+//     binaryToString2("01001011010101000100100001011000010000100101100101000101")
+// );
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const sizeRegex: RegExp = /\d{1,8}/g;
+
+function binaryToString3(binary: string): string {
+    return String.fromCharCode(
+        ...(binary.match(sizeRegex) || []).map((x) => parseInt(x, 2)!)
+    );
+}
+
+function binaryToString4(binary: string) {
+    return binary.replace(/[01]{8}/g, (s) =>
+        String.fromCharCode(parseInt(s, 2))
+    );
+}
+
+function binaryToString5(binary: string): string {
+    return binary.replace(/.{8}/g, (x) => String.fromCharCode(parseInt(x, 2)));
+}
+
+function binaryToString6(binary: string) {
+    let arr: string[] = [];
+
+    for (let i = 0; i < binary.length; i += 8) {
+        arr.push(binary.substring(i, i + 8));
+    }
+
+    return arr
+        .map((str: string) => String.fromCharCode(parseInt(str, 2)))
+        .join("");
+}
+
+function binaryToString7(binary: string) {
+    const dividedToCharCodes: RegExpMatchArray | [] =
+        binary.match(/.{8}/g) || [];
+    const decimalCharCodes: number[] = dividedToCharCodes.map(
+        (binary: string) => parseInt(binary, 2)
+    );
+    const chars: string[] = decimalCharCodes.map((decimalCharCode: number) =>
+        String.fromCharCode(decimalCharCode)
+    );
+
+    return chars.join("");
+}
+
+function binaryToString8(binary: string) {
+    if (!binary) return "";
+    const match = binary.match(/.{8}/g);
+    if (!match) return "";
+    return match!.reduce(function (p, v) {
+        return p + String.fromCharCode(parseInt(v, 2));
+    }, "");
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: PLAYING ON A CHESSBOARD
@@ -1975,8 +2167,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -1988,8 +2180,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -3393,9 +3585,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -3961,10 +4153,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -6357,7 +6549,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -6443,7 +6635,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -7304,15 +7496,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -7365,10 +7557,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -7944,7 +8136,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -8403,8 +8595,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -8697,7 +8889,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -9154,10 +9346,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -10457,8 +10649,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 

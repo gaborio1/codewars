@@ -144,9 +144,52 @@ function unflatten(flatArray) {
 function dateNbDays(a0, a, p) {
     return "hello";
 }
-function median(n) {
-    return 1;
+const median = (numArr) => {
+    const sortedArr = numArr.sort((a, b) => a - b);
+    const solution = sortedArr.length & 1
+        ? sortedArr[(sortedArr.length - 1) / 2]
+        : (sortedArr[sortedArr.length / 2] +
+            sortedArr[sortedArr.length / 2 - 1]) /
+            2;
+    return solution;
+};
+function median2(n) {
+    const sorted = n.sort((a, b) => a - b);
+    const lHalf = (n.length - (n.length % 2)) / 2;
+    if (sorted.length % 2 === 0) {
+        return (sorted[lHalf - 1] + sorted[lHalf]) / 2;
+    }
+    else {
+        return sorted[lHalf];
+    }
 }
+function median3(array) {
+    let a = array.sort((x, y) => x - y);
+    return a.length % 2
+        ? a[Math.floor(a.length / 2)]
+        : a
+            .slice(a.length / 2 - 1, a.length / 2 + 1)
+            .reduce((x, y) => x + y, 0) / 2;
+}
+function median4(n) {
+    const sorted = n.slice().sort((a, b) => a - b);
+    if (sorted.length % 2)
+        return sorted[sorted.length / 2 - 0.5];
+    return (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2;
+}
+function median5(n) {
+    n.sort((a, b) => a - b);
+    if (n.length % 2 === 0) {
+        let m = n.length / 2;
+        return (n[m - 1] + n[m]) / 2;
+    }
+    return n[(n.length - 1) / 2];
+}
+const median6 = (n) => {
+    n = n.sort((a, b) => a - b);
+    const mid = Math.floor(n.length / 2);
+    return n.length % 2 === 0 ? (n[mid - 1] + n[mid]) / 2 : n[mid];
+};
 const nerdify = (str) => {
     const nerdyObj = {
         a: "4",
@@ -222,7 +265,6 @@ const countSalutes = (hallway) => {
     }
     return solution;
 };
-console.log(countSalutes("<---->---<---<-->"));
 function countSalutes1(hallway) {
     let right = 0;
     let salutes = 0;

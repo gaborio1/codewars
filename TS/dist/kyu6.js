@@ -1,12 +1,11 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = void 0;
 const encode = (text) => {
     const asciiArr = text
         .split("")
         .map((char, idx) => char.charCodeAt(0));
-    console.log(asciiArr);
     const binaryArr = asciiArr.map((ascii) => {
         let zeros = "0";
         if (ascii.toString(2).length === 6)
@@ -26,22 +25,15 @@ const encode = (text) => {
     return solution;
 };
 const decode = (bits) => {
-    console.log(bits);
-    console.log(bits.length);
     const triplesArr = [];
     for (let i = 0; i < bits.length; i += 3) {
-        console.log("index:", i);
-        console.log(bits.slice(i, i + 3));
         triplesArr.push(bits.slice(i, i + 3));
     }
     console.log(triplesArr);
     const correctedBits = triplesArr.map((triple) => {
-        var _b;
-        if (triple.indexOf("1") < 0)
+        if (triple.match(/1/g) === null)
             return "0";
-        return ((_b = triple.match(/1/g)) === null || _b === void 0 ? void 0 : _b.length) > 1
-            ? "1"
-            : "0";
+        return triple.match(/1/g).length > 1 ? "1" : "0";
     });
     console.log(correctedBits);
     let bytesArr = [];
@@ -49,19 +41,151 @@ const decode = (bits) => {
         console.log(correctedBits.slice(i, i + 8));
         bytesArr.push(correctedBits.slice(i, i + 8).join(""));
     }
-    console.log(bytesArr);
     const asciiArr = bytesArr.map((byte) => {
         return parseInt(byte, 2);
     });
-    console.log(asciiArr);
-    const solution = asciiArr.map((ascii) => {
+    const solution = asciiArr
+        .map((ascii) => {
         return String.fromCharCode(ascii);
-    }).join("");
+    })
+        .join("");
     return solution;
 };
-console.log(decode("100111111000111001000010000111111000000111001111000111110110111000010111"));
-function binaryToString(binary) {
-    return "";
+function encode1(text) {
+    return text
+        .split("")
+        .map((character) => character.charCodeAt(0))
+        .map((charCode) => (charCode >>> 0).toString(2))
+        .map((binaryString) => "0".repeat(8 - binaryString.length) + binaryString)
+        .map((eightBitBinaryString) => eightBitBinaryString
+        .split("")
+        .map((bit) => bit.repeat(3))
+        .join(""))
+        .join("");
+}
+exports.encode1 = encode1;
+function decod1e(bits) {
+    return ((bits.match(/.{3}/g) || [])
+        .map((group) => decodeGroup(group))
+        .join("")
+        .match(/.{8}/g) || [])
+        .map((eightBitBinary) => parseInt(eightBitBinary, 2))
+        .map((charCode) => String.fromCharCode(charCode))
+        .join("");
+}
+exports.decod1e = decod1e;
+function decodeGroup(group) {
+    const groupSum = group.split("").reduce((acc, cv) => acc + parseInt(cv), 0);
+    return groupSum > 1 ? "1" : "0";
+}
+function encode2(text) {
+    return [...text]
+        .map((c) => [...c.charCodeAt(0).toString(2).padStart(8, "0")]
+        .map((x) => x.repeat(3))
+        .join(""))
+        .join("");
+}
+function decode2(bits) {
+    return bits
+        .match(/.{3}/g)
+        .map((t) => +((t.match(/1/g) || []).length > 1))
+        .join("")
+        .match(/.{8}/g)
+        .map((b) => String.fromCharCode(parseInt(b, 2)))
+        .join("");
+}
+function encode3(text) {
+    return text.replace(/./g, (x) => x
+        .charCodeAt(0)
+        .toString(2)
+        .padStart(8, "0")
+        .replace(/./g, (y) => y.repeat(3)));
+}
+function decode3(bits) {
+    return bits
+        .replace(/.../g, (x) => ((x.match(/1/g) || []).length < 2 ? "0" : "1"))
+        .replace(/.{8}/g, (y) => String.fromCharCode(parseInt(y, 2)));
+}
+function encode4(text) {
+    return text
+        .split("")
+        .map((val) => val.charCodeAt(0).toString(2).padStart(8, "0"))
+        .join("")
+        .split("")
+        .map((val) => val.repeat(3))
+        .join("");
+}
+function decode4(bits) {
+    return bits
+        .match(/.{1,24}/g)
+        .map((val) => String.fromCharCode(parseInt(val
+        .match(/.{1,3}/g)
+        .map((triplet) => {
+        return Math.round(triplet
+            .split("")
+            .reduce((prev, curr) => prev + parseInt(curr), 0) / 3);
+    })
+        .join(""), 2)))
+        .join("");
+}
+const binaryToString = (binaryStr) => {
+    console.log(binaryStr.length);
+    const binaryArr = [];
+    for (let i = 0; i < binaryStr.length; i += 8) {
+        binaryArr.push(binaryStr.slice(i, i + 8));
+    }
+    console.log(binaryArr);
+    const asciiArr = binaryArr.map((str) => parseInt(str, 2));
+    console.log(asciiArr);
+    const charArr = asciiArr.map((ascii) => String.fromCharCode(ascii));
+    console.log(charArr);
+    const solution = charArr.join("");
+    return solution;
+};
+const binaryToString2 = (binaryStr) => {
+    const binaryArr = [];
+    for (let i = 0; i < binaryStr.length; i += 8) {
+        binaryArr.push(binaryStr.slice(i, i + 8));
+    }
+    return binaryArr
+        .map((str) => parseInt(str, 2))
+        .map((ascii) => String.fromCharCode(ascii))
+        .join("");
+};
+const sizeRegex = /\d{1,8}/g;
+function binaryToString3(binary) {
+    return String.fromCharCode(...(binary.match(sizeRegex) || []).map((x) => parseInt(x, 2)));
+}
+function binaryToString4(binary) {
+    return binary.replace(/[01]{8}/g, (s) => String.fromCharCode(parseInt(s, 2)));
+}
+function binaryToString5(binary) {
+    return binary.replace(/.{8}/g, (x) => String.fromCharCode(parseInt(x, 2)));
+}
+function binaryToString6(binary) {
+    let arr = [];
+    for (let i = 0; i < binary.length; i += 8) {
+        arr.push(binary.substring(i, i + 8));
+    }
+    return arr
+        .map((str) => String.fromCharCode(parseInt(str, 2)))
+        .join("");
+}
+function binaryToString7(binary) {
+    const dividedToCharCodes = binary.match(/.{8}/g) || [];
+    const decimalCharCodes = dividedToCharCodes.map((binary) => parseInt(binary, 2));
+    const chars = decimalCharCodes.map((decimalCharCode) => String.fromCharCode(decimalCharCode));
+    return chars.join("");
+}
+function binaryToString8(binary) {
+    if (!binary)
+        return "";
+    const match = binary.match(/.{8}/g);
+    if (!match)
+        return "";
+    return match.reduce(function (p, v) {
+        return p + String.fromCharCode(parseInt(v, 2));
+    }, "");
 }
 class G96412 {
     static game(n) {

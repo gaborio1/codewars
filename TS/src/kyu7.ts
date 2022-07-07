@@ -3580,9 +3580,21 @@ Median of [3,2,1] is 2.
 
 
 */
-function median(n: number[]): number {
-    return 1;
-}
+
+const median = (numArr: number[]): number => {
+    const sortedArr: number[] = numArr.sort((a, b) => a - b);
+    // console.log(sortedArr);
+
+    const solution: number =
+        sortedArr.length & 1
+            ? sortedArr[(sortedArr.length - 1) / 2]
+            : (sortedArr[sortedArr.length / 2] +
+                  sortedArr[sortedArr.length / 2 - 1]) /
+              2;
+
+    return solution;
+};
+
 /*
 describe("solution", function(){
   it("basic Tests", function(){
@@ -3593,6 +3605,8 @@ describe("solution", function(){
 })
 */
 
+// console.log(median([1, 2, 3, 4]));
+// console.log(median([3, 4, 1, 2, 5]));
 // console.log();
 // console.log();
 // console.log();
@@ -3600,6 +3614,46 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function median2(n: number[]): number {
+    const sorted = n.sort((a, b) => a - b);
+    const lHalf = (n.length - (n.length % 2)) / 2;
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[lHalf - 1] + sorted[lHalf]) / 2;
+    } else {
+        return sorted[lHalf];
+    }
+}
+
+function median3(array: number[]): number {
+    let a = array.sort((x, y) => x - y);
+    return a.length % 2
+        ? a[Math.floor(a.length / 2)]
+        : a
+              .slice(a.length / 2 - 1, a.length / 2 + 1)
+              .reduce((x, y) => x + y, 0) / 2;
+}
+
+function median4(n: number[]): number {
+    const sorted = n.slice().sort((a, b) => a - b);
+    if (sorted.length % 2) return sorted[sorted.length / 2 - 0.5];
+    return (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2;
+}
+
+function median5(n: number[]): number {
+    n.sort((a, b) => a - b);
+    if (n.length % 2 === 0) {
+        let m = n.length / 2;
+        return (n[m - 1] + n[m]) / 2;
+    }
+    return n[(n.length - 1) / 2];
+}
+
+const median6 = (n: number[]): number => {
+    n = n.sort((a, b) => a - b);
+    const mid = Math.floor(n.length / 2);
+    return n.length % 2 === 0 ? (n[mid - 1] + n[mid]) / 2 : n[mid];
+};
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Ch4113ng3
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3816,7 +3870,7 @@ people to meet: 0
  
 */
 
-console.log(countSalutes("<---->---<---<-->"));
+// console.log(countSalutes("<---->---<---<-->"));
 // console.log(countSalutes(">>>>>>>>>>>>>>>>>>>>>----<->"));
 // console.log();
 // console.log();
