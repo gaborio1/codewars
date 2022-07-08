@@ -173,6 +173,7 @@ let add9 = (a) => (b) => a + b;
 exports.add9 = add9;
 const add10 = (firstNumber) => (secondNumber) => firstNumber + secondNumber;
 const dateNbDays = (a0, a, p) => {
+    const currDate = new Date("2016/1/1");
     const RATE = p / 36000;
     let dayCounter = 0;
     while (a0 < a) {
@@ -181,9 +182,76 @@ const dateNbDays = (a0, a, p) => {
         a0 += dailyInt;
     }
     console.log(dayCounter);
-    return "hello";
+    const solution = new Date(currDate.getTime() + (dayCounter * 24 * 60 * 60 * 1000));
+    return solution.toJSON().substring(0, 10);
 };
 console.log(dateNbDays(100, 101, 0.98));
+function dateNbDays2(a0, a, p) {
+    let startDate = new Date("2016-01-01");
+    let result = a0;
+    while (result < a) {
+        result += result * p / 36000;
+        startDate.setDate(startDate.getDate() + 1);
+    }
+    return startDate.toISOString().split('T')[0];
+}
+function dateNbDays3(a0, a, p) {
+    var days = Math.ceil((Math.log(a) - Math.log(a0)) / Math.log(1 + p / 36000));
+    var date = new Date(2016, 0, 1 + days);
+    return date.toISOString().split('T')[0];
+}
+function dateNbDays4(a0, a, p) {
+    let count = 1;
+    let moneyAmount = a0;
+    while (moneyAmount <= a) {
+        count += 1;
+        moneyAmount += moneyAmount * (p / 100 / 360);
+    }
+    const date = new Date(2016, 0, count);
+    const month = `0${date.getMonth() + 1}`.slice(-2);
+    const day = `0${date.getDate()}`.slice(-2);
+    return `${date.getFullYear()}-${month}-${day}`;
+}
+function dateNbDays5(a0, a, p) {
+    let r = p / 36000;
+    let n = Math.ceil(Math.log(a / a0) / Math.log(r + 1));
+    let baseOffset = new Date(2016, 0, 1).getTime();
+    let finalDate = new Date(baseOffset + 3600 * 24000 * n);
+    return finalDate.toISOString().split('T')[0];
+}
+function dateNbDays6(a0, a, p) {
+    const start_date = new Date("2016-01-01");
+    let i = 0;
+    while (a0 <= a) {
+        a0 = a0 * (1 + (p / 36000));
+        i++;
+    }
+    start_date.setDate(start_date.getDate() + i);
+    return start_date.toISOString().slice(0, 10);
+}
+function dateNbDays7(a0, a, p) {
+    const date = new Date('01-01-2016');
+    const interest = p / 36000;
+    let money = a0;
+    let days = 0;
+    do {
+        money += money * interest;
+        days++;
+    } while (a > money);
+    date.setDate(date.getDate() + days);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = (date.getDate()).toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+function dateNbDays8(a0, a, p) {
+    let count = 1;
+    for (let i = 0; a0 <= a; i++) {
+        count++;
+        a0 += a0 * (p / 100 / 360);
+    }
+    return JSON.stringify(new Date(2016, 0, count)).slice(1, 11);
+}
 const median = (numArr) => {
     const sortedArr = numArr.sort((a, b) => a - b);
     const solution = sortedArr.length & 1

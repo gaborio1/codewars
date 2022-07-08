@@ -3551,10 +3551,12 @@ export { add9 };
 const add10 = (firstNumber: number) => (secondNumber: number) =>
     firstNumber + secondNumber;
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN CW EXAMPLES (DATE) ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: TARGET DATE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ NEW DATE(), GETTIME() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3577,6 +3579,10 @@ Don't forget to take the rate for a day to be p divided by 36000 since banks con
 You have: a0 > 0, p% > 0, a >= a0
 */
 const dateNbDays = (a0: number, a: number, p: number): string => {
+
+    // const currDate = new Date(2016, 1, 1);
+    const currDate = new Date("2016/1/1");
+    // console.log(currDate);
     const RATE: number = p / 36000;
     let dayCounter: number = 0;
 
@@ -3590,33 +3596,139 @@ const dateNbDays = (a0: number, a: number, p: number): string => {
 
     console.log(dayCounter);
 
-    return "hello";
+    const solution = new Date(currDate.getTime() + (dayCounter * 24 * 60 * 60 * 1000));
+
+    // Sun Jan 01 2017
+    // console.log(solution.toDateString());
+
+
+    // ❗️❗️❗️ PARSE DATE ONLY ❗️❗️❗️
+    // console.log(solution.toJSON().substring(0, 10));
+
+
+    // / ❗️❗️❗️ PARSE DATE ONLY ❗️❗️❗️
+    return solution.toJSON().substring(0, 10);
 };
+
+
+
 /*
-describe("Fixed Tests dateNbDays", function() {
-  it("Basic tests", function() {
-    assert.strictEqual(, "2024-07-03");
-    assert.strictEqual(dateNbDays(4620, 5188, 2), "2021-09-19");
-    assert.strictEqual(dateNbDays(9999, 11427, 6), "2018-03-13");
-    assert.strictEqual(dateNbDays(3525, 4822, 3), "2026-04-18");
-    assert.strictEqual(dateNbDays(5923, 6465, 6), "2017-06-10");
-    assert.strictEqual(dateNbDays(4254, 4761, 8), "2017-05-22");
-    assert.strictEqual(dateNbDays(1244, 2566, 4), "2033-11-04");
-    assert.strictEqual(dateNbDays(6328, 7517, 5), "2019-05-25");
-    assert.strictEqual(dateNbDays(2920, 3834, 2), "2029-06-03");
-    assert.strictEqual(dateNbDays(7792, 8987, 4), "2019-07-09");
-  });
-});
+
+https://stackoverflow.com/questions/563406/how-to-add-days-to-date
+
+var someDate = new Date();
+var duration = 2; //In Days
+someDate.setTime(someDate.getTime() +  (duration * 24 * 60 * 60 * 1000));
+
+
+
+https://stackoverflow.com/questions/26528085/javascript-date-method-without-time
+
+d.toJSON().substring(0,10)
+
+
+console.log("2017-01-01T00:00:00.000Z".split('T')[0]);
+
 */
 
+//  "2017-01-01" (366 days)
 console.log(dateNbDays(100, 101, 0.98));
+// console.log(dateNbDays(5923, 6465, 6));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+function dateNbDays2(a0: number, a: number, p: number): string {
+    let startDate = new Date("2016-01-01")
+    let result = a0
+
+    while (result < a) {
+        result += result * p / 36000
+
+        startDate.setDate(startDate.getDate() + 1)
+    }
+
+    return startDate.toISOString().split('T')[0]
+}
+
+
+function dateNbDays3(a0: number, a: number, p: number): string {
+    var days = Math.ceil((Math.log(a) - Math.log(a0)) / Math.log(1 + p / 36000));
+    var date = new Date(2016, 0, 1 + days);
+    return date.toISOString().split('T')[0];
+}
+
+
+function dateNbDays4(a0: number, a: number, p: number): string {
+    let count = 1
+    let moneyAmount = a0
+
+    while (moneyAmount <= a) {
+        count += 1
+        moneyAmount += moneyAmount * (p / 100 / 360)
+    }
+
+    const date = new Date(2016, 0, count)
+    const month = `0${date.getMonth() + 1}`.slice(-2)
+    const day = `0${date.getDate()}`.slice(-2)
+    return `${date.getFullYear()}-${month}-${day}`
+}
+
+
+function dateNbDays5(a0: number, a: number, p: number): string {
+    let r = p / 36000;
+    let n = Math.ceil(Math.log(a / a0) / Math.log(r + 1));
+    let baseOffset = new Date(2016, 0, 1).getTime();
+    let finalDate = new Date(baseOffset + 3600 * 24000 * n);
+    return finalDate.toISOString().split('T')[0];
+}
+
+function dateNbDays6(a0: number, a: number, p: number): string {
+    const start_date = new Date("2016-01-01")
+    let i = 0
+    while (a0 <= a) {
+        a0 = a0 * (1 + (p / 36000))
+        i++
+    }
+    start_date.setDate(start_date.getDate() + i)
+    return start_date.toISOString().slice(0, 10)
+}
+
+
+function dateNbDays7(a0: number, a: number, p: number): string {
+    const date = new Date('01-01-2016');
+
+    const interest = p / 36000;
+
+    let money = a0;
+
+    let days = 0;
+    do {
+        money += money * interest;
+        days++;
+    } while (a > money);
+
+    date.setDate(date.getDate() + days);
+
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = (date.getDate()).toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+
+function dateNbDays8(a0: number, a: number, p: number): string {
+    let count: number = 1;
+    for (let i = 0; a0 <= a; i++) {
+        count++;
+        a0 += a0 * (p / 100 / 360);
+    }
+    return JSON.stringify(new Date(2016, 0, count)).slice(1, 11);
+}
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: ALL STAR CHALLENGE #14 - FIND THE MEDIAN
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -3650,8 +3762,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                  sortedArr[sortedArr.length / 2 - 1]) /
-              2;
+                sortedArr[sortedArr.length / 2 - 1]) /
+            2;
 
     return solution;
 };
@@ -3691,8 +3803,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-              .slice(a.length / 2 - 1, a.length / 2 + 1)
-              .reduce((x, y) => x + y, 0) / 2;
+            .slice(a.length / 2 - 1, a.length / 2 + 1)
+            .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -4681,32 +4793,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-                ({
-                    G: "A",
-                    A: "G",
-                    g: "a",
-                    a: "g",
-                    D: "E",
-                    E: "D",
-                    d: "e",
-                    e: "d",
-                    R: "Y",
-                    Y: "R",
-                    r: "y",
-                    y: "r",
-                    P: "O",
-                    O: "P",
-                    p: "o",
-                    o: "p",
-                    L: "U",
-                    U: "L",
-                    l: "u",
-                    u: "l",
-                    K: "I",
-                    I: "K",
-                    k: "i",
-                    i: "k",
-                }[c] || c)
+            ({
+                G: "A",
+                A: "G",
+                g: "a",
+                a: "g",
+                D: "E",
+                E: "D",
+                d: "e",
+                e: "d",
+                R: "Y",
+                Y: "R",
+                r: "y",
+                y: "r",
+                P: "O",
+                O: "P",
+                p: "o",
+                o: "p",
+                L: "U",
+                U: "L",
+                l: "u",
+                u: "l",
+                K: "I",
+                I: "K",
+                k: "i",
+                i: "k",
+            }[c] || c)
         )
         .join("");
 }
@@ -6004,7 +6116,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void {}
+    strike(enemy: Warrior, swings: number): void { }
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -7361,16 +7473,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-              .join("\n");
+            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+            .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-              .join("\n");
+            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+            .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -8206,8 +8318,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-            ? "0" + String(date.getMonth() + 1)
-            : String(date.getMonth() + 1)) +
+                ? "0" + String(date.getMonth() + 1)
+                : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -8285,7 +8397,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -8996,10 +9108,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-        ? "subtraction"
-        : a * b === res
-        ? "multiplication"
-        : "division";
+            ? "subtraction"
+            : a * b === res
+                ? "multiplication"
+                : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -9109,8 +9221,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-        ? fusc($ / 2)
-        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+            ? fusc($ / 2)
+            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -10217,9 +10329,8 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
-        s < 10 ? "0" + s : s
-    }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
+        }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -10832,10 +10943,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -11288,7 +11399,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -11781,17 +11892,17 @@ This also implies making sure that your entry fields have room for at least 24 c
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -11924,13 +12035,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -14532,10 +14643,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 export const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -15648,7 +15759,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -16724,8 +16835,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -16875,10 +16986,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -17875,11 +17986,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -18674,9 +18785,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -18958,8 +19069,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
