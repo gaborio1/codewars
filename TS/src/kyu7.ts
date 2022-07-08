@@ -3470,10 +3470,12 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN CW EXAMPLES ( CHAIN ADDING FUNCTION) ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: TEST YOUR KNOWLEDGE ON FUNCTION SCOPE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CHAIN ADDING FUNCTION ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3486,6 +3488,7 @@ All inputs will be integers.
 add(3)(4)  // 7
 add(12)(20) // 32
 */
+
 /*
 describe("Basic tests", function() {
   it("Testing : ", function() {
@@ -3497,12 +3500,57 @@ describe("Basic tests", function() {
 });
 */
 
-// console.log();
+// console.log(add1(2));
+// console.log(add1(2)(5));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const add1 = (a: number) => (b: number) => a + b;
+
+function add2(x: number): Function {
+    return function (y: number): number {
+        return x + y;
+    };
+}
+
+const add3 = (a: number) => {
+    return (b: number) => a + b;
+};
+
+function add4(first: number) {
+    return function (second: number) {
+        return first + second;
+    };
+}
+
+function add5(n: number) {
+    return (a: number) => n + a;
+}
+
+const add6 = (a: number) => (b: number) => {
+    return a + b;
+};
+
+const add7 = (x: number) =>
+    function (y: number) {
+        return x + y;
+    };
+
+function add8(firstAddend: number): Function {
+    return function (secondAddend: number): number {
+        return firstAddend + secondAddend;
+    };
+}
+
+let add9 = (a: number) => (b: number) => a + b;
+export { add9 };
+
+const add10 = (firstNumber: number) => (secondNumber: number) =>
+    firstNumber + secondNumber;
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: TARGET DATE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3528,13 +3576,26 @@ The deposit is always on the "2016-01-01"
 Don't forget to take the rate for a day to be p divided by 36000 since banks consider that there are 360 days in a year.
 You have: a0 > 0, p% > 0, a >= a0
 */
-function dateNbDays(a0: number, a: number, p: number): string {
+const dateNbDays = (a0: number, a: number, p: number): string => {
+    const RATE: number = p / 36000;
+    let dayCounter: number = 0;
+
+    while (a0 < a) {
+        dayCounter += 1;
+
+        const dailyInt: number = a0 * RATE;
+
+        a0 += dailyInt;
+    }
+
+    console.log(dayCounter);
+
     return "hello";
-}
+};
 /*
 describe("Fixed Tests dateNbDays", function() {
   it("Basic tests", function() {
-    assert.strictEqual(dateNbDays(4281, 5087, 2), "2024-07-03");
+    assert.strictEqual(, "2024-07-03");
     assert.strictEqual(dateNbDays(4620, 5188, 2), "2021-09-19");
     assert.strictEqual(dateNbDays(9999, 11427, 6), "2018-03-13");
     assert.strictEqual(dateNbDays(3525, 4822, 3), "2026-04-18");
@@ -3548,7 +3609,7 @@ describe("Fixed Tests dateNbDays", function() {
 });
 */
 
-// console.log();
+console.log(dateNbDays(100, 101, 0.98));
 // console.log();
 // console.log();
 // console.log();

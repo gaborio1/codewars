@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.decodeA4 = exports.encodeA4 = exports.amIAfraid10 = void 0;
+exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.decodeA4 = exports.encodeA4 = exports.amIAfraid10 = exports.add9 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -141,9 +141,49 @@ function addingShifted(arrayOfArrays, shift) {
 function unflatten(flatArray) {
     return flatArray;
 }
-function dateNbDays(a0, a, p) {
-    return "hello";
+const add1 = (a) => (b) => a + b;
+function add2(x) {
+    return function (y) {
+        return x + y;
+    };
 }
+const add3 = (a) => {
+    return (b) => a + b;
+};
+function add4(first) {
+    return function (second) {
+        return first + second;
+    };
+}
+function add5(n) {
+    return (a) => n + a;
+}
+const add6 = (a) => (b) => {
+    return a + b;
+};
+const add7 = (x) => function (y) {
+    return x + y;
+};
+function add8(firstAddend) {
+    return function (secondAddend) {
+        return firstAddend + secondAddend;
+    };
+}
+let add9 = (a) => (b) => a + b;
+exports.add9 = add9;
+const add10 = (firstNumber) => (secondNumber) => firstNumber + secondNumber;
+const dateNbDays = (a0, a, p) => {
+    const RATE = p / 36000;
+    let dayCounter = 0;
+    while (a0 < a) {
+        dayCounter += 1;
+        const dailyInt = a0 * RATE;
+        a0 += dailyInt;
+    }
+    console.log(dayCounter);
+    return "hello";
+};
+console.log(dateNbDays(100, 101, 0.98));
 const median = (numArr) => {
     const sortedArr = numArr.sort((a, b) => a - b);
     const solution = sortedArr.length & 1
