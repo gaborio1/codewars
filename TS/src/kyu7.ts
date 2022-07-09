@@ -3444,9 +3444,31 @@ Have fun coding it and please don't forget to vote and rank this kata! :-)
 
 
 */
-function unflatten(flatArray: any[]): any[] {
-    return flatArray;
-}
+const unflatten = (flatArray: any[]): any[] => {
+    let solution: (number | number[])[] = [];
+
+    for (let i = 0; i < flatArray.length; i += 1) {
+        // console.log(flatArray[i]);
+
+        const current: number = flatArray[i];
+        console.log("current:", current);
+
+        if (current < 3) solution.push(current);
+
+        if (current > 2) {
+            const newSub: number[] = flatArray.slice(i, i + flatArray[i]);
+            // console.log("newSub:", newSub);
+
+            solution.push(newSub);
+
+            i += flatArray[i] - 1;
+        }
+    }
+
+    // console.log(solution);
+
+    return solution;
+};
 /*
 describe("solution", function(){
   it("Basic Tests", function(){
@@ -3462,13 +3484,115 @@ describe("solution", function(){
   });
 });
 */
-
-// console.log();
+const input = [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3];
+console.log(unflatten(input));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function unflatten2(flatArray: any[]): any[] {
+    let arr: any[] = [];
+    let i: number = 0;
+    while (i < flatArray.length) {
+        if (flatArray[i] < 3) {
+            arr.push(flatArray[i]);
+            i++;
+        } else {
+            arr.push(flatArray.slice(i, i + flatArray[i]));
+            i += flatArray[i];
+        }
+    }
+    return arr;
+}
+
+function unflatten3(flatArray: any[]): any[] {
+    let counter = 0;
+
+    return flatArray.reduce((acc, x) => {
+        if (counter > 0) {
+            counter--;
+            return [...acc.slice(0, -1), [...acc[acc.length - 1], x]];
+        }
+        if (x < 3) {
+            return [...acc, x];
+        }
+        if (x > 2) {
+            counter = x - 1;
+            return [...acc, [x]];
+        }
+    }, []);
+}
+
+function unflatten4(flatArray: number[]): Array<number | number[]> {
+    const unflattenedArray: Array<number | number[]> = [];
+    for (let i = 0; i < flatArray.length; i++) {
+        const value = flatArray[i];
+        if (value < 3) {
+            unflattenedArray.push(value);
+        } else {
+            unflattenedArray.push(flatArray.slice(i, i + value));
+            i += value - 1;
+        }
+    }
+    return unflattenedArray;
+}
+
+function unflatten5(flatArray: any[]): any[] {
+    let output: any[] = [];
+    let i = 0;
+    while (i < flatArray.length) {
+        const head = flatArray[i];
+        if (head < 3) {
+            output.push(flatArray[i++]);
+        } else {
+            output.push(flatArray.slice(i, i + head));
+            i += head; // OK if it runs off the end
+        }
+    }
+    return output;
+}
+
+function unflatten6(flatArray: any[]): any[] {
+    const result: any[] = [];
+    const initialArray: any[] = [...flatArray];
+
+    while (true) {
+        const firstItem = initialArray.shift();
+        if (!firstItem) return result;
+
+        if (firstItem < 3) result.push(firstItem);
+        else {
+            const array: number[] = [firstItem];
+            for (let i = 1; i < firstItem; i += 1) {
+                const item = initialArray.shift();
+                if (item) array.push(item);
+                else break;
+            }
+            result.push(array);
+        }
+    }
+
+    return result;
+}
+
+function unflatten7(flatArray: number[]): any[] {
+    const result: any[] = [];
+    for (let i = 0, max = flatArray.length; i < max; i += 1) {
+        const item = flatArray[i];
+        if (item < 3) {
+            result.push(item);
+        }
+        if (item > 2) {
+            const nextI = i + item;
+            const subArray = flatArray.slice(i, nextI);
+            result.push(subArray);
+            i = nextI - 1;
+        }
+    }
+    return result;
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN CW EXAMPLES ( CHAIN ADDING FUNCTION) ❗️❗️❗️

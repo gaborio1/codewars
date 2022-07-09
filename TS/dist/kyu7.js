@@ -138,8 +138,121 @@ function pointInCircle(x, y) {
 function addingShifted(arrayOfArrays, shift) {
     return arrayOfArrays[0];
 }
-function unflatten(flatArray) {
-    return flatArray;
+const unflatten = (flatArray) => {
+    let solution = [];
+    for (let i = 0; i < flatArray.length; i += 1) {
+        const current = flatArray[i];
+        console.log("current:", current);
+        if (current < 3)
+            solution.push(current);
+        if (current > 2) {
+            const newSub = flatArray.slice(i, i + flatArray[i]);
+            solution.push(newSub);
+            i += flatArray[i] - 1;
+        }
+    }
+    return solution;
+};
+const input = [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3];
+console.log(unflatten(input));
+function unflatten2(flatArray) {
+    let arr = [];
+    let i = 0;
+    while (i < flatArray.length) {
+        if (flatArray[i] < 3) {
+            arr.push(flatArray[i]);
+            i++;
+        }
+        else {
+            arr.push(flatArray.slice(i, i + flatArray[i]));
+            i += flatArray[i];
+        }
+    }
+    return arr;
+}
+function unflatten3(flatArray) {
+    let counter = 0;
+    return flatArray.reduce((acc, x) => {
+        if (counter > 0) {
+            counter--;
+            return [...acc.slice(0, -1), [...acc[acc.length - 1], x]];
+        }
+        if (x < 3) {
+            return [...acc, x];
+        }
+        if (x > 2) {
+            counter = x - 1;
+            return [...acc, [x]];
+        }
+    }, []);
+}
+function unflatten4(flatArray) {
+    const unflattenedArray = [];
+    for (let i = 0; i < flatArray.length; i++) {
+        const value = flatArray[i];
+        if (value < 3) {
+            unflattenedArray.push(value);
+        }
+        else {
+            unflattenedArray.push(flatArray.slice(i, i + value));
+            i += value - 1;
+        }
+    }
+    return unflattenedArray;
+}
+function unflatten5(flatArray) {
+    let output = [];
+    let i = 0;
+    while (i < flatArray.length) {
+        const head = flatArray[i];
+        if (head < 3) {
+            output.push(flatArray[i++]);
+        }
+        else {
+            output.push(flatArray.slice(i, i + head));
+            i += head;
+        }
+    }
+    return output;
+}
+function unflatten6(flatArray) {
+    const result = [];
+    const initialArray = [...flatArray];
+    while (true) {
+        const firstItem = initialArray.shift();
+        if (!firstItem)
+            return result;
+        if (firstItem < 3)
+            result.push(firstItem);
+        else {
+            const array = [firstItem];
+            for (let i = 1; i < firstItem; i += 1) {
+                const item = initialArray.shift();
+                if (item)
+                    array.push(item);
+                else
+                    break;
+            }
+            result.push(array);
+        }
+    }
+    return result;
+}
+function unflatten7(flatArray) {
+    const result = [];
+    for (let i = 0, max = flatArray.length; i < max; i += 1) {
+        const item = flatArray[i];
+        if (item < 3) {
+            result.push(item);
+        }
+        if (item > 2) {
+            const nextI = i + item;
+            const subArray = flatArray.slice(i, nextI);
+            result.push(subArray);
+            i = nextI - 1;
+        }
+    }
+    return result;
 }
 const addTwo = (a) => {
     let sum = a;
