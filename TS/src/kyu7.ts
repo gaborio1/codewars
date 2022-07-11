@@ -3194,9 +3194,34 @@ doubleton(120) == 121
 doubleton(1234) == 1311
 doubleton(10) == 12
 */
-function doubleton(num: number): number {
-    return 1;
-}
+const doubleton = (num: number): number => {
+    let solution: number = 0;
+
+    const isDoubleton = (num: number): boolean => {
+        const uniqueDigits = new Set(num.toString().split(""));
+        // console.log(uniqueDigits);
+        return uniqueDigits.size === 2;
+    };
+
+    // console.log(isDoubleton(num));
+
+    // if ()
+
+    const doubletonsArr: number[] = [];
+
+    for (let i = num; i <= 100; i += 1) {
+        if (isDoubleton(i)) {
+            // solution = i;
+            // break;
+            doubletonsArr.push(i);
+            if (doubletonsArr.length > 1) break;
+        }
+    }
+
+    console.log(doubletonsArr);
+
+    return solution;
+};
 /*
 describe("Fixed tests",()=>{
    it(`Testing for number 120: received ${doubleton(120)}`,()=>{
@@ -3214,7 +3239,9 @@ describe("Fixed tests",()=>{
 });  
 */
 
-// console.log();
+// console.log(doubleton(12121));
+// console.log(doubleton(123));
+console.log(doubleton(10));
 // console.log();
 // console.log();
 // console.log();
@@ -3485,7 +3512,7 @@ describe("solution", function(){
 });
 */
 const input = [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3];
-console.log(unflatten(input));
+// console.log(unflatten(input));
 // console.log();
 // console.log();
 // console.log();

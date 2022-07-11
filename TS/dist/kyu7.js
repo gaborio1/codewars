@@ -124,9 +124,24 @@ function collision(x1, y1, r1, x2, y2, r2) {
 function polydivisible(x) {
     throw new Error("Not implemented yet");
 }
-function doubleton(num) {
-    return 1;
-}
+const doubleton = (num) => {
+    let solution = 0;
+    const isDoubleton = (num) => {
+        const uniqueDigits = new Set(num.toString().split(""));
+        return uniqueDigits.size === 2;
+    };
+    const doubletonsArr = [];
+    for (let i = num; i <= 100; i += 1) {
+        if (isDoubleton(i)) {
+            doubletonsArr.push(i);
+            if (doubletonsArr.length > 1)
+                break;
+        }
+    }
+    console.log(doubletonsArr);
+    return solution;
+};
+console.log(doubleton(10));
 class G964AA {
     static intRac(n, guess) {
         return 1;
@@ -154,7 +169,6 @@ const unflatten = (flatArray) => {
     return solution;
 };
 const input = [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3];
-console.log(unflatten(input));
 function unflatten2(flatArray) {
     let arr = [];
     let i = 0;
