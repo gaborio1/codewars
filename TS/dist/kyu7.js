@@ -125,23 +125,55 @@ function polydivisible(x) {
     throw new Error("Not implemented yet");
 }
 const doubleton = (num) => {
-    let solution = 0;
     const isDoubleton = (num) => {
         const uniqueDigits = new Set(num.toString().split(""));
         return uniqueDigits.size === 2;
     };
     const doubletonsArr = [];
-    for (let i = num; i <= 100; i += 1) {
+    for (let i = num; i <= 1000; i += 1) {
         if (isDoubleton(i)) {
             doubletonsArr.push(i);
             if (doubletonsArr.length > 1)
                 break;
         }
     }
-    console.log(doubletonsArr);
+    const solution = num === doubletonsArr[0]
+        ? doubletonsArr[1]
+        : doubletonsArr[0];
     return solution;
 };
-console.log(doubleton(10));
+function doubleton2(num) {
+    num += 1;
+    while (new Set("" + num).size != 2) {
+        num++;
+    }
+    return num;
+}
+function doubleton3(num) {
+    while (num++) {
+        const numbers = String(num).split('');
+        if (new Set(numbers).size === 2) {
+            return +numbers.join('');
+        }
+    }
+}
+function doubleton4(n) {
+    for (let i = n + 1; i < 1000000; i++) {
+        if ((new Set(i.toString())).size == 2)
+            return i;
+    }
+    return 1;
+}
+function doubleton5(num) {
+    for (let n = num + 1;; n++)
+        if (new Set([...`${n}`]).size === 2)
+            return n;
+}
+function doubleton6(num) {
+    while (!/^(\d)\1*(?!\1)(\d)(\1|\2)*$/.test(String(num + 1)))
+        num++;
+    return num + 1;
+}
 class G964AA {
     static intRac(n, guess) {
         return 1;
@@ -321,7 +353,6 @@ const dateNbDays = (a0, a, p) => {
     const solution = new Date(currDate.getTime() + dayCounter * 24 * 60 * 60 * 1000);
     return solution.toJSON().substring(0, 10);
 };
-console.log(dateNbDays(100, 101, 0.98));
 function dateNbDays2(a0, a, p) {
     let startDate = new Date("2016-01-01");
     let result = a0;
