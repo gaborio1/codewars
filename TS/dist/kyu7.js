@@ -121,8 +121,45 @@ function getSectionId(scroll, sizes) {
 function collision(x1, y1, r1, x2, y2, r2) {
     throw new Error("Not implemented");
 }
-function polydivisible(x) {
-    throw new Error("Not implemented yet");
+const polydivisible = (num) => {
+    const numStr = num.toString();
+    console.log(numStr);
+    let solution = true;
+    for (let i = 0; i < numStr.length; i += 1) {
+        const currentSub = Number(numStr.substring(0, i + 1));
+        console.log("current:", currentSub, "divisor:", i + 1, "isDivisible:", Number.isInteger(currentSub / (i + 1)));
+        if (!Number.isInteger(currentSub / (i + 1))) {
+            solution = false;
+            break;
+        }
+    }
+    return solution;
+};
+function polydivisible2(x) {
+    const str = String(x);
+    for (let i = 1; i <= str.length; i++) {
+        if (+str.slice(0, i) % i !== 0)
+            return false;
+    }
+    return true;
+}
+function polydivisible3(x) {
+    let strX = String(x);
+    for (let i = 1; i <= strX.length; i++) {
+        if (+strX.slice(0, i) % i !== 0)
+            return false;
+    }
+    return true;
+}
+function polydivisible4(x) {
+    let s = x.toString();
+    let sum = 0;
+    for (let i = 0; i < s.length; i++) {
+        sum = sum * 10 + s.charCodeAt(i) - 48;
+        if (sum % (i + 1) !== 0)
+            return false;
+    }
+    return true;
 }
 const doubleton = (num) => {
     const isDoubleton = (num) => {
@@ -137,9 +174,7 @@ const doubleton = (num) => {
                 break;
         }
     }
-    const solution = num === doubletonsArr[0]
-        ? doubletonsArr[1]
-        : doubletonsArr[0];
+    const solution = num === doubletonsArr[0] ? doubletonsArr[1] : doubletonsArr[0];
     return solution;
 };
 function doubleton2(num) {
@@ -151,15 +186,15 @@ function doubleton2(num) {
 }
 function doubleton3(num) {
     while (num++) {
-        const numbers = String(num).split('');
+        const numbers = String(num).split("");
         if (new Set(numbers).size === 2) {
-            return +numbers.join('');
+            return +numbers.join("");
         }
     }
 }
 function doubleton4(n) {
     for (let i = n + 1; i < 1000000; i++) {
-        if ((new Set(i.toString())).size == 2)
+        if (new Set(i.toString()).size == 2)
             return i;
     }
     return 1;
