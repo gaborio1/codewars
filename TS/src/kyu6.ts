@@ -105,9 +105,7 @@ Note:
 your solution will be nicer without loops.
 */
 function finance(n: number): number {
-
     return 1;
-
 }
 /*
 describe("Fixed Tests finance", function() {
@@ -127,7 +125,9 @@ describe("Fixed Tests finance", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ COMMENT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Fruit Machine
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -223,11 +223,85 @@ Return
 result == 50
 Good luck and enjoy!
 */
-function fruit(reels: string[][], spins: number[]): number {
+const fruit = (reels: string[][], spins: number[]): number => {
+    console.log(reels, spins);
 
-    return 1;
+    let solution: number = 0;
 
-}
+    interface ImgVal {
+        [key: string]: number;
+    }
+
+    // STORE BASE VALUES FOR EACH PICTURE
+    const baseValuesObj: ImgVal = {
+        Jack: 1,
+        Queen: 2,
+        King: 3,
+        Bar: 4,
+        Cherry: 5,
+        Seven: 6,
+        Shell: 7,
+        Bell: 8,
+        Star: 9,
+        Wild: 10,
+    };
+
+    let isPlusOneWild: boolean = false;
+
+    // GET RESULT OF SPIN
+    const spinResult: string[] = [
+        reels[0][spins[0]],
+        reels[1][spins[1]],
+        reels[2][spins[2]],
+    ];
+    console.log(spinResult);
+
+    // 3 SINGLES:
+    if (new Set(spinResult).size === 3) {
+        console.log("no luck!");
+        solution = 0;
+        console.log("solution:", solution);
+    }
+
+    // CALCULETE RESULT FOR THREE OF THE SAME
+    if (new Set(spinResult).size === 1) {
+        console.log("3 of a kind:", spinResult[0]);
+        solution = baseValuesObj[spinResult[0]] * 10;
+        console.log("solution:", solution);
+    }
+
+    if (new Set(spinResult).size === 2) {
+        console.log("2 of a kind:");
+
+        for (let i = 0; i < spinResult.length; i += 1) {
+            // FIND PLUS ONE
+            if (
+                spinResult.indexOf(spinResult[i]) ===
+                spinResult.lastIndexOf(spinResult[i])
+            ) {
+                console.log("plus one found:", spinResult[i]);
+
+                if (spinResult[i] === "Wild") {
+                    isPlusOneWild = true;
+                }
+            } else {
+                // FIND TWO OF THE SAME:
+                console.log("two of the same:", spinResult[i]);
+                solution = baseValuesObj[spinResult[i]];
+            }
+        }
+
+        // solution = baseValuesObj[spinResult[0]] * 10;
+        console.log("solution:", solution);
+    }
+
+    if (isPlusOneWild) solution *= 2;
+
+    // TWO OF THE SAME
+
+    // return solution.toString();
+    return solution;
+};
 /*
 describe("Sample Tests", function() {
   it("Should pass sample tests", function() {
@@ -257,13 +331,209 @@ describe("Sample Tests", function() {
 
 */
 
-// console.log();
+let reel, reel1, reel2, reel3, spin;
+
+reel = [
+    "Wild",
+    "Star",
+    "Bell",
+    "Shell",
+    "Seven",
+    "Cherry",
+    "Bar",
+    "King",
+    "Queen",
+    "Jack",
+];
+
+spin = [1, 1, 0];
+// spin = [1, 1, 1];
+
+// console.log(fruit([reel, reel, reel], spin));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function fruit2(reels: string[], spins: number[]): number {
+    const scoring: { [key: string]: number } = {
+        Jack: 1,
+        Queen: 2,
+        King: 3,
+        Bar: 4,
+        Cherry: 5,
+        Seven: 6,
+        Shell: 7,
+        Bell: 8,
+        Star: 9,
+        Wild: 10,
+    };
+    const roll = spins.map((elt, index) => scoring[reels[index][elt]]);
+
+    if (roll.every((r) => r === roll[0])) {
+        return roll[0] * 10;
+    }
+
+    roll.sort((a, b) => a - b);
+
+    if (roll[0] === roll[1] || roll[1] === roll[2]) {
+        if (roll[0] === roll[1]) {
+            if (roll[2] === 10) {
+                return roll[0] * 2;
+            } else {
+                return roll[0];
+            }
+        } else {
+            if (roll[0] === 10) {
+                return roll[1] * 2;
+            } else {
+                return roll[1];
+            }
+        }
+    } else {
+        return 0;
+    }
+}
+
+// function fruit3(reels: string[], spins: number[]): number{
+//     function swap(result: string[], i: number, j: number) {
+//         const tmp = result[i];
+//         result[i] = result[j];
+//         result[j] = tmp;
+//     }
+//     // Creating the score table
+//     const items = "Wild Star Bell Shell Seven Cherry Bar King Queen Jack";
+//     const scoring = {};
+//     items.split(" ").forEach((val, index) => {
+//         const score = 10-index;
+//         scoring[val] = {3: score * 10, 2: score};
+//     });
+//     const r = [reels[0][spins[0]], reels[1][spins[1]], reels[2][spins[2]]];
+//     // Separating the discriminant
+//     if (r[0] == r[1]) swap(r, 0, 2);
+//     else if (r[0] == r[2]) swap(r, 0, 1);
+//     // Evaluating the result
+//     const count = (r[0] === r[1] ? 1 : 0) + (r[1] === r[2] ? 1 : 0) + (r[0] === r[2] ? 1 : 0);
+//     if (count == 3) return scoring[r[1]]["3"];
+//     if (count == 1) return scoring[r[1]]["2"] * (r[0] === "Wild" ? 2 : 1);
+//     return 0;
+// }
+
+function fruit4(reels: string[][], spins: number[]): number {
+    const reel = [
+        "Wild",
+        "Star",
+        "Bell",
+        "Shell",
+        "Seven",
+        "Cherry",
+        "Bar",
+        "King",
+        "Queen",
+        "Jack",
+    ];
+    const items = [reels[0][spins[0]], reels[1][spins[1]], reels[2][spins[2]]];
+    if (items[0] == items[1] && items[0] == items[2]) {
+        return (10 - reel.indexOf(items[0])) * 10;
+    }
+    let item = "";
+    let extra = "";
+    if (items[0] == items[1]) {
+        item = items[0];
+        extra = items[2];
+    }
+    if (items[0] == items[2]) {
+        item = items[0];
+        extra = items[1];
+    }
+    if (items[1] == items[2]) {
+        item = items[1];
+        extra = items[0];
+    }
+    if (item != "") {
+        let num = 10 - reel.indexOf(item);
+        if (extra == "Wild") {
+            num = num * 2;
+        }
+        return num;
+    }
+    return 0;
+}
+
+function fruit5(reels: string[][], spins: number[]): number {
+    const orderPoints = [
+        "Wild",
+        "Star",
+        "Bell",
+        "Shell",
+        "Seven",
+        "Cherry",
+        "Bar",
+        "King",
+        "Queen",
+        "Jack",
+    ].reverse();
+    const spinStrings = spins.map((e, i) => reels[i][e]).sort();
+
+    if (spinStrings.every((e) => e == spinStrings[0])) {
+        return (orderPoints.indexOf(spinStrings[0]) + 1) * 10;
+    }
+
+    const f = (test: boolean, ref: number) => {
+        const multi = !test
+            ? 0
+            : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
+            ? 2
+            : 1;
+        return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
+    };
+
+    let x = f(spinStrings[0] === spinStrings[1], 0);
+    if (x) return x;
+    x = f(spinStrings[1] === spinStrings[2], 1);
+    if (x) return x;
+    return 0;
+}
+
+function fruit6(reels: string[][], spins: number[]): number {
+    const scores: { [key: string]: number } = {
+        Wild: 10,
+        Star: 9,
+        Bell: 8,
+        Shell: 7,
+        Seven: 6,
+        Cherry: 5,
+        Bar: 4,
+        King: 3,
+        Queen: 2,
+        Jack: 1,
+    };
+    const results = [
+        reels[0][spins[0]],
+        reels[1][spins[1]],
+        reels[2][spins[2]],
+    ];
+    let best = 0;
+    let winning = results[0];
+    for (let result of results) {
+        const matching = results.filter((x) => x === result).length;
+        if (matching > best) {
+            best = matching;
+            winning = result;
+        }
+    }
+    if (best === 3) {
+        return scores[results[0]] * 10;
+    } else if (best === 1) {
+        return 0;
+    } else {
+        if (results.includes("Wild") && winning !== "Wild") {
+            return scores[winning] * 2;
+        }
+        return scores[winning];
+    }
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: A disguised sequence (I)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2345,8 +2615,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -2358,8 +2628,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -3763,9 +4033,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -4331,10 +4601,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -6727,7 +6997,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -6813,7 +7083,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -7674,15 +7944,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -7735,10 +8005,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -8314,7 +8584,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -8773,8 +9043,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -9067,7 +9337,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -9524,10 +9794,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -10827,8 +11097,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
