@@ -3035,9 +3035,24 @@ Given the scrollY integer (always non-negative) and an array of non-negative int
 
 
 */
-function getSectionId(scroll: number, sizes: number[]) {
-    // your code here
-}
+const getSectionId = (scrollY: number, divHeights: number[]): number => {
+    let counter: number = 0;
+
+    let solution: number = -1;
+
+    for (let i = 0; i < divHeights.length; i += 1) {
+        counter += divHeights[i];
+        // console.log(counter);
+        if (counter - 1 >= scrollY) {
+            // console.log("div:", i);
+            solution = i;
+            break;
+        }
+    }
+
+    return solution;
+};
+
 /*
 describe("Basic tests", function() {
   testing(1, [300, 200, 400, 600, 100], 0);
@@ -3048,13 +3063,37 @@ describe("Basic tests", function() {
 });
 */
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+// 4
+// console.log(getSectionId(1, [300, 200, 400, 600, 100]));
+// console.log(getSectionId(299, [300, 200, 400, 600, 100]));
+// console.log(getSectionId(300, [300, 200, 400, 600, 100]));
+// console.log(getSectionId(1599, [300, 200, 400, 600, 100]));
+// console.log(getSectionId(1600, [300, 200, 400, 600, 100]));
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const getSectionId2 = (n: number, a: number[]) =>
+    a.findIndex((x: number) => (n -= x) < 0);
+
+function getSectionId3(scroll: number, sizes: number[]) {
+    let size = -1;
+    const arr = sizes.map((el) => (size += el));
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= scroll) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function getSectionId4(scroll: number, sizes: number[]) {
+    for (let i = 0, sum = 0; i < sizes.length; ++i) {
+        if (sum + sizes[i] > scroll) return i;
+        sum += sizes[i];
+    }
+    return -1;
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: COLLISION DETECTION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3075,16 +3114,16 @@ Here's a geometric diagram of what the circles passed in represent:
 
 alt text
 */
-function collision(
+const collision = (
     x1: number,
     y1: number,
     r1: number,
     x2: number,
     y2: number,
     r2: number
-): boolean {
+): boolean => {
     throw new Error("Not implemented");
-}
+};
 /*
 describe("Solution", function() {
   it("Collisions", function() {
@@ -3100,7 +3139,8 @@ describe("Solution", function() {
 });
 */
 
-// console.log();
+// true
+// console.log(collision(1, 1, 1, 1.1, 1.1, 0.1));
 // console.log();
 // console.log();
 // console.log();

@@ -116,11 +116,40 @@ function spinningRings(innerMax, outerMax) {
     let numberOfSpinsTillRingsAreEqual = 0;
     return numberOfSpinsTillRingsAreEqual;
 }
-function getSectionId(scroll, sizes) {
+const getSectionId = (scrollY, divHeights) => {
+    let counter = 0;
+    let solution = -1;
+    for (let i = 0; i < divHeights.length; i += 1) {
+        counter += divHeights[i];
+        if (counter - 1 >= scrollY) {
+            solution = i;
+            break;
+        }
+    }
+    return solution;
+};
+const getSectionId2 = (n, a) => a.findIndex((x) => (n -= x) < 0);
+function getSectionId3(scroll, sizes) {
+    let size = -1;
+    const arr = sizes.map((el) => (size += el));
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= scroll) {
+            return i;
+        }
+    }
+    return -1;
 }
-function collision(x1, y1, r1, x2, y2, r2) {
+function getSectionId4(scroll, sizes) {
+    for (let i = 0, sum = 0; i < sizes.length; ++i) {
+        if (sum + sizes[i] > scroll)
+            return i;
+        sum += sizes[i];
+    }
+    return -1;
+}
+const collision = (x1, y1, r1, x2, y2, r2) => {
     throw new Error("Not implemented");
-}
+};
 const polydivisible = (num) => {
     const numStr = num.toString();
     console.log(numStr);
