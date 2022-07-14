@@ -2795,7 +2795,7 @@ describe("Tests", () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Simple Fun #88: Sort By Height
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -2829,9 +2829,32 @@ Constraints:
 
 Sorted array a with all the trees untouched.
 */
-function sortByHeight(list: number[]): number[] {
-    return [1]; //your code here
-}
+const sortByHeight = (list: number[]): number[] => {
+    let solutionArr: number[] = [];
+    let counter: number = 0;
+
+    // FILTER OUT AND SORT HEIGHTS ASSCENDING [ 150, 160, 170, 180, 190 ]
+    const heightsArr: number[] = list
+        .filter((num) => num !== -1)
+        .sort((a, b) => a - b);
+    console.log(heightsArr);
+
+    // PUSH TREES / HEIGHTS INTO SOLUTION
+    list.forEach((num) => {
+        // TREE
+        if (num === -1) solutionArr.push(-1);
+        else {
+            // ASCENDING HEIGHTS
+            solutionArr.push(heightsArr[counter]);
+            // INCREMENT COUNTER (INDEX) FOR HEIGHTS
+            counter += 1;
+        }
+    });
+
+    // console.log(solutionArr);
+
+    return solutionArr;
+};
 /*
 describe("Basic Tests", () => {
   it("should works for basic tests.", () => {
@@ -2842,13 +2865,67 @@ describe("Basic Tests", () => {
 });
 */
 
-// console.log();
+// console.log(sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// function sortByHeight2(list: number[]): number[] {
+//     const sortedList = list.filter((a) => a > 0).sort((a, b) => b - a);
+
+//     return list.map((a) => (a > 0 ? sortedList.pop() : a));
+// }
+
+// const sortByHeight3 = (list: number[]): number[] => {
+//     const sortedList = list.filter((x) => x !== -1).sort((a, b) => a - b);
+//     return list.map((x) => (x === -1 ? x : sortedList.shift()));
+// };
+
+function sortByHeight4(list: number[]): number[] {
+    for (let i = 0; i < list.length - 1; i++) {
+        if (list[i] !== -1) {
+            for (let j = i + 1; j < list.length; j++) {
+                if (list[j] !== -1) {
+                    if (list[i] > list[j]) {
+                        const t = list[i];
+                        list[i] = list[j];
+                        list[j] = t;
+                    }
+                }
+            }
+        }
+    }
+
+    return list;
+}
+
+function sortByHeight5(list: number[]): number[] {
+    let numbersToSort = list.filter((n) => n >= 0).sort((a, b) => a - b);
+    let ix = 0;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] >= 0) {
+            list[i] = numbersToSort[ix++];
+        }
+    }
+    return list;
+}
+
+function sortByHeight6(list: number[]): number[] {
+    const heights = list.filter((el) => el !== -1).sort((a, b) => a - b);
+    const result = [];
+    let j = 0;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] === -1) {
+            result.push(list[i]);
+        } else {
+            result.push(heights[j]);
+            j++;
+        }
+    }
+    return result;
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: SQUARE PI'S
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2894,7 +2971,7 @@ describe("fixedTests", function() {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: NUMBER OF RECANGLES IN GRID
+// TITLE: NUMBER OF RECTANGLES IN GRID
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2911,26 +2988,27 @@ numberOfRectangles(4, 4) == 100
 Here is how the 3x2 grid works (Thanks to GiacomoSorbi for the idea):
 
 1 rectangle of size 3x2:
+[][][]
+[][][]
 
-[][][]
-[][][]
+
 2 rectangles of size 3x1:
-
 [][][]
+
 4 rectangles of size 2x1:
-
 [][]
+
 2 rectangles of size 2x2
+[][]
+[][]
 
-[][]
-[][]
 3 rectangles of size 1x2:
+[]
+[]
 
-[]
-[]
 6 rectangles of size 1x1:
-
 []
+
 As you can see (1 + 2 + 4 + 2 + 3 + 6) = 18, and is the solution for the 3x2 grid.
 
 There is a very simple solution to this!

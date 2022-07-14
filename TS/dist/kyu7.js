@@ -103,8 +103,63 @@ function hexHash(code) {
 function tapCodeTranslation(text) {
     return "...";
 }
-function sortByHeight(list) {
-    return [1];
+const sortByHeight = (list) => {
+    let solutionArr = [];
+    let counter = 0;
+    const heightsArr = list
+        .filter((num) => num !== -1)
+        .sort((a, b) => a - b);
+    console.log(heightsArr);
+    list.forEach((num) => {
+        if (num === -1)
+            solutionArr.push(-1);
+        else {
+            solutionArr.push(heightsArr[counter]);
+            counter += 1;
+        }
+    });
+    return solutionArr;
+};
+function sortByHeight4(list) {
+    for (let i = 0; i < list.length - 1; i++) {
+        if (list[i] !== -1) {
+            for (let j = i + 1; j < list.length; j++) {
+                if (list[j] !== -1) {
+                    if (list[i] > list[j]) {
+                        const t = list[i];
+                        list[i] = list[j];
+                        list[j] = t;
+                    }
+                }
+            }
+        }
+    }
+    return list;
+}
+function sortByHeight5(list) {
+    let numbersToSort = list.filter((n) => n >= 0).sort((a, b) => a - b);
+    let ix = 0;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] >= 0) {
+            list[i] = numbersToSort[ix++];
+        }
+    }
+    return list;
+}
+function sortByHeight6(list) {
+    const heights = list.filter((el) => el !== -1).sort((a, b) => a - b);
+    const result = [];
+    let j = 0;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] === -1) {
+            result.push(list[i]);
+        }
+        else {
+            result.push(heights[j]);
+            j++;
+        }
+    }
+    return result;
 }
 function squarePi(digits) {
     return digits;
