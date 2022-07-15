@@ -2600,7 +2600,7 @@ describe('lastChair', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: STACKED BALLS - 2D
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -2628,9 +2628,20 @@ layers >= 0
 approximate answers (within 0.001) are good enough
 
 */
-function stackHeight2d(layers: number) {
-    // your code here
-}
+
+// 0.134
+// 0.067
+
+//
+// Random test 17 : 3 layers => 2.732050807568877
+
+const stackHeight2d = (layers: number): number => {
+    // ❗️❗️❗️ Time: 3230ms Passed: 37Failed: 66Exit Code: 66 ❗️❗️❗️
+    // ❗️❗️❗️ WORKS UP TO 39 LAYERS ❗️❗️❗️
+    // return layers > 1 ? layers - 0.134 * (layers - 1) : layers;
+
+    return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
+};
 /*
 describe("Basic tests", function() {
   it("test0", () => assert.closeTo(stackHeight2d(0), 0.0, 0.001));
@@ -2639,12 +2650,24 @@ describe("Basic tests", function() {
 });
 */
 
-// console.log();
+// console.log(stackHeight2d(1));
+// console.log(stackHeight2d(2));
+// console.log(stackHeight2d(3));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function stackHeight2d2(layers: number) {
+    if (layers <= 0) return 0;
+    return ((layers - 1) / 2) * Math.sqrt(3) + 1;
+}
+
+function stackHeight2d3(layers: number) {
+    if (layers === 0) return 0;
+    return Math.floor(((Math.sqrt(3) * (layers - 1)) / 2 + 1) * 1000) / 1000;
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: CALCULATE PARITY BIT

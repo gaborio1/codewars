@@ -93,7 +93,18 @@ const say = (string1) => function gematria(str) {
 function lastChair(n) {
     return 1;
 }
-function stackHeight2d(layers) {
+const stackHeight2d = (layers) => {
+    return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
+};
+function stackHeight2d2(layers) {
+    if (layers <= 0)
+        return 0;
+    return ((layers - 1) / 2) * Math.sqrt(3) + 1;
+}
+function stackHeight2d3(layers) {
+    if (layers === 0)
+        return 0;
+    return Math.floor(((Math.sqrt(3) * (layers - 1)) / 2 + 1) * 1000) / 1000;
 }
 function checkParity(parity, bin) {
 }
