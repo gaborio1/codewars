@@ -2,6 +2,35 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = void 0;
+const sortTwisted37 = (array) => {
+    let valuesArr = [];
+    array.forEach((num) => {
+        console.log("       num:", num);
+        let currentVal = num;
+        const digitsArr = num
+            .toString()
+            .split("")
+            .map((str) => Number(str));
+        console.log("digitsArr:", digitsArr);
+        const twistedArr = digitsArr.map((digit) => {
+            let digitValue = digit;
+            if (digit === 3)
+                digitValue = 7;
+            if (digit === 7)
+                digitValue = 3;
+            console.log("digit:", digit, "digit val:", digitValue);
+            return digitValue;
+        });
+        console.log(twistedArr);
+        valuesArr.push([num, Number(twistedArr.join(""))]);
+    });
+    console.log("valuesArr:", valuesArr);
+    const sortedByValArr = valuesArr.sort((a, b) => a[1] - b[1]);
+    console.log(sortedByValArr);
+    const solution = sortedByValArr.map((pair) => pair[0]);
+    return solution;
+};
+console.log(sortTwisted37([1, 3, 40, -27, -6, -24, 1, -23, 20, -23, -5]));
 function finance(n) {
     return 1;
 }

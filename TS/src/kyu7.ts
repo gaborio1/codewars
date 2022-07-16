@@ -234,7 +234,7 @@ describe('pingPong', () => {
 /*
 You're given an abstract class Animal and stubs for classes Animal, Boa, Parrot and Monkey:
 
-export abstract class Animal {
+ abstract class Animal {
   protected constructor(public value: number) {}
 
   convertTo (someone: Animal) {
@@ -242,15 +242,15 @@ export abstract class Animal {
   }
 }
 
-export class Boa extends Animal {
+ class Boa extends Animal {
   // TODO:
 }
 
-export class Parrot extends Animal {
+ class Parrot extends Animal {
   // TODO:
 }
 
-export class Monkey extends Animal {
+ class Monkey extends Animal {
   // TODO:
 }
 Your task is to implement these classes. Boa, Parrot and Monkey must convert to each other correctly.
@@ -261,7 +261,7 @@ P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" colle
 */
 
 /*
-export abstract class Animal {
+ abstract class Animal {
     protected constructor(public value: number) {}
   
     convertTo (someone: Animal): number {
@@ -513,11 +513,11 @@ interface IGeometricFigure {
 }
 Your task is to implement classes Square and Circle:
 
-export class Square implements IGeometricFigure {
+ class Square implements IGeometricFigure {
   // TODO:
 }
 
-export class Circle implements IGeometricFigure {
+ class Circle implements IGeometricFigure {
   // TODO:
 }
 
@@ -2534,10 +2534,10 @@ Example: The gematrian value of "love" is 20+50+700+5 = 775
 
 a=1, b=2, c=3, d=4, e=5, f=6, g=7, h=8, i=9, k=10, l=20, m=30, n=40, o=50, p=60, q=70, r=80, s=90, t=100, u=200, x=300, y=400, z=500, j=600, v=700, w=900
 */
-    function gematria(str: string): number {
-        return 0;
-    };
-/*
+    // const gematria = (str: string): number => {
+    //     return 1;
+    // };
+    /*
 describe('Fixed tests', () => {
   it('Tests', () => {
     assert.equal(gematria("love"), 775);
@@ -2547,22 +2547,22 @@ describe('Fixed tests', () => {
 });
 */
 
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+    // console.log(gematria("Coding is fun"));
+    // console.log();
+    // console.log();
+    // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============
+    //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: WAITING ROOM
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+    // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+    // TITLE: WAITING ROOM
+    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+    // KEYWORDS:
+    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+    // SOURCE:
+    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-/*
+    /*
 There's a waiting room with N chairs set in single row. Chairs are consecutively numbered from 1 to N. First is closest to the entrance (which is exit as well).
 
 For some reason people choose a chair in the following way
@@ -2581,9 +2581,9 @@ Input: number of chairs N, an integer greater than 2.
 Output: a positive integer, the last patient's chair number.
 Have fun :)
 */
-function lastChair(n: number): number {
-    return 1;
-}
+    function lastChair(n: number): number {
+        return 1;
+    };
 /*
 describe('lastChair', () => {
   it('should return 10 for n = 9', () => {
@@ -3967,7 +3967,9 @@ function add8(firstAddend: number): Function {
 }
 
 let add9 = (a: number) => (b: number) => a + b;
-export { add9 };
+{
+    add9;
+}
 
 const add10 = (firstNumber: number) => (secondNumber: number) =>
     firstNumber + secondNumber;
@@ -4913,7 +4915,7 @@ interface DayTests {
     [day: string]: (num: number) => boolean;
 }
 
-export function amIAfraid10(day: string, num: number): boolean {
+function amIAfraid10(day: string, num: number): boolean {
     const dayTests: DayTests = {
         Monday: (i) => i === 12,
         Tuesday: (i) => i > 98,
@@ -5296,14 +5298,14 @@ var keys: { [key: string]: string } = {
     i: "k",
 };
 
-export function encodeA4(str: string) {
+function encodeA4(str: string) {
     return str
         .split("")
         .map((e) => (keys[e] ? keys[e] : e))
         .join("");
 }
 
-export function decodeA4(str: string) {
+function decodeA4(str: string) {
     return str
         .split("")
         .map((e) => (keys[e] ? keys[e] : e))
@@ -7119,7 +7121,7 @@ const numbers = [
     "twenty",
 ];
 
-export function wallpaper3(l: number, w: number, h: number): string {
+function wallpaper3(l: number, w: number, h: number): string {
     const roomArea = (l * h + w * h) * 2;
     const rollArea = 0.52 * 10;
 
@@ -8840,7 +8842,7 @@ const months: month = {
     Dec: "12",
 };
 
-export function driver7(data: Array<string>): string {
+function driver7(data: Array<string>): string {
     return ""
         .concat(
             data[2].toUpperCase().slice(0, 5),
@@ -9511,7 +9513,7 @@ type Operation =
     | "division"
     | "operation";
 
-export const calcType4 = (a: number, b: number, res: number): Operation => {
+const calcType4 = (a: number, b: number, res: number): Operation => {
     if (a + b === res) return "addition";
     if (a - b === res) return "subtraction";
     if (a / b === res) return "division";
@@ -10110,7 +10112,7 @@ const splitTheBill = (obj: {
 type NameValObj = { [k: string]: number };
 type MyTuple = [string, number];
 
-export function splitTheBill3(x: NameValObj): NameValObj {
+function splitTheBill3(x: NameValObj): NameValObj {
     const entries: MyTuple[] = Object.entries(x);
     const sum = entries.reduce((s, [_, v]) => s + v, 0);
     const average = sum / entries.length;
@@ -10162,7 +10164,7 @@ const isFloat = (num: number): boolean => {
     return num % 1 !== 0;
 };
 
-export function splitTheBill6(x: Bills): Bills {
+function splitTheBill6(x: Bills): Bills {
     //code away...
 
     const bills: [string, number][] = [];
@@ -12698,7 +12700,7 @@ function evensAndOdds3(n: number): string {
 }
 
 // Shifting the n: number 0 bits to the right turns into unsigned int, thus converting negative numbers to positive
-export const evensAndOdds4 = (n: number): string => {
+const evensAndOdds4 = (n: number): string => {
     return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16);
 };
 
@@ -13375,7 +13377,7 @@ const part10: F10 = (num) => {
     return 10 - num;
 };
 
-export const closestMultiple104: F10 = (num) => {
+const closestMultiple104: F10 = (num) => {
     return num + part10(num % 10);
 };
 
@@ -13784,7 +13786,7 @@ const specialNumber = (num: number) => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 const specialNumbers = [0, 1, 2, 3, 4, 5].map((n) => n.toString());
 
-export const specialNumber2 = (n: number): string =>
+const specialNumber2 = (n: number): string =>
     n
         .toString()
         .split("")
@@ -13982,7 +13984,7 @@ Then return the difference between the❗️❗️❗️  sum of the digits ❗�
                        6
 */
 
-export const calc = (str: string): number => {
+const calc = (str: string): number => {
     // ❗️❗️❗️ TypeError: Reduce of empty array with no initial value ❗️❗️❗️ CHECK FOR EMPTY ARRAY ❗️❗️❗️
     if (str.length < 1) return 0;
     const strArr: string[] = str.split("");
@@ -15052,14 +15054,14 @@ const strongNumber2 = (num: number): string => {
     return n < 2 ? 1 : n * fac(n - 1)
   }
   
-  export const strongNumber3 = (num: number): string => {
+   const strongNumber3 = (num: number): string => {
     return String(num).split("").reduce((a, b) => a + fac(+b), 0) === num ? "STRONG!!!!" : "Not Strong !!";
 }; 
   */
 
 const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
-export const strongNumber4 = (num: number): string =>
+const strongNumber4 = (num: number): string =>
     num ===
     num
         .toString()
@@ -19233,7 +19235,7 @@ class G964 {
 
 /*
  
-export class G964 {
+ class G964 {
   
     public static mxdiflg = (a1, a2) => {
         let max = -1;
@@ -19248,7 +19250,7 @@ export class G964 {
 }
  
  
-export class G964 {
+ class G964 {
     public static mxdiflg = (a1, a2) => {
       if (!a1.length || !a2.length) return -1;
       const x = Math.max(...a1.map(v => v.length)) - Math.min(...a2.map(v => v.length));
@@ -19259,7 +19261,7 @@ export class G964 {
  
  
  
-  export class G964 {
+   class G964 {
     public static mxdiflg = (a1, a2) => !a1.length || !a2.length ? -1 : Math.max(...a1.map(s1 => Math.max(...a2.map(s2 => Math.abs(s1.length - s2.length)))));
 }
  
@@ -20184,7 +20186,7 @@ const validatePin = (pin: string): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-export class Kata2 {
+class Kata2 {
     static pinFormat: RegExp = new RegExp(/^\d{4}(\d{2})?$/);
 
     static validatePin(pin: string): boolean {
@@ -20192,13 +20194,13 @@ export class Kata2 {
     }
 }
 
-export class Kata3 {
+class Kata3 {
     static validatePin(pin: string) {
         return /^(\d{4}|\d{6})$/.test(pin);
     }
 }
 
-export class Kata4 {
+class Kata4 {
     static validatePin(pin: string): boolean {
         const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
         if (pin.length !== 4 && pin.length !== 6) {
@@ -20261,7 +20263,7 @@ const dnaStrand = (dna: string): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // ❗️❗️❗️
-// export class Kata {
+//  class Kata {
 //     static dnaStrand(dna: string) {
 //       return dna.replace(/./g, (c)=>({A:'T',T:'A',G:'C',C:'G'})[c]);
 //     }
@@ -20379,7 +20381,7 @@ findShort("bitcoin take over the world maybe who knows perhaps");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export function findShort(s: string): number {
+//  function findShort(s: string): number {
 //     return Math.min(...s.split(" ").map((w) => w.length));
 // }
 
@@ -20416,7 +20418,7 @@ const xo = (str: string): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export function xo(str: string) {
+//  function xo(str: string) {
 // 	return str.toLowerCase().split('x').length == str.toLowerCase().split('o').length;
 //   }
 
@@ -20436,7 +20438,7 @@ const isIsogram = (str: string): boolean => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export function isIsogram (str: string): boolean {
+//  function isIsogram (str: string): boolean {
 // 	return (new Set(str.toLowerCase())).size === str.length
 // }
 
@@ -20452,7 +20454,7 @@ function isSquare(num: number): boolean {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export default (n: number): boolean => (Math.sqrt(n) % 1 === 0);
+//  default (n: number): boolean => (Math.sqrt(n) % 1 === 0);
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:
@@ -20509,7 +20511,7 @@ descendingOrder(123456789);
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export function descendingOrder(n: number | null | undefined): number | null | undefined {
+//  function descendingOrder(n: number | null | undefined): number | null | undefined {
 //   return n ? parseInt(n.toString().split("").sort().reverse().join("")) : n;
 // }
 
@@ -20540,13 +20542,13 @@ const accum = (str: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export function accum(s: string): string {
+//  function accum(s: string): string {
 // 	return s.split('')
 // 	.map((elem, index) => elem.toUpperCase() + (elem.toLowerCase()).repeat(index))
 // 	.join('-');
 //   }
 
-//   export function accum(s: string): string {
+//    function accum(s: string): string {
 // 	return s.split("").map((value, index) => (value.toUpperCase() + value.toLowerCase().repeat(index))).join("-");
 //   }
 
@@ -20568,7 +20570,7 @@ highAndLow("1 2 3 4 -6");
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export class Kata {
+//  class Kata {
 // 	static highAndLow(numbers: string) {
 // 	  const max = Math.max(...numbers.split(' ').map(i => +i));
 // 	  const min = Math.min(...numbers.split(' ').map(i => +i));
@@ -20578,7 +20580,7 @@ highAndLow("1 2 3 4 -6");
 // 	}
 // }
 
-// export class Kata
+//  class Kata
 // {
 //   static highAndLow(numbers: string)
 //   {
@@ -20602,14 +20604,14 @@ const disemvowel = (str: string): string => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export class Kata {
+//  class Kata {
 //   static disemvowel(str: string) {
 //     var vowels: string = 'AEIOUaeiou';
 //     return str.split('').filter(v => !vowels.includes(v)).join('')
 //   }
 // }
 
-// export class Kata {
+//  class Kata {
 //   static readonly LETTERS_LIST = new RegExp('a|e|i|o|u', 'gi');
 
 //   static disemvowel(str: string) {
@@ -20647,13 +20649,13 @@ const squareDigits = (num: number): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// export class Kata {
+//  class Kata {
 //     static squareDigits(num: number) {
 //       return +num.toString().split('').map(i=>+i*+i).join('');
 //     }
 // }
 
-// export class Kata {
+//  class Kata {
 //     static squareDigits(num: number) {
 //       return +num.toString()
 //                  .split('')
@@ -20662,7 +20664,7 @@ const squareDigits = (num: number): number => {
 //     }
 // }
 
-// export class Kata {
+//  class Kata {
 //     static squareDigits(num: number): number {
 //       return +num.toString().split('').map((n)=>(+n)**2).join('')
 //     }
@@ -20674,7 +20676,7 @@ const squareDigits = (num: number): number => {
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-// export class Kata {
+//  class Kata {
 //     static getCount = (str: string): number => {
 //       return str.split("").filter((el) => el.match(/[aeiou]/gi)).length;
 //     }
@@ -20687,14 +20689,14 @@ const getCount = (str: string): number => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-//   export class Kata {
+//    class Kata {
 //     static getCount(str: string) {
 //       let list = str.match(/[aeiou]/gi);
 //       return list ? list.length : 0;
 //     }
 //   }
 
-// export class Kata {
+//  class Kata {
 //     static getCount(str: string) : number {
 //       return str.split('').filter(c => /[aeiou]/i.test(c)).length
 //     }

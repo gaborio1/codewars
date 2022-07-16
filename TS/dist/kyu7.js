@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kata4 = exports.Kata3 = exports.Kata2 = exports.strongNumber4 = exports.calc = exports.specialNumber2 = exports.closestMultiple104 = exports.evensAndOdds4 = exports.splitTheBill6 = exports.splitTheBill3 = exports.calcType4 = exports.driver7 = exports.wallpaper3 = exports.decodeA4 = exports.encodeA4 = exports.amIAfraid10 = exports.add9 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -87,12 +85,9 @@ const toQueryString = (obj) => {
 function ranking(people) {
     return [];
 }
-const say = (string1) => function gematria(str) {
-    return 0;
-};
-function lastChair(n) {
+const say = (string1) => function lastChair(n) {
     return 1;
-}
+};
 const stackHeight2d = (layers) => {
     return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
 };
@@ -469,7 +464,9 @@ function add8(firstAddend) {
     };
 }
 let add9 = (a) => (b) => a + b;
-exports.add9 = add9;
+{
+    add9;
+}
 const add10 = (firstNumber) => (secondNumber) => firstNumber + secondNumber;
 const dateNbDays = (a0, a, p) => {
     const currDate = new Date("2016/1/1");
@@ -920,7 +917,6 @@ function amIAfraid10(day, num) {
     }
     return false;
 }
-exports.amIAfraid10 = amIAfraid10;
 function amIAfraid11(day, num) {
     switch (day) {
         case "Monday":
@@ -1114,14 +1110,12 @@ function encodeA4(str) {
         .map((e) => (keys[e] ? keys[e] : e))
         .join("");
 }
-exports.encodeA4 = encodeA4;
 function decodeA4(str) {
     return str
         .split("")
         .map((e) => (keys[e] ? keys[e] : e))
         .join("");
 }
-exports.decodeA4 = decodeA4;
 const RE = RegExp(/[GADERYPOLUKI]/, "gi"), KEY = {
     A: "G",
     G: "A",
@@ -1765,7 +1759,6 @@ function wallpaper3(l, w, h) {
     const rolls = Math.ceil(roomArea / rollArea + (roomArea / rollArea) * 0.15);
     return numbers[rolls];
 }
-exports.wallpaper3 = wallpaper3;
 const wordPattern = (word) => {
     const counterObj = {};
     let solutionArr = [];
@@ -2520,7 +2513,6 @@ function driver7(data) {
         .concat(data[0].slice(0, 1), data[1].length ? data[1].slice(0, 1) : "9")
         .concat("9", "AA");
 }
-exports.driver7 = driver7;
 function driver8(data) {
     const getMonth = (dateStr, shouldIncrement) => {
         const date = new Date(dateStr);
@@ -2753,7 +2745,6 @@ const calcType4 = (a, b, res) => {
         return "multiplication";
     return "operation";
 };
-exports.calcType4 = calcType4;
 function calcType5(a, b, res) {
     return a + b === res
         ? "addition"
@@ -2996,7 +2987,6 @@ function splitTheBill3(x) {
         return result;
     }, {});
 }
-exports.splitTheBill3 = splitTheBill3;
 function splitTheBill5(x) {
     const output = {};
     let total = 0;
@@ -3031,7 +3021,6 @@ function splitTheBill6(x) {
     });
     return x;
 }
-exports.splitTheBill6 = splitTheBill6;
 function splitTheBill9(x) {
     const avg = Object.keys(x).reduce((accumulator, key) => accumulator + x[key], 0) /
         Object.keys(x).length;
@@ -4160,7 +4149,6 @@ function evensAndOdds3(n) {
 const evensAndOdds4 = (n) => {
     return n % 2 === 0 ? (n >>> 0).toString(2) : n.toString(16);
 };
-exports.evensAndOdds4 = evensAndOdds4;
 function evensAndOdds5(n) {
     if (n & 1) {
         return n.toString(16);
@@ -4425,7 +4413,6 @@ const part10 = (num) => {
 const closestMultiple104 = (num) => {
     return num + part10(num % 10);
 };
-exports.closestMultiple104 = closestMultiple104;
 const factorialA = (n) => {
     if (n < 2) {
         return 1;
@@ -4539,7 +4526,6 @@ const specialNumber2 = (n) => n
     .every((n) => specialNumbers.includes(n))
     ? "Special!!"
     : "NOT!!";
-exports.specialNumber2 = specialNumber2;
 function specialNumber3(n) {
     return /[^0-5]/.test(n.toString()) ? "NOT!!" : "Special!!";
 }
@@ -4604,7 +4590,6 @@ const calc = (str) => {
     const result = total1 - total2;
     return result;
 };
-exports.calc = calc;
 function calc2(str) {
     return ([...str]
         .map((x) => x.charCodeAt(0))
@@ -4960,7 +4945,6 @@ const strongNumber4 = (num) => num ===
         .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
     ? "STRONG!!!!"
     : "Not Strong !!";
-exports.strongNumber4 = strongNumber4;
 class G964c {
     static movie(prePaid, ticket, perc) {
         let counter = 0, sysA = 0, sysB = prePaid, currDiscPrice = ticket;
@@ -6498,14 +6482,12 @@ class Kata2 {
         return Kata2.pinFormat.test(pin);
     }
 }
-exports.Kata2 = Kata2;
 Kata2.pinFormat = new RegExp(/^\d{4}(\d{2})?$/);
 class Kata3 {
     static validatePin(pin) {
         return /^(\d{4}|\d{6})$/.test(pin);
     }
 }
-exports.Kata3 = Kata3;
 class Kata4 {
     static validatePin(pin) {
         const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -6520,7 +6502,6 @@ class Kata4 {
         return true;
     }
 }
-exports.Kata4 = Kata4;
 const dnaStrand = (dna) => {
     const arr = dna.split("");
     arr.map((el, i) => {
