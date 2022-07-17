@@ -1,23 +1,20 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = void 0;
 const sortTwisted37 = (array) => {
     let valuesArr = [];
     array.forEach((num) => {
         console.log("       num:", num);
         let currentVal = num;
-        const digitsArr = num
-            .toString()
-            .split("")
-            .map((str) => Number(str));
+        const digitsArr = num.toString().split("");
         console.log("digitsArr:", digitsArr);
         const twistedArr = digitsArr.map((digit) => {
             let digitValue = digit;
-            if (digit === 3)
-                digitValue = 7;
-            if (digit === 7)
-                digitValue = 3;
+            if (digit === "3")
+                digitValue = "7";
+            if (digit === "7")
+                digitValue = "3";
             console.log("digit:", digit, "digit val:", digitValue);
             return digitValue;
         });
@@ -30,7 +27,23 @@ const sortTwisted37 = (array) => {
     const solution = sortedByValArr.map((pair) => pair[0]);
     return solution;
 };
-console.log(sortTwisted37([1, 3, 40, -27, -6, -24, 1, -23, 20, -23, -5]));
+function f(n) {
+    return n
+        .toString()
+        .replace(/./g, (x) => (x == "7" ? "3" : x == "3" ? "7" : x));
+}
+function sortTwisted372(array) {
+    return array.slice().sort((a, b) => +f(a) - +f(b));
+}
+exports.sortTwisted372 = sortTwisted372;
+function sortTwisted373(array) {
+    let replaced = (arg) => +(arg + "").replace(/3|7/g, (value) => (value == "3" ? "7" : "3"));
+    return [...array].sort((a, b) => replaced(a) - replaced(b));
+}
+const sortTwisted374 = (array) => {
+    return array.slice().sort((a, b) => swap(a) - swap(b));
+};
+const swap = (n) => +("" + n).replace(/[37]/g, (d) => 10 - +d + "");
 function finance(n) {
     return 1;
 }

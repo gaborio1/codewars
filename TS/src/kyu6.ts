@@ -77,27 +77,53 @@ Have fun coding it and please don't forget to vote and rank this kata! :-)
 
 I have also created other katas. Take a look if you enjoyed this kata!
 */
-// const sortTwisted37 = (array: number[]): number[] => {
+
+// ❗️❗️❗️ FAILS ON NEGATIVE NUMBERS ❗️❗️❗️
+//  const sortTwisted37 = (array: number[]): number[] => {
+//     console.log(array);
+
 //     let valuesArr: number[][] = [];
 
 //     array.forEach((num) => {
 //         let currentVal: number = num;
 
-//         if (num === 3) currentVal = 7;
-//         if (num === 7) currentVal = 3;
+//         // SPLIT NUMBER INTO ARRAY IF IT HAS MULTIPLE DIGITS
+//         const digitsArr = num
+//             .toString()
+//             .split("")
+//             .map((str) => Number(str));
+//         console.log(digitsArr);
 
-//         console.log("num:", num, "current val:", currentVal);
+//         const twistedArr: number[] = digitsArr.map((digit) => {
+//             let digitValue = digit;
+//             if (digit === 3) digitValue = 7;
+//             if (digit === 7) digitValue = 3;
 
-//         valuesArr.push([num, currentVal]);
+//             console.log("digit:", digit, "digit val:", digitValue);
+
+//             // valuesArr.push([num, currentVal]);
+
+//             return digitValue;
+//         });
+
+//         console.log(twistedArr);
+
+//         valuesArr.push([num, Number(twistedArr.join(""))]);
+//         // if (num === 3) currentVal = 7;
+//         // if (num === 7) currentVal = 3;
+
+//         // console.log("num:", num, "current val:", currentVal);
+
+//         // valuesArr.push([num, currentVal]);
 //     });
 
-//     console.log(valuesArr);
+//     console.log("valuesArr:", valuesArr);
 
 //     const sortedByValArr: number[][] = valuesArr.sort((a, b) => a[1] - b[1]);
 //     console.log(sortedByValArr);
 
 //     const solution: number[] = sortedByValArr.map((pair) => pair[0]);
-//     console.log(solution);
+//     // console.log(solution);
 
 //     return solution;
 // };
@@ -110,16 +136,15 @@ const sortTwisted37 = (array: number[]): number[] => {
         let currentVal: number = num;
 
         // SPLIT NUMBER INTO ARRAY IF IT HAS MULTIPLE DIGITS
-        const digitsArr = num
-            .toString()
-            .split("")
-            .map((str) => Number(str));
+        // !!! PROCESS DIGITS AS STRINGS BECAUSE "-" WILL BE NAN AS NUMBER !!!
+        const digitsArr = num.toString().split("");
+        // .map((str) => Number(str));
         console.log("digitsArr:", digitsArr);
 
-        const twistedArr: number[] = digitsArr.map((digit) => {
+        const twistedArr: string[] = digitsArr.map((digit) => {
             let digitValue = digit;
-            if (digit === 3) digitValue = 7;
-            if (digit === 7) digitValue = 3;
+            if (digit === "3") digitValue = "7";
+            if (digit === "7") digitValue = "3";
 
             console.log("digit:", digit, "digit val:", digitValue);
 
@@ -161,13 +186,52 @@ describe("solution", function(){
 
 // console.log(sortTwisted37([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 // console.log(sortTwisted37([12, 13, 14]));
-console.log(sortTwisted37([1, 3, 40, -27, -6, -24, 1, -23, 20, -23, -5]));
+// console.log(sortTwisted37([1, 3, 40, -27, -6, -24, 1, -23, 20, -23, -5]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function f(n: number): string {
+    return n
+        .toString()
+        .replace(/./g, (x) => (x == "7" ? "3" : x == "3" ? "7" : x));
+}
+
+export function sortTwisted372(array: number[]): number[] {
+    return array.slice().sort((a, b) => +f(a) - +f(b));
+}
+
+function sortTwisted373(array: number[]): number[] {
+    let replaced = (arg: number): number =>
+        +(arg + "").replace(/3|7/g, (value) => (value == "3" ? "7" : "3"));
+
+    return [...array].sort((a, b) => replaced(a) - replaced(b));
+}
+
+const sortTwisted374 = (array: number[]): number[] => {
+    return array.slice().sort((a, b) => swap(a) - swap(b));
+};
+
+const swap = (n: number) => +("" + n).replace(/[37]/g, (d) => 10 - +d + "");
+
+// function sortTwisted375(array: number[]): number[] {
+//     const switch3and7 = (number) =>
+//         number
+//             .toString()
+//             .split("")
+//             .map((singleNumber) =>
+//                 +singleNumber === 3 ? 7 : +singleNumber === 7 ? 3 : singleNumber
+//             )
+//             .join("");
+//     return array
+//         .map(switch3and7)
+//         .map((numb) => +numb)
+//         .sort((a, b) => a - b)
+//         .map(switch3and7)
+//         .map((numb) => +numb);
+// }
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Financing Plan on Planet XY140Z-n
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
