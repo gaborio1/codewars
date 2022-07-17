@@ -85,9 +85,32 @@ const toQueryString = (obj) => {
 function ranking(people) {
     return [];
 }
-const say = (string1) => function lastChair(n) {
+const gracefulTipping = (bill) => {
+    let total = 0;
+    if (bill < 10) {
+        total = Math.ceil(bill * 1.15);
+    }
+    else if (bill)
+        console.log(total);
     return 1;
 };
+console.log(gracefulTipping(7));
+const say = (string1) => {
+    let result = string1;
+    return (string2) => {
+        return `${result} ${string2}`;
+    };
+};
+console.log(say("Hello")("World"));
+const say2 = ($) => (ﬂ) => `${$} ${ﬂ}`;
+const say3 = (xs) => (ys) => [xs, ys].join(" ");
+const say4 = (a) => (b) => a + " " + b;
+function gematria(str) {
+    return 0;
+}
+function lastChair(n) {
+    return 1;
+}
 const stackHeight2d = (layers) => {
     return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
 };
@@ -100,8 +123,6 @@ function stackHeight2d3(layers) {
     if (layers === 0)
         return 0;
     return Math.floor(((Math.sqrt(3) * (layers - 1)) / 2 + 1) * 1000) / 1000;
-}
-function checkParity(parity, bin) {
 }
 function hexHash(code) {
     return 1;
@@ -3955,7 +3976,11 @@ const getIssuer3 = (x) => {
 const getIssuer4 = (x) => {
     let str = x.toString();
     let len = str.length;
-    let begin = { a: str.slice(0, 2), b: str.slice(0, 4), c: str.slice(0, 1) };
+    let begin = {
+        a: str.slice(0, 2),
+        b: str.slice(0, 4),
+        c: str.slice(0, 1),
+    };
     if ((len === 16 || len === 13) && begin.c === "4") {
         return "VISA";
     }

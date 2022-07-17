@@ -2415,6 +2415,16 @@ And so on...
 
 Good luck!
 */
+const gracefulTipping = (bill: number): number => {
+    let total: number = 0;
+
+    if (bill < 10) {
+        total = Math.ceil(bill * 1.15);
+    } else if (bill) console.log(total);
+
+    return 1;
+};
+
 /*
 describe("graceful tipping", function() {
   
@@ -2432,7 +2442,8 @@ describe("graceful tipping", function() {
 });
 */
 
-// console.log();
+// 9
+console.log(gracefulTipping(7));
 // console.log();
 // console.log();
 // console.log();
@@ -2481,10 +2492,10 @@ describe("Sample tests", () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Say "Hello World" JS Style
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CHAIN PRINT WORDS FUNCTION ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2495,33 +2506,48 @@ Write the definition of the function "say" such that calling this:
 say("Hello")("World")
 returns "Hello World"
 */
-const say = (
-    string1: string // your code here
-) =>
-    /*
+
+const say = (string1: string): any => {
+    let result: string = string1;
+
+    return (string2: string): string => {
+        return `${result} ${string2}`;
+    };
+};
+/*
 describe("solution", function(){
-  it('should work for basic tests', () => {
-    assert.equal(solution.say('Hello')('World'), 'Hello World');  
-  });
+it('should work for basic tests', () => {
+assert.equal(solution.say('Hello')('World'), 'Hello World');  
+});
 });
 */
 
-    // console.log();
-    // console.log();
-    // console.log();
-    // console.log();
+console.log(say("Hello")("World"));
+// console.log(say("Hello"));
+// console.log();
+// console.log();
+// console.log();
 
-    //============= OTHER CODEWARS SOLUTIONS: =============
+//============= OTHER CODEWARS SOLUTIONS: =============
 
-    // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-    // TITLE: GEMATRIA FOR ALL
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-    // KEYWORDS:
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-    // SOURCE:
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+const say2 =
+    ($: string) =>
+    (ﬂ: string): string =>
+        `${$} ${ﬂ}`;
 
-    /*
+const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
+
+const say4 = (a: string) => (b: string) => a + " " + b;
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: GEMATRIA FOR ALL
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
 Gematria is an Assyro-Babylonian-Greek system of code and numerology later adopted into Jewish culture. The system assigns numerical value to a word or a phrase in the belief that words or phrases with identical numerical values bear some relation to each other or bear some relation to the number itself. While more commonly used on Hebrew words, there is also an English version.
 
 Each letter has a value and the gematrian value of a word or a phrase is the sum of those values. The code takes a word or an expression and returns the gematrian value of it.
@@ -2533,11 +2559,12 @@ Example: The gematrian value of "love" is 20+50+700+5 = 775
 ‎These are the values of the different letters:
 
 a=1, b=2, c=3, d=4, e=5, f=6, g=7, h=8, i=9, k=10, l=20, m=30, n=40, o=50, p=60, q=70, r=80, s=90, t=100, u=200, x=300, y=400, z=500, j=600, v=700, w=900
-*/
-    // const gematria = (str: string): number => {
-    //     return 1;
-    // };
-    /*
+
+*/ function gematria(str: string): number {
+    return 0;
+}
+
+/*
 describe('Fixed tests', () => {
   it('Tests', () => {
     assert.equal(gematria("love"), 775);
@@ -2547,22 +2574,17 @@ describe('Fixed tests', () => {
 });
 */
 
-    // console.log(gematria("Coding is fun"));
-    // console.log();
-    // console.log();
-    // console.log();
+//============= OTHER CODEWARS SOLUTIONS: =============
 
-    //============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: WAITING ROOM
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-    // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-    // TITLE: WAITING ROOM
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-    // KEYWORDS:
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-    // SOURCE:
-    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-    /*
+/*
 There's a waiting room with N chairs set in single row. Chairs are consecutively numbered from 1 to N. First is closest to the entrance (which is exit as well).
 
 For some reason people choose a chair in the following way
@@ -2581,22 +2603,18 @@ Input: number of chairs N, an integer greater than 2.
 Output: a positive integer, the last patient's chair number.
 Have fun :)
 */
-    function lastChair(n: number): number {
-        return 1;
-    };
+
+function lastChair(n: number): number {
+    return 1;
+}
+
 /*
 describe('lastChair', () => {
   it('should return 10 for n = 9', () => {
     assert.equal(lastChair(10), 9);
   });
 });
-
 */
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -2629,12 +2647,6 @@ approximate answers (within 0.001) are good enough
 
 */
 
-// 0.134
-// 0.067
-
-//
-// Random test 17 : 3 layers => 2.732050807568877
-
 const stackHeight2d = (layers: number): number => {
     // ❗️❗️❗️ Time: 3230ms Passed: 37Failed: 66Exit Code: 66 ❗️❗️❗️
     // ❗️❗️❗️ WORKS UP TO 39 LAYERS ❗️❗️❗️
@@ -2643,12 +2655,12 @@ const stackHeight2d = (layers: number): number => {
     return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
 };
 /*
-describe("Basic tests", function() {
-  it("test0", () => assert.closeTo(stackHeight2d(0), 0.0, 0.001));
-  it("test1", () => assert.closeTo(stackHeight2d(1), 1.0, 0.001));
-  it("test2", () => assert.closeTo(stackHeight2d(2), 1.866, 0.001));
-});
-*/
+    describe("Basic tests", function() {
+      it("test0", () => assert.closeTo(stackHeight2d(0), 0.0, 0.001));
+      it("test1", () => assert.closeTo(stackHeight2d(1), 1.0, 0.001));
+      it("test2", () => assert.closeTo(stackHeight2d(2), 1.866, 0.001));
+    });
+    */
 
 // console.log(stackHeight2d(1));
 // console.log(stackHeight2d(2));
@@ -2678,36 +2690,36 @@ function stackHeight2d3(layers: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A parity bit, or check bit, is a bit added to a string of bits to ensure that the total number of 1-bits in the string is even or odd. Parity bits are used as the simplest form of error detecting code.
-
-You have two parameters, one being the wanted parity (always 'even' or 'odd'), and the other being the binary representation of the number you want to check.
-
-Your task is to return an integer (0 or 1), whose parity bit you need to add to the binary representation so that the parity of the resulting string is as expected.
-
-Example:
-
-  Parity: 'even'
-  Bin: '0101010'
-  Result: 1
-Because there is an odd number of 1-bits (3) you need to put another 1 to it to get an even number of 1-bits.
-
-For more information: https://en.wikipedia.org/wiki/Parity_bit
-*/
-function checkParity(parity: string, bin: string) {
-    // have fun!
-}
+    A parity bit, or check bit, is a bit added to a string of bits to ensure that the total number of 1-bits in the string is even or odd. Parity bits are used as the simplest form of error detecting code.
+    
+    You have two parameters, one being the wanted parity (always 'even' or 'odd'), and the other being the binary representation of the number you want to check.
+    
+    Your task is to return an integer (0 or 1), whose parity bit you need to add to the binary representation so that the parity of the resulting string is as expected.
+    
+    Example:
+    
+      Parity: 'even'
+      Bin: '0101010'
+      Result: 1
+    Because there is an odd number of 1-bits (3) you need to put another 1 to it to get an even number of 1-bits.
+    
+    For more information: https://en.wikipedia.org/wiki/Parity_bit
+    */
+// const checkParity = (parity: string, bin: string): number => {
+//     return 1;
+// };
 /*
-describe("Sample tests", function() {
-  it("Tests", function() {
-    assert.equal(checkParity('even','101010'), 1)
-    assert.equal(checkParity('odd','101010'), 0)
-    assert.equal(checkParity('even','101011'), 0)
-    assert.equal(checkParity('odd','101011'), 1)
-  });
-});
-*/
+    describe("Sample tests", function() {
+      it("Tests", function() {
+        assert.equal(checkParity('even','101010'), 1)
+        assert.equal(checkParity('odd','101010'), 0)
+        assert.equal(checkParity('even','101011'), 0)
+        assert.equal(checkParity('odd','101011'), 1)
+      });
+    });
+    */
 
-// console.log();
+// console.log(checkParity("even", "101010"));
 // console.log();
 // console.log();
 // console.log();
@@ -2723,33 +2735,33 @@ describe("Sample tests", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Complete the function that accepts a valid string and returns an integer.
-
-Wait, that would be too easy! Every character of the string should be converted to the hex value of its ascii code, then the result should be the sum of the numbers in the hex strings (ignore letters).
-
-Examples
-"Yo" ==> "59 6f" ==> 5 + 9 + 6 = 20
-"Hello, World!"  ==> 91
-"Forty4Three"    ==> 113
-
-*/
+    Complete the function that accepts a valid string and returns an integer.
+    
+    Wait, that would be too easy! Every character of the string should be converted to the hex value of its ascii code, then the result should be the sum of the numbers in the hex strings (ignore letters).
+    
+    Examples
+    "Yo" ==> "59 6f" ==> 5 + 9 + 6 = 20
+    "Hello, World!"  ==> 91
+    "Forty4Three"    ==> 113
+    
+    */
 function hexHash(code: string): number {
     return 1;
 }
 /*
-describe("Basic tests", function() {
-  it("Yo", function() {
-    assert.equal(solution.hexHash('Yo'), 20);
-  });
-   it("Hello, World!", function() {
-    assert.equal(solution.hexHash('Hello, World!'), 91);
-  });
-   it("Forty4Three", function() {
-    assert.equal(solution.hexHash('Forty4Three'), 113);
-  });
-});
-
-*/
+    describe("Basic tests", function() {
+      it("Yo", function() {
+        assert.equal(solution.hexHash('Yo'), 20);
+      });
+       it("Hello, World!", function() {
+        assert.equal(solution.hexHash('Hello, World!'), 91);
+      });
+       it("Forty4Three", function() {
+        assert.equal(solution.hexHash('Forty4Three'), 113);
+      });
+    });
+    
+    */
 
 // console.log();
 // console.log();
@@ -2767,49 +2779,49 @@ describe("Basic tests", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Tap Code Translation
-Tap code is a way to communicate using a series of taps and pauses for each letter. In this kata, we will use dots . for the taps and whitespaces for the pauses.
-
-The number of taps needed for each letter matches its coordinates in the following polybius square (note the c/k position). Then you "tap" the row, a pause, then the column. Each letter is separated from others with a pause too.
-
-   1  2  3  4  5
-1  A  B C\K D  E
-2  F  G  H  I  J
-3  L  M  N  O  P
-4  Q  R  S  T  U
-5  V  W  X  Y  Z
-Input:
-A lowercase string of a single word (no whitespaces or punctuation, only letters).
-
-Output:
-The encoded string as taps and pauses.
-
-Examples
-text = "dot"
-  "D" = (1, 4) = ". ...."
-  "O" = (3, 4) = "... ...."
-  "T" = (4, 4) = ".... ...."
-  
-output: ". .... ... .... .... ...."
-
-
-"example" -> ". ..... ..... ... . . ... .. ... ..... ... . . ....."
-"more"    -> "... .. ... .... .... .. . ....."
-Happy coding!
-*/
+    Tap Code Translation
+    Tap code is a way to communicate using a series of taps and pauses for each letter. In this kata, we will use dots . for the taps and whitespaces for the pauses.
+    
+    The number of taps needed for each letter matches its coordinates in the following polybius square (note the c/k position). Then you "tap" the row, a pause, then the column. Each letter is separated from others with a pause too.
+    
+       1  2  3  4  5
+    1  A  B C\K D  E
+    2  F  G  H  I  J
+    3  L  M  N  O  P
+    4  Q  R  S  T  U
+    5  V  W  X  Y  Z
+    Input:
+    A lowercase string of a single word (no whitespaces or punctuation, only letters).
+    
+    Output:
+    The encoded string as taps and pauses.
+    
+    Examples
+    text = "dot"
+      "D" = (1, 4) = ". ...."
+      "O" = (3, 4) = "... ...."
+      "T" = (4, 4) = ".... ...."
+      
+    output: ". .... ... .... .... ...."
+    
+    
+    "example" -> ". ..... ..... ... . . ... .. ... ..... ... . . ....."
+    "more"    -> "... .. ... .... .... .. . ....."
+    Happy coding!
+    */
 function tapCodeTranslation(text: string): string {
     return "...";
 }
 /*
-describe("Tests", () => {
-  it("Sample tests", () => {
-    assert.equal(tapCodeTranslation("test"), ".... .... . ..... .... ... .... ....", `Text: "test"`);
-    assert.equal(tapCodeTranslation("taps"), ".... .... . . ... ..... .... ...", `Text: "taps"`);
-    assert.equal(tapCodeTranslation("knocks"), ". ... ... ... ... .... . ... . ... .... ...", `Text: "knocks"`);
-  });
-});
-
-*/
+    describe("Tests", () => {
+      it("Sample tests", () => {
+        assert.equal(tapCodeTranslation("test"), ".... .... . ..... .... ... .... ....", `Text: "test"`);
+        assert.equal(tapCodeTranslation("taps"), ".... .... . . ... ..... .... ...", `Text: "taps"`);
+        assert.equal(tapCodeTranslation("knocks"), ". ... ... ... ... .... . ... . ... .... ...", `Text: "knocks"`);
+      });
+    });
+    
+    */
 
 // console.log();
 // console.log();
@@ -2827,31 +2839,31 @@ describe("Tests", () => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Some people are standing in a row in a park. There are trees between them which cannot be moved.
-
-Your task is to rearrange the people by their heights in a non-descending order without moving the trees.
-
-Example
-For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be
-
-[-1, 150, 160, 170, -1, -1, 180, 190].
-
-Input/Output
-[input] integer array a
-
-If a[i] = -1, then the ith position is occupied by a tree. Otherwise a[i] is the height of a person standing in the ith position.
-
-Constraints:
-
-5 ≤ a.length ≤ 30,
-
--1 ≤ a[i] ≤ 200.
-
-[output] an integer array
-
-Sorted array a with all the trees untouched.
-*/
+    Task
+    Some people are standing in a row in a park. There are trees between them which cannot be moved.
+    
+    Your task is to rearrange the people by their heights in a non-descending order without moving the trees.
+    
+    Example
+    For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be
+    
+    [-1, 150, 160, 170, -1, -1, 180, 190].
+    
+    Input/Output
+    [input] integer array a
+    
+    If a[i] = -1, then the ith position is occupied by a tree. Otherwise a[i] is the height of a person standing in the ith position.
+    
+    Constraints:
+    
+    5 ≤ a.length ≤ 30,
+    
+    -1 ≤ a[i] ≤ 200.
+    
+    [output] an integer array
+    
+    Sorted array a with all the trees untouched.
+    */
 const sortByHeight = (list: number[]): number[] => {
     let solutionArr: number[] = [];
     let counter: number = 0;
@@ -2879,14 +2891,14 @@ const sortByHeight = (list: number[]): number[] => {
     return solutionArr;
 };
 /*
-describe("Basic Tests", () => {
-  it("should works for basic tests.", () => {
-    expect(solution.sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180])).to.deep.equal([-1, 150, 160, 170, -1, -1, 180, 190]);
-    expect(solution.sortByHeight([-1, -1, -1, -1, -1])).to.deep.equal([-1, -1, -1, -1, -1]);
-    expect(solution.sortByHeight([4, 2, 9, 11, 2, 16])).to.deep.equal([2, 2, 4, 9, 11, 16]);
-  });
-});
-*/
+    describe("Basic Tests", () => {
+      it("should works for basic tests.", () => {
+        expect(solution.sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180])).to.deep.equal([-1, 150, 160, 170, -1, -1, 180, 190]);
+        expect(solution.sortByHeight([-1, -1, -1, -1, -1])).to.deep.equal([-1, -1, -1, -1, -1]);
+        expect(solution.sortByHeight([4, 2, 9, 11, 2, 16])).to.deep.equal([2, 2, 4, 9, 11, 16]);
+      });
+    });
+    */
 
 // console.log(sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]));
 // console.log();
@@ -2958,33 +2970,33 @@ function sortByHeight6(list: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Everybody loves pi, but what if pi were a square? Given a number of digits digits, find the smallest integer whose square is greater or equal to the sum of the squares of the first digits digits of pi, including the 3 before the decimal point.
-
-Note: Test cases will not extend beyond 100 digits; the first 100 digits of pi are pasted here for your convenience:
-
-31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-Examples
-digits   = 1   #  [3]
-expected = 3   #  sqrt(3^2) = 3
-
-
-digits   = 3   #  [3, 1, 4]
-expected = 6   #  sqrt(3^2 + 1^2 + 4^2) = 5.099 --> 6
-*/
+    Everybody loves pi, but what if pi were a square? Given a number of digits digits, find the smallest integer whose square is greater or equal to the sum of the squares of the first digits digits of pi, including the 3 before the decimal point.
+    
+    Note: Test cases will not extend beyond 100 digits; the first 100 digits of pi are pasted here for your convenience:
+    
+    31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+    Examples
+    digits   = 1   #  [3]
+    expected = 3   #  sqrt(3^2) = 3
+    
+    
+    digits   = 3   #  [3, 1, 4]
+    expected = 6   #  sqrt(3^2 + 1^2 + 4^2) = 5.099 --> 6
+    */
 function squarePi(digits: number): number {
     //Code probably goes here
     return digits;
 }
 /*
-describe("fixedTests", function() {
-  it("5 digits", function() {
-    assert.deepEqual(squarePi(5), 8);
-  });
-  it("10 digits", function() {
-    assert.deepEqual(squarePi(10), 15);
-  });
-});
-*/
+    describe("fixedTests", function() {
+      it("5 digits", function() {
+        assert.deepEqual(squarePi(5), 8);
+      });
+      it("10 digits", function() {
+        assert.deepEqual(squarePi(10), 15);
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -3002,52 +3014,52 @@ describe("fixedTests", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a grid of size m x n, calculate the total number of rectangles contained in this rectangle. All integer sizes and positions are counted.
-
-Examples:
-
-numberOfRectangles(3, 2) == 18
-numberOfRectangles(4, 4) == 100
-Here is how the 3x2 grid works (Thanks to GiacomoSorbi for the idea):
-
-1 rectangle of size 3x2:
-[][][]
-[][][]
-
-
-2 rectangles of size 3x1:
-[][][]
-
-4 rectangles of size 2x1:
-[][]
-
-2 rectangles of size 2x2
-[][]
-[][]
-
-3 rectangles of size 1x2:
-[]
-[]
-
-6 rectangles of size 1x1:
-[]
-
-As you can see (1 + 2 + 4 + 2 + 3 + 6) = 18, and is the solution for the 3x2 grid.
-
-There is a very simple solution to this!
-*/
+    Given a grid of size m x n, calculate the total number of rectangles contained in this rectangle. All integer sizes and positions are counted.
+    
+    Examples:
+    
+    numberOfRectangles(3, 2) == 18
+    numberOfRectangles(4, 4) == 100
+    Here is how the 3x2 grid works (Thanks to GiacomoSorbi for the idea):
+    
+    1 rectangle of size 3x2:
+    [][][]
+    [][][]
+    
+    
+    2 rectangles of size 3x1:
+    [][][]
+    
+    4 rectangles of size 2x1:
+    [][]
+    
+    2 rectangles of size 2x2
+    [][]
+    [][]
+    
+    3 rectangles of size 1x2:
+    []
+    []
+    
+    6 rectangles of size 1x1:
+    []
+    
+    As you can see (1 + 2 + 4 + 2 + 3 + 6) = 18, and is the solution for the 3x2 grid.
+    
+    There is a very simple solution to this!
+    */
 function numberOfRectangles(m: number, n: number): number {
     return 1;
 }
 /*
-describe("Number of Rectangles in a Grid", () => {
-  it("Fixed tests", () => {
-    assert.strictEqual(numberOfRectangles(4, 4), 100);
-    assert.strictEqual(numberOfRectangles(5, 5), 225);
-  });
-});
-
-*/
+    describe("Number of Rectangles in a Grid", () => {
+      it("Fixed tests", () => {
+        assert.strictEqual(numberOfRectangles(4, 4), 100);
+        assert.strictEqual(numberOfRectangles(5, 5), 225);
+      });
+    });
+    
+    */
 
 // console.log();
 // console.log();
@@ -3065,43 +3077,43 @@ describe("Number of Rectangles in a Grid", () => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Imagine two rings with numbers on them. The inner ring spins clockwise (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing by 1 each spin). We start with both rings aligned on 0 at the top, and on each move we spin each ring one increment. How many moves will it take before both rings show the same number at the top again?
-
-The inner ring has integers from 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax and outerMax are integers >= 1.
-
-e.g. if innerMax is 2 and outerMax is 3 then after
-1 move: inner = 2, outer = 1
-2 moves: inner = 1, outer = 2
-3 moves: inner = 0, outer = 3
-4 moves: inner = 2, outer = 0
-5 moves: inner = 1, outer = 1
-Therefore it takes 5 moves for the two rings to reach the same number
-Therefore spinningRings(2, 3) = 5
-e.g. if innerMax is 3 and outerMax is 2 then after
-1 move: inner = 3, outer = 1
-2 moves: inner = 2, outer = 2
-Therefore it takes 2 moves for the two rings to reach the same number
-spinningRings(3, 2) = 2
-for a bigger challenge, check out the Performance Version of this kata by @Voile
-
-
-*/
+    Imagine two rings with numbers on them. The inner ring spins clockwise (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing by 1 each spin). We start with both rings aligned on 0 at the top, and on each move we spin each ring one increment. How many moves will it take before both rings show the same number at the top again?
+    
+    The inner ring has integers from 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax and outerMax are integers >= 1.
+    
+    e.g. if innerMax is 2 and outerMax is 3 then after
+    1 move: inner = 2, outer = 1
+    2 moves: inner = 1, outer = 2
+    3 moves: inner = 0, outer = 3
+    4 moves: inner = 2, outer = 0
+    5 moves: inner = 1, outer = 1
+    Therefore it takes 5 moves for the two rings to reach the same number
+    Therefore spinningRings(2, 3) = 5
+    e.g. if innerMax is 3 and outerMax is 2 then after
+    1 move: inner = 3, outer = 1
+    2 moves: inner = 2, outer = 2
+    Therefore it takes 2 moves for the two rings to reach the same number
+    spinningRings(3, 2) = 2
+    for a bigger challenge, check out the Performance Version of this kata by @Voile
+    
+    
+    */
 function spinningRings(innerMax: number, outerMax: number): number {
     let numberOfSpinsTillRingsAreEqual = 0;
     // your code here
     return numberOfSpinsTillRingsAreEqual;
 }
 /*
-describe("Spinning Rings", function() {
-  it("should work for a few cases", function() {
-    assert.strictEqual(spinningRings(2, 3), 5);
-    assert.strictEqual(spinningRings(3, 2), 2);
-    assert.strictEqual(spinningRings(1, 1), 1);
-    assert.strictEqual(spinningRings(2, 2), 3);
-    assert.strictEqual(spinningRings(3, 3), 2);
-  });
-});
-*/
+    describe("Spinning Rings", function() {
+      it("should work for a few cases", function() {
+        assert.strictEqual(spinningRings(2, 3), 5);
+        assert.strictEqual(spinningRings(3, 2), 2);
+        assert.strictEqual(spinningRings(1, 1), 1);
+        assert.strictEqual(spinningRings(2, 2), 3);
+        assert.strictEqual(spinningRings(3, 3), 2);
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -3119,23 +3131,23 @@ describe("Spinning Rings", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your website is divided vertically in sections, and each can be of different size (height).
-You need to establish the section index (starting at 0) you are at, given the scrollY and sizes of all sections.
-Sections start with 0, so if first section is 200 high, it takes 0-199 "pixels" and second starts at 200.
-
-Example:
-getSectionIdFromScroll( 300, [300,200,400,600,100] )
-
-will output number 1 as it's the second section.
-
-getSectionIdFromScroll( 1600, [300,200,400,600,100] )
-
-will output number -1 as it's past last section.
-
-Given the scrollY integer (always non-negative) and an array of non-negative integers (with at least one element), calculate the index (starting at 0) or -1 if scrollY falls beyond last section (indication of an error).
-
-
-*/
+    Your website is divided vertically in sections, and each can be of different size (height).
+    You need to establish the section index (starting at 0) you are at, given the scrollY and sizes of all sections.
+    Sections start with 0, so if first section is 200 high, it takes 0-199 "pixels" and second starts at 200.
+    
+    Example:
+    getSectionIdFromScroll( 300, [300,200,400,600,100] )
+    
+    will output number 1 as it's the second section.
+    
+    getSectionIdFromScroll( 1600, [300,200,400,600,100] )
+    
+    will output number -1 as it's past last section.
+    
+    Given the scrollY integer (always non-negative) and an array of non-negative integers (with at least one element), calculate the index (starting at 0) or -1 if scrollY falls beyond last section (indication of an error).
+    
+    
+    */
 const getSectionId = (scrollY: number, divHeights: number[]): number => {
     let counter: number = 0;
 
@@ -3155,14 +3167,14 @@ const getSectionId = (scrollY: number, divHeights: number[]): number => {
 };
 
 /*
-describe("Basic tests", function() {
-  testing(1, [300, 200, 400, 600, 100], 0);
-  testing(299, [300, 200, 400, 600, 100], 0);
-  testing(300, [300, 200, 400, 600, 100], 1);
-  testing(1599, [300, 200, 400, 600, 100], 4);
-  testing(1600, [300, 200, 400, 600, 100], -1);
-});
-*/
+    describe("Basic tests", function() {
+      testing(1, [300, 200, 400, 600, 100], 0);
+      testing(299, [300, 200, 400, 600, 100], 0);
+      testing(300, [300, 200, 400, 600, 100], 1);
+      testing(1599, [300, 200, 400, 600, 100], 4);
+      testing(1600, [300, 200, 400, 600, 100], -1);
+    });
+    */
 
 // 4
 // console.log(getSectionId(1, [300, 200, 400, 600, 100]));
@@ -3204,17 +3216,17 @@ function getSectionId4(scroll: number, sizes: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Create a function to determine whether or not two circles are colliding. You will be given the position of both circles in addition to their radii:
-
-function collision(x1, y1, radius1, x2, y2, radius2) {
-  // collision?
-}
-If a collision is detected, return true. If not, return false.
-
-Here's a geometric diagram of what the circles passed in represent:
-
-alt text
-*/
+    Create a function to determine whether or not two circles are colliding. You will be given the position of both circles in addition to their radii:
+    
+    function collision(x1, y1, radius1, x2, y2, radius2) {
+      // collision?
+    }
+    If a collision is detected, return true. If not, return false.
+    
+    Here's a geometric diagram of what the circles passed in represent:
+    
+    alt text
+    */
 const collision = (
     x1: number,
     y1: number,
@@ -3226,19 +3238,19 @@ const collision = (
     throw new Error("Not implemented");
 };
 /*
-describe("Solution", function() {
-  it("Collisions", function() {
-    assert.strictEqual(collision(1, 1, 1, 1.1, 1.1, 0.1), true, "Expected true.");
-    assert.strictEqual(collision(-1, 1, 10, -10.1, 1.1, 1), true, "Expected true.");
-    assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 5*Math.sqrt(5)), true, "Expected true.");
-  });
-  it("Not Collisions", function() {
-    assert.strictEqual(collision(1, 1, 0.01, 1, 1.1, 0.01), false, "Expected false.");
-    assert.strictEqual(collision(-1, 1, 6, -10.1, 1.1, 1), false, "Expected false.");
-    assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 4*Math.sqrt(5)), false, "Expected false.");
-  });
-});
-*/
+    describe("Solution", function() {
+      it("Collisions", function() {
+        assert.strictEqual(collision(1, 1, 1, 1.1, 1.1, 0.1), true, "Expected true.");
+        assert.strictEqual(collision(-1, 1, 10, -10.1, 1.1, 1), true, "Expected true.");
+        assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 5*Math.sqrt(5)), true, "Expected true.");
+      });
+      it("Not Collisions", function() {
+        assert.strictEqual(collision(1, 1, 0.01, 1, 1.1, 0.01), false, "Expected false.");
+        assert.strictEqual(collision(-1, 1, 6, -10.1, 1.1, 1), false, "Expected false.");
+        assert.strictEqual(collision(-5, 5, 5.0001, 5, -5, 4*Math.sqrt(5)), false, "Expected false.");
+      });
+    });
+    */
 
 // true
 // console.log(collision(1, 1, 1, 1.1, 1.1, 0.1));
@@ -3257,44 +3269,44 @@ describe("Solution", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Most of this problem is by the original author of the harder kata, I just made it simpler.
-
-I read a book recently, titled "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker ( Youtube ), and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
-
-The problem he talks about relates to polydivisible numbers, and I thought a kata should be written on the subject as it's quite interesting. (Well it's interesting to me, so there!)
-
-Polydivisib... huh what?
-So what are they?
-
-A polydivisible number is divisible in an unusual way. The first digit is cleanly divisible by 1, the first two digits are cleanly divisible by 2, the first three by 3, and so on.
-
-Examples
-Let's take the number 1232 as an example.
-
-1     / 1 = 1     // Works
-12    / 2 = 6     // Works
-123   / 3 = 41    // Works
-1232  / 4 = 308   // Works
-1232 is a polydivisible number.
-
-However, let's take the number 123220 and see what happens.
-
- 1      /1 = 1    // Works
- 12     /2 = 6    // Works
- 123    /3 = 41   // Works
- 1232   /4 = 308  // Works
- 12322  /5 = 2464.4         // Doesn't work
- 123220 /6 = 220536.333...  // Doesn't work
-123220 is not polydivisible.
-
-Your job: check if a number is polydivisible or not.
-Return true if it is, and false if it isn't.
-
-Note: All inputs will be valid numbers between 0 and 2^53-1 (9,007,199,254,740,991) (inclusive).
-Note: All single digit numbers (including 0) are trivially polydivisible. Note: Except for 0, no numbers will start with 0.
-
-
-*/
+    Most of this problem is by the original author of the harder kata, I just made it simpler.
+    
+    I read a book recently, titled "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker ( Youtube ), and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
+    
+    The problem he talks about relates to polydivisible numbers, and I thought a kata should be written on the subject as it's quite interesting. (Well it's interesting to me, so there!)
+    
+    Polydivisib... huh what?
+    So what are they?
+    
+    A polydivisible number is divisible in an unusual way. The first digit is cleanly divisible by 1, the first two digits are cleanly divisible by 2, the first three by 3, and so on.
+    
+    Examples
+    Let's take the number 1232 as an example.
+    
+    1     / 1 = 1     // Works
+    12    / 2 = 6     // Works
+    123   / 3 = 41    // Works
+    1232  / 4 = 308   // Works
+    1232 is a polydivisible number.
+    
+    However, let's take the number 123220 and see what happens.
+    
+     1      /1 = 1    // Works
+     12     /2 = 6    // Works
+     123    /3 = 41   // Works
+     1232   /4 = 308  // Works
+     12322  /5 = 2464.4         // Doesn't work
+     123220 /6 = 220536.333...  // Doesn't work
+    123220 is not polydivisible.
+    
+    Your job: check if a number is polydivisible or not.
+    Return true if it is, and false if it isn't.
+    
+    Note: All inputs will be valid numbers between 0 and 2^53-1 (9,007,199,254,740,991) (inclusive).
+    Note: All single digit numbers (including 0) are trivially polydivisible. Note: Except for 0, no numbers will start with 0.
+    
+    
+    */
 
 const polydivisible = (num: number): boolean => {
     const numStr: string = num.toString();
@@ -3325,23 +3337,23 @@ const polydivisible = (num: number): boolean => {
 };
 
 /*
-
-12322
-current: 1 divisor: 1 isDivisible: true
-current: 12 divisor: 2 isDivisible: true
-current: 123 divisor: 3 isDivisible: true
-current: 1232 divisor: 4 isDivisible: true
-current: 12322 divisor: 5 isDivisible: false
-false
-
-1232
-current: 1 divisor: 1 isDivisible: true
-current: 12 divisor: 2 isDivisible: true
-current: 123 divisor: 3 isDivisible: true
-current: 1232 divisor: 4 isDivisible: true
-true
-
-*/
+    
+    12322
+    current: 1 divisor: 1 isDivisible: true
+    current: 12 divisor: 2 isDivisible: true
+    current: 123 divisor: 3 isDivisible: true
+    current: 1232 divisor: 4 isDivisible: true
+    current: 12322 divisor: 5 isDivisible: false
+    false
+    
+    1232
+    current: 1 divisor: 1 isDivisible: true
+    current: 12 divisor: 2 isDivisible: true
+    current: 123 divisor: 3 isDivisible: true
+    current: 1232 divisor: 4 isDivisible: true
+    true
+    
+    */
 
 // console.log(polydivisible(1232));
 // console.log();
@@ -3384,15 +3396,15 @@ function polydivisible4(x: number): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-We will call a natural number a "doubleton number" if it contains exactly two distinct digits. For example, 23, 35, 100, 12121 are doubleton numbers, and 123 and 9980 are not.
-
-For a given natural number n (from 1 to 1 000 000), you need to find the next doubleton number. If n itself is a doubleton, return the next bigger than n.
-
-Examples:
-doubleton(120) == 121
-doubleton(1234) == 1311
-doubleton(10) == 12
-*/
+    We will call a natural number a "doubleton number" if it contains exactly two distinct digits. For example, 23, 35, 100, 12121 are doubleton numbers, and 123 and 9980 are not.
+    
+    For a given natural number n (from 1 to 1 000 000), you need to find the next doubleton number. If n itself is a doubleton, return the next bigger than n.
+    
+    Examples:
+    doubleton(120) == 121
+    doubleton(1234) == 1311
+    doubleton(10) == 12
+    */
 const doubleton = (num: number): number => {
     // let solution: number = 0;
 
@@ -3429,21 +3441,21 @@ const doubleton = (num: number): number => {
     return solution;
 };
 /*
-describe("Fixed tests",()=>{
-   it(`Testing for number 120: received ${doubleton(120)}`,()=>{
-      assert.equal(doubleton(120), 121, "Wrong result. It should be 121" );
-   });
-   it(`Testing for number 1234: received ${doubleton(1234)}`,()=>{
-      assert.equal(doubleton(1234), 1311, "Wrong result. It should be 1311" );
-   });
-   it(`Testing for number 1: received ${doubleton(1)}`,()=>{
-      assert.equal(doubleton(1), 10, "Wrong result. It should be 10" );
-   });
-   it(`Testing for number 10: received ${doubleton(10)}`,()=>{
-      assert.equal(doubleton(10), 12, "Wrong result. It should be 12" );
-   });
-});  
-*/
+    describe("Fixed tests",()=>{
+       it(`Testing for number 120: received ${doubleton(120)}`,()=>{
+          assert.equal(doubleton(120), 121, "Wrong result. It should be 121" );
+       });
+       it(`Testing for number 1234: received ${doubleton(1234)}`,()=>{
+          assert.equal(doubleton(1234), 1311, "Wrong result. It should be 1311" );
+       });
+       it(`Testing for number 1: received ${doubleton(1)}`,()=>{
+          assert.equal(doubleton(1), 10, "Wrong result. It should be 10" );
+       });
+       it(`Testing for number 10: received ${doubleton(10)}`,()=>{
+          assert.equal(doubleton(10), 12, "Wrong result. It should be 12" );
+       });
+    });  
+    */
 
 // console.log(doubleton(12121));
 // console.log(doubleton(123));
@@ -3497,45 +3509,45 @@ function doubleton6(num: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-One of the first algorithm used for approximating the integer square root of a positive integer n is known as "Hero's method", named after the first-century Greek mathematician Hero of Alexandria who gave the first description of the method. Hero's method can be obtained from Newton's method which came 16 centuries after.
-
-We approximate the square root of a number n by taking an initial guess x, an error e and repeatedly calculating a new approximate integer value x using: (x + n / x) / 2; we are finished when the previous x and the new x have an absolute difference less than e.
-
-We supply to a function (int_rac) a number n (positive integer) and a parameter guess (positive integer) which will be our initial x. For this kata the parameter 'e' is set to 1.
-
-Hero's algorithm is not always going to come to an exactly correct result! For instance: if n = 25 we get 5 but for n = 26 we also get 5. Nevertheless 5 is the integer square root of 26.
-
-The kata is to return the count of the progression of integer approximations that the algorithm makes.
-
-Reference:
-
-https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
-
-Some examples:
-
-int_rac(25,1): follows a progression of [1,13,7,5] so our function should return 4.
-
-int_rac(125348,300): has a progression of [300,358,354] so our function should return 3.
-
-int_rac(125348981764,356243): has a progression of [356243,354053,354046] so our function should return 3.
-
-*/
+    One of the first algorithm used for approximating the integer square root of a positive integer n is known as "Hero's method", named after the first-century Greek mathematician Hero of Alexandria who gave the first description of the method. Hero's method can be obtained from Newton's method which came 16 centuries after.
+    
+    We approximate the square root of a number n by taking an initial guess x, an error e and repeatedly calculating a new approximate integer value x using: (x + n / x) / 2; we are finished when the previous x and the new x have an absolute difference less than e.
+    
+    We supply to a function (int_rac) a number n (positive integer) and a parameter guess (positive integer) which will be our initial x. For this kata the parameter 'e' is set to 1.
+    
+    Hero's algorithm is not always going to come to an exactly correct result! For instance: if n = 25 we get 5 but for n = 26 we also get 5. Nevertheless 5 is the integer square root of 26.
+    
+    The kata is to return the count of the progression of integer approximations that the algorithm makes.
+    
+    Reference:
+    
+    https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
+    
+    Some examples:
+    
+    int_rac(25,1): follows a progression of [1,13,7,5] so our function should return 4.
+    
+    int_rac(125348,300): has a progression of [300,358,354] so our function should return 3.
+    
+    int_rac(125348981764,356243): has a progression of [356243,354053,354046] so our function should return 3.
+    
+    */
 class G964AA {
     public static intRac(n: number, guess: number): number {
         return 1;
     }
 }
 /*
-describe("Fixed Tests intRac", function() {
-    it("Basic tests", function() {
-        testing(25, 1, 4);
-        testing(125348, 300, 3);
-        testing(236, 12, 2);
-        testing(48981764, 8000, 3);
+    describe("Fixed Tests intRac", function() {
+        it("Basic tests", function() {
+            testing(25, 1, 4);
+            testing(125348, 300, 3);
+            testing(236, 12, 2);
+            testing(48981764, 8000, 3);
+        });
     });
-});
-
-*/
+    
+    */
 
 // console.log();
 // console.log();
@@ -3553,31 +3565,31 @@ describe("Fixed Tests intRac", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Write a function that returns true if a given point (x,y) is inside of a unit circle (that is, a "normal" circle with a radius of one) centered at the origin (0,0) and returns false if the point is outside.
-
-Input
-x: The first coordinate of the given point.
-y: The second coordinate of the given point.
-Notes
-The region bounded by the circle is considered to be an open disk, so points on the boundary of the circle should return false.
-We are using the euclidean metric.
-*/
+    Task
+    Write a function that returns true if a given point (x,y) is inside of a unit circle (that is, a "normal" circle with a radius of one) centered at the origin (0,0) and returns false if the point is outside.
+    
+    Input
+    x: The first coordinate of the given point.
+    y: The second coordinate of the given point.
+    Notes
+    The region bounded by the circle is considered to be an open disk, so points on the boundary of the circle should return false.
+    We are using the euclidean metric.
+    */
 function pointInCircle(x: number, y: number): boolean {
     return true;
 }
 /*
-describe("Tests", () => {
-  it("test", () => {
-    assert.isTrue(pointInCircle(0,0), 'Origin is inside');
-    assert.isFalse(pointInCircle(0, -1), '(0, -1) is outside');
-    assert.isFalse(pointInCircle(2,0), '(2, 0) is outside');
-    assert.isTrue(pointInCircle(0,0.9), '(0, 0.9) is inside');
-    assert.isTrue(pointInCircle(0.5,0.5), '(0.5, 0.5) is inside');
-  });
-});
-
-*/
+    describe("Tests", () => {
+      it("test", () => {
+        assert.isTrue(pointInCircle(0,0), 'Origin is inside');
+        assert.isFalse(pointInCircle(0, -1), '(0, -1) is outside');
+        assert.isFalse(pointInCircle(2,0), '(2, 0) is outside');
+        assert.isTrue(pointInCircle(0,0.9), '(0, 0.9) is inside');
+        assert.isTrue(pointInCircle(0.5,0.5), '(0.5, 0.5) is inside');
+      });
+    });
+    
+    */
 
 // console.log();
 // console.log();
@@ -3595,68 +3607,68 @@ describe("Tests", () => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-#Adding values of arrays in a shifted way
-
-You have to write a method, that gets two parameter:
-
-1. An array of arrays with int-numbers
-2. The shifting value
-#The method should add the values of the arrays to one new array.
-
-The arrays in the array will all have the same size and this size will always be greater than 0.
-The shifting value is always a value from 0 up to the size of the arrays.
-There are always arrays in the array, so you do not need to check for null or empty.
-
-#1. Example:
-
-[[1,2,3,4,5,6], [7,7,7,7,7,-7]], 0
-
-1,2,3,4,5,6
-7,7,7,7,7,-7
-
---> [8,9,10,11,12,-1]
-#2. Example
-
-[[1,2,3,4,5,6], [7,7,7,7,7,7]], 3
-
-1,2,3,4,5,6
-      7,7,7,7,7,7
-
---> [1,2,3,11,12,13,7,7,7]
-#3. Example
-
-[[1,2,3,4,5,6], [7,7,7,-7,7,7], [1,1,1,1,1,1]], 3
-
-
-1,2,3,4,5,6
-      7,7,7,-7,7,7
-            1,1,1,1,1,1
-
---> [1,2,3,11,12,13,-6,8,8,1,1,1]
-*/
+    #Adding values of arrays in a shifted way
+    
+    You have to write a method, that gets two parameter:
+    
+    1. An array of arrays with int-numbers
+    2. The shifting value
+    #The method should add the values of the arrays to one new array.
+    
+    The arrays in the array will all have the same size and this size will always be greater than 0.
+    The shifting value is always a value from 0 up to the size of the arrays.
+    There are always arrays in the array, so you do not need to check for null or empty.
+    
+    #1. Example:
+    
+    [[1,2,3,4,5,6], [7,7,7,7,7,-7]], 0
+    
+    1,2,3,4,5,6
+    7,7,7,7,7,-7
+    
+    --> [8,9,10,11,12,-1]
+    #2. Example
+    
+    [[1,2,3,4,5,6], [7,7,7,7,7,7]], 3
+    
+    1,2,3,4,5,6
+          7,7,7,7,7,7
+    
+    --> [1,2,3,11,12,13,7,7,7]
+    #3. Example
+    
+    [[1,2,3,4,5,6], [7,7,7,-7,7,7], [1,1,1,1,1,1]], 3
+    
+    
+    1,2,3,4,5,6
+          7,7,7,-7,7,7
+                1,1,1,1,1,1
+    
+    --> [1,2,3,11,12,13,-6,8,8,1,1,1]
+    */
 function addingShifted(arrayOfArrays: number[][], shift: number): number[] {
     return arrayOfArrays[0];
 }
 /*
-describe("Kata Tests", function(){
-  it("Basic Tests", function(){
-    var arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, 7, 7, -7]];
-    var expected = [8, 9, 10, 11, 12, -1 ];
-    var result = addingShifted(arrayOfArrays, 0);
-    assert.deepEqual(result, expected);
-    
-    arrayOfArrays = [[1, 2, 3, 4, 5, 6],[7, 7, 7, 7, 7, 7]];
-    expected = [ 1, 2, 3, 11, 12, 13, 7, 7, 7];
-    var result = addingShifted(arrayOfArrays, 3);
-    assert.deepEqual(result, expected);
-      
-    arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, -7, 7, 7],[1, 1, 1, 1, 1, 1]];
-    expected = [1, 2, 3, 11, 12, 13, -6, 8, 8, 1, 1, 1];
-    var result = addingShifted(arrayOfArrays, 3);
-    assert.deepEqual(result, expected);
-  });
-});
-*/
+    describe("Kata Tests", function(){
+      it("Basic Tests", function(){
+        var arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, 7, 7, -7]];
+        var expected = [8, 9, 10, 11, 12, -1 ];
+        var result = addingShifted(arrayOfArrays, 0);
+        assert.deepEqual(result, expected);
+        
+        arrayOfArrays = [[1, 2, 3, 4, 5, 6],[7, 7, 7, 7, 7, 7]];
+        expected = [ 1, 2, 3, 11, 12, 13, 7, 7, 7];
+        var result = addingShifted(arrayOfArrays, 3);
+        assert.deepEqual(result, expected);
+          
+        arrayOfArrays = [[1, 2, 3, 4, 5, 6], [7, 7, 7, -7, 7, 7],[1, 1, 1, 1, 1, 1]];
+        expected = [1, 2, 3, 11, 12, 13, -6, 8, 8, 1, 1, 1];
+        var result = addingShifted(arrayOfArrays, 3);
+        assert.deepEqual(result, expected);
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -3674,43 +3686,43 @@ describe("Kata Tests", function(){
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-#Unflatten a list (Easy)
-
-There are several katas like "Flatten a list". These katas are done by so many warriors, that the count of available list to flattin goes down!
-
-So you have to build a method, that creates new arrays, that can be flattened!
-
-#Shorter: You have to unflatten a list/an array.
-
-You get an array of integers and have to unflatten it by these rules:
-
-- You start at the first number.
-- If this number x is smaller than 3, take this number x direct 
-  for the new array and continue with the next number.
-- If this number x is greater than 2, take the next x numbers (inclusive this number) as a 
-  sub-array in the new array. Continue with the next number AFTER this taken numbers.
-- If there are too few numbers to take by number, take the last available numbers.
-The given array will always contain numbers. There will only be numbers > 0.
-
-Example:
-
- [1,4,5,2,1,2,4,5,2,6,2,3,3] -> [1,[4,5,2,1],2,[4,5,2,6],2,[3,3]]
-
-Steps: 
-1. The 1 is added directly to the new array.
-2. The next number is 4. So the next 4 numbers (4,5,2,1) are added as sub-array in the new array.
-3. The 2 is added directly to the new array.
-4. The next number is 4. So the next 4 numbers (4,5,2,6) are added as sub-array in the new array.
-5. The 2 is added directly to the new array.
-6. The next number is 3. So the next 3 numbers would be taken. There are only 2, 
-   so take these (3,3) as sub-array in the new array.
-There is a harder version of this kata!
-<a href="https://www.codewars.com/kata/57e5aa1d7fbcc988800001ae"taget=_blank>Unflatten a list (Harder than easy)
-
-Have fun coding it and please don't forget to vote and rank this kata! :-)
-
-
-*/
+    #Unflatten a list (Easy)
+    
+    There are several katas like "Flatten a list". These katas are done by so many warriors, that the count of available list to flattin goes down!
+    
+    So you have to build a method, that creates new arrays, that can be flattened!
+    
+    #Shorter: You have to unflatten a list/an array.
+    
+    You get an array of integers and have to unflatten it by these rules:
+    
+    - You start at the first number.
+    - If this number x is smaller than 3, take this number x direct 
+      for the new array and continue with the next number.
+    - If this number x is greater than 2, take the next x numbers (inclusive this number) as a 
+      sub-array in the new array. Continue with the next number AFTER this taken numbers.
+    - If there are too few numbers to take by number, take the last available numbers.
+    The given array will always contain numbers. There will only be numbers > 0.
+    
+    Example:
+    
+     [1,4,5,2,1,2,4,5,2,6,2,3,3] -> [1,[4,5,2,1],2,[4,5,2,6],2,[3,3]]
+    
+    Steps: 
+    1. The 1 is added directly to the new array.
+    2. The next number is 4. So the next 4 numbers (4,5,2,1) are added as sub-array in the new array.
+    3. The 2 is added directly to the new array.
+    4. The next number is 4. So the next 4 numbers (4,5,2,6) are added as sub-array in the new array.
+    5. The 2 is added directly to the new array.
+    6. The next number is 3. So the next 3 numbers would be taken. There are only 2, 
+       so take these (3,3) as sub-array in the new array.
+    There is a harder version of this kata!
+    <a href="https://www.codewars.com/kata/57e5aa1d7fbcc988800001ae"taget=_blank>Unflatten a list (Harder than easy)
+    
+    Have fun coding it and please don't forget to vote and rank this kata! :-)
+    
+    
+    */
 const unflatten = (flatArray: any[]): any[] => {
     let solution: (number | number[])[] = [];
 
@@ -3737,20 +3749,20 @@ const unflatten = (flatArray: any[]): any[] => {
     return solution;
 };
 /*
-describe("solution", function(){
-  it("Basic Tests", function(){
-    var input = [ 3, 5, 2, 1 ];
-    var expected = [[ 3,5,2 ], 1 ];
-
-    assert.deepEqual(unflatten(input), expected);
+    describe("solution", function(){
+      it("Basic Tests", function(){
+        var input = [ 3, 5, 2, 1 ];
+        var expected = [[ 3,5,2 ], 1 ];
     
-    input = [ 1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3 ];
-    expected = [1, [4,5,2,1], 2, [4,5,2,6], 2, [3, 3] ];
-
-    assert.deepEqual(unflatten(input), expected);
-  });
-});
-*/
+        assert.deepEqual(unflatten(input), expected);
+        
+        input = [ 1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3 ];
+        expected = [1, [4,5,2,1], 2, [4,5,2,6], 2, [3, 3] ];
+    
+        assert.deepEqual(unflatten(input), expected);
+      });
+    });
+    */
 const input = [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3];
 // console.log(unflatten(input));
 // console.log();
@@ -3872,27 +3884,27 @@ function unflatten7(flatArray: number[]): any[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a function that adds from two invocations.
-
-All inputs will be integers.
-
-add(3)(4)  // 7
-add(12)(20) // 32
-*/
+    Write a function that adds from two invocations.
+    
+    All inputs will be integers.
+    
+    add(3)(4)  // 7
+    add(12)(20) // 32
+    */
 
 /*
-
-JAVASCRIPT SOLUTION
-
-const add = (a) => {
-  
-    let sum = a;
-
-    return (b) => sum + b;
-  
-};
-
-*/
+    
+    JAVASCRIPT SOLUTION
+    
+    const add = (a) => {
+      
+        let sum = a;
+    
+        return (b) => sum + b;
+      
+    };
+    
+    */
 
 // 1️⃣
 const addTwo = (a: number): any => {
@@ -3911,15 +3923,15 @@ const addTwo2 = (a: number): any => {
 };
 
 /*
-describe("Basic tests", function() {
-  it("Testing : ", function() {
-    assert.strictEqual(add(2)(5), 7, 'Should return the addition of these invocations!');
-    assert.strictEqual(add(14)(25), 39, 'Should return the addition of these invocations!');
-    assert.strictEqual(add(10)(10), 20, 'Should return the addition of these invocations!');
-    assert.strictEqual(add(0)(0), 0, 'Should return the addition of these invocations!');
-  });
-});
-*/
+    describe("Basic tests", function() {
+      it("Testing : ", function() {
+        assert.strictEqual(add(2)(5), 7, 'Should return the addition of these invocations!');
+        assert.strictEqual(add(14)(25), 39, 'Should return the addition of these invocations!');
+        assert.strictEqual(add(10)(10), 20, 'Should return the addition of these invocations!');
+        assert.strictEqual(add(0)(0), 0, 'Should return the addition of these invocations!');
+      });
+    });
+    */
 
 // console.log(add1(2));
 // console.log(addTwo2(2)(5));
@@ -3985,22 +3997,22 @@ const add10 = (firstNumber: number) => (secondNumber: number) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You have an amount of money a0 > 0 and you deposit it with an interest rate of p percent divided by 360 per day on the 1st of January 2016. You want to have an amount a >= a0.
-
-Task:
-The function date_nb_days (or dateNbDays...) with parameters a0, a, p will return, as a string, the date on which you have just reached a.
-
-Example:
-date_nb_days(100, 101, 0.98) --> "2017-01-01" (366 days)
-
-date_nb_days(100, 150, 2.00) --> "2035-12-26" (7299 days)
-
-Notes:
-The return format of the date is "YYYY-MM-DD"
-The deposit is always on the "2016-01-01"
-Don't forget to take the rate for a day to be p divided by 36000 since banks consider that there are 360 days in a year.
-You have: a0 > 0, p% > 0, a >= a0
-*/
+    You have an amount of money a0 > 0 and you deposit it with an interest rate of p percent divided by 360 per day on the 1st of January 2016. You want to have an amount a >= a0.
+    
+    Task:
+    The function date_nb_days (or dateNbDays...) with parameters a0, a, p will return, as a string, the date on which you have just reached a.
+    
+    Example:
+    date_nb_days(100, 101, 0.98) --> "2017-01-01" (366 days)
+    
+    date_nb_days(100, 150, 2.00) --> "2035-12-26" (7299 days)
+    
+    Notes:
+    The return format of the date is "YYYY-MM-DD"
+    The deposit is always on the "2016-01-01"
+    Don't forget to take the rate for a day to be p divided by 36000 since banks consider that there are 360 days in a year.
+    You have: a0 > 0, p% > 0, a >= a0
+    */
 const dateNbDays = (a0: number, a: number, p: number): string => {
     // CHECK OTHER FORMATS
     const currDate = new Date("2016/1/1");
@@ -4034,23 +4046,23 @@ const dateNbDays = (a0: number, a: number, p: number): string => {
 };
 
 /*
-
-https://stackoverflow.com/questions/563406/how-to-add-days-to-date
-
-var someDate = new Date();
-var duration = 2; //In Days
-someDate.setTime(someDate.getTime() +  (duration * 24 * 60 * 60 * 1000));
-
-
-
-https://stackoverflow.com/questions/26528085/javascript-date-method-without-time
-
-d.toJSON().substring(0,10)
-
-
-console.log("2017-01-01T00:00:00.000Z".split('T')[0]);
-
-*/
+    
+    https://stackoverflow.com/questions/563406/how-to-add-days-to-date
+    
+    var someDate = new Date();
+    var duration = 2; //In Days
+    someDate.setTime(someDate.getTime() +  (duration * 24 * 60 * 60 * 1000));
+    
+    
+    
+    https://stackoverflow.com/questions/26528085/javascript-date-method-without-time
+    
+    d.toJSON().substring(0,10)
+    
+    
+    console.log("2017-01-01T00:00:00.000Z".split('T')[0]);
+    
+    */
 
 //  "2017-01-01" (366 days)
 // console.log(dateNbDays(100, 101, 0.98));
@@ -4156,22 +4168,22 @@ function dateNbDays8(a0: number, a: number, p: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your non-profit company has assigned you the task of calculating some simple statistics on donations. You have an array of integers, representing various amounts of donations your company has been given. In particular, you're interested in the median value for donations.
-
-The median is the middle number of a sorted list of numbers. If the list is of even length, the 2 middle values are averaged.
-
-Write a function that takes an array of integers as an argument and returns the median of those integers.
-
-Notes:
-
-The sorting step is vital.
-Input arrays are non-empty.
-Examples
-Median of [33,99,100,30,29,50] is 41.5.
-Median of [3,2,1] is 2.
-
-
-*/
+    Your non-profit company has assigned you the task of calculating some simple statistics on donations. You have an array of integers, representing various amounts of donations your company has been given. In particular, you're interested in the median value for donations.
+    
+    The median is the middle number of a sorted list of numbers. If the list is of even length, the 2 middle values are averaged.
+    
+    Write a function that takes an array of integers as an argument and returns the median of those integers.
+    
+    Notes:
+    
+    The sorting step is vital.
+    Input arrays are non-empty.
+    Examples
+    Median of [33,99,100,30,29,50] is 41.5.
+    Median of [3,2,1] is 2.
+    
+    
+    */
 
 const median = (numArr: number[]): number => {
     const sortedArr: number[] = numArr.sort((a, b) => a - b);
@@ -4188,14 +4200,14 @@ const median = (numArr: number[]): number => {
 };
 
 /*
-describe("solution", function(){
-  it("basic Tests", function(){
-    assert.equal(median([1,2,3,4]),2.5)
-    assert.equal(median([3,4,1,2,5]),3)
-    assert.equal(median([10,29,23,94,76,96,5,85,4,33,47,41,87]),41)
-  });
-})
-*/
+    describe("solution", function(){
+      it("basic Tests", function(){
+        assert.equal(median([1,2,3,4]),2.5)
+        assert.equal(median([3,4,1,2,5]),3)
+        assert.equal(median([10,29,23,94,76,96,5,85,4,33,47,41,87]),41)
+      });
+    })
+    */
 
 // console.log(median([1, 2, 3, 4]));
 // console.log(median([3, 4, 1, 2, 5]));
@@ -4255,10 +4267,10 @@ const median6 = (n: number[]): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l' with 1 e.g. "Fundamentals" --> "Fund4m3nt41s"
-
-
-*/
+    Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l' with 1 e.g. "Fundamentals" --> "Fund4m3nt41s"
+    
+    
+    */
 const nerdify = (str: string): string => {
     interface KeyVal {
         [key: string]: string;
@@ -4276,15 +4288,15 @@ const nerdify = (str: string): string => {
     return str.replace(new RegExp(/[ael]/gi), (el) => nerdyObj[el]);
 };
 /*
-describe("nerdify", function() {
-  it("Sample Tests", function() {
-    assert.strictEqual(nerdify("Fund4m3nt41s"),"Fund4m3nt41s");
-    assert.strictEqual(nerdify("Seven"),"S3v3n");
-    assert.strictEqual(nerdify("Los Angeles"),"Los 4ng313s");
-    assert.strictEqual(nerdify("Seoijselawuue"),"S3oijs314wuu3");
-  });
-});
-*/
+    describe("nerdify", function() {
+      it("Sample Tests", function() {
+        assert.strictEqual(nerdify("Fund4m3nt41s"),"Fund4m3nt41s");
+        assert.strictEqual(nerdify("Seven"),"S3v3n");
+        assert.strictEqual(nerdify("Los Angeles"),"Los 4ng313s");
+        assert.strictEqual(nerdify("Seoijselawuue"),"S3oijs314wuu3");
+      });
+    });
+    */
 
 // console.log(nerdify("Fund4m3nt41s"));
 // console.log(nerdify("Fundamentals"));
@@ -4386,29 +4398,29 @@ const regex = new RegExp(`[${Object.keys(replace).join("")}]`, "g");
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Description
-There is a narrow hallway in which people can go right and left only. When two people meet in the hallway, by tradition they must salute each other. People move at the same speed left and right.
-
-Your task is to write a function that, given a string representation of people moving in the hallway, will count the number of salutes that will occur.
-Note: 2 salutes occur when people meet, one to the other and vice versa.
-
-Input
-People moving right will be represented by >; people moving left will be represented by <. An example input would be >--<--->->. The - character represents empty space, which you need not worry about.
-
-Examples
-Input: >----->-----<--<
-Output: 8
-
-Explanation: Both guys moving right will meet both guys moving left.
-Hence a total of 4 meetings will occur and 8 salutes will occur.
-
-Input: <---<--->----<
-Output: 2
-
-Explanation: Only one meeting occurs.
-
-
-*/
+    Description
+    There is a narrow hallway in which people can go right and left only. When two people meet in the hallway, by tradition they must salute each other. People move at the same speed left and right.
+    
+    Your task is to write a function that, given a string representation of people moving in the hallway, will count the number of salutes that will occur.
+    Note: 2 salutes occur when people meet, one to the other and vice versa.
+    
+    Input
+    People moving right will be represented by >; people moving left will be represented by <. An example input would be >--<--->->. The - character represents empty space, which you need not worry about.
+    
+    Examples
+    Input: >----->-----<--<
+    Output: 8
+    
+    Explanation: Both guys moving right will meet both guys moving left.
+    Hence a total of 4 meetings will occur and 8 salutes will occur.
+    
+    Input: <---<--->----<
+    Output: 2
+    
+    Explanation: Only one meeting occurs.
+    
+    
+    */
 const countSalutes = (hallway: String): number => {
     let solution: number = 0;
     // FILTER OUT SPACES
@@ -4441,26 +4453,26 @@ const countSalutes = (hallway: String): number => {
 };
 
 /*
-
-console.log(countSalutes("<---->---<---<-->"));
-
-line of people: [ '<', '>', '<', '<', '>' ]
-
-people to right: [ '<', '<', '>' ]
-people to meet: 2
-
-people to right: []
-people to meet: 0
-
-4
-
-
-    act('<---->---<---<-->', 4);
-    act('------', 0);
-    act('>>>>>>>>>>>>>>>>>>>>>----<->', 42);
-    act('<<----<>---<', 2);
- 
-*/
+    
+    console.log(countSalutes("<---->---<---<-->"));
+    
+    line of people: [ '<', '>', '<', '<', '>' ]
+    
+    people to right: [ '<', '<', '>' ]
+    people to meet: 2
+    
+    people to right: []
+    people to meet: 0
+    
+    4
+    
+    
+        act('<---->---<---<-->', 4);
+        act('------', 0);
+        act('>>>>>>>>>>>>>>>>>>>>>----<->', 42);
+        act('<<----<>---<', 2);
+     
+    */
 
 // console.log(countSalutes("<---->---<---<-->"));
 // console.log(countSalutes(">>>>>>>>>>>>>>>>>>>>>----<->"));
@@ -4514,36 +4526,36 @@ function countSalutes3(hallway: String): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In this kata, you must create a function powers/Powers that takes an array, and returns the number of subsets possible to create from that list. In other words, counts the power sets.
-
-For instance
-
-powers([1,2,3]) => 8
-...due to...
-
-powers([1,2,3]) =>
-[[],
- [1],
- [2],
- [3],
- [1,2],
- [2,3],
- [1,3],
- [1,2,3]]
-Your function should be able to count sets up to the size of 500, so watch out; pretty big numbers occur there!
-
-For comparison, my Haskell solution can compute the number of sets for an array of length 90 000 in less than a second, so be quick!
-
-You should treat each array passed as a set of unique values for this kata.
-
-###Examples:
-
-powers([])        => 1
-powers([1])       => 2
-powers([1,2])     => 4
-powers([1,2,3,4]) => 16
-
-*/
+    In this kata, you must create a function powers/Powers that takes an array, and returns the number of subsets possible to create from that list. In other words, counts the power sets.
+    
+    For instance
+    
+    powers([1,2,3]) => 8
+    ...due to...
+    
+    powers([1,2,3]) =>
+    [[],
+     [1],
+     [2],
+     [3],
+     [1,2],
+     [2,3],
+     [1,3],
+     [1,2,3]]
+    Your function should be able to count sets up to the size of 500, so watch out; pretty big numbers occur there!
+    
+    For comparison, my Haskell solution can compute the number of sets for an array of length 90 000 in less than a second, so be quick!
+    
+    You should treat each array passed as a set of unique values for this kata.
+    
+    ###Examples:
+    
+    powers([])        => 1
+    powers([1])       => 2
+    powers([1,2])     => 4
+    powers([1,2,3,4]) => 16
+    
+    */
 
 // SOLUTION: NUMBER OF SETS ARE SIMPLY 2 RAISED TO THE POWER OF ARR.LENGTH
 // [1,2,3] => 2**3, [1,2,3,4,] => 2**4
@@ -4553,14 +4565,14 @@ function powers<T>(list: T[]): number {
     return Math.pow(2, list.length);
 }
 /*
-describe("solution", function() {
-  it("Sample Tests", function() {
-      assert.strictEqual(powers([]), 1, "An empty array should return 1!");
-      assert.strictEqual(powers([1]), 2);
-      assert.strictEqual(powers([1,2,3,4,5]), 32);
-  });
-});
-*/
+    describe("solution", function() {
+      it("Sample Tests", function() {
+          assert.strictEqual(powers([]), 1, "An empty array should return 1!");
+          assert.strictEqual(powers([1]), 2);
+          assert.strictEqual(powers([1,2,3,4,5]), 32);
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -4589,33 +4601,33 @@ function powers4<T>(list: T[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A non-empty array a of length n is called an array of all possibilities if it contains all numbers between [0,a.length-1].Write a method named isAllPossibilities that accepts an integer array and returns true if the array is an array of all possibilities, else false.
-
-Example:
-
-a=[1,2,0,3]
-a.length-1=3 
-a includes [0,3] ,hence the function should return true
-*/
+    A non-empty array a of length n is called an array of all possibilities if it contains all numbers between [0,a.length-1].Write a method named isAllPossibilities that accepts an integer array and returns true if the array is an array of all possibilities, else false.
+    
+    Example:
+    
+    a=[1,2,0,3]
+    a.length-1=3 
+    a includes [0,3] ,hence the function should return true
+    */
 function isAllPossibilities(x: number[]): boolean {
     throw new Error("This method or operation is not implemented.");
 }
 /*
-describe("Possiblities Array", function() {
-  it("simple test", function() {
-    assert.strictEqual(isAllPossibilities([0,2,19,4,4]),false)
-    assert.strictEqual(isAllPossibilities([3,2,1,0]),true)
-    assert.strictEqual(isAllPossibilities([0,1,2,3]),true)
-    assert.strictEqual(isAllPossibilities([1,2,3,4]),false)
-    assert.strictEqual(isAllPossibilities([0,2,3]),false)
-    assert.strictEqual(isAllPossibilities([0]),true)
-    assert.strictEqual(isAllPossibilities([]),false)
-    assert.strictEqual(isAllPossibilities([0,1,2,3,4,5,6,7,8,9]),true)
-    assert.strictEqual(isAllPossibilities([0,1,3,-2,5,4]),false)
-    assert.strictEqual(isAllPossibilities([1,-1,2,-2,3,-3,6]),false)
-  });
-});
-*/
+    describe("Possiblities Array", function() {
+      it("simple test", function() {
+        assert.strictEqual(isAllPossibilities([0,2,19,4,4]),false)
+        assert.strictEqual(isAllPossibilities([3,2,1,0]),true)
+        assert.strictEqual(isAllPossibilities([0,1,2,3]),true)
+        assert.strictEqual(isAllPossibilities([1,2,3,4]),false)
+        assert.strictEqual(isAllPossibilities([0,2,3]),false)
+        assert.strictEqual(isAllPossibilities([0]),true)
+        assert.strictEqual(isAllPossibilities([]),false)
+        assert.strictEqual(isAllPossibilities([0,1,2,3,4,5,6,7,8,9]),true)
+        assert.strictEqual(isAllPossibilities([0,1,3,-2,5,4]),false)
+        assert.strictEqual(isAllPossibilities([1,-1,2,-2,3,-3,6]),false)
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -4633,41 +4645,41 @@ describe("Possiblities Array", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next.
-
-Mutation
-
-A mutation here may happen on zero or more positions in a chromosome. It is going to check every position and by a given probability it will decide if a mutation will occur.
-
-A mutation is the change from 0 to 1 or from 1 to 0.
-
-Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
-*/
+    Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next.
+    
+    Mutation
+    
+    A mutation here may happen on zero or more positions in a chromosome. It is going to check every position and by a given probability it will decide if a mutation will occur.
+    
+    A mutation is the change from 0 to 1 or from 1 to 0.
+    
+    Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
+    */
 const mutate = (chromosome: string, p: number): string => {
     return "hello";
 };
 
 /*
-describe('mutate', () => {
-  const zero = '0'.repeat(9);
-  const one  = '1'.repeat(9);
-
-  it('100% mutate', () => {
-    assert.equal(mutate(zero, 1), one);
-    assert.equal(mutate(one, 1), zero);
-  });
-  
-  it('0% mutate', () => {
-    assert.equal(mutate(zero, 0), zero);
-    assert.equal(mutate(one, 0), one);
-  });
-
-  it('50% mutate', () => {
-    assert(mutate(zero, 0.5).split('').some(x => x == '1'));
-    assert(mutate(one, 0.5).split('').some(x => x == '1'));
-  });
-});
-*/
+    describe('mutate', () => {
+      const zero = '0'.repeat(9);
+      const one  = '1'.repeat(9);
+    
+      it('100% mutate', () => {
+        assert.equal(mutate(zero, 1), one);
+        assert.equal(mutate(one, 1), zero);
+      });
+      
+      it('0% mutate', () => {
+        assert.equal(mutate(zero, 0), zero);
+        assert.equal(mutate(one, 0), one);
+      });
+    
+      it('50% mutate', () => {
+        assert(mutate(zero, 0.5).split('').some(x => x == '1'));
+        assert(mutate(one, 0.5).split('').some(x => x == '1'));
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -4687,24 +4699,24 @@ describe('mutate', () => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-I've got a crazy mental illness. I dislike numbers a lot. But it's a little complicated: The number I'm afraid of depends on which day of the week it is... This is a concrete description of my mental illness:
-
-Monday --> 12
-
-Tuesday --> numbers greater than 95
-
-Wednesday --> 34
-
-Thursday --> 0
-
-Friday --> numbers divisible by 2
-
-Saturday --> 56
-
-Sunday --> 666 or -666
-
-Write a function which takes a string (day of the week) and an integer (number to be tested) so it tells the doctor if I'm afraid or not. (return a boolean)
-*/
+    I've got a crazy mental illness. I dislike numbers a lot. But it's a little complicated: The number I'm afraid of depends on which day of the week it is... This is a concrete description of my mental illness:
+    
+    Monday --> 12
+    
+    Tuesday --> numbers greater than 95
+    
+    Wednesday --> 34
+    
+    Thursday --> 0
+    
+    Friday --> numbers divisible by 2
+    
+    Saturday --> 56
+    
+    Sunday --> 666 or -666
+    
+    Write a function which takes a string (day of the week) and an integer (number to be tested) so it tells the doctor if I'm afraid or not. (return a boolean)
+    */
 const amIAfraid = (day: string, num: number): boolean => {
     let solution: boolean = false;
 
@@ -4731,16 +4743,16 @@ const amIAfraid2 = (day: string, num: number): boolean => {
     );
 };
 /*
-describe("example", function() {
-  it("test", function() {
-    assert.equal(amIAfraid("Monday", 13), false, "Should return false");
-    assert.equal(amIAfraid("Sunday", -666), true, "Should return true");
-    assert.equal(amIAfraid("Tuesday", 2), false, "Should return false");
-    assert.equal(amIAfraid("Tuesday", 965), true, "Should return true");
-    assert.equal(amIAfraid("Friday", 2), true, "Should return true");
-  });
-});
-*/
+    describe("example", function() {
+      it("test", function() {
+        assert.equal(amIAfraid("Monday", 13), false, "Should return false");
+        assert.equal(amIAfraid("Sunday", -666), true, "Should return true");
+        assert.equal(amIAfraid("Tuesday", 2), false, "Should return false");
+        assert.equal(amIAfraid("Tuesday", 965), true, "Should return true");
+        assert.equal(amIAfraid("Friday", 2), true, "Should return true");
+      });
+    });
+    */
 
 // console.log();
 // console.log();
@@ -4989,23 +5001,23 @@ function amIAfraid11(day: string, num: number): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You will be given an array that contains two strings. Your job is to create a function that will take those two strings and transpose them, so that the strings go from top to bottom instead of left to right.
-
-e.g. transposeTwoStrings(['Hello','World']);
-
-should return
-
-H W  
-e o  
-l r  
-l l  
-o d
-A few things to note:
-
-There should be one space in between the two characters
-You don't have to modify the case (i.e. no need to change to upper or lower)
-If one string is longer than the other, there should be a space where the character would be
-*/
+    You will be given an array that contains two strings. Your job is to create a function that will take those two strings and transpose them, so that the strings go from top to bottom instead of left to right.
+    
+    e.g. transposeTwoStrings(['Hello','World']);
+    
+    should return
+    
+    H W  
+    e o  
+    l r  
+    l l  
+    o d
+    A few things to note:
+    
+    There should be one space in between the two characters
+    You don't have to modify the case (i.e. no need to change to upper or lower)
+    If one string is longer than the other, there should be a space where the character would be
+    */
 const transposeTwoStrings = (arr: string[]): string => {
     // DETERMINE LENGTH OF LONGERST WORD FOR NUMBER OF ITERATIONS
     const numIterations: number = Math.max(arr[0].length, arr[1].length);
@@ -5042,27 +5054,27 @@ const transposeTwoStrings = (arr: string[]): string => {
     return solution;
 };
 /*
-console.log(transposeTwoStrings(['Hello', 'World!']));
-
-6
-
-char 1: H char 2: W current row:  H W
-char 1: e char 2: o current row:  e o
-char 1: l char 2: r current row:  l r
-char 1: l char 2: l current row:  l l
-char 1: o char 2: d current row:  o d
-char 1:   char 2: ! current row:    !
-
-[ 'H W', 'e o', 'l r', 'l l', 'o d', '  !' ]
-
-H W
-e o
-l r
-l l
-o d
-  !
-
-*/
+    console.log(transposeTwoStrings(['Hello', 'World!']));
+    
+    6
+    
+    char 1: H char 2: W current row:  H W
+    char 1: e char 2: o current row:  e o
+    char 1: l char 2: r current row:  l r
+    char 1: l char 2: l current row:  l l
+    char 1: o char 2: d current row:  o d
+    char 1:   char 2: ! current row:    !
+    
+    [ 'H W', 'e o', 'l r', 'l l', 'o d', '  !' ]
+    
+    H W
+    e o
+    l r
+    l l
+    o d
+      !
+    
+    */
 
 // console.log(transposeTwoStrings(['Hello', 'World!']));
 // console.log();
@@ -5109,33 +5121,33 @@ function transposeTwoStrings4(arr: [string, string]): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Introduction
-The GADERYPOLUKI is a simple substitution cypher used in scouting to encrypt messages. The encryption is based on short, easy to remember key. The key is written as paired letters, which are in the cipher simple replacement.
-
-The most frequently used key is "GA-DE-RY-PO-LU-KI".
-
- G => A
- g => a
- a => g
- A => G
- D => E
-  etc.
-The letters, which are not on the list of substitutes, stays in the encrypted text without changes.
-
-Task
-Your task is to help scouts to encrypt and decrypt thier messages. Write the Encode and Decode functions.
-
-Input/Output
-The input string consists of lowercase and uperrcase characters and white . The substitution has to be case-sensitive.
-
-Example
- Encode("ABCD")          // => GBCE 
- Encode("Ala has a cat") // => Gug hgs g cgt 
- Encode("gaderypoluki"); // => agedyropulik
- Decode("Gug hgs g cgt") // => Ala has a cat 
- Decode("agedyropulik")  // => gaderypoluki
- Decode("GBCE")          // => ABCD
-*/
+    Introduction
+    The GADERYPOLUKI is a simple substitution cypher used in scouting to encrypt messages. The encryption is based on short, easy to remember key. The key is written as paired letters, which are in the cipher simple replacement.
+    
+    The most frequently used key is "GA-DE-RY-PO-LU-KI".
+    
+     G => A
+     g => a
+     a => g
+     A => G
+     D => E
+      etc.
+    The letters, which are not on the list of substitutes, stays in the encrypted text without changes.
+    
+    Task
+    Your task is to help scouts to encrypt and decrypt thier messages. Write the Encode and Decode functions.
+    
+    Input/Output
+    The input string consists of lowercase and uperrcase characters and white . The substitution has to be case-sensitive.
+    
+    Example
+     Encode("ABCD")          // => GBCE 
+     Encode("Ala has a cat") // => Gug hgs g cgt 
+     Encode("gaderypoluki"); // => agedyropulik
+     Decode("Gug hgs g cgt") // => Ala has a cat 
+     Decode("agedyropulik")  // => gaderypoluki
+     Decode("GBCE")          // => ABCD
+    */
 const encodeA = (str: string): string => {
     interface KeyVal {
         [key: string]: string;
@@ -5180,17 +5192,17 @@ const decodeA = (str: string): string => {
     return encodeA(str);
 };
 /*
-describe("Scouts are waiting!", function(){
-  it("Basic Tests", function(){
-    assert.strictEqual( encode("Ala has a cat") , "Gug hgs g cgt" );
-    assert.strictEqual( decode("Gug hgs g cgt") , "Ala has a cat" );
-    assert.strictEqual( encode("ABCD") , "GBCE" );
-    assert.strictEqual( encode("gaderypoluki") , "agedyropulik" );
-    assert.strictEqual( decode("agedyropulik") , "gaderypoluki" );
-    assert.strictEqual( decode("GBCE") , "ABCD" );
-  });
-});
-*/
+    describe("Scouts are waiting!", function(){
+      it("Basic Tests", function(){
+        assert.strictEqual( encode("Ala has a cat") , "Gug hgs g cgt" );
+        assert.strictEqual( decode("Gug hgs g cgt") , "Ala has a cat" );
+        assert.strictEqual( encode("ABCD") , "GBCE" );
+        assert.strictEqual( encode("gaderypoluki") , "agedyropulik" );
+        assert.strictEqual( decode("agedyropulik") , "gaderypoluki" );
+        assert.strictEqual( decode("GBCE") , "ABCD" );
+      });
+    });
+    */
 
 // "Gug hgs g cgt"
 // console.log(encodeA("Ala has a cat"));
@@ -5372,44 +5384,44 @@ function decodeA6(str: String): String {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Consider integer coordinates x, y in the Cartesian plan and three functions f, g, h defined by:
-
-f: 1 <= x <= n, 1 <= y <= n --> f(x, y) = min(x, y)
-g: 1 <= x <= n, 1 <= y <= n --> g(x, y) = max(x, y)
-h: 1 <= x <= n, 1 <= y <= n --> h(x, y) = x + y
-where n is a given integer (n >= 1, guaranteed) and x, y are integers.
-
-In the table below you can see the value of the function f with n = 6.
-
----	0	1	2	3	4	5	6
-6	-	1	2	3	4	5	6
-5	-	1	2	3	4	5	5
-4	-	1	2	3	4	4	4
-3	-	1	2	3	3	3	3
-2	-	1	2	2	2	2	2
-1	-	1	1	1	1	1	1
-0	-	-	-	-	-	-	-
-The task is to calculate the sum of f(x, y), g(x, y) and h(x, y) for all integers x and y such that (1 <= x <= n, 1 <= y <= n).
-
-The function sumin (sum of f) will take n as a parameter and return the sum of min(x, y) in the domain 1 <= x <= n, 1 <= y <= n. The function sumax (sum of g) will take n as a parameter and return the sum of max(x, y) in the same domain. The function sumsum (sum of h) will take n as a parameter and return the sum of x + y in the same domain.
-
-Examples:
-sumin(6) --> 91
-sumin(45) --> 31395
-sumin(999) --> 332833500
-sumin(5000) --> 41679167500
-
-sumax(6) --> 161
-sumax(45) --> 61755
-sumax(999) --> 665167500
-sumax(5000) --> 83345832500
-
-sumsum(6) --> 252
-sumsum(45) --> 93150
-sumsum(999) --> 998001000
-sumsum(5000) --> 125025000000
-
-*/
+    Consider integer coordinates x, y in the Cartesian plan and three functions f, g, h defined by:
+    
+    f: 1 <= x <= n, 1 <= y <= n --> f(x, y) = min(x, y)
+    g: 1 <= x <= n, 1 <= y <= n --> g(x, y) = max(x, y)
+    h: 1 <= x <= n, 1 <= y <= n --> h(x, y) = x + y
+    where n is a given integer (n >= 1, guaranteed) and x, y are integers.
+    
+    In the table below you can see the value of the function f with n = 6.
+    
+    ---	0	1	2	3	4	5	6
+    6	-	1	2	3	4	5	6
+    5	-	1	2	3	4	5	5
+    4	-	1	2	3	4	4	4
+    3	-	1	2	3	3	3	3
+    2	-	1	2	2	2	2	2
+    1	-	1	1	1	1	1	1
+    0	-	-	-	-	-	-	-
+    The task is to calculate the sum of f(x, y), g(x, y) and h(x, y) for all integers x and y such that (1 <= x <= n, 1 <= y <= n).
+    
+    The function sumin (sum of f) will take n as a parameter and return the sum of min(x, y) in the domain 1 <= x <= n, 1 <= y <= n. The function sumax (sum of g) will take n as a parameter and return the sum of max(x, y) in the same domain. The function sumsum (sum of h) will take n as a parameter and return the sum of x + y in the same domain.
+    
+    Examples:
+    sumin(6) --> 91
+    sumin(45) --> 31395
+    sumin(999) --> 332833500
+    sumin(5000) --> 41679167500
+    
+    sumax(6) --> 161
+    sumax(45) --> 61755
+    sumax(999) --> 665167500
+    sumax(5000) --> 83345832500
+    
+    sumsum(6) --> 252
+    sumsum(45) --> 93150
+    sumsum(999) --> 998001000
+    sumsum(5000) --> 125025000000
+    
+    */
 function sumin(n: number): number {
     throw new Error("TODO");
 }
@@ -5420,14 +5432,14 @@ function sumsum(n: number): number {
     throw new Error("TODO");
 }
 /*
-describe("Fixed Tests sumin, sumax, sumsum", function() {
-    it("Basic tests", function() {
-        assert.equal(sumin(5), 55);
-        assert.equal(sumax(8), 372);
-        assert.equal(sumsum(8), 576);
+    describe("Fixed Tests sumin, sumax, sumsum", function() {
+        it("Basic tests", function() {
+            assert.equal(sumin(5), 55);
+            assert.equal(sumax(8), 372);
+            assert.equal(sumsum(8), 576);
+        });
     });
-});
-*/
+    */
 
 // console.log();
 // console.log();
@@ -5445,17 +5457,17 @@ describe("Fixed Tests sumin, sumax, sumsum", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In genetic algorithms, crossover is a genetic operator used to vary the programming of chromosomes from one generation to the next.
-
-The one-point crossover consists in swapping one's cromosome part with another in a specific given point. The image bellow shows the crossover being applied on chromosomes 1011011001111 and 1011100100110 with the cut point (index) 4:
-
-
-
-In this kata you have to implement a function crossover that receives two chromosomes chromosome1, chromosome2 and a zero-based index and it has to return an array with the crossover result on both chromosomes [chromosome1, chromosome2].
-
-Example:
-crossover('111000', '000110', 3) should return ['111110', 000000']
-*/
+    In genetic algorithms, crossover is a genetic operator used to vary the programming of chromosomes from one generation to the next.
+    
+    The one-point crossover consists in swapping one's cromosome part with another in a specific given point. The image bellow shows the crossover being applied on chromosomes 1011011001111 and 1011100100110 with the cut point (index) 4:
+    
+    
+    
+    In this kata you have to implement a function crossover that receives two chromosomes chromosome1, chromosome2 and a zero-based index and it has to return an array with the crossover result on both chromosomes [chromosome1, chromosome2].
+    
+    Example:
+    crossover('111000', '000110', 3) should return ['111110', 000000']
+    */
 const crossover = (chrom1: string, chrom2: string, idx: number) => {
     const tail1: string = chrom1.slice(idx);
     const tail2: string = chrom2.slice(idx);
@@ -5470,13 +5482,13 @@ const crossover = (chrom1: string, chrom2: string, idx: number) => {
 };
 
 /*
-describe('crossover', () => {
-  it('Basic tests', () => {
-    assert(crossover('110','001',2)[0] === '111' && crossover('110','001',2)[1] === '000');
-    assert(crossover('111000','000110',3)[0] === '111110' && crossover('111000','000110',3)[1] === '000000');
-  });
-});
-*/
+    describe('crossover', () => {
+      it('Basic tests', () => {
+        assert(crossover('110','001',2)[0] === '111' && crossover('110','001',2)[1] === '000');
+        assert(crossover('111000','000110',3)[0] === '111110' && crossover('111000','000110',3)[1] === '000000');
+      });
+    });
+    */
 
 // console.log(crossover("111000", "000110", 3));
 // console.log();
@@ -5562,52 +5574,52 @@ class Chromosome {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In the drawing below we have a part of the Pascal's triangle, horizontal lines are numbered from zero (top).
-
-We want to calculate the sum of the squares of the binomial coefficients on a given horizontal line with a function called easyline (or easyLine or easy-line).
-
-Can you write a program which calculate easyline(n) where n is the horizontal line number?
-
-The function will take n (with: n>= 0) as parameter and will return the sum of the squares of the binomial coefficients on line n.
-
-Examples:
-easyline(0) => 1
-easyline(1) => 2
-easyline(4) => 70
-easyline(50) => 100891344545564193334812497256
-Ref:
-http://mathworld.wolfram.com/BinomialCoefficient.html
-
-alternative text
-
-Note:
-In Javascript, Coffeescript, Typescript, C++, PHP, C, R, Nim, Fortran to get around the fact that we have no big integers the function easyLine(n) will in fact return
-
-round(log(easyline(n)))
-
-and not the easyline(n) of the other languages.
-
-So, in Javascript, Coffeescript, Typescript, C++, PHP, R, Nim, C, Fortran:
-
-easyLine(0) => 0
-easyLine(1) => 1
-easyLine(4) => 4
-easyLine(50) => 67
-*/
+    In the drawing below we have a part of the Pascal's triangle, horizontal lines are numbered from zero (top).
+    
+    We want to calculate the sum of the squares of the binomial coefficients on a given horizontal line with a function called easyline (or easyLine or easy-line).
+    
+    Can you write a program which calculate easyline(n) where n is the horizontal line number?
+    
+    The function will take n (with: n>= 0) as parameter and will return the sum of the squares of the binomial coefficients on line n.
+    
+    Examples:
+    easyline(0) => 1
+    easyline(1) => 2
+    easyline(4) => 70
+    easyline(50) => 100891344545564193334812497256
+    Ref:
+    http://mathworld.wolfram.com/BinomialCoefficient.html
+    
+    alternative text
+    
+    Note:
+    In Javascript, Coffeescript, Typescript, C++, PHP, C, R, Nim, Fortran to get around the fact that we have no big integers the function easyLine(n) will in fact return
+    
+    round(log(easyline(n)))
+    
+    and not the easyline(n) of the other languages.
+    
+    So, in Javascript, Coffeescript, Typescript, C++, PHP, R, Nim, C, Fortran:
+    
+    easyLine(0) => 0
+    easyLine(1) => 1
+    easyLine(4) => 4
+    easyLine(50) => 67
+    */
 function easyLine(n: number): number {
     return 1;
 }
 /*
-describe("Fixed Tests easyLine", function() {
-  it("Basic tests", function() {
-    assert.strictEqual(easyLine(7), 8);
-    assert.strictEqual(easyLine(13), 16);
-    assert.strictEqual(easyLine(17), 22);
-    assert.strictEqual(easyLine(19), 24);
-  });
-});
-
-*/
+    describe("Fixed Tests easyLine", function() {
+      it("Basic tests", function() {
+        assert.strictEqual(easyLine(7), 8);
+        assert.strictEqual(easyLine(13), 16);
+        assert.strictEqual(easyLine(17), 22);
+        assert.strictEqual(easyLine(19), 24);
+      });
+    });
+    
+    */
 
 // console.log();
 // console.log();
@@ -5625,90 +5637,90 @@ describe("Fixed Tests easyLine", function() {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A History Lesson
-Tetris is a puzzle video game originally designed and programmed by Soviet Russian software engineer Alexey Pajitnov. The first playable version was completed on June 6, 1984. Pajitnov derived its name from combining the Greek numerical prefix tetra- (the falling pieces contain 4 segments) and tennis, Pajitnov's favorite sport.
-
-About scoring system
-The scoring formula is built on the idea that more difficult line clears should be awarded more points. For example, a single line clear is worth 40 points, clearing four lines at once (known as a Tetris) is worth 1200.
-
-A level multiplier is also used. The game starts at level 0. The level increases every ten lines you clear. Note that after increasing the level, the total number of cleared lines is not reset.
-
-For our task you can use this table:
-
-Level	Points for 1 line
-Points for 2 lines	Points for 3 lines	Points for 4 lines
-0	40	100
-300	1200
-1	80	200	600	2400
-2	120	300	900	3600
-3	160	400	1200	4800
-...
-7	320	800	2400	9600
-...	For level n you must determine the formula by yourself using given examples from the table.
-Task
-Calculate the final score of the game using original Nintendo scoring system
-
-Input
-Array with cleaned lines.
-Example: [4, 2, 2, 3, 3, 4, 2]
-Input will always be valid: array of random length (from 0 to 5000) with numbers from 0 to 4.
-
-Ouput
-Calculated final score.
-def get_score(arr) -> int: return 0
-
-Example
-getScore([4, 2, 2, 3, 3, 4, 2]); // returns 4900
-Step 1: +1200 points for 4 lines (current level 0). Score: 0+1200=1200;
-Step 2: +100 for 2 lines. Score: 1200+100=1300;
-Step 3: +100. Score: 1300+100=1400;
-Step 4: +300 for 3 lines (current level still 0). Score: 1400+300=1700.
-Total number of cleaned lines 11 (4 + 2 + 2 + 3), so level goes up to 1 (level ups each 10 lines);
-Step 5: +600 for 3 lines (current level 1). Score: 1700+600=2300;
-Step 6: +2400. Score: 2300+2400=4700;
-Step 7: +200. Total score: 4700+200=4900 points.
-*/
+    A History Lesson
+    Tetris is a puzzle video game originally designed and programmed by Soviet Russian software engineer Alexey Pajitnov. The first playable version was completed on June 6, 1984. Pajitnov derived its name from combining the Greek numerical prefix tetra- (the falling pieces contain 4 segments) and tennis, Pajitnov's favorite sport.
+    
+    About scoring system
+    The scoring formula is built on the idea that more difficult line clears should be awarded more points. For example, a single line clear is worth 40 points, clearing four lines at once (known as a Tetris) is worth 1200.
+    
+    A level multiplier is also used. The game starts at level 0. The level increases every ten lines you clear. Note that after increasing the level, the total number of cleared lines is not reset.
+    
+    For our task you can use this table:
+    
+    Level	Points for 1 line
+    Points for 2 lines	Points for 3 lines	Points for 4 lines
+    0	40	100
+    300	1200
+    1	80	200	600	2400
+    2	120	300	900	3600
+    3	160	400	1200	4800
+    ...
+    7	320	800	2400	9600
+    ...	For level n you must determine the formula by yourself using given examples from the table.
+    Task
+    Calculate the final score of the game using original Nintendo scoring system
+    
+    Input
+    Array with cleaned lines.
+    Example: [4, 2, 2, 3, 3, 4, 2]
+    Input will always be valid: array of random length (from 0 to 5000) with numbers from 0 to 4.
+    
+    Ouput
+    Calculated final score.
+    def get_score(arr) -> int: return 0
+    
+    Example
+    getScore([4, 2, 2, 3, 3, 4, 2]); // returns 4900
+    Step 1: +1200 points for 4 lines (current level 0). Score: 0+1200=1200;
+    Step 2: +100 for 2 lines. Score: 1200+100=1300;
+    Step 3: +100. Score: 1300+100=1400;
+    Step 4: +300 for 3 lines (current level still 0). Score: 1400+300=1700.
+    Total number of cleaned lines 11 (4 + 2 + 2 + 3), so level goes up to 1 (level ups each 10 lines);
+    Step 5: +600 for 3 lines (current level 1). Score: 1700+600=2300;
+    Step 6: +2400. Score: 2300+2400=4700;
+    Step 7: +200. Total score: 4700+200=4900 points.
+    */
 
 /*
-// CODEPEN JAVASCRIPT SOLUTION:
-
-const getScore2 = (arr) => {
-    console.log(arr);
-
-    let currLev = 0,
-        clearedLines = 0,
-        score = 0;
-    // let levMultiplier = 1;
-
-    const scoreObj = {
-        0: 0,
-        1: 40,
-        2: 100,
-        3: 300,
-        4: 1200,
+    // CODEPEN JAVASCRIPT SOLUTION:
+    
+    const getScore2 = (arr) => {
+        console.log(arr);
+    
+        let currLev = 0,
+            clearedLines = 0,
+            score = 0;
+        // let levMultiplier = 1;
+    
+        const scoreObj = {
+            0: 0,
+            1: 40,
+            2: 100,
+            3: 300,
+            4: 1200,
+        };
+    
+        arr.forEach((lines, idx) => {
+            console.log("iteration:", idx);
+    
+            let levMultiplier = currLev + 1;
+            console.log("   level multiplier:", levMultiplier);
+    
+            console.log("   current score:", scoreObj[lines] * levMultiplier);
+    
+            score += scoreObj[lines] * levMultiplier;
+            console.log("       total score:", score);
+            clearedLines += lines;
+            console.log("       cleared lines:", clearedLines);
+    
+            currLev = Math.floor(clearedLines / 10);
+            console.log("       current level:", currLev);
+        });
+    
+        return score;
     };
-
-    arr.forEach((lines, idx) => {
-        console.log("iteration:", idx);
-
-        let levMultiplier = currLev + 1;
-        console.log("   level multiplier:", levMultiplier);
-
-        console.log("   current score:", scoreObj[lines] * levMultiplier);
-
-        score += scoreObj[lines] * levMultiplier;
-        console.log("       total score:", score);
-        clearedLines += lines;
-        console.log("       cleared lines:", clearedLines);
-
-        currLev = Math.floor(clearedLines / 10);
-        console.log("       current level:", currLev);
-    });
-
-    return score;
-};
-
-*/
+    
+    */
 
 const getScore = (arr: number[]): number => {
     console.log(arr);
@@ -5750,67 +5762,67 @@ const getScore = (arr: number[]): number => {
 };
 
 /*
-
-console.log(getScore([4, 2, 2, 3, 3, 4, 2]));
-
-
-[
-  4, 2, 2, 3,
-  3, 4, 2
-]
-
-iteration: 0
-   level multiplier: 1
-   current score: 1200
-       total score: 1200
-       cleared lines: 4
-       current level: 0
-
-iteration: 1
-   level multiplier: 1
-   current score: 100
-       total score: 1300
-       cleared lines: 6
-       current level: 0
-
-iteration: 2
-   level multiplier: 1
-   current score: 100
-       total score: 1400
-       cleared lines: 8
-       current level: 0
-
-iteration: 3
-   level multiplier: 1
-   current score: 300
-       total score: 1700
-       cleared lines: 11
-       current level: 1
-
-iteration: 4
-   level multiplier: 2
-   current score: 600
-       total score: 2300
-       cleared lines: 14
-       current level: 1
-
-iteration: 5
-   level multiplier: 2
-   current score: 2400
-       total score: 4700
-       cleared lines: 18
-       current level: 1
-
-iteration: 6
-   level multiplier: 2
-   current score: 200
-       total score: 4900
-       cleared lines: 20
-       current level: 2
-
-4900
-
-*/
+    
+    console.log(getScore([4, 2, 2, 3, 3, 4, 2]));
+    
+    
+    [
+      4, 2, 2, 3,
+      3, 4, 2
+    ]
+    
+    iteration: 0
+       level multiplier: 1
+       current score: 1200
+           total score: 1200
+           cleared lines: 4
+           current level: 0
+    
+    iteration: 1
+       level multiplier: 1
+       current score: 100
+           total score: 1300
+           cleared lines: 6
+           current level: 0
+    
+    iteration: 2
+       level multiplier: 1
+       current score: 100
+           total score: 1400
+           cleared lines: 8
+           current level: 0
+    
+    iteration: 3
+       level multiplier: 1
+       current score: 300
+           total score: 1700
+           cleared lines: 11
+           current level: 1
+    
+    iteration: 4
+       level multiplier: 2
+       current score: 600
+           total score: 2300
+           cleared lines: 14
+           current level: 1
+    
+    iteration: 5
+       level multiplier: 2
+       current score: 2400
+           total score: 4700
+           cleared lines: 18
+           current level: 1
+    
+    iteration: 6
+       level multiplier: 2
+       current score: 200
+           total score: 4900
+           cleared lines: 20
+           current level: 2
+    
+    4900
+    
+    */
 
 // 4900
 // console.log(getScore([4, 2, 2, 3, 3, 4, 2]));
@@ -5899,19 +5911,19 @@ function getScore7(arr: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In this Kata, you will be given a string and your task will be to return the length of the longest prefix that is also a suffix. A prefix is the start of a string while the suffix is the end of a string. For instance, the prefixes of the string "abcd" are ["a","ab","abc"]. The suffixes are ["bcd", "cd", "d"]. You should not overlap the prefix and suffix.
-
-for example:
-solve("abcd") = 0, because no prefix == suffix. 
-solve("abcda") = 1, because the longest prefix which == suffix is "a".
-solve("abcdabc") = 3. Longest prefix which == suffix is "abc".
-solve("aaaa") = 2. Longest prefix which == suffix is "aa". You should not overlap the prefix and suffix
-solve("aa") = 1. You should not overlap the prefix and suffix.
-solve("a") = 0. You should not overlap the prefix and suffix.
-All strings will be lowercase and string lengths are 1 <= length <= 500
-
-More examples in test cases. Good luck!
-*/
+    In this Kata, you will be given a string and your task will be to return the length of the longest prefix that is also a suffix. A prefix is the start of a string while the suffix is the end of a string. For instance, the prefixes of the string "abcd" are ["a","ab","abc"]. The suffixes are ["bcd", "cd", "d"]. You should not overlap the prefix and suffix.
+    
+    for example:
+    solve("abcd") = 0, because no prefix == suffix. 
+    solve("abcda") = 1, because the longest prefix which == suffix is "a".
+    solve("abcdabc") = 3. Longest prefix which == suffix is "abc".
+    solve("aaaa") = 2. Longest prefix which == suffix is "aa". You should not overlap the prefix and suffix
+    solve("aa") = 1. You should not overlap the prefix and suffix.
+    solve("a") = 0. You should not overlap the prefix and suffix.
+    All strings will be lowercase and string lengths are 1 <= length <= 500
+    
+    More examples in test cases. Good luck!
+    */
 const solveAA = (str: string) => {
     const numIterations: number = Math.floor(str.length / 2);
     let solution: number = 0;
@@ -5927,21 +5939,21 @@ const solveAA = (str: string) => {
     return solution;
 };
 /*
-describe("Basic tests", function() {
-  it("Testing for abcd", () => assert.strictEqual(solve("abcd"), 0));
-  it("Testing for abcda", () => assert.strictEqual(solve("abcda"), 1));
-  it("Testing for abcdabc", () => assert.strictEqual(solve("abcdabc"), 3));
-  it("Testing for abcabc", () => assert.strictEqual(solve("abcabc"), 3));
-  it("Testing for abcabca", () => assert.strictEqual(solve("abcabca"), 1));
-  it("Testing for abcdabcc", () => assert.strictEqual(solve("abcdabcc"), 0));
-  it("Testing for aaaaa", () => assert.strictEqual(solve("aaaaa"), 2));
-  it("Testing for aaaa", () => assert.strictEqual(solve("aaaa"), 2));
-  it("Testing for aaa", () => assert.strictEqual(solve("aaa"), 1));
-  it("Testing for aa", () => assert.strictEqual(solve("aa"), 1));
-  it("Testing for a", () => assert.strictEqual(solve("a"), 0));
-  it("Testing for acbacc", () => assert.strictEqual(solve("acbacc"), 0));
-});
-*/
+    describe("Basic tests", function() {
+      it("Testing for abcd", () => assert.strictEqual(solve("abcd"), 0));
+      it("Testing for abcda", () => assert.strictEqual(solve("abcda"), 1));
+      it("Testing for abcdabc", () => assert.strictEqual(solve("abcdabc"), 3));
+      it("Testing for abcabc", () => assert.strictEqual(solve("abcabc"), 3));
+      it("Testing for abcabca", () => assert.strictEqual(solve("abcabca"), 1));
+      it("Testing for abcdabcc", () => assert.strictEqual(solve("abcdabcc"), 0));
+      it("Testing for aaaaa", () => assert.strictEqual(solve("aaaaa"), 2));
+      it("Testing for aaaa", () => assert.strictEqual(solve("aaaa"), 2));
+      it("Testing for aaa", () => assert.strictEqual(solve("aaa"), 1));
+      it("Testing for aa", () => assert.strictEqual(solve("aa"), 1));
+      it("Testing for a", () => assert.strictEqual(solve("a"), 0));
+      it("Testing for acbacc", () => assert.strictEqual(solve("acbacc"), 0));
+    });
+    */
 
 // console.log(solveAA("abcdabc"));
 // console.log(solveAA("aaaaaaa"));
@@ -5991,24 +6003,24 @@ function solveAA5(s: string): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A squared string is a string of n lines, each substring being n characters long. We are given two n-squared strings. For example:
-
-s1 = "abcd\nefgh\nijkl\nmnop" s2 = "qrst\nuvwx\nyz12\n3456"
-
-Let us build a new string strng of size (n + 1) x n in the following way:
-
-The first line of strng has the first char of the first line of s1 plus the chars of the last line of s2.
-The second line of strng has the first two chars of the second line of s1 plus the chars of the penultimate line of s2 except the last char
-and so on until the nth line of strng has the n chars of the nth line of s1 plus the first char of the first line of s2.
-Calling this function compose(s1, s2) we have:
-
-compose(s1, s2) -> "a3456\nefyz1\nijkuv\nmnopq"
-or printed:
-abcd    qrst  -->  a3456
-efgh    uvwx       efyz1
-ijkl    yz12       ijkuv
-mnop    3456       mnopq
-*/
+    A squared string is a string of n lines, each substring being n characters long. We are given two n-squared strings. For example:
+    
+    s1 = "abcd\nefgh\nijkl\nmnop" s2 = "qrst\nuvwx\nyz12\n3456"
+    
+    Let us build a new string strng of size (n + 1) x n in the following way:
+    
+    The first line of strng has the first char of the first line of s1 plus the chars of the last line of s2.
+    The second line of strng has the first two chars of the second line of s1 plus the chars of the penultimate line of s2 except the last char
+    and so on until the nth line of strng has the n chars of the nth line of s1 plus the first char of the first line of s2.
+    Calling this function compose(s1, s2) we have:
+    
+    compose(s1, s2) -> "a3456\nefyz1\nijkuv\nmnopq"
+    or printed:
+    abcd    qrst  -->  a3456
+    efgh    uvwx       efyz1
+    ijkl    yz12       ijkuv
+    mnop    3456       mnopq
+    */
 const compose = (str1: string, str2: string): string => {
     const strArr1: string[] = str1.split("\n");
     // !!! SECOND ARRAY IS REVERSED !!!
@@ -6038,29 +6050,29 @@ const compose = (str1: string, str2: string): string => {
     return solution;
 };
 /*
-
-console.log(compose("byGt\nhTts\nRTFF\nCnnI", "jIRl\nViBu\nrWOb\nNkTB"));
-
-
- [ 'byGt', 'hTts', 'RTFF', 'CnnI' ] [ 'NkTB', 'rWOb', 'ViBu', 'jIRl' ]
-
-byGt NkTB
-   currentWord: [ 'b', 'N', 'k', 'T', 'B' ]
-hTts rWOb
-   currentWord: [ 'h', 'T', 'r', 'W', 'O' ]
-RTFF ViBu
-   currentWord: [ 'R', 'T', 'F', 'V', 'i' ]
-CnnI jIRl
-   currentWord: [ 'C', 'n', 'n', 'I', 'j' ]
-
-[ 'bNkTB', 'hTrWO', 'RTFVi', 'CnnIj' ]
-
-bNkTB
-hTrWO
-RTFVi
-CnnIj
-
-*/
+    
+    console.log(compose("byGt\nhTts\nRTFF\nCnnI", "jIRl\nViBu\nrWOb\nNkTB"));
+    
+    
+     [ 'byGt', 'hTts', 'RTFF', 'CnnI' ] [ 'NkTB', 'rWOb', 'ViBu', 'jIRl' ]
+    
+    byGt NkTB
+       currentWord: [ 'b', 'N', 'k', 'T', 'B' ]
+    hTts rWOb
+       currentWord: [ 'h', 'T', 'r', 'W', 'O' ]
+    RTFF ViBu
+       currentWord: [ 'R', 'T', 'F', 'V', 'i' ]
+    CnnI jIRl
+       currentWord: [ 'C', 'n', 'n', 'I', 'j' ]
+    
+    [ 'bNkTB', 'hTrWO', 'RTFVi', 'CnnIj' ]
+    
+    bNkTB
+    hTrWO
+    RTFVi
+    CnnIj
+    
+    */
 
 // "bNkTB\nhTrWO\nRTFVi\nCnnIj"
 // console.log(compose("byGt\nhTts\nRTFF\nCnnI", "jIRl\nViBu\nrWOb\nNkTB"));
@@ -6134,34 +6146,34 @@ function compose5(s1: string, s2: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A noob programmer was given two simple tasks: sum and sort the elements of the given array arr = [a1, a2, ..., an].
-
-He started with summing and did it easily, but decided to store the sum he found in some random position of the original array which was a bad idea. Now he needs to cope with the second task, sorting the original array arr, and it's giving him trouble since he modified it.
-
-Given the array shuffled, consisting of elements a1, a2, ..., an, and their sumvalue in random order, return the sorted array of original elements a1, a2, ..., an.
-
-Example
-For shuffled = [1, 12, 3, 6, 2], the output should be [1, 2, 3, 6].
-
-1 + 3 + 6 + 2 = 12, which means that 1, 3, 6 and 2 are original elements of the array.
-
-For shuffled = [1, -3, -5, 7, 2], the output should be [-5, -3, 2, 7].
-
-Input/Output
-[input] integer array shuffled
-
-Array of at least two integers. It is guaranteed that there is an index i such that shuffled[i] = shuffled[0] + ... + shuffled[i - 1] + shuffled[i + 1] + ... + shuffled[n].
-
-Constraints:
-
-2 ≤ shuffled.length ≤ 30,
-
--300 ≤ shuffled[i] ≤ 300.
-
-[output] an integer array
-
-A sorted array of shuffled.length - 1 elements.
-*/
+    A noob programmer was given two simple tasks: sum and sort the elements of the given array arr = [a1, a2, ..., an].
+    
+    He started with summing and did it easily, but decided to store the sum he found in some random position of the original array which was a bad idea. Now he needs to cope with the second task, sorting the original array arr, and it's giving him trouble since he modified it.
+    
+    Given the array shuffled, consisting of elements a1, a2, ..., an, and their sumvalue in random order, return the sorted array of original elements a1, a2, ..., an.
+    
+    Example
+    For shuffled = [1, 12, 3, 6, 2], the output should be [1, 2, 3, 6].
+    
+    1 + 3 + 6 + 2 = 12, which means that 1, 3, 6 and 2 are original elements of the array.
+    
+    For shuffled = [1, -3, -5, 7, 2], the output should be [-5, -3, 2, 7].
+    
+    Input/Output
+    [input] integer array shuffled
+    
+    Array of at least two integers. It is guaranteed that there is an index i such that shuffled[i] = shuffled[0] + ... + shuffled[i - 1] + shuffled[i + 1] + ... + shuffled[n].
+    
+    Constraints:
+    
+    2 ≤ shuffled.length ≤ 30,
+    
+    -300 ≤ shuffled[i] ≤ 300.
+    
+    [output] an integer array
+    
+    A sorted array of shuffled.length - 1 elements.
+    */
 
 const shuffledArray = (shuffled: number[]): number[] => {
     let solution: number[] = [];
@@ -6201,29 +6213,29 @@ const shuffledArray = (shuffled: number[]): number[] => {
     return solution;
 };
 /*
-
-console.log(shuffledArray([1, -3, -5, 7, 2])); 
-
-shuffed array: [ 1, -3, -5, 7, 2 ]
-number: 1
-   shuffled: [ -3, -5, 7, 2 ]
-   sum: 1
-     Match found: 1
-number: -3
-   shuffled: [ 1, -5, 7, 2 ]
-   sum: 5
-number: -5
-   shuffled: [ 1, -3, 7, 2 ]
-   sum: 7
-number: 7
-   shuffled: [ 1, -3, -5, 2 ]
-   sum: -5
-number: 2
-   shuffled: [ 1, -3, -5, 7 ]
-   sum: 0
-[ -5, -3, 2, 7 ]
-
-*/
+    
+    console.log(shuffledArray([1, -3, -5, 7, 2])); 
+    
+    shuffed array: [ 1, -3, -5, 7, 2 ]
+    number: 1
+       shuffled: [ -3, -5, 7, 2 ]
+       sum: 1
+         Match found: 1
+    number: -3
+       shuffled: [ 1, -5, 7, 2 ]
+       sum: 5
+    number: -5
+       shuffled: [ 1, -3, 7, 2 ]
+       sum: 7
+    number: 7
+       shuffled: [ 1, -3, -5, 2 ]
+       sum: -5
+    number: 2
+       shuffled: [ 1, -3, -5, 7 ]
+       sum: 0
+    [ -5, -3, 2, 7 ]
+    
+    */
 
 //  [1, 2, 3, 6]
 // console.log(shuffledArray([1, 12, 3, 6, 2]));
@@ -6302,22 +6314,22 @@ function shuffledArray6(shuffled: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Special thanks to SteffenVogel_79 for the idea.
-
-Challenge:
-
-Given a string, return a copy of the string with the vowels' case swapped.
-
-For this kata, assume that vowels are in the set "aeouiAEOUI".
-
-Example: Given a string "C is alive!", your function should return "C Is AlIvE!"
-
-Addendum: Your solution is only required to work for the ASCII character set.
-
-Please make sure you only swap cases for the vowels.
-
-
-*/
+    Special thanks to SteffenVogel_79 for the idea.
+    
+    Challenge:
+    
+    Given a string, return a copy of the string with the vowels' case swapped.
+    
+    For this kata, assume that vowels are in the set "aeouiAEOUI".
+    
+    Example: Given a string "C is alive!", your function should return "C Is AlIvE!"
+    
+    Addendum: Your solution is only required to work for the ASCII character set.
+    
+    Please make sure you only swap cases for the vowels.
+    
+    
+    */
 const swapVowelCase = (str: string): string => {
     const lettersArr: string[] = str.split("");
 
@@ -6362,12 +6374,12 @@ const swapVowelCase = (str: string): string => {
 //         .join("");
 // };
 /*
- assert.equal(swapVowelCase(' '), ' ');
-    assert.equal(swapVowelCase('Is RubY dEad?'), 'is RUbY deAd?');
-    assert.equal(swapVowelCase('yo!'), 'yO!');
-    assert.equal(swapVowelCase('The'), 'ThE');
-    assert.equal(swapVowelCase('Lorem ipsum dolor sit amet'), 'LOrEm IpsUm dOlOr sIt AmEt');
-*/
+     assert.equal(swapVowelCase(' '), ' ');
+        assert.equal(swapVowelCase('Is RubY dEad?'), 'is RUbY deAd?');
+        assert.equal(swapVowelCase('yo!'), 'yO!');
+        assert.equal(swapVowelCase('The'), 'ThE');
+        assert.equal(swapVowelCase('Lorem ipsum dolor sit amet'), 'LOrEm IpsUm dOlOr sIt AmEt');
+    */
 
 // is RUbY deAd?'
 // console.log(swapVowelCase("Is RubY dEad?"));
@@ -6461,35 +6473,35 @@ function swapVowelCase5(str: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Something is wrong with our Warrior class. The strike method does not work correctly. The following shows an example of this code being used:
-
-var ninja = new Warrior('Ninja');
-var samurai = new Warrior('Samurai');
-
-samurai.strike(ninja, 3);
-// ninja.health should == 70
-Can you figure out what is wrong?
-
-
-*/
+    Something is wrong with our Warrior class. The strike method does not work correctly. The following shows an example of this code being used:
+    
+    var ninja = new Warrior('Ninja');
+    var samurai = new Warrior('Samurai');
+    
+    samurai.strike(ninja, 3);
+    // ninja.health should == 70
+    Can you figure out what is wrong?
+    
+    
+    */
 
 /*
-ORIGINAL CODE:
-
-class Warrior{
-    private name:string;
-      public health:number;
-    constructor(name:string){
-      this.name=name;
-      this.health=100;
-    }
-
-  }
-
-  Warrior.prototype.strike= function(enemy:Warrior, swings:number){
-      enemy.health = Math.max(0, enemy.health - (swings * 10));
-  }
-*/
+    ORIGINAL CODE:
+    
+    class Warrior{
+        private name:string;
+          public health:number;
+        constructor(name:string){
+          this.name=name;
+          this.health=100;
+        }
+    
+      }
+    
+      Warrior.prototype.strike= function(enemy:Warrior, swings:number){
+          enemy.health = Math.max(0, enemy.health - (swings * 10));
+      }
+    */
 
 // ❗️❗️❗️ MOVE strike FUNCTION INTO CLASS AS A PROPERTY ❗️❗️❗️
 class Warrior {
@@ -6507,12 +6519,12 @@ class Warrior {
 }
 
 /*
-var ninja = new solution.Warrior('Ninja')
-    var samurai = new solution.Warrior('Samurai')
-    
-    samurai.strike(ninja, 4);
-    assert.equal(ninja.health, 60, "Ninja's health is not correct");
-*/
+    var ninja = new solution.Warrior('Ninja')
+        var samurai = new solution.Warrior('Samurai')
+        
+        samurai.strike(ninja, 4);
+        assert.equal(ninja.health, 60, "Ninja's health is not correct");
+    */
 
 // console.log();
 // console.log();
@@ -6553,16 +6565,16 @@ Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a function that accepts two arguments: an array/list of integers and another integer (n).
-
-Determine the number of times where two integers in the array have a difference of n.
-
-For example:
-
-[1, 1, 5, 6, 9, 16, 27], n=4  -->  3  # (1,5), (1,5), (5,9)
-[1, 1, 3, 3], n=2             -->  4  # (1,3), (1,3), (1,3), (1,3)
-
-*/
+    Write a function that accepts two arguments: an array/list of integers and another integer (n).
+    
+    Determine the number of times where two integers in the array have a difference of n.
+    
+    For example:
+    
+    [1, 1, 5, 6, 9, 16, 27], n=4  -->  3  # (1,5), (1,5), (5,9)
+    [1, 1, 3, 3], n=2             -->  4  # (1,3), (1,3), (1,3), (1,3)
+    
+    */
 // ❗️❗️❗️ THIS WILL GET ALL POSSIBLE COMBINATIONS ❗️❗️❗️
 const intDiff = (intArr: number[], num: number): number => {
     let counter: number = 0;
@@ -6582,81 +6594,81 @@ const intDiff = (intArr: number[], num: number): number => {
 };
 
 /*
-intDiff([1, 1, 5, 6, 9, 16, 27], 4)
-
-outer loop:     1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    6
-   inner loop:    9
-   inner loop:    16
-   inner loop:    27
-outer loop:     1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    6
-   inner loop:    9
-   inner loop:    16
-   inner loop:    27
-outer loop:     5
-   inner loop:    1
-   inner loop:    1
-   inner loop:    6
-   inner loop:    9
-   inner loop:    16
-   inner loop:    27
-outer loop:     6
-   inner loop:    1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    9
-   inner loop:    16
-   inner loop:    27
-outer loop:     9
-   inner loop:    1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    6
-   inner loop:    16
-   inner loop:    27
-outer loop:     16
-   inner loop:    1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    6
-   inner loop:    9
-   inner loop:    27
-outer loop:     27
-   inner loop:    1
-   inner loop:    1
-   inner loop:    5
-   inner loop:    6
-   inner loop:    9
-   inner loop:    16
-❗️❗️❗️ expected 6 to equal 3 ❗️❗️❗️
-*/
+    intDiff([1, 1, 5, 6, 9, 16, 27], 4)
+    
+    outer loop:     1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    6
+       inner loop:    9
+       inner loop:    16
+       inner loop:    27
+    outer loop:     1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    6
+       inner loop:    9
+       inner loop:    16
+       inner loop:    27
+    outer loop:     5
+       inner loop:    1
+       inner loop:    1
+       inner loop:    6
+       inner loop:    9
+       inner loop:    16
+       inner loop:    27
+    outer loop:     6
+       inner loop:    1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    9
+       inner loop:    16
+       inner loop:    27
+    outer loop:     9
+       inner loop:    1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    6
+       inner loop:    16
+       inner loop:    27
+    outer loop:     16
+       inner loop:    1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    6
+       inner loop:    9
+       inner loop:    27
+    outer loop:     27
+       inner loop:    1
+       inner loop:    1
+       inner loop:    5
+       inner loop:    6
+       inner loop:    9
+       inner loop:    16
+    ❗️❗️❗️ expected 6 to equal 3 ❗️❗️❗️
+    */
 
 /*
-console.log(intDiff([1, 1, 3, 3], 2));
-
-outer loop:     1
-   inner loop:    1
-   inner loop:    3
-   inner loop:    3
-outer loop:     1
-   inner loop:    1
-   inner loop:    3
-   inner loop:    3
-outer loop:     3
-   inner loop:    1
-   inner loop:    1
-   inner loop:    3
-outer loop:     3
-   inner loop:    1
-   inner loop:    1
-   inner loop:    3
-4
-*/
+    console.log(intDiff([1, 1, 3, 3], 2));
+    
+    outer loop:     1
+       inner loop:    1
+       inner loop:    3
+       inner loop:    3
+    outer loop:     1
+       inner loop:    1
+       inner loop:    3
+       inner loop:    3
+    outer loop:     3
+       inner loop:    1
+       inner loop:    1
+       inner loop:    3
+    outer loop:     3
+       inner loop:    1
+       inner loop:    1
+       inner loop:    3
+    4
+    */
 const intDiff2 = (intArr: number[], num: number): number => {
     let counter: number = 0;
 
@@ -6674,9 +6686,9 @@ const intDiff2 = (intArr: number[], num: number): number => {
     return counter;
 };
 /*
-assert.equal(intDiff([1, 1, 5, 6, 9, 16, 27], 4), 3);
-    assert.equal(intDiff([1, 1, 3, 3], 2), 4);
-*/
+    assert.equal(intDiff([1, 1, 5, 6, 9, 16, 27], 4), 3);
+        assert.equal(intDiff([1, 1, 3, 3], 2), 4);
+    */
 
 // console.log(intDiff([1, 1, 3, 3], 2));
 
@@ -6696,26 +6708,26 @@ assert.equal(intDiff([1, 1, 5, 6, 9, 16, 27], 4), 3);
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Sort an array by value and index
-Your task is to sort an array of integer numbers by the product of the value and the index of the positions.
-
-For sorting the index starts at 1, NOT at 0!
-The sorting has to be ascending.
-The array will never be null and will always contain numbers.
-
-Example:
-
-Input: 23, 2, 3, 4, 5
-Product of value and index:
-23 => 23 * 1 = 23  -> Output-Pos 4
- 2 =>  2 * 2 = 4   -> Output-Pos 1
- 3 =>  3 * 3 = 9   -> Output-Pos 2
- 4 =>  4 * 4 = 16  -> Output-Pos 3
- 5 =>  5 * 5 = 25  -> Output-Pos 5
-
-Output: 2, 3, 4, 23, 5
-
-*/
+    Sort an array by value and index
+    Your task is to sort an array of integer numbers by the product of the value and the index of the positions.
+    
+    For sorting the index starts at 1, NOT at 0!
+    The sorting has to be ascending.
+    The array will never be null and will always contain numbers.
+    
+    Example:
+    
+    Input: 23, 2, 3, 4, 5
+    Product of value and index:
+    23 => 23 * 1 = 23  -> Output-Pos 4
+     2 =>  2 * 2 = 4   -> Output-Pos 1
+     3 =>  3 * 3 = 9   -> Output-Pos 2
+     4 =>  4 * 4 = 16  -> Output-Pos 3
+     5 =>  5 * 5 = 25  -> Output-Pos 5
+    
+    Output: 2, 3, 4, 23, 5
+    
+    */
 const sortByValueAndIndex = (numArr: number[]): number[] => {
     // interface StrKey {
     //     [key: number]: number;
@@ -6741,22 +6753,22 @@ const sortByValueAndIndex = (numArr: number[]): number[] => {
     return solution;
 };
 /*
-var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
-    var expected = [ 1, 2, 3, 4, 5 ];    
-    assert.deepEqual(actual, expected);
-      
-    actual = solution.sortByValueAndIndex([ 23, 2, 3, 4, 5 ]);
-    expected = [ 2, 3, 4, 23, 5 ];    
-    assert.deepEqual(actual, expected);
-      
-    actual = solution.sortByValueAndIndex([ 26, 2, 3, 4, 5 ]);
-    expected = [ 2, 3, 4, 5, 26 ];    
-    assert.deepEqual(actual, expected);
-      
-    actual = solution.sortByValueAndIndex([ 9, 5, 1, 4, 3 ]);
-    expected = [ 1, 9, 5, 3, 4 ];    
-    assert.deepEqual(actual, expected);    
-*/
+    var actual = solution.sortByValueAndIndex([ 1, 2, 3, 4, 5 ]);
+        var expected = [ 1, 2, 3, 4, 5 ];    
+        assert.deepEqual(actual, expected);
+          
+        actual = solution.sortByValueAndIndex([ 23, 2, 3, 4, 5 ]);
+        expected = [ 2, 3, 4, 23, 5 ];    
+        assert.deepEqual(actual, expected);
+          
+        actual = solution.sortByValueAndIndex([ 26, 2, 3, 4, 5 ]);
+        expected = [ 2, 3, 4, 5, 26 ];    
+        assert.deepEqual(actual, expected);
+          
+        actual = solution.sortByValueAndIndex([ 9, 5, 1, 4, 3 ]);
+        expected = [ 1, 9, 5, 3, 4 ];    
+        assert.deepEqual(actual, expected);    
+    */
 
 // expected = [ 2, 3, 4, 23, 5 ];
 // console.log(sortByValueAndIndex([23, 2, 3, 4, 5]));
@@ -6812,22 +6824,22 @@ function sortByValueAndIndex6(array: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Calculate how many times a number can be divided by a given number.
-
-Example
-For example the number 6 can be divided by 2 two times:
-
-1. 6 / 2 = 3
-2. 3 / 2 = 1 remainder = 1
-100 can be divided by 2 six times:
-
-1. 100 / 2 = 50
-2. 50 / 2 = 25
-3. 25 / 2 = 12 remainder 1
-4. 12 / 2 = 6
-5. 6 / 2 = 3
-6. 3 / 2 = 1 remainder 1
-*/
+    Calculate how many times a number can be divided by a given number.
+    
+    Example
+    For example the number 6 can be divided by 2 two times:
+    
+    1. 6 / 2 = 3
+    2. 3 / 2 = 1 remainder = 1
+    100 can be divided by 2 six times:
+    
+    1. 100 / 2 = 50
+    2. 50 / 2 = 25
+    3. 25 / 2 = 12 remainder 1
+    4. 12 / 2 = 6
+    5. 6 / 2 = 3
+    6. 3 / 2 = 1 remainder 1
+    */
 const divisions = (num: number, div: number): number => {
     let counter: number = 0;
 
@@ -6839,13 +6851,13 @@ const divisions = (num: number, div: number): number => {
     return counter;
 };
 /*j
- assert.strictEqual(divisions(6, 2), 2);
-    assert.strictEqual(divisions(100, 2), 6);
-    assert.strictEqual(divisions(2450, 5), 4);
-    assert.strictEqual(divisions(9999, 3), 8);
-    assert.strictEqual(divisions(2, 3), 0);
-    assert.strictEqual(divisions(5, 5), 1);
-*/
+     assert.strictEqual(divisions(6, 2), 2);
+        assert.strictEqual(divisions(100, 2), 6);
+        assert.strictEqual(divisions(2450, 5), 4);
+        assert.strictEqual(divisions(9999, 3), 8);
+        assert.strictEqual(divisions(2, 3), 0);
+        assert.strictEqual(divisions(5, 5), 1);
+    */
 
 // 6
 // console.log(divisions(100, 2));
@@ -6869,20 +6881,20 @@ function divisions2(n: number, divisor: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The goal of this Kata is to reduce the passed integer to a single digit (if not already) by converting the number to binary, taking the sum of the binary digits, and if that sum is not a single digit then repeat the process.
-
-If the passed integer is already a single digit there is no need to reduce
-For example given 5665 the function should return 5:
-
-5665 --> (binary) 1011000100001
-1011000100001 --> (sum of binary digits) 5
-Given 123456789 the function should return 1:
-
-123456789 --> (binary) 111010110111100110100010101
-111010110111100110100010101 --> (sum of binary digits) 16
-16 --> (binary) 10000
-10000 --> (sum of binary digits) 1
-*/
+    The goal of this Kata is to reduce the passed integer to a single digit (if not already) by converting the number to binary, taking the sum of the binary digits, and if that sum is not a single digit then repeat the process.
+    
+    If the passed integer is already a single digit there is no need to reduce
+    For example given 5665 the function should return 5:
+    
+    5665 --> (binary) 1011000100001
+    1011000100001 --> (sum of binary digits) 5
+    Given 123456789 the function should return 1:
+    
+    123456789 --> (binary) 111010110111100110100010101
+    111010110111100110100010101 --> (sum of binary digits) 16
+    16 --> (binary) 10000
+    10000 --> (sum of binary digits) 1
+    */
 const singleDigit = (num: number): number => {
     if (num < 10) return num;
 
@@ -6897,37 +6909,37 @@ const singleDigit = (num: number): number => {
 };
 
 /*
-console.log(singleDigit(123456789));
-
-CYCLE COUNT: 1
-111010110111100110100010101
-[
-  1, 1, 1, 0, 1, 0, 1, 1,
-  0, 1, 1, 1, 1, 0, 0, 1,
-  1, 0, 1, 0, 0, 0, 1, 0,
-  1, 0, 1
-]
-16
-
-CYCLE COUNT: 2
-10000
-[ 1, 0, 0, 0, 0 ]
-1
-
-1 RETURN VALUE
-*/
+    console.log(singleDigit(123456789));
+    
+    CYCLE COUNT: 1
+    111010110111100110100010101
+    [
+      1, 1, 1, 0, 1, 0, 1, 1,
+      0, 1, 1, 1, 1, 0, 0, 1,
+      1, 0, 1, 0, 0, 0, 1, 0,
+      1, 0, 1
+    ]
+    16
+    
+    CYCLE COUNT: 2
+    10000
+    [ 1, 0, 0, 0, 0 ]
+    1
+    
+    1 RETURN VALUE
+    */
 
 /*
-assert.strictEqual(singleDigit(5), 5)
-    assert.strictEqual(singleDigit(999), 8)
-    assert.strictEqual(singleDigit(1234444123), 1)
-    assert.strictEqual(singleDigit(443566), 2)
-    assert.strictEqual(singleDigit(565656565), 3)
-    assert.strictEqual(singleDigit(4868872), 8)
-    assert.strictEqual(singleDigit(234234235), 2)
-    assert.strictEqual(singleDigit(567448), 7)
-    assert.strictEqual(singleDigit(1000000000), 3)
-*/
+    assert.strictEqual(singleDigit(5), 5)
+        assert.strictEqual(singleDigit(999), 8)
+        assert.strictEqual(singleDigit(1234444123), 1)
+        assert.strictEqual(singleDigit(443566), 2)
+        assert.strictEqual(singleDigit(565656565), 3)
+        assert.strictEqual(singleDigit(4868872), 8)
+        assert.strictEqual(singleDigit(234234235), 2)
+        assert.strictEqual(singleDigit(567448), 7)
+        assert.strictEqual(singleDigit(1000000000), 3)
+    */
 
 // console.log(singleDigit(123456789));
 // console.log(singleDigit(5));
@@ -6982,36 +6994,36 @@ let singleDigit6 = (n: number): number =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-John wants to decorate the walls of a room with wallpaper. He wants a fool-proof method for getting it right.
-
-John knows that the rectangular room has a length of l meters, a width of w meters, a height of h meters. The standard width of the rolls he wants to buy is 52 centimeters. The length of a roll is 10 meters. He bears in mind however, that it’s best to have an extra length of wallpaper handy in case of mistakes or miscalculations so he wants to buy a length 15% greater than the one he needs.
-
-Last time he did these calculations he got a headache, so could you help John?
-
-Task
-Your function wallpaper(l, w, h) should return as a plain English word in lower case the number of rolls he must buy.
-
-Example:
-wallpaper(4.0, 3.5, 3.0) should return "ten"
-
-wallpaper(0.0, 3.5, 3.0) should return "zero"
-
-Notes:
-all rolls (even with incomplete width) are put edge to edge
-
-0 <= l, w, h (floating numbers); it can happens that w * h * l is zero
-
-the integer r (number of rolls) will always be less or equal to 20
-
-FORTH: the number of rolls will be a positive or null integer (not a plain English word; this number can be greater than 20)
-
-In Javascript English numbers are preloaded and can be accessed as:
-
-numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
-For other languages it is not preloaded but you can use the above one if you need it.
-
-
-*/
+    John wants to decorate the walls of a room with wallpaper. He wants a fool-proof method for getting it right.
+    
+    John knows that the rectangular room has a length of l meters, a width of w meters, a height of h meters. The standard width of the rolls he wants to buy is 52 centimeters. The length of a roll is 10 meters. He bears in mind however, that it’s best to have an extra length of wallpaper handy in case of mistakes or miscalculations so he wants to buy a length 15% greater than the one he needs.
+    
+    Last time he did these calculations he got a headache, so could you help John?
+    
+    Task
+    Your function wallpaper(l, w, h) should return as a plain English word in lower case the number of rolls he must buy.
+    
+    Example:
+    wallpaper(4.0, 3.5, 3.0) should return "ten"
+    
+    wallpaper(0.0, 3.5, 3.0) should return "zero"
+    
+    Notes:
+    all rolls (even with incomplete width) are put edge to edge
+    
+    0 <= l, w, h (floating numbers); it can happens that w * h * l is zero
+    
+    the integer r (number of rolls) will always be less or equal to 20
+    
+    FORTH: the number of rolls will be a positive or null integer (not a plain English word; this number can be greater than 20)
+    
+    In Javascript English numbers are preloaded and can be accessed as:
+    
+    numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+    For other languages it is not preloaded but you can use the above one if you need it.
+    
+    
+    */
 
 const wallpaper = (l: number, w: number, h: number): string => {
     const numbers: string[] = [
@@ -7052,11 +7064,11 @@ const wallpaper = (l: number, w: number, h: number): string => {
 };
 
 /*
- assert.strictEqual(wallpaper(6.3, 4.5, 3.29), "sixteen");
-    assert.strictEqual(wallpaper(6.3, 5.8, 3.13), "seventeen");
-    assert.strictEqual(wallpaper(6.1, 6.7, 2.81), "sixteen");
-    assert.strictEqual(wallpaper(6.1, 2.0, 3.15), "twelve");
-*/
+     assert.strictEqual(wallpaper(6.3, 4.5, 3.29), "sixteen");
+        assert.strictEqual(wallpaper(6.3, 5.8, 3.13), "seventeen");
+        assert.strictEqual(wallpaper(6.1, 6.7, 2.81), "sixteen");
+        assert.strictEqual(wallpaper(6.1, 2.0, 3.15), "twelve");
+    */
 
 // console.log(wallpaper(0, 4.5, 3.29));
 // 15.716076923076923
@@ -7139,14 +7151,14 @@ function wallpaper3(l: number, w: number, h: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In cryptanalysis, words patterns can be a useful tool in cracking simple ciphers.
-
-A word pattern is a description of the patterns of letters occurring in a word, where each letter is given an integer code in order of appearance. So the first letter is given the code 0, and second is then assigned 1 if it is different to the first letter or 0 otherwise, and so on.
-
-As an example, the word "hello" would become "0.1.2.2.3". For this task case-sensitivity is ignored, so "hello", "helLo" and "heLlo" will all return the same word pattern.
-
-Your task is to return the word pattern for a given word. All words provided will be non-empty strings of alphabetic characters only, i.e. matching the regex "[a-zA-Z]+".
-*/
+    In cryptanalysis, words patterns can be a useful tool in cracking simple ciphers.
+    
+    A word pattern is a description of the patterns of letters occurring in a word, where each letter is given an integer code in order of appearance. So the first letter is given the code 0, and second is then assigned 1 if it is different to the first letter or 0 otherwise, and so on.
+    
+    As an example, the word "hello" would become "0.1.2.2.3". For this task case-sensitivity is ignored, so "hello", "helLo" and "heLlo" will all return the same word pattern.
+    
+    Your task is to return the word pattern for a given word. All words provided will be non-empty strings of alphabetic characters only, i.e. matching the regex "[a-zA-Z]+".
+    */
 
 const wordPattern = (word: string): string => {
     interface StrKey {
@@ -7190,31 +7202,31 @@ const wordPattern = (word: string): string => {
 };
 
 /*
-console.log(wordPattern("heLlo"));
-
-
------ITERATION: 0 char: h -----
-       object: { h: 0 }
------ITERATION: 1 char: e -----
-       object: { h: 0, e: 1 }
------ITERATION: 2 char: l -----
-       object: { h: 0, e: 1, l: 2 }
------ITERATION: 3 char: l -----
-duplicate: l
-       object: { h: 0, e: 1, l: 2 }
------ITERATION: 4 char: o -----
-       object: { h: 0, e: 1, l: 2, o: 3 }
-{ h: 0, e: 1, l: 2, o: 3 }
-[ 0, 1, 2, 2, 3 ]
-0.1.2.2.3
-*/
+    console.log(wordPattern("heLlo"));
+    
+    
+    -----ITERATION: 0 char: h -----
+           object: { h: 0 }
+    -----ITERATION: 1 char: e -----
+           object: { h: 0, e: 1 }
+    -----ITERATION: 2 char: l -----
+           object: { h: 0, e: 1, l: 2 }
+    -----ITERATION: 3 char: l -----
+    duplicate: l
+           object: { h: 0, e: 1, l: 2 }
+    -----ITERATION: 4 char: o -----
+           object: { h: 0, e: 1, l: 2, o: 3 }
+    { h: 0, e: 1, l: 2, o: 3 }
+    [ 0, 1, 2, 2, 3 ]
+    0.1.2.2.3
+    */
 
 /*
- assert.deepEqual(wordPattern("hello"), "0.1.2.2.3");
-    assert.deepEqual(wordPattern("heLlo"), "0.1.2.2.3");
-    assert.deepEqual(wordPattern("helLo"), "0.1.2.2.3");
-    assert.deepEqual(wordPattern("Hippopotomonstrosesquippedaliophobia"), "0.1.2.2.3.2.3.4.3.5.3.6.7.4.8.3.7.9.7.10.11.1.2.2.9.12.13.14.1.3.2.0.3.15.1.13");
-*/
+     assert.deepEqual(wordPattern("hello"), "0.1.2.2.3");
+        assert.deepEqual(wordPattern("heLlo"), "0.1.2.2.3");
+        assert.deepEqual(wordPattern("helLo"), "0.1.2.2.3");
+        assert.deepEqual(wordPattern("Hippopotomonstrosesquippedaliophobia"), "0.1.2.2.3.2.3.4.3.5.3.6.7.4.8.3.7.9.7.10.11.1.2.2.9.12.13.14.1.3.2.0.3.15.1.13");
+    */
 
 // console.log(wordPattern("hello"));
 // console.log(wordPattern("helLo"));
@@ -7312,17 +7324,17 @@ function wordPattern8(word: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-I have the par value for each hole on a golf course and my stroke score on each hole. I have them stored as strings, because I wrote them down on a sheet of paper. Right now, I'm using those strings to calculate my golf score by hand: take the difference between my actual score and the par of the hole, and add up the results for all 18 holes.
- 
-For example:
- 
-If I took 7 shots on a hole where the par was 5, my score would be: 7 - 5 = 2
-If I got a hole-in-one where the par was 4, my score would be: 1 - 4 = -3.
-Doing all this math by hand is really hard! Can you help make my life easier?
- 
-Task Overview
-Complete the function which accepts two strings and calculates the golf score of a game. Both strings will be of length 18, and each character in the string will be a number between 1 and 9 inclusive.
-*/
+    I have the par value for each hole on a golf course and my stroke score on each hole. I have them stored as strings, because I wrote them down on a sheet of paper. Right now, I'm using those strings to calculate my golf score by hand: take the difference between my actual score and the par of the hole, and add up the results for all 18 holes.
+     
+    For example:
+     
+    If I took 7 shots on a hole where the par was 5, my score would be: 7 - 5 = 2
+    If I got a hole-in-one where the par was 4, my score would be: 1 - 4 = -3.
+    Doing all this math by hand is really hard! Can you help make my life easier?
+     
+    Task Overview
+    Complete the function which accepts two strings and calculates the golf score of a game. Both strings will be of length 18, and each character in the string will be a number between 1 and 9 inclusive.
+    */
 const golfScoreCalculator = (parList: string, scoreList: string): number => {
     // [-1,  1, 0,  0, -1,  1, -1,-1,  0, 2, -1,  0, -1,  0, 1, -1, 0,  1]
     const scoreMinPar: number[] = scoreList.split("").map((score, idx) => {
@@ -7335,8 +7347,8 @@ const golfScoreCalculator = (parList: string, scoreList: string): number => {
     return solution;
 };
 /*
- 
-*/
+     
+    */
 
 // -1
 // console.log(golfScoreCalculator("443454444344544443", "353445334534445344"));
@@ -7382,20 +7394,20 @@ function golfScoreCalculator5(parList: string, scoreList: string): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Help Suzuki rake his garden!
- 
-The monastery has a magnificent Zen garden made of white gravel and rocks and it is raked diligently everyday by the monks. Suzuki having a keen eye is always on the lookout for anything creeping into the garden that must be removed during the daily raking such as insects or moss.
- 
-You will be given a string representing the garden such as:
- 
-garden = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel'
-Rake out any items that are not a rock or gravel and replace them with gravel such that:
- 
-garden = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel'
-Returns a string with all items except a rock or gravel replaced with gravel:
- 
-garden = 'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel'
-*/
+    Help Suzuki rake his garden!
+     
+    The monastery has a magnificent Zen garden made of white gravel and rocks and it is raked diligently everyday by the monks. Suzuki having a keen eye is always on the lookout for anything creeping into the garden that must be removed during the daily raking such as insects or moss.
+     
+    You will be given a string representing the garden such as:
+     
+    garden = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel'
+    Rake out any items that are not a rock or gravel and replace them with gravel such that:
+     
+    garden = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel'
+    Returns a string with all items except a rock or gravel replaced with gravel:
+     
+    garden = 'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel'
+    */
 
 // 1️⃣
 const rakeGarden = (garden: string): string => {
@@ -7426,14 +7438,14 @@ const rakeGarden3 = (garden: string): string =>
         .join(" ");
 
 /*
-it("should work for sample (fixed) tests", function() {
-    assert.equal(true,true);
-    var garden1:string = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel';
-    assert.equal(solution.rakeGarden(garden1),'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel');
-    var garden2:string = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel';
-    assert.equal(solution.rakeGarden(garden2), 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel rock gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel rock gravel gravel');
-  });
-*/
+    it("should work for sample (fixed) tests", function() {
+        assert.equal(true,true);
+        var garden1:string = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel';
+        assert.equal(solution.rakeGarden(garden1),'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel');
+        var garden2:string = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel';
+        assert.equal(solution.rakeGarden(garden2), 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel gravel rock gravel gravel rock gravel gravel gravel gravel gravel gravel gravel rock gravel gravel gravel gravel gravel gravel gravel rock gravel gravel');
+      });
+    */
 var garden1: string =
     "slug spider rock gravel gravel gravel gravel gravel gravel gravel";
 // 'gravel gravel rock gravel gravel gravel gravel gravel gravel gravel');
@@ -7478,17 +7490,17 @@ function rakeGarden6(garden: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A genetic algorithm is based in groups of chromosomes, called populations. To start our population of chromosomes we need to generate random binary strings with a specified length.
- 
-In this kata you have to implement a function generate that receives a length and has to return a random binary strign with length characters.
- 
- 
- 
-Example:
-Generate a chromosome with length of 4 generate(4) could return the chromosome 0010, 1110, 1111... or any of 2^4 possibilities.
- 
-Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
-*/
+    A genetic algorithm is based in groups of chromosomes, called populations. To start our population of chromosomes we need to generate random binary strings with a specified length.
+     
+    In this kata you have to implement a function generate that receives a length and has to return a random binary strign with length characters.
+     
+     
+     
+    Example:
+    Generate a chromosome with length of 4 generate(4) could return the chromosome 0010, 1110, 1111... or any of 2^4 possibilities.
+     
+    Note: Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.
+    */
 const generate = (length: number): string => {
     let solution: string = "";
 
@@ -7501,14 +7513,14 @@ const generate = (length: number): string => {
 };
 
 /*
-❗️❗️❗️ RANDOM TESTS: Time: 4928ms Passed: 2Failed: 2Exit Code: 2 ❗️❗️❗️
-In a chromosome of length 50
-It should (probably) have at least one '1'
-It should (probably) have at least one '0'
-In a chromosome of length 10, running enough times it should be able to return all 2^10 possibilities (1024)
-len: 10
-Unspecified AssertionError
-*/
+    ❗️❗️❗️ RANDOM TESTS: Time: 4928ms Passed: 2Failed: 2Exit Code: 2 ❗️❗️❗️
+    In a chromosome of length 50
+    It should (probably) have at least one '1'
+    It should (probably) have at least one '0'
+    In a chromosome of length 10, running enough times it should be able to return all 2^10 possibilities (1024)
+    len: 10
+    Unspecified AssertionError
+    */
 
 // assert.equal(generate(16).length, 16);
 // assert.equal(generate(32).length, 32);
@@ -7531,8 +7543,8 @@ Unspecified AssertionError
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Determine the area of the largest square that can fit inside a circle with radius r.
-*/
+    Determine the area of the largest square that can fit inside a circle with radius r.
+    */
 const areaLargestSquare = (rad: number): number => {
     const side: number = Math.sqrt(2 * Math.pow(rad, 2));
     console.log(side);
@@ -7574,41 +7586,41 @@ function areaLargestSquare4(r: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Introduction
-Digital Cypher assigns to each letter of the alphabet unique number. For example:
- 
- a  b  c  d  e  f  g  h  i  j  k  l  m
- 1  2  3  4  5  6  7  8  9 10 11 12 13
- n  o  p  q  r  s  t  u  v  w  x  y  z
-14 15 16 17 18 19 20 21 22 23 24 25 26
-Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
- 
- s  c  o  u  t
-19  3 15 21 20
-Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
- 
-   s  c  o  u  t
-  19  3 15 21 20
- + 1  9  3  9  1
- ---------------
-  20 12 18 30 21
-  
-   m  a  s  t  e  r  p  i  e  c  e
-  13  1 19 20  5 18 16  9  5  3  5
-+  1  9  3  9  1  9  3  9  1  9  3
-  --------------------------------
-  14 10 22 29  6 27 19 18  6  12 8
-Task
-Write a function that accepts an array of integers code and a key number. As the result, it should return string containg a decoded message from the code.
- 
-Input / Output
-The code is a array of positive integers.
-The key input is a positive integer.
- 
-Example
-decode([ 20, 12, 18, 30, 21],1939);  ==> "scout"
-decode([ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8],1939);  ==>  "masterpiece"
-*/
+    Introduction
+    Digital Cypher assigns to each letter of the alphabet unique number. For example:
+     
+     a  b  c  d  e  f  g  h  i  j  k  l  m
+     1  2  3  4  5  6  7  8  9 10 11 12 13
+     n  o  p  q  r  s  t  u  v  w  x  y  z
+    14 15 16 17 18 19 20 21 22 23 24 25 26
+    Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
+     
+     s  c  o  u  t
+    19  3 15 21 20
+    Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
+     
+       s  c  o  u  t
+      19  3 15 21 20
+     + 1  9  3  9  1
+     ---------------
+      20 12 18 30 21
+      
+       m  a  s  t  e  r  p  i  e  c  e
+      13  1 19 20  5 18 16  9  5  3  5
+    +  1  9  3  9  1  9  3  9  1  9  3
+      --------------------------------
+      14 10 22 29  6 27 19 18  6  12 8
+    Task
+    Write a function that accepts an array of integers code and a key number. As the result, it should return string containg a decoded message from the code.
+     
+    Input / Output
+    The code is a array of positive integers.
+    The key input is a positive integer.
+     
+    Example
+    decode([ 20, 12, 18, 30, 21],1939);  ==> "scout"
+    decode([ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8],1939);  ==>  "masterpiece"
+    */
 const decode = (code: number[], key: number): String => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
     // [ 1, 9, 3, 9 ]
@@ -7719,18 +7731,18 @@ function decode5(code: number[], n: number): String {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances to the point from two fixed perpendicular directed lines, measured in the same unit of length.
- 
-The сoordinates of a point in the grid are written as (x,y). Each point in a coordinate system has eight neighboring points. Provided that the grid step = 1.
- 
-It is necessary to write a function that takes a coordinate on the x-axis and y-axis and returns a list of all the neighboring points. Points inside your returned list need not be sorted (any order is valid).
- 
-For Example:
- 
-cartesianNeighbor(2,2) -> [[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]
-cartesianNeighbor(5,7) -> [[6,7],[6,6],[6,8],[4,7],[4,6],[4,8],[5,6],[5,8]]
- 
-*/
+    A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances to the point from two fixed perpendicular directed lines, measured in the same unit of length.
+     
+    The сoordinates of a point in the grid are written as (x,y). Each point in a coordinate system has eight neighboring points. Provided that the grid step = 1.
+     
+    It is necessary to write a function that takes a coordinate on the x-axis and y-axis and returns a list of all the neighboring points. Points inside your returned list need not be sorted (any order is valid).
+     
+    For Example:
+     
+    cartesianNeighbor(2,2) -> [[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]
+    cartesianNeighbor(5,7) -> [[6,7],[6,6],[6,8],[4,7],[4,6],[4,8],[5,6],[5,8]]
+     
+    */
 const cartesianNeighbor = (x: number, y: number): number[][] => {
     let solution: number[][] = [];
 
@@ -7808,31 +7820,31 @@ function cartesianNeighbor4(x: number, y: number): number[][] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Sort the Vowels!
-In this kata, we want to sort the vowels in a special format.
- 
-Task
-Write a function which takes a input string s and return a string in the following way:
- 
-   
-                  C|                          R|
-                  |O                          n|
-                  D|                          d|
-   "CODEWARS" =>  |E       "Rnd Te5T"  =>      |
-                  W|                          T|
-                  |A                          |e
-                  R|                          5|
-                  S|                          T|
- 
-Notes:
- 
-List all the Vowels on the right side of |
-List every character except Vowels on the left side of |
-for the purpose of this kata, the vowels are : a e i o u
-Return every character in its original case
-Each line is seperated with \n
-Invalid input ( undefined / null / integer ) should return an empty string
-*/
+    Sort the Vowels!
+    In this kata, we want to sort the vowels in a special format.
+     
+    Task
+    Write a function which takes a input string s and return a string in the following way:
+     
+       
+                      C|                          R|
+                      |O                          n|
+                      D|                          d|
+       "CODEWARS" =>  |E       "Rnd Te5T"  =>      |
+                      W|                          T|
+                      |A                          |e
+                      R|                          5|
+                      S|                          T|
+     
+    Notes:
+     
+    List all the Vowels on the right side of |
+    List every character except Vowels on the left side of |
+    for the purpose of this kata, the vowels are : a e i o u
+    Return every character in its original case
+    Each line is seperated with \n
+    Invalid input ( undefined / null / integer ) should return an empty string
+    */
 
 // TS2488: Type 'string | null' must have a '[Symbol.iterator]()' method that returns an iterator
 const sortVowels = (str?: number | string | null): string => {
@@ -7873,12 +7885,12 @@ const sortVowels = (str?: number | string | null): string => {
 };
 
 /*
-assert.equal(sortVowels('Codewars'), 'C|\n|o\nd|\n|e\nw|\n|a\nr|\ns|');
-    assert.equal(sortVowels('Is RubY dEad?'), '|I\ns|\n |\nR|\n|u\nb|\nY|\n |\nd|\n|E\n|a\nd|\n?|');
-    assert.equal(sortVowels('yo!'), 'y|\n|o\n!|');
-    assert.equal(sortVowels('LOrEm IpsUm dOlOr sIt AmEt'), 'L|\n|O\nr|\n|E\nm|\n |\n|I\np|\ns|\n|U\nm|\n |\nd|\n|O\nl|\n|O\nr|\n |\ns|\n|I\nt|\n |\n|A\nm|\n|E\nt|');
-  });
-*/
+    assert.equal(sortVowels('Codewars'), 'C|\n|o\nd|\n|e\nw|\n|a\nr|\ns|');
+        assert.equal(sortVowels('Is RubY dEad?'), '|I\ns|\n |\nR|\n|u\nb|\nY|\n |\nd|\n|E\n|a\nd|\n?|');
+        assert.equal(sortVowels('yo!'), 'y|\n|o\n!|');
+        assert.equal(sortVowels('LOrEm IpsUm dOlOr sIt AmEt'), 'L|\n|O\nr|\n|E\nm|\n |\n|I\np|\ns|\n|U\nm|\n |\nd|\n|O\nl|\n|O\nr|\n |\ns|\n|I\nt|\n |\n|A\nm|\n|E\nt|');
+      });
+    */
 
 // console.log(sortVowels("Codewars"));
 // console.log(sortVowels());
@@ -7943,30 +7955,30 @@ function sortVowels6(s?: number | string | null): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Problem
-Complete the function that takes an odd integer (0 < n < 1000000) which is the difference between two consecutive perfect squares, and return these squares as a string in the format "bigger-smaller"
- 
-Examples
-9  -->  "25-16"
-5  -->  "9-4"
-7  -->  "16-9"
-*/
+    Problem
+    Complete the function that takes an odd integer (0 < n < 1000000) which is the difference between two consecutive perfect squares, and return these squares as a string in the format "bigger-smaller"
+     
+    Examples
+    9  -->  "25-16"
+    5  -->  "9-4"
+    7  -->  "16-9"
+    */
 const findSquares = (num: number): string => {
     return `${Math.pow((num - 1) / 2 + 1, 2)}-${Math.pow((num - 1) / 2, 2)}`;
 };
 
 /*
- 
-1   2   3   4   5     INTEGERS
-1   4   9   16  25    SQUARES
-  3   5   7   9       DIFFERENCES
-  
-  (3) => 1-2 SQUARED
-  (5) => 2-3 SQUARED
-  ...
-  (n) => (n-1) / 2 - ((n-1) / 2) + 1 BOTH SQUARED
- 
-*/
+     
+    1   2   3   4   5     INTEGERS
+    1   4   9   16  25    SQUARES
+      3   5   7   9       DIFFERENCES
+      
+      (3) => 1-2 SQUARED
+      (5) => 2-3 SQUARED
+      ...
+      (n) => (n-1) / 2 - ((n-1) / 2) + 1 BOTH SQUARED
+     
+    */
 
 // assert.strictEqual(findSquares(9), '25-16');
 // assert.strictEqual(findSquares(5), '9-4');
@@ -8001,26 +8013,26 @@ const findSquares3 = (num: number): string => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The town sheriff dislikes odd numbers and wants all odd numbered families out of town! In town crowds can form and individuals are often mixed with other people and families. However you can distinguish the family they belong to by the number on the shirts they wear. As the sheriff's assistant it's your job to find all the odd numbered families and remove them from the town!
- 
-Challenge: You are given a list of numbers. The numbers each repeat a certain number of times. Remove all numbers that repeat an odd number of times while keeping everything else the same.
- 
-oddOnesOut([1, 2, 3, 1, 3, 3]) = [1, 1]
-In the above example:
- 
-the number 1 appears twice
-the number 2 appears once
-the number 3 appears three times
-2 and 3 both appear an odd number of times, so they are removed from the list. The final result is: [1,1]
- 
-Here are more examples:
- 
-oddOnesOut([1, 1, 2, 2, 3, 3, 3]) = [1, 1, 2, 2]
-oddOnesOut([26, 23, 24, 17, 23, 24, 23, 26]) = [26, 24, 24, 26]
-oddOnesOut([1, 2, 3]) = []
-oddOnesOut([1]) = []
-Are you up to the challenge?
-*/
+    The town sheriff dislikes odd numbers and wants all odd numbered families out of town! In town crowds can form and individuals are often mixed with other people and families. However you can distinguish the family they belong to by the number on the shirts they wear. As the sheriff's assistant it's your job to find all the odd numbered families and remove them from the town!
+     
+    Challenge: You are given a list of numbers. The numbers each repeat a certain number of times. Remove all numbers that repeat an odd number of times while keeping everything else the same.
+     
+    oddOnesOut([1, 2, 3, 1, 3, 3]) = [1, 1]
+    In the above example:
+     
+    the number 1 appears twice
+    the number 2 appears once
+    the number 3 appears three times
+    2 and 3 both appear an odd number of times, so they are removed from the list. The final result is: [1,1]
+     
+    Here are more examples:
+     
+    oddOnesOut([1, 1, 2, 2, 3, 3, 3]) = [1, 1, 2, 2]
+    oddOnesOut([26, 23, 24, 17, 23, 24, 23, 26]) = [26, 24, 24, 26]
+    oddOnesOut([1, 2, 3]) = []
+    oddOnesOut([1]) = []
+    Are you up to the challenge?
+    */
 
 const oddOnesOut = (numsArr: number[]): number[] => {
     let solution: number[] = [];
@@ -8059,33 +8071,33 @@ const oddOnesOut = (numsArr: number[]): number[] => {
 };
 
 /*
-{ '1': 2, '2': 1, '3': 3 }
-num: 1 occurrence: 2 isOdd: false
-num: 2 occurrence: 1 isOdd: true
-num: 3 occurrence: 3 isOdd: true
-num: 1 occurrence: 2 isOdd: false
-num: 3 occurrence: 3 isOdd: true
-num: 3 occurrence: 3 isOdd: true
-[ 1, 1 ]
-*/
+    { '1': 2, '2': 1, '3': 3 }
+    num: 1 occurrence: 2 isOdd: false
+    num: 2 occurrence: 1 isOdd: true
+    num: 3 occurrence: 3 isOdd: true
+    num: 1 occurrence: 2 isOdd: false
+    num: 3 occurrence: 3 isOdd: true
+    num: 3 occurrence: 3 isOdd: true
+    [ 1, 1 ]
+    */
 
 /*
-it("Testing for [1, 2, 3, 1, 3, 3]", function() {
-    assert.deepEqual(oddOnesOut([1, 2, 3, 1, 3, 3]), [1, 1]);
-  });
-  it("Testing for [75, 68, 75, 47, 68]", function() {
-    assert.deepEqual(oddOnesOut([75, 68, 75, 47, 68]), [75, 68, 75, 68]);
-  });
-  it("Testing for [42, 72, 32, 4, 94, 82, 67, 67]", function() {
-    assert.deepEqual(oddOnesOut([42, 72, 32, 4, 94, 82, 67, 67]), [67, 67]);
-  });
-  it("Testing for [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]", function() {
-    assert.deepEqual(oddOnesOut([100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]), [100, 100, 100, 100]);
-  });
-  it("Testing for [82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]", function() {
-    assert.deepEqual(oddOnesOut([82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]), [44, 79, 50, 44, 79, 50]);
-  });
-*/
+    it("Testing for [1, 2, 3, 1, 3, 3]", function() {
+        assert.deepEqual(oddOnesOut([1, 2, 3, 1, 3, 3]), [1, 1]);
+      });
+      it("Testing for [75, 68, 75, 47, 68]", function() {
+        assert.deepEqual(oddOnesOut([75, 68, 75, 47, 68]), [75, 68, 75, 68]);
+      });
+      it("Testing for [42, 72, 32, 4, 94, 82, 67, 67]", function() {
+        assert.deepEqual(oddOnesOut([42, 72, 32, 4, 94, 82, 67, 67]), [67, 67]);
+      });
+      it("Testing for [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]", function() {
+        assert.deepEqual(oddOnesOut([100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]), [100, 100, 100, 100]);
+      });
+      it("Testing for [82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]", function() {
+        assert.deepEqual(oddOnesOut([82, 86, 71, 58, 44, 79, 50, 44, 79, 67, 82, 82, 55, 50]), [44, 79, 50, 44, 79, 50]);
+      });
+    */
 
 // console.log(oddOnesOut([1, 2, 3, 1, 3, 3]));
 // console.log();
@@ -8156,22 +8168,22 @@ function oddOnesOut5(nums: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Learning to code around your full time job is taking over your life. You realise that in order to make significant steps quickly, it would help to go to a coding bootcamp in London.
- 
-Problem is, many of them cost a fortune, and those that don't still involve a significant amount of time off work - who will pay your mortgage?!
- 
-To offset this risk, you decide that rather than leaving work totally, you will request a sabbatical so that you can go back to work post bootcamp and be paid while you look for your next role.
- 
-You need to approach your boss. Her decision will be based on three parameters:
- 
-val = your value to the organisation
-happiness = her happiness level at the time of asking and finally
-The numbers of letters from 'sabbatical' that are present in string s.
- 
-Note that if s contains three instances of the letter 'l', that still scores three points, even though there is only one in the word sabbatical.
- 
-If the sum of the three parameters (as described above) is > 22, return 'Sabbatical! Boom!', else return 'Back to your desk, boy.'.
-*/
+    Learning to code around your full time job is taking over your life. You realise that in order to make significant steps quickly, it would help to go to a coding bootcamp in London.
+     
+    Problem is, many of them cost a fortune, and those that don't still involve a significant amount of time off work - who will pay your mortgage?!
+     
+    To offset this risk, you decide that rather than leaving work totally, you will request a sabbatical so that you can go back to work post bootcamp and be paid while you look for your next role.
+     
+    You need to approach your boss. Her decision will be based on three parameters:
+     
+    val = your value to the organisation
+    happiness = her happiness level at the time of asking and finally
+    The numbers of letters from 'sabbatical' that are present in string s.
+     
+    Note that if s contains three instances of the letter 'l', that still scores three points, even though there is only one in the word sabbatical.
+     
+    If the sum of the three parameters (as described above) is > 22, return 'Sabbatical! Boom!', else return 'Back to your desk, boy.'.
+    */
 const sabb = (str: string, val: number, happy: number): string => {
     // GET UNUQUE LETTERS FROM TEST WORD "SABBATICAL"
     const testWord: string = "sabbatical";
@@ -8195,12 +8207,12 @@ const sabb = (str: string, val: number, happy: number): string => {
 };
 
 /*
-assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
-    assert.strictEqual(sabb('Why are you shouting?', 7, 2), 'Back to your desk, boy.'); 
-    assert.strictEqual(sabb('What do you mean I cant learn to code??', 8, 9), 'Sabbatical! Boom!'); 
-    assert.strictEqual(sabb('Please calm down', 9, 1), 'Back to your desk, boy.'); 
-    assert.strictEqual(sabb('I can?! Nice. FaC..Im coming :D', 9, 9), 'Sabbatical! Boom!'); 
-*/
+    assert.strictEqual(sabb('Can I have a sabbatical?', 5, 5), 'Sabbatical! Boom!');
+        assert.strictEqual(sabb('Why are you shouting?', 7, 2), 'Back to your desk, boy.'); 
+        assert.strictEqual(sabb('What do you mean I cant learn to code??', 8, 9), 'Sabbatical! Boom!'); 
+        assert.strictEqual(sabb('Please calm down', 9, 1), 'Back to your desk, boy.'); 
+        assert.strictEqual(sabb('I can?! Nice. FaC..Im coming :D', 9, 9), 'Sabbatical! Boom!'); 
+    */
 
 // 'Sabbatical! Boom!'
 // console.log(sabb("Can I have a sabbatical?", 5, 5));
@@ -8265,34 +8277,34 @@ function sabb6(s: string, val: number, happiness: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-MOD 256 without the MOD operator
-The MOD-operator % (aka mod/modulus/remainder):
- 
-Returns the remainder of a division operation.
-The sign of the result is the same as the sign of the first operand.
-(Different behavior in Python!)
-The short unbelievable mad story for this kata:
-I wrote a program and needed the remainder of the division by 256. And then it happened: The "5"/"%"-Key did not react. It must be broken! So I needed a way to:
- 
-Calculate the remainder of the division by 256 without the %-operator.
-Also here some examples:
- 
-Input 254  -> Result 254
-Input 256  -> Result 0
-Input 258  -> Result 2 
-Input -258 -> Result -2 (in Python: Result: 254!)
-It is always expected the behavior of the MOD-Operator of the language!
- 
-The input number will always between -10000 and 10000.
- 
-For some languages the %-operator will be blocked. If it is not blocked and you know how to block it, tell me and I will include it.
- 
-For all, who say, this would be a duplicate: No, this is no duplicate! There are two katas, in that you have to write a general method for MOD without %. But this kata is only for MOD 256. And so you can create also other specialized solutions. ;-)
- 
-Of course you can use the digit "5" in your solution. :-)
- 
-I'm very curious for your solutions and the way you solve it. I found several interesting "funny" ways.
-*/
+    MOD 256 without the MOD operator
+    The MOD-operator % (aka mod/modulus/remainder):
+     
+    Returns the remainder of a division operation.
+    The sign of the result is the same as the sign of the first operand.
+    (Different behavior in Python!)
+    The short unbelievable mad story for this kata:
+    I wrote a program and needed the remainder of the division by 256. And then it happened: The "5"/"%"-Key did not react. It must be broken! So I needed a way to:
+     
+    Calculate the remainder of the division by 256 without the %-operator.
+    Also here some examples:
+     
+    Input 254  -> Result 254
+    Input 256  -> Result 0
+    Input 258  -> Result 2 
+    Input -258 -> Result -2 (in Python: Result: 254!)
+    It is always expected the behavior of the MOD-Operator of the language!
+     
+    The input number will always between -10000 and 10000.
+     
+    For some languages the %-operator will be blocked. If it is not blocked and you know how to block it, tell me and I will include it.
+     
+    For all, who say, this would be a duplicate: No, this is no duplicate! There are two katas, in that you have to write a general method for MOD without %. But this kata is only for MOD 256. And so you can create also other specialized solutions. ;-)
+     
+    Of course you can use the digit "5" in your solution. :-)
+     
+    I'm very curious for your solutions and the way you solve it. I found several interesting "funny" ways.
+    */
 const mod256WithoutMod = (num: number): number => {
     const divisor: number = 256;
     const isPositive: boolean = num > 0;
@@ -8308,14 +8320,14 @@ const mod256WithoutMod = (num: number): number => {
 };
 
 /*
-assert.equal(solution.mod256WithoutMod(254), 254);
-    assert.equal(solution.mod256WithoutMod(256), 0);
-    assert.equal(solution.mod256WithoutMod(258), 2);
-    
-    assert.equal(solution.mod256WithoutMod(-254), -254);
-    assert.equal(solution.mod256WithoutMod(-256), 0);
-    assert.equal(solution.mod256WithoutMod(-258), -2);
-*/
+    assert.equal(solution.mod256WithoutMod(254), 254);
+        assert.equal(solution.mod256WithoutMod(256), 0);
+        assert.equal(solution.mod256WithoutMod(258), 2);
+        
+        assert.equal(solution.mod256WithoutMod(-254), -254);
+        assert.equal(solution.mod256WithoutMod(-256), 0);
+        assert.equal(solution.mod256WithoutMod(-258), -2);
+    */
 
 // console.log(mod256WithoutMod(-254));
 // console.log();
@@ -8364,20 +8376,20 @@ function mod256WithoutMod7(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your job is to figure out the index of which vowel is missing from a given string:
- 
-A has an index of 0,
-E has an index of 1,
-I has an index of 2,
-O has an index of 3,
-U has an index of 4.
-Notes: There is no need for string validation and every sentence given will contain all vowels but one. Also, you won't need to worry about capitals.
- 
-Examples
-"John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
-"Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
- 
-*/
+    Your job is to figure out the index of which vowel is missing from a given string:
+     
+    A has an index of 0,
+    E has an index of 1,
+    I has an index of 2,
+    O has an index of 3,
+    U has an index of 4.
+    Notes: There is no need for string validation and every sentence given will contain all vowels but one. Also, you won't need to worry about capitals.
+     
+    Examples
+    "John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
+    "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
+     
+    */
 const absentVowel = (text: string): number => {
     let solution: number = 0;
 
@@ -8480,12 +8492,12 @@ function absentVowel7(x: string): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Perimeter sequence
-The first three stages of a sequence are shown.
-blocks
-The blocksize is a by a and a ≥ 1.
-What is the perimeter of the nth shape in the sequence (n ≥ 1) ?
-*/
+    Perimeter sequence
+    The first three stages of a sequence are shown.
+    blocks
+    The blocksize is a by a and a ≥ 1.
+    What is the perimeter of the nth shape in the sequence (n ≥ 1) ?
+    */
 function perimeterSequence(a: number, n: number): number {
     return n * 4 * a;
 }
@@ -8512,31 +8524,31 @@ const perimeterSequence2 = (a: number, n: number): number => (a * n) << 2;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Introduction
-In the United Kingdom, the driving licence is the official document which authorises its holder to operate various types of motor vehicle on highways and some other roads to which the public have access. In England, Scotland and Wales they are administered by the Driver and Vehicle Licensing Agency (DVLA) and in Northern Ireland by the Driver & Vehicle Agency (DVA). A driving licence is required in the UK by any person driving a vehicle on any highway or other road defined in s.192 Road Traffic Act 1988[1] irrespective of ownership of the land over which the road passes, thus including many which allow the public to pass over private land; similar requirements apply in Northern Ireland under the Road Traffic (Northern Ireland) Order 1981. (Source Wikipedia)
-Driving
-Task
-The UK driving number is made up from the personal details of the driver. The individual letters and digits can be code using the below information
-Rules
-1–5: The first five characters of the surname (padded with 9s if less than 5 characters)
-6: The decade digit from the year of birth (e.g. for 1987 it would be 8)
-7–8: The month of birth (7th character incremented by 5 if driver is female i.e. 51–62 instead of 01–12)
-9–10: The date within the month of birth
-11: The year digit from the year of birth (e.g. for 1987 it would be 7)
-12–13: The first two initials of the first name and middle name, padded with a 9 if no middle name
-14: Arbitrary digit – usually 9, but decremented to differentiate drivers with the first 13 characters in common. We will always use 9
-15–16: Two computer check digits. We will always use "AA"
-Your task is to code a UK driving license number using an Array of data. The Array will look like
-data = ["John","James","Smith","01-Jan-2000","M"]
-Where the elements are as follows
-0 = Forename
-1 = Middle Name (if any)
-2 = Surname
-3 = Date of Birth (In the format Day Month Year, this could include the full Month name or just shorthand ie September or Sep)
-4 = M-Male or F-Female
-You will need to output the full 16 digit driving license number.
-Good luck and enjoy!
-*/
+    Introduction
+    In the United Kingdom, the driving licence is the official document which authorises its holder to operate various types of motor vehicle on highways and some other roads to which the public have access. In England, Scotland and Wales they are administered by the Driver and Vehicle Licensing Agency (DVLA) and in Northern Ireland by the Driver & Vehicle Agency (DVA). A driving licence is required in the UK by any person driving a vehicle on any highway or other road defined in s.192 Road Traffic Act 1988[1] irrespective of ownership of the land over which the road passes, thus including many which allow the public to pass over private land; similar requirements apply in Northern Ireland under the Road Traffic (Northern Ireland) Order 1981. (Source Wikipedia)
+    Driving
+    Task
+    The UK driving number is made up from the personal details of the driver. The individual letters and digits can be code using the below information
+    Rules
+    1–5: The first five characters of the surname (padded with 9s if less than 5 characters)
+    6: The decade digit from the year of birth (e.g. for 1987 it would be 8)
+    7–8: The month of birth (7th character incremented by 5 if driver is female i.e. 51–62 instead of 01–12)
+    9–10: The date within the month of birth
+    11: The year digit from the year of birth (e.g. for 1987 it would be 7)
+    12–13: The first two initials of the first name and middle name, padded with a 9 if no middle name
+    14: Arbitrary digit – usually 9, but decremented to differentiate drivers with the first 13 characters in common. We will always use 9
+    15–16: Two computer check digits. We will always use "AA"
+    Your task is to code a UK driving license number using an Array of data. The Array will look like
+    data = ["John","James","Smith","01-Jan-2000","M"]
+    Where the elements are as follows
+    0 = Forename
+    1 = Middle Name (if any)
+    2 = Surname
+    3 = Date of Birth (In the format Day Month Year, this could include the full Month name or just shorthand ie September or Sep)
+    4 = M-Male or F-Female
+    You will need to output the full 16 digit driving license number.
+    Good luck and enjoy!
+    */
 const driver = (data: Array<string>): string => {
     console.log(data);
 
@@ -8623,15 +8635,15 @@ const driver = (data: Array<string>): string => {
 };
 
 /*
-data = ["John","James","Smith","01-Jan-2000","M"]
-    assert.equal(driver(data), "SMITH001010JJ9AA", "Should return 'SMITH001010JJ9AA'")
-    
-    data = ["Johanna","","Gibbs","13-Dec-1981","F"]
-    assert.equal(driver(data), "GIBBS862131J99AA", "Should return 'GIBBS862131J99AA'")
-    
-    data = ["Andrew","Robert","Lee","02-September-1981","M"]
-    assert.equal(driver(data), "LEE99809021AR9AA", "Should return 'LEE99809021AR9AA'")
-*/
+    data = ["John","James","Smith","01-Jan-2000","M"]
+        assert.equal(driver(data), "SMITH001010JJ9AA", "Should return 'SMITH001010JJ9AA'")
+        
+        data = ["Johanna","","Gibbs","13-Dec-1981","F"]
+        assert.equal(driver(data), "GIBBS862131J99AA", "Should return 'GIBBS862131J99AA'")
+        
+        data = ["Andrew","Robert","Lee","02-September-1981","M"]
+        assert.equal(driver(data), "LEE99809021AR9AA", "Should return 'LEE99809021AR9AA'")
+    */
 
 const data = ["John", "James", "Smith", "01-Jan-2000", "M"];
 // const data = ["John", "James", "Carpenter", "01-Jan-2000", "M"];
@@ -8921,7 +8933,8 @@ pyramid(15) == 5
 Write a function that takes number of balls (≥ 1) and calculates how many levels you can build a triangle.
 
 
-*/ const pyramid = (numBalls: number): number => {
+*/
+const pyramid = (numBalls: number): number => {
     // SOLUTION:
     let levCount: number = 0;
     // NUMBER OF BALLS IN EACH ROW (1-2-3-4-5...)
@@ -8942,29 +8955,29 @@ Write a function that takes number of balls (≥ 1) and calculates how many leve
 };
 
 /*
-row: 1
-numBalls: 19
-row: 2
-numBalls: 17
-row: 3
-numBalls: 14
-row: 4
-numBalls: 10
-row: 5
-numBalls: 5
-row: 6
-numBalls: -1
-5
-*/
+    row: 1
+    numBalls: 19
+    row: 2
+    numBalls: 17
+    row: 3
+    numBalls: 14
+    row: 4
+    numBalls: 10
+    row: 5
+    numBalls: 5
+    row: 6
+    numBalls: -1
+    5
+    */
 
 /*
- assert.strictEqual(pyramid(1) , 1); 
-    assert.strictEqual(pyramid(4) , 2); 
-    assert.strictEqual(pyramid(20) , 5); 
-    assert.strictEqual(pyramid(100) , 13);
-    assert.strictEqual(pyramid(2211) ,66); 
-    assert.strictEqual(pyramid(9999) , 140);
-*/
+     assert.strictEqual(pyramid(1) , 1); 
+        assert.strictEqual(pyramid(4) , 2); 
+        assert.strictEqual(pyramid(20) , 5); 
+        assert.strictEqual(pyramid(100) , 13);
+        assert.strictEqual(pyramid(2211) ,66); 
+        assert.strictEqual(pyramid(9999) , 140);
+    */
 
 // console.log(pyramid(20));
 // console.log();
@@ -8995,60 +9008,60 @@ function pyramid3(balls: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Scenario
-the rhythm of beautiful musical notes is drawing a Pendulum
- 
-Beautiful musical notes are the Numbers!alt!alt
-Task
-Given an array/list [] of n integers , Arrange them in a way similar to the to-and-fro movement of a Pendulum
- 
-The Smallest element of the list of integers , must come in center position of array/list.
- 
-The Higher than smallest , goes to the right .
-The Next higher number goes to the left of minimum number and So on , in a to-and-fro manner similar to that of a Pendulum.
- 
-!alt
-Notes
-Array/list size is at least 3 .
- 
-In Even array size , The minimum element should be moved to (n-1)/2 index (considering that indexes start from 0)
- 
-Repetition of numbers in the array/list could occur , So (duplications are included when Arranging).
- 
-Input >> Output Examples:
-pendulum ([6, 6, 8 ,5 ,10]) ==> [10, 6, 5, 6, 8]
-Explanation:
-Since , 5 is the The Smallest element of the list of integers , came in The center position of array/list
- 
-The Higher than smallest is 6 goes to the right of 5 .
- 
-The Next higher number goes to the left of minimum number and So on .
- 
-Remember , Duplications are included when Arranging , Don't Delete Them .
- 
-pendulum ([-9, -2, -10, -6]) ==> [-6, -10, -9, -2]
-Explanation:
-Since , -10 is the The Smallest element of the list of integers , came in The center position of array/list
- 
-The Higher than smallest is -9 goes to the right of it .
- 
-The Next higher number goes to the left of -10 , and So on .
- 
-Remeber , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
- 
-pendulum ([11, -16, -18, 13, -11, -12, 3, 18 ]) ==> [13, 3, -12, -18, -16, -11, 11, 18]
-Explanation:
-Since , -18 is the The Smallest element of the list of integers , came in The center position of array/list
- 
-The Higher than smallest is -16 goes to the right of it .
- 
-The Next higher number goes to the left of -18 , and So on .
- 
-Remember , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
- 
-Tune Your Code , There are 200 Assertions , 60.000 element For Each .
- 
-*/
+    Scenario
+    the rhythm of beautiful musical notes is drawing a Pendulum
+     
+    Beautiful musical notes are the Numbers!alt!alt
+    Task
+    Given an array/list [] of n integers , Arrange them in a way similar to the to-and-fro movement of a Pendulum
+     
+    The Smallest element of the list of integers , must come in center position of array/list.
+     
+    The Higher than smallest , goes to the right .
+    The Next higher number goes to the left of minimum number and So on , in a to-and-fro manner similar to that of a Pendulum.
+     
+    !alt
+    Notes
+    Array/list size is at least 3 .
+     
+    In Even array size , The minimum element should be moved to (n-1)/2 index (considering that indexes start from 0)
+     
+    Repetition of numbers in the array/list could occur , So (duplications are included when Arranging).
+     
+    Input >> Output Examples:
+    pendulum ([6, 6, 8 ,5 ,10]) ==> [10, 6, 5, 6, 8]
+    Explanation:
+    Since , 5 is the The Smallest element of the list of integers , came in The center position of array/list
+     
+    The Higher than smallest is 6 goes to the right of 5 .
+     
+    The Next higher number goes to the left of minimum number and So on .
+     
+    Remember , Duplications are included when Arranging , Don't Delete Them .
+     
+    pendulum ([-9, -2, -10, -6]) ==> [-6, -10, -9, -2]
+    Explanation:
+    Since , -10 is the The Smallest element of the list of integers , came in The center position of array/list
+     
+    The Higher than smallest is -9 goes to the right of it .
+     
+    The Next higher number goes to the left of -10 , and So on .
+     
+    Remeber , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
+     
+    pendulum ([11, -16, -18, 13, -11, -12, 3, 18 ]) ==> [13, 3, -12, -18, -16, -11, 11, 18]
+    Explanation:
+    Since , -18 is the The Smallest element of the list of integers , came in The center position of array/list
+     
+    The Higher than smallest is -16 goes to the right of it .
+     
+    The Next higher number goes to the left of -18 , and So on .
+     
+    Remember , In Even array size , The minimum element moved to (n-1)/2 index (considering that indexes start from 0) .
+     
+    Tune Your Code , There are 200 Assertions , 60.000 element For Each .
+     
+    */
 const pendulum = (values: number[]) => {
     // SORT ASCENDING
     const ascArr: number[] = values.sort((a, b) => a - b);
@@ -9074,67 +9087,67 @@ const pendulum = (values: number[]) => {
 };
 
 /*
-it("Check Short length Positives", function() {
-    doTest([4, 10, 9], [10, 4, 9]);
-    doTest([8, 7, 10, 3], [8, 3, 7, 10]);
-    doTest([6, 6, 8, 5, 10], [10, 6, 5, 6, 8]);
-    doTest([9, 4, 6, 4, 10, 5], [9, 5, 4, 4, 6, 10]);
-    doTest([4, 6, 8, 7, 5], [8, 6, 4, 5, 7]);
-    doTest([10, 5, 6, 10], [10, 5, 6, 10]);
-    doTest([11, 12, 12], [12, 11, 12]);
-  });
-  it("Check Medium length Positives", function() {
-    doTest([27, 27, 19, 21, 22, 28, 24], [28, 27, 22, 19, 21, 24, 27]);
-    doTest([20, 19, 25, 16, 19, 30, 18, 24], [25, 20, 19, 16, 18, 19, 24, 30]);
-    doTest([22, 26, 21, 27, 24, 21, 15, 26, 25], [27, 26, 24, 21, 15, 21, 22, 25, 26]);
-    doTest([19, 30, 16, 19, 28, 26, 28, 17, 21, 17], [28, 26, 19, 17, 16, 17, 19, 21, 28, 30]);
-    doTest([27, 28, 26, 28, 24, 22, 18, 16, 15, 24], [28, 26, 24, 18, 15, 16, 22, 24, 27, 28]);
-    doTest([17, 26, 15, 26, 26, 20, 16, 18, 15], [26, 26, 18, 16, 15, 15, 17, 20, 26]);
-    doTest([22, 21, 19, 27, 18, 15, 24, 24], [24, 22, 19, 15, 18, 21, 24, 27]);
-  });
-  it("Check lengthy Positives", function() {
-    doTest([33, 38, 38, 36, 43, 48, 32, 40, 47, 50, 33], [50, 47, 40, 38, 33, 32, 33, 36, 38, 43, 48]);
-    doTest([49, 40, 41, 41, 39, 43, 40, 46, 30, 47, 46, 40], [47, 46, 41, 40, 40, 30, 39, 40, 41, 43, 46, 49]);
-    doTest([48, 41, 38, 35, 50, 46, 38, 42, 37, 49, 44, 32, 37], [50, 48, 44, 41, 38, 37, 32, 35, 37, 38, 42, 46, 49]);
-    doTest([49, 30, 39, 30, 40, 44, 43, 48, 47, 50, 42, 48, 33], [50, 48, 47, 43, 40, 33, 30, 30, 39, 42, 44, 48, 49]);
-    doTest([48, 43, 35, 47, 39, 38, 38, 46, 49, 32, 42], [49, 47, 43, 39, 38, 32, 35, 38, 42, 46, 48]);
-  });
-  it("Check Short length Negatives", function() {
-    doTest([-9, -2, -10, -6], [-6, -10, -9, -2]);
-    doTest([-3, -6, -7], [-3, -7, -6]);
-    doTest([-7, -8, -2, -3, -4], [-2, -4, -8, -7, -3]);
-    doTest([-8, -8, -9, -10, -10, -3], [-8, -9, -10, -10, -8, -3]);
-    doTest([-7, -10, -1, -10, -8], [-1, -8, -10, -10, -7]);
-    doTest([-6, -2, -5], [-2, -6, -5]);
-  });
-  it("Check Medium length Negatives", function() {
-    doTest([-2, -11, -6, -11, -4, -3, -5], [-2, -4, -6, -11, -11, -5, -3]);
-    doTest([-19, -9, -5, -6, -15, -16, -5, -12], [-5, -9, -15, -19, -16, -12, -6, -5]);
-    doTest([-18, -2, -11, -10, -6, -7, -7, -12, -16], [-2, -7, -10, -12, -18, -16, -11, -7, -6]);
-    doTest([-10, -10, -12, -13, -5, -10, -4, -17, -5, -12], [-5, -10, -10, -12, -17, -13, -12, -10, -5, -4]);
-  });
-  it("Check lengthy Negatives", function() {
-    doTest([-33, -21, -6, -29, -24, -5, -50, -42, -43, -17, -17], [-5, -17, -21, -29, -42, -50, -43, -33, -24, -17, -6]);
-    doTest(
-      [-4, -50, -32, -23, -47, -44, -43, -24, -29, -44, -20, -35],
-      [-20, -24, -32, -43, -44, -50, -47, -44, -35, -29, -23, -4]
-    );
-    doTest(
-      [-36, -38, -44, -47, -41, -27, -10, -30, -22, -11, -23, -50, -23],
-      [-10, -22, -23, -30, -38, -44, -50, -47, -41, -36, -27, -23, -11]
-    );
-  });
-  it("Check Mixture Of Positives And Negatives", function() {
-    doTest([-15, 8, 11], [11, -15, 8]);
-    doTest([8, -1, -1, -10], [-1, -10, -1, 8]);
-    doTest([-8, 15, 8, -3, -11], [15, -3, -11, -8, 8]);
-    doTest([15, 17, 3, -20, -1, 3], [15, 3, -20, -1, 3, 17]);
-    doTest([-8, -13, -19, -8, 7, 15, -10], [15, -8, -10, -19, -13, -8, 7]);
-    doTest([11, -16, -18, 13, -11, -12, 3, 18], [13, 3, -12, -18, -16, -11, 11, 18]);
-    doTest([7, -5, -20, 15, 2, 10, 18, 4, -10], [18, 10, 4, -5, -20, -10, 2, 7, 15]);
-    doTest([-6, 1, 2, 12, 19, 12, 19, -10, 13, 1], [19, 12, 2, 1, -10, -6, 1, 12, 13, 19]);
-  });
-  */
+    it("Check Short length Positives", function() {
+        doTest([4, 10, 9], [10, 4, 9]);
+        doTest([8, 7, 10, 3], [8, 3, 7, 10]);
+        doTest([6, 6, 8, 5, 10], [10, 6, 5, 6, 8]);
+        doTest([9, 4, 6, 4, 10, 5], [9, 5, 4, 4, 6, 10]);
+        doTest([4, 6, 8, 7, 5], [8, 6, 4, 5, 7]);
+        doTest([10, 5, 6, 10], [10, 5, 6, 10]);
+        doTest([11, 12, 12], [12, 11, 12]);
+      });
+      it("Check Medium length Positives", function() {
+        doTest([27, 27, 19, 21, 22, 28, 24], [28, 27, 22, 19, 21, 24, 27]);
+        doTest([20, 19, 25, 16, 19, 30, 18, 24], [25, 20, 19, 16, 18, 19, 24, 30]);
+        doTest([22, 26, 21, 27, 24, 21, 15, 26, 25], [27, 26, 24, 21, 15, 21, 22, 25, 26]);
+        doTest([19, 30, 16, 19, 28, 26, 28, 17, 21, 17], [28, 26, 19, 17, 16, 17, 19, 21, 28, 30]);
+        doTest([27, 28, 26, 28, 24, 22, 18, 16, 15, 24], [28, 26, 24, 18, 15, 16, 22, 24, 27, 28]);
+        doTest([17, 26, 15, 26, 26, 20, 16, 18, 15], [26, 26, 18, 16, 15, 15, 17, 20, 26]);
+        doTest([22, 21, 19, 27, 18, 15, 24, 24], [24, 22, 19, 15, 18, 21, 24, 27]);
+      });
+      it("Check lengthy Positives", function() {
+        doTest([33, 38, 38, 36, 43, 48, 32, 40, 47, 50, 33], [50, 47, 40, 38, 33, 32, 33, 36, 38, 43, 48]);
+        doTest([49, 40, 41, 41, 39, 43, 40, 46, 30, 47, 46, 40], [47, 46, 41, 40, 40, 30, 39, 40, 41, 43, 46, 49]);
+        doTest([48, 41, 38, 35, 50, 46, 38, 42, 37, 49, 44, 32, 37], [50, 48, 44, 41, 38, 37, 32, 35, 37, 38, 42, 46, 49]);
+        doTest([49, 30, 39, 30, 40, 44, 43, 48, 47, 50, 42, 48, 33], [50, 48, 47, 43, 40, 33, 30, 30, 39, 42, 44, 48, 49]);
+        doTest([48, 43, 35, 47, 39, 38, 38, 46, 49, 32, 42], [49, 47, 43, 39, 38, 32, 35, 38, 42, 46, 48]);
+      });
+      it("Check Short length Negatives", function() {
+        doTest([-9, -2, -10, -6], [-6, -10, -9, -2]);
+        doTest([-3, -6, -7], [-3, -7, -6]);
+        doTest([-7, -8, -2, -3, -4], [-2, -4, -8, -7, -3]);
+        doTest([-8, -8, -9, -10, -10, -3], [-8, -9, -10, -10, -8, -3]);
+        doTest([-7, -10, -1, -10, -8], [-1, -8, -10, -10, -7]);
+        doTest([-6, -2, -5], [-2, -6, -5]);
+      });
+      it("Check Medium length Negatives", function() {
+        doTest([-2, -11, -6, -11, -4, -3, -5], [-2, -4, -6, -11, -11, -5, -3]);
+        doTest([-19, -9, -5, -6, -15, -16, -5, -12], [-5, -9, -15, -19, -16, -12, -6, -5]);
+        doTest([-18, -2, -11, -10, -6, -7, -7, -12, -16], [-2, -7, -10, -12, -18, -16, -11, -7, -6]);
+        doTest([-10, -10, -12, -13, -5, -10, -4, -17, -5, -12], [-5, -10, -10, -12, -17, -13, -12, -10, -5, -4]);
+      });
+      it("Check lengthy Negatives", function() {
+        doTest([-33, -21, -6, -29, -24, -5, -50, -42, -43, -17, -17], [-5, -17, -21, -29, -42, -50, -43, -33, -24, -17, -6]);
+        doTest(
+          [-4, -50, -32, -23, -47, -44, -43, -24, -29, -44, -20, -35],
+          [-20, -24, -32, -43, -44, -50, -47, -44, -35, -29, -23, -4]
+        );
+        doTest(
+          [-36, -38, -44, -47, -41, -27, -10, -30, -22, -11, -23, -50, -23],
+          [-10, -22, -23, -30, -38, -44, -50, -47, -41, -36, -27, -23, -11]
+        );
+      });
+      it("Check Mixture Of Positives And Negatives", function() {
+        doTest([-15, 8, 11], [11, -15, 8]);
+        doTest([8, -1, -1, -10], [-1, -10, -1, 8]);
+        doTest([-8, 15, 8, -3, -11], [15, -3, -11, -8, 8]);
+        doTest([15, 17, 3, -20, -1, 3], [15, 3, -20, -1, 3, 17]);
+        doTest([-8, -13, -19, -8, 7, 15, -10], [15, -8, -10, -19, -13, -8, 7]);
+        doTest([11, -16, -18, 13, -11, -12, 3, 18], [13, 3, -12, -18, -16, -11, 11, 18]);
+        doTest([7, -5, -20, 15, 2, 10, 18, 4, -10], [18, 10, 4, -5, -20, -10, 2, 7, 15]);
+        doTest([-6, 1, 2, 12, 19, 12, 19, -10, 13, 1], [19, 12, 2, 1, -10, -6, 1, 12, 13, 19]);
+      });
+      */
 
 // console.log(pendulum([6, 6, 8, 5, 10]));
 // console.log();
@@ -9195,14 +9208,14 @@ function pendulum5(values: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 and add 1. If you repeat the process continuously for n, n will eventually reach 1.
- 
-For example, if n = 20, the resulting sequence will be:
- 
-[20, 10, 5, 16, 8, 4, 2, 1]
- 
-Write a program that will output the length of the Collatz Conjecture for any given n. In the example above, the output would be 8.
-*/
+    The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 and add 1. If you repeat the process continuously for n, n will eventually reach 1.
+     
+    For example, if n = 20, the resulting sequence will be:
+     
+    [20, 10, 5, 16, 8, 4, 2, 1]
+     
+    Write a program that will output the length of the Collatz Conjecture for any given n. In the example above, the output would be 8.
+    */
 
 const collatz = (num: number): number => {
     let counter: number = 1;
@@ -9255,14 +9268,14 @@ const collatz3 = (n: number): number =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-There exist two zeroes: +0 (or just 0) and -0.
- 
-Write a function that returns true if the input number is -0 and false otherwise (True and False for Python).
- 
-In JavaScript / TypeScript / Coffeescript the input will be a number.
- 
-In Python / Java / C / NASM / Haskell / the input will be a float.
-*/
+    There exist two zeroes: +0 (or just 0) and -0.
+     
+    Write a function that returns true if the input number is -0 and false otherwise (True and False for Python).
+     
+    In JavaScript / TypeScript / Coffeescript the input will be a number.
+     
+    In Python / Java / C / NASM / Haskell / the input will be a float.
+    */
 // const isNegativeZero = (num: number): boolean => {
 const isNegativeZero = (num: number) => {
     // NOT STRICT ENOUGH:
@@ -9344,26 +9357,26 @@ function isNegativeZero8(n: number): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Vowel harmony is a phenomenon in some languages. It means that "A vowel or vowels in a word are changed to sound the same (thus "in harmony.")" (wikipedia). This kata is based on vowel harmony in Hungarian.
- 
-Task:
-Your goal is to create a function dative() (Dative() in C#) which returns the valid form of a valid Hungarian word w in dative case i. e. append the correct suffix nek or nak to the word w based on vowel harmony rules.
- 
-Vowel Harmony Rules (simplified)
-When the last vowel in the word is
- 
-a front vowel (e, é, i, í, ö, ő, ü, ű) the suffix is -nek
-a back vowel (a, á, o, ó, u, ú) the suffix is -nak
-Examples:
-dative("ablak") == "ablaknak"
-dative("szék") == "széknek"
-dative("otthon") == "otthonnak"
-Preconditions:
-To keep it simple: All words end with a consonant :)
-All strings are unicode strings.
-There are no grammatical exceptions in the tests.
- 
-*/
+    Vowel harmony is a phenomenon in some languages. It means that "A vowel or vowels in a word are changed to sound the same (thus "in harmony.")" (wikipedia). This kata is based on vowel harmony in Hungarian.
+     
+    Task:
+    Your goal is to create a function dative() (Dative() in C#) which returns the valid form of a valid Hungarian word w in dative case i. e. append the correct suffix nek or nak to the word w based on vowel harmony rules.
+     
+    Vowel Harmony Rules (simplified)
+    When the last vowel in the word is
+     
+    a front vowel (e, é, i, í, ö, ő, ü, ű) the suffix is -nek
+    a back vowel (a, á, o, ó, u, ú) the suffix is -nak
+    Examples:
+    dative("ablak") == "ablaknak"
+    dative("szék") == "széknek"
+    dative("otthon") == "otthonnak"
+    Preconditions:
+    To keep it simple: All words end with a consonant :)
+    All strings are unicode strings.
+    There are no grammatical exceptions in the tests.
+     
+    */
 const dative = (word: string): string | undefined => {
     let solution: string = word;
     // GET LAST VOWEL
@@ -9434,20 +9447,20 @@ const dative4 = (word: string) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You have to create a function calcType, which receives 3 arguments: 2 numbers, and the result of an unknown operation performed on them (also a number).
- 
-Based on those 3 values you have to return a string, that describes which operation was used to get the given result.
- 
-The possible return strings are: "addition", "subtraction", "multiplication", "division".
- 
-Example:
-calcType(1, 2, 3) -->   1 ? 2 = 3   --> "addition"
-Notes
-In case of division you should expect that the result of the operation is obtained by using / operator on the input values - no manual data type conversion or rounding should be performed.
-Cases with just one possible answers are generated.
-Only valid arguments will be passed to the function.
-Only valid arguments will be passed to the function!
-*/
+    You have to create a function calcType, which receives 3 arguments: 2 numbers, and the result of an unknown operation performed on them (also a number).
+     
+    Based on those 3 values you have to return a string, that describes which operation was used to get the given result.
+     
+    The possible return strings are: "addition", "subtraction", "multiplication", "division".
+     
+    Example:
+    calcType(1, 2, 3) -->   1 ? 2 = 3   --> "addition"
+    Notes
+    In case of division you should expect that the result of the operation is obtained by using / operator on the input values - no manual data type conversion or rounding should be performed.
+    Cases with just one possible answers are generated.
+    Only valid arguments will be passed to the function.
+    Only valid arguments will be passed to the function!
+    */
 const calcType2 = (a: number, b: number, res: number): string => {
     let solution: string = "";
 
@@ -9566,32 +9579,32 @@ function calcType7(a: number, b: number, res: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The fusc function is defined recursively as follows:
- 
-1. fusc(0) = 0
-2. fusc(1) = 1
-3. fusc(2 * n) = fusc(n)
-4. fusc(2 * n + 1) = fusc(n) + fusc(n + 1)
-The 4 rules above are sufficient to determine the value of fusc for any non-negative input n. For example, let's say you want to compute fusc(10).
- 
-fusc(10) = fusc(5), by rule 3.
-fusc(5) = fusc(2) + fusc(3), by rule 4.
-fusc(2) = fusc(1), by rule 3.
-fusc(1) = 1, by rule 2.
-fusc(3) = fusc(1) + fusc(2) by rule 4.
-fusc(1) and fusc(2) have already been computed are both equal to 1.
-Putting these results together fusc(10) = fusc(5) = fusc(2) + fusc(3) = 1 + 2 = 3
- 
-Your job is to produce the code for the fusc function. In this kata, your function will be tested with small values of n, so you should not need to be concerned about stack overflow or timeouts.
- 
-Hint: Use recursion.
- 
-There isn't much to explain.
-How would you calculate fusc(5)?
-Well, 5 = 2 x 2 + 1, and fusc(2 x 2 + 1) = fusc(2) + fusc(3). fusc(3) = fusc(2 x 1 + 1) = fusc(1) + fusc(2). fusc(2) = fusc(2 x 1) = fusc(1) = 1.
-Put these results together and you get fusc(5) = 3. Your job is to implement the function fusc.
- 
-*/
+    The fusc function is defined recursively as follows:
+     
+    1. fusc(0) = 0
+    2. fusc(1) = 1
+    3. fusc(2 * n) = fusc(n)
+    4. fusc(2 * n + 1) = fusc(n) + fusc(n + 1)
+    The 4 rules above are sufficient to determine the value of fusc for any non-negative input n. For example, let's say you want to compute fusc(10).
+     
+    fusc(10) = fusc(5), by rule 3.
+    fusc(5) = fusc(2) + fusc(3), by rule 4.
+    fusc(2) = fusc(1), by rule 3.
+    fusc(1) = 1, by rule 2.
+    fusc(3) = fusc(1) + fusc(2) by rule 4.
+    fusc(1) and fusc(2) have already been computed are both equal to 1.
+    Putting these results together fusc(10) = fusc(5) = fusc(2) + fusc(3) = 1 + 2 = 3
+     
+    Your job is to produce the code for the fusc function. In this kata, your function will be tested with small values of n, so you should not need to be concerned about stack overflow or timeouts.
+     
+    Hint: Use recursion.
+     
+    There isn't much to explain.
+    How would you calculate fusc(5)?
+    Well, 5 = 2 x 2 + 1, and fusc(2 x 2 + 1) = fusc(2) + fusc(3). fusc(3) = fusc(2 x 1 + 1) = fusc(1) + fusc(2). fusc(2) = fusc(2 x 1) = fusc(1) = 1.
+    Put these results together and you get fusc(5) = 3. Your job is to implement the function fusc.
+     
+    */
 // 1️⃣
 const fusc2 = (num: number): any => {
     if (num === 0) return 0;
@@ -9691,31 +9704,31 @@ function fusc6(
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-All we eat is water and dry matter.
- 
-Let us begin with an example:
- 
-John bought potatoes: their weight is 100 kilograms. Potatoes contain water and dry matter. The water content is 99 percent of the total weight. He thinks they are too wet and puts them in an oven - at low temperature - for them to lose some water.
- 
-At the output the water content is only 98%.
- 
-What is the total weight in kilograms (water content plus dry matter) coming out of the oven?
- 
-He finds 50 kilograms and he thinks he made a mistake: "So much weight lost for such a small change in water content!"
- 
-Can you help him?
- 
-Task
-Write function potatoes with
- 
-int parameter p0 - initial percent of water-
-int parameter w0 - initial weight -
-int parameter p1 - final percent of water -
-potatoesshould return the final weight coming out of the oven w1 truncated as an int.
- 
-Example:
-potatoes(99, 100, 98) --> 50
-*/
+    All we eat is water and dry matter.
+     
+    Let us begin with an example:
+     
+    John bought potatoes: their weight is 100 kilograms. Potatoes contain water and dry matter. The water content is 99 percent of the total weight. He thinks they are too wet and puts them in an oven - at low temperature - for them to lose some water.
+     
+    At the output the water content is only 98%.
+     
+    What is the total weight in kilograms (water content plus dry matter) coming out of the oven?
+     
+    He finds 50 kilograms and he thinks he made a mistake: "So much weight lost for such a small change in water content!"
+     
+    Can you help him?
+     
+    Task
+    Write function potatoes with
+     
+    int parameter p0 - initial percent of water-
+    int parameter w0 - initial weight -
+    int parameter p1 - final percent of water -
+    potatoesshould return the final weight coming out of the oven w1 truncated as an int.
+     
+    Example:
+    potatoes(99, 100, 98) --> 50
+    */
 const potatoes = (
     inputCont: number,
     inputWeight: number,
@@ -9748,13 +9761,13 @@ const potatoes = (
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
-❗️❗️❗️ FAILING RANDOM TESTS, OUTPUT ARRAY LENGTH EXPECTED TO BE SHORTER THAN INPUT ??? ❗️❗️❗️
-Random Tests
-makeValley
-Log
-input------ [ 63, -53, 70, 74, 49, 45, 79, 91, 47, -68, 100, 52, 19, 81, 36, 35, 14, 94, 32 ] ------end
-expected [ Array(19) ] to deeply equal [ 94, 74, 49, 35, -53, 19, 45, 63, 81 ]
-*/
+    ❗️❗️❗️ FAILING RANDOM TESTS, OUTPUT ARRAY LENGTH EXPECTED TO BE SHORTER THAN INPUT ??? ❗️❗️❗️
+    Random Tests
+    makeValley
+    Log
+    input------ [ 63, -53, 70, 74, 49, 45, 79, 91, 47, -68, 100, 52, 19, 81, 36, 35, 14, 94, 32 ] ------end
+    expected [ Array(19) ] to deeply equal [ 94, 74, 49, 35, -53, 19, 45, 63, 81 ]
+    */
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: HOW GREEN IS MY VALLEY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -9764,62 +9777,62 @@ expected [ Array(19) ] to deeply equal [ 94, 74, 49, 35, -53, 19, 45, 63, 81 ]
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Input : an array of integers.
- 
-Output : this array, but sorted in such a way that there are two wings:
- 
-the left wing with numbers decreasing,
- 
-the right wing with numbers increasing.
- 
-the two wings have the same length. If the length of the array is odd the wings are around the bottom, if the length is even the bottom is considered to be part of the right wing.
- 
-each integer l of the left wing must be greater or equal to its counterpart r in the right wing, the difference l - r being as small as possible. In other words the right wing must be nearly as steep as the left wing.
- 
-The function is make_valley or makeValley or make-valley.
- 
-a = [79, 35, 54, 19, 35, 25]
-make_valley(a) --> [79, 35, 25, *19*, 35, 54]
-The bottom is 19, left wing is [79, 35, 25], right wing is [*19*, 35, 54].
-79..................54
-    35..........35
-        25. 
-          ..19
- 
-a = [67, 93, 100, -16, 65, 97, 92]
-make_valley(a) --> [100, 93, 67, *-16*, 65, 92, 97]
-The bottom is -16, left wing [100, 93, 67] and right wing [65, 92, 97] have same length.
-100.........................97
-    93..........
-               .........92
-        67......
-               .....65
-            -16     
- 
-a = [66, 55, 100, 68, 46, -82, 12, 72, 12, 38]
-make_valley(a) --> [100, 68, 55, 38, 12, *-82*, 12, 46, 66, 72]
-The bottom is -82, left wing is [100, 68, 55, 38, 12]], right wing is [*-82*, 12, 46, 66, 72].
- 
-a = [14,14,14,14,7,14]
-make_valley(a) => [14, 14, 14, *7*, 14, 14]
- 
-a = [14,14,14,14,14]
-make_valley(a) => [14, 14, *14*, 14, 14]
-A counter-example:
-a = [17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]
-A solution could be [17, 17, 15, 14, 8, 1, 4, 4, 5, 7, 7]
-but the right wing [4, 4, 5, 7, 7] is much flatter than the left one 
-[17, 17, 15, 14, 8].
- 
-Summing the differences between left and right wing:
-(17-7)+(17-7)+(15-5)+(14-4)+(8-4) = 44
- 
-Consider the following solution:
-[17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]
-Summing the differences between left and right wing:
-(17-17)+(15-14)+(8-7)+(7-5)+(4-4) = 4
-The right wing is nearly as steep as the right one.
-*/
+    Input : an array of integers.
+     
+    Output : this array, but sorted in such a way that there are two wings:
+     
+    the left wing with numbers decreasing,
+     
+    the right wing with numbers increasing.
+     
+    the two wings have the same length. If the length of the array is odd the wings are around the bottom, if the length is even the bottom is considered to be part of the right wing.
+     
+    each integer l of the left wing must be greater or equal to its counterpart r in the right wing, the difference l - r being as small as possible. In other words the right wing must be nearly as steep as the left wing.
+     
+    The function is make_valley or makeValley or make-valley.
+     
+    a = [79, 35, 54, 19, 35, 25]
+    make_valley(a) --> [79, 35, 25, *19*, 35, 54]
+    The bottom is 19, left wing is [79, 35, 25], right wing is [*19*, 35, 54].
+    79..................54
+        35..........35
+            25. 
+              ..19
+     
+    a = [67, 93, 100, -16, 65, 97, 92]
+    make_valley(a) --> [100, 93, 67, *-16*, 65, 92, 97]
+    The bottom is -16, left wing [100, 93, 67] and right wing [65, 92, 97] have same length.
+    100.........................97
+        93..........
+                   .........92
+            67......
+                   .....65
+                -16     
+     
+    a = [66, 55, 100, 68, 46, -82, 12, 72, 12, 38]
+    make_valley(a) --> [100, 68, 55, 38, 12, *-82*, 12, 46, 66, 72]
+    The bottom is -82, left wing is [100, 68, 55, 38, 12]], right wing is [*-82*, 12, 46, 66, 72].
+     
+    a = [14,14,14,14,7,14]
+    make_valley(a) => [14, 14, 14, *7*, 14, 14]
+     
+    a = [14,14,14,14,14]
+    make_valley(a) => [14, 14, *14*, 14, 14]
+    A counter-example:
+    a = [17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]
+    A solution could be [17, 17, 15, 14, 8, 1, 4, 4, 5, 7, 7]
+    but the right wing [4, 4, 5, 7, 7] is much flatter than the left one 
+    [17, 17, 15, 14, 8].
+     
+    Summing the differences between left and right wing:
+    (17-7)+(17-7)+(15-5)+(14-4)+(8-4) = 44
+     
+    Consider the following solution:
+    [17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]
+    Summing the differences between left and right wing:
+    (17-17)+(15-14)+(8-7)+(7-5)+(4-4) = 4
+    The right wing is nearly as steep as the right one.
+    */
 class G9645 {
     public static makeValley(arr: number[]): number[] {
         const descArr: number[] = arr.sort((a, b) => b - a);
@@ -9874,16 +9887,16 @@ class G9645 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You will be given an array which will include both integers and characters.
- 
-Return an array of length 2 with a[0] representing the mean of the ten integers as a floating point number. There will always be 10 integers and 10 characters. Create a single string with the characters and return it as a[1] while maintaining the original order.
- 
-lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']
-Here is an example of your return
- 
-[3.6, "udiwstagwo"]
-In C# and Java the mean return is a double.
-*/
+    You will be given an array which will include both integers and characters.
+     
+    Return an array of length 2 with a[0] representing the mean of the ten integers as a floating point number. There will always be 10 integers and 10 characters. Create a single string with the characters and return it as a[1] while maintaining the original order.
+     
+    lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']
+    Here is an example of your return
+     
+    [3.6, "udiwstagwo"]
+    In C# and Java the mean return is a double.
+    */
 const mean = (list: string[]): [number, string] => {
     // list
     // => ['6', '1', '6', '4','6', '1', '2', '8','2', '0']
@@ -10048,28 +10061,28 @@ function mean8(lst: string[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-It's tricky keeping track of who is owed what when spending money in a group. Write a function to balance the books.
- 
-The function should take one parameter: an object/dict with two or more name-value pairs which represent the members of the group and the amount spent by each.
-The function should return an object/dict with the same names, showing how much money the members should pay or receive.
-Further points:
- 
-The values should be positive numbers if the person should receive money from the group, negative numbers if they owe money to the group.
-If value is a decimal, round to two decimal places.
-Translations and comments (and upvotes!) welcome.
- 
-Example
-3 friends go out together: A spends £20, B spends £15, and C spends £10. The function should return an object/dict showing that A should receive £5, B should receive £0, and C should pay £5.
- 
-var group = {
-    A: 20, 
-    B: 15, 
-    C: 10
-}
- 
- 
-splitTheBill(group) // returns {A: 5, B: 0, C: -5}
-*/
+    It's tricky keeping track of who is owed what when spending money in a group. Write a function to balance the books.
+     
+    The function should take one parameter: an object/dict with two or more name-value pairs which represent the members of the group and the amount spent by each.
+    The function should return an object/dict with the same names, showing how much money the members should pay or receive.
+    Further points:
+     
+    The values should be positive numbers if the person should receive money from the group, negative numbers if they owe money to the group.
+    If value is a decimal, round to two decimal places.
+    Translations and comments (and upvotes!) welcome.
+     
+    Example
+    3 friends go out together: A spends £20, B spends £15, and C spends £10. The function should return an object/dict showing that A should receive £5, B should receive £0, and C should pay £5.
+     
+    var group = {
+        A: 20, 
+        B: 15, 
+        C: 10
+    }
+     
+     
+    splitTheBill(group) // returns {A: 5, B: 0, C: -5}
+    */
 const splitTheBill = (obj: {
     [k: string]: number;
 }): { [k: string]: number } => {
@@ -10140,7 +10153,9 @@ function splitTheBill3(x: NameValObj): NameValObj {
 //     return groupBalance;
 // }
 
-function splitTheBill5(x: { [k: string]: number }): { [k: string]: number } {
+function splitTheBill5(x: { [k: string]: number }): {
+    [k: string]: number;
+} {
     const output: { [k: string]: number } = {};
     let total = 0;
     let cnt = 0;
@@ -10205,7 +10220,9 @@ function splitTheBill9(x: { [k: string]: number }): {
     }, {});
 }
 
-function splitTheBill7(x: { [k: string]: number }): { [k: string]: number } {
+function splitTheBill7(x: { [k: string]: number }): {
+    [k: string]: number;
+} {
     const avg =
         Object.values(x).reduce((sum: number, num: number) => sum + num) /
         Object.values(x).length;
@@ -10223,23 +10240,23 @@ function splitTheBill7(x: { [k: string]: number }): { [k: string]: number } {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Write a function that returns true if the number is a "Very Even" number.
- 
-If a number is a single digit, then it is simply "Very Even" if it itself is even.
- 
-If it has 2 or more digits, it is "Very Even" if the sum of its digits is "Very Even".
- 
-Examples
-number = 88 => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
- 
-number = 222 => returns true -> 2 + 2 + 2 = 6 => 6 is even
- 
-number = 5 => returns false
- 
-number = 841 => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
-Note: The numbers will always be 0 or positive integers!
-*/
+    Task
+    Write a function that returns true if the number is a "Very Even" number.
+     
+    If a number is a single digit, then it is simply "Very Even" if it itself is even.
+     
+    If it has 2 or more digits, it is "Very Even" if the sum of its digits is "Very Even".
+     
+    Examples
+    number = 88 => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
+     
+    number = 222 => returns true -> 2 + 2 + 2 = 6 => 6 is even
+     
+    number = 5 => returns false
+     
+    number = 841 => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
+    Note: The numbers will always be 0 or positive integers!
+    */
 
 // 1️⃣ WHILE LOOP
 const isVeryEvenNumber = (num: number): boolean => {
@@ -10338,12 +10355,12 @@ function isVeryEvenNumber8(n: number): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Return an output string that translates an input string s/$s by replacing each character in s/$s with a number representing the number of times that character occurs in s/$s and separating each number with the character(s) sep/$sep.
- 
-freqSeq("hello world", "-"); // => "1-1-3-3-2-1-1-2-1-3-1"
-freqSeq("19999999", ":"); // => "1:7:7:7:7:7:7:7"
-freqSeq("^^^**$", "x"); // => "3x3x3x2x2x1"
-*/
+    Return an output string that translates an input string s/$s by replacing each character in s/$s with a number representing the number of times that character occurs in s/$s and separating each number with the character(s) sep/$sep.
+     
+    freqSeq("hello world", "-"); // => "1-1-3-3-2-1-1-2-1-3-1"
+    freqSeq("19999999", ":"); // => "1:7:7:7:7:7:7:7"
+    freqSeq("^^^**$", "x"); // => "3x3x3x2x2x1"
+    */
 
 // 1️⃣ ERROR: SyntaxError: Invalid regular expression: /*/: Nothing to repeat
 // NOT WORKING WITH SPECIAL CHARACTERS !
@@ -10383,46 +10400,46 @@ const freqSeq2 = (str: string, sep: string): string => {
 };
 
 /*
- 
-❗️❗️❗️ COUNT OCCURENCES OF CHAR IN STRING ❗️❗️❗️
- 
-1. Using Regex
-Regular expressions are often used in JavaScript for matching a text with a pattern. The following code example demonstrates its usage to get the count of the characters in the string. It uses the match() method of the string instance.
- 
-var str = "A,B,C,D,E";
- 
-var count = (str.match(/\,/g) || []).length;
-console.log(count);
- 
-    Output: 4
- 
- 
-The match() method returns null if there were no matches. To avoid calling the length property on the null value, we have used the logical OR operator [].
- 
-2. Using String.prototype.split() function
-Here, the idea is to split the string using the given character as a delimiter and determine the count using the resulting array’s length. This can be easily done using the split() method:
- 
-var str = "A,B,C,D,E";
-var ch = ',';
- 
-var count = str.split(ch).length - 1;
-console.log(count);
- 
-    Output: 4
- 
-3. Using Array.prototype.filter() function
-Another alternative is to filter the array to allow only those values matching the given character. This would translate to a simple code below:
- 
-var str = "A,B,C,D,E";
-var ch = ',';
- 
-var count = [...str].filter(x => x === ch).length;
-console.log(count);
- 
- 
-    Output: 4
- 
-*/
+     
+    ❗️❗️❗️ COUNT OCCURENCES OF CHAR IN STRING ❗️❗️❗️
+     
+    1. Using Regex
+    Regular expressions are often used in JavaScript for matching a text with a pattern. The following code example demonstrates its usage to get the count of the characters in the string. It uses the match() method of the string instance.
+     
+    var str = "A,B,C,D,E";
+     
+    var count = (str.match(/\,/g) || []).length;
+    console.log(count);
+     
+        Output: 4
+     
+     
+    The match() method returns null if there were no matches. To avoid calling the length property on the null value, we have used the logical OR operator [].
+     
+    2. Using String.prototype.split() function
+    Here, the idea is to split the string using the given character as a delimiter and determine the count using the resulting array’s length. This can be easily done using the split() method:
+     
+    var str = "A,B,C,D,E";
+    var ch = ',';
+     
+    var count = str.split(ch).length - 1;
+    console.log(count);
+     
+        Output: 4
+     
+    3. Using Array.prototype.filter() function
+    Another alternative is to filter the array to allow only those values matching the given character. This would translate to a simple code below:
+     
+    var str = "A,B,C,D,E";
+    var ch = ',';
+     
+    var count = [...str].filter(x => x === ch).length;
+    console.log(count);
+     
+     
+        Output: 4
+     
+    */
 
 // assert.equal(solution.freqSeq("hello world", "-"), "1-1-3-3-2-1-1-2-1-3-1");
 //     assert.equal(solution.freqSeq("19999999", ":"), "1:7:7:7:7:7:7:7");
@@ -10446,16 +10463,16 @@ console.log(count);
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Create a function which accepts one arbitrary string as an argument, and return a string of length 26.
- 
-The objective is to set each of the 26 characters of the output string to either '1' or '0' based on the fact whether the Nth letter of the alphabet is present in the input (independent of its case).
- 
-So if an 'a' or an 'A' appears anywhere in the input string (any number of times), set the first character of the output string to '1', otherwise to '0'. if 'b' or 'B' appears in the string, set the second character to '1', and so on for the rest of the alphabet.
- 
-For instance:
- 
-"a   **&  cZ"  =>  "10100000000000000000000001"
-*/
+    Create a function which accepts one arbitrary string as an argument, and return a string of length 26.
+     
+    The objective is to set each of the 26 characters of the output string to either '1' or '0' based on the fact whether the Nth letter of the alphabet is present in the input (independent of its case).
+     
+    So if an 'a' or an 'A' appears anywhere in the input string (any number of times), set the first character of the output string to '1', otherwise to '0'. if 'b' or 'B' appears in the string, set the second character to '1', and so on for the rest of the alphabet.
+     
+    For instance:
+     
+    "a   **&  cZ"  =>  "10100000000000000000000001"
+    */
 const change = (string: string): string => {
     const alphabet: string = "abcdefghijklmnopqrstuvwxyz";
 
@@ -10519,16 +10536,16 @@ function change5(s: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The other day I saw an amazing video where a guy hacked some wifi controlled lightbulbs by flying a drone past them. Brilliant.
- 
-In this kata we will recreate that stunt... sort of.
- 
-You will be given two strings: lamps and drone. lamps represents a row of lamps, currently off, each represented by x. When these lamps are on, they should be represented by o.
- 
-The drone string represents the position of the drone T (any better suggestion for character??) and its flight path up until this point =. The drone always flies left to right, and always begins at the start of the row of lamps. Anywhere the drone has flown, including its current position, will result in the lamp at that position switching on.
- 
-Return the resulting lamps string. See example tests for more clarity.
-*/
+    The other day I saw an amazing video where a guy hacked some wifi controlled lightbulbs by flying a drone past them. Brilliant.
+     
+    In this kata we will recreate that stunt... sort of.
+     
+    You will be given two strings: lamps and drone. lamps represents a row of lamps, currently off, each represented by x. When these lamps are on, they should be represented by o.
+     
+    The drone string represents the position of the drone T (any better suggestion for character??) and its flight path up until this point =. The drone always flies left to right, and always begins at the start of the row of lamps. Anywhere the drone has flown, including its current position, will result in the lamp at that position switching on.
+     
+    Return the resulting lamps string. See example tests for more clarity.
+    */
 // 1️⃣ THIS ONLY COUNTS "=" IN '====T'
 const flyBy = (lampsArr: string, droneArr: string): string => {
     if (!/=/g.test(droneArr)) return lampsArr;
@@ -10607,18 +10624,18 @@ function flyBy7(lamps: string, drone: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A new task for you!
- 
-You have to create a method, that corrects a given time string.
-There was a problem in addition, so many of the time strings are broken.
-Time is formatted using the 24-hour clock, so from 00:00:00 to 23:59:59.
-Examples
-"09:10:01" -> "09:10:01"  
-"11:70:10" -> "12:10:10"  
-"19:99:99" -> "20:40:39"  
-"24:01:01" -> "00:01:01"  
-If the input-string is null or empty return exactly this value! (empty string for C++) If the time-string-format is invalid, return null. (empty string for C++)
-*/
+    A new task for you!
+     
+    You have to create a method, that corrects a given time string.
+    There was a problem in addition, so many of the time strings are broken.
+    Time is formatted using the 24-hour clock, so from 00:00:00 to 23:59:59.
+    Examples
+    "09:10:01" -> "09:10:01"  
+    "11:70:10" -> "12:10:10"  
+    "19:99:99" -> "20:40:39"  
+    "24:01:01" -> "00:01:01"  
+    If the input-string is null or empty return exactly this value! (empty string for C++) If the time-string-format is invalid, return null. (empty string for C++)
+    */
 const timeCorrect = (timeStr: string | null): string | null => {
     // NOT NECESSARY
     // if (timeStr === null) return null;
@@ -10792,12 +10809,12 @@ function timeCorrect6(timestring: string | null): string | null {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-Extra perfect number is the number that first and last bits are set bits.
- 
-Task
-Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
-*/
+    Definition
+    Extra perfect number is the number that first and last bits are set bits.
+     
+    Task
+    Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
+    */
 const extraPerfect = (num: number): number[] => {
     let solution: number[] = [];
     for (let i = 0; i <= num; i += 1) {
@@ -10871,26 +10888,26 @@ function extraPerfect6(n: number): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Write a method, that replaces every nth char oldValue with char newValue.
- 
-Method:
- 
-replaceNth(text:string, n:number, oldValue:string, newValue:string):string
-Example:
-n:         2
-oldValue: 'a'
-newValue: 'o'
-"Vader said: No, I am your father!" -> "Vader soid: No, I am your fother!"
-  1     2          3        4       -> 2nd and 4th occurence are replaced
-Your method has to be case sensitive!
- 
-As you can see in the example: The first changed is the 2nd 'a'. So the start is always at the nth suitable char and not at the first!
- 
-If n is 0 or negative or if it is larger than the count of the oldValue, return the original text without a change.
- 
-The text and the chars will never be null.
-*/
+    Task
+    Write a method, that replaces every nth char oldValue with char newValue.
+     
+    Method:
+     
+    replaceNth(text:string, n:number, oldValue:string, newValue:string):string
+    Example:
+    n:         2
+    oldValue: 'a'
+    newValue: 'o'
+    "Vader said: No, I am your father!" -> "Vader soid: No, I am your fother!"
+      1     2          3        4       -> 2nd and 4th occurence are replaced
+    Your method has to be case sensitive!
+     
+    As you can see in the example: The first changed is the 2nd 'a'. So the start is always at the nth suitable char and not at the first!
+     
+    If n is 0 or negative or if it is larger than the count of the oldValue, return the original text without a change.
+     
+    The text and the chars will never be null.
+    */
 const replaceNth = (
     str: string,
     nth: number,
@@ -10978,16 +10995,16 @@ function replaceNth4(
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A spoonerism is a spoken phrase in which the first letters of two of the words are swapped around, often with amusing results.
- 
-In its most basic form a spoonerism is a two word phrase in which only the first letters of each word are swapped:
- 
-"not picking" --> "pot nicking"
- 
-Your task is to create a function that takes a string of two words, separated by a space: words and returns a spoonerism of those words in a string, as in the above example. A "word" in the context of this kata can contain any of the letters A through Z in upper or lower case, and the numbers 0 to 9. Though spoonerisms are about letters in words in the domain of written and spoken language, numbers are included in the inputs for the random test cases and they require no special treatment.
- 
-NOTE: All input strings will contain only two words. Spoonerisms can be more complex. For example, three-word phrases in which the first letters of the first and last words are swapped: "pack of lies" --> "lack of pies" or more than one letter from a word is swapped: "flat battery --> "bat flattery" You are NOT expected to account for these, or any other nuances involved in spoonerisms.
-*/
+    A spoonerism is a spoken phrase in which the first letters of two of the words are swapped around, often with amusing results.
+     
+    In its most basic form a spoonerism is a two word phrase in which only the first letters of each word are swapped:
+     
+    "not picking" --> "pot nicking"
+     
+    Your task is to create a function that takes a string of two words, separated by a space: words and returns a spoonerism of those words in a string, as in the above example. A "word" in the context of this kata can contain any of the letters A through Z in upper or lower case, and the numbers 0 to 9. Though spoonerisms are about letters in words in the domain of written and spoken language, numbers are included in the inputs for the random test cases and they require no special treatment.
+     
+    NOTE: All input strings will contain only two words. Spoonerisms can be more complex. For example, three-word phrases in which the first letters of the first and last words are swapped: "pack of lies" --> "lack of pies" or more than one letter from a word is swapped: "flat battery --> "bat flattery" You are NOT expected to account for these, or any other nuances involved in spoonerisms.
+    */
 const spoonerize = (wordStr: string): string => {
     // [ 'n', 'o', 't' ],['p', 'i', 'c','k', 'i', 'n','g']
     const lettersArr: string[][] = wordStr
@@ -11075,34 +11092,34 @@ function spoonerize8(words: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Haskell has some useful functions for dealing with lists:
- 
-$ ghci
-GHCi, version 7.6.3: http://www.haskell.org/ghc/  :? for help
-λ head [1,2,3,4,5]
-1
-λ tail [1,2,3,4,5]
-[2,3,4,5]
-λ init [1,2,3,4,5]
-[1,2,3,4]
-λ last [1,2,3,4,5]
-5
-Your job is to implement these functions in your given language. Make sure it doesn't edit the array; that would cause problems! Here's a cheat sheet:
- 
-| HEAD | <----------- TAIL ------------> |
-[  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
-| <----------- INIT ------------> | LAST |
- 
-head [x] = x
-tail [x] = []
-init [x] = []
-last [x] = x
-Here's how I expect the functions to be called in your language:
- 
-head([1,2,3,4,5]); => 1
-tail([1,2,3,4,5]); => [2,3,4,5]
-Most tests consist of 100 randomly generated arrays, each with four tests, one for each operation. There are 400 tests overall. No empty arrays will be given. Haskell has QuickCheck tests
-*/
+    Haskell has some useful functions for dealing with lists:
+     
+    $ ghci
+    GHCi, version 7.6.3: http://www.haskell.org/ghc/  :? for help
+    λ head [1,2,3,4,5]
+    1
+    λ tail [1,2,3,4,5]
+    [2,3,4,5]
+    λ init [1,2,3,4,5]
+    [1,2,3,4]
+    λ last [1,2,3,4,5]
+    5
+    Your job is to implement these functions in your given language. Make sure it doesn't edit the array; that would cause problems! Here's a cheat sheet:
+     
+    | HEAD | <----------- TAIL ------------> |
+    [  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+    | <----------- INIT ------------> | LAST |
+     
+    head [x] = x
+    tail [x] = []
+    init [x] = []
+    last [x] = x
+    Here's how I expect the functions to be called in your language:
+     
+    head([1,2,3,4,5]); => 1
+    tail([1,2,3,4,5]); => [2,3,4,5]
+    Most tests consist of 100 randomly generated arrays, each with four tests, one for each operation. There are 400 tests overall. No empty arrays will be given. Haskell has QuickCheck tests
+    */
 
 // ❗️❗️❗️ SLICE RETURNS ARRAY ❗️❗️❗️
 class Kata6 {
@@ -11252,25 +11269,25 @@ class Kata67 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
-The value of d will always be 0 - 9.
-The value of x will always be greater than 0.
- 
-You have to return as an array
- 
-the count of these numbers,
-their sum
-and their product.
- 
-For example:
-x = 11
-d = 1
-->
-Numbers: 1, 10, 11
-Return: [3, 22, 110]
- 
-If there are no numbers, which include the digit, return [0,0,0].
-*/
+    You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
+    The value of d will always be 0 - 9.
+    The value of x will always be greater than 0.
+     
+    You have to return as an array
+     
+    the count of these numbers,
+    their sum
+    and their product.
+     
+    For example:
+    x = 11
+    d = 1
+    ->
+    Numbers: 1, 10, 11
+    Return: [3, 22, 110]
+     
+    If there are no numbers, which include the digit, return [0,0,0].
+    */
 const numbersWithDigitInside = (range: number, digit: number): number[] => {
     let matches: number[] = [];
 
@@ -11379,18 +11396,18 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Bob is a lazy man.
- 
-He needs you to create a method that can determine how many letters (both uppercase and lowercase ASCII letters) and digits are in a given string.
- 
-Example:
- 
-"hel2!lo" --> 6
- 
-"wicked .. !" --> 6
- 
-"!?..A" --> 1
-*/
+    Bob is a lazy man.
+     
+    He needs you to create a method that can determine how many letters (both uppercase and lowercase ASCII letters) and digits are in a given string.
+     
+    Example:
+     
+    "hel2!lo" --> 6
+     
+    "wicked .. !" --> 6
+     
+    "!?..A" --> 1
+    */
 
 const countLettersAndDigits = (str: string): number => {
     if (!/[a-z0-9]/gi.test(str)) return 0;
@@ -11455,39 +11472,39 @@ function countLettersAndDigits7(input: string): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You are given a string of n lines, each substring being n characters long. For example:
- 
-s = "abcd\nefgh\nijkl\nmnop"
- 
-We will study the "horizontal" and the "vertical" scaling of this square of strings.
- 
-A k-horizontal scaling of a string consists of replicating k times each character of the string (except '\n').
- 
-Example: 2-horizontal scaling of s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
-A v-vertical scaling of a string consists of replicating v times each part of the squared string.
- 
-Example: 2-vertical scaling of s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
-Function scale(strng, k, v) will perform a k-horizontal scaling and a v-vertical scaling.
- 
-Example: a = "abcd\nefgh\nijkl\nmnop"
-scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
-Printed:
- 
-abcd   ----->   aabbccdd
-efgh            aabbccdd
-ijkl            aabbccdd
-mnop            eeffgghh
-                eeffgghh
-                eeffgghh
-                iijjkkll
-                iijjkkll
-                iijjkkll
-                mmnnoopp
-                mmnnoopp
-                mmnnoopp
-Task:
-Write function scale(strng, k, v) k and v will be positive integers. If strng == "" return "".
-*/
+    You are given a string of n lines, each substring being n characters long. For example:
+     
+    s = "abcd\nefgh\nijkl\nmnop"
+     
+    We will study the "horizontal" and the "vertical" scaling of this square of strings.
+     
+    A k-horizontal scaling of a string consists of replicating k times each character of the string (except '\n').
+     
+    Example: 2-horizontal scaling of s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
+    A v-vertical scaling of a string consists of replicating v times each part of the squared string.
+     
+    Example: 2-vertical scaling of s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
+    Function scale(strng, k, v) will perform a k-horizontal scaling and a v-vertical scaling.
+     
+    Example: a = "abcd\nefgh\nijkl\nmnop"
+    scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
+    Printed:
+     
+    abcd   ----->   aabbccdd
+    efgh            aabbccdd
+    ijkl            aabbccdd
+    mnop            eeffgghh
+                    eeffgghh
+                    eeffgghh
+                    iijjkkll
+                    iijjkkll
+                    iijjkkll
+                    mmnnoopp
+                    mmnnoopp
+                    mmnnoopp
+    Task:
+    Write function scale(strng, k, v) k and v will be positive integers. If strng == "" return "".
+    */
 class G9643 {
     public static scale = (
         str: string,
@@ -11524,17 +11541,17 @@ class G9643 {
 }
 
 /*
-❗️❗️❗️ STRING.REPEAT ALTERNATIVE❗️❗️❗️ CODEWARS GIVES ERROR: Property 'repeat' does not exist on type 'string'. (2339)
-These days, the repeat string method is implemented almost everywhere. (It is not in Internet Explorer.) So unless you need to support older browsers, you can simply write:
- 
-❗️❗️❗️ 1️⃣   "a".repeat(10)
- 
-Before repeat, we used this hack:
- 
-❗️❗️❗️ 2️⃣    Array(11).join("a") // create string with 10 a's: "aaaaaaaaaa"
- 
-(Note that an array of length 11 gets you only 10 "a"s, since Array.join puts the argument between the array elements.)
-*/
+    ❗️❗️❗️ STRING.REPEAT ALTERNATIVE❗️❗️❗️ CODEWARS GIVES ERROR: Property 'repeat' does not exist on type 'string'. (2339)
+    These days, the repeat string method is implemented almost everywhere. (It is not in Internet Explorer.) So unless you need to support older browsers, you can simply write:
+     
+    ❗️❗️❗️ 1️⃣   "a".repeat(10)
+     
+    Before repeat, we used this hack:
+     
+    ❗️❗️❗️ 2️⃣    Array(11).join("a") // create string with 10 a's: "aaaaaaaaaa"
+     
+    (Note that an array of length 11 gets you only 10 "a"s, since Array.join puts the argument between the array elements.)
+    */
 
 // "Kj\nKj\nSH\nSH"
 // console.log(G9643.scale("Kj\nSH", 1, 2));
@@ -11580,28 +11597,28 @@ const scale3 = (strng: string, k: number, n: number) => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A Nice array is defined to be an array where for every value n in the array, there is also an element n - 1 or n + 1 in the array.
- 
-examples:
- 
-[2, 10, 9, 3] is a nice array because
- 
- 2 =  3 - 1
-10 =  9 + 1
- 3 =  2 + 1
- 9 = 10 - 1
- 
-[4, 2, 3] is a nice array because
- 
-4 = 3 + 1
-2 = 3 - 1
-3 = 2 + 1 (or 3 = 4 - 1)
- 
-[4, 2, 1] is a not a nice array because
- 
-for n = 4, there is neither n - 1 = 3 nor n + 1 = 5
-Write a function named isNice/IsNice that returns true if its array argument is a Nice array, else false. An empty array is not considered nice.
-*/
+    A Nice array is defined to be an array where for every value n in the array, there is also an element n - 1 or n + 1 in the array.
+     
+    examples:
+     
+    [2, 10, 9, 3] is a nice array because
+     
+     2 =  3 - 1
+    10 =  9 + 1
+     3 =  2 + 1
+     9 = 10 - 1
+     
+    [4, 2, 3] is a nice array because
+     
+    4 = 3 + 1
+    2 = 3 - 1
+    3 = 2 + 1 (or 3 = 4 - 1)
+     
+    [4, 2, 1] is a not a nice array because
+     
+    for n = 4, there is neither n - 1 = 3 nor n + 1 = 5
+    Write a function named isNice/IsNice that returns true if its array argument is a Nice array, else false. An empty array is not considered nice.
+    */
 class Kata1 {
     static isNice(arr: number[]): boolean {
         // INIT SOLUTION AS FALSE
@@ -11631,24 +11648,24 @@ class Kata1 {
 // console.log(Kata1.isNice([8, 4, 5, 3]));
 
 /*
-iteration: 0 num: 2
-   numArr: [ 2, 10, 9, 3 ]
-       minus Array: [ 10, 9, 3 ]
-iteration: 1 num: 10
-   numArr: [ 2, 10, 9, 3 ]
-       minus Array: [ 2, 9, 3 ]
-iteration: 2 num: 9
-   numArr: [ 2, 10, 9, 3 ]
-       minus Array: [ 2, 10, 3 ]
-iteration: 3 num: 3
-   numArr: [ 2, 10, 9, 3 ]
-       minus Array: [ 2, 10, 9 ]
-true
-iteration: 0 num: 8
-   numArr: [ 8, 4, 5, 3 ]
-       minus Array: [ 4, 5, 3 ]
-false
-*/
+    iteration: 0 num: 2
+       numArr: [ 2, 10, 9, 3 ]
+           minus Array: [ 10, 9, 3 ]
+    iteration: 1 num: 10
+       numArr: [ 2, 10, 9, 3 ]
+           minus Array: [ 2, 9, 3 ]
+    iteration: 2 num: 9
+       numArr: [ 2, 10, 9, 3 ]
+           minus Array: [ 2, 10, 3 ]
+    iteration: 3 num: 3
+       numArr: [ 2, 10, 9, 3 ]
+           minus Array: [ 2, 10, 9 ]
+    true
+    iteration: 0 num: 8
+       numArr: [ 8, 4, 5, 3 ]
+           minus Array: [ 4, 5, 3 ]
+    false
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function isNice2(arr: number[]) {
@@ -11678,32 +11695,32 @@ function isNice4(arr: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Scenario
-You're saying good-bye your best friend , See you next happy year .
- 
-Happy Year is the year with only distinct digits , (e.g) 2018
- 
-Task
-Given a year, Find The next happy year or The closest year You'll see your best friend!alt!alt
- 
-Notes
-Year Of Course always Positive .
-Have no fear , It is guaranteed that the answer exists .
-It's not necessary that the year passed to the function is Happy one .
-Input Year with in range (1000  ≤  y  ≤  9000)
-Input >> Output Examples:
-nextHappyYear (7712) ==> return (7801)
-Explanation:
-As the Next closest year with only distinct digits is 7801 .
- 
-nextHappyYear (8989) ==> return (9012)
-Explanation:
-As the Next closest year with only distinct digits is 9012 .
- 
-nextHappyYear (1001) ==> return (1023)
-Explanation:
-As the Next closest year with only distinct digits is 1023 .
-*/
+    Scenario
+    You're saying good-bye your best friend , See you next happy year .
+     
+    Happy Year is the year with only distinct digits , (e.g) 2018
+     
+    Task
+    Given a year, Find The next happy year or The closest year You'll see your best friend!alt!alt
+     
+    Notes
+    Year Of Course always Positive .
+    Have no fear , It is guaranteed that the answer exists .
+    It's not necessary that the year passed to the function is Happy one .
+    Input Year with in range (1000  ≤  y  ≤  9000)
+    Input >> Output Examples:
+    nextHappyYear (7712) ==> return (7801)
+    Explanation:
+    As the Next closest year with only distinct digits is 7801 .
+     
+    nextHappyYear (8989) ==> return (9012)
+    Explanation:
+    As the Next closest year with only distinct digits is 9012 .
+     
+    nextHappyYear (1001) ==> return (1023)
+    Explanation:
+    As the Next closest year with only distinct digits is 1023 .
+    */
 const nextHappyYear = (year: number): number => {
     year += 1;
 
@@ -11716,32 +11733,32 @@ const nextHappyYear = (year: number): number => {
 };
 
 /*
-console.log(nextHappyYear(1001));
- 
-1002 [ '1', '0', '0', '2' ] Set(3) { '1', '0', '2' }
-1003 [ '1', '0', '0', '3' ] Set(3) { '1', '0', '3' }
-1004 [ '1', '0', '0', '4' ] Set(3) { '1', '0', '4' }
-1005 [ '1', '0', '0', '5' ] Set(3) { '1', '0', '5' }
-1006 [ '1', '0', '0', '6' ] Set(3) { '1', '0', '6' }
-1007 [ '1', '0', '0', '7' ] Set(3) { '1', '0', '7' }
-1008 [ '1', '0', '0', '8' ] Set(3) { '1', '0', '8' }
-1009 [ '1', '0', '0', '9' ] Set(3) { '1', '0', '9' }
-1010 [ '1', '0', '1', '0' ] Set(2) { '1', '0' }
-1011 [ '1', '0', '1', '1' ] Set(2) { '1', '0' }
-1012 [ '1', '0', '1', '2' ] Set(3) { '1', '0', '2' }
-1013 [ '1', '0', '1', '3' ] Set(3) { '1', '0', '3' }
-1014 [ '1', '0', '1', '4' ] Set(3) { '1', '0', '4' }
-1015 [ '1', '0', '1', '5' ] Set(3) { '1', '0', '5' }
-1016 [ '1', '0', '1', '6' ] Set(3) { '1', '0', '6' }
-1017 [ '1', '0', '1', '7' ] Set(3) { '1', '0', '7' }
-1018 [ '1', '0', '1', '8' ] Set(3) { '1', '0', '8' }
-1019 [ '1', '0', '1', '9' ] Set(3) { '1', '0', '9' }
-1020 [ '1', '0', '2', '0' ] Set(3) { '1', '0', '2' }
-1021 [ '1', '0', '2', '1' ] Set(3) { '1', '0', '2' }
-1022 [ '1', '0', '2', '2' ] Set(3) { '1', '0', '2' }
-1023 [ '1', '0', '2', '3' ] Set(4) { '1', '0', '2', '3' }
-1023
-*/
+    console.log(nextHappyYear(1001));
+     
+    1002 [ '1', '0', '0', '2' ] Set(3) { '1', '0', '2' }
+    1003 [ '1', '0', '0', '3' ] Set(3) { '1', '0', '3' }
+    1004 [ '1', '0', '0', '4' ] Set(3) { '1', '0', '4' }
+    1005 [ '1', '0', '0', '5' ] Set(3) { '1', '0', '5' }
+    1006 [ '1', '0', '0', '6' ] Set(3) { '1', '0', '6' }
+    1007 [ '1', '0', '0', '7' ] Set(3) { '1', '0', '7' }
+    1008 [ '1', '0', '0', '8' ] Set(3) { '1', '0', '8' }
+    1009 [ '1', '0', '0', '9' ] Set(3) { '1', '0', '9' }
+    1010 [ '1', '0', '1', '0' ] Set(2) { '1', '0' }
+    1011 [ '1', '0', '1', '1' ] Set(2) { '1', '0' }
+    1012 [ '1', '0', '1', '2' ] Set(3) { '1', '0', '2' }
+    1013 [ '1', '0', '1', '3' ] Set(3) { '1', '0', '3' }
+    1014 [ '1', '0', '1', '4' ] Set(3) { '1', '0', '4' }
+    1015 [ '1', '0', '1', '5' ] Set(3) { '1', '0', '5' }
+    1016 [ '1', '0', '1', '6' ] Set(3) { '1', '0', '6' }
+    1017 [ '1', '0', '1', '7' ] Set(3) { '1', '0', '7' }
+    1018 [ '1', '0', '1', '8' ] Set(3) { '1', '0', '8' }
+    1019 [ '1', '0', '1', '9' ] Set(3) { '1', '0', '9' }
+    1020 [ '1', '0', '2', '0' ] Set(3) { '1', '0', '2' }
+    1021 [ '1', '0', '2', '1' ] Set(3) { '1', '0', '2' }
+    1022 [ '1', '0', '2', '2' ] Set(3) { '1', '0', '2' }
+    1023 [ '1', '0', '2', '3' ] Set(4) { '1', '0', '2', '3' }
+    1023
+    */
 
 // 1023
 // console.log(nextHappyYear(1001));
@@ -11831,20 +11848,20 @@ function nextHappyYear8(year: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved in the order they appear in the queue.
- 
-Input:
-Array of file sizes (0 <= s <= 100)
-Capacity of the HD (0 <= c <= 500)
-Output:
-Number of files that can be fully saved in the HD.
-Examples:
-save([4,4,4,3,3], 12) -> 3
-# 4+4+4 <= 12, but 4+4+4+3 > 12
-save([4,4,4,3,3], 11) -> 2
-# 4+4 <= 11, but 4+4+4 > 11
-Do not expect any negative or invalid inputs.
-*/
+    Your task is to determine how many files of the copy queue you will be able to save into your Hard Disk Drive. The files must be saved in the order they appear in the queue.
+     
+    Input:
+    Array of file sizes (0 <= s <= 100)
+    Capacity of the HD (0 <= c <= 500)
+    Output:
+    Number of files that can be fully saved in the HD.
+    Examples:
+    save([4,4,4,3,3], 12) -> 3
+    # 4+4+4 <= 12, but 4+4+4+3 > 12
+    save([4,4,4,3,3], 11) -> 2
+    # 4+4 <= 11, but 4+4+4 > 11
+    Do not expect any negative or invalid inputs.
+    */
 
 const save = (sizesArr: number[], storage: number): number => {
     let freeSpace: number = storage,
@@ -11910,28 +11927,28 @@ const save4 = (sizes: number[], hd: number): number =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the distance between any two neighbouring numbers is equal (note that 0 and n - 1 are neighbouring, too).
- 
-Given n and firstNumber/first_number/first-number, find the number which is written in the radially opposite position to firstNumber.
- 
-Example
-For n = 10 and firstNumber = 2, the output should be 7
- 
- 
- 
-Input/Output
-[input] integer n
- 
-A positive even integer.
- 
-Constraints: 4 ≤ n ≤ 1000.
- 
-[input] integer firstNumber/first_number/first-number
- 
-Constraints: 0 ≤ firstNumber ≤ n - 1
- 
-[output] an integer
-*/
+    Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the distance between any two neighbouring numbers is equal (note that 0 and n - 1 are neighbouring, too).
+     
+    Given n and firstNumber/first_number/first-number, find the number which is written in the radially opposite position to firstNumber.
+     
+    Example
+    For n = 10 and firstNumber = 2, the output should be 7
+     
+     
+     
+    Input/Output
+    [input] integer n
+     
+    A positive even integer.
+     
+    Constraints: 4 ≤ n ≤ 1000.
+     
+    [input] integer firstNumber/first_number/first-number
+     
+    Constraints: 0 ≤ firstNumber ≤ n - 1
+     
+    [output] an integer
+    */
 const circleOfNumbers = (num: number, firstNum: number): number => {
     return firstNum < num / 2 ? num / 2 + firstNum : firstNum - num / 2;
 };
@@ -11943,12 +11960,12 @@ const circleOfNumbers = (num: number, firstNum: number): number => {
 // console.log();
 
 /*
-❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
-Math.trunc(8.76) => 8
-The Math.trunc() method returns the integer part of a number.
- 
-Note: This method will NOT round the number up/down to the nearest integer, but simply remove the decimals.
-*/
+    ❗️❗️❗️ MATH.TRUNC ❗️❗️❗️
+    Math.trunc(8.76) => 8
+    The Math.trunc() method returns the integer part of a number.
+     
+    Note: This method will NOT round the number up/down to the nearest integer, but simply remove the decimals.
+    */
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function circleOfNumbers2(n: number, firstNumber: number): number {
@@ -11987,40 +12004,40 @@ function circleOfNumbers5(n: number, firstNumber: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The accounts of the "Fat to Fit Club (FFC)" association are supervised by John as a volunteered accountant. The association is funded through financial donations from generous benefactors. John has a list of the first n donations: [14, 30, 5, 7, 9, 11, 15] He wants to know how much the next benefactor should give to the association so that the average of the first n + 1 donations should reach an average of 30. After doing the math he found 149. He thinks that he could have made a mistake.
- 
-if dons = [14, 30, 5, 7, 9, 11, 15] then new_avg(dons, 30) --> 149
- 
-Could you help him?
- 
-Task
-The function new_avg(arr, navg) should return the expected donation (rounded up to the next integer) that will permit to reach the average navg.
- 
-Should the last donation be a non positive number (<= 0) John wants us:
- 
-to return:
- 
-Nothing in Haskell, Elm
-None in F#, Ocaml, Rust, Scala
--1 in C, D, Fortran, Nim, PowerShell, Go, Pascal, Prolog, Lua, Perl
-or to throw an error (some examples for such a case):
- 
-IllegalArgumentException() in Clojure, Java
-ArgumentException() in C#
-echo ERROR in Shell
-argument-error in Racket
-std::invalid_argument in C++
-ValueError in Python
-So, he will clearly see that his expectations are not great enough. In "Sample Tests" you can see what to return.
- 
-Notes:
-all donations and navg are numbers (integers or floats), arr can be empty.
-See examples below and "Sample Tests" to see which return is to be done.
-new_avg([14, 30, 5, 7, 9, 11, 15], 92) should return 645
-new_avg([14, 30, 5, 7, 9, 11, 15], 2) 
-should raise an error (ValueError or invalid_argument or argument-error or DomainError or ... ) 
-or return `-1` or ERROR or Nothing or None depending on the language.
-*/
+    The accounts of the "Fat to Fit Club (FFC)" association are supervised by John as a volunteered accountant. The association is funded through financial donations from generous benefactors. John has a list of the first n donations: [14, 30, 5, 7, 9, 11, 15] He wants to know how much the next benefactor should give to the association so that the average of the first n + 1 donations should reach an average of 30. After doing the math he found 149. He thinks that he could have made a mistake.
+     
+    if dons = [14, 30, 5, 7, 9, 11, 15] then new_avg(dons, 30) --> 149
+     
+    Could you help him?
+     
+    Task
+    The function new_avg(arr, navg) should return the expected donation (rounded up to the next integer) that will permit to reach the average navg.
+     
+    Should the last donation be a non positive number (<= 0) John wants us:
+     
+    to return:
+     
+    Nothing in Haskell, Elm
+    None in F#, Ocaml, Rust, Scala
+    -1 in C, D, Fortran, Nim, PowerShell, Go, Pascal, Prolog, Lua, Perl
+    or to throw an error (some examples for such a case):
+     
+    IllegalArgumentException() in Clojure, Java
+    ArgumentException() in C#
+    echo ERROR in Shell
+    argument-error in Racket
+    std::invalid_argument in C++
+    ValueError in Python
+    So, he will clearly see that his expectations are not great enough. In "Sample Tests" you can see what to return.
+     
+    Notes:
+    all donations and navg are numbers (integers or floats), arr can be empty.
+    See examples below and "Sample Tests" to see which return is to be done.
+    new_avg([14, 30, 5, 7, 9, 11, 15], 92) should return 645
+    new_avg([14, 30, 5, 7, 9, 11, 15], 2) 
+    should raise an error (ValueError or invalid_argument or argument-error or DomainError or ... ) 
+    or return `-1` or ERROR or Nothing or None depending on the language.
+    */
 
 // 1️⃣
 const newAvg = (donations: number[], targetAvg: number): number => {
@@ -12095,43 +12112,43 @@ function newAvg5(arr: number[], newavg: number): any {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the elements of Arr[] except Arr[i].
- 
-Notes
-Array/list size is at least 2 .
- 
-Array/list's numbers Will be only Positives
- 
-Repetition of numbers in the array/list could occur.
- 
-Input >> Output Examples
-productArray ({12,20}) ==>  return {20,12}
-Explanation:
-The first element in prod [] array 12 is the product of all array's elements except the first element
- 
-The second element 20 is the product of all array's elements except the second element .
- 
-productArray ({1,5,2}) ==> return {10,2,5}
-Explanation:
-The first element 10 is the product of all array's elements except the first element 1
- 
-The second element 2 is the product of all array's elements except the second element 5
- 
-The Third element 5 is the product of all array's elements except the Third element 2.
- 
-productArray ({10,3,5,6,2}) return ==> {180,600,360,300,900}
-Explanation:
-The first element 180 is the product of all array's elements except the first element 10
- 
-The second element 600 is the product of all array's elements except the second element 3
- 
-The Third element 360 is the product of all array's elements except the third element 5
- 
-The Fourth element 300 is the product of all array's elements except the fourth element 6
- 
-Finally ,The Fifth element 900 is the product of all array's elements except the fifth element 2
-*/
+    Task
+    Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal to The Product of all the elements of Arr[] except Arr[i].
+     
+    Notes
+    Array/list size is at least 2 .
+     
+    Array/list's numbers Will be only Positives
+     
+    Repetition of numbers in the array/list could occur.
+     
+    Input >> Output Examples
+    productArray ({12,20}) ==>  return {20,12}
+    Explanation:
+    The first element in prod [] array 12 is the product of all array's elements except the first element
+     
+    The second element 20 is the product of all array's elements except the second element .
+     
+    productArray ({1,5,2}) ==> return {10,2,5}
+    Explanation:
+    The first element 10 is the product of all array's elements except the first element 1
+     
+    The second element 2 is the product of all array's elements except the second element 5
+     
+    The Third element 5 is the product of all array's elements except the Third element 2.
+     
+    productArray ({10,3,5,6,2}) return ==> {180,600,360,300,900}
+    Explanation:
+    The first element 180 is the product of all array's elements except the first element 10
+     
+    The second element 600 is the product of all array's elements except the second element 3
+     
+    The Third element 360 is the product of all array's elements except the third element 5
+     
+    The Fourth element 300 is the product of all array's elements except the fourth element 6
+     
+    Finally ,The Fifth element 900 is the product of all array's elements except the fifth element 2
+    */
 
 // 1️⃣
 const productArray = (nums: number[]): number[] => {
@@ -12173,29 +12190,29 @@ function productArray3(nums: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
- 
-Complete the function getIssuer() that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string Unknown.
- 
-Where Issuer is defined with the following enum type.
- 
-enum Issuer {
-  VISA = 'VISA',
-  AMEX = 'AMEX',
-  Mastercard = 'Mastercard',
-  Discover = 'Discover',
-  Unknown = 'Unknown',
-}
-Examples
-getIssuer(4111111111111111) == "VISA"
-getIssuer(4111111111111) == "VISA"
-getIssuer(4012888888881881) == "VISA"
-getIssuer(378282246310005) == "AMEX"
-getIssuer(6011111111111117) == "Discover"
-getIssuer(5105105105105100) == "Mastercard"
-getIssuer(5105105105105106) == "Mastercard"
-getIssuer(9111111111111111) == "Unknown"
-*/
+    Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
+     
+    Complete the function getIssuer() that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string Unknown.
+     
+    Where Issuer is defined with the following enum type.
+     
+    enum Issuer {
+      VISA = 'VISA',
+      AMEX = 'AMEX',
+      Mastercard = 'Mastercard',
+      Discover = 'Discover',
+      Unknown = 'Unknown',
+    }
+    Examples
+    getIssuer(4111111111111111) == "VISA"
+    getIssuer(4111111111111) == "VISA"
+    getIssuer(4012888888881881) == "VISA"
+    getIssuer(378282246310005) == "AMEX"
+    getIssuer(6011111111111117) == "Discover"
+    getIssuer(5105105105105100) == "Mastercard"
+    getIssuer(5105105105105106) == "Mastercard"
+    getIssuer(9111111111111111) == "Unknown"
+    */
 
 enum Issuer {
     VISA = "VISA",
@@ -12274,39 +12291,39 @@ function detectCardType(number: string) {
 }
 
 /*
-The credit/debit card number is referred to as a PAN, or Primary Account Number. The first six digits of the PAN are taken from the IIN, or Issuer Identification Number, belonging to the issuing bank (IINs were previously known as BIN — Bank Identification Numbers — so you may see references to that terminology in some documents). These six digits are subject to an international standard, ISO/IEC 7812, and can be used to determine the type of card from the number.
- 
-Unfortunately the actual ISO/IEC 7812 database is not publicly available, however, there are unofficial lists, both commercial and free, including on Wikipedia.
- 
-Anyway, to detect the type from the number, you can use a regular expression like the ones below: Credit for original expressions
- 
-Visa: ^4[0-9]{6,}$ Visa card numbers start with a 4.
- 
-MasterCard: ^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$ Before 2016, MasterCard numbers start with the numbers 51 through 55, but this will only detect MasterCard credit cards; there are other cards issued using the MasterCard system that do not fall into this IIN range. In 2016, they will add numbers in the range (222100-272099).
- 
-American Express: ^3[47][0-9]{5,}$ American Express card numbers start with 34 or 37.
- 
-Diners Club: ^3(?:0[0-5]|[68][0-9])[0-9]{4,}$ Diners Club card numbers begin with 300 through 305, 36 or 38. There are Diners Club cards that begin with 5 and have 16 digits. These are a joint venture between Diners Club and MasterCard and should be processed like a MasterCard.
- 
-Discover: ^6(?:011|5[0-9]{2})[0-9]{3,}$ Discover card numbers begin with 6011 or 65.
- 
-JCB: ^(?:2131|1800|35[0-9]{3})[0-9]{3,}$ JCB cards begin with 2131, 1800 or 35.
- 
-Unfortunately, there are a number of card types processed with the MasterCard system that do not live in MasterCard’s IIN range (numbers starting 51...55); the most important case is that of Maestro cards, many of which have been issued from other banks’ IIN ranges and so are located all over the number space. As a result, it may be best to assume that any card that is not of some other type you accept must be a MasterCard.
- 
-Important: card numbers do vary in length; for instance, Visa has in the past issued cards with 13 digit PANs and cards with 16 digit PANs. Visa’s documentation currently indicates that it may issue or may have issued numbers with between 12 and 19 digits. Therefore, you should not check the length of the card number, other than to verify that it has at least 7 digits (for a complete IIN plus one check digit, which should match the value predicted by the Luhn algorithm).
- 
-One further hint: before processing a cardholder PAN, strip any whitespace and punctuation characters from the input. Why? Because it’s typically much easier to enter the digits in groups, similar to how they’re displayed on the front of an actual credit card, i.e.
- 
-4444 4444 4444 4444
-is much easier to enter correctly than
- 
-4444444444444444
-There’s really no benefit in chastising the user because they’ve entered characters you don't expect here.
- 
-This also implies making sure that your entry fields have room for at least 24 characters, otherwise users who enter spaces will run out of room. I’d recommend that you make the field wide enough to display 32 characters and allow up to 64; that gives plenty of headroom for expansion.
- 
-*/
+    The credit/debit card number is referred to as a PAN, or Primary Account Number. The first six digits of the PAN are taken from the IIN, or Issuer Identification Number, belonging to the issuing bank (IINs were previously known as BIN — Bank Identification Numbers — so you may see references to that terminology in some documents). These six digits are subject to an international standard, ISO/IEC 7812, and can be used to determine the type of card from the number.
+     
+    Unfortunately the actual ISO/IEC 7812 database is not publicly available, however, there are unofficial lists, both commercial and free, including on Wikipedia.
+     
+    Anyway, to detect the type from the number, you can use a regular expression like the ones below: Credit for original expressions
+     
+    Visa: ^4[0-9]{6,}$ Visa card numbers start with a 4.
+     
+    MasterCard: ^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$ Before 2016, MasterCard numbers start with the numbers 51 through 55, but this will only detect MasterCard credit cards; there are other cards issued using the MasterCard system that do not fall into this IIN range. In 2016, they will add numbers in the range (222100-272099).
+     
+    American Express: ^3[47][0-9]{5,}$ American Express card numbers start with 34 or 37.
+     
+    Diners Club: ^3(?:0[0-5]|[68][0-9])[0-9]{4,}$ Diners Club card numbers begin with 300 through 305, 36 or 38. There are Diners Club cards that begin with 5 and have 16 digits. These are a joint venture between Diners Club and MasterCard and should be processed like a MasterCard.
+     
+    Discover: ^6(?:011|5[0-9]{2})[0-9]{3,}$ Discover card numbers begin with 6011 or 65.
+     
+    JCB: ^(?:2131|1800|35[0-9]{3})[0-9]{3,}$ JCB cards begin with 2131, 1800 or 35.
+     
+    Unfortunately, there are a number of card types processed with the MasterCard system that do not live in MasterCard’s IIN range (numbers starting 51...55); the most important case is that of Maestro cards, many of which have been issued from other banks’ IIN ranges and so are located all over the number space. As a result, it may be best to assume that any card that is not of some other type you accept must be a MasterCard.
+     
+    Important: card numbers do vary in length; for instance, Visa has in the past issued cards with 13 digit PANs and cards with 16 digit PANs. Visa’s documentation currently indicates that it may issue or may have issued numbers with between 12 and 19 digits. Therefore, you should not check the length of the card number, other than to verify that it has at least 7 digits (for a complete IIN plus one check digit, which should match the value predicted by the Luhn algorithm).
+     
+    One further hint: before processing a cardholder PAN, strip any whitespace and punctuation characters from the input. Why? Because it’s typically much easier to enter the digits in groups, similar to how they’re displayed on the front of an actual credit card, i.e.
+     
+    4444 4444 4444 4444
+    is much easier to enter correctly than
+     
+    4444444444444444
+    There’s really no benefit in chastising the user because they’ve entered characters you don't expect here.
+     
+    This also implies making sure that your entry fields have room for at least 24 characters, otherwise users who enter spaces will run out of room. I’d recommend that you make the field wide enough to display 32 characters and allow up to 64; that gives plenty of headroom for expansion.
+     
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -12343,7 +12360,11 @@ const getIssuer3 = (x: number): Issuer => {
 const getIssuer4 = (x: number) => {
     let str = x.toString();
     let len = str.length;
-    let begin = { a: str.slice(0, 2), b: str.slice(0, 4), c: str.slice(0, 1) };
+    let begin = {
+        a: str.slice(0, 2),
+        b: str.slice(0, 4),
+        c: str.slice(0, 1),
+    };
     if ((len === 16 || len === 13) && begin.c === "4") {
         return "VISA";
     } else if (
@@ -12492,23 +12513,23 @@ const getIssuer11 = (x: number): Issuer => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You are given a string of letters and an array of numbers.
-The numbers indicate positions of letters that must be removed, in order, starting from the beginning of the array.
-After each removal the size of the string decreases (there is no empty space).
-Return the only letter left.
- 
-Example:
- 
-let str = "zbk", arr = [0, 1]
-    str = "bk", arr = [1]
-    str = "b", arr = []
-    return 'b'
-Notes
-The given string will never be empty.
-The length of the array is always one less than the length of the string.
-All numbers are valid.
-There can be duplicate letters and numbers.
-*/
+    You are given a string of letters and an array of numbers.
+    The numbers indicate positions of letters that must be removed, in order, starting from the beginning of the array.
+    After each removal the size of the string decreases (there is no empty space).
+    Return the only letter left.
+     
+    Example:
+     
+    let str = "zbk", arr = [0, 1]
+        str = "bk", arr = [1]
+        str = "b", arr = []
+        return 'b'
+    Notes
+    The given string will never be empty.
+    The length of the array is always one less than the length of the string.
+    All numbers are valid.
+    There can be duplicate letters and numbers.
+    */
 
 // 1️⃣  WITH ARRAY SPLICE ❗️❗️❗️
 const lastSurvivor = (letters: string, coords: number[]): string => {
@@ -12556,20 +12577,20 @@ function lastSurvivor3(letters: string, coords: number[]): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-I assume most of you are familiar with the ancient legend of the rice (but I see wikipedia suggests wheat, for some reason) problem, but a quick recap for you: a young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
- 
-Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
- 
-As usual, a few examples might be way better than thousands of words from me:
- 
-squaresNeeded(0) === 0
-squaresNeeded(1) === 1
-squaresNeeded(2) === 2
-squaresNeeded(3) === 2
-squaresNeeded(4) === 3
-Input is always going to be valid/reasonable: ie: a non negative number; extra cookie for not using a loop to compute square-by-square (at least not directly) and instead trying a smarter approach [hint: some peculiar operator]; a trick converting the number might also work: impress me!
- 
-*/
+    I assume most of you are familiar with the ancient legend of the rice (but I see wikipedia suggests wheat, for some reason) problem, but a quick recap for you: a young man asks as a compensation only 1 grain of rice for the first square, 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+     
+    Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard one should count in order to get at least as many.
+     
+    As usual, a few examples might be way better than thousands of words from me:
+     
+    squaresNeeded(0) === 0
+    squaresNeeded(1) === 1
+    squaresNeeded(2) === 2
+    squaresNeeded(3) === 2
+    squaresNeeded(4) === 3
+    Input is always going to be valid/reasonable: ie: a non negative number; extra cookie for not using a loop to compute square-by-square (at least not directly) and instead trying a smarter approach [hint: some peculiar operator]; a trick converting the number might also work: impress me!
+     
+    */
 
 const squaresNeeded = (numGrains: number): number => {
     if (!numGrains) return 0;
@@ -12653,12 +12674,12 @@ const squaresNeeded6 = (grains: number) => grains && ~~Math.log2(grains) + 1;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-This kata is about converting numbers to their binary or hexadecimal representation:
- 
-If a number is even, convert it to binary.
-If a number is odd, convert it to hex.
-Numbers will be positive. The hexadecimal string should be lowercased.
-*/
+    This kata is about converting numbers to their binary or hexadecimal representation:
+     
+    If a number is even, convert it to binary.
+    If a number is odd, convert it to hex.
+    Numbers will be positive. The hexadecimal string should be lowercased.
+    */
 
 const evensAndOdds = (num: number): string => {
     // const binary: string = (num >>> 0).toString(2);
@@ -12670,18 +12691,18 @@ const evensAndOdds = (num: number): string => {
 };
 
 /*
- 
-❗️❗️❗️ CONVERT INTEGER TO BINARY ❗️❗️❗️ 
-You can use Number.toString(2) function, but it has some problems when representing negative numbers. For example, (-1).toString(2) output is "-1".
- 
-To fix this issue, you can use the unsigned right shift bitwise operator (>>>) to coerce your number to an unsigned integer.
- 
-If you run (-1 >>> 0).toString(2) you will shift your number 0 bits to the right, which doesn't change the number itself but it will be represented as an unsigned integer. The code above will output "11111111111111111111111111111111" correctly.
- 
-This question has further explanation.
- 
--3 >>> 0 (right logical shift) coerces its arguments to unsigned integers, which is why you get the 32-bit two's complement representation of -3.
-*/
+     
+    ❗️❗️❗️ CONVERT INTEGER TO BINARY ❗️❗️❗️ 
+    You can use Number.toString(2) function, but it has some problems when representing negative numbers. For example, (-1).toString(2) output is "-1".
+     
+    To fix this issue, you can use the unsigned right shift bitwise operator (>>>) to coerce your number to an unsigned integer.
+     
+    If you run (-1 >>> 0).toString(2) you will shift your number 0 bits to the right, which doesn't change the number itself but it will be represented as an unsigned integer. The code above will output "11111111111111111111111111111111" correctly.
+     
+    This question has further explanation.
+     
+    -3 >>> 0 (right logical shift) coerces its arguments to unsigned integers, which is why you get the 32-bit two's complement representation of -3.
+    */
 
 //   "10"
 // console.log(evensAndOdds(2));
@@ -12719,27 +12740,27 @@ function evensAndOdds5(n: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a string s. You have to return another string such that even-indexed and odd-indexed characters of s are grouped and groups are space-separated (see sample below)
- 
-Note: 
-0 is considered to be an even index. 
-All input strings are valid with no spaces
-input: 'CodeWars'
-output 'CdWr oeas'
- 
-S[0] = 'C'
-S[1] = 'o'
-S[2] = 'd'
-S[3] = 'e'
-S[4] = 'W'
-S[5] = 'a'
-S[6] = 'r'
-S[7] = 's'
-Even indices 0, 2, 4, 6, so we have 'CdWr' as the first group
-odd ones are 1, 3, 5, 7, so the second group is 'oeas'
-And the final string to return is 'Cdwr oeas'
- 
-*/
+    Given a string s. You have to return another string such that even-indexed and odd-indexed characters of s are grouped and groups are space-separated (see sample below)
+     
+    Note: 
+    0 is considered to be an even index. 
+    All input strings are valid with no spaces
+    input: 'CodeWars'
+    output 'CdWr oeas'
+     
+    S[0] = 'C'
+    S[1] = 'o'
+    S[2] = 'd'
+    S[3] = 'e'
+    S[4] = 'W'
+    S[5] = 'a'
+    S[6] = 'r'
+    S[7] = 's'
+    Even indices 0, 2, 4, 6, so we have 'CdWr' as the first group
+    odd ones are 1, 3, 5, 7, so the second group is 'oeas'
+    And the final string to return is 'Cdwr oeas'
+     
+    */
 
 const sortMyString = (str: string): string => {
     let solution: string = "";
@@ -12851,42 +12872,42 @@ function sortMyString8(S: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array/list [] of integers , Find The maximum difference between the successive elements in its sorted form.
- 
-Notes
-Array/list size is at least 3 .
- 
-Array/list's numbers Will be mixture of positives and negatives also zeros_
- 
-Repetition of numbers in the array/list could occur.
- 
-The Maximum Gap is computed Regardless the sign.
- 
-Input >> Output Examples
-maxGap ({13,10,5,2,9}) ==> return (4)
-Explanation:
-The Maximum Gap after sorting the array is 4 , The difference between 9 - 5 = 4 .
-maxGap ({-3,-27,-4,-2}) ==> return (23)
-Explanation:
-The Maximum Gap after sorting the array is 23 , The difference between |-4- (-27) | = 23 .
- 
-Note : Regardless the sign of negativity .
- 
-maxGap ({-7,-42,-809,-14,-12}) ==> return (767)  
-Explanation:
-The Maximum Gap after sorting the array is 767 , The difference between | -809- (-42) | = 767 .
- 
-Note : Regardless the sign of negativity .
- 
-maxGap ({-54,37,0,64,640,0,-15}) //return (576)
-Explanation:
-The Maximum Gap after sorting the array is 576 , The difference between | 64 - 640 | = 576 .
- 
-Note : Regardless the sign of negativity .
- 
- 
-*/
+    Task
+    Given an array/list [] of integers , Find The maximum difference between the successive elements in its sorted form.
+     
+    Notes
+    Array/list size is at least 3 .
+     
+    Array/list's numbers Will be mixture of positives and negatives also zeros_
+     
+    Repetition of numbers in the array/list could occur.
+     
+    The Maximum Gap is computed Regardless the sign.
+     
+    Input >> Output Examples
+    maxGap ({13,10,5,2,9}) ==> return (4)
+    Explanation:
+    The Maximum Gap after sorting the array is 4 , The difference between 9 - 5 = 4 .
+    maxGap ({-3,-27,-4,-2}) ==> return (23)
+    Explanation:
+    The Maximum Gap after sorting the array is 23 , The difference between |-4- (-27) | = 23 .
+     
+    Note : Regardless the sign of negativity .
+     
+    maxGap ({-7,-42,-809,-14,-12}) ==> return (767)  
+    Explanation:
+    The Maximum Gap after sorting the array is 767 , The difference between | -809- (-42) | = 767 .
+     
+    Note : Regardless the sign of negativity .
+     
+    maxGap ({-54,37,0,64,640,0,-15}) //return (576)
+    Explanation:
+    The Maximum Gap after sorting the array is 576 , The difference between | 64 - 640 | = 576 .
+     
+    Note : Regardless the sign of negativity .
+     
+     
+    */
 
 // 1️⃣
 const maxGap = (numArr: number[]): number => {
@@ -12977,8 +12998,8 @@ function maxGap5(nums: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).
-*/
+    Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).
+    */
 
 const average = (scoresArr: number[]): number => {
     return Math.round(
@@ -13022,47 +13043,47 @@ function average3(scores: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their Sum becomes greater or equal to K.
- 
-Notes:
-List size is at least 3.
- 
-All numbers will be positive.
- 
-Numbers could occur more than once , (Duplications may exist).
- 
-Threshold K will always be reachable.
- 
-Input >> Output Examples
-minimumSteps({1, 10, 12, 9, 2, 3}, 6)  ==>  return (2)
-Explanation:
-We add two smallest elements (1 + 2), their sum is 3 .
- 
-Then we add the next smallest number to it (3 + 3) , so the sum becomes 6 .
- 
-Now the result is greater or equal to 6 , Hence the output is (2) i.e (2) operations are required to do this .
- 
-minimumSteps({8 , 9, 4, 2}, 23)  ==> return (3)
-Explanation:
-We add two smallest elements (4 + 2), their sum is 6 .
- 
-Then we add the next smallest number to it (6 + 8) , so the sum becomes 14 .
- 
-Now we add the next smallest number (14 + 9) , so the sum becomes 23 .
- 
-Now the result is greater or equal to 23 , Hence the output is (3) i.e (3) operations are required to do this .
- 
-minimumSteps({19,98,69,28,75,45,17,98,67}, 464)  ==>  return (8)
-Explanation:
-We add two smallest elements (19 + 17), their sum is 36 .
- 
-Then we add the next smallest number to it (36 + 28) , so the sum becomes 64 .
- 
-We need to keep doing this until the sum becomes greater or equal to K (464 in this case), which will require 8 Steps .
- 
-Expected Time Complexity O(n Log n)
-*/
+    Task
+    Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their Sum becomes greater or equal to K.
+     
+    Notes:
+    List size is at least 3.
+     
+    All numbers will be positive.
+     
+    Numbers could occur more than once , (Duplications may exist).
+     
+    Threshold K will always be reachable.
+     
+    Input >> Output Examples
+    minimumSteps({1, 10, 12, 9, 2, 3}, 6)  ==>  return (2)
+    Explanation:
+    We add two smallest elements (1 + 2), their sum is 3 .
+     
+    Then we add the next smallest number to it (3 + 3) , so the sum becomes 6 .
+     
+    Now the result is greater or equal to 6 , Hence the output is (2) i.e (2) operations are required to do this .
+     
+    minimumSteps({8 , 9, 4, 2}, 23)  ==> return (3)
+    Explanation:
+    We add two smallest elements (4 + 2), their sum is 6 .
+     
+    Then we add the next smallest number to it (6 + 8) , so the sum becomes 14 .
+     
+    Now we add the next smallest number (14 + 9) , so the sum becomes 23 .
+     
+    Now the result is greater or equal to 23 , Hence the output is (3) i.e (3) operations are required to do this .
+     
+    minimumSteps({19,98,69,28,75,45,17,98,67}, 464)  ==>  return (8)
+    Explanation:
+    We add two smallest elements (19 + 17), their sum is 36 .
+     
+    Then we add the next smallest number to it (36 + 28) , so the sum becomes 64 .
+     
+    We need to keep doing this until the sum becomes greater or equal to K (464 in this case), which will require 8 Steps .
+     
+    Expected Time Complexity O(n Log n)
+    */
 
 const minimumSteps = (numsArr: number[], tHold: number): number => {
     const ascArr: number[] = numsArr.sort((a, b) => a - b);
@@ -13127,19 +13148,19 @@ const minimumSteps3 = (nums: number[], value: number) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given an input of an array of digits, return the array with each digit incremented by its position in the array: the first digit will be incremented by 1, the second digit by 2, etc. Make sure to start counting your positions from 1 ( and not 0 ).
- 
-Your result can only contain single digit numbers, so if adding a digit with its position gives you a multiple-digit number, only the last digit of the number should be returned.
- 
-Notes:
-return an empty array if your array is empty
-arrays will only contain numbers so don't worry about checking that
-Examples:
-[1, 2, 3]  -->  [2, 4, 6]   #  [1+1, 2+2, 3+3]
- 
-[4, 6, 9, 1, 3]  -->  [5, 8, 2, 5, 8]  #  [4+1, 6+2, 9+3, 1+4, 3+5]
-                                       #  9+3 = 12  -->  2
-*/
+    Given an input of an array of digits, return the array with each digit incremented by its position in the array: the first digit will be incremented by 1, the second digit by 2, etc. Make sure to start counting your positions from 1 ( and not 0 ).
+     
+    Your result can only contain single digit numbers, so if adding a digit with its position gives you a multiple-digit number, only the last digit of the number should be returned.
+     
+    Notes:
+    return an empty array if your array is empty
+    arrays will only contain numbers so don't worry about checking that
+    Examples:
+    [1, 2, 3]  -->  [2, 4, 6]   #  [1+1, 2+2, 3+3]
+     
+    [4, 6, 9, 1, 3]  -->  [5, 8, 2, 5, 8]  #  [4+1, 6+2, 9+3, 1+4, 3+5]
+                                           #  9+3 = 12  -->  2
+    */
 
 const incrementer = (numArr: number[]): number[] => {
     const solution: number[] = numArr.map((el, idx) => {
@@ -13174,23 +13195,23 @@ const incrementer2 = (nums: number[]): number[] =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Compare two strings by comparing the sum of their values (ASCII character code).
- 
-For comparing treat all letters as UpperCase
-null/NULL/Nil/None should be treated as empty strings
-If the string contains other characters than letters, treat the whole string as it would be empty
-Your method should return true, if the strings are equal and false if they are not equal.
- 
-Examples:
-"AD", "BC"  -> equal
-"AD", "DD"  -> not equal
-"gf", "FG"  -> equal
-"zz1", ""   -> equal (both are considered empty)
-"ZzZz", "ffPFF" -> equal
-"kl", "lz"  -> not equal
-null, ""    -> equal
- 
-*/
+    Compare two strings by comparing the sum of their values (ASCII character code).
+     
+    For comparing treat all letters as UpperCase
+    null/NULL/Nil/None should be treated as empty strings
+    If the string contains other characters than letters, treat the whole string as it would be empty
+    Your method should return true, if the strings are equal and false if they are not equal.
+     
+    Examples:
+    "AD", "BC"  -> equal
+    "AD", "DD"  -> not equal
+    "gf", "FG"  -> equal
+    "zz1", ""   -> equal (both are considered empty)
+    "ZzZz", "ffPFF" -> equal
+    "kl", "lz"  -> not equal
+    null, ""    -> equal
+     
+    */
 const compare = (str1: string | null, str2: string | null): boolean => {
     //  !!! REPLACE LETTERS WITH SPACE AND CHECK LENGTH !!!
     const getStrVal = (str: string | null): number => {
@@ -13221,14 +13242,14 @@ const compare = (str1: string | null, str2: string | null): boolean => {
 };
 
 /*
-❗️❗️❗️ REGEX MATCH NEGATED SET "^" ❗️❗️❗️ MATCH ANY CHAR THAT IS NOT IN THE SET
-Match letters only /[A-Z]/ig
-Match anything not letters /[^A-Z]/ig
-Match number only /[0-9]/g or /\d+/g
-Match anything not number /[^0-9]/g or /\D+/g
-Match anything not number or letter /[^A-Z0-9]/ig
- 
-*/
+    ❗️❗️❗️ REGEX MATCH NEGATED SET "^" ❗️❗️❗️ MATCH ANY CHAR THAT IS NOT IN THE SET
+    Match letters only /[A-Z]/ig
+    Match anything not letters /[^A-Z]/ig
+    Match number only /[0-9]/g or /\d+/g
+    Match anything not number /[^0-9]/g or /\D+/g
+    Match anything not number or letter /[^A-Z0-9]/ig
+     
+    */
 
 // true
 // console.log(compare("aD", "Bc"));
@@ -13242,15 +13263,15 @@ Match anything not number or letter /[^A-Z0-9]/ig
 // console.log();
 
 /*
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│ value1  │  133   │
-│ value2  │  133   │
-│ isEqual │  true  │
-└─────────┴────────┘
-true
-*/
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │ value1  │  133   │
+    │ value2  │  133   │
+    │ isEqual │  true  │
+    └─────────┴────────┘
+    true
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 function compare2(s1: string | null, s2: string | null): boolean {
@@ -13320,19 +13341,19 @@ function compare5(s1: string | null, s2: string | null): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a number return the closest number to it that is divisible by 10.
- 
-Example input:
- 
-22
-25
-37
-Expected output:
- 
-20
-30
-40
-*/
+    Given a number return the closest number to it that is divisible by 10.
+     
+    Example input:
+     
+    22
+    25
+    37
+    Expected output:
+     
+    20
+    30
+    40
+    */
 const closestMultiple10 = (num: number) => {
     return Math.round(num / 10) * 10;
 };
@@ -13390,19 +13411,19 @@ const closestMultiple104: F10 = (num) => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-This is a kata series that you can only solve using recursion.
-##1 - Factorial
- 
-In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
- 
-5! = 5 * 4 * 3 * 2 * 1 = 120.
- 
-The value of 0! is 1.
- 
-#Your task
- 
-You have to create the function factorial that receives n and returns n!. You have to use recursion.
-*/
+    This is a kata series that you can only solve using recursion.
+    ##1 - Factorial
+     
+    In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
+     
+    5! = 5 * 4 * 3 * 2 * 1 = 120.
+     
+    The value of 0! is 1.
+     
+    #Your task
+     
+    You have to create the function factorial that receives n and returns n!. You have to use recursion.
+    */
 
 // 1️⃣
 const factorialA = (n: number): number => {
@@ -13465,41 +13486,41 @@ const factorialA5 = (n: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Introduction
-Digital Cypher assigns to each letter of the alphabet unique number. For example:
- 
- a  b  c  d  e  f  g  h  i  j  k  l  m
- 1  2  3  4  5  6  7  8  9 10 11 12 13
- n  o  p  q  r  s  t  u  v  w  x  y  z
-14 15 16 17 18 19 20 21 22 23 24 25 26
-Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
- 
- s  c  o  u  t
-19  3 15 21 20
-Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
- 
-   s  c  o  u  t
-  19  3 15 21 20
- + 1  9  3  9  1
- ---------------
-  20 12 18 30 21
-  
-   m  a  s  t  e  r  p  i  e  c  e
-  13  1 19 20  5 18 16  9  5  3  5
-+  1  9  3  9  1  9  3  9  1  9  3
-  --------------------------------
-  14 10 22 29  6 27 19 18  6  12 8
-Task
-Write a function that accepts str string and key number and returns an array of integers representing encoded str.
- 
-Input / Output
-The str input string consists of lowercase characters only.
-The key input number is a positive integer.
- 
-Example
-Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
-Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
-*/
+    Introduction
+    Digital Cypher assigns to each letter of the alphabet unique number. For example:
+     
+     a  b  c  d  e  f  g  h  i  j  k  l  m
+     1  2  3  4  5  6  7  8  9 10 11 12 13
+     n  o  p  q  r  s  t  u  v  w  x  y  z
+    14 15 16 17 18 19 20 21 22 23 24 25 26
+    Instead of letters in encrypted word we write the corresponding number, eg. The word scout:
+     
+     s  c  o  u  t
+    19  3 15 21 20
+    Then we add to each obtained digit consecutive digits from the key. For example. In case of key equal to 1939 :
+     
+       s  c  o  u  t
+      19  3 15 21 20
+     + 1  9  3  9  1
+     ---------------
+      20 12 18 30 21
+      
+       m  a  s  t  e  r  p  i  e  c  e
+      13  1 19 20  5 18 16  9  5  3  5
+    +  1  9  3  9  1  9  3  9  1  9  3
+      --------------------------------
+      14 10 22 29  6 27 19 18  6  12 8
+    Task
+    Write a function that accepts str string and key number and returns an array of integers representing encoded str.
+     
+    Input / Output
+    The str input string consists of lowercase characters only.
+    The key input number is a positive integer.
+     
+    Example
+    Encode("scout",1939);  ==>  [ 20, 12, 18, 30, 21]
+    Encode("masterpiece",1939);  ==>  [ 14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]
+    */
 const encode = (str: String, key: number): number[] => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     // SPLIT KEY INTO ARRAY OF DIGITS: [ 1, 9, 3, 9 ]
@@ -13549,48 +13570,48 @@ function encode3(str: string, n: number): number[] {
 }
 
 /*
-function encode4(str: String, n: number): number[] {
-    const decodedArray: number[] = [];
-    const stringArray = str.split("");
-    const codeArray = stringArray.map(letter => letter.charCodeAt(0) - 96);
-    const numberArray = n.toString().split("").map(Number)
-    let tempArray = [...numberArray];
- 
-    const result = codeArray.map(code => {
-        if (!tempArray.length) tempArray = [...numberArray];
- 
-        // ❗️❗️❗️ Object is possibly 'undefined'.ts(2532) ❗️❗️❗️
-        return code += tempArray.shift()
-    })
- 
-    return result;
-}
-*/
+    function encode4(str: String, n: number): number[] {
+        const decodedArray: number[] = [];
+        const stringArray = str.split("");
+        const codeArray = stringArray.map(letter => letter.charCodeAt(0) - 96);
+        const numberArray = n.toString().split("").map(Number)
+        let tempArray = [...numberArray];
+     
+        const result = codeArray.map(code => {
+            if (!tempArray.length) tempArray = [...numberArray];
+     
+            // ❗️❗️❗️ Object is possibly 'undefined'.ts(2532) ❗️❗️❗️
+            return code += tempArray.shift()
+        })
+     
+        return result;
+    }
+    */
 
 /*
-function encode5(str: String, n: number): number[] {
-    const decodedArray: number[] = [];
-    const code = {
-        a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8,
-        i: 9, j: 10, k: 11, l: 12, m: 13, n: 14, o: 15,
-        p: 16, q: 17, r: 18, s: 19, t: 20, u: 21, v: 22,
-        w: 23, x: 24, y: 25, z: 26,
+    function encode5(str: String, n: number): number[] {
+        const decodedArray: number[] = [];
+        const code = {
+            a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8,
+            i: 9, j: 10, k: 11, l: 12, m: 13, n: 14, o: 15,
+            p: 16, q: 17, r: 18, s: 19, t: 20, u: 21, v: 22,
+            w: 23, x: 24, y: 25, z: 26,
+        }
+        const stringArray = str.split("");
+        // ❗️❗️❗️ error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ a: number; b: number; c: number; d: number; e: number; f: number; g: number; h: number; i: number; j: number; k: number; l: number; m: number; n: number; o: number; p: number; q: number; r: number; s: number; t: number; u: number; ... 4 more ...; z: number; }'.
+        const codeArray = stringArray.map(letter => code[letter]);
+        const numberArray = n.toString().split("").map(str => parseInt(str))
+        let tempArray = [...numberArray];
+     
+        const result = codeArray.map(code => {
+            if (!tempArray.length) tempArray = [...numberArray];
+     
+            return code += tempArray.shift()
+        })
+     
+        return result;
     }
-    const stringArray = str.split("");
-    // ❗️❗️❗️ error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ a: number; b: number; c: number; d: number; e: number; f: number; g: number; h: number; i: number; j: number; k: number; l: number; m: number; n: number; o: number; p: number; q: number; r: number; s: number; t: number; u: number; ... 4 more ...; z: number; }'.
-    const codeArray = stringArray.map(letter => code[letter]);
-    const numberArray = n.toString().split("").map(str => parseInt(str))
-    let tempArray = [...numberArray];
- 
-    const result = codeArray.map(code => {
-        if (!tempArray.length) tempArray = [...numberArray];
- 
-        return code += tempArray.shift()
-    })
- 
-    return result;
-}
-*/
+    */
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SIMPLE FUN - HOUSE NUMBERS SUM
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -13600,25 +13621,25 @@ function encode5(str: String, n: number): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-A boy is walking a long way from school to his home. To make the walk more fun he decides to add up all the numbers of the houses that he passes by during his walk. Unfortunately, not all of the houses have numbers written on them, and on top of that the boy is regularly taking turns to change streets, so the numbers don't appear to him in any particular order.
- 
-At some point during the walk the boy encounters a house with number 0 written on it, which surprises him so much that he stops adding numbers to his total right after seeing that house.
- 
-For the given sequence of houses determine the sum that the boy will get. It is guaranteed that there will always be at least one 0 house on the path.
- 
-Example
-For inputArray = [5, 1, 2, 3, 0, 1, 5, 0, 2], the output should be 11.
- 
-The answer was obtained as 5 + 1 + 2 + 3 = 11.
- 
-Input/Output
-[input] integer array inputArray
- 
-Constraints: 5 ≤ inputArray.length ≤ 50, 0 ≤ inputArray[i] ≤ 10.
- 
-[output] an integer
-*/
+    Task
+    A boy is walking a long way from school to his home. To make the walk more fun he decides to add up all the numbers of the houses that he passes by during his walk. Unfortunately, not all of the houses have numbers written on them, and on top of that the boy is regularly taking turns to change streets, so the numbers don't appear to him in any particular order.
+     
+    At some point during the walk the boy encounters a house with number 0 written on it, which surprises him so much that he stops adding numbers to his total right after seeing that house.
+     
+    For the given sequence of houses determine the sum that the boy will get. It is guaranteed that there will always be at least one 0 house on the path.
+     
+    Example
+    For inputArray = [5, 1, 2, 3, 0, 1, 5, 0, 2], the output should be 11.
+     
+    The answer was obtained as 5 + 1 + 2 + 3 = 11.
+     
+    Input/Output
+    [input] integer array inputArray
+     
+    Constraints: 5 ≤ inputArray.length ≤ 50, 0 ≤ inputArray[i] ≤ 10.
+     
+    [output] an integer
+    */
 const houseNumbersSum = (arr: number[]): number => {
     let solution: number = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -13675,12 +13696,12 @@ function houseNumbersSum4(inputArray: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-n this Kata, you will be given a string that has lowercase letters and numbers. Your task is to compare the number groupings and return the largest number. Numbers will not have leading zeros.
- 
-For example, solve("gh12cdy695m1") = 695, because this is the largest of all number groupings.
- 
-Good luck!
-*/
+    n this Kata, you will be given a string that has lowercase letters and numbers. Your task is to compare the number groupings and return the largest number. Numbers will not have leading zeros.
+     
+    For example, solve("gh12cdy695m1") = 695, because this is the largest of all number groupings.
+     
+    Good luck!
+    */
 
 // 1️⃣
 const solveC = (str: string): number => {
@@ -13735,40 +13756,40 @@ function solveC6(s: string): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
- 
-Given a number determine if it special number or not .
- 
-Notes
-The number passed will be positive (N > 0) .
- 
-All single-digit numbers within the interval [1:5] are considered as special number.
- 
-Input >> Output Examples
-specialNumber(2) ==> return "Special!!"
-Explanation:
-It's a single-digit number within the interval [1:5] .
- 
-specialNumber(9) ==> return "NOT!!"
-Explanation:
-Although, it's a single-digit number but Outside the interval [1:5] .
- 
-specialNumber(23) ==> return "Special!!"
-Explanation:
-All the number's digits formed from the interval [0:5] digits .
- 
-specialNumber(39) ==> return "NOT!!"
-Explanation:
-Although, there is a digit (3) Within the interval But the second digit is not (Must be ALL The Number's Digits ) .
- 
-specialNumber(59) ==> return "NOT!!"
-Explanation:
-Although, there is a digit (5) Within the interval But the second digit is not (Must be ALL The Number's Digits ) .
- 
-specialNumber(513) ==> return "Special!!"
-specialNumber(709) ==> return "NOT!!"
-*/
+    Definition
+    A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
+     
+    Given a number determine if it special number or not .
+     
+    Notes
+    The number passed will be positive (N > 0) .
+     
+    All single-digit numbers within the interval [1:5] are considered as special number.
+     
+    Input >> Output Examples
+    specialNumber(2) ==> return "Special!!"
+    Explanation:
+    It's a single-digit number within the interval [1:5] .
+     
+    specialNumber(9) ==> return "NOT!!"
+    Explanation:
+    Although, it's a single-digit number but Outside the interval [1:5] .
+     
+    specialNumber(23) ==> return "Special!!"
+    Explanation:
+    All the number's digits formed from the interval [0:5] digits .
+     
+    specialNumber(39) ==> return "NOT!!"
+    Explanation:
+    Although, there is a digit (3) Within the interval But the second digit is not (Must be ALL The Number's Digits ) .
+     
+    specialNumber(59) ==> return "NOT!!"
+    Explanation:
+    Although, there is a digit (5) Within the interval But the second digit is not (Must be ALL The Number's Digits ) .
+     
+    specialNumber(513) ==> return "Special!!"
+    specialNumber(709) ==> return "NOT!!"
+    */
 const specialNumber = (num: number) => {
     const numStr: string = num.toString();
     // console.log(numStr);
@@ -13810,20 +13831,20 @@ function specialNumber4(n: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year.
- 
-Find the number of Friday 13th in the given year.
- 
-Input: Year in Gregorian calendar as integer.
- 
-Output: Number of Black Fridays in the year as an integer.
- 
-Examples:
- 
-unluckyDays(2015) == 3
-unluckyDays(1986) == 1
- 
-*/
+    Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year.
+     
+    Find the number of Friday 13th in the given year.
+     
+    Input: Year in Gregorian calendar as integer.
+     
+    Output: Number of Black Fridays in the year as an integer.
+     
+    Examples:
+     
+    unluckyDays(2015) == 3
+    unluckyDays(1986) == 1
+     
+    */
 function unluckyDays(year: number): number {
     return 1;
 }
@@ -13846,33 +13867,33 @@ function unluckyDays(year: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array/list [] of integers , Find the product of the k maximal numbers.
- 
-Notes
-Array/list size is at least 3 .
- 
-Array/list's numbers Will be mixture of positives , negatives and zeros
- 
-Repetition of numbers in the array/list could occur.
- 
-Input >> Output Examples
-maxProduct ({4, 3, 5}, 2) ==>  return (20)
-Explanation:
-Since the size (k) equal 2 , then the subsequence of size 2 whose gives product of maxima is 5 * 4 = 20 .
-maxProduct ({8, 10 , 9, 7}, 3) ==>  return (720)
-Explanation:
-Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 8 * 9 * 10 = 720 .
-maxProduct ({10, 8, 3, 2, 1, 4, 10}, 5) ==> return (9600)
-Explanation:
-Since the size (k) equal 5 , then the subsequence of size 5 whose gives product of maxima is 10 * 10 * 8 * 4 * 3 = 9600 .
-maxProduct ({-4, -27, -15, -6, -1}, 2) ==> return (4)
-Explanation:
-Since the size (k) equal 2 , then the subsequence of size 2 whose gives product of maxima is -4 * -1 = 4 .
-maxProduct ({10, 3, -1, -27} , 3)  return (-30)
-Explanation:
-Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 10 * 3 * -1 = -30 .
-*/
+    Task
+    Given an array/list [] of integers , Find the product of the k maximal numbers.
+     
+    Notes
+    Array/list size is at least 3 .
+     
+    Array/list's numbers Will be mixture of positives , negatives and zeros
+     
+    Repetition of numbers in the array/list could occur.
+     
+    Input >> Output Examples
+    maxProduct ({4, 3, 5}, 2) ==>  return (20)
+    Explanation:
+    Since the size (k) equal 2 , then the subsequence of size 2 whose gives product of maxima is 5 * 4 = 20 .
+    maxProduct ({8, 10 , 9, 7}, 3) ==>  return (720)
+    Explanation:
+    Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 8 * 9 * 10 = 720 .
+    maxProduct ({10, 8, 3, 2, 1, 4, 10}, 5) ==> return (9600)
+    Explanation:
+    Since the size (k) equal 5 , then the subsequence of size 5 whose gives product of maxima is 10 * 10 * 8 * 4 * 3 = 9600 .
+    maxProduct ({-4, -27, -15, -6, -1}, 2) ==> return (4)
+    Explanation:
+    Since the size (k) equal 2 , then the subsequence of size 2 whose gives product of maxima is -4 * -1 = 4 .
+    maxProduct ({10, 3, -1, -27} , 3)  return (-30)
+    Explanation:
+    Since the size (k) equal 3 , then the subsequence of size 3 whose gives product of maxima is 10 * 3 * -1 = -30 .
+    */
 
 // 1️⃣
 const maxProduct = (numbers: number[], size: number): number => {
@@ -13921,10 +13942,10 @@ function maxProduct3(numbers: number[], size: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The vowel substrings in the word codewarriors are o,e,a,io. The longest of these has a length of 2. Given a lowercase string that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel substring. Vowels are any of aeiou.
- 
-Good luck!
-*/
+    The vowel substrings in the word codewarriors are o,e,a,io. The longest of these has a length of 2. Given a lowercase string that has alphabetic characters only (both vowels and consonants) and no spaces, return the length of the longest vowel substring. Vowels are any of aeiou.
+     
+    Good luck!
+    */
 const solveB = (str: string): number => {
     // ❗️❗️❗️ CHECK IF STRING HAS ANY VOWELS ❗️❗️❗️
     if (!/[aeiou]/g.test(str)) return 0;
@@ -13967,22 +13988,22 @@ function solveB4(str: string) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
- 
-'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
-Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
- 
-total1 = 656667
-              ^
-total2 = 656661
-              ^
-Then return the difference between the❗️❗️❗️  sum of the digits ❗️❗️❗️ in total1 and total2:
- 
-  (6 + 5 + 6 + 6 + 6 + 7)
-- (6 + 5 + 6 + 6 + 6 + 1)
--------------------------
-                       6
-*/
+    Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
+     
+    'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+    Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+     
+    total1 = 656667
+                  ^
+    total2 = 656661
+                  ^
+    Then return the difference between the❗️❗️❗️  sum of the digits ❗️❗️❗️ in total1 and total2:
+     
+      (6 + 5 + 6 + 6 + 6 + 7)
+    - (6 + 5 + 6 + 6 + 6 + 1)
+    -------------------------
+                           6
+    */
 
 const calc = (str: string): number => {
     // ❗️❗️❗️ TypeError: Reduce of empty array with no initial value ❗️❗️❗️ CHECK FOR EMPTY ARRAY ❗️❗️❗️
@@ -14077,16 +14098,16 @@ function replace7with1(num: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a string "abc" and assuming that each letter in the string has a value equal to its position in the alphabet, our string will have a value of 1 + 2 + 3 = 6. This means that: a = 1, b = 2, c = 3 ....z = 26.
- 
-You will be given a list of strings and your task will be to return the values of the strings as explained above multiplied by the position of that string in the list. For our purpose, position begins with 1.
- 
-nameValue ["abc","abc abc"] should return [6,24] because of [ 6 * 1, 12 * 2 ]. Note how spaces are ignored.
- 
-"abc" has a value of 6, while "abc abc" has a value of 12. Now, the value at position 1 is multiplied by 1 while the value at position 2 is multiplied by 2.
- 
-Input will only contain lowercase characters and spaces.
-*/
+    Given a string "abc" and assuming that each letter in the string has a value equal to its position in the alphabet, our string will have a value of 1 + 2 + 3 = 6. This means that: a = 1, b = 2, c = 3 ....z = 26.
+     
+    You will be given a list of strings and your task will be to return the values of the strings as explained above multiplied by the position of that string in the list. For our purpose, position begins with 1.
+     
+    nameValue ["abc","abc abc"] should return [6,24] because of [ 6 * 1, 12 * 2 ]. Note how spaces are ignored.
+     
+    "abc" has a value of 6, while "abc abc" has a value of 12. Now, the value at position 1 is multiplied by 1 while the value at position 2 is multiplied by 2.
+     
+    Input will only contain lowercase characters and spaces.
+    */
 
 const wordValue = (arr: string[]) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -14167,46 +14188,46 @@ function wordValue4(arr: string[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-Jumping number is the number that All adjacent digits in it differ by 1.
- 
-Task
-Given a number, Find if it is Jumping or not .
- 
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
-Number passed is always Positive .
- 
-Return the result as String .
- 
-The difference between ‘9’ and ‘0’ is not considered as 1 .
- 
-All single digit numbers are considered as Jumping numbers.
- 
-Input >> Output Examples
-jumpingNumber(9) ==> return "Jumping!!"
-Explanation:
-It's single-digit number
-jumpingNumber(79) ==> return "Not!!"
-Explanation:
-Adjacent digits don't differ by 1
-jumpingNumber(23) ==> return "Jumping!!"
-Explanation:
-Adjacent digits differ by 1
-jumpingNumber(556847) ==> return "Not!!"
-Explanation:
-Adjacent digits don't differ by 1
-jumpingNumber(4343456) ==> return "Jumping!!"
-Explanation:
-Adjacent digits differ by 1
-jumpingNumber(89098) ==> return "Not!!"
-Explanation:
-Adjacent digits don't differ by 1
-jumpingNumber(32) ==> return "Jumping!!"
-Explanation:
-Adjacent digits differ by 1
-*/
+    Definition
+    Jumping number is the number that All adjacent digits in it differ by 1.
+     
+    Task
+    Given a number, Find if it is Jumping or not .
+     
+    Warm-up (Highly recommended)
+    Playing With Numbers Series
+    Notes
+    Number passed is always Positive .
+     
+    Return the result as String .
+     
+    The difference between ‘9’ and ‘0’ is not considered as 1 .
+     
+    All single digit numbers are considered as Jumping numbers.
+     
+    Input >> Output Examples
+    jumpingNumber(9) ==> return "Jumping!!"
+    Explanation:
+    It's single-digit number
+    jumpingNumber(79) ==> return "Not!!"
+    Explanation:
+    Adjacent digits don't differ by 1
+    jumpingNumber(23) ==> return "Jumping!!"
+    Explanation:
+    Adjacent digits differ by 1
+    jumpingNumber(556847) ==> return "Not!!"
+    Explanation:
+    Adjacent digits don't differ by 1
+    jumpingNumber(4343456) ==> return "Jumping!!"
+    Explanation:
+    Adjacent digits differ by 1
+    jumpingNumber(89098) ==> return "Not!!"
+    Explanation:
+    Adjacent digits don't differ by 1
+    jumpingNumber(32) ==> return "Jumping!!"
+    Explanation:
+    Adjacent digits differ by 1
+    */
 
 const jumpingNumber = (num: number): string => {
     if (num < 10) return "Jumping!!";
@@ -14304,54 +14325,54 @@ function jumpingNumber5(n: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-An element is leader if it is greater than The Sum all the elements to its right side.
- 
-Task
-Given an array/list [] of integers , Find all the LEADERS in the array.
- 
-Notes
-Array/list size is at least 3 .
- 
-Array/list's numbers Will be mixture of positives , negatives and zeros
- 
-Repetition of numbers in the array/list could occur.
- 
-Returned Array/list should store the leading numbers in the same order in the original array/list .
- 
-Input >> Output Examples
-arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
-Explanation:
-4 is greater than the sum all the elements to its right side
- 
-Note : The last element 0 is equal to right sum of its elements (abstract zero).
- 
-arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
-Explanation:
-17 is greater than the sum all the elements to its right side
- 
-5 is greater than the sum all the elements to its right side
- 
-Note : The last element 2 is greater than the sum of its right elements (abstract zero).
- 
-arrayLeaders ({5, 2, -1}) ==> return {5, 2}
-Explanation:
-5 is greater than the sum all the elements to its right side
- 
-2 is greater than the sum all the elements to its right side
- 
-Note : The last element -1 is less than the sum of its right elements (abstract zero).
- 
-arrayLeaders ({0, -1, -29, 3, 2}) ==> return {0, -1, 3, 2}
-Explanation:
-0 is greater than the sum all the elements to its right side
- 
--1 is greater than the sum all the elements to its right side
- 
-3 is greater than the sum all the elements to its right side
- 
-Note : The last element 2 is greater than the sum of its right elements (abstract zero).
-*/
+    Definition
+    An element is leader if it is greater than The Sum all the elements to its right side.
+     
+    Task
+    Given an array/list [] of integers , Find all the LEADERS in the array.
+     
+    Notes
+    Array/list size is at least 3 .
+     
+    Array/list's numbers Will be mixture of positives , negatives and zeros
+     
+    Repetition of numbers in the array/list could occur.
+     
+    Returned Array/list should store the leading numbers in the same order in the original array/list .
+     
+    Input >> Output Examples
+    arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+    Explanation:
+    4 is greater than the sum all the elements to its right side
+     
+    Note : The last element 0 is equal to right sum of its elements (abstract zero).
+     
+    arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
+    Explanation:
+    17 is greater than the sum all the elements to its right side
+     
+    5 is greater than the sum all the elements to its right side
+     
+    Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+     
+    arrayLeaders ({5, 2, -1}) ==> return {5, 2}
+    Explanation:
+    5 is greater than the sum all the elements to its right side
+     
+    2 is greater than the sum all the elements to its right side
+     
+    Note : The last element -1 is less than the sum of its right elements (abstract zero).
+     
+    arrayLeaders ({0, -1, -29, 3, 2}) ==> return {0, -1, 3, 2}
+    Explanation:
+    0 is greater than the sum all the elements to its right side
+     
+    -1 is greater than the sum all the elements to its right side
+     
+    3 is greater than the sum all the elements to its right side
+     
+    Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+    */
 
 const arrayLeaders = (numbers: number[]): number[] => {
     let leadersArr: number[] = [];
@@ -14384,49 +14405,49 @@ const arrayLeaders = (numbers: number[]): number[] => {
 // console.log();
 
 /*
- 
-arrayLeaders([16, 17, 4, 3, 5, 2])
- 
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│   idx   │   0    │
-│ current │   16   │
-│  rest   │   31   │
-└─────────┴────────┘
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│   idx   │   1    │
-│ current │   17   │
-│  rest   │   14   │
-└─────────┴────────┘
-17
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│   idx   │   2    │
-│ current │   4    │
-│  rest   │   10   │
-└─────────┴────────┘
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│   idx   │   3    │
-│ current │   3    │
-│  rest   │   7    │
-└─────────┴────────┘
-┌─────────┬────────┐
-│ (index) │ Values │
-├─────────┼────────┤
-│   idx   │   4    │
-│ current │   5    │
-│  rest   │   2    │
-└─────────┴────────┘
-5
- 
-[ 17, 5, 2 ]
-*/
+     
+    arrayLeaders([16, 17, 4, 3, 5, 2])
+     
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │   idx   │   0    │
+    │ current │   16   │
+    │  rest   │   31   │
+    └─────────┴────────┘
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │   idx   │   1    │
+    │ current │   17   │
+    │  rest   │   14   │
+    └─────────┴────────┘
+    17
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │   idx   │   2    │
+    │ current │   4    │
+    │  rest   │   10   │
+    └─────────┴────────┘
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │   idx   │   3    │
+    │ current │   3    │
+    │  rest   │   7    │
+    └─────────┴────────┘
+    ┌─────────┬────────┐
+    │ (index) │ Values │
+    ├─────────┼────────┤
+    │   idx   │   4    │
+    │ current │   5    │
+    │  rest   │   2    │
+    └─────────┴────────┘
+    5
+     
+    [ 17, 5, 2 ]
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -14464,35 +14485,35 @@ function arrayLeaders4(numbers: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
- 
-Notes :
-Array/list size is at least 3 .
- 
-Array/list numbers could be a mixture of positives , negatives and zeros .
- 
-Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
- 
-Input >> Output Examples
-1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
-Explanation:
-As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
- 
-Note : duplications are not included when summing , (i.e) the numbers added only once .
- 
-2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
-Explanation:
-As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
- 
-Note : duplications are not included when summing , (i.e) the numbers added only once .
- 
-3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
-Explanation:
-As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is (41) ,
- 
-Note : duplications are not included when summing , (i.e) the numbers added only once .
-*/
+    Task
+    Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
+     
+    Notes :
+    Array/list size is at least 3 .
+     
+    Array/list numbers could be a mixture of positives , negatives and zeros .
+     
+    Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
+     
+    Input >> Output Examples
+    1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+    Explanation:
+    As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+     
+    Note : duplications are not included when summing , (i.e) the numbers added only once .
+     
+    2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
+    Explanation:
+    As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
+     
+    Note : duplications are not included when summing , (i.e) the numbers added only once .
+     
+    3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
+    Explanation:
+    As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is (41) ,
+     
+    Note : duplications are not included when summing , (i.e) the numbers added only once .
+    */
 
 const maxTriSum = (nums: number[]): number => {
     const unuqueNums = new Set<number>(nums);
@@ -14535,37 +14556,37 @@ const maxTriSum3 = (nums: number[]) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Introduction and Warm-up (Highly recommended)
-Playing With Lists/Arrays Series
-Task
-Given an array/list [] of integers , Find the Nth smallest element in this array of integers
- 
-Notes
-Array/list size is at least 3 .
- 
-Array/list's numbers could be a mixture of positives , negatives and zeros .
- 
-Repetition in array/list's numbers could occur , so don't Remove Duplications .
- 
-Input >> Output Examples
-nthSmallest({3,1,2} ,2) ==> return (2) 
-Explanation:
-Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
- 
-nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
-Explanation:
-Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
- 
-nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) 
-Explanation:
-Since the passed number is 4 , Then * the fourth smallest element in this array/list is 2*
- 
-nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
-Explanation:
-Since the passed number is 5 , Then * the fifth smallest element in this array/list is 92*
- 
- 
-*/
+    Introduction and Warm-up (Highly recommended)
+    Playing With Lists/Arrays Series
+    Task
+    Given an array/list [] of integers , Find the Nth smallest element in this array of integers
+     
+    Notes
+    Array/list size is at least 3 .
+     
+    Array/list's numbers could be a mixture of positives , negatives and zeros .
+     
+    Repetition in array/list's numbers could occur , so don't Remove Duplications .
+     
+    Input >> Output Examples
+    nthSmallest({3,1,2} ,2) ==> return (2) 
+    Explanation:
+    Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
+     
+    nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+    Explanation:
+    Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
+     
+    nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) 
+    Explanation:
+    Since the passed number is 4 , Then * the fourth smallest element in this array/list is 2*
+     
+    nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
+    Explanation:
+    Since the passed number is 5 , Then * the fifth smallest element in this array/list is 92*
+     
+     
+    */
 
 const nthSmallest = (arr: number[], pos: number): number => {
     // SORT ASCENDING
@@ -14613,21 +14634,21 @@ function nthSmallest5(arr: number[], pos: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-For this kata you will have to forget how to add two numbers.
- 
-It can be best explained using the following meme:
- 
-Dayane Rivas adding up a sum while competing in the Guatemalan television show "Combate" in May 2016
- 
-In simple terms, our method does not like the principle of carrying over numbers and just writes down every number it calculates :-)
- 
-You may assume both integers are positive integers.
- 
-Examples
-16+1821426+39515122+811103\large \begin{array}{lll} & 1 & 6 \\ + & 1 & 8 \\ \hline & 2 & 1 4 \\ \end{array} \qquad \large \begin{array}{lll} & 2 & 6 \\ + & 3 & 9 \\ \hline & 5 & 15 \\ \end{array} \qquad \large \begin{array}{lll} & 1 & 2 & 2 \\ + & & 8 & 1 \\ \hline & 1 & 10 & 3 \\ \end{array} 
-+
-​
-*/
+    For this kata you will have to forget how to add two numbers.
+     
+    It can be best explained using the following meme:
+     
+    Dayane Rivas adding up a sum while competing in the Guatemalan television show "Combate" in May 2016
+     
+    In simple terms, our method does not like the principle of carrying over numbers and just writes down every number it calculates :-)
+     
+    You may assume both integers are positive integers.
+     
+    Examples
+    16+1821426+39515122+811103\large \begin{array}{lll} & 1 & 6 \\ + & 1 & 8 \\ \hline & 2 & 1 4 \\ \end{array} \qquad \large \begin{array}{lll} & 2 & 6 \\ + & 3 & 9 \\ \hline & 5 & 15 \\ \end{array} \qquad \large \begin{array}{lll} & 1 & 2 & 2 \\ + & & 8 & 1 \\ \hline & 1 & 10 & 3 \\ \end{array} 
+    +
+    ​
+    */
 
 // const nyuszi: string = "🐰";
 // console.log("maci ❤️ : ", nyuszi);
@@ -14687,12 +14708,12 @@ const add = (num1: number, num2: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-A Tidy number is a number whose digits are in non-decreasing order.
- 
-Task
-Given a number, Find if it is Tidy or not .
-*/
+    Definition
+    A Tidy number is a number whose digits are in non-decreasing order.
+     
+    Task
+    Given a number, Find if it is Tidy or not .
+    */
 
 const tidyNumber = (num: number): boolean => {
     // ARRANGE DIGITS IN INCREASING ORDER(STRING)
@@ -14739,28 +14760,28 @@ const tidyNumber4 = (n: number) => +[...String(n)].sort().join("") === n;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Input:
- 
-a string strng
-an array of strings arr
-Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
- 
-a boolean true if all rotations of strng are included in arr (C returns 1)
-false otherwise (C returns 0)
-Examples:
-contain_all_rots(
-  "bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]) -> true
- 
-contain_all_rots(
-  "Ajylvpy", ["Ajylvpy", "ylvpyAj", "jylvpyA", "lvpyAjy", "pyAjylv", "vpyAjyl", "ipywee"]) -> false)
-Note:
-Though not correct in a mathematical sense
- 
-we will consider that there are no rotations of strng == ""
-and for any array arr: contain_all_rots("", arr) --> true
-Ref: https://en.wikipedia.org/wiki/String_(computer_science)#Rotations
- 
-*/
+    Input:
+     
+    a string strng
+    an array of strings arr
+    Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
+     
+    a boolean true if all rotations of strng are included in arr (C returns 1)
+    false otherwise (C returns 0)
+    Examples:
+    contain_all_rots(
+      "bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]) -> true
+     
+    contain_all_rots(
+      "Ajylvpy", ["Ajylvpy", "ylvpyAj", "jylvpyA", "lvpyAjy", "pyAjylv", "vpyAjyl", "ipywee"]) -> false)
+    Note:
+    Though not correct in a mathematical sense
+     
+    we will consider that there are no rotations of strng == ""
+    and for any array arr: contain_all_rots("", arr) --> true
+    Ref: https://en.wikipedia.org/wiki/String_(computer_science)#Rotations
+     
+    */
 
 const containAllRots = (str: string, arr: string[]): boolean => {
     const strArr: string[] = str.split("");
@@ -14836,25 +14857,25 @@ function containAllRots4(str: string, arr: string[]): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-Disarium number is the number that The sum of its digits powered with their respective positions is equal to the number itself.
- 
-Task
-Given a number, Find if it is Disarium or not .
- 
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
-Number passed is always Positive .
-Return the result as String
-Input >> Output Examples
-disariumNumber(89) ==> return "Disarium !!"
-Explanation:
-Since , 81 + 92 = 89 , thus output is "Disarium !!"
-disariumNumber(564) ==> return "Not !!"
-Explanation:
-Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
-*/
+    Definition
+    Disarium number is the number that The sum of its digits powered with their respective positions is equal to the number itself.
+     
+    Task
+    Given a number, Find if it is Disarium or not .
+     
+    Warm-up (Highly recommended)
+    Playing With Numbers Series
+    Notes
+    Number passed is always Positive .
+    Return the result as String
+    Input >> Output Examples
+    disariumNumber(89) ==> return "Disarium !!"
+    Explanation:
+    Since , 81 + 92 = 89 , thus output is "Disarium !!"
+    disariumNumber(564) ==> return "Not !!"
+    Explanation:
+    Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
+    */
 
 const disariumNumber = (num: number): string => {
     // CONVERT NUM TO ARRAY OF ITS NUMERIC DIGITS
@@ -14921,21 +14942,21 @@ function disariumNumber4(n: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You are the greatest chef on earth. No one boils eggs like you! Your restaurant is always full of guests, who love your boiled eggs. But when there is a greater order of boiled eggs, you need some time, because you have only one pot for your job. How much time do you need?
- 
-Your Task
-Implement a function, which takes a non-negative integer, representing the number of eggs to boil. It must return the time in minutes (integer), which it takes to have all the eggs boiled.
- 
-Rules
-you can put at most 8 eggs into the pot at once
-it takes 5 minutes to boil an egg
-we assume, that the water is boiling all the time (no time to heat up)
-for simplicity we also don't consider the time it takes to put eggs into the pot or get them out of it
-Example (Input --> Output)
-0 --> 0
-5 --> 5
-10 --> 10
-*/
+    You are the greatest chef on earth. No one boils eggs like you! Your restaurant is always full of guests, who love your boiled eggs. But when there is a greater order of boiled eggs, you need some time, because you have only one pot for your job. How much time do you need?
+     
+    Your Task
+    Implement a function, which takes a non-negative integer, representing the number of eggs to boil. It must return the time in minutes (integer), which it takes to have all the eggs boiled.
+     
+    Rules
+    you can put at most 8 eggs into the pot at once
+    it takes 5 minutes to boil an egg
+    we assume, that the water is boiling all the time (no time to heat up)
+    for simplicity we also don't consider the time it takes to put eggs into the pot or get them out of it
+    Example (Input --> Output)
+    0 --> 0
+    5 --> 5
+    10 --> 10
+    */
 
 // 1️⃣ ✅
 const cookingTime = (eggs: number): number => {
@@ -14967,40 +14988,40 @@ const cookingTime2 = (eggs: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-Strong number is the number that the sum of the factorial of its digits is equal to number itself.
- 
-For example: 145, since
-1! + 4! + 5! = 1 + 24 + 120 = 145
-So, 145 is a Strong number.
- 
-Task
-Given a number, Find if it is Strong or not.
- 
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
-Number passed is always Positive.
-Return the result as String
-Input >> Output Examples
-strong_num(1) ==> return "STRONG!!!!"
-Explanation:
-Since , the sum of its digits' factorial of (1) is equal to number itself (1) , Then its a Strong .
- 
-strong_num(123) ==> return "Not Strong !!"
-Explanation:
-Since the sum of its digits' factorial of 1! + 2! + 3! = 9 is not equal to number itself (123) , Then it's Not Strong .
- 
-strong_num(2)  ==>  return "STRONG!!!!"
-Explanation:
-Since the sum of its digits' factorial of 2! = 2 is equal to number itself (2) , Then its a Strong .
- 
-strong_num(150) ==> return "Not Strong !!"
-Explanation:
-Since the sum of its digits' factorial of 1! + 5! + 0! = 122 is not equal to number itself (150), Then it's Not Strong .
- 
- 
-*/
+    Definition
+    Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+     
+    For example: 145, since
+    1! + 4! + 5! = 1 + 24 + 120 = 145
+    So, 145 is a Strong number.
+     
+    Task
+    Given a number, Find if it is Strong or not.
+     
+    Warm-up (Highly recommended)
+    Playing With Numbers Series
+    Notes
+    Number passed is always Positive.
+    Return the result as String
+    Input >> Output Examples
+    strong_num(1) ==> return "STRONG!!!!"
+    Explanation:
+    Since , the sum of its digits' factorial of (1) is equal to number itself (1) , Then its a Strong .
+     
+    strong_num(123) ==> return "Not Strong !!"
+    Explanation:
+    Since the sum of its digits' factorial of 1! + 2! + 3! = 9 is not equal to number itself (123) , Then it's Not Strong .
+     
+    strong_num(2)  ==>  return "STRONG!!!!"
+    Explanation:
+    Since the sum of its digits' factorial of 2! = 2 is equal to number itself (2) , Then its a Strong .
+     
+    strong_num(150) ==> return "Not Strong !!"
+    Explanation:
+    Since the sum of its digits' factorial of 1! + 5! + 0! = 122 is not equal to number itself (150), Then it's Not Strong .
+     
+     
+    */
 
 const strongNumber = (num: number): string => {
     const factorial = (n: number): number => {
@@ -15034,30 +15055,30 @@ const strongNumber = (num: number): string => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
-const strongNumber2 = (num: number): string => {
-    var arr: number[] = [];
-  
-    function factorial(n: number) { 
-        return n <= 1 ? 1 : n * factorial(n - 1)
-    }
-  
-    return num === String(num).split('')
-        .map((e) => Number(e))
-        .map((e) => factorial(e))
-        .reduce((a, b) => a + b) ? "STRONG!!!!" : "Not Strong !!";
-  };
- 
- 
- 
- 
-  function fac(n: number){
-    return n < 2 ? 1 : n * fac(n - 1)
-  }
-  
-   const strongNumber3 = (num: number): string => {
-    return String(num).split("").reduce((a, b) => a + fac(+b), 0) === num ? "STRONG!!!!" : "Not Strong !!";
-}; 
-  */
+    const strongNumber2 = (num: number): string => {
+        var arr: number[] = [];
+      
+        function factorial(n: number) { 
+            return n <= 1 ? 1 : n * factorial(n - 1)
+        }
+      
+        return num === String(num).split('')
+            .map((e) => Number(e))
+            .map((e) => factorial(e))
+            .reduce((a, b) => a + b) ? "STRONG!!!!" : "Not Strong !!";
+      };
+     
+     
+     
+     
+      function fac(n: number){
+        return n < 2 ? 1 : n * fac(n - 1)
+      }
+      
+       const strongNumber3 = (num: number): string => {
+        return String(num).split("").reduce((a, b) => a + fac(+b), 0) === num ? "STRONG!!!!" : "Not Strong !!";
+    }; 
+      */
 
 const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
@@ -15079,27 +15100,27 @@ const strongNumber4 = (num: number): string =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-My friend John likes to go to the cinema. He can choose between system A and system B.
- 
-System A : he buys a ticket (15 dollars) every time
-System B : he buys a card (500 dollars) and a first ticket for 0.90 times the ticket price, 
-then for each additional ticket he pays 0.90 times the price paid for the previous ticket.
-Example:
-If John goes to the cinema 3 times:
- 
-System A : 15 * 3 = 45
-System B : 500 + 15 * 0.90 + (15 * 0.90) * 0.90 + (15 * 0.90 * 0.90) * 0.90 ( = 536.5849999999999, no rounding for each ticket)
-John wants to know how many times he must go to the cinema so that the final result of System B, when rounded up to the next dollar, will be cheaper than System A.
- 
-The function movie has 3 parameters: card (price of the card), ticket (normal price of a ticket), perc (fraction of what he paid for the previous ticket) and returns the first n such that
- 
-ceil(price of System B) < price of System A.
-More examples:
-movie(500, 15, 0.9) should return 43 
-    (with card the total price is 634, with tickets 645)
-movie(100, 10, 0.95) should return 24 
-    (with card the total price is 235, with tickets 240)
-*/
+    My friend John likes to go to the cinema. He can choose between system A and system B.
+     
+    System A : he buys a ticket (15 dollars) every time
+    System B : he buys a card (500 dollars) and a first ticket for 0.90 times the ticket price, 
+    then for each additional ticket he pays 0.90 times the price paid for the previous ticket.
+    Example:
+    If John goes to the cinema 3 times:
+     
+    System A : 15 * 3 = 45
+    System B : 500 + 15 * 0.90 + (15 * 0.90) * 0.90 + (15 * 0.90 * 0.90) * 0.90 ( = 536.5849999999999, no rounding for each ticket)
+    John wants to know how many times he must go to the cinema so that the final result of System B, when rounded up to the next dollar, will be cheaper than System A.
+     
+    The function movie has 3 parameters: card (price of the card), ticket (normal price of a ticket), perc (fraction of what he paid for the previous ticket) and returns the first n such that
+     
+    ceil(price of System B) < price of System A.
+    More examples:
+    movie(500, 15, 0.9) should return 43 
+        (with card the total price is 634, with tickets 645)
+    movie(100, 10, 0.95) should return 24 
+        (with card the total price is 235, with tickets 240)
+    */
 
 class G964c {
     public static movie(prePaid: number, ticket: number, perc: number): number {
@@ -15127,25 +15148,25 @@ class G964c {
 }
 
 /*
-G964c.movie(0, 10, 0.95)
-┌───────────────────┬────────┐
-│      (index)      │ Values │
-├───────────────────┼────────┤
-│       sysA        │   10   │
-│       sysB        │  9.5   │
-│ sysB rounded up:  │   10   │
-│      counter      │   1    │
-└───────────────────┴────────┘
-┌───────────────────┬────────┐
-│      (index)      │ Values │
-├───────────────────┼────────┤
-│       sysA        │   20   │
-│       sysB        │ 18.525 │
-│ sysB rounded up:  │   19   │
-│      counter      │   2    │
-└───────────────────┴────────┘
-2
-*/
+    G964c.movie(0, 10, 0.95)
+    ┌───────────────────┬────────┐
+    │      (index)      │ Values │
+    ├───────────────────┼────────┤
+    │       sysA        │   10   │
+    │       sysB        │  9.5   │
+    │ sysB rounded up:  │   10   │
+    │      counter      │   1    │
+    └───────────────────┴────────┘
+    ┌───────────────────┬────────┐
+    │      (index)      │ Values │
+    ├───────────────────┼────────┤
+    │       sysA        │   20   │
+    │       sysB        │ 18.525 │
+    │ sysB rounded up:  │   19   │
+    │      counter      │   2    │
+    └───────────────────┴────────┘
+    2
+    */
 
 // 43
 // console.log(G964c.movie(500, 15, 0.9));
@@ -15197,47 +15218,47 @@ class G964c3 {
 }
 
 /*
-class G964c4 {
-    
-    public static movie(card: number, ticket: number, perc: number): number {
-        let lastN = 0;
-        let n = 0;
-        let count = 0;
-        while(true) {
-          lastN = n;
-          let costA = G964.systemA(ticket, n);
-          let costB = G964.systemB(card, ticket, perc, n);
-          if(roundup(costB) >= roundup(costA)) {
-            if(Math.abs(costB - costA) < ticket) {
-              n++;
-            } else {
-            n += Math.ceil((costB - costA)/ticket);
+    class G964c4 {
+        
+        public static movie(card: number, ticket: number, perc: number): number {
+            let lastN = 0;
+            let n = 0;
+            let count = 0;
+            while(true) {
+              lastN = n;
+              let costA = G964.systemA(ticket, n);
+              let costB = G964.systemB(card, ticket, perc, n);
+              if(roundup(costB) >= roundup(costA)) {
+                if(Math.abs(costB - costA) < ticket) {
+                  n++;
+                } else {
+                n += Math.ceil((costB - costA)/ticket);
+                }
+              } else {
+                  break;
+              }
+              if(count++ > 20) break;
             }
-          } else {
-              break;
-          }
-          if(count++ > 20) break;
+            return n;
+        };
+        
+        public static systemA(ticket, n) {
+            return ticket*n;
+        }    
+        
+        public static systemB(card, ticket, perc, n) {
+            return card + ticket*perc*(1-Math.pow(perc,n))/(1-perc);
         }
-        return n;
-    };
-    
-    public static systemA(ticket, n) {
-        return ticket*n;
-    }    
-    
-    public static systemB(card, ticket, perc, n) {
-        return card + ticket*perc*(1-Math.pow(perc,n))/(1-perc);
+        
+        public static costDifference(card: number, ticket: number, perc: number, n: number) {
+            return (G964.systemB(card, ticket, perc, n)) - (G964.systemA(ticket, n));
+        }
     }
-    
-    public static costDifference(card: number, ticket: number, perc: number, n: number) {
-        return (G964.systemB(card, ticket, perc, n)) - (G964.systemA(ticket, n));
+     
+    function roundup(x): number {
+        return Math.ceil(x);
     }
-}
- 
-function roundup(x): number {
-    return Math.ceil(x);
-}
-*/
+    */
 
 class G964c5 {
     public static movie(card: number, ticket: number, perc: number): number {
@@ -15272,12 +15293,12 @@ class G964c5 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty output return an empty list.
- 
-Example:
- 
-orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
-*/
+    Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty output return an empty list.
+     
+    Example:
+     
+    orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
+    */
 
 // 1️⃣  !!! THIS IS NOT IN ORDER OF APPEARANCE FOR NUMBER STRING !!!
 // WORKS WITH ALPABETIC STRINGS
@@ -15404,59 +15425,59 @@ function orderedCount7(text: string): [string, number][] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Each day a plant is growing by upSpeed meters. Each night that plant's height decreases by downSpeed meters due to the lack of sun heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of a day. We want to know when the height of the plant will reach a certain level.
- 
-Example
-For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
- 
-After day 1 --> 100
-After night 1 --> 90
-After day 2 --> 190
-After night 2 --> 180
-After day 3 --> 280
-After night 3 --> 270
-After day 4 --> 370
-After night 4 --> 360
-After day 5 --> 460
-After night 5 --> 450
-After day 6 --> 550
-After night 6 --> 540
-After day 7 --> 640
-After night 7 --> 630
-After day 8 --> 730
-After night 8 --> 720
-After day 9 --> 820
-After night 9 --> 810
-After day 10 --> 910 
-For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
- 
-Because the plant reach to the desired height at day 1(10 meters).
- 
-After day 1 --> 10
-Input/Output
-[input] integer upSpeed
- 
-A positive integer representing the daily growth.
- 
-Constraints: 5 ≤ upSpeed ≤ 100.
- 
-[input] integer downSpeed
- 
-A positive integer representing the nightly decline.
- 
-Constraints: 2 ≤ downSpeed < upSpeed.
- 
-[input] integer desiredHeight
- 
-A positive integer representing the threshold.
- 
-Constraints: 4 ≤ desiredHeight ≤ 1000.
- 
-[output] an integer
- 
-The number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
-*/
+    Task
+    Each day a plant is growing by upSpeed meters. Each night that plant's height decreases by downSpeed meters due to the lack of sun heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of a day. We want to know when the height of the plant will reach a certain level.
+     
+    Example
+    For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
+     
+    After day 1 --> 100
+    After night 1 --> 90
+    After day 2 --> 190
+    After night 2 --> 180
+    After day 3 --> 280
+    After night 3 --> 270
+    After day 4 --> 370
+    After night 4 --> 360
+    After day 5 --> 460
+    After night 5 --> 450
+    After day 6 --> 550
+    After night 6 --> 540
+    After day 7 --> 640
+    After night 7 --> 630
+    After day 8 --> 730
+    After night 8 --> 720
+    After day 9 --> 820
+    After night 9 --> 810
+    After day 10 --> 910 
+    For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
+     
+    Because the plant reach to the desired height at day 1(10 meters).
+     
+    After day 1 --> 10
+    Input/Output
+    [input] integer upSpeed
+     
+    A positive integer representing the daily growth.
+     
+    Constraints: 5 ≤ upSpeed ≤ 100.
+     
+    [input] integer downSpeed
+     
+    A positive integer representing the nightly decline.
+     
+    Constraints: 2 ≤ downSpeed < upSpeed.
+     
+    [input] integer desiredHeight
+     
+    A positive integer representing the threshold.
+     
+    Constraints: 4 ≤ desiredHeight ≤ 1000.
+     
+    [output] an integer
+     
+    The number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
+    */
 
 const growingPlant = (up: number, down: number, target: number): number => {
     if (
@@ -15507,41 +15528,41 @@ const growingPlant = (up: number, down: number, target: number): number => {
 // console.log();
 
 /*
-growingPlant(100, 10, 410)
-┌──────────────┬────────┐
-│   (index)    │ Values │
-├──────────────┼────────┤
-│      up      │  100   │
-│     down     │   10   │
-│ actualHeigth │   90   │
-│   counter    │   1    │
-└──────────────┴────────┘
-┌──────────────┬────────┐
-│   (index)    │ Values │
-├──────────────┼────────┤
-│      up      │  100   │
-│     down     │   10   │
-│ actualHeigth │  180   │
-│   counter    │   2    │
-└──────────────┴────────┘
-┌──────────────┬────────┐
-│   (index)    │ Values │
-├──────────────┼────────┤
-│      up      │  100   │
-│     down     │   10   │
-│ actualHeigth │  270   │
-│   counter    │   3    │
-└──────────────┴────────┘
-┌──────────────┬────────┐
-│   (index)    │ Values │
-├──────────────┼────────┤
-│      up      │  100   │
-│     down     │   10   │
-│ actualHeigth │  360   │
-│   counter    │   4    │
-└──────────────┴────────┘
-5
-*/
+    growingPlant(100, 10, 410)
+    ┌──────────────┬────────┐
+    │   (index)    │ Values │
+    ├──────────────┼────────┤
+    │      up      │  100   │
+    │     down     │   10   │
+    │ actualHeigth │   90   │
+    │   counter    │   1    │
+    └──────────────┴────────┘
+    ┌──────────────┬────────┐
+    │   (index)    │ Values │
+    ├──────────────┼────────┤
+    │      up      │  100   │
+    │     down     │   10   │
+    │ actualHeigth │  180   │
+    │   counter    │   2    │
+    └──────────────┴────────┘
+    ┌──────────────┬────────┐
+    │   (index)    │ Values │
+    ├──────────────┼────────┤
+    │      up      │  100   │
+    │     down     │   10   │
+    │ actualHeigth │  270   │
+    │   counter    │   3    │
+    └──────────────┴────────┘
+    ┌──────────────┬────────┐
+    │   (index)    │ Values │
+    ├──────────────┼────────┤
+    │      up      │  100   │
+    │     down     │   10   │
+    │ actualHeigth │  360   │
+    │   counter    │   4    │
+    └──────────────┴────────┘
+    5
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -15590,31 +15611,31 @@ function growingPlant5(up: number, down: number, h: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Let us begin with an example:
- 
-Take a number: 56789. Rotate left, you get 67895.
- 
-Keep the first digit in place and rotate left the other digits: 68957.
- 
-Keep the first two digits in place and rotate the other ones: 68579.
- 
-Keep the first three digits and rotate left the rest: 68597. Now it is over since keeping the first four it remains only one digit which rotated is itself.
- 
-You have the following sequence of numbers:
- 
-56789 -> 67895 -> 68957 -> 68579 -> 68597
- 
-and you must return the greatest: 68957.
- 
-Task
-Write function max_rot(n) which given a positive integer n returns the maximum number you got doing rotations similar to the above example.
- 
-So max_rot (or maxRot or ... depending on the language) is such as:
- 
-max_rot(56789) should return 68957
- 
-max_rot(38458215) should return 85821534
-*/
+    Let us begin with an example:
+     
+    Take a number: 56789. Rotate left, you get 67895.
+     
+    Keep the first digit in place and rotate left the other digits: 68957.
+     
+    Keep the first two digits in place and rotate the other ones: 68579.
+     
+    Keep the first three digits and rotate left the rest: 68597. Now it is over since keeping the first four it remains only one digit which rotated is itself.
+     
+    You have the following sequence of numbers:
+     
+    56789 -> 67895 -> 68957 -> 68579 -> 68597
+     
+    and you must return the greatest: 68957.
+     
+    Task
+    Write function max_rot(n) which given a positive integer n returns the maximum number you got doing rotations similar to the above example.
+     
+    So max_rot (or maxRot or ... depending on the language) is such as:
+     
+    max_rot(56789) should return 68957
+     
+    max_rot(38458215) should return 85821534
+    */
 
 class G964B {
     public static maxRot = (num: number): number => {
@@ -15653,57 +15674,57 @@ class G964B {
 }
 
 /*
-553188569
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '5'    │
-│   number    │ 531885695 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '3'    │
-│   number    │ 518856953 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '8'    │
-│   number    │ 518569538 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '5'    │
-│   number    │ 518695385 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '9'    │
-│   number    │ 518653859 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '3'    │
-│   number    │ 518658593 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '5'    │
-│   number    │ 518658935 │
-└─────────────┴───────────┘
-┌─────────────┬───────────┐
-│   (index)   │  Values   │
-├─────────────┼───────────┤
-│ rotateDigit │    '3'    │
-│   number    │ 518658953 │
-└─────────────┴───────────┘
-553188569
-*/
+    553188569
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '5'    │
+    │   number    │ 531885695 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '3'    │
+    │   number    │ 518856953 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '8'    │
+    │   number    │ 518569538 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '5'    │
+    │   number    │ 518695385 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '9'    │
+    │   number    │ 518653859 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '3'    │
+    │   number    │ 518658593 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '5'    │
+    │   number    │ 518658935 │
+    └─────────────┴───────────┘
+    ┌─────────────┬───────────┐
+    │   (index)   │  Values   │
+    ├─────────────┼───────────┤
+    │ rotateDigit │    '3'    │
+    │   number    │ 518658953 │
+    └─────────────┴───────────┘
+    553188569
+    */
 
 // 553188569
 // console.log(G964B.maxRot(553188569));
@@ -15715,136 +15736,136 @@ class G964B {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
-class G964B1 {
-    public static maxRot(n) {
- 
-        let arrResult = [];
-        arrResult.push(n);
- 
-        let arrNum = n.toString().split('');
-        let i = 0;
-        while (arrNum.length >= i) {
-            arrNum.push(...arrNum.splice(i, 1));
- 
-            arrResult.push(arrNum.join(''));
-            i++;
-        }
- 
-        return arrResult.sort().pop();
-    }
-}
- 
- 
- 
- 
-class G964B2 {
-    public static maxRot = ($) => Math.max(...($ = `${$}`.split(``)).reduce((a, b, i) =>
-        a.concat([a[i].slice(0, i).concat(a[i].slice(i + 1))
-            .concat(a[i].slice(i, i + 1))]), [$]).map(el => el.join('')));
-}
- 
- 
- 
- 
-class G964B3 {
-    public static maxRot(n: number) {
-        var s: string = String(n)
-        var max = Number(s)
- 
-        for (var i = 0; i < s.length; i++) {
-            s = s.substr(0, i) + rot(s.substr(i))
-            var num = Number(s)
-            if (num > max) max = num
-        }
- 
-        return max
- 
-        /////////////////////////
- 
-        function rot(s: string) {
-            return s.substr(1) + s.substr(0, 1)
+    class G964B1 {
+        public static maxRot(n) {
+     
+            let arrResult = [];
+            arrResult.push(n);
+     
+            let arrNum = n.toString().split('');
+            let i = 0;
+            while (arrNum.length >= i) {
+                arrNum.push(...arrNum.splice(i, 1));
+     
+                arrResult.push(arrNum.join(''));
+                i++;
+            }
+     
+            return arrResult.sort().pop();
         }
     }
-}
- 
- 
- 
-class G964B4 {
-    public static maxRot = n =>
-        Math.max(...(n = String(n).split(''))
-            .reduce((r, _, i) =>
-                r.concat([r[i].slice(0, i)
-                    .concat(r[i].slice(i + 1))
-                    .concat(r[i].slice(i, i + 1))]), [n])
-            .map(e => e.join('')));
-}
- 
- 
- 
-class G964B5 {
-    public static maxRot(n) {
-        let arr = n.toString().split('');
-        const length = arr.length;
-        let results = [];
-        for (let i = 0; i < length; i++) {
-            // the results are pushed here to include the initial number
-            results.push(Number(arr.join('')));
-            // cut and paste the rotating number
-            let cache = arr.splice(i, 1);
-            arr.push(cache[0])
-            cache = [];
+     
+     
+     
+     
+    class G964B2 {
+        public static maxRot = ($) => Math.max(...($ = `${$}`.split(``)).reduce((a, b, i) =>
+            a.concat([a[i].slice(0, i).concat(a[i].slice(i + 1))
+                .concat(a[i].slice(i, i + 1))]), [$]).map(el => el.join('')));
+    }
+     
+     
+     
+     
+    class G964B3 {
+        public static maxRot(n: number) {
+            var s: string = String(n)
+            var max = Number(s)
+     
+            for (var i = 0; i < s.length; i++) {
+                s = s.substr(0, i) + rot(s.substr(i))
+                var num = Number(s)
+                if (num > max) max = num
+            }
+     
+            return max
+     
+            /////////////////////////
+     
+            function rot(s: string) {
+                return s.substr(1) + s.substr(0, 1)
+            }
         }
-        return Math.max.apply(null, results);
     }
-}
- 
- 
- 
-class G964B6 {
-    public static maxRot(n) {
-        let digits = `${n}`, max = n;
- 
-        for (let i = 0; i < digits.length; i++) {
- 
-            //  rotate the next digit
-            digits = digits.substr(0, i) //  before the rotated digit
-                + digits.substr(i + 1)     //  after rotated digit
-                + digits.substr(i, 1);     //  the rotated digit
- 
-            max = Math.max(max, parseInt(digits));
+     
+     
+     
+    class G964B4 {
+        public static maxRot = n =>
+            Math.max(...(n = String(n).split(''))
+                .reduce((r, _, i) =>
+                    r.concat([r[i].slice(0, i)
+                        .concat(r[i].slice(i + 1))
+                        .concat(r[i].slice(i, i + 1))]), [n])
+                .map(e => e.join('')));
+    }
+     
+     
+     
+    class G964B5 {
+        public static maxRot(n) {
+            let arr = n.toString().split('');
+            const length = arr.length;
+            let results = [];
+            for (let i = 0; i < length; i++) {
+                // the results are pushed here to include the initial number
+                results.push(Number(arr.join('')));
+                // cut and paste the rotating number
+                let cache = arr.splice(i, 1);
+                arr.push(cache[0])
+                cache = [];
+            }
+            return Math.max.apply(null, results);
         }
- 
-        return max;
     }
-}
- 
- 
-class G964B7 {
-    public static maxRot(n) {
-        let str = n.toString()
-        let max = n;
-        for (let i = 0; i < str.length; i++) {
-            str = str.slice(0, i) + str.slice(i + 1) + str.charAt(i)
-            max = Math.max(max, parseInt(str));
-        };
-        return max;
-    }
-}
- 
- 
- 
-class G964B8 {
-    public static maxRot(n) {
-        const arrNum = n.toString().split('');
-        const resArr = [];
-        for (let i = 0; i < arrNum.length - 1; i++) {
-            arrNum.push(arrNum.splice(i, 1)[0]);
-            resArr.push(Number(arrNum.join('')));
+     
+     
+     
+    class G964B6 {
+        public static maxRot(n) {
+            let digits = `${n}`, max = n;
+     
+            for (let i = 0; i < digits.length; i++) {
+     
+                //  rotate the next digit
+                digits = digits.substr(0, i) //  before the rotated digit
+                    + digits.substr(i + 1)     //  after rotated digit
+                    + digits.substr(i, 1);     //  the rotated digit
+     
+                max = Math.max(max, parseInt(digits));
+            }
+     
+            return max;
         }
-        return Math.max(n, ...resArr);
     }
-}
-*/
+     
+     
+    class G964B7 {
+        public static maxRot(n) {
+            let str = n.toString()
+            let max = n;
+            for (let i = 0; i < str.length; i++) {
+                str = str.slice(0, i) + str.slice(i + 1) + str.charAt(i)
+                max = Math.max(max, parseInt(str));
+            };
+            return max;
+        }
+    }
+     
+     
+     
+    class G964B8 {
+        public static maxRot(n) {
+            const arrNum = n.toString().split('');
+            const resArr = [];
+            for (let i = 0; i < arrNum.length - 1; i++) {
+                arrNum.push(arrNum.splice(i, 1)[0]);
+                resArr.push(Number(arrNum.join('')));
+            }
+            return Math.max(n, ...resArr);
+        }
+    }
+    */
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: SORT OUT MEN FROM BOYS
@@ -15855,41 +15876,41 @@ class G964B8 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Scenario
-Now that the competition gets tough it will Sort out the men from the boys .
- 
-Men are the Even numbers and Boys are the odd!alt!alt
-Task
-Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate the men from the boys!alt!alt
-Notes
-Return an array/list where Even numbers come first then odds
- 
-Since , Men are stronger than Boys , Then Even numbers in ascending order While odds in descending .
- 
-Array/list size is at least 4 .
- 
-Array/list numbers could be a mixture of positives , negatives .
- 
-Have no fear , It is guaranteed that no Zeroes will exists .!alt
-Repetition of numbers in the array/list could occur , So (duplications are not included when separating).
- 
-Input >> Output Examples:
-menFromBoys ({7, 3 , 14 , 17}) ==> return ({14, 17, 7, 3}) 
-Explanation:
-Since , { 14 } is the even number here , So it came first , then the odds in descending order {17 , 7 , 3} .
- 
-menFromBoys ({-94, -99 , -100 , -99 , -96 , -99 }) ==> return ({-100 , -96 , -94 , -99})
-Explanation:
-Since , { -100, -96 , -94 } is the even numbers here , So it came first in *ascending order *, then the odds in descending order { -99 }
- 
-Since , (Duplications are not included when separating) , then you can see only one (-99) was appeared in the final array/list .
- 
-menFromBoys ({49 , 818 , -282 , 900 , 928 , 281 , -282 , -1 }) ==> return ({-282 , 818 , 900 , 928 , 281 , 49 , -1})
-Explanation:
-Since , {-282 , 818 , 900 , 928 } is the even numbers here , So it came first in ascending order , then the odds in descending order { 281 , 49 , -1 }
- 
-Since , (Duplications are not included when separating) , then you can see only one (-282) was appeared in the final array/list .
-*/
+    Scenario
+    Now that the competition gets tough it will Sort out the men from the boys .
+     
+    Men are the Even numbers and Boys are the odd!alt!alt
+    Task
+    Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate the men from the boys!alt!alt
+    Notes
+    Return an array/list where Even numbers come first then odds
+     
+    Since , Men are stronger than Boys , Then Even numbers in ascending order While odds in descending .
+     
+    Array/list size is at least 4 .
+     
+    Array/list numbers could be a mixture of positives , negatives .
+     
+    Have no fear , It is guaranteed that no Zeroes will exists .!alt
+    Repetition of numbers in the array/list could occur , So (duplications are not included when separating).
+     
+    Input >> Output Examples:
+    menFromBoys ({7, 3 , 14 , 17}) ==> return ({14, 17, 7, 3}) 
+    Explanation:
+    Since , { 14 } is the even number here , So it came first , then the odds in descending order {17 , 7 , 3} .
+     
+    menFromBoys ({-94, -99 , -100 , -99 , -96 , -99 }) ==> return ({-100 , -96 , -94 , -99})
+    Explanation:
+    Since , { -100, -96 , -94 } is the even numbers here , So it came first in *ascending order *, then the odds in descending order { -99 }
+     
+    Since , (Duplications are not included when separating) , then you can see only one (-99) was appeared in the final array/list .
+     
+    menFromBoys ({49 , 818 , -282 , 900 , 928 , 281 , -282 , -1 }) ==> return ({-282 , 818 , 900 , 928 , 281 , 49 , -1})
+    Explanation:
+    Since , {-282 , 818 , 900 , 928 } is the even numbers here , So it came first in ascending order , then the odds in descending order { 281 , 49 , -1 }
+     
+    Since , (Duplications are not included when separating) , then you can see only one (-282) was appeared in the final array/list .
+    */
 
 // ! [...EVENS ASCENDING, ...ODDS DESCENDING] REMOVE DUPLICATES !
 const menFromBoys = (arr: number[]): number[] => {
@@ -15920,23 +15941,23 @@ const menFromBoys = (arr: number[]): number[] => {
 // console.log(menFromBoys([37, 2, 43, 95, 90, 37]));
 
 /*
- 
-FILTER OUT DUPLICATES WITH SET 
-CREATE ASC/DESC SORTED SUB-ARRAYS
-MERGE SUB-ARRAYS FOR SOLUTION
- 
-INPUT: [37, 2, 43, 95, 90, 37]
-┌─────────────┬───────────────────────┬───┬────┬────┬────┬────┐
-│   (index)   │           0           │ 1 │ 2  │ 3  │ 4  │ 5  │
-├─────────────┼───────────────────────┼───┼────┼────┼────┼────┤
-│    input    │          37           │ 2 │ 43 │ 95 │ 90 │ 37 │
-│ uniqueOdds  │ Set(3) { 37, 43, 95 } │   │    │    │    │    │
-│ uniqueEvens │   Set(2) { 2, 90 }    │   │    │    │    │    │
-│   oddsArr   │    [ 95, 43, 37 ]     │   │    │    │    │    │
-│  evensArr   │       [ 2, 90 ]       │   │    │    │    │    │
-└─────────────┴───────────────────────┴───┴────┴────┴────┴────┘
-SOLUTION: [ 2, 90, 95, 43, 37 ]
-*/
+     
+    FILTER OUT DUPLICATES WITH SET 
+    CREATE ASC/DESC SORTED SUB-ARRAYS
+    MERGE SUB-ARRAYS FOR SOLUTION
+     
+    INPUT: [37, 2, 43, 95, 90, 37]
+    ┌─────────────┬───────────────────────┬───┬────┬────┬────┬────┐
+    │   (index)   │           0           │ 1 │ 2  │ 3  │ 4  │ 5  │
+    ├─────────────┼───────────────────────┼───┼────┼────┼────┼────┤
+    │    input    │          37           │ 2 │ 43 │ 95 │ 90 │ 37 │
+    │ uniqueOdds  │ Set(3) { 37, 43, 95 } │   │    │    │    │    │
+    │ uniqueEvens │   Set(2) { 2, 90 }    │   │    │    │    │    │
+    │   oddsArr   │    [ 95, 43, 37 ]     │   │    │    │    │    │
+    │  evensArr   │       [ 2, 90 ]       │   │    │    │    │    │
+    └─────────────┴───────────────────────┴───┴────┴────┴────┴────┘
+    SOLUTION: [ 2, 90, 95, 43, 37 ]
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -16000,56 +16021,56 @@ const menFromBoys6 = (arr: number[]): number[] => [
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-Balanced number is the number that * The sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal*.
- 
-Task
-Given a number, Find if it is Balanced or not .
- 
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
-If the number has an odd number of digits then there is only one middle digit, e.g. 92645 has middle digit 6; otherwise, there are two middle digits , e.g. 1301 has middle digits 3 and 0
- 
-The middle digit(s) should not be considered when determining whether a number is balanced or not, e.g 413023 is a balanced number because the left sum and right sum are both 5.
- 
-Number passed is always Positive .
- 
-Return the result as String
- 
-Input >> Output Examples
-(balanced-num 7) ==> return "Balanced"
-Explanation:
-Since , The sum of all digits to the left of the middle digit (0)
- 
-and the sum of all digits to the right of the middle digit (0) are equal , then It's Balanced
- 
-(balanced-num 295591) ==> return "Not Balanced"
-Explanation:
-Since , The sum of all digits to the left of the middle digits (11)
- 
-and the sum of all digits to the right of the middle digits (10) are Not equal , then It's Not Balanced
- 
-Note : The middle digit(s) are 55 .
- 
-(balanced-num 959) ==> return "Balanced"
-Explanation:
-Since , The sum of all digits to the left of the middle digits (9)
- 
-and the sum of all digits to the right of the middle digits (9) are equal , then It's Balanced
- 
-Note : The middle digit is 5 .
- 
-(balanced-num 27102983) ==> return "Not Balanced"
-Explanation:
-Since , The sum of all digits to the left of the middle digits (10)
- 
-and the sum of all digits to the right of the middle digits (20) are Not equal , then It's Not Balanced
- 
-Note : The middle digit(s) are 02 .
- 
- 
-*/
+    Definition
+    Balanced number is the number that * The sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal*.
+     
+    Task
+    Given a number, Find if it is Balanced or not .
+     
+    Warm-up (Highly recommended)
+    Playing With Numbers Series
+    Notes
+    If the number has an odd number of digits then there is only one middle digit, e.g. 92645 has middle digit 6; otherwise, there are two middle digits , e.g. 1301 has middle digits 3 and 0
+     
+    The middle digit(s) should not be considered when determining whether a number is balanced or not, e.g 413023 is a balanced number because the left sum and right sum are both 5.
+     
+    Number passed is always Positive .
+     
+    Return the result as String
+     
+    Input >> Output Examples
+    (balanced-num 7) ==> return "Balanced"
+    Explanation:
+    Since , The sum of all digits to the left of the middle digit (0)
+     
+    and the sum of all digits to the right of the middle digit (0) are equal , then It's Balanced
+     
+    (balanced-num 295591) ==> return "Not Balanced"
+    Explanation:
+    Since , The sum of all digits to the left of the middle digits (11)
+     
+    and the sum of all digits to the right of the middle digits (10) are Not equal , then It's Not Balanced
+     
+    Note : The middle digit(s) are 55 .
+     
+    (balanced-num 959) ==> return "Balanced"
+    Explanation:
+    Since , The sum of all digits to the left of the middle digits (9)
+     
+    and the sum of all digits to the right of the middle digits (9) are equal , then It's Balanced
+     
+    Note : The middle digit is 5 .
+     
+    (balanced-num 27102983) ==> return "Not Balanced"
+    Explanation:
+    Since , The sum of all digits to the left of the middle digits (10)
+     
+    and the sum of all digits to the right of the middle digits (20) are Not equal , then It's Not Balanced
+     
+    Note : The middle digit(s) are 02 .
+     
+     
+    */
 
 const balancedNum = (num: number) => {
     if (num < 100) return "Balanced";
@@ -16090,21 +16111,21 @@ const balancedNum = (num: number) => {
         .reduce((a, b) => a + b);
 
     /*
-      console.table({
-          input: num,
-          numStr: numStr,
-          length: length,
-          middleDigitIdxOdd: (length - 1) / 2,
-          middleDigitOdd: numStr[(length - 1) / 2],
-          middleDigitsIdxEven: [length / 2 - 1, length / 2],
-          middleDigitsEven: [numStr[length / 2 - 1], numStr[length / 2]],
-          leftNumStr: getLeftNumStr(numStr),
-          rightNumStr: getRightNumStr(numStr),
-          leftSum: leftSum,
-          rightSum: rightSum,
-          isBalanced: leftSum === rightSum
-      })
-      */
+          console.table({
+              input: num,
+              numStr: numStr,
+              length: length,
+              middleDigitIdxOdd: (length - 1) / 2,
+              middleDigitOdd: numStr[(length - 1) / 2],
+              middleDigitsIdxEven: [length / 2 - 1, length / 2],
+              middleDigitsEven: [numStr[length / 2 - 1], numStr[length / 2]],
+              leftNumStr: getLeftNumStr(numStr),
+              rightNumStr: getRightNumStr(numStr),
+              leftSum: leftSum,
+              rightSum: rightSum,
+              isBalanced: leftSum === rightSum
+          })
+          */
 
     // COMPARE SIDES AND RETURN SOLUTION STRING
     return leftSum === rightSum ? "Balanced" : "Not Balanced";
@@ -16118,46 +16139,46 @@ const balancedNum = (num: number) => {
 // console.log();
 
 /*
- 
-56239814 EVEN LENGTH
-┌─────────────────────┬─────┬─────┬────────────┐
-│       (index)       │  0  │  1  │   Values   │
-├─────────────────────┼─────┼─────┼────────────┤
-│        input        │     │     │  56239814  │
-│       numStr        │     │     │ '56239814' │
-│       length        │     │     │     8      │
-│  middleDigitIdxOdd  │     │     │    3.5     │
-│   middleDigitOdd    │     │     │ undefined  │
-│ middleDigitsIdxEven │  3  │  4  │            │
-│  middleDigitsEven   │ '3' │ '9' │            │
-│     leftNumStr      │     │     │   '562'    │
-│     rightNumStr     │     │     │   '814'    │
-│       leftSum       │     │     │     13     │
-│      rightSum       │     │     │     13     │
-│     isBalanced      │     │     │    true    │
-└─────────────────────┴─────┴─────┴────────────┘
-Balanced
- 
-1230987 ODD LENGTH
-┌─────────────────────┬───────────┬───────────┬───────────┐
-│       (index)       │     0     │     1     │  Values   │
-├─────────────────────┼───────────┼───────────┼───────────┤
-│        input        │           │           │  1230987  │
-│       numStr        │           │           │ '1230987' │
-│       length        │           │           │     7     │
-│  middleDigitIdxOdd  │           │           │     3     │
-│   middleDigitOdd    │           │           │    '0'    │
-│ middleDigitsIdxEven │    2.5    │    3.5    │           │
-│  middleDigitsEven   │ undefined │ undefined │           │
-│     leftNumStr      │           │           │   '123'   │
-│     rightNumStr     │           │           │   '987'   │
-│       leftSum       │           │           │     6     │
-│      rightSum       │           │           │    24     │
-│     isBalanced      │           │           │   false   │
-└─────────────────────┴───────────┴───────────┴───────────┘
-Not Balanced
- 
-*/
+     
+    56239814 EVEN LENGTH
+    ┌─────────────────────┬─────┬─────┬────────────┐
+    │       (index)       │  0  │  1  │   Values   │
+    ├─────────────────────┼─────┼─────┼────────────┤
+    │        input        │     │     │  56239814  │
+    │       numStr        │     │     │ '56239814' │
+    │       length        │     │     │     8      │
+    │  middleDigitIdxOdd  │     │     │    3.5     │
+    │   middleDigitOdd    │     │     │ undefined  │
+    │ middleDigitsIdxEven │  3  │  4  │            │
+    │  middleDigitsEven   │ '3' │ '9' │            │
+    │     leftNumStr      │     │     │   '562'    │
+    │     rightNumStr     │     │     │   '814'    │
+    │       leftSum       │     │     │     13     │
+    │      rightSum       │     │     │     13     │
+    │     isBalanced      │     │     │    true    │
+    └─────────────────────┴─────┴─────┴────────────┘
+    Balanced
+     
+    1230987 ODD LENGTH
+    ┌─────────────────────┬───────────┬───────────┬───────────┐
+    │       (index)       │     0     │     1     │  Values   │
+    ├─────────────────────┼───────────┼───────────┼───────────┤
+    │        input        │           │           │  1230987  │
+    │       numStr        │           │           │ '1230987' │
+    │       length        │           │           │     7     │
+    │  middleDigitIdxOdd  │           │           │     3     │
+    │   middleDigitOdd    │           │           │    '0'    │
+    │ middleDigitsIdxEven │    2.5    │    3.5    │           │
+    │  middleDigitsEven   │ undefined │ undefined │           │
+    │     leftNumStr      │           │           │   '123'   │
+    │     rightNumStr     │           │           │   '987'   │
+    │       leftSum       │           │           │     6     │
+    │      rightSum       │           │           │    24     │
+    │     isBalanced      │           │           │   false   │
+    └─────────────────────┴───────────┴───────────┴───────────┘
+    Not Balanced
+     
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -16234,32 +16255,32 @@ function sum(arr: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-A number m of the form 10x + y is divisible by 7 if and only if x − 2y is divisible by 7. In other words, subtract twice the last digit from the number formed by the remaining digits. Continue to do this until a number known to be divisible by 7 is obtained; you can stop when this number has at most 2 digits because you are supposed to know if a number of at most 2 digits is divisible by 7 or not.
- 
-The original number is divisible by 7 if and only if the last number obtained using this procedure is divisible by 7.
- 
-Examples:
-1 - m = 371 -> 37 − (2×1) -> 37 − 2 = 35 ; thus, since 35 is divisible by 7, 371 is divisible by 7.
- 
-The number of steps to get the result is 1.
- 
-2 - m = 1603 -> 160 - (2 x 3) -> 154 -> 15 - 8 = 7 and 7 is divisible by 7.
- 
-3 - m = 372 -> 37 − (2×2) -> 37 − 4 = 33 ; thus, since 33 is not divisible by 7, 372 is not divisible by 7.
- 
-4 - m = 477557101->47755708->4775554->477547->47740->4774->469->28 and 28 is divisible by 7, so is 477557101. The number of steps is 7.
- 
-Task:
-Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, depending on the language) of numbers, the first being the last number m with at most 2 digits obtained by your function (this last m will be divisible or not by 7), the second one being the number of steps to get the result.
- 
-Forth Note:
-Return on the stack number-of-steps, last-number-m-with-at-most-2-digits
- 
-Examples:
-seven(371) should return [35, 1]
-seven(1603) should return [7, 2]
-seven(477557101) should return [28, 7]
-*/
+    A number m of the form 10x + y is divisible by 7 if and only if x − 2y is divisible by 7. In other words, subtract twice the last digit from the number formed by the remaining digits. Continue to do this until a number known to be divisible by 7 is obtained; you can stop when this number has at most 2 digits because you are supposed to know if a number of at most 2 digits is divisible by 7 or not.
+     
+    The original number is divisible by 7 if and only if the last number obtained using this procedure is divisible by 7.
+     
+    Examples:
+    1 - m = 371 -> 37 − (2×1) -> 37 − 2 = 35 ; thus, since 35 is divisible by 7, 371 is divisible by 7.
+     
+    The number of steps to get the result is 1.
+     
+    2 - m = 1603 -> 160 - (2 x 3) -> 154 -> 15 - 8 = 7 and 7 is divisible by 7.
+     
+    3 - m = 372 -> 37 − (2×2) -> 37 − 4 = 33 ; thus, since 33 is not divisible by 7, 372 is not divisible by 7.
+     
+    4 - m = 477557101->47755708->4775554->477547->47740->4774->469->28 and 28 is divisible by 7, so is 477557101. The number of steps is 7.
+     
+    Task:
+    Your task is to return to the function seven(m) (m integer >= 0) an array (or a pair, depending on the language) of numbers, the first being the last number m with at most 2 digits obtained by your function (this last m will be divisible or not by 7), the second one being the number of steps to get the result.
+     
+    Forth Note:
+    Return on the stack number-of-steps, last-number-m-with-at-most-2-digits
+     
+    Examples:
+    seven(371) should return [35, 1]
+    seven(1603) should return [7, 2]
+    seven(477557101) should return [28, 7]
+    */
 
 // 1️⃣
 
@@ -16320,80 +16341,80 @@ const seven = (num: number): number | number[] => {
 // console.log(seven(477557101));
 
 /*
- 
-seven(477557101)
-┌─────────────────┬─────────────────┬─────────────┐
-│     (index)     │        0        │   Values    │
-├─────────────────┼─────────────────┼─────────────┤
-│     numStr      │                 │ '477557101' │
-│    lastDigit    │                 │      1      │
-│ remainingDigits │                 │  47755710   │
-│    remainder    │                 │  47755708   │
-│   cycleCount    │                 │      1      │
-│    solution     │ [ 47755708, 1 ] │             │
-└─────────────────┴─────────────────┴─────────────┘
-┌─────────────────┬────────────────┬────────────┐
-│     (index)     │       0        │   Values   │
-├─────────────────┼────────────────┼────────────┤
-│     numStr      │                │ '47755708' │
-│    lastDigit    │                │     8      │
-│ remainingDigits │                │  4775570   │
-│    remainder    │                │  4775554   │
-│   cycleCount    │                │     2      │
-│    solution     │ [ 4775554, 2 ] │            │
-└─────────────────┴────────────────┴────────────┘
-┌─────────────────┬───────────────┬───────────┐
-│     (index)     │       0       │  Values   │
-├─────────────────┼───────────────┼───────────┤
-│     numStr      │               │ '4775554' │
-│    lastDigit    │               │     4     │
-│ remainingDigits │               │  477555   │
-│    remainder    │               │  477547   │
-│   cycleCount    │               │     3     │
-│    solution     │ [ 477547, 3 ] │           │
-└─────────────────┴───────────────┴───────────┘
-┌─────────────────┬──────────────┬──────────┐
-│     (index)     │      0       │  Values  │
-├─────────────────┼──────────────┼──────────┤
-│     numStr      │              │ '477547' │
-│    lastDigit    │              │    7     │
-│ remainingDigits │              │  47754   │
-│    remainder    │              │  47740   │
-│   cycleCount    │              │    4     │
-│    solution     │ [ 47740, 4 ] │          │
-└─────────────────┴──────────────┴──────────┘
-┌─────────────────┬─────────────┬─────────┐
-│     (index)     │      0      │ Values  │
-├─────────────────┼─────────────┼─────────┤
-│     numStr      │             │ '47740' │
-│    lastDigit    │             │    0    │
-│ remainingDigits │             │  4774   │
-│    remainder    │             │  4774   │
-│   cycleCount    │             │    5    │
-│    solution     │ [ 4774, 5 ] │         │
-└─────────────────┴─────────────┴─────────┘
-┌─────────────────┬────────────┬────────┐
-│     (index)     │     0      │ Values │
-├─────────────────┼────────────┼────────┤
-│     numStr      │            │ '4774' │
-│    lastDigit    │            │   4    │
-│ remainingDigits │            │  477   │
-│    remainder    │            │  469   │
-│   cycleCount    │            │   6    │
-│    solution     │ [ 469, 6 ] │        │
-└─────────────────┴────────────┴────────┘
-┌─────────────────┬───────────┬────────┐
-│     (index)     │     0     │ Values │
-├─────────────────┼───────────┼────────┤
-│     numStr      │           │ '469'  │
-│    lastDigit    │           │   9    │
-│ remainingDigits │           │   46   │
-│    remainder    │           │   28   │
-│   cycleCount    │           │   7    │
-│    solution     │ [ 28, 7 ] │        │
-└─────────────────┴───────────┴────────┘
-[ 28, 7 ]
-*/
+     
+    seven(477557101)
+    ┌─────────────────┬─────────────────┬─────────────┐
+    │     (index)     │        0        │   Values    │
+    ├─────────────────┼─────────────────┼─────────────┤
+    │     numStr      │                 │ '477557101' │
+    │    lastDigit    │                 │      1      │
+    │ remainingDigits │                 │  47755710   │
+    │    remainder    │                 │  47755708   │
+    │   cycleCount    │                 │      1      │
+    │    solution     │ [ 47755708, 1 ] │             │
+    └─────────────────┴─────────────────┴─────────────┘
+    ┌─────────────────┬────────────────┬────────────┐
+    │     (index)     │       0        │   Values   │
+    ├─────────────────┼────────────────┼────────────┤
+    │     numStr      │                │ '47755708' │
+    │    lastDigit    │                │     8      │
+    │ remainingDigits │                │  4775570   │
+    │    remainder    │                │  4775554   │
+    │   cycleCount    │                │     2      │
+    │    solution     │ [ 4775554, 2 ] │            │
+    └─────────────────┴────────────────┴────────────┘
+    ┌─────────────────┬───────────────┬───────────┐
+    │     (index)     │       0       │  Values   │
+    ├─────────────────┼───────────────┼───────────┤
+    │     numStr      │               │ '4775554' │
+    │    lastDigit    │               │     4     │
+    │ remainingDigits │               │  477555   │
+    │    remainder    │               │  477547   │
+    │   cycleCount    │               │     3     │
+    │    solution     │ [ 477547, 3 ] │           │
+    └─────────────────┴───────────────┴───────────┘
+    ┌─────────────────┬──────────────┬──────────┐
+    │     (index)     │      0       │  Values  │
+    ├─────────────────┼──────────────┼──────────┤
+    │     numStr      │              │ '477547' │
+    │    lastDigit    │              │    7     │
+    │ remainingDigits │              │  47754   │
+    │    remainder    │              │  47740   │
+    │   cycleCount    │              │    4     │
+    │    solution     │ [ 47740, 4 ] │          │
+    └─────────────────┴──────────────┴──────────┘
+    ┌─────────────────┬─────────────┬─────────┐
+    │     (index)     │      0      │ Values  │
+    ├─────────────────┼─────────────┼─────────┤
+    │     numStr      │             │ '47740' │
+    │    lastDigit    │             │    0    │
+    │ remainingDigits │             │  4774   │
+    │    remainder    │             │  4774   │
+    │   cycleCount    │             │    5    │
+    │    solution     │ [ 4774, 5 ] │         │
+    └─────────────────┴─────────────┴─────────┘
+    ┌─────────────────┬────────────┬────────┐
+    │     (index)     │     0      │ Values │
+    ├─────────────────┼────────────┼────────┤
+    │     numStr      │            │ '4774' │
+    │    lastDigit    │            │   4    │
+    │ remainingDigits │            │  477   │
+    │    remainder    │            │  469   │
+    │   cycleCount    │            │   6    │
+    │    solution     │ [ 469, 6 ] │        │
+    └─────────────────┴────────────┴────────┘
+    ┌─────────────────┬───────────┬────────┐
+    │     (index)     │     0     │ Values │
+    ├─────────────────┼───────────┼────────┤
+    │     numStr      │           │ '469'  │
+    │    lastDigit    │           │   9    │
+    │ remainingDigits │           │   46   │
+    │    remainder    │           │   28   │
+    │   cycleCount    │           │   7    │
+    │    solution     │ [ 28, 7 ] │        │
+    └─────────────────┴───────────┴────────┘
+    [ 28, 7 ]
+    */
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
@@ -16408,15 +16429,15 @@ seven(477557101)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-I will give you an integer. Give me back a shape that is as long and wide as the integer. The integer will be a whole number between 1 and 50.
- 
-Example
-n = 3, so I expect a 3x3 square back just like below as a string:
- 
-+++
-+++
-+++
-*/
+    I will give you an integer. Give me back a shape that is as long and wide as the integer. The integer will be a whole number between 1 and 50.
+     
+    Example
+    n = 3, so I expect a 3x3 square back just like below as a string:
+     
+    +++
+    +++
+    +++
+    */
 
 const generateShape = (int: number): string => {
     if (int === 1) return "+";
@@ -16480,34 +16501,34 @@ function generateShape6(size: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Definition
-A number is called Automorphic number if and only if its square ends in the same digits as the number itself.
- 
-Task
-Given a number determine if it Automorphic or not .
- 
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
-The number passed to the function is positive
-Input >> Output Examples
-autoMorphic (25) -->> return "Automorphic" 
-Explanation:
-25 squared is 625 , Ends with the same number's digits which are 25 .
- 
-autoMorphic (13) -->> return "Not!!"
-Explanation:
-13 squared is 169 , Not ending with the same number's digits which are 69 .
- 
-autoMorphic (76) -->> return "Automorphic"
-Explanation:
-76 squared is 5776 , Ends with the same number's digits which are 76 .
- 
-autoMorphic (225) -->> return "Not!!"
-Explanation:
-225 squared is 50625 , Not ending with the same number's digits which are 225.
- 
-*/
+    Definition
+    A number is called Automorphic number if and only if its square ends in the same digits as the number itself.
+     
+    Task
+    Given a number determine if it Automorphic or not .
+     
+    Warm-up (Highly recommended)
+    Playing With Numbers Series
+    Notes
+    The number passed to the function is positive
+    Input >> Output Examples
+    autoMorphic (25) -->> return "Automorphic" 
+    Explanation:
+    25 squared is 625 , Ends with the same number's digits which are 25 .
+     
+    autoMorphic (13) -->> return "Not!!"
+    Explanation:
+    13 squared is 169 , Not ending with the same number's digits which are 69 .
+     
+    autoMorphic (76) -->> return "Automorphic"
+    Explanation:
+    76 squared is 5776 , Ends with the same number's digits which are 76 .
+     
+    autoMorphic (225) -->> return "Not!!"
+    Explanation:
+    225 squared is 50625 , Not ending with the same number's digits which are 225.
+     
+    */
 
 const automorphic = (num: number): string => {
     const numStr: string = num.toString();
@@ -16530,25 +16551,25 @@ const automorphic = (num: number): string => {
 //  COMPARE AND RETURN RESULT STRING
 
 /*
-┌───────────────┬─────────┐
-│    (index)    │ Values  │
-├───────────────┼─────────┤
-│    numStr     │  '225'  │
-│ numStrLength  │    3    │
-│     sqStr     │ '50625' │
-│ isAutoMorphic │  false  │
-└───────────────┴─────────┘
-Not!!
-┌───────────────┬──────────┐
-│    (index)    │  Values  │
-├───────────────┼──────────┤
-│    numStr     │  '625'   │
-│ numStrLength  │    3     │
-│     sqStr     │ '390625' │
-│ isAutoMorphic │   true   │
-└───────────────┴──────────┘
-Automorphic
-*/
+    ┌───────────────┬─────────┐
+    │    (index)    │ Values  │
+    ├───────────────┼─────────┤
+    │    numStr     │  '225'  │
+    │ numStrLength  │    3    │
+    │     sqStr     │ '50625' │
+    │ isAutoMorphic │  false  │
+    └───────────────┴─────────┘
+    Not!!
+    ┌───────────────┬──────────┐
+    │    (index)    │  Values  │
+    ├───────────────┼──────────┤
+    │    numStr     │  '625'   │
+    │ numStrLength  │    3     │
+    │     sqStr     │ '390625' │
+    │ isAutoMorphic │   true   │
+    └───────────────┴──────────┘
+    Automorphic
+    */
 
 // console.log(automorphic(3));
 // console.log(automorphic(225));
@@ -16573,13 +16594,13 @@ function automorphic2(n: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Two red beads are placed between every two blue beads. There are N blue beads. After looking at the arrangement below work out the number of red beads.
- 
-@ @@ @ @@ @ @@ @ @@ @ @@ @
- 
-Implement count_red_beads(n) (in PHP count_red_beads($n); in Java, Javascript, TypeScript, C, C++ countRedBeads(n)) so that it returns the number of red beads.
-If there are less than 2 blue beads return 0.
-*/
+    Two red beads are placed between every two blue beads. There are N blue beads. After looking at the arrangement below work out the number of red beads.
+     
+    @ @@ @ @@ @ @@ @ @@ @ @@ @
+     
+    Implement count_red_beads(n) (in PHP count_red_beads($n); in Java, Javascript, TypeScript, C, C++ countRedBeads(n)) so that it returns the number of red beads.
+    If there are less than 2 blue beads return 0.
+    */
 
 const countRedBeads = (num: number): number => {
     return num <= 1 ? 0 : (num - 1) * 2;
@@ -16606,23 +16627,23 @@ function countRedBeads2(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-King Arthur and his knights are having a New Years party. Last year Lancelot was jealous of Arthur, because Arthur had a date and Lancelot did not, and they started a duel.
- 
-To prevent this from happening again, Arthur wants to make sure that there are at least as many women as men at this year's party. He gave you a list of integers of all the party goers.
- 
-Arthur needs you to return true if he needs to invite more women or false if he is all set.
- 
-Input/Output
-[input] integer array L ($a in PHP)
-An array (guaranteed non-associative in PHP) representing the genders of the attendees, where -1 represents women and 1 represents men.
- 
-2 <= L.length <= 50
- 
-[output] a boolean value
- 
-true if Arthur need to invite more women, false otherwise.
-*/
+    Task
+    King Arthur and his knights are having a New Years party. Last year Lancelot was jealous of Arthur, because Arthur had a date and Lancelot did not, and they started a duel.
+     
+    To prevent this from happening again, Arthur wants to make sure that there are at least as many women as men at this year's party. He gave you a list of integers of all the party goers.
+     
+    Arthur needs you to return true if he needs to invite more women or false if he is all set.
+     
+    Input/Output
+    [input] integer array L ($a in PHP)
+    An array (guaranteed non-associative in PHP) representing the genders of the attendees, where -1 represents women and 1 represents men.
+     
+    2 <= L.length <= 50
+     
+    [output] a boolean value
+     
+    true if Arthur need to invite more women, false otherwise.
+    */
 
 const inviteMoreWomen = (guestsArr: number[]): boolean => {
     return guestsArr.reduce((acc, curr) => acc + curr) > 0;
@@ -16655,15 +16676,15 @@ function inviteMoreWomen3(L: number[]): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a function that takes a positive integer n, sums all the cubed values from 1 to n, and returns that sum.
- 
-Assume that the input n will always be a positive integer.
- 
-Examples: (Input --> output)
- 
-2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
-3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
-*/
+    Write a function that takes a positive integer n, sums all the cubed values from 1 to n, and returns that sum.
+     
+    Assume that the input n will always be a positive integer.
+     
+    Examples: (Input --> output)
+     
+    2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+    3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+    */
 
 const sumCubes = (num: number): number => {
     let result: number = 0;
@@ -16707,17 +16728,17 @@ function sumCubes3(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Consider the word "abode". We can see that the letter a is in position 1 and b is in position 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode occupy the positions they would occupy in the alphabet, which are positions 4 and 5.
- 
-Given an array of words, return an array of the number of letters that occupy their positions in the alphabet for each word. For example,
- 
-solve(["abode","ABc","xyzD"]) = [4, 3, 1]
-See test cases for more examples.
- 
-Input will consist of alphabet characters, both uppercase and lowercase. No spaces.
- 
-Good luck!
-*/
+    Consider the word "abode". We can see that the letter a is in position 1 and b is in position 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode occupy the positions they would occupy in the alphabet, which are positions 4 and 5.
+     
+    Given an array of words, return an array of the number of letters that occupy their positions in the alphabet for each word. For example,
+     
+    solve(["abode","ABc","xyzD"]) = [4, 3, 1]
+    See test cases for more examples.
+     
+    Input will consist of alphabet characters, both uppercase and lowercase. No spaces.
+     
+    Good luck!
+    */
 
 const solveA = (arr: string[]): number[] => {
     let solution: number[] = [];
@@ -16754,275 +16775,275 @@ const solveA = (arr: string[]): number[] => {
 //
 
 /*
-["IAMDEFANDJKL", "thedefgh", "xyzDEFghijabc"]
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'i'   │
-│ position │   0    │
-│ charCode │   8    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'a'   │
-│ position │   1    │
-│ charCode │   0    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'm'   │
-│ position │   2    │
-│ charCode │   12   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'd'   │
-│ position │   3    │
-│ charCode │   3    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'e'   │
-│ position │   4    │
-│ charCode │   4    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'f'   │
-│ position │   5    │
-│ charCode │   5    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'a'   │
-│ position │   6    │
-│ charCode │   0    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'n'   │
-│ position │   7    │
-│ charCode │   13   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'd'   │
-│ position │   8    │
-│ charCode │   3    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'j'   │
-│ position │   9    │
-│ charCode │   9    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'k'   │
-│ position │   10   │
-│ charCode │   10   │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'l'   │
-│ position │   11   │
-│ charCode │   11   │
-│  match   │  true  │
-└──────────┴────────┘
-thedefgh
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  't'   │
-│ position │   0    │
-│ charCode │   19   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'h'   │
-│ position │   1    │
-│ charCode │   7    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'e'   │
-│ position │   2    │
-│ charCode │   4    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'd'   │
-│ position │   3    │
-│ charCode │   3    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'e'   │
-│ position │   4    │
-│ charCode │   4    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'f'   │
-│ position │   5    │
-│ charCode │   5    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'g'   │
-│ position │   6    │
-│ charCode │   6    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'h'   │
-│ position │   7    │
-│ charCode │   7    │
-│  match   │  true  │
-└──────────┴────────┘
-xyzdefghijabc
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'x'   │
-│ position │   0    │
-│ charCode │   23   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'y'   │
-│ position │   1    │
-│ charCode │   24   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'z'   │
-│ position │   2    │
-│ charCode │   25   │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'd'   │
-│ position │   3    │
-│ charCode │   3    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'e'   │
-│ position │   4    │
-│ charCode │   4    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'f'   │
-│ position │   5    │
-│ charCode │   5    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'g'   │
-│ position │   6    │
-│ charCode │   6    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'h'   │
-│ position │   7    │
-│ charCode │   7    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'i'   │
-│ position │   8    │
-│ charCode │   8    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'j'   │
-│ position │   9    │
-│ charCode │   9    │
-│  match   │  true  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'a'   │
-│ position │   10   │
-│ charCode │   0    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'b'   │
-│ position │   11   │
-│ charCode │   1    │
-│  match   │ false  │
-└──────────┴────────┘
-┌──────────┬────────┐
-│ (index)  │ Values │
-├──────────┼────────┤
-│   char   │  'c'   │
-│ position │   12   │
-│ charCode │   2    │
-│  match   │ false  │
-└──────────┴────────┘
-[ 6, 5, 7 ]
-*/
+    ["IAMDEFANDJKL", "thedefgh", "xyzDEFghijabc"]
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'i'   │
+    │ position │   0    │
+    │ charCode │   8    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'a'   │
+    │ position │   1    │
+    │ charCode │   0    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'm'   │
+    │ position │   2    │
+    │ charCode │   12   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'd'   │
+    │ position │   3    │
+    │ charCode │   3    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'e'   │
+    │ position │   4    │
+    │ charCode │   4    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'f'   │
+    │ position │   5    │
+    │ charCode │   5    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'a'   │
+    │ position │   6    │
+    │ charCode │   0    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'n'   │
+    │ position │   7    │
+    │ charCode │   13   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'd'   │
+    │ position │   8    │
+    │ charCode │   3    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'j'   │
+    │ position │   9    │
+    │ charCode │   9    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'k'   │
+    │ position │   10   │
+    │ charCode │   10   │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'l'   │
+    │ position │   11   │
+    │ charCode │   11   │
+    │  match   │  true  │
+    └──────────┴────────┘
+    thedefgh
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  't'   │
+    │ position │   0    │
+    │ charCode │   19   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'h'   │
+    │ position │   1    │
+    │ charCode │   7    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'e'   │
+    │ position │   2    │
+    │ charCode │   4    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'd'   │
+    │ position │   3    │
+    │ charCode │   3    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'e'   │
+    │ position │   4    │
+    │ charCode │   4    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'f'   │
+    │ position │   5    │
+    │ charCode │   5    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'g'   │
+    │ position │   6    │
+    │ charCode │   6    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'h'   │
+    │ position │   7    │
+    │ charCode │   7    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    xyzdefghijabc
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'x'   │
+    │ position │   0    │
+    │ charCode │   23   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'y'   │
+    │ position │   1    │
+    │ charCode │   24   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'z'   │
+    │ position │   2    │
+    │ charCode │   25   │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'd'   │
+    │ position │   3    │
+    │ charCode │   3    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'e'   │
+    │ position │   4    │
+    │ charCode │   4    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'f'   │
+    │ position │   5    │
+    │ charCode │   5    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'g'   │
+    │ position │   6    │
+    │ charCode │   6    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'h'   │
+    │ position │   7    │
+    │ charCode │   7    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'i'   │
+    │ position │   8    │
+    │ charCode │   8    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'j'   │
+    │ position │   9    │
+    │ charCode │   9    │
+    │  match   │  true  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'a'   │
+    │ position │   10   │
+    │ charCode │   0    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'b'   │
+    │ position │   11   │
+    │ charCode │   1    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    ┌──────────┬────────┐
+    │ (index)  │ Values │
+    ├──────────┼────────┤
+    │   char   │  'c'   │
+    │ position │   12   │
+    │ charCode │   2    │
+    │  match   │ false  │
+    └──────────┴────────┘
+    [ 6, 5, 7 ]
+    */
 
 // [4, 3, 1]
 // console.log(solveA(["abode", "ABc", "xyzD"]));
@@ -17095,23 +17116,23 @@ function solveA5(arr: string[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
- 
-Notes
-Array/list will contain positives only .
-Array/list will always has even size
-Input >> Output Examples
-minSum({5,4,2,3}) ==> return (22) 
-Explanation:
-The minimum sum obtained from summing each two integers product , 5*2 + 3*4 = 22
-minSum({12,6,10,26,3,24}) ==> return (342)
-Explanation:
-The minimum sum obtained from summing each two integers product , 26*3 + 24*6 + 12*10 = 342
-minSum({9,2,8,7,5,4,0,6}) ==> return (74)
-Explanation:
-The minimum sum obtained from summing each two integers product , 9*0 + 8*2 +7*4 +6*5 = 74
-*/
+    Task
+    Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
+     
+    Notes
+    Array/list will contain positives only .
+    Array/list will always has even size
+    Input >> Output Examples
+    minSum({5,4,2,3}) ==> return (22) 
+    Explanation:
+    The minimum sum obtained from summing each two integers product , 5*2 + 3*4 = 22
+    minSum({12,6,10,26,3,24}) ==> return (342)
+    Explanation:
+    The minimum sum obtained from summing each two integers product , 26*3 + 24*6 + 12*10 = 342
+    minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+    Explanation:
+    The minimum sum obtained from summing each two integers product , 9*0 + 8*2 +7*4 +6*5 = 74
+    */
 
 const minSum = (arr: number[]): number | string => {
     if ((arr.length & 1) === 1) return "odd number of array elements!";
@@ -17190,18 +17211,18 @@ function minSum5(arr: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-#Get the averages of these numbers
- 
-Write a method, that gets an array of integer-numbers and return an array of the averages of each integer-number and his follower, if there is one.
- 
-Example:
- 
-Input:  [ 1, 3, 5, 1, -10]
-Output:  [ 2, 4, 3, -4.5]
-If the array has 0 or 1 values or is null, your method should return an empty array.
- 
-Have fun coding it and please don't forget to vote and rank this kata! :-)
-*/
+    #Get the averages of these numbers
+     
+    Write a method, that gets an array of integer-numbers and return an array of the averages of each integer-number and his follower, if there is one.
+     
+    Example:
+     
+    Input:  [ 1, 3, 5, 1, -10]
+    Output:  [ 2, 4, 3, -4.5]
+    If the array has 0 or 1 values or is null, your method should return an empty array.
+     
+    Have fun coding it and please don't forget to vote and rank this kata! :-)
+    */
 
 // ❗️❗️❗️ (numArr![i] ❗️❗️❗️
 // const averages = (numArr: number[] | null): number[] => {
@@ -17276,52 +17297,52 @@ function averages4(numbers: number[] | null): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to add up letters to one letter.
- 
-The function will be given a variable amount of arguments, each one being a letter to add.
- 
-Notes:
-Letters will always be lowercase.
-Letters can overflow (see second to last example of the description)
-If no letters are given, the function should return 'z'
-Examples:
-addLetters('a', 'b', 'c') = 'f'
-addLetters('a', 'b') = 'c'
-addLetters('z') = 'z'
-addLetters('z', 'a') = 'a'
-addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
-addLetters() = 'z'
-*/
+    Your task is to add up letters to one letter.
+     
+    The function will be given a variable amount of arguments, each one being a letter to add.
+     
+    Notes:
+    Letters will always be lowercase.
+    Letters can overflow (see second to last example of the description)
+    If no letters are given, the function should return 'z'
+    Examples:
+    addLetters('a', 'b', 'c') = 'f'
+    addLetters('a', 'b') = 'c'
+    addLetters('z') = 'z'
+    addLetters('z', 'a') = 'a'
+    addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
+    addLetters() = 'z'
+    */
 
 /*
-a	097	01100001	A	065	01000001
-b	098	01100010	B	066	01000010
-c	099	01100011	C	067	01000011
-d	100	01100100	D	068	01000100
-e	101	01100101	E	069	01000101
-f	102	01100110	F	070	01000110
-g	103	01100111	G	071	01000111
-h	104	01101000	H	072	01001000
-i	105	01101001	I	073	01001001
-j	106	01101010	J	074	01001010
-k	107	01101011	K	075	01001011
-l	108	01101100	L	076	01001100
-m	109	01101101	M	077	01001101
-n	110	01101110	N	078	01001110
-o	111	01101111	O	079	01001111
-p	112	01110000	P	080	01010000
-q	113	01110001	Q	081	01010001
-r	114	01110010	R	082	01010010
-s	115	01110011	S	083	01010011
-t	116	01110100	T	084	01010100
-u	117	01110101	U	085	01010101
-v	118	01110110	V	086	01010110
-w	119	01110111	W	087	01010111
-x	120	01111000	X	088	01011000
-y	121	01111001	Y	089	01011001
-z	122	01111010	Z	090	01011010
- 
-*/
+    a	097	01100001	A	065	01000001
+    b	098	01100010	B	066	01000010
+    c	099	01100011	C	067	01000011
+    d	100	01100100	D	068	01000100
+    e	101	01100101	E	069	01000101
+    f	102	01100110	F	070	01000110
+    g	103	01100111	G	071	01000111
+    h	104	01101000	H	072	01001000
+    i	105	01101001	I	073	01001001
+    j	106	01101010	J	074	01001010
+    k	107	01101011	K	075	01001011
+    l	108	01101100	L	076	01001100
+    m	109	01101101	M	077	01001101
+    n	110	01101110	N	078	01001110
+    o	111	01101111	O	079	01001111
+    p	112	01110000	P	080	01010000
+    q	113	01110001	Q	081	01010001
+    r	114	01110010	R	082	01010010
+    s	115	01110011	S	083	01010011
+    t	116	01110100	T	084	01010100
+    u	117	01110101	U	085	01010101
+    v	118	01110110	V	086	01010110
+    w	119	01110111	W	087	01010111
+    x	120	01111000	X	088	01011000
+    y	121	01111001	Y	089	01011001
+    z	122	01111010	Z	090	01011010
+     
+    */
 
 const addLetters = (...letters: string[]): string => {
     if (letters.length === 0) return "z";
@@ -17463,18 +17484,18 @@ function addLetters9(...letters: string[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Complete the function power_of_two/powerOfTwo (or equivalent, depending on your language) that determines if a given non-negative integer is a power of two. From the corresponding Wikipedia entry:
- 
-a power of two is a number of the form 2n where n is an integer, i.e. the result of exponentiation with number two as the base and integer n as the exponent.
- 
-You may assume the input is always valid.
- 
-Examples
-power_of_two?(1024) # true
-power_of_two?(4096) # true
-power_of_two?(333)  # false
-Beware of certain edge cases - for example, 1 is a power of 2 since 2^0 = 1 and 0 is not a power of 2.
-*/
+    Complete the function power_of_two/powerOfTwo (or equivalent, depending on your language) that determines if a given non-negative integer is a power of two. From the corresponding Wikipedia entry:
+     
+    a power of two is a number of the form 2n where n is an integer, i.e. the result of exponentiation with number two as the base and integer n as the exponent.
+     
+    You may assume the input is always valid.
+     
+    Examples
+    power_of_two?(1024) # true
+    power_of_two?(4096) # true
+    power_of_two?(333)  # false
+    Beware of certain edge cases - for example, 1 is a power of 2 since 2^0 = 1 and 0 is not a power of 2.
+    */
 
 const isPowerOfTwo = (num: number): boolean => {
     if (num === 1) return true;
@@ -17540,27 +17561,27 @@ function isPowerOfTwo6(n: number): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-You've just moved into a perfectly straight street with exactly n identical houses on either side of the road. Naturally, you would like to find out the house number of the people on the other side of the street. The street looks something like this:
- 
-Street
-1|   |6
-3|   |4
-5|   |2
-Evens increase on the right; odds decrease on the left. House numbers start at 1 and increase without gaps. When n = 3, 1 is opposite 6, 3 opposite 4, and 5 opposite 2.
- 
-Example (address, n --> output)
-Given your house number address and length of street n, give the house number on the opposite side of the street.
- 
-1, 3 --> 6
-3, 3 --> 4
-2, 3 --> 5
-3, 5 --> 8
-Note about errors
-If you are timing out, running out of memory, or get any kind of "error", read on. Both n and address could get upto 500 billion with over 200 random tests. If you try to store the addresses of 500 billion houses in a list then you will run out of memory and the tests will crash. This is not a kata problem so please don't post an issue. Similarly if the tests don't complete within 12 seconds then you also fail.
- 
-To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. Read the discourse for some inspiration :)
-*/
+    Task
+    You've just moved into a perfectly straight street with exactly n identical houses on either side of the road. Naturally, you would like to find out the house number of the people on the other side of the street. The street looks something like this:
+     
+    Street
+    1|   |6
+    3|   |4
+    5|   |2
+    Evens increase on the right; odds decrease on the left. House numbers start at 1 and increase without gaps. When n = 3, 1 is opposite 6, 3 opposite 4, and 5 opposite 2.
+     
+    Example (address, n --> output)
+    Given your house number address and length of street n, give the house number on the opposite side of the street.
+     
+    1, 3 --> 6
+    3, 3 --> 4
+    2, 3 --> 5
+    3, 5 --> 8
+    Note about errors
+    If you are timing out, running out of memory, or get any kind of "error", read on. Both n and address could get upto 500 billion with over 200 random tests. If you try to store the addresses of 500 billion houses in a list then you will run out of memory and the tests will crash. This is not a kata problem so please don't post an issue. Similarly if the tests don't complete within 12 seconds then you also fail.
+     
+    To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. Read the discourse for some inspiration :)
+    */
 
 const overTheRoad = (address: number, n: number): number => {
     return n * 2 + 1 - address;
@@ -17595,14 +17616,14 @@ function overTheRoad2(address: number, n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given an array of digitals numbers, return a new array of length number containing the last even numbers from the original array (in the same order). The original array will be not empty and will contain at least "number" even numbers.
- 
-For example:
- 
-([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
-([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
-([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
-*/
+    Given an array of digitals numbers, return a new array of length number containing the last even numbers from the original array (in the same order). The original array will be not empty and will contain at least "number" even numbers.
+     
+    For example:
+     
+    ([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
+    ([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
+    ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
+    */
 
 const evenNumbers = (array: number[], n: number): number[] => {
     return array.filter((el) => (el & 1) === 0).slice(-n);
@@ -17635,25 +17656,25 @@ function evenNumbers2(array: number[], n: number): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In John's car the GPS records every s seconds the distance travelled from an origin (distances are measured in an arbitrary but consistent unit). For example, below is part of a record with s = 15:
- 
-x = [0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]
-The sections are:
- 
-0.0-0.19, 0.19-0.5, 0.5-0.75, 0.75-1.0, 1.0-1.25, 1.25-1.50, 1.5-1.75, 1.75-2.0, 2.0-2.25
-We can calculate John's average hourly speed on every section and we get:
- 
-[45.6, 74.4, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0]
-Given s and x the task is to return as an integer the *floor* of the maximum average speed per hour obtained on the sections of x. If x length is less than or equal to 1 return 0 since the car didn't move.
- 
-Example:
-with the above data your function gps(s, x)should return 74
- 
-Note
-With floats it can happen that results depends on the operations order. To calculate hourly speed you can use:
- 
-(3600 * delta_distance) / s.
-*/
+    In John's car the GPS records every s seconds the distance travelled from an origin (distances are measured in an arbitrary but consistent unit). For example, below is part of a record with s = 15:
+     
+    x = [0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]
+    The sections are:
+     
+    0.0-0.19, 0.19-0.5, 0.5-0.75, 0.75-1.0, 1.0-1.25, 1.25-1.50, 1.5-1.75, 1.75-2.0, 2.0-2.25
+    We can calculate John's average hourly speed on every section and we get:
+     
+    [45.6, 74.4, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0]
+    Given s and x the task is to return as an integer the *floor* of the maximum average speed per hour obtained on the sections of x. If x length is less than or equal to 1 return 0 since the car didn't move.
+     
+    Example:
+    with the above data your function gps(s, x)should return 74
+     
+    Note
+    With floats it can happen that results depends on the operations order. To calculate hourly speed you can use:
+     
+    (3600 * delta_distance) / s.
+    */
 
 class G965a1 {
     public static gps = (secInt: number, distArr: number[]): number => {
@@ -17714,10 +17735,10 @@ class G965a2 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a small function that returns the values of an array that are not odd.
- 
-All values in the array will be integers. Return the good values in the order they are given.
-*/
+    Write a small function that returns the values of an array that are not odd.
+     
+    All values in the array will be integers. Return the good values in the order they are given.
+    */
 
 const noOdds = (values: number[]): number[] => {
     return values.filter((el) => {
@@ -17750,28 +17771,28 @@ function noOdds2(values: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
- 
-Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )
-Each part will be in a string
-Elements of a pair must be in the same order as in the original array.
-Examples of returns in different languages:
-a = ["az", "toto", "picaro", "zone", "kiwi"] -->
-[["az", "toto picaro zone kiwi"], ["az toto", "picaro zone kiwi"], ["az toto picaro", "zone kiwi"], ["az toto picaro zone", "kiwi"]] 
-or
- a = {"az", "toto", "picaro", "zone", "kiwi"} -->
-{{"az", "toto picaro zone kiwi"}, {"az toto", "picaro zone kiwi"}, {"az toto picaro", "zone kiwi"}, {"az toto picaro zone", "kiwi"}}
-or
-a = ["az", "toto", "picaro", "zone", "kiwi"] -->
-[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
-or 
-a = [|"az", "toto", "picaro", "zone", "kiwi"|] -->
-[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
-or
-a = ["az", "toto", "picaro", "zone", "kiwi"] -->
-"(az, toto picaro zone kiwi)(az toto, picaro zone kiwi)(az toto picaro, zone kiwi)(az toto picaro zone, kiwi)"
- 
-*/
+    Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
+     
+    Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )
+    Each part will be in a string
+    Elements of a pair must be in the same order as in the original array.
+    Examples of returns in different languages:
+    a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+    [["az", "toto picaro zone kiwi"], ["az toto", "picaro zone kiwi"], ["az toto picaro", "zone kiwi"], ["az toto picaro zone", "kiwi"]] 
+    or
+     a = {"az", "toto", "picaro", "zone", "kiwi"} -->
+    {{"az", "toto picaro zone kiwi"}, {"az toto", "picaro zone kiwi"}, {"az toto picaro", "zone kiwi"}, {"az toto picaro zone", "kiwi"}}
+    or
+    a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+    [("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+    or 
+    a = [|"az", "toto", "picaro", "zone", "kiwi"|] -->
+    [("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+    or
+    a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+    "(az, toto picaro zone kiwi)(az toto, picaro zone kiwi)(az toto picaro, zone kiwi)(az toto picaro zone, kiwi)"
+     
+    */
 
 class G964a {
     public static partlist = (arr: string[]): string[][] => {
@@ -17859,10 +17880,10 @@ class G964a4 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
- 
-Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
-*/
+    Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
+     
+    Unfortunately for you, your drive is very bumpy! Given a string showing either flat road ("_") or bumps ("n"), work out if you make it home safely. 15 bumps or under, return "Woohoo!", over 15 bumps return "Car Dead".
+    */
 
 const bump = (road: string): string => {
     // const bumps: number[] = road.match(/n/g);
@@ -17930,26 +17951,26 @@ function bump6(x: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Task
-Given an array of integers , Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
- 
-Notes
-Array/list size is at least 2.
- 
-Array/list numbers could be a mixture of positives, negatives also zeroes .
- 
-Input >> Output Examples
-adjacentElementsProduct([1, 2, 3]); ==> return 6
-Explanation:
-The maximum product obtained from multiplying 2 * 3 = 6, and they're adjacent numbers in the array.
-adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]); ==> return 50
-Explanation:
-Max product obtained from multiplying 5 * 10 = 50 .
- 
-adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])  ==>  return -14
-Explanation:
-The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
-*/
+    Task
+    Given an array of integers , Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
+     
+    Notes
+    Array/list size is at least 2.
+     
+    Array/list numbers could be a mixture of positives, negatives also zeroes .
+     
+    Input >> Output Examples
+    adjacentElementsProduct([1, 2, 3]); ==> return 6
+    Explanation:
+    The maximum product obtained from multiplying 2 * 3 = 6, and they're adjacent numbers in the array.
+    adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]); ==> return 50
+    Explanation:
+    Max product obtained from multiplying 5 * 10 = 50 .
+     
+    adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])  ==>  return -14
+    Explanation:
+    The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
+    */
 
 const adjacentElementsProduct = (arr: number[]): number => {
     let productsArr: number[] = [];
@@ -17993,10 +18014,10 @@ function adjacentElementsProduct3(arr: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The solution would work like the following:
- 
-getEvenNumbers([2,4,5,6]) // should == [2,4,6]
-*/
+    The solution would work like the following:
+     
+    getEvenNumbers([2,4,5,6]) // should == [2,4,6]
+    */
 
 const getEvenNumbers = (numbersArray: number[]): number[] => {
     return numbersArray.filter((num) => {
@@ -18030,20 +18051,20 @@ const getEvenNumbers4 = (numbersArray: number[]): number[] => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
- 
-Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
- 
-[01]
-02 [03]
-04 05 [06]
-07 08 09 [10]
-11 12 13 14 [15]
-16 17 18 19 20 [21]
-e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
- 
-Triangular Numbers cannot be negative so return 0 if a negative number is given.
-*/
+    Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+     
+    Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
+     
+    [01]
+    02 [03]
+    04 05 [06]
+    07 08 09 [10]
+    11 12 13 14 [15]
+    16 17 18 19 20 [21]
+    e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+     
+    Triangular Numbers cannot be negative so return 0 if a negative number is given.
+    */
 
 const sumTriangularNumbers = (n: number): number => {
     let sum: number = 0,
@@ -18122,41 +18143,41 @@ function sumTriangularNumbers6(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You are given a string of n lines, each substring being n characters long: For example:
- 
-s = "abcd\nefgh\nijkl\nmnop"
- 
-We will study some transformations of this square of strings.
- 
-Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
-vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
-Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
- hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
-or printed:
- 
-vertical mirror   |horizontal mirror   
-abcd --> dcba     |abcd --> mnop 
-efgh     hgfe     |efgh     ijkl 
-ijkl     lkji     |ijkl     efgh 
-mnop     ponm     |mnop     abcd 
-Task:
-Write these two functions
-and
- 
-high-order function oper(fct, s) where
- 
-fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)
- 
-Examples:
-s = "abcd\nefgh\nijkl\nmnop"
-oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
-oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
-Note:
-The form of the parameter fct in oper changes according to the language. You can see each form according to the language in "Sample Tests".
- 
-Bash Note:
-The input strings are separated by , instead of \n. The output strings should be separated by \r instead of \n. See "Sample Tests".
-*/
+    You are given a string of n lines, each substring being n characters long: For example:
+     
+    s = "abcd\nefgh\nijkl\nmnop"
+     
+    We will study some transformations of this square of strings.
+     
+    Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+    vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
+    Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+     hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
+    or printed:
+     
+    vertical mirror   |horizontal mirror   
+    abcd --> dcba     |abcd --> mnop 
+    efgh     hgfe     |efgh     ijkl 
+    ijkl     lkji     |ijkl     efgh 
+    mnop     ponm     |mnop     abcd 
+    Task:
+    Write these two functions
+    and
+     
+    high-order function oper(fct, s) where
+     
+    fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)
+     
+    Examples:
+    s = "abcd\nefgh\nijkl\nmnop"
+    oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
+    oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
+    Note:
+    The form of the parameter fct in oper changes according to the language. You can see each form according to the language in "Sample Tests".
+     
+    Bash Note:
+    The input strings are separated by , instead of \n. The output strings should be separated by \r instead of \n. See "Sample Tests".
+    */
 
 // console.log();
 // console.log();
@@ -18174,21 +18195,21 @@ The input strings are separated by , instead of \n. The output strings should be
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
- 
-In honor of my grandfather's memory we will write a function using his formula!
- 
-Take a list of ages when each of your great-grandparent died.
-Multiply each number by itself.
-Add them all together.
-Take the square root of the result.
-Divide by two.
-Example
-predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
-Note: the result should be rounded down to the nearest integer.
- 
-Some random tests might fail due to a bug in the JavaScript implementation. Simply resubmit if that happens to you.
-*/
+    My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+     
+    In honor of my grandfather's memory we will write a function using his formula!
+     
+    Take a list of ages when each of your great-grandparent died.
+    Multiply each number by itself.
+    Add them all together.
+    Take the square root of the result.
+    Divide by two.
+    Example
+    predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
+    Note: the result should be rounded down to the nearest integer.
+     
+    Some random tests might fail due to a bug in the JavaScript implementation. Simply resubmit if that happens to you.
+    */
 
 // const predictAge = (
 //     age1:number,
@@ -18266,10 +18287,10 @@ function predictAge3(...ages: number[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Find the number with the most digits.
- 
-If two numbers in the argument array have the same number of digits, return the first one in the array.
-*/
+    Find the number with the most digits.
+     
+    If two numbers in the argument array have the same number of digits, return the first one in the array.
+    */
 
 class Kata {
     static findLongest(arr: number[]): number {
@@ -18337,13 +18358,13 @@ class Kata5 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Complete the method which accepts an array of integers, and returns one of the following:
- 
-"yes, ascending" - if the numbers in the array are sorted in an ascending order
-"yes, descending" - if the numbers in the array are sorted in a descending order
-"no" - otherwise
-You can assume the array will always be valid, and there will always be one correct answer.
-*/
+    Complete the method which accepts an array of integers, and returns one of the following:
+     
+    "yes, ascending" - if the numbers in the array are sorted in an ascending order
+    "yes, descending" - if the numbers in the array are sorted in a descending order
+    "no" - otherwise
+    You can assume the array will always be valid, and there will always be one correct answer.
+    */
 
 const isSortedAndHow = (arr: number[]): string => {
     let isAscending: boolean = false;
@@ -18462,10 +18483,10 @@ function isSortedAndHow7(array: number[]): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
- 
-If a convex polygon has n sides, then its interior angle sum is given by the following equation: S = ( n −2) × 180°.
-*/
+    Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+     
+    If a convex polygon has n sides, then its interior angle sum is given by the following equation: S = ( n −2) × 180°.
+    */
 
 const angle = (n: number): number => {
     return (n - 2) * 180;
@@ -18487,8 +18508,8 @@ const angle = (n: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
- 
-*/
+     
+    */
 
 const factorial = (num: number) => {
     let nthFact = 1;
@@ -18521,17 +18542,17 @@ function factorial2(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-This program tests the life of an evaporator containing a gas.
- 
-We know the content of the evaporator (content in ml), the percentage of foam or gas lost every day (evap_per_day) and the threshold (threshold) in percentage beyond which the evaporator is no longer useful. All numbers are strictly positive.
- 
-The program reports the nth day (as an integer) on which the evaporator will be out of use.
- 
-Example:
-evaporator(10, 10, 5) -> 29
-Note:
-Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
-*/
+    This program tests the life of an evaporator containing a gas.
+     
+    We know the content of the evaporator (content in ml), the percentage of foam or gas lost every day (evap_per_day) and the threshold (threshold) in percentage beyond which the evaporator is no longer useful. All numbers are strictly positive.
+     
+    The program reports the nth day (as an integer) on which the evaporator will be out of use.
+     
+    Example:
+    evaporator(10, 10, 5) -> 29
+    Note:
+    Content is in fact not necessary in the body of the function "evaporator", you can use it or not use it, as you wish. Some people might prefer to reason with content, some other with percentages only. It's up to you but you must keep it as a parameter because the tests have it as an argument.
+    */
 
 const evaporator = (cont: number, dayEvap: number, thresH: number): number => {
     let contentLeft = cont;
@@ -18602,12 +18623,12 @@ function evaporator4(
 
 //  ❗️❗️❗️ HAD TO CHANGE TARGET PROPERTY IN COMPILER OPTIONS TO "es2019" OR LATER  FOR flat() ❗️❗️❗️
 /*
-Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
- 
-Example:
- 
-Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
-*/
+    Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+     
+    Example:
+     
+    Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+    */
 
 const flattenAndSort = (inputArray: number[][]): number[] => {
     // 1️⃣  ❗️❗️❗️ THIS IS NOT WORKING IN CODEWARS ❗️❗️❗️
@@ -18661,19 +18682,19 @@ function flattenAndSort5(inputArray: number[][]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Story
-Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
- 
-Task
-Your mission:
-Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
- 
-A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
- 
-Examples:
-checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
-checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
-*/
+    Story
+    Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
+     
+    Task
+    Your mission:
+    Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+     
+    A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+     
+    Examples:
+    checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+    checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+    */
 
 const checkCoupon = (
     usrCode: string,
@@ -18751,28 +18772,28 @@ const checkCoupon = (
 };
 
 /*
- 
-isvalidCode WILL CHECK IF CODES MATCH
-INITIALIZE isValidDate
-ASSIGN NUMERIC VALUES TO MONTHS FOR COMPARISON
-extractDate WILL CONVERT STRING TO ARRAY ["September", "5", "2015"]
-STORE YEAR, MONTH INDEX AND DAY IN VARIABLES (CONVERTED TO NUMBER)
-┌──────────────┬───────────┐
-│   (index)    │  Values   │
-├──────────────┼───────────┤
-│   currYear   │   2014    │
-│   expYear    │   2014    │
-│  currMonth   │ 'January' │
-│ currMonthIdx │     1     │
-│   expMonth   │ 'January' │
-│ expMonthIdx  │     1     │
-│   currDay    │     5     │
-│    expDay    │     1     │
-└──────────────┴───────────┘
-if BLOCK DETERMINES IF DATE IS VALID
-RETURN TRUE IF BOTH CODE AND DATE ARE VALID, OTHERWISE FALSE
- 
-*/
+     
+    isvalidCode WILL CHECK IF CODES MATCH
+    INITIALIZE isValidDate
+    ASSIGN NUMERIC VALUES TO MONTHS FOR COMPARISON
+    extractDate WILL CONVERT STRING TO ARRAY ["September", "5", "2015"]
+    STORE YEAR, MONTH INDEX AND DAY IN VARIABLES (CONVERTED TO NUMBER)
+    ┌──────────────┬───────────┐
+    │   (index)    │  Values   │
+    ├──────────────┼───────────┤
+    │   currYear   │   2014    │
+    │   expYear    │   2014    │
+    │  currMonth   │ 'January' │
+    │ currMonthIdx │     1     │
+    │   expMonth   │ 'January' │
+    │ expMonthIdx  │     1     │
+    │   currDay    │     5     │
+    │    expDay    │     1     │
+    └──────────────┴───────────┘
+    if BLOCK DETERMINES IF DATE IS VALID
+    RETURN TRUE IF BOTH CODE AND DATE ARE VALID, OTHERWISE FALSE
+     
+    */
 
 // console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));
 // console.log(checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014'));
@@ -18822,29 +18843,29 @@ function checkCoupon4(
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Scenario
-Several people are standing in a row divided into two teams.
-The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
- 
-Task
-Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
- 
-Notes
-Array size is at least 1.
-All numbers will be positive.
-Input >> Output Examples
-rowWeights([13, 27, 49])  ==>  return (62, 27)
-Explanation:
-The first element 62 is the total weight of team 1, and the second element 27 is the total weight of team 2.
- 
-rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
-Explanation:
-The first element 120 is the total weight of team 1, and the second element 140 is the total weight of team 2.
- 
-rowWeights([80])  ==>  return (80, 0)
-Explanation:
-The first element 80 is the total weight of team 1, and the second element 0 is the total weight of team 2.
-*/
+    Scenario
+    Several people are standing in a row divided into two teams.
+    The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
+     
+    Task
+    Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+     
+    Notes
+    Array size is at least 1.
+    All numbers will be positive.
+    Input >> Output Examples
+    rowWeights([13, 27, 49])  ==>  return (62, 27)
+    Explanation:
+    The first element 62 is the total weight of team 1, and the second element 27 is the total weight of team 2.
+     
+    rowWeights([50, 60, 70, 80])  ==>  return (120, 140)
+    Explanation:
+    The first element 120 is the total weight of team 1, and the second element 140 is the total weight of team 2.
+     
+    rowWeights([80])  ==>  return (80, 0)
+    Explanation:
+    The first element 80 is the total weight of team 1, and the second element 0 is the total weight of team 2.
+    */
 
 const rowWeights = (arr: number[]): number[] => {
     let arr1: number[] = [],
@@ -18928,13 +18949,13 @@ function rowWeights7(arr: number[]) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
- 
-For example:
- 
-solution([1, 2, 10, 50, 5]); // should return [1, 2, 5, 10, 50]
-solution([]); // should return []
-*/
+    Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
+     
+    For example:
+     
+    solution([1, 2, 10, 50, 5]); // should return [1, 2, 5, 10, 50]
+    solution([]); // should return []
+    */
 
 const sortNumbers = (numsArr: number[]): number[] => {
     return numsArr.sort((a, b) => a - b);
@@ -18961,18 +18982,18 @@ function sortNumbers3(nums: number[]): number[] {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
- 
-Example:
- 
-Input:
- 
-'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
- 
-Output:
- 
-'alpha beta gamma delta'
-*/
+    Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
+     
+    Example:
+     
+    Input:
+     
+    'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+     
+    Output:
+     
+    'alpha beta gamma delta'
+    */
 
 // ❗️❗️❗️ .reduce((acc: string[], curr) SPECIFY TYPE FOR acc ❗️❗️❗️
 const removeDuplicateWords = (str: string): string => {
@@ -19031,12 +19052,12 @@ function removeDuplicateWords6(s: string): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
- 
-For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
- 
-The input will be a lowercase string with no spaces.
-*/
+    Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+     
+    For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+     
+    The input will be a lowercase string with no spaces.
+    */
 
 const capitalize = (str: string): string[] => {
     let odds: string = "",
@@ -19112,20 +19133,20 @@ function capitalize5(s: string): Array<string> {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
- 
-Find max(abs(length(x) − length(y)))
- 
-If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
- 
-Example:
-a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
-a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
-mxdiflg(a1, a2) --> 13
-Bash note:
-input : 2 strings with substrings separated by ,
-output: number as a string
-*/
+    You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+     
+    Find max(abs(length(x) − length(y)))
+     
+    If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+     
+    Example:
+    a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+    a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+    mxdiflg(a1, a2) --> 13
+    Bash note:
+    input : 2 strings with substrings separated by ,
+    output: number as a string
+    */
 
 // 1️⃣
 class G964 {
@@ -19234,38 +19255,38 @@ class G964 {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 /*
- 
- class G964 {
-  
-    public static mxdiflg = (a1, a2) => {
-        let max = -1;
-        for (let x of a1) {
-          for (let y of a2) {
-            max = Math.max(Math.abs(x.length - y.length), max);
-          }
+     
+     class G964 {
+      
+        public static mxdiflg = (a1, a2) => {
+            let max = -1;
+            for (let x of a1) {
+              for (let y of a2) {
+                max = Math.max(Math.abs(x.length - y.length), max);
+              }
+            }
+            
+            return max;
         }
-        
-        return max;
     }
-}
- 
- 
- class G964 {
-    public static mxdiflg = (a1, a2) => {
-      if (!a1.length || !a2.length) return -1;
-      const x = Math.max(...a1.map(v => v.length)) - Math.min(...a2.map(v => v.length));
-      const y = Math.max(...a2.map(v => v.length)) - Math.min(...a1.map(v => v.length));
-      return x > y ? x : y;
+     
+     
+     class G964 {
+        public static mxdiflg = (a1, a2) => {
+          if (!a1.length || !a2.length) return -1;
+          const x = Math.max(...a1.map(v => v.length)) - Math.min(...a2.map(v => v.length));
+          const y = Math.max(...a2.map(v => v.length)) - Math.min(...a1.map(v => v.length));
+          return x > y ? x : y;
+        }
+      }
+     
+     
+     
+       class G964 {
+        public static mxdiflg = (a1, a2) => !a1.length || !a2.length ? -1 : Math.max(...a1.map(s1 => Math.max(...a2.map(s2 => Math.abs(s1.length - s2.length)))));
     }
-  }
- 
- 
- 
-   class G964 {
-    public static mxdiflg = (a1, a2) => !a1.length || !a2.length ? -1 : Math.max(...a1.map(s1 => Math.max(...a2.map(s2 => Math.abs(s1.length - s2.length)))));
-}
- 
-*/
+     
+    */
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE:  FIX STRING CASE
@@ -19276,17 +19297,17 @@ class G964 {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
- 
-make as few changes as possible.
-if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
-For example:
- 
-solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
-solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
-solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
-More examples in test cases. Good luck!
-*/
+    In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+     
+    make as few changes as possible.
+    if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+    For example:
+     
+    solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+    solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+    solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+    More examples in test cases. Good luck!
+    */
 
 // 1️⃣  ❗️❗️❗️ THIS WORKS IN IDE BUT THROWS ERROR IN CODEWARS ❗️❗️❗️
 // (OBJECT IS POSSIBLY NULL)
@@ -19355,23 +19376,23 @@ function solve5(s: string) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
- 
-Notes:
-Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
-Input >> Output Examples
-minValue ({1, 3, 1})  ==> return (13)
-Explanation:
-(13) is the minimum number could be formed from {1, 3, 1} , Without duplications
- 
-minValue({5, 7, 5, 9, 7})  ==> return (579)
-Explanation:
-(579) is the minimum number could be formed from {5, 7, 5, 9, 7} , Without duplications
- 
-minValue({1, 9, 3, 1, 7, 4, 6, 6, 7}) return  ==> (134679)
-Explanation:
-(134679) is the minimum number could be formed from {1, 9, 3, 1, 7, 4, 6, 6, 7} , Without duplications
-*/
+    Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
+     
+    Notes:
+    Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
+    Input >> Output Examples
+    minValue ({1, 3, 1})  ==> return (13)
+    Explanation:
+    (13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+     
+    minValue({5, 7, 5, 9, 7})  ==> return (579)
+    Explanation:
+    (579) is the minimum number could be formed from {5, 7, 5, 9, 7} , Without duplications
+     
+    minValue({1, 9, 3, 1, 7, 4, 6, 6, 7}) return  ==> (134679)
+    Explanation:
+    (134679) is the minimum number could be formed from {1, 9, 3, 1, 7, 4, 6, 6, 7} , Without duplications
+    */
 
 const minValue = (values: number[]): number => {
     //1️⃣
@@ -19415,10 +19436,10 @@ const minValue2 = (values: Array<number>): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
- 
-You can assume all values in the array are numbers.
-*/
+    You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+     
+    You can assume all values in the array are numbers.
+    */
 
 const smallEnough = (arr: number[], limit: number): boolean => {
     // const checkLimit = (num: number) => num <= limit;
@@ -19442,19 +19463,19 @@ const smallEnough = (arr: number[], limit: number): boolean => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
- 
-The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
- 
-If the score < 0, return 0.
- 
-For example:
- 
-checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
-checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
-checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
-checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
-*/
+    The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
+     
+    The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+     
+    If the score < 0, return 0.
+     
+    For example:
+     
+    checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+    checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+    checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+    checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
+    */
 
 const checkExam = (array1: string[], array2: string[]): number => {
     let score: number = 0;
@@ -19525,15 +19546,15 @@ function checkExam4(array1: string[], array2: string[]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
- 
-For example: (Input --> Output)
- 
-10 --> 1
-99 --> 18
--32 --> 5
-Let's assume that all numbers in the input will be integer values.
-*/
+    Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
+     
+    For example: (Input --> Output)
+     
+    10 --> 1
+    99 --> 18
+    -32 --> 5
+    Let's assume that all numbers in the input will be integer values.
+    */
 
 const sumDigits = (num: number): number => {
     return Math.abs(num)
@@ -19570,23 +19591,23 @@ function sumDigits2(number: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a Divisor and a Bound , Find the largest integer N , Such That ,
- 
-Conditions :
-N is divisible by divisor
- 
-N is less than or equal to bound
- 
-N is greater than 0.
- 
-Notes
-The parameters (divisor, bound) passed to the function are only positive values .
-It's guaranteed that a divisor is Found .
-Input >> Output Examples
-maxMultiple (2,7) ==> return (6)
-Explanation:
-(6) is divisible by (2) , (6) is less than or equal to bound (7) , and (6) is > 0
-*/
+    Given a Divisor and a Bound , Find the largest integer N , Such That ,
+     
+    Conditions :
+    N is divisible by divisor
+     
+    N is less than or equal to bound
+     
+    N is greater than 0.
+     
+    Notes
+    The parameters (divisor, bound) passed to the function are only positive values .
+    It's guaranteed that a divisor is Found .
+    Input >> Output Examples
+    maxMultiple (2,7) ==> return (6)
+    Explanation:
+    (6) is divisible by (2) , (6) is less than or equal to bound (7) , and (6) is > 0
+    */
 
 const maxMultiple = (divisor: number, bound: number): number => {
     let solution: number = 0;
@@ -19630,14 +19651,14 @@ function maxMultiple4(divisor: number, bound: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
- 
-The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
- 
-For example:
- 
-two_oldest_ages( 4, {1, 2, 10, 8}, result) // should fill result array with {8, 10}
-*/
+    The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
+     
+    The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
+     
+    For example:
+     
+    two_oldest_ages( 4, {1, 2, 10, 8}, result) // should fill result array with {8, 10}
+    */
 
 const twoOldestAges = (ages: number[]): number[] => {
     return (
@@ -19671,16 +19692,16 @@ const twoOldestAges2 = (ages: any) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Count the number of divisors of a positive integer n.
- 
-Random tests go up to n = 500000.
- 
-Examples (input --> output)
-4 --> 3 (1, 2, 4)
-5 --> 2 (1, 5)
-12 --> 6 (1, 2, 3, 4, 6, 12)
-30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
-*/
+    Count the number of divisors of a positive integer n.
+     
+    Random tests go up to n = 500000.
+     
+    Examples (input --> output)
+    4 --> 3 (1, 2, 4)
+    5 --> 2 (1, 5)
+    12 --> 6 (1, 2, 3, 4, 6, 12)
+    30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
+    */
 
 const divisors = (num: number): number => {
     if (num === 1) return 1;
@@ -19743,24 +19764,24 @@ function divisors2(n: number) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.
- 
-Square all numbers k (0 <= k <= n) between 0 and n.
- 
-Count the numbers of digits d used in the writing of all the k**2.
- 
-Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
- 
-Examples:
-n = 10, d = 1 
-the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
-We are using the digit 1 in: 1, 16, 81, 100. The total count is then 4.
- 
-nb_dig(25, 1) returns 11 since
-the k*k that contain the digit 1 are:
-1, 16, 81, 100, 121, 144, 169, 196, 361, 441.
-So there are 11 digits 1 for the squares of numbers between 0 and 25
-*/
+    Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.
+     
+    Square all numbers k (0 <= k <= n) between 0 and n.
+     
+    Count the numbers of digits d used in the writing of all the k**2.
+     
+    Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
+     
+    Examples:
+    n = 10, d = 1 
+    the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+    We are using the digit 1 in: 1, 16, 81, 100. The total count is then 4.
+     
+    nb_dig(25, 1) returns 11 since
+    the k*k that contain the digit 1 are:
+    1, 16, 81, 100, 121, 144, 169, 196, 361, 441.
+    So there are 11 digits 1 for the squares of numbers between 0 and 25
+    */
 
 const nbDig = (num: number, digit: number): number => {
     let counter: number = 0;
@@ -19802,12 +19823,12 @@ const nbDig = (num: number, digit: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable. Implement a function that will return minimum number of breaks needed.
- 
-For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
- 
-If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
-*/
+    Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable. Implement a function that will return minimum number of breaks needed.
+     
+    For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+     
+    If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+    */
 
 const breakChocolate = (n: number, m: number): number => {
     return n * m > 1 ? n * m - 1 : 0;
@@ -19826,15 +19847,15 @@ const breakChocolate = (n: number, m: number): number => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
- 
-Examples:
- 
-1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
-4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
-The result may contain fives. ;-)
-The start number will always be smaller than the end number. Both numbers can be also negative!
-*/
+    In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+     
+    Examples:
+     
+    1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+    4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+    The result may contain fives. ;-)
+    The start number will always be smaller than the end number. Both numbers can be also negative!
+    */
 
 const dontGiveMeFive = (start: number, end: number): number => {
     let counter = 0;
@@ -19881,13 +19902,13 @@ function dontGiveMeFive3(start: number, end: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
- 
-Examples
-"This is an example!" ==> "sihT si na !elpmaxe"
-"double  spaces"      ==> "elbuod  secaps"
- 
-*/
+    Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+     
+    Examples
+    "This is an example!" ==> "sihT si na !elpmaxe"
+    "double  spaces"      ==> "elbuod  secaps"
+     
+    */
 
 const reverseWords = (str: string): string => {
     return str
@@ -19919,21 +19940,21 @@ const reverseWords = (str: string): string => {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Your task is to write a function which returns the sum of following series upto nth term(parameter).
- 
-Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
-Rules:
-You need to round the answer to 2 decimal places and return it as String.
- 
-If the given value is 0 then it should return 0.00
- 
-You will only be given Natural Numbers as arguments.
- 
-Examples:(Input --> Output)
-1 --> 1 --> "1.00"
-2 --> 1 + 1/4 --> "1.25"
-5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
-*/
+    Your task is to write a function which returns the sum of following series upto nth term(parameter).
+     
+    Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+    Rules:
+    You need to round the answer to 2 decimal places and return it as String.
+     
+    If the given value is 0 then it should return 0.00
+     
+    You will only be given Natural Numbers as arguments.
+     
+    Examples:(Input --> Output)
+    1 --> 1 --> "1.00"
+    2 --> 1 + 1/4 --> "1.25"
+    5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+    */
 
 const SeriesSum = (num: number): string => {
     let sum: number = 0;
@@ -19971,13 +19992,13 @@ function SeriesSum2(n: number): string {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
- 
-Examples:
- 
-solution('abc', 'bc') // returns true
-solution('abc', 'd') // returns false
-*/
+    Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+     
+    Examples:
+     
+    solution('abc', 'bc') // returns true
+    solution('abc', 'd') // returns false
+    */
 
 const solution = (str: string, ending: string): boolean => {
     return str.endsWith(ending);
@@ -20006,12 +20027,12 @@ function solution3(str: string, ending: string): boolean {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given a list of integers, determine whether the sum of its elements is odd or even.
- 
-Give your answer as a string matching "odd" or "even".
- 
-If the input array is empty consider it as: [0] (array with a zero).
-*/
+    Given a list of integers, determine whether the sum of its elements is odd or even.
+     
+    Give your answer as a string matching "odd" or "even".
+     
+    If the input array is empty consider it as: [0] (array with a zero).
+    */
 
 // num(1) & 1 => 1   RETURNS  1 IF N IS ODD
 // num(2) & 1 => 0   RETURNS 0 IF N IS EVEN
@@ -20051,18 +20072,18 @@ const oddOrEven3 = (array: number[]) =>
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-There is a bus moving in the city, and it takes and drop some people in each bus stop.
- 
-You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
- 
-Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
- 
-Take a look on the test cases.
- 
-Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
- 
-The second value in the first integer array is 0, since the bus is empty in the first bus stop.
-*/
+    There is a bus moving in the city, and it takes and drop some people in each bus stop.
+     
+    You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+     
+    Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+     
+    Take a look on the test cases.
+     
+    Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
+     
+    The second value in the first integer array is 0, since the bus is empty in the first bus stop.
+    */
 
 const number = (busStops: [number, number][]): number => {
     let counter: number = 0;
@@ -20093,19 +20114,19 @@ function number2(busStops: number[][]): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Given the triangle of consecutive odd numbers:
- 
-             1
-          3     5
-       7     9    11
-   13    15    17    19
-21    23    25    27    29
-...
-Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
- 
-1 -->  1
-2 --> 3 + 5 = 8
-*/
+    Given the triangle of consecutive odd numbers:
+     
+                 1
+              3     5
+           7     9    11
+       13    15    17    19
+    21    23    25    27    29
+    ...
+    Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+     
+    1 -->  1
+    2 --> 3 + 5 = 8
+    */
 
 function rowSumOddNumbers(n: number): number {
     return Math.pow(n, 3);
@@ -20136,10 +20157,10 @@ function rowSumOddNumbers(n: number): number {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
-Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
- 
-(In this case, all triangles must have surface greater than 0 to be accepted).
-*/
+    Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+     
+    (In this case, all triangles must have surface greater than 0 to be accepted).
+    */
 
 const isTriangle = (a: number, b: number, c: number): boolean => {
     return a + b > c && a + c > b && b + c > a;
