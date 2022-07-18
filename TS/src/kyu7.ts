@@ -2522,7 +2522,7 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 });
 */
 
-console.log(say("Hello")("World"));
+// console.log(say("Hello")("World"));
 // console.log(say("Hello"));
 // console.log();
 // console.log();
@@ -2539,10 +2539,10 @@ const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
 const say4 = (a: string) => (b: string) => a + " " + b;
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GEMATRIA FOR ALL
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: INTERFACE
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2559,10 +2559,52 @@ Example: The gematrian value of "love" is 20+50+700+5 = 775
 ‎These are the values of the different letters:
 
 a=1, b=2, c=3, d=4, e=5, f=6, g=7, h=8, i=9, k=10, l=20, m=30, n=40, o=50, p=60, q=70, r=80, s=90, t=100, u=200, x=300, y=400, z=500, j=600, v=700, w=900
+*/
 
-*/ function gematria(str: string): number {
-    return 0;
-}
+const gematria = (str: string): number => {
+    let solution: number = 0;
+
+    interface KeyVal {
+        [key: string]: number;
+    }
+
+    const charValues: KeyVal = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: 5,
+        f: 6,
+        g: 7,
+        h: 8,
+        i: 9,
+        k: 10,
+        l: 20,
+        m: 30,
+        n: 40,
+        o: 50,
+        p: 60,
+        q: 70,
+        r: 80,
+        s: 90,
+        t: 100,
+        u: 200,
+        x: 300,
+        y: 400,
+        z: 500,
+        j: 600,
+        v: 700,
+        w: 900,
+    };
+
+    // ELIMINATE SPACES AND LOWERCASE INPUT STRING
+    for (let char of str.replace(/\s/g, "").toLowerCase()) {
+        // console.log(char);
+        solution += charValues[char];
+    }
+
+    return solution;
+};
 
 /*
 describe('Fixed tests', () => {
@@ -2574,7 +2616,105 @@ describe('Fixed tests', () => {
 });
 */
 
+// console.log(gematria("Coding is fun"));
+
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const values = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 600, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 700, 900, 300, 400, 500,
+];
+export function gematria2(str: string): number {
+    return str
+        .toUpperCase()
+        .split("")
+        .filter((c) => /[a-zA-Z]/.test(c))
+        .reduce((a, v) => a + values[v.charCodeAt(0) - 65], 0);
+}
+
+// function gematria3(str: string): number {
+//     const gematria = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'k': 10, 'l': 20,
+//                     'm': 30, 'n': 40, 'o': 50, 'p': 60, 'q': 70, 'r': 80, 's': 90, 't':100, 'u':200, 'x': 300,
+//                     'y': 400, 'z': 500, 'j': 600, 'v': 700, 'w': 900, ' ': 0}
+//     return str.toLowerCase().split('').reduce((a, b) => a + gematria[b], 0)
+
+// function gematria4(str: string): number {
+//     var map = {
+//         a: 1,
+//         b: 2,
+//         c: 3,
+//         d: 4,
+//         e: 5,
+//         f: 6,
+//         g: 7,
+//         h: 8,
+//         i: 9,
+//         k: 10,
+//         l: 20,
+//         m: 30,
+//         n: 40,
+//         o: 50,
+//         p: 60,
+//         q: 70,
+//         r: 80,
+//         s: 90,
+//         t: 100,
+//         u: 200,
+//         x: 300,
+//         y: 400,
+//         z: 500,
+//         j: 600,
+//         v: 700,
+//         w: 900,
+//     };
+
+//     return str.split("").reduce((c, p) => c + (map[p.toLowerCase()] || 0), 0);
+// }
+
+function gematria5(str: string): number {
+    const gematriaObj = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: 5,
+        f: 6,
+        g: 7,
+        h: 8,
+        i: 9,
+        k: 10,
+        l: 20,
+        m: 30,
+        n: 40,
+        o: 50,
+        p: 60,
+        q: 70,
+        r: 80,
+        s: 90,
+        t: 100,
+        u: 200,
+        x: 300,
+        y: 400,
+        z: 500,
+        j: 600,
+        v: 700,
+        w: 900,
+    };
+    let gematriaNumber = 0;
+    const strLength = str.length;
+    const strToLowerCase = str.toLowerCase();
+    for (let i = 0; i < strLength; i++) {
+        if (strToLowerCase[i] === " ") {
+            continue;
+        }
+        const value: string = strToLowerCase[i];
+        const valueFromGematriaObj =
+            gematriaObj[value as keyof typeof gematriaObj];
+        gematriaNumber += valueFromGematriaObj;
+    }
+
+    return gematriaNumber;
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: WAITING ROOM
@@ -20722,3 +20862,55 @@ const getCount = (str: string): number => {
 //       return str.split('').filter(c => /[aeiou]/i.test(c)).length
 //     }
 //   }
+
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+/*
+
+// 🐰
+const osszeadas = (szam1: number, szam2: number): number => {
+    // console.log(
+    //     "Hello Leticio! A ket szam amit ossze akarsz adni az:",
+    //     szam1,
+    //     szam2
+    // );
+
+    console.log("Tehat a vegeredmeny:", szam1 + szam2);
+
+    return szam1 + szam2;
+};
+
+// 🥰
+const kivonas = (szam1: number, szam2: number): number => {
+    // console.log("Tehat a vegeredmeny:", szam1 + szam2);
+
+    return szam1 - szam2;
+};
+
+const szorzas = (szam1: number, szam2: number): number => {
+    // console.log("Tehat a vegeredmeny:", szam1 + szam2);
+
+    return szam1 * szam2;
+};
+
+// console.log(osszeadas(1543, 1032));
+// console.log(osszeadas(3, 8));
+// console.log(kivonas(41, 18));
+// console.log(szorzas(2013, 1980));
+
+const nyuszik = (nyul: number): string => {
+    let solution: string = "";
+    for (let i = 0; i < nyul; i += 1) {
+        // console.log("🐰");
+        solution += "🐰";
+        console.log(i);
+        solution += "NYUSZI ";
+    }
+
+    console.log(solution);
+    return solution;
+};
+
+nyuszik(111);
+
+*/

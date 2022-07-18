@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gematria2 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -101,12 +103,97 @@ const say = (string1) => {
         return `${result} ${string2}`;
     };
 };
-console.log(say("Hello")("World"));
 const say2 = ($) => (ﬂ) => `${$} ${ﬂ}`;
 const say3 = (xs) => (ys) => [xs, ys].join(" ");
 const say4 = (a) => (b) => a + " " + b;
-function gematria(str) {
-    return 0;
+const gematria = (str) => {
+    let solution = 0;
+    const charValues = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: 5,
+        f: 6,
+        g: 7,
+        h: 8,
+        i: 9,
+        k: 10,
+        l: 20,
+        m: 30,
+        n: 40,
+        o: 50,
+        p: 60,
+        q: 70,
+        r: 80,
+        s: 90,
+        t: 100,
+        u: 200,
+        x: 300,
+        y: 400,
+        z: 500,
+        j: 600,
+        v: 700,
+        w: 900,
+    };
+    for (let char of str.replace(/\s/g, "").toLowerCase()) {
+        solution += charValues[char];
+    }
+    return solution;
+};
+const values = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 600, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 700, 900, 300, 400, 500,
+];
+function gematria2(str) {
+    return str
+        .toUpperCase()
+        .split("")
+        .filter((c) => /[a-zA-Z]/.test(c))
+        .reduce((a, v) => a + values[v.charCodeAt(0) - 65], 0);
+}
+exports.gematria2 = gematria2;
+function gematria5(str) {
+    const gematriaObj = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: 5,
+        f: 6,
+        g: 7,
+        h: 8,
+        i: 9,
+        k: 10,
+        l: 20,
+        m: 30,
+        n: 40,
+        o: 50,
+        p: 60,
+        q: 70,
+        r: 80,
+        s: 90,
+        t: 100,
+        u: 200,
+        x: 300,
+        y: 400,
+        z: 500,
+        j: 600,
+        v: 700,
+        w: 900,
+    };
+    let gematriaNumber = 0;
+    const strLength = str.length;
+    const strToLowerCase = str.toLowerCase();
+    for (let i = 0; i < strLength; i++) {
+        if (strToLowerCase[i] === " ") {
+            continue;
+        }
+        const value = strToLowerCase[i];
+        const valueFromGematriaObj = gematriaObj[value];
+        gematriaNumber += valueFromGematriaObj;
+    }
+    return gematriaNumber;
 }
 function lastChair(n) {
     return 1;
