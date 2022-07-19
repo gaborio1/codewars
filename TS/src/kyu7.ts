@@ -1646,10 +1646,21 @@ Chore 2 = 9hrs
 return [7, 8, 8, 10, 10, 11]
 
 */
-function choreAssignment(chores: number[]): number[] {
-    //code here
-    return [];
-}
+const choreAssignment = (chores: number[]): number[] => {
+    let solution: number[] = [];
+
+    const ascending: number[] = chores.sort((a, b) => a - b);
+    console.log(ascending);
+
+    for (let i = 0; i < chores.length / 2; i += 1) {
+        solution.push(chores[i] + chores[chores.length - 1 - i]);
+    }
+
+    console.log(solution);
+    console.log(solution.sort((a, b) => a - b));
+
+    return solution.sort((a, b) => a - b);
+};
 /*
 describe("Testing...", function(){
   it("Basic tests", function(){
@@ -1667,7 +1678,8 @@ describe("Testing...", function(){
 });
 */
 
-// console.log();
+// [7, 8, 8, 10, 10, 11]
+console.log(choreAssignment([1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]));
 // console.log();
 // console.log();
 // console.log();

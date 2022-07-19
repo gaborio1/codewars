@@ -61,9 +61,18 @@ function heavyMetalUmlauts(boringText) {
 function clean(array) {
     return [];
 }
-function choreAssignment(chores) {
-    return [];
-}
+const choreAssignment = (chores) => {
+    let solution = [];
+    const ascending = chores.sort((a, b) => a - b);
+    console.log(ascending);
+    for (let i = 0; i < chores.length / 2; i += 1) {
+        solution.push(chores[i] + chores[chores.length - 1 - i]);
+    }
+    console.log(solution);
+    console.log(solution.sort((a, b) => a - b));
+    return solution.sort((a, b) => a - b);
+};
+console.log(choreAssignment([1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]));
 function turn(current, target) {
     return "right";
 }
