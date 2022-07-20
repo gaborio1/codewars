@@ -1617,7 +1617,7 @@ describe("Basic Tests", (): void => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Help Suzuki complete his chores!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -1679,12 +1679,45 @@ describe("Testing...", function(){
 */
 
 // [7, 8, 8, 10, 10, 11]
-console.log(choreAssignment([1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]));
+// console.log(choreAssignment([1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function choreAssignment2(chores: number[]): number[] {
+    let arr: number[] = chores.sort((a, b) => a - b);
+    let ans: number[] = [];
+    for (let i = 0; i < arr.length / 2; i++) {
+        ans.push(arr[i] + arr[arr.length - i - 1]);
+    }
+    return ans.sort((a, b) => a - b);
+}
+
+function choreAssignment3(chores: number[]): number[] {
+    const res = [];
+    const newArr = chores.sort((a, b) => a - b);
+
+    for (let i = 0; i < Math.floor(newArr.length / 2); i++) {
+        res.push(newArr[i] + newArr[newArr.length - (i + 1)]);
+    }
+
+    return res.sort((a, b) => a - b);
+}
+
+function choreAssignment4(chores: any[]): number[] {
+    const output = [];
+    chores.sort((a, b) => a - b);
+
+    while (chores.length > 0) {
+        output.push(chores.shift() + chores.pop());
+    }
+
+    output.sort((a, b) => a - b);
+
+    return output;
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Turn the Mars rover to take pictures
@@ -2176,7 +2209,7 @@ describe('toQueryString', () => {
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Ranking position
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ OBJECT TYPE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2241,9 +2274,38 @@ type outputMan = {
     position: number;
 };
 
-function ranking(people: inputMan[]): outputMan[] {
+const ranking = (people: inputMan[]): outputMan[] => {
+    console.log(people);
+
+    let solution: outputMan[] = [];
+
+    const sortedArr: inputMan[] = people.sort(
+        (a, b) => b["points"] - a["points"]
+    );
+    console.log(sortedArr);
+
+    people.forEach((obj, idx) => {
+        let rank: number = 1;
+
+        // CALCUATE RANK BY COMPARING CURRENT POINTS TO PREVIOUS.
+        // ❗️❗️❗️ idx - 1 WILL BE UNDEFINED AT IDX 1 ❗️❗️❗️
+        if (obj["points"] !== people[idx - 1]["points"]) {
+            rank += 1;
+        }
+
+        let currentPerson: outputMan = {
+            name: obj["name"],
+            points: obj["points"],
+            position: rank,
+        };
+
+        solution.push(currentPerson);
+    });
+
+    console.log(solution);
+
     return [];
-}
+};
 
 /*
 describe("ranking", function() {
@@ -2395,7 +2457,26 @@ describe("ranking", function() {
 });
 */
 
-// console.log();
+const input1: inputMan[] = [
+    {
+        name: "John",
+        points: 100,
+    },
+    {
+        name: "Bob",
+        points: 130,
+    },
+    {
+        name: "Mary",
+        points: 120,
+    },
+    {
+        name: "Kate",
+        points: 120,
+    },
+];
+
+console.log(ranking(input1));
 // console.log();
 // console.log();
 // console.log();

@@ -72,7 +72,31 @@ const choreAssignment = (chores) => {
     console.log(solution.sort((a, b) => a - b));
     return solution.sort((a, b) => a - b);
 };
-console.log(choreAssignment([1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9]));
+function choreAssignment2(chores) {
+    let arr = chores.sort((a, b) => a - b);
+    let ans = [];
+    for (let i = 0; i < arr.length / 2; i++) {
+        ans.push(arr[i] + arr[arr.length - i - 1]);
+    }
+    return ans.sort((a, b) => a - b);
+}
+function choreAssignment3(chores) {
+    const res = [];
+    const newArr = chores.sort((a, b) => a - b);
+    for (let i = 0; i < Math.floor(newArr.length / 2); i++) {
+        res.push(newArr[i] + newArr[newArr.length - (i + 1)]);
+    }
+    return res.sort((a, b) => a - b);
+}
+function choreAssignment4(chores) {
+    const output = [];
+    chores.sort((a, b) => a - b);
+    while (chores.length > 0) {
+        output.push(chores.shift() + chores.pop());
+    }
+    output.sort((a, b) => a - b);
+    return output;
+}
 function turn(current, target) {
     return "right";
 }
@@ -93,9 +117,45 @@ function getFreeUrinals(urinals) {
 const toQueryString = (obj) => {
     return "";
 };
-function ranking(people) {
+const ranking = (people) => {
+    console.log(people);
+    let solution = [];
+    const sortedArr = people.sort((a, b) => b["points"] - a["points"]);
+    console.log(sortedArr);
+    people.forEach((obj, idx) => {
+        let rank = 1;
+        if (obj["points"] !== people[idx - 1]["points"]) {
+            rank += 1;
+        }
+        let currentPerson = {
+            name: obj["name"],
+            points: obj["points"],
+            position: rank,
+        };
+        solution.push(currentPerson);
+    });
+    console.log(solution);
     return [];
-}
+};
+const input1 = [
+    {
+        name: "John",
+        points: 100,
+    },
+    {
+        name: "Bob",
+        points: 130,
+    },
+    {
+        name: "Mary",
+        points: 120,
+    },
+    {
+        name: "Kate",
+        points: 120,
+    },
+];
+console.log(ranking(input1));
 const gracefulTipping = (bill) => {
     let total = 0;
     if (bill < 10) {
