@@ -121,10 +121,13 @@ const ranking = (people) => {
     console.log(people);
     let solution = [];
     const sortedArr = people.sort((a, b) => b["points"] - a["points"]);
-    console.log(sortedArr);
-    people.forEach((obj, idx) => {
+    console.log("sorted array:", sortedArr);
+    sortedArr.forEach((obj, idx) => {
         let rank = 1;
-        if (obj["points"] !== people[idx - 1]["points"]) {
+        console.log(sortedArr[idx - 1] === undefined);
+        console.log("obj.points:", sortedArr[idx]["points"]);
+        if (sortedArr[idx - 1] !== undefined &&
+            sortedArr[idx]["points"] === sortedArr[idx - 1]["points"]) {
             rank += 1;
         }
         let currentPerson = {
