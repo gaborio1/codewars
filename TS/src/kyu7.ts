@@ -2274,7 +2274,8 @@ type outputMan = {
     position: number;
 };
 
-const ranking = (people: inputMan[]): outputMan[] => {
+/*
+const ranking2 = (people: inputMan[]): outputMan[] => {
     console.log(people);
 
     let solution: outputMan[] = [];
@@ -2286,37 +2287,30 @@ const ranking = (people: inputMan[]): outputMan[] => {
 
     // let currentPoint: number = 0;
 
+    let rank: number = 1;
+
     sortedArr.forEach((obj, idx) => {
-        let rank: number = 1;
-
-        // currentPoint = sortedArr[idx]["points"];
-
-        // console.log(currentPoint === obj["points"]);
-
         // CALCUATE RANK BY COMPARING CURRENT POINTS TO PREVIOUS.
         // ❗️❗️❗️ idx - 1 WILL BE UNDEFINED AT IDX 1 ❗️❗️❗️
 
-        console.log(sortedArr[idx - 1] === undefined);
+        console.log("undefined:", sortedArr[idx - 1] === undefined);
 
         console.log("obj.points:", sortedArr[idx]["points"]);
         // console.log("previous:", sortedArr[idx - 1]["points"]);
         // console.log("input abj.points:", sortedArr[idx - 1]["points"]);
 
         if (
-            sortedArr[idx - 1] !== undefined &&
-            sortedArr[idx]["points"] === sortedArr[idx - 1]["points"]
+            // sortedArr[idx - 1] !== undefined &&
+            idx > 0 &&
+            sortedArr[idx]["points"] !== sortedArr[idx - 1]["points"]
         ) {
             rank += 1;
         }
 
-        // if (obj["points"] !== people[idx - 1]["points"] && idx > 0) {
-        //     rank += 1;
-        // }
-
         let currentPerson: outputMan = {
             name: obj["name"],
             points: obj["points"],
-            position: rank,
+            position: rank
         };
 
         solution.push(currentPerson);
@@ -2324,7 +2318,66 @@ const ranking = (people: inputMan[]): outputMan[] => {
 
     console.log(solution);
 
-    return [];
+    return solution;
+};
+*/
+
+const ranking = (people: inputMan[]): outputMan[] => {
+    console.log(people);
+
+    let solution: outputMan[] = [];
+    let sortedByPoints: outputMan[] = [];
+
+    const sortedArr: inputMan[] = people.sort(
+        (a, b) => b["points"] - a["points"]
+    );
+    console.log("sorted array:", sortedArr);
+
+    // SORT OBJECTS BY POINTS PROPERTY
+    sortedArr.forEach((obj, idx) => {
+        // CALCUATE RANK BY COMPARING CURRENT POINTS TO PREVIOUS.
+        // ❗️❗️❗️ idx - 1 WILL BE UNDEFINED AT IDX 1 ❗️❗️❗️
+
+        console.log("undefined:", sortedArr[idx - 1] === undefined);
+
+        console.log("obj.points:", sortedArr[idx]["points"]);
+
+        // if (
+        //     // sortedArr[idx - 1] !== undefined &&
+        //     idx > 0 &&
+        //     sortedArr[idx]["points"] !== sortedArr[idx - 1]["points"]
+        // ) {
+        //     rank += 1;
+        // }
+
+        let currentPerson: outputMan = {
+            name: obj["name"],
+            points: obj["points"],
+            position: idx + 1,
+        };
+
+        sortedByPoints.push(currentPerson);
+    });
+
+    // console.log(sortedByPoints);
+
+    let equalPoints: outputMan[] = [];
+
+    // let rank: number = 1;
+
+    sortedByPoints.forEach((obj, idx) => {
+        // if (
+        //     // sortedArr[idx - 1] !== undefined &&
+        //     idx > 0 &&
+        //     sortedByPoints[idx]["points"] !== sortedByPoints[idx - 1]["points"]
+        // ) {
+        //     rank += 1;
+        // }
+    });
+
+    // console.log(sortedByPoints);
+
+    return solution;
 };
 
 /*

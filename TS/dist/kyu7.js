@@ -120,25 +120,23 @@ const toQueryString = (obj) => {
 const ranking = (people) => {
     console.log(people);
     let solution = [];
+    let sortedByPoints = [];
     const sortedArr = people.sort((a, b) => b["points"] - a["points"]);
     console.log("sorted array:", sortedArr);
     sortedArr.forEach((obj, idx) => {
-        let rank = 1;
-        console.log(sortedArr[idx - 1] === undefined);
+        console.log("undefined:", sortedArr[idx - 1] === undefined);
         console.log("obj.points:", sortedArr[idx]["points"]);
-        if (sortedArr[idx - 1] !== undefined &&
-            sortedArr[idx]["points"] === sortedArr[idx - 1]["points"]) {
-            rank += 1;
-        }
         let currentPerson = {
             name: obj["name"],
             points: obj["points"],
-            position: rank,
+            position: idx + 1,
         };
-        solution.push(currentPerson);
+        sortedByPoints.push(currentPerson);
     });
-    console.log(solution);
-    return [];
+    let equalPoints = [];
+    sortedByPoints.forEach((obj, idx) => {
+    });
+    return solution;
 };
 const input1 = [
     {
