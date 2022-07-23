@@ -2172,7 +2172,40 @@ to_query_string({ "bar": [ 2, 3 ], "foo": 1 }) # => "bar=2&bar=3&foo=1"
 Next you may enjoy kata Objectify a URL Query String.
 */
 const toQueryString = (obj: object): string => {
-    return "";
+    let solution: string = "";
+
+    // [ [ 'bar', [ 2, 3 ] ], [ 'foo', 1 ] ]
+    console.log(Object.entries(obj));
+
+    // for (let key in obj) {
+    //     console.log(key);
+    // }
+
+    Object.entries(obj).forEach((entry) => {
+        // [ 'bar', [ 2, 3 ] ]
+        console.log(entry);
+
+        // ARRAY WILL HAVE LENGTH WHILE NUMBER WILL NOT
+        console.log(entry[1].length);
+
+        if (entry[1].length) {
+            let arrayVal: string[] = [];
+
+            entry[1].forEach((number: number) => {
+                // solution += entry[0] + "=" + number;
+
+                arrayVal.push(entry[0] + "=" + number);
+                console.log("arrayVal:", arrayVal);
+            });
+        } else {
+            let singleVal: string = entry[0] + "=" + entry[1];
+            console.log("singleVal:", singleVal);
+        }
+    });
+
+    console.log(solution);
+
+    return "hello";
 };
 /*
 describe('toQueryString', () => {
@@ -2199,7 +2232,8 @@ describe('toQueryString', () => {
 })
 */
 
-// console.log();
+// "bar=2&bar=3&foo=1"
+console.log(toQueryString({ bar: [2, 3], foo: 1 }));
 // console.log();
 // console.log();
 // console.log();
@@ -2549,7 +2583,8 @@ const input1: inputMan[] = [
     },
 ];
 
-console.log(ranking(input1));
+// console.log(ranking(input1));
+
 // console.log();
 // console.log();
 // console.log();
