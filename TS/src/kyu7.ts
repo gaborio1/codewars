@@ -2172,7 +2172,8 @@ to_query_string({ "bar": [ 2, 3 ], "foo": 1 }) # => "bar=2&bar=3&foo=1"
 Next you may enjoy kata Objectify a URL Query String.
 */
 const toQueryString = (obj: object): string => {
-    let solution: string = "";
+    // ❗️❗️❗️ TUPLE ❗️❗️❗️
+    let solutionArr: (string | string[])[] = [];
 
     // [ [ 'bar', [ 2, 3 ] ], [ 'foo', 1 ] ]
     console.log(Object.entries(obj));
@@ -2181,6 +2182,8 @@ const toQueryString = (obj: object): string => {
     //     console.log(key);
     // }
 
+    let arrayVal: string[] = [];
+    let singleVal: string = "";
     Object.entries(obj).forEach((entry) => {
         // [ 'bar', [ 2, 3 ] ]
         console.log(entry);
@@ -2188,24 +2191,41 @@ const toQueryString = (obj: object): string => {
         // ARRAY WILL HAVE LENGTH WHILE NUMBER WILL NOT
         console.log(entry[1].length);
 
+        // let arrayVal: string[] = [];
         if (entry[1].length) {
-            let arrayVal: string[] = [];
+            // let arrayVal: string[] = [];
 
             entry[1].forEach((number: number) => {
                 // solution += entry[0] + "=" + number;
 
                 arrayVal.push(entry[0] + "=" + number);
                 console.log("arrayVal:", arrayVal);
+
+                solutionArr.push(arrayVal);
             });
         } else {
-            let singleVal: string = entry[0] + "=" + entry[1];
+            singleVal = entry[0] + "=" + entry[1];
             console.log("singleVal:", singleVal);
+            solutionArr.push(singleVal);
         }
+
+        // solutionArr.push(arrayVal);
+        // solutionArr.push(singleVal);
     });
+
+    // solutionArr.push(arrayVal);
+    // solutionArr.push(singleVal);
+
+    // const arrayValStr: string = arrayVal
+
+    // [ [ 'bar=2', 'bar=3' ], 'foo=1' ]
+    console.log(solutionArr);
+
+    const solution: string = solutionArr.flat().join("&");
 
     console.log(solution);
 
-    return "hello";
+    return solution;
 };
 /*
 describe('toQueryString', () => {
@@ -2234,6 +2254,7 @@ describe('toQueryString', () => {
 
 // "bar=2&bar=3&foo=1"
 console.log(toQueryString({ bar: [2, 3], foo: 1 }));
+// console.log(toQueryString({ foo: 1, bar: 2 }));
 // console.log();
 // console.log();
 // console.log();
@@ -2644,7 +2665,7 @@ describe("graceful tipping", function() {
 */
 
 // 9
-console.log(gracefulTipping(7));
+// console.log(gracefulTipping(7));
 // console.log();
 // console.log();
 // console.log();

@@ -115,25 +115,30 @@ function getFreeUrinals(urinals) {
     return 1;
 }
 const toQueryString = (obj) => {
-    let solution = "";
+    let solutionArr = [];
     console.log(Object.entries(obj));
+    let arrayVal = [];
+    let singleVal = "";
     Object.entries(obj).forEach((entry) => {
         console.log(entry);
         console.log(entry[1].length);
         if (entry[1].length) {
-            let arrayVal = [];
             entry[1].forEach((number) => {
                 arrayVal.push(entry[0] + "=" + number);
                 console.log("arrayVal:", arrayVal);
+                solutionArr.push(arrayVal);
             });
         }
         else {
-            let singleVal = entry[0] + "=" + entry[1];
+            singleVal = entry[0] + "=" + entry[1];
             console.log("singleVal:", singleVal);
+            solutionArr.push(singleVal);
         }
     });
+    console.log(solutionArr);
+    const solution = solutionArr.flat().join("&");
     console.log(solution);
-    return "hello";
+    return solution;
 };
 console.log(toQueryString({ bar: [2, 3], foo: 1 }));
 const ranking = (people) => {
@@ -184,7 +189,6 @@ const gracefulTipping = (bill) => {
         console.log(total);
     return 1;
 };
-console.log(gracefulTipping(7));
 const say = (string1) => {
     let result = string1;
     return (string2) => {
