@@ -2132,10 +2132,12 @@ describe("Testing counter", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Do you know how to make Query String?
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ NOT SUBMITTED YET, ADD COMMENTS ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: DO YOU KNOW HOW TO MAKE A QUERY STRING ?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ TUPLE, OBJECT.ENTRIES(), ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2176,50 +2178,55 @@ const toQueryString = (obj: object): string => {
     let solutionArr: (string | string[])[] = [];
 
     // [ [ 'bar', [ 2, 3 ] ], [ 'foo', 1 ] ]
-    console.log(Object.entries(obj));
+    console.log("\n ", Object.entries(obj));
 
     // for (let key in obj) {
     //     console.log(key);
     // }
 
-    let arrayVal: string[] = [];
-    let singleVal: string = "";
-    Object.entries(obj).forEach((entry) => {
+    Object.entries(obj).forEach((entry, idx) => {
         // [ 'bar', [ 2, 3 ] ]
-        console.log(entry);
-
         // ARRAY WILL HAVE LENGTH WHILE NUMBER WILL NOT
-        console.log(entry[1].length);
+        console.log(
+            "\n index:",
+            idx,
+            "entry:",
+            entry,
+            "entry[1] length:",
+            entry[1].length
+        );
 
-        // let arrayVal: string[] = [];
-        if (entry[1].length) {
-            // let arrayVal: string[] = [];
+        // console.log("entry[1] length:", entry[1].length);
 
-            entry[1].forEach((number: number) => {
+        // if (entry[1].length) {
+        if (typeof entry[1] !== "number" && typeof entry[1] !== "string") {
+            let arrayVal: string[] = [];
+
+            entry[1].forEach((value: number) => {
                 // solution += entry[0] + "=" + number;
 
-                arrayVal.push(entry[0] + "=" + number);
+                arrayVal.push(entry[0] + "=" + value);
                 console.log("arrayVal:", arrayVal);
 
-                solutionArr.push(arrayVal);
+                console.log("solution array ARRAY:", solutionArr);
+                console.log("solution array ARRAY:", solutionArr);
             });
-        } else {
+            // !!! HAVE TO PUSH AFTER LOOP !!!
+            solutionArr.push(arrayVal);
+        }
+        // solutionArr.push(arrayVal);
+        // if (typeof entry[1] === "number") {
+        if (typeof entry[1] === "number" || typeof entry[1] === "string") {
+            let singleVal: string = "";
             singleVal = entry[0] + "=" + entry[1];
             console.log("singleVal:", singleVal);
             solutionArr.push(singleVal);
+            console.log("solution array SINGLE:", solutionArr);
         }
-
-        // solutionArr.push(arrayVal);
-        // solutionArr.push(singleVal);
     });
 
-    // solutionArr.push(arrayVal);
-    // solutionArr.push(singleVal);
-
-    // const arrayValStr: string = arrayVal
-
     // [ [ 'bar=2', 'bar=3' ], 'foo=1' ]
-    console.log(solutionArr);
+    console.log("solution array:", solutionArr);
 
     const solution: string = solutionArr.flat().join("&");
 
@@ -2228,13 +2235,21 @@ const toQueryString = (obj: object): string => {
     return solution;
 };
 /*
-describe('toQueryString', () => {
-  it('should stringify some objects', () => {
-    assert.strictEqual(
-      toQueryString({ foo: 1, bar: 2 }),
-      'foo=1&bar=2'
-    )
-  })
+[ [ 'bar', [ 2, 3 ] ], [ 'foo', 1 ] ]
+
+ index: 0 entry: [ 'bar', [ 2, 3 ] ] entry[1] length: 2
+arrayVal: [ 'bar=2' ]
+solution array ARRAY: []
+solution array ARRAY: []
+arrayVal: [ 'bar=2', 'bar=3' ]
+solution array ARRAY: []
+solution array ARRAY: []
+
+ index: 1 entry: [ 'foo', 1 ] entry[1] length: undefined
+singleVal: foo=1
+solution array SINGLE: [ [ 'bar=2', 'bar=3' ], 'foo=1' ]
+solution array: [ [ 'bar=2', 'bar=3' ], 'foo=1' ]
+bar=2&bar=3&foo=1
 
   it('should stringify array values too', () => {
     assert.strictEqual(
@@ -2253,8 +2268,12 @@ describe('toQueryString', () => {
 */
 
 // "bar=2&bar=3&foo=1"
-console.log(toQueryString({ bar: [2, 3], foo: 1 }));
+// console.log(toQueryString({ bar: [2, 3], foo: 1 }));
 // console.log(toQueryString({ foo: 1, bar: 2 }));
+// console.log(toQueryString({ foo: [1, 3], bar: [2, 4] });
+// console.log(
+//     toQueryString({ a: "Z", b: "Y", c: "X", d: "W", e: "V", f: "U", g: "T" })
+// );
 // console.log();
 // console.log();
 // console.log();

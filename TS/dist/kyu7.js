@@ -116,31 +116,32 @@ function getFreeUrinals(urinals) {
 }
 const toQueryString = (obj) => {
     let solutionArr = [];
-    console.log(Object.entries(obj));
-    let arrayVal = [];
-    let singleVal = "";
-    Object.entries(obj).forEach((entry) => {
-        console.log(entry);
-        console.log(entry[1].length);
-        if (entry[1].length) {
-            entry[1].forEach((number) => {
-                arrayVal.push(entry[0] + "=" + number);
+    console.log("\n ", Object.entries(obj));
+    Object.entries(obj).forEach((entry, idx) => {
+        console.log("\n index:", idx, "entry:", entry, "entry[1] length:", entry[1].length);
+        if (typeof entry[1] !== "number" && typeof entry[1] !== "string") {
+            let arrayVal = [];
+            entry[1].forEach((value) => {
+                arrayVal.push(entry[0] + "=" + value);
                 console.log("arrayVal:", arrayVal);
-                solutionArr.push(arrayVal);
+                console.log("solution array ARRAY:", solutionArr);
+                console.log("solution array ARRAY:", solutionArr);
             });
+            solutionArr.push(arrayVal);
         }
-        else {
+        if (typeof entry[1] === "number" || typeof entry[1] === "string") {
+            let singleVal = "";
             singleVal = entry[0] + "=" + entry[1];
             console.log("singleVal:", singleVal);
             solutionArr.push(singleVal);
+            console.log("solution array SINGLE:", solutionArr);
         }
     });
-    console.log(solutionArr);
+    console.log("solution array:", solutionArr);
     const solution = solutionArr.flat().join("&");
     console.log(solution);
     return solution;
 };
-console.log(toQueryString({ bar: [2, 3], foo: 1 }));
 const ranking = (people) => {
     console.log(people);
     let solution = [];
