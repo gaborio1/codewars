@@ -158,9 +158,36 @@ const ranking = (people) => {
         };
         sortedByPoints.push(currentPerson);
     });
+    console.log("sorted by points:", sortedByPoints);
     let equalPoints = [];
     sortedByPoints.forEach((obj, idx) => {
+        if (idx === 0) {
+            if (sortedByPoints[idx]["points"] ===
+                sortedByPoints[idx + 1]["points"]) {
+                console.log("equal points:", sortedByPoints[idx]["points"]);
+                equalPoints.push(obj);
+            }
+        }
+        if (idx > 0 && idx < sortedByPoints.length - 1) {
+            if (sortedByPoints[idx]["points"] ===
+                sortedByPoints[idx - 1]["points"] ||
+                sortedByPoints[idx]["points"] ===
+                    sortedByPoints[idx + 1]["points"]) {
+                console.log("equal points:", sortedByPoints[idx]["points"], obj);
+                equalPoints.push(obj);
+            }
+        }
+        if (idx === sortedByPoints.length - 1) {
+            if (sortedByPoints[idx]["points"] ===
+                sortedByPoints[idx - 1]["points"]) {
+                console.log("equal points:", sortedByPoints[idx]["points"], obj);
+                equalPoints.push(obj);
+            }
+        }
+        console.log("equal points array:", equalPoints);
     });
+    const smallestPos = equalPoints[0]["position"];
+    console.log("smallest position:", smallestPos);
     return solution;
 };
 const input1 = [
@@ -181,6 +208,7 @@ const input1 = [
         points: 120,
     },
 ];
+console.log(ranking(input1));
 const gracefulTipping = (bill) => {
     let total = 0;
     if (bill < 10) {

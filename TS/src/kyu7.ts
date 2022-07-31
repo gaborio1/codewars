@@ -2433,21 +2433,83 @@ const ranking = (people: inputMan[]): outputMan[] => {
         sortedByPoints.push(currentPerson);
     });
 
-    // console.log(sortedByPoints);
+    console.log("sorted by points:", sortedByPoints);
+
+    // SORT PEOPLE WITH EQUAL POINTS ALPHABETICALLY
 
     let equalPoints: outputMan[] = [];
 
     // let rank: number = 1;
 
+    // LOOK FOR OBJECTS WITH EQUAL POINTS
     sortedByPoints.forEach((obj, idx) => {
+        // CREATE ARRAY FOR SUCH OBJECTS
+        // let equalPoints: outputMan[] = [];
+
         // if (
-        //     // sortedArr[idx - 1] !== undefined &&
-        //     idx > 0 &&
-        //     sortedByPoints[idx]["points"] !== sortedByPoints[idx - 1]["points"]
+        //     // idx > 0 &&
+        //     // sortedByPoints[idx]["points"] !== sortedByPoints[idx - 1]["points"]
+        //     sortedByPoints[idx]["points"] ===
+        //         sortedByPoints[idx - 1]["points"] ||
+        //     sortedByPoints[idx]["points"] === sortedByPoints[idx + 1]["points"]
         // ) {
-        //     rank += 1;
+        //     console.log("equal points:", sortedByPoints[idx]["points"]);
         // }
+
+        if (idx === 0) {
+            if (
+                sortedByPoints[idx]["points"] ===
+                sortedByPoints[idx + 1]["points"]
+            ) {
+                console.log("equal points:", sortedByPoints[idx]["points"]);
+                equalPoints.push(obj);
+            }
+        }
+
+        if (idx > 0 && idx < sortedByPoints.length - 1) {
+            if (
+                sortedByPoints[idx]["points"] ===
+                    sortedByPoints[idx - 1]["points"] ||
+                sortedByPoints[idx]["points"] ===
+                    sortedByPoints[idx + 1]["points"]
+            ) {
+                console.log(
+                    "equal points:",
+                    sortedByPoints[idx]["points"],
+                    obj
+                );
+                equalPoints.push(obj);
+            }
+        }
+
+        if (idx === sortedByPoints.length - 1) {
+            if (
+                sortedByPoints[idx]["points"] ===
+                sortedByPoints[idx - 1]["points"]
+            ) {
+                console.log(
+                    "equal points:",
+                    sortedByPoints[idx]["points"],
+                    obj
+                );
+                equalPoints.push(obj);
+            }
+        }
+
+        console.log("equal points array:", equalPoints);
     });
+
+    // SORT FOUND OBJECTS ALPHABETICALLY
+    // FIND SMALLEST POSITION
+    const smallestPos: number = equalPoints[0]["position"];
+    console.log("smallest position:", smallestPos);
+
+    // SORT ALPHABETICALLY
+    // ????????
+    // const sortedByAbc: outputMan[] = equalPoints.sort(idx, Object.entries(idx["name"]));
+    // const sortedByAbc: outputMan[] = Object.values(equalPoints).sort();
+
+    // console.log(sortedByAbc);
 
     // console.log(sortedByPoints);
 
@@ -2609,6 +2671,10 @@ const input1: inputMan[] = [
         name: "John",
         points: 100,
     },
+    // {
+    //     name: "John2",
+    //     points: 100,
+    // },
     {
         name: "Bob",
         points: 130,
@@ -2623,7 +2689,7 @@ const input1: inputMan[] = [
     },
 ];
 
-// console.log(ranking(input1));
+console.log(ranking(input1));
 
 // console.log();
 // console.log();
