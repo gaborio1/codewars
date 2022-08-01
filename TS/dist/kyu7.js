@@ -129,7 +129,7 @@ const toQueryString = (obj) => {
             });
             solutionArr.push(arrayVal);
         }
-        if (typeof entry[1] === "number" || typeof entry[1] === "string") {
+        else {
             let singleVal = "";
             singleVal = entry[0] + "=" + entry[1];
             console.log("singleVal:", singleVal);
@@ -141,6 +141,23 @@ const toQueryString = (obj) => {
     const solution = solutionArr.flat().join("&");
     console.log(solution);
     return solution;
+};
+const toQueryString2 = (obj) => Object.entries(obj).reduce((prev, [key, value]) => prev + assosiate(key, value) + '&', '').slice(0, -1);
+const assosiate = (key, value) => Array.isArray(value) ?
+    value.flatMap((x) => `${key}=${x}`).join('&') :
+    `${key}=${value}`;
+const toQueryString5 = (x) => Object.entries(x)
+    .flatMap(([k, v]) => [v].flat().map(v => `${k}=${v}`)).join('&');
+const toQueryString6 = (obj) => {
+    const res = Object.entries(obj)
+        .map((entries) => {
+        const [k, v] = entries;
+        if (Array.isArray(v))
+            return v.map((value) => `${k}=${value}`).join('&');
+        return `${k}=${v}`;
+    })
+        .join('&');
+    return res;
 };
 const ranking = (people) => {
     console.log(people);
