@@ -2075,9 +2075,11 @@ describe("SampleTestsWrong", function() {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Closure Counter
+// ❗️❗️❗️ NOT WORKING IN IDE ❗️❗️❗️ RETURNS: [Function (anonymous)] ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: CLOSURE COUNTER
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CLOSURE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2098,9 +2100,36 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 
 */
-// function counter(): Function {
-//     return;
-//   };
+const counter = (): Function => {
+    // const counter = (): any => {
+
+    let num: number = 0;
+
+    //     return function () {
+    //         num += 1;
+    //         return num;
+    //     }
+
+    // ❗️❗️❗️ NO ARGUMENT ❗️❗️❗️
+    return () => {
+        num += 1;
+        return num;
+    }
+
+}
+
+// const counter = (): Function => {
+
+//     let num: number = 0;
+
+
+//     return function (num: number) {
+//         let result: number = num + 1;
+//         // console.log(result);
+//         return result;
+//     }
+// }
+
 /*
 describe("Testing counter", function() {
   it("should return a function", function() {
@@ -2125,15 +2154,142 @@ describe("Testing counter", function() {
 });
 */
 
-// console.log();
+// let newCounter = counter;
+// console.log(newCounter());
+// console.log(newCounter());
+
+console.log(counter());
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+export function counter2(): Function {
+    let i: number = 1
+    return function f(): number {
+        return i++;
+    };
+};
+
+export function counter3(): Function {
+    let count = 0;
+    return () => {
+        return ++count;
+    };
+};
+
+export function counter4(): Function {
+    let count = 0;
+    return () => ++count;
+};
+
+export function counter5(): Function {
+    var count = 0;
+    function inner() {
+        return ++count;
+    }
+    return inner;
+}
+
+export function counter6(): Function {
+    let obj = { value: 0 };
+    return () => innerFunction(obj);
+};
+
+function innerFunction(innerValue: { 'value': number }) {
+    return ++innerValue.value;
+};
+
+
+export function counter7(): Function {
+    let amount = 1
+
+    return () => amount++
+};
+
+export function counter8(): Function {
+    let count = 0
+    return (): number => ++count
+}
+
+export function counter9(): Function {
+    let count = 0;
+
+    return function () {
+        return ++count;
+    }
+};
+
+export function counter10(): Function {
+    let x = 0;
+    return () => {
+        x++;
+        return x;
+    };
+};
+
+export function counter11(): Function {
+    let counter: number = 1;
+    return () => {
+        return counter++;
+    };
+};
+
+export function counter12(): Function {
+    let cnt = 0;
+    return () => ++cnt;
+};
+
+export const counter13 = (): Function => {
+    let cnt: number = 0
+    return (): number => {
+        return ++cnt
+    };
+};
+
+export function counter14(): Function {
+    let countNumbers: number = 0;
+
+    return function () {
+        return countNumbers += 1;
+    }
+};
+
+export function counter15(): Function {
+    let counter = 1;
+    return () => counter++;
+};
+
+export function counter16(): Function {
+    let _n = 1;
+    return function () { return _n++ };
+};
+
+export function counter17(): Function {
+    let value = 0;
+    return function () {
+        value++;
+        return value;
+    };
+};
+
+export function counter18(): Function {
+    let value = 0;
+    return () => ++value;
+};
+
+export function counter19(): Function {
+    let num = 1
+    return () => num++
+}
+
+export function counter20(): Function {
+    let x = 1; return () => x++
+}
+
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-// ❗️❗️❗️ NOT SUBMITTED YET, ADD COMMENTS ❗️❗️❗️
+// ❗️❗️❗️ ADD COMMENTS ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: DO YOU KNOW HOW TO MAKE A QUERY STRING ?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2322,6 +2478,9 @@ const toQueryString6 = (obj: object): string => {
 
     return res;
 };
+
+
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Ranking position
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2731,7 +2890,7 @@ const input1: inputMan[] = [
     },
 ];
 
-console.log(ranking(input1));
+// console.log(ranking(input1));
 
 // console.log();
 // console.log();

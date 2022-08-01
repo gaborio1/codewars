@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -114,6 +114,148 @@ function equalize(array) {
 function getFreeUrinals(urinals) {
     return 1;
 }
+const counter = () => {
+    let num = 0;
+    return () => {
+        num += 1;
+        return num;
+    };
+};
+console.log(counter());
+function counter2() {
+    let i = 1;
+    return function f() {
+        return i++;
+    };
+}
+exports.counter2 = counter2;
+;
+function counter3() {
+    let count = 0;
+    return () => {
+        return ++count;
+    };
+}
+exports.counter3 = counter3;
+;
+function counter4() {
+    let count = 0;
+    return () => ++count;
+}
+exports.counter4 = counter4;
+;
+function counter5() {
+    var count = 0;
+    function inner() {
+        return ++count;
+    }
+    return inner;
+}
+exports.counter5 = counter5;
+function counter6() {
+    let obj = { value: 0 };
+    return () => innerFunction(obj);
+}
+exports.counter6 = counter6;
+;
+function innerFunction(innerValue) {
+    return ++innerValue.value;
+}
+;
+function counter7() {
+    let amount = 1;
+    return () => amount++;
+}
+exports.counter7 = counter7;
+;
+function counter8() {
+    let count = 0;
+    return () => ++count;
+}
+exports.counter8 = counter8;
+function counter9() {
+    let count = 0;
+    return function () {
+        return ++count;
+    };
+}
+exports.counter9 = counter9;
+;
+function counter10() {
+    let x = 0;
+    return () => {
+        x++;
+        return x;
+    };
+}
+exports.counter10 = counter10;
+;
+function counter11() {
+    let counter = 1;
+    return () => {
+        return counter++;
+    };
+}
+exports.counter11 = counter11;
+;
+function counter12() {
+    let cnt = 0;
+    return () => ++cnt;
+}
+exports.counter12 = counter12;
+;
+const counter13 = () => {
+    let cnt = 0;
+    return () => {
+        return ++cnt;
+    };
+};
+exports.counter13 = counter13;
+function counter14() {
+    let countNumbers = 0;
+    return function () {
+        return countNumbers += 1;
+    };
+}
+exports.counter14 = counter14;
+;
+function counter15() {
+    let counter = 1;
+    return () => counter++;
+}
+exports.counter15 = counter15;
+;
+function counter16() {
+    let _n = 1;
+    return function () { return _n++; };
+}
+exports.counter16 = counter16;
+;
+function counter17() {
+    let value = 0;
+    return function () {
+        value++;
+        return value;
+    };
+}
+exports.counter17 = counter17;
+;
+function counter18() {
+    let value = 0;
+    return () => ++value;
+}
+exports.counter18 = counter18;
+;
+function counter19() {
+    let num = 1;
+    return () => num++;
+}
+exports.counter19 = counter19;
+function counter20() {
+    let x = 1;
+    return () => x++;
+}
+exports.counter20 = counter20;
 const toQueryString = (obj) => {
     let solutionArr = [];
     console.log("\n ", Object.entries(obj));
@@ -225,7 +367,6 @@ const input1 = [
         points: 120,
     },
 ];
-console.log(ranking(input1));
 const gracefulTipping = (bill) => {
     let total = 0;
     if (bill < 10) {
