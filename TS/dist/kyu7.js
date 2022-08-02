@@ -112,13 +112,15 @@ function equalize(array) {
     return ["hello"];
 }
 const sixBitNumber = (str) => {
-    console.log(Number(str));
+    if ((str.startsWith("0") && str.length > 1) || !str.length)
+        return false;
+    if (str.startsWith("-"))
+        return false;
+    if (str.includes(" "))
+        return false;
     return Number(str) >= 0 && Number(str) < 64;
 };
-console.log(sixBitNumber("55"));
-console.log(sixBitNumber("00"));
-console.log(sixBitNumber("003"));
-console.log(sixBitNumber("-3"));
+console.log(sixBitNumber("-0"));
 const getFreeUrinals = (str) => {
     if (str.indexOf("11") > -1)
         return -1;
