@@ -111,9 +111,28 @@ function getNewNotes(salary, bills) {
 function equalize(array) {
     return ["hello"];
 }
-function getFreeUrinals(urinals) {
-    return 1;
-}
+const sixBitNumber = (str) => {
+    console.log(Number(str));
+    return Number(str) >= 0 && Number(str) < 64;
+};
+console.log(sixBitNumber("55"));
+console.log(sixBitNumber("00"));
+console.log(sixBitNumber("003"));
+console.log(sixBitNumber("-3"));
+const getFreeUrinals = (str) => {
+    if (str.indexOf("11") > -1)
+        return -1;
+    if (str.indexOf("1") > -1) {
+        console.log("some places are taken");
+    }
+    if (str.indexOf("1") === -1) {
+        console.log("all avaiable");
+    }
+    return 123;
+};
+console.log(getFreeUrinals("10001"));
+console.log(getFreeUrinals("1001"));
+console.log(getFreeUrinals("10110001"));
 const counter = () => {
     let num = 0;
     return () => {
@@ -121,7 +140,6 @@ const counter = () => {
         return num;
     };
 };
-console.log(counter());
 function counter2() {
     let i = 1;
     return function f() {
@@ -129,7 +147,6 @@ function counter2() {
     };
 }
 exports.counter2 = counter2;
-;
 function counter3() {
     let count = 0;
     return () => {
@@ -137,13 +154,11 @@ function counter3() {
     };
 }
 exports.counter3 = counter3;
-;
 function counter4() {
     let count = 0;
     return () => ++count;
 }
 exports.counter4 = counter4;
-;
 function counter5() {
     var count = 0;
     function inner() {
@@ -157,17 +172,14 @@ function counter6() {
     return () => innerFunction(obj);
 }
 exports.counter6 = counter6;
-;
 function innerFunction(innerValue) {
     return ++innerValue.value;
 }
-;
 function counter7() {
     let amount = 1;
     return () => amount++;
 }
 exports.counter7 = counter7;
-;
 function counter8() {
     let count = 0;
     return () => ++count;
@@ -180,7 +192,6 @@ function counter9() {
     };
 }
 exports.counter9 = counter9;
-;
 function counter10() {
     let x = 0;
     return () => {
@@ -189,7 +200,6 @@ function counter10() {
     };
 }
 exports.counter10 = counter10;
-;
 function counter11() {
     let counter = 1;
     return () => {
@@ -197,13 +207,11 @@ function counter11() {
     };
 }
 exports.counter11 = counter11;
-;
 function counter12() {
     let cnt = 0;
     return () => ++cnt;
 }
 exports.counter12 = counter12;
-;
 const counter13 = () => {
     let cnt = 0;
     return () => {
@@ -214,23 +222,22 @@ exports.counter13 = counter13;
 function counter14() {
     let countNumbers = 0;
     return function () {
-        return countNumbers += 1;
+        return (countNumbers += 1);
     };
 }
 exports.counter14 = counter14;
-;
 function counter15() {
     let counter = 1;
     return () => counter++;
 }
 exports.counter15 = counter15;
-;
 function counter16() {
     let _n = 1;
-    return function () { return _n++; };
+    return function () {
+        return _n++;
+    };
 }
 exports.counter16 = counter16;
-;
 function counter17() {
     let value = 0;
     return function () {
@@ -239,13 +246,11 @@ function counter17() {
     };
 }
 exports.counter17 = counter17;
-;
 function counter18() {
     let value = 0;
     return () => ++value;
 }
 exports.counter18 = counter18;
-;
 function counter19() {
     let num = 1;
     return () => num++;
@@ -284,21 +289,24 @@ const toQueryString = (obj) => {
     console.log(solution);
     return solution;
 };
-const toQueryString2 = (obj) => Object.entries(obj).reduce((prev, [key, value]) => prev + assosiate(key, value) + '&', '').slice(0, -1);
-const assosiate = (key, value) => Array.isArray(value) ?
-    value.flatMap((x) => `${key}=${x}`).join('&') :
-    `${key}=${value}`;
+const toQueryString2 = (obj) => Object.entries(obj)
+    .reduce((prev, [key, value]) => prev + assosiate(key, value) + "&", "")
+    .slice(0, -1);
+const assosiate = (key, value) => Array.isArray(value)
+    ? value.flatMap((x) => `${key}=${x}`).join("&")
+    : `${key}=${value}`;
 const toQueryString5 = (x) => Object.entries(x)
-    .flatMap(([k, v]) => [v].flat().map(v => `${k}=${v}`)).join('&');
+    .flatMap(([k, v]) => [v].flat().map((v) => `${k}=${v}`))
+    .join("&");
 const toQueryString6 = (obj) => {
     const res = Object.entries(obj)
         .map((entries) => {
         const [k, v] = entries;
         if (Array.isArray(v))
-            return v.map((value) => `${k}=${value}`).join('&');
+            return v.map((value) => `${k}=${value}`).join("&");
         return `${k}=${v}`;
     })
-        .join('&');
+        .join("&");
     return res;
 };
 const ranking = (people) => {

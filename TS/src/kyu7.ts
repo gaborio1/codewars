@@ -1987,6 +1987,13 @@ It should only accept numbers in canonical representation, so no leading +, extr
 //     // Your code here
 //     return true;
 //   }
+
+const sixBitNumber = (str: string) => {
+    console.log(Number(str));
+
+    return Number(str) >= 0 && Number(str) < 64;
+};
+
 /*
 describe("Fixed tests", () => {
   it("Basic tests", () => {
@@ -2004,7 +2011,14 @@ describe("Fixed tests", () => {
 });
 */
 
-// console.log();
+// sixBitNumber("55");
+// sixBitNumber("00");
+// sixBitNumber("003");
+
+console.log(sixBitNumber("55"));
+console.log(sixBitNumber("00"));
+console.log(sixBitNumber("003"));
+console.log(sixBitNumber("-3"));
 // console.log();
 // console.log();
 // console.log();
@@ -2044,9 +2058,22 @@ When there is already a mistake in the input string (for example 011), then retu
 
 Have fun and don't pee into the wrong urinal ;)
 */
-function getFreeUrinals(urinals: string): number {
-    return 1;
-}
+const getFreeUrinals = (str: string): number => {
+    // INVALID INPUT
+    if (str.indexOf("11") > -1) return -1;
+
+    // PLACES TAKEN
+    if (str.indexOf("1") > -1) {
+        console.log("some places are taken");
+    }
+
+    // ALL AVAILABLE (CAN USE ELSE)
+    if (str.indexOf("1") === -1) {
+        console.log("all avaiable");
+    }
+
+    return 123;
+};
 /*
 describe("SampleTestsValid", function() {
   it("given 10001", function() { assert.deepEqual(getFreeUrinals("10001"), 1); });
@@ -2067,7 +2094,9 @@ describe("SampleTestsWrong", function() {
 });
 */
 
-// console.log();
+console.log(getFreeUrinals("10001"));
+console.log(getFreeUrinals("1001"));
+console.log(getFreeUrinals("10110001"));
 // console.log();
 // console.log();
 // console.log();
@@ -2114,14 +2143,12 @@ const counter = (): Function => {
     return () => {
         num += 1;
         return num;
-    }
-
-}
+    };
+};
 
 // const counter = (): Function => {
 
 //     let num: number = 0;
-
 
 //     return function (num: number) {
 //         let result: number = num + 1;
@@ -2158,7 +2185,7 @@ describe("Testing counter", function() {
 // console.log(newCounter());
 // console.log(newCounter());
 
-console.log(counter());
+// console.log(counter());
 // console.log();
 // console.log();
 // console.log();
@@ -2166,23 +2193,23 @@ console.log(counter());
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 export function counter2(): Function {
-    let i: number = 1
+    let i: number = 1;
     return function f(): number {
         return i++;
     };
-};
+}
 
 export function counter3(): Function {
     let count = 0;
     return () => {
         return ++count;
     };
-};
+}
 
 export function counter4(): Function {
     let count = 0;
     return () => ++count;
-};
+}
 
 export function counter5(): Function {
     var count = 0;
@@ -2195,22 +2222,21 @@ export function counter5(): Function {
 export function counter6(): Function {
     let obj = { value: 0 };
     return () => innerFunction(obj);
-};
+}
 
-function innerFunction(innerValue: { 'value': number }) {
+function innerFunction(innerValue: { value: number }) {
     return ++innerValue.value;
-};
-
+}
 
 export function counter7(): Function {
-    let amount = 1
+    let amount = 1;
 
-    return () => amount++
-};
+    return () => amount++;
+}
 
 export function counter8(): Function {
-    let count = 0
-    return (): number => ++count
+    let count = 0;
+    return (): number => ++count;
 }
 
 export function counter9(): Function {
@@ -2218,8 +2244,8 @@ export function counter9(): Function {
 
     return function () {
         return ++count;
-    }
-};
+    };
+}
 
 export function counter10(): Function {
     let x = 0;
@@ -2227,24 +2253,24 @@ export function counter10(): Function {
         x++;
         return x;
     };
-};
+}
 
 export function counter11(): Function {
     let counter: number = 1;
     return () => {
         return counter++;
     };
-};
+}
 
 export function counter12(): Function {
     let cnt = 0;
     return () => ++cnt;
-};
+}
 
 export const counter13 = (): Function => {
-    let cnt: number = 0
+    let cnt: number = 0;
     return (): number => {
-        return ++cnt
+        return ++cnt;
     };
 };
 
@@ -2252,19 +2278,21 @@ export function counter14(): Function {
     let countNumbers: number = 0;
 
     return function () {
-        return countNumbers += 1;
-    }
-};
+        return (countNumbers += 1);
+    };
+}
 
 export function counter15(): Function {
     let counter = 1;
     return () => counter++;
-};
+}
 
 export function counter16(): Function {
     let _n = 1;
-    return function () { return _n++ };
-};
+    return function () {
+        return _n++;
+    };
+}
 
 export function counter17(): Function {
     let value = 0;
@@ -2272,20 +2300,21 @@ export function counter17(): Function {
         value++;
         return value;
     };
-};
+}
 
 export function counter18(): Function {
     let value = 0;
     return () => ++value;
-};
+}
 
 export function counter19(): Function {
-    let num = 1
-    return () => num++
+    let num = 1;
+    return () => num++;
 }
 
 export function counter20(): Function {
-    let x = 1; return () => x++
+    let x = 1;
+    return () => x++;
 }
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -2430,14 +2459,16 @@ bar=2&bar=3&foo=1
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 const toQueryString2 = (obj: object): string =>
-    Object.entries(obj).reduce((prev, [key, value]) => prev + assosiate(key, value) + '&', '').slice(0, -1);
+    Object.entries(obj)
+        .reduce((prev, [key, value]) => prev + assosiate(key, value) + "&", "")
+        .slice(0, -1);
 
-const assosiate = (key: string, value: any) => Array.isArray(value) ?
-    value.flatMap((x) => `${key}=${x}`).join('&') :
-    `${key}=${value}`
+const assosiate = (key: string, value: any) =>
+    Array.isArray(value)
+        ? value.flatMap((x) => `${key}=${x}`).join("&")
+        : `${key}=${value}`;
 
 // ============================================================
-
 
 // function toQueryString3(obj: object): string {
 //     return Object.keys(obj)
@@ -2462,24 +2493,23 @@ const assosiate = (key: string, value: any) => Array.isArray(value) ?
 
 // ============================================================
 
-const toQueryString5 = (x: object) => Object.entries(x)
-    .flatMap(([k, v]) => [v].flat().map(v => `${k}=${v}`)).join('&');
-
-
+const toQueryString5 = (x: object) =>
+    Object.entries(x)
+        .flatMap(([k, v]) => [v].flat().map((v) => `${k}=${v}`))
+        .join("&");
 
 const toQueryString6 = (obj: object): string => {
     const res: string = Object.entries(obj)
         .map((entries: [string, any]) => {
             const [k, v] = entries;
-            if (Array.isArray(v)) return v.map((value) => `${k}=${value}`).join('&');
+            if (Array.isArray(v))
+                return v.map((value) => `${k}=${value}`).join("&");
             return `${k}=${v}`;
         })
-        .join('&');
+        .join("&");
 
     return res;
 };
-
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Ranking position
@@ -2670,9 +2700,9 @@ const ranking = (people: inputMan[]): outputMan[] => {
         if (idx > 0 && idx < sortedByPoints.length - 1) {
             if (
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx - 1]["points"] ||
+                    sortedByPoints[idx - 1]["points"] ||
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx + 1]["points"]
+                    sortedByPoints[idx + 1]["points"]
             ) {
                 console.log(
                     "equal points:",
@@ -3040,8 +3070,8 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 
 const say2 =
     ($: string) =>
-        (ﬂ: string): string =>
-            `${$} ${ﬂ}`;
+    (ﬂ: string): string =>
+        `${$} ${ﬂ}`;
 
 const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
@@ -4841,8 +4871,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                sortedArr[sortedArr.length / 2 - 1]) /
-            2;
+                  sortedArr[sortedArr.length / 2 - 1]) /
+              2;
 
     return solution;
 };
@@ -4882,8 +4912,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-            .slice(a.length / 2 - 1, a.length / 2 + 1)
-            .reduce((x, y) => x + y, 0) / 2;
+              .slice(a.length / 2 - 1, a.length / 2 + 1)
+              .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -5872,32 +5902,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-            ({
-                G: "A",
-                A: "G",
-                g: "a",
-                a: "g",
-                D: "E",
-                E: "D",
-                d: "e",
-                e: "d",
-                R: "Y",
-                Y: "R",
-                r: "y",
-                y: "r",
-                P: "O",
-                O: "P",
-                p: "o",
-                o: "p",
-                L: "U",
-                U: "L",
-                l: "u",
-                u: "l",
-                K: "I",
-                I: "K",
-                k: "i",
-                i: "k",
-            }[c] || c)
+                ({
+                    G: "A",
+                    A: "G",
+                    g: "a",
+                    a: "g",
+                    D: "E",
+                    E: "D",
+                    d: "e",
+                    e: "d",
+                    R: "Y",
+                    Y: "R",
+                    r: "y",
+                    y: "r",
+                    P: "O",
+                    O: "P",
+                    p: "o",
+                    o: "p",
+                    L: "U",
+                    U: "L",
+                    l: "u",
+                    u: "l",
+                    K: "I",
+                    I: "K",
+                    k: "i",
+                    i: "k",
+                }[c] || c)
         )
         .join("");
 }
@@ -7195,7 +7225,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void { }
+    strike(enemy: Warrior, swings: number): void {}
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -8552,16 +8582,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -9397,8 +9427,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -9476,7 +9506,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -10188,10 +10218,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -10301,8 +10331,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -11413,8 +11443,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -12027,10 +12058,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -12483,7 +12514,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -12976,17 +13007,17 @@ function detectCardType(number: string) {
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -13123,13 +13154,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -15731,10 +15762,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -16847,7 +16878,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -17923,8 +17954,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -18074,10 +18105,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -19074,11 +19105,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -19873,9 +19904,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -20157,8 +20188,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
