@@ -120,7 +120,6 @@ const sixBitNumber = (str) => {
         return false;
     return Number(str) >= 0 && Number(str) < 64;
 };
-console.log(sixBitNumber("-0"));
 const getFreeUrinals = (str) => {
     if (str.indexOf("11") > -1)
         return -1;
@@ -132,9 +131,6 @@ const getFreeUrinals = (str) => {
     }
     return 123;
 };
-console.log(getFreeUrinals("10001"));
-console.log(getFreeUrinals("1001"));
-console.log(getFreeUrinals("10110001"));
 const counter = () => {
     let num = 0;
     return () => {
@@ -381,11 +377,89 @@ const gracefulTipping = (bill) => {
     let total = 0;
     if (bill < 10) {
         total = Math.ceil(bill * 1.15);
-    }
-    else if (bill)
         console.log(total);
-    return 1;
+    }
+    else if (bill > 9) {
+        total = bill * 1.15;
+        console.log(total);
+        console.log(Math.floor(total));
+        let num = Math.floor(total);
+        const numStr = num.toString();
+        console.log("numString", numStr);
+        console.log("numstring length:", numStr.length);
+        const numLength = numStr.length;
+        let base = 1;
+        for (let i = 1; i < numLength; i += 1) {
+            base *= 10;
+        }
+        console.log("base:", base);
+        const divisibleBy = base / 2;
+        console.log("divisible by:", divisibleBy);
+        while (!Number.isInteger(num / divisibleBy)) {
+            num += 1;
+            console.log("num in loop:", num);
+        }
+        total = num;
+    }
+    ;
+    console.log("total:", total, "\n");
+    return total;
 };
+function gracefulTipping2(bill) {
+    let amountWithTip = bill * 1.15;
+    const roundingMagnitude = getRoundingMagnitude(amountWithTip);
+    return roundUp(amountWithTip, roundingMagnitude);
+}
+function getRoundingMagnitude(amount) {
+    const log10 = Math.floor(Math.log10(amount));
+    if (log10 >= 1) {
+        return 5 * Math.pow(10, log10 - 1);
+    }
+    return 1;
+}
+function roundUp(amount, roundingFactor) {
+    return Math.ceil(amount / roundingFactor) * roundingFactor;
+}
+function gracefulTipping3(bill) {
+    const withTip = bill * 1.15;
+    const mult = 5 * 10 ** (String(Math.ceil(withTip)).length - 2);
+    if (mult < 1)
+        return Math.ceil(withTip);
+    return Math.ceil((withTip) / mult) * mult;
+}
+function gracefulTipping4(bill) {
+    const c = bill * 115 / 100;
+    const m = c < 10 ? 1 : 5 * 10 ** Math.floor(Math.log10(c) - 1);
+    return Math.ceil(c / m) * m;
+}
+function gracefulTipping5(bill) {
+    let billAndTip = Math.ceil(bill + bill * 0.15);
+    let roundingLimit = 5;
+    if (billAndTip > 10) {
+        for (let i = 1; i < String(billAndTip).length - 1; i++) {
+            roundingLimit = Number(String(roundingLimit) + '0');
+        }
+        while (billAndTip % roundingLimit != 0) {
+            billAndTip++;
+        }
+    }
+    return billAndTip;
+}
+function gracefulTipping6(bill) {
+    const tip = 1.15;
+    const total = bill * tip;
+    const round = 5 * (10 ** (Math.floor(Math.log10(total)) - 1));
+    return total < 10 ? Math.ceil(total) : Math.ceil(total / round) * round;
+}
+function gracefulTipping7(bill) {
+    let tip = (bill / 100) * 15;
+    let fin = Math.ceil(bill + tip);
+    let range = Math.pow(10, fin.toString().length - 1);
+    let roundTo = 5 * (range / 10);
+    if (roundTo === 0.5)
+        return fin;
+    return fin + (roundTo - fin % roundTo);
+}
 const say = (string1) => {
     let result = string1;
     return (string2) => {

@@ -2043,7 +2043,7 @@ describe("Fixed tests", () => {
 // console.log(sixBitNumber("55"));
 // console.log(sixBitNumber("00"));
 // console.log(sixBitNumber("003"));
-console.log(sixBitNumber("-0"));
+// console.log(sixBitNumber("-0"));
 // console.log();
 // console.log();
 // console.log();
@@ -2119,9 +2119,9 @@ describe("SampleTestsWrong", function() {
 });
 */
 
-console.log(getFreeUrinals("10001"));
-console.log(getFreeUrinals("1001"));
-console.log(getFreeUrinals("10110001"));
+// console.log(getFreeUrinals("10001"));
+// console.log(getFreeUrinals("1001"));
+// console.log(getFreeUrinals("10110001"));
 // console.log();
 // console.log();
 // console.log();
@@ -2953,7 +2953,7 @@ const input1: inputMan[] = [
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: GRACEFUL TIPPING
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -2978,40 +2978,166 @@ And so on...
 
 Good luck!
 */
+
 const gracefulTipping = (bill: number): number => {
     let total: number = 0;
 
     if (bill < 10) {
         total = Math.ceil(bill * 1.15);
-    } else if (bill) console.log(total);
+        console.log(total);
+    } else if (bill > 9) {
+        total = bill * 1.15;
+        console.log(total);
+        // FIND RANGE (COUNT DIGITS)
+        console.log(Math.floor(total));
+        // GET RID OF DECIMALS AND CONVERT TO STRING TO GET LENGTH
+        let num: number = Math.floor(total);
+        const numStr: string = num.toString();
+        console.log("numString", numStr);
+        console.log("numstring length:", numStr.length);
 
-    return 1;
+        const numLength: number = numStr.length;
+        let base: number = 1;
+
+        for (let i = 1; i < numLength; i += 1) {
+            base *= 10;
+        }
+
+        console.log("base:", base);
+
+        // CALC DIVISIBLE BY BASED ON VALUE 10-99 => 5, 100 - 999 => 50 ETC...
+        const divisibleBy: number = base / 2;
+        console.log("divisible by:", divisibleBy);
+
+        // ROUND UP TO NEXT NUM DIVISIBLE BY divisibleBy (FIND NEXT LARGEST NUM THAT IS DIVISIBLE BY)
+        while (!Number.isInteger(num / divisibleBy)) {
+            // while (num & divisibleBy) {
+            num += 1;
+            console.log("num in loop:", num);
+        }
+
+        total = num;
+    };
+
+    console.log("total:", total, "\n");
+
+    return total;
 };
 
 /*
-describe("graceful tipping", function() {
-  
-  it("given 7", function() {
-    assert.equal(gracefulTipping(7), 9);
-  });
-  
-  it("given 12", function() {
-    assert.equal(gracefulTipping(12), 15);
-  });
-  
-  it("given 86", function() {
-    assert.equal(gracefulTipping(86), 100);
-  });
-});
+console.log(gracefulTipping(1));
+console.log(gracefulTipping(7));
+console.log(gracefulTipping(12));
+console.log(gracefulTipping(86));
+
+
+2
+total: 2 
+
+2
+9
+total: 9 
+
+9
+13.799999999999999
+13
+numString 13
+numstring length: 2
+base: 10
+divisible by: 5
+num in loop: 14
+num in loop: 15
+total: 15 
+
+15
+98.89999999999999
+98
+numString 98
+numstring length: 2
+base: 10
+divisible by: 5
+num in loop: 99
+num in loop: 100
+total: 100 
 */
 
-// 9
+// console.log(gracefulTipping(1));
 // console.log(gracefulTipping(7));
-// console.log();
-// console.log();
-// console.log();
+// console.log(gracefulTipping(12));
+// console.log(gracefulTipping(86));
+
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function gracefulTipping2(bill: number): number {
+    let amountWithTip = bill * 1.15;
+    const roundingMagnitude = getRoundingMagnitude(amountWithTip);
+
+    return roundUp(amountWithTip, roundingMagnitude);
+}
+
+function getRoundingMagnitude(amount: number): number {
+    const log10 = Math.floor(Math.log10(amount));
+
+    if (log10 >= 1) {
+        return 5 * Math.pow(10, log10 - 1);
+    }
+
+    return 1;
+}
+
+function roundUp(amount: number, roundingFactor: number): number {
+    return Math.ceil(amount / roundingFactor) * roundingFactor;
+}
+
+
+function gracefulTipping3(bill: number): number {
+    const withTip = bill * 1.15
+    const mult = 5 * 10 ** (String(Math.ceil(withTip)).length - 2);
+    if (mult < 1) return Math.ceil(withTip);
+    return Math.ceil((withTip) / mult) * mult;
+}
+
+function gracefulTipping4(bill: number): number {
+    const c = bill * 115 / 100;
+    const m = c < 10 ? 1 : 5 * 10 ** Math.floor(Math.log10(c) - 1);
+    return Math.ceil(c / m) * m;
+}
+
+function gracefulTipping5(bill: number): number {
+    let billAndTip = Math.ceil(bill + bill * 0.15);
+    let roundingLimit: number = 5;
+
+    if (billAndTip > 10) {
+        for (let i = 1; i < String(billAndTip).length - 1; i++) {
+            roundingLimit = Number(String(roundingLimit) + '0')
+        }
+
+        while (billAndTip % roundingLimit != 0) {
+            billAndTip++;
+        }
+    }
+
+    return billAndTip;
+}
+
+
+function gracefulTipping6(bill: number): number {
+    const tip = 1.15;
+    const total = bill * tip;
+    const round = 5 * (10 ** (Math.floor(Math.log10(total)) - 1));
+    return total < 10 ? Math.ceil(total) : Math.ceil(total / round) * round;
+}
+
+
+function gracefulTipping7(bill: number): number {
+    let tip: number = (bill / 100) * 15
+    let fin: number = Math.ceil(bill + tip)
+    let range: number = Math.pow(10, fin.toString().length - 1)
+    let roundTo: number = 5 * (range / 10)
+    if (roundTo === 0.5) return fin
+    return fin + (roundTo - fin % roundTo)
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Regexp Basics - is it a eight bit unsigned number?
