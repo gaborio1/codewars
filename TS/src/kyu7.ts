@@ -2722,9 +2722,9 @@ const ranking = (people: inputMan[]): outputMan[] => {
         if (idx > 0 && idx < sortedByPoints.length - 1) {
             if (
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx - 1]["points"] ||
+                    sortedByPoints[idx - 1]["points"] ||
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx + 1]["points"]
+                    sortedByPoints[idx + 1]["points"]
             ) {
                 console.log(
                     "equal points:",
@@ -3014,7 +3014,7 @@ const gracefulTipping = (bill: number): number => {
         }
 
         total = num;
-    };
+    }
 
     console.log("total:", total, "\n");
 
@@ -3063,7 +3063,6 @@ total: 100
 // console.log(gracefulTipping(12));
 // console.log(gracefulTipping(86));
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function gracefulTipping2(bill: number): number {
@@ -3087,16 +3086,15 @@ function roundUp(amount: number, roundingFactor: number): number {
     return Math.ceil(amount / roundingFactor) * roundingFactor;
 }
 
-
 function gracefulTipping3(bill: number): number {
-    const withTip = bill * 1.15
+    const withTip = bill * 1.15;
     const mult = 5 * 10 ** (String(Math.ceil(withTip)).length - 2);
     if (mult < 1) return Math.ceil(withTip);
-    return Math.ceil((withTip) / mult) * mult;
+    return Math.ceil(withTip / mult) * mult;
 }
 
 function gracefulTipping4(bill: number): number {
-    const c = bill * 115 / 100;
+    const c = (bill * 115) / 100;
     const m = c < 10 ? 1 : 5 * 10 ** Math.floor(Math.log10(c) - 1);
     return Math.ceil(c / m) * m;
 }
@@ -3107,7 +3105,7 @@ function gracefulTipping5(bill: number): number {
 
     if (billAndTip > 10) {
         for (let i = 1; i < String(billAndTip).length - 1; i++) {
-            roundingLimit = Number(String(roundingLimit) + '0')
+            roundingLimit = Number(String(roundingLimit) + "0");
         }
 
         while (billAndTip % roundingLimit != 0) {
@@ -3118,22 +3116,20 @@ function gracefulTipping5(bill: number): number {
     return billAndTip;
 }
 
-
 function gracefulTipping6(bill: number): number {
     const tip = 1.15;
     const total = bill * tip;
-    const round = 5 * (10 ** (Math.floor(Math.log10(total)) - 1));
+    const round = 5 * 10 ** (Math.floor(Math.log10(total)) - 1);
     return total < 10 ? Math.ceil(total) : Math.ceil(total / round) * round;
 }
 
-
 function gracefulTipping7(bill: number): number {
-    let tip: number = (bill / 100) * 15
-    let fin: number = Math.ceil(bill + tip)
-    let range: number = Math.pow(10, fin.toString().length - 1)
-    let roundTo: number = 5 * (range / 10)
-    if (roundTo === 0.5) return fin
-    return fin + (roundTo - fin % roundTo)
+    let tip: number = (bill / 100) * 15;
+    let fin: number = Math.ceil(bill + tip);
+    let range: number = Math.pow(10, fin.toString().length - 1);
+    let roundTo: number = 5 * (range / 10);
+    if (roundTo === 0.5) return fin;
+    return fin + (roundTo - (fin % roundTo));
 }
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -3218,8 +3214,8 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 
 const say2 =
     ($: string) =>
-        (ﬂ: string): string =>
-            `${$} ${ﬂ}`;
+    (ﬂ: string): string =>
+        `${$} ${ﬂ}`;
 
 const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
@@ -5019,8 +5015,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                sortedArr[sortedArr.length / 2 - 1]) /
-            2;
+                  sortedArr[sortedArr.length / 2 - 1]) /
+              2;
 
     return solution;
 };
@@ -5060,8 +5056,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-            .slice(a.length / 2 - 1, a.length / 2 + 1)
-            .reduce((x, y) => x + y, 0) / 2;
+              .slice(a.length / 2 - 1, a.length / 2 + 1)
+              .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -6050,32 +6046,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-            ({
-                G: "A",
-                A: "G",
-                g: "a",
-                a: "g",
-                D: "E",
-                E: "D",
-                d: "e",
-                e: "d",
-                R: "Y",
-                Y: "R",
-                r: "y",
-                y: "r",
-                P: "O",
-                O: "P",
-                p: "o",
-                o: "p",
-                L: "U",
-                U: "L",
-                l: "u",
-                u: "l",
-                K: "I",
-                I: "K",
-                k: "i",
-                i: "k",
-            }[c] || c)
+                ({
+                    G: "A",
+                    A: "G",
+                    g: "a",
+                    a: "g",
+                    D: "E",
+                    E: "D",
+                    d: "e",
+                    e: "d",
+                    R: "Y",
+                    Y: "R",
+                    r: "y",
+                    y: "r",
+                    P: "O",
+                    O: "P",
+                    p: "o",
+                    o: "p",
+                    L: "U",
+                    U: "L",
+                    l: "u",
+                    u: "l",
+                    K: "I",
+                    I: "K",
+                    k: "i",
+                    i: "k",
+                }[c] || c)
         )
         .join("");
 }
@@ -7373,7 +7369,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void { }
+    strike(enemy: Warrior, swings: number): void {}
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -8730,16 +8726,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -9575,8 +9571,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -9654,7 +9650,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -10366,10 +10362,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -10479,8 +10475,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -11591,8 +11587,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -12205,10 +12202,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -12661,7 +12658,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -13154,17 +13151,17 @@ function detectCardType(number: string) {
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -13301,13 +13298,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -15909,10 +15906,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -17025,7 +17022,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -18101,8 +18098,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -18252,10 +18249,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -19252,11 +19249,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -20051,9 +20048,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -20335,8 +20332,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);

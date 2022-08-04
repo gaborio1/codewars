@@ -401,7 +401,6 @@ const gracefulTipping = (bill) => {
         }
         total = num;
     }
-    ;
     console.log("total:", total, "\n");
     return total;
 };
@@ -425,10 +424,10 @@ function gracefulTipping3(bill) {
     const mult = 5 * 10 ** (String(Math.ceil(withTip)).length - 2);
     if (mult < 1)
         return Math.ceil(withTip);
-    return Math.ceil((withTip) / mult) * mult;
+    return Math.ceil(withTip / mult) * mult;
 }
 function gracefulTipping4(bill) {
-    const c = bill * 115 / 100;
+    const c = (bill * 115) / 100;
     const m = c < 10 ? 1 : 5 * 10 ** Math.floor(Math.log10(c) - 1);
     return Math.ceil(c / m) * m;
 }
@@ -437,7 +436,7 @@ function gracefulTipping5(bill) {
     let roundingLimit = 5;
     if (billAndTip > 10) {
         for (let i = 1; i < String(billAndTip).length - 1; i++) {
-            roundingLimit = Number(String(roundingLimit) + '0');
+            roundingLimit = Number(String(roundingLimit) + "0");
         }
         while (billAndTip % roundingLimit != 0) {
             billAndTip++;
@@ -448,7 +447,7 @@ function gracefulTipping5(bill) {
 function gracefulTipping6(bill) {
     const tip = 1.15;
     const total = bill * tip;
-    const round = 5 * (10 ** (Math.floor(Math.log10(total)) - 1));
+    const round = 5 * 10 ** (Math.floor(Math.log10(total)) - 1);
     return total < 10 ? Math.ceil(total) : Math.ceil(total / round) * round;
 }
 function gracefulTipping7(bill) {
@@ -458,7 +457,7 @@ function gracefulTipping7(bill) {
     let roundTo = 5 * (range / 10);
     if (roundTo === 0.5)
         return fin;
-    return fin + (roundTo - fin % roundTo);
+    return fin + (roundTo - (fin % roundTo));
 }
 const say = (string1) => {
     let result = string1;
