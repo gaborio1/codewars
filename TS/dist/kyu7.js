@@ -98,7 +98,39 @@ function choreAssignment4(chores) {
     return output;
 }
 function turn(current, target) {
-    return "right";
+    let Directions;
+    (function (Directions) {
+        Directions[Directions["N"] = 1] = "N";
+        Directions[Directions["E"] = 2] = "E";
+        Directions[Directions["S"] = 3] = "S";
+        Directions[Directions["W"] = 4] = "W";
+    })(Directions || (Directions = {}));
+    let solution = "left";
+    if (Directions[current] <= 3) {
+        if (Directions[target] - Directions[current] === 1) {
+            console.log("RIGHT");
+            solution = "right";
+        }
+    }
+    else {
+        if (Directions[current] - Directions[target] === 3) {
+            console.log("RIGHT");
+            solution = "right";
+        }
+    }
+    if (Directions[current] > 1) {
+        if (Directions[current] - Directions[target] === 1) {
+            console.log("LEFT");
+            solution = "left";
+        }
+    }
+    else {
+        if (Directions[target] - Directions[current] === 3) {
+            console.log("LEFT");
+            solution = "left";
+        }
+    }
+    return solution;
 }
 function hexWordSum(string) {
     return 1;
