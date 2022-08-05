@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -131,6 +131,33 @@ function turn(current, target) {
         }
     }
     return solution;
+}
+function turn4(c, t) {
+    if (c === 'N' && t === 'W')
+        return 'left';
+    if (c === 'E' && t === 'N')
+        return 'left';
+    if (c === 'S' && t === 'E')
+        return 'left';
+    if (c === 'W' && t === 'S')
+        return 'left';
+    return 'right';
+}
+exports.turn4 = turn4;
+function turn5(f, s) {
+    return 'NESWN'.includes(f + s) ? 'right' : 'left';
+}
+function turn6(c, t) {
+    return 'NW,SE,EN,WS'.indexOf(c + t) > -1 ? 'left' : 'right';
+}
+function turn7(current, target) {
+    const dirs = { 'N': 0, 'E': 1, 'S': 2, 'W': 3 };
+    const dir = dirs[target] - dirs[current];
+    if (dir === 1 || dir === -3)
+        return 'right';
+    if (dir === -1 || dir === 3)
+        return 'left';
+    throw new Error;
 }
 function hexWordSum(string) {
     return 1;

@@ -1720,7 +1720,7 @@ function choreAssignment4(chores: any[]): number[] {
 }
 
 
-// ❗️❗️❗️ NOT SUBMITTED YET, COMMENT AND ADD SOLUTIONS ❗️❗️❗️
+
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -1832,6 +1832,61 @@ describe('turn', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+
+// function turn2(current: Direction, target: Direction): MoveDirection {
+//     const dirs = {
+//         N: { E: 'right', W: 'left' },
+//         E: { N: 'left', S: 'right' },
+//         S: { E: 'left', W: 'right' },
+//         W: { S: 'left', N: 'right' }
+//     };
+//     return dirs[current][target];
+// }
+
+
+// function turn3(c: Direction, t: Direction): MoveDirection {
+//     if (c === 'N') {
+//         if (t === 'E') return 'right'
+//         if (t === 'W') return 'left'
+//     } else if (c === 'S') {
+//         if (t === 'W') return 'right'
+//         if (t === 'E') return 'left'
+//     } else if (c === 'E') {
+//         if (t === 'S') return 'right'
+//         if (t === 'N') return 'left'
+//     } else {
+//         if (t === 'N') return 'right'
+//         if (t === 'S') return 'left'
+//     }
+// }
+
+
+export function turn4(c: Direction, t: Direction): MoveDirection {
+    if (c === 'N' && t === 'W') return 'left';
+    if (c === 'E' && t === 'N') return 'left';
+    if (c === 'S' && t === 'E') return 'left';
+    if (c === 'W' && t === 'S') return 'left';
+    return 'right';
+}
+
+
+function turn5(f: Direction, s: Direction): MoveDirection {
+    return 'NESWN'.includes(f + s) ? 'right' : 'left'
+}
+
+function turn6(c: Direction, t: Direction): MoveDirection {
+    return 'NW,SE,EN,WS'.indexOf(c + t) > -1 ? 'left' : 'right';
+}
+
+function turn7(current: Direction, target: Direction): MoveDirection {
+    const dirs: { [key in Direction]: number } = { 'N': 0, 'E': 1, 'S': 2, 'W': 3 }
+    const dir = dirs[target] - dirs[current]
+
+    if (dir === 1 || dir === -3) return 'right'
+    if (dir === -1 || dir === 3) return 'left'
+
+    throw new Error
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Hex Word Sum
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
