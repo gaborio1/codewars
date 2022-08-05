@@ -1567,10 +1567,12 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Remove Empty Items of Array
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: REMOVE EMPTY ITEMS OF ARRAY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️  FIND EMPTY ELEMENTS IN ARRAY ❗️❗️❗️ CHECK IF INDEX IS NOT NULL ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1590,9 +1592,21 @@ Before: [1, 2, 3, <5 empty items>, 4, <1 empty item>, null, undefined];
 
 After: [1, 2, 3, 4, null, undefined];
 */
-function clean(array: any[]): any[] {
-    return [];
+const clean = (array: any[]): any[] => {
+
+    let solution: any[] = [];
+
+    array.forEach((el, idx) => {
+        console.log("index:", idx, el);
+        // ❗️❗️❗️ FIND EMPTY ELEMENTS IN ARRAY ❗️❗️❗️  CHECK IF INDEX IS NOT NULL ❗️❗️❗️
+        if (idx !== null) solution.push(el);
+    })
+
+    console.log(solution);
+
+    return solution;
 }
+
 /*
 describe("Basic Tests", (): void => {
   it("Good stuff", (): void => {
@@ -1610,13 +1624,54 @@ describe("Basic Tests", (): void => {
 });
 */
 
-// console.log();
-// console.log();
+// console.log(clean([1, 2, , , 3, 4,]));
+
+// console.log((clean([undefined, null, NaN, false, '', 0])));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function clean2(array: any[]): any[] {
+    return array.filter(e => true);
+}
+
+
+const clean3 = Object.values
+
+
+function clean4(array: any[]): any[] {
+
+    return array.filter((elem) => {
+        return true;
+    });
+}
+
+
+function clean5(array: any[]): any[] {
+    return array.filter((): boolean => true);
+}
+
+
+function clean6(array: any[]): any[] {
+    return Object.values(array);
+}
+
+
+function clean7(array: any[]): any[] {
+    return array.filter((word) => typeof word)
+}
+
+
+function clean8(array: any[]): any[] {
+    const result = [];
+    for (let i = 0; i < array.length; ++i) {
+        if (array.hasOwnProperty(i)) {
+            result.push(array[i]);
+        }
+    }
+    return result;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Help Suzuki complete his chores!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2074,6 +2129,7 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR WITH REGEX ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩

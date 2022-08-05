@@ -58,8 +58,42 @@ function time(distance, boatSpeed, stream) {
 function heavyMetalUmlauts(boringText) {
     return "";
 }
-function clean(array) {
-    return [];
+const clean = (array) => {
+    let solution = [];
+    array.forEach((el, idx) => {
+        console.log("index:", idx, el);
+        if (idx !== null)
+            solution.push(el);
+    });
+    console.log(solution);
+    return solution;
+};
+function clean2(array) {
+    return array.filter(e => true);
+}
+const clean3 = Object.values;
+function clean4(array) {
+    return array.filter((elem) => {
+        return true;
+    });
+}
+function clean5(array) {
+    return array.filter(() => true);
+}
+function clean6(array) {
+    return Object.values(array);
+}
+function clean7(array) {
+    return array.filter((word) => typeof word);
+}
+function clean8(array) {
+    const result = [];
+    for (let i = 0; i < array.length; ++i) {
+        if (array.hasOwnProperty(i)) {
+            result.push(array[i]);
+        }
+    }
+    return result;
 }
 const choreAssignment = (chores) => {
     let solution = [];
