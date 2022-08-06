@@ -552,6 +552,15 @@ function gracefulTipping7(bill) {
         return fin;
     return fin + (roundTo - (fin % roundTo));
 }
+const eightBitNumber = (str) => {
+    if ((str.startsWith("0") && str.length > 1) || !str.length)
+        return false;
+    if (str.startsWith("-"))
+        return false;
+    if (str.includes(" "))
+        return false;
+    return Number(str) >= 0 && Number(str) < 256;
+};
 const say = (string1) => {
     let result = string1;
     return (string2) => {

@@ -2115,6 +2115,8 @@ describe("solution", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ALSO, SEE  REGEXP BASICS IS IT AN EIGHT BIT UNSIGNED INTEGER?
+
 // ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR WITH REGEX ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
@@ -3280,7 +3282,10 @@ function gracefulTipping7(bill: number): number {
     return fin + (roundTo - (fin % roundTo));
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// ❗️❗️❗️ NOT SUBMITTED YET ❗️❗️❗️
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR WITH REGEX ❗️❗️❗️ INCLUDE  THIS IN TYPESCRIPT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Regexp Basics - is it a eight bit unsigned number?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -3295,11 +3300,28 @@ It should only accept numbers in canonical representation, so no leading +, extr
 
 
 */
+
 // String.prototype.eightBitNumber = function(): boolean {
-//     // Your code here
-//     return true;
-//   }
+//     if ((this.startsWith("0") && this.length > 1) || !this.length) return false;
+
+//       if (this.startsWith("-")) return false;
+
+//       if (this.includes(" ")) return false;
+
+//       return Number(this) >= 0 && Number(this) < 256;
+// }
+
+const eightBitNumber = (str: string): boolean => {
+    if ((str.startsWith("0") && str.length > 1) || !str.length) return false;
+
+    if (str.startsWith("-")) return false;
+
+    if (str.includes(" ")) return false;
+
+    return Number(str) >= 0 && Number(str) < 256;
+};
 /*
+
 describe("Sample tests", () => {
   it("Basic tests", () => {
     assert.equal("".eightBitNumber(), false);
@@ -3667,7 +3689,7 @@ function stackHeight2d3(layers: number) {
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: CALCULATE PARITY BIT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: MATCH, TEST, NEW REGEXP()
+// KEYWORDS: MATCH, TEST, NEW REGEXP(), ❗️❗️❗️ COUNT OCCURENCE OF CHAR IN STRING ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3693,6 +3715,7 @@ function stackHeight2d3(layers: number) {
 const checkParity = (parity: string, bin: string): number => {
     let solution: number = 0;
 
+    // ❗️❗️❗️ COUNT OCCURENCE OF CHAR IN STRING ❗️❗️❗️
     const numOnes: number = bin.match(/1/g)!.length;
 
     console.log("numOnes:", numOnes);
@@ -3754,12 +3777,14 @@ const checkParity2 = (parity: string, bin: string): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function checkParity3(parity: string, bin: string) {
+    // ❗️❗️❗️ COUNT OCCURENCE OF CHAR IN STRING ❗️❗️❗️
     const even = bin.split("").filter((x) => x === "1").length % 2 === 0;
     return parity === "even" && even ? 0 : parity === "odd" && !even ? 0 : 1;
 }
 
 function checkParity4(parity: string, bin: string) {
     return (parity === "even" &&
+        // ❗️❗️❗️ COUNT OCCURENCE OF CHAR IN STRING ❗️❗️❗️
         (bin.match(new RegExp("1", "g")) || []).length % 2 == 0) ||
         (parity === "odd" &&
             (bin.match(new RegExp("1", "g")) || []).length % 2 != 0)
@@ -3776,6 +3801,7 @@ function checkParity5(parity: string, bin: string) {
 }
 
 function checkParity6(parity: string, bin: string) {
+    // ❗️❗️❗️ COUNT OCCURENCE OF CHAR IN STRING ❗️❗️❗️
     const bits = [...bin].filter((bit) => bit === "1");
     if (bits.length % 2 === 0) {
         return parity === "even" ? 0 : 1;
