@@ -69,7 +69,7 @@ const clean = (array) => {
     return solution;
 };
 function clean2(array) {
-    return array.filter(e => true);
+    return array.filter((e) => true);
 }
 const clean3 = Object.values;
 function clean4(array) {
@@ -167,31 +167,31 @@ function turn(current, target) {
     return solution;
 }
 function turn4(c, t) {
-    if (c === 'N' && t === 'W')
-        return 'left';
-    if (c === 'E' && t === 'N')
-        return 'left';
-    if (c === 'S' && t === 'E')
-        return 'left';
-    if (c === 'W' && t === 'S')
-        return 'left';
-    return 'right';
+    if (c === "N" && t === "W")
+        return "left";
+    if (c === "E" && t === "N")
+        return "left";
+    if (c === "S" && t === "E")
+        return "left";
+    if (c === "W" && t === "S")
+        return "left";
+    return "right";
 }
 exports.turn4 = turn4;
 function turn5(f, s) {
-    return 'NESWN'.includes(f + s) ? 'right' : 'left';
+    return "NESWN".includes(f + s) ? "right" : "left";
 }
 function turn6(c, t) {
-    return 'NW,SE,EN,WS'.indexOf(c + t) > -1 ? 'left' : 'right';
+    return "NW,SE,EN,WS".indexOf(c + t) > -1 ? "left" : "right";
 }
 function turn7(current, target) {
-    const dirs = { 'N': 0, 'E': 1, 'S': 2, 'W': 3 };
+    const dirs = { N: 0, E: 1, S: 2, W: 3 };
     const dir = dirs[target] - dirs[current];
     if (dir === 1 || dir === -3)
-        return 'right';
+        return "right";
     if (dir === -1 || dir === 3)
-        return 'left';
-    throw new Error;
+        return "left";
+    throw new Error();
 }
 function hexWordSum(string) {
     return 1;
@@ -650,9 +650,16 @@ function gematria5(str) {
     }
     return gematriaNumber;
 }
-function lastChair(n) {
+const lastChair = (num) => {
+    let solutionArr = [];
+    let chairsArr = [];
+    for (let i = 1; i <= num; i += 1) {
+        chairsArr.push(i);
+    }
+    console.log(chairsArr);
     return 1;
-}
+};
+console.log(lastChair(10));
 const stackHeight2d = (layers) => {
     return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
 };
@@ -665,6 +672,71 @@ function stackHeight2d3(layers) {
     if (layers === 0)
         return 0;
     return Math.floor(((Math.sqrt(3) * (layers - 1)) / 2 + 1) * 1000) / 1000;
+}
+const checkParity = (parity, bin) => {
+    let solution = 0;
+    const numOnes = bin.match(/1/g).length;
+    console.log("numOnes:", numOnes);
+    if (parity === "even") {
+        if (numOnes & 1) {
+            solution = 1;
+        }
+        else {
+            solution = 0;
+        }
+    }
+    else {
+        if (numOnes & 1) {
+            solution = 0;
+        }
+        else {
+            solution = 1;
+        }
+    }
+    return solution;
+};
+const checkParity2 = (parity, bin) => {
+    let solution = 0;
+    const numOnes = bin.match(/1/g).length;
+    if (parity === "even") {
+        if (numOnes & 1) {
+            solution = 1;
+        }
+    }
+    else {
+        if (!(numOnes & 1)) {
+            solution = 1;
+        }
+    }
+    return solution;
+};
+function checkParity3(parity, bin) {
+    const even = bin.split("").filter((x) => x === "1").length % 2 === 0;
+    return parity === "even" && even ? 0 : parity === "odd" && !even ? 0 : 1;
+}
+function checkParity4(parity, bin) {
+    return (parity === "even" &&
+        (bin.match(new RegExp("1", "g")) || []).length % 2 == 0) ||
+        (parity === "odd" &&
+            (bin.match(new RegExp("1", "g")) || []).length % 2 != 0)
+        ? 0
+        : 1;
+}
+function checkParity5(parity, bin) {
+    const numberOfOneBits = bin.split("").filter((bit) => bit === "1").length;
+    const isNumberOfBitsEven = numberOfOneBits % 2 === 0;
+    const shouldBeEven = parity === "even";
+    const bitsNeeded = isNumberOfBitsEven === shouldBeEven ? 0 : 1;
+    return bitsNeeded;
+}
+function checkParity6(parity, bin) {
+    const bits = [...bin].filter((bit) => bit === "1");
+    if (bits.length % 2 === 0) {
+        return parity === "even" ? 0 : 1;
+    }
+    if (bits.length % 2 !== 0) {
+        return parity === "even" ? 1 : 0;
+    }
 }
 function hexHash(code) {
     return 1;
