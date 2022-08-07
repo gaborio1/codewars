@@ -1483,10 +1483,10 @@ describe("Baum-Sweet", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Upstream/Downstream
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ASSIGN ARRAY ELEMENTS TO VARIABLES ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1506,9 +1506,26 @@ Show some love ;) Rank and Upvote!
 
 
 */
-function time(distance: number, boatSpeed: number, stream: String): number {
-    return 0;
-}
+const time = (distance: number, boatSpeed: number, stream: String): number => {
+    // EXTRACT DATA FROM stream (DIRECTION AND SPEED)
+    const streamArr: string[] = stream.split(" ");
+    console.log(streamArr);
+
+    // GET STREAM SPEED AS NUMBER
+    const streamSpeed: number = Number(streamArr[1]);
+
+    // GET ABSOLUTE SPEED BASED ON STREAM DIRECTION
+    let speedMod: number =
+        streamArr[0] === "Downstream" ? streamSpeed : -streamSpeed;
+
+    console.log("speedMod:", speedMod);
+
+    // CALC TIME
+    const solution: number = distance / (boatSpeed + speedMod);
+
+    // ROUND IT DOWN IF IT HAS DECIMAL PLACES
+    return Number.isInteger(solution) ? solution : Number(solution.toFixed(2));
+};
 /*
 describe("solution", function(){
   it("Basic Tests", function() {
@@ -1519,12 +1536,57 @@ describe("solution", function(){
 });
 */
 
-// console.log();
-// console.log();
+// 2
+// console.log(time(24, 10, "Downstream 2"));
+// 2
+// console.log(time(24, 14, "Upstream 2"));
+// 1.74
+// console.log(time(54, 28, "Downstream 3"));
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function time2(distance: number, boatSpeed: number, stream: String): number {
+    var parts = stream.split(" ");
+    var streamSpeed =
+        parts[0] == "Downstream" ? parseInt(parts[1]) : -parseInt(parts[1]);
+
+    return Math.round((distance / (boatSpeed + streamSpeed)) * 100) / 100;
+}
+
+function time3(distance: number, boatSpeed: number, stream: string): number {
+    // ❗️❗️❗️ ASSIGN ARRAY ELEMENTS TO VARIABLES ❗️❗️❗️
+    let [a, b] = stream.split(" ");
+    return a == "Downstream"
+        ? +(distance / (boatSpeed + +b)).toFixed(2)
+        : +(distance / (boatSpeed - +b)).toFixed(2);
+}
+
+function time4(distance: number, boatSpeed: number, stream: String): number {
+    const [streamDir, streamSpeed] = stream.split(" ");
+    const factor = streamDir === "Upstream" ? -1 : 1;
+    const speed = boatSpeed + factor * Number(streamSpeed);
+    const time = distance / speed;
+
+    return Number(time.toFixed(2));
+}
+
+function time5(distance: number, boatSpeed: number, stream: String): number {
+    const m = stream.match(/^(D|U).+ (\d+)$/) ?? ["", "D", "0"];
+    return (
+        Math.round(
+            (distance / (boatSpeed + +m[2] * (m[1] === "D" ? 1 : -1))) * 100
+        ) / 100
+    );
+}
+
+function time6(distance: number, boatSpeed: number, stream: String): number {
+    // ❗️❗️❗️ ASSIGN ARRAY ELEMENTS TO VARIABLES ❗️❗️❗️
+    let [dir, speed] = stream.split(" ");
+    boatSpeed += dir[0] === "U" ? -speed : +speed;
+
+    return +(distance / boatSpeed).toFixed(2);
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Hëävÿ Mëtäl Ümläüts

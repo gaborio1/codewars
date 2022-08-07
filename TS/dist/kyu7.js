@@ -52,8 +52,42 @@ function f(x, y, z) {
 }
 function* baumSweet() {
 }
-function time(distance, boatSpeed, stream) {
-    return 0;
+const time = (distance, boatSpeed, stream) => {
+    const streamArr = stream.split(" ");
+    console.log(streamArr);
+    const streamSpeed = Number(streamArr[1]);
+    let speedMod = streamArr[0] === "Downstream" ? streamSpeed : -streamSpeed;
+    console.log("speedMod:", speedMod);
+    const solution = distance / (boatSpeed + speedMod);
+    return Number.isInteger(solution) ? solution : Number(solution.toFixed(2));
+};
+function time2(distance, boatSpeed, stream) {
+    var parts = stream.split(" ");
+    var streamSpeed = parts[0] == "Downstream" ? parseInt(parts[1]) : -parseInt(parts[1]);
+    return Math.round((distance / (boatSpeed + streamSpeed)) * 100) / 100;
+}
+function time3(distance, boatSpeed, stream) {
+    let [a, b] = stream.split(" ");
+    return a == "Downstream"
+        ? +(distance / (boatSpeed + +b)).toFixed(2)
+        : +(distance / (boatSpeed - +b)).toFixed(2);
+}
+function time4(distance, boatSpeed, stream) {
+    const [streamDir, streamSpeed] = stream.split(" ");
+    const factor = streamDir === "Upstream" ? -1 : 1;
+    const speed = boatSpeed + factor * Number(streamSpeed);
+    const time = distance / speed;
+    return Number(time.toFixed(2));
+}
+function time5(distance, boatSpeed, stream) {
+    var _a;
+    const m = (_a = stream.match(/^(D|U).+ (\d+)$/)) !== null && _a !== void 0 ? _a : ["", "D", "0"];
+    return (Math.round((distance / (boatSpeed + +m[2] * (m[1] === "D" ? 1 : -1))) * 100) / 100);
+}
+function time6(distance, boatSpeed, stream) {
+    let [dir, speed] = stream.split(" ");
+    boatSpeed += dir[0] === "U" ? -speed : +speed;
+    return +(distance / boatSpeed).toFixed(2);
 }
 function heavyMetalUmlauts(boringText) {
     return "";
