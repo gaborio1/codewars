@@ -1464,9 +1464,41 @@ It will be tested for up to 1 000 000 values.
 
 Note that the binary representation of 0 used here is not 0 but the empty string ( which does not contain any blocks of consecutive 0s ).
 */
-function* baumSweet(): Generator {
-    // your code here
-}
+const baumSweet = (num: number): number[] => {
+    for (let i = 0; i < num; i += 1) {
+        console.log("iteration:", i);
+        const binary: string = i.toString(2);
+
+        let currentVal: number = 0;
+
+        const blocksOfZero: string[] | null = binary.match(/0+/g);
+
+        if (blocksOfZero === null) {
+            console.log("NULL");
+            currentVal = 1;
+            continue;
+        }
+
+        const hasOddLength: boolean = blocksOfZero.some(
+            (block) => (block.length & 1) === 1
+        );
+        console.log(hasOddLength);
+
+        // const isOddLength: boolean = (blocksOfZero[0]!.length & 1) === 1;
+        console.log(
+            "binary",
+            binary,
+            "blocksOfZero:",
+            blocksOfZero,
+            "hasOddLength",
+            hasOddLength,
+            "currentVAl:",
+            currentVal
+        );
+    }
+
+    return [1];
+};
 /*
 describe("Baum-Sweet", function() {
   describe("sequence", () => {
@@ -1476,14 +1508,15 @@ describe("Baum-Sweet", function() {
 });
 */
 
-// console.log();
+// 1, 1, 0, 1, 1, 0, 0, 1, 0, 1
+console.log(baumSweet(10));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Upstream/Downstream
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: ❗️❗️❗️ ASSIGN ARRAY ELEMENTS TO VARIABLES ❗️❗️❗️

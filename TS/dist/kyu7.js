@@ -50,8 +50,24 @@ function authList(arr) {
 function f(x, y, z) {
     return 1;
 }
-function* baumSweet() {
-}
+const baumSweet = (num) => {
+    for (let i = 0; i < num; i += 1) {
+        console.log("iteration:", i);
+        const binary = i.toString(2);
+        let currentVal = 0;
+        const blocksOfZero = binary.match(/0+/g);
+        if (blocksOfZero === null) {
+            console.log("NULL");
+            currentVal = 1;
+            continue;
+        }
+        const hasOddLength = blocksOfZero.some((block) => (block.length & 1) === 1);
+        console.log(hasOddLength);
+        console.log("binary", binary, "blocksOfZero:", blocksOfZero, "hasOddLength", hasOddLength, "currentVAl:", currentVal);
+    }
+    return [1];
+};
+console.log(baumSweet(10));
 const time = (distance, boatSpeed, stream) => {
     const streamArr = stream.split(" ");
     console.log(streamArr);
