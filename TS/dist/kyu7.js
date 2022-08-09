@@ -37,8 +37,8 @@ function anchorize(text) {
 function startSmoking(bars, boxes) {
     return 0;
 }
-const truthy = [];
-const falsy = [];
+const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
+const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
     return [0, 0];
 }

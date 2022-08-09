@@ -1168,12 +1168,14 @@ describe("Example Cases", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Truthy and Falsy
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN EXAMPLES ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: TRUTHY AND FALSY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ BOOLEAN CONSTRUCTOR, DOUBLE-NEGATIVE ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: https://www.sitepoint.com/javascript-truthy-falsy/
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -1190,35 +1192,157 @@ You are given two empty arrays (truthy and falsy) and you have to fill this arra
 
 
 */
-const truthy = [];
-const falsy = [];
+const truthy = [true, 1, "hello", [], {}, function () {}, Infinity, -Infinity];
+const falsy = [false, 0, -0, "", null, undefined, NaN];
 
 /*
-describe('length', () => {
-  it('truthy array should have at least 5 unique elements', () => {
-    assert.isAtLeast(new Set(truthy).size, 5);
-  });
-  
-  it('falsy array should have at least 5 unique elements', () => {
-    assert.isAtLeast(new Set(falsy).size, 5);
-  });
-});
+The following values are always falsy:
 
-describe('truthy', () => {
-  it('elements should evaluate to true', () => {
-    for (const element of truthy) {
-      assert.isTrue(!!element, `Value ${element} is falsy`);
-    }
-  });
-});
+false
+0 (zero)
+-0 (minus zero)
+0n (BigInt zero)
+'', "", `` (empty string)
+null
+undefined
+NaN
+Everything else is truthy. That includes:
 
-describe('falsy', () => {
-  it('elements should evaluate to false', () => {
-    for (const element of falsy) {
-      assert.isFalse(!!element, `Value ${element} is truthy`);
-    }
-  });
-});
+'0' (a string containing a single zero)
+'false' (a string containing the text “false”)
+[] (an empty array)
+{} (an empty object)
+function(){} (an “empty” function)
+A single value can therefore be used within conditions. For example:
+
+if (value) {
+  // value is truthy
+}
+else {
+  // value is falsy
+  // it could be false, 0, '', null, undefined or NaN
+}
+
+Loose Equality Comparisons with ==
+Unexpected situations can occur when comparing truthy and falsy values using the == loose equality:
+
+==	true	false	0	''	null	undefined	NaN	Infinity	[]	{}
+true	true	false	false	false	false	false	false	false	false	false
+false	false	true	true	true	false	false	false	false	true	false
+0	false	true	true	true	false	false	false	false	true	false
+''	false	true	true	true	false	false	false	false	true	false
+null	false	false	false	false	true	true	false	false	false	false
+undefined	false	false	false	false	true	true	false	false	false	false
+NaN	false	false	false	false	false	false	false	false	false	false
+Infinity	false	false	false	false	false	false	false	true	false	false
+[]	false	true	true	true	false	false	false	false	false	false
+{}	false	false	false	false	false	false	false	false	false	false
+The rules:
+
+false, zero and empty strings are all equivalent.
+null and undefined are equivalent to themselves and each other but nothing else.
+NaN is not equivalent to anything — including another NaN!.
+Infinity is truthy — but cannot be compared to true or false!.
+An empty array is truthy — yet comparing with true is false and comparing with false is true?!.
+Note the difference in how empty values across various types can be evaluated. An empty string or undefined value are falsy, but an empty array or object are truthy.
+
+Examples:
+
+// all true
+false == 0;
+0 == '';
+null == undefined;
+[] == false;
+!![0] == true;
+
+// all false
+false == null;
+NaN == NaN;
+Infinity == true;
+[] == true;
+[0] == true;
+Strict Equality Comparisons with ===
+The situation is clearer when using a strictly equal comparison because the value types must match:
+
+===	true	false	0	''	null	undefined	NaN	Infinity	[]	{}
+true	true	false	false	false	false	false	false	false	false	false
+false	false	true	false	false	false	false	false	false	false	false
+0	false	false	true	false	false	false	false	false	false	false
+''	false	false	false	true	false	false	false	false	false	false
+null	false	false	false	false	true	false	false	false	false	false
+undefined	false	false	false	false	false	true	false	false	false	false
+NaN	false	false	false	false	false	false	false	false	false	false
+Infinity	false	false	false	false	false	false	false	true	false	false
+[]	false	false	false	false	false	false	false	false	false	false
+{}	false	false	false	false	false	false	false	false	false	false
+The only exception is NaN, which remains stubbornly inequivalent to everything.
+
+Recommendations for Working with Truthy or Falsy Values
+Truthy and falsy values can catch out the most experienced developers. Those new to programming or migrating from other languages have no chance! Fortunately, there are three simple steps for catching the most difficult-to-spot errors when handling truthy and falsy variables. Let’s look at each in turn.
+
+1. Avoid direct comparisons
+It’s rarely necessary to compare two truthy and falsy values when a single value will always equate to true or false:
+
+// instead of
+if (x == false) // ...
+// runs if x is false, 0, '', or []
+
+// use
+if (!x) // ...
+// runs if x is false, 0, '', NaN, null or undefined
+2. Use === strict equality
+Use a === strict equality (or !== strict inequality) comparisons to compare values and avoid type conversion issues:
+
+// instead of
+if (x == y) // ...
+// runs if x and y are both truthy or both falsy
+// e.g. x = null and y = undefined
+
+// use
+if (x === y) // ...
+// runs if x and y are identical...
+// except when both are NaN
+
+❗️❗️❗️ BOOLEAN CONSTRUCTOR, DOUBLE-NEGATIVE ❗️❗️❗️
+3. Convert to real Boolean values where necessary
+You can convert any value to a real Boolean value in JavaScript using either the Boolean constructor, or a double-negative !!. This will allow you to be absolutely certain a false is generated only by false, 0, "", null, undefined and NaN:
+
+// instead of
+if (x === y) // ...
+// runs if x and y are identical...
+// except when both are NaN
+
+// use
+if (Boolean(x) === Boolean(y)) // ...
+// or
+if (!!x === !!y) // ...
+// runs if x and y are identical...
+// including when either or both are NaN
+
+❗️❗️❗️ BOOLEAN CONSTRUCTOR, DOUBLE-NEGATIVE ❗️❗️❗️
+The Boolean constructor returns true when passed a truthy value and returns false when passed a falsy value. This could be useful when combined with an iteration method. For example:
+
+const truthy_values = [
+  false,
+  0,
+  ``,
+  '',
+  "",
+  null,
+  undefined,
+  NaN,
+  '0',
+  'false',
+  [],
+  {},
+  function() {}
+].filter(Boolean);
+
+// Filter out falsy values and log remaining truthy values
+console.log(truthy_values);
+Conclusion
+Truthy and falsy values allow you to write terse JavaScript conditions and ternary operators. However, always consider the edge cases. A rogue empty array or NaN variable could lead to many hours of debugging grief!
+
 */
 
 // console.log();
