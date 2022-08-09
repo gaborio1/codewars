@@ -901,8 +901,143 @@ function checkParity6(parity, bin) {
 function hexHash(code) {
     return 1;
 }
-function tapCodeTranslation(text) {
-    return "...";
+const tapCodeTranslation = (text) => {
+    let solution = [];
+    const grid = [
+        ["a", "b", "c/k", "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["l", "m", "n", "o", "p"],
+        ["q", "r", "s", "t", "u"],
+        ["v", "w", "x", "y", "z"],
+    ];
+    text.split("").forEach((char) => {
+        console.log(char);
+        for (let i = 0; i < grid.length; i += 1) {
+            console.log(grid[i]);
+            for (let j = 0; j < grid[i].length; j += 1) {
+                if (grid[i][j].indexOf(char) > -1) {
+                    console.log("found at index:", i + 1, j + 1);
+                    let currPos = ".".repeat(i + 1) + " " + ".".repeat(j + 1);
+                    solution.push(currPos);
+                    break;
+                }
+            }
+        }
+    });
+    console.log(solution);
+    return solution.join(" ");
+};
+function tapCodeTranslation7(text) {
+    const table = [
+        ["a", "b", ["c", "k"], "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["l", "m", "n", "o", "p"],
+        ["q", "r", "s", "t", "u"],
+        ["v", "w", "x", "y", "z"],
+    ];
+    return text
+        .split("")
+        .map((l) => {
+        console.log(l);
+        const line = table.findIndex((line) => line.includes(l) ||
+            line.some((arr) => arr instanceof Array && arr.includes(l)));
+        const column = table[line].findIndex((col) => col === l || (col instanceof Array && col.includes(l)));
+        return [line + 1, column + 1];
+    })
+        .flat()
+        .map((c) => ".".repeat(c))
+        .join(" ");
+}
+function tapCodeTranslation2(text) {
+    const dic = [
+        ["A", "B", "C", "D", "E"],
+        ["F", "G", "H", "I", "J"],
+        ["L", "M", "N", "O", "P"],
+        ["Q", "R", "S", "T", "U"],
+        ["V", "W", "X", "Y", "Z"],
+    ];
+    let out = "";
+    const arr = [...text.toUpperCase()];
+    arr.map((el) => {
+        if (el === "K")
+            el = "C";
+        for (let i = 0; i < dic.length; i++) {
+            for (let j = 0; j < dic.length; j++) {
+                if (dic[i][j] == el) {
+                    out += `${".".repeat(i + 1)} ${".".repeat(j + 1)} `;
+                    break;
+                }
+            }
+        }
+    });
+    return out.trim();
+}
+function tapCodeTranslation3(text) {
+    const code = [
+        ["A", "B", ".", "D", "E"],
+        ["F", "G", "H", "I", "J"],
+        ["L", "M", "N", "O", "P"],
+        ["Q", "R", "S", "T", "U"],
+        ["V", "W", "X", "Y", "Z"],
+    ];
+    return text
+        .split("")
+        .map((e) => {
+        for (const [index, row] of code.entries()) {
+            const elem = e.toUpperCase();
+            if (elem !== "C" && elem !== "K") {
+                if (row.indexOf(elem) !== -1) {
+                    return `${".".repeat(index + 1)} ${".".repeat(row.indexOf(elem) + 1)}`;
+                }
+            }
+            else
+                return ". ...";
+        }
+    })
+        .join(" ");
+}
+function tapCodeTranslation4(text) {
+    const tapLetterMap = {
+        A: ". .",
+        B: ". ..",
+        C: ". ...",
+        K: ". ...",
+        D: ". ....",
+        E: ". .....",
+        F: ".. .",
+        G: ".. ..",
+        H: ".. ...",
+        I: ".. ....",
+        J: ".. .....",
+        L: "... .",
+        M: "... ..",
+        N: "... ...",
+        O: "... ....",
+        P: "... .....",
+        Q: ".... .",
+        R: ".... ..",
+        S: ".... ...",
+        T: ".... ....",
+        U: ".... .....",
+        V: "..... .",
+        W: "..... ..",
+        X: "..... ...",
+        Y: "..... ....",
+        Z: "..... .....",
+    };
+    return text
+        .toUpperCase()
+        .split("")
+        .map((letter) => tapLetterMap[letter])
+        .join(" ");
+}
+function tapCodeTranslation5(text) {
+    return [...text]
+        .map((c) => {
+        const pos = c === "k" ? 2 : c.charCodeAt(0) - 97 - Number(c > "k");
+        return `${".".repeat((pos / 5 + 1) | 0)} ${".".repeat((pos % 5) + 1)}`;
+    })
+        .join(" ");
 }
 const sortByHeight = (list) => {
     let solutionArr = [];

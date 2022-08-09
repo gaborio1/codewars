@@ -4233,10 +4233,12 @@ function hexHash(code: string): number {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR TO STOP OUTER FOR LOOP AFTER FINDING A MATCH ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: TAP CODE TRANSLATION
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ TUPLE ❗️❗️❗️ ARRAY.FINDINDEX() ❗️❗️❗️ INSTANCEOF OPERATOR ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -4272,27 +4274,228 @@ function hexHash(code: string): number {
     "more"    -> "... .. ... .... .... .. . ....."
     Happy coding!
     */
-function tapCodeTranslation(text: string): string {
-    return "...";
-}
-/*
-    describe("Tests", () => {
-      it("Sample tests", () => {
-        assert.equal(tapCodeTranslation("test"), ".... .... . ..... .... ... .... ....", `Text: "test"`);
-        assert.equal(tapCodeTranslation("taps"), ".... .... . . ... ..... .... ...", `Text: "taps"`);
-        assert.equal(tapCodeTranslation("knocks"), ". ... ... ... ... .... . ... . ... .... ...", `Text: "knocks"`);
-      });
+const tapCodeTranslation = (text: string): string => {
+    let solution: string[] = [];
+
+    const grid: string[][] = [
+        ["a", "b", "c/k", "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["l", "m", "n", "o", "p"],
+        ["q", "r", "s", "t", "u"],
+        ["v", "w", "x", "y", "z"],
+    ];
+
+    text.split("").forEach((char) => {
+        console.log(char);
+
+        for (let i = 0; i < grid.length; i += 1) {
+            console.log(grid[i]);
+            for (let j = 0; j < grid[i].length; j += 1) {
+                if (grid[i][j].indexOf(char) > -1) {
+                    console.log("found at index:", i + 1, j + 1);
+                    let currPos: string =
+                        ".".repeat(i + 1) + " " + ".".repeat(j + 1);
+                    solution.push(currPos);
+                    break;
+                }
+            }
+            // console.log("solution:", solution, "index:", i);
+            // if (solution.length === i + 1) break;
+        }
     });
+
+    console.log(solution);
+
+    return solution.join(" ");
+};
+/*
+
+console.log(tapCodeTranslation("knocks"));
+
+   k
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+found at index: 1 3
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+[ 'q', 'r', 's', 't', 'u' ]
+[ 'v', 'w', 'x', 'y', 'z' ]
+n
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+found at index: 3 3
+[ 'q', 'r', 's', 't', 'u' ]
+[ 'v', 'w', 'x', 'y', 'z' ]
+o
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+found at index: 3 4
+[ 'q', 'r', 's', 't', 'u' ]
+[ 'v', 'w', 'x', 'y', 'z' ]
+c
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+found at index: 1 3
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+[ 'q', 'r', 's', 't', 'u' ]
+[ 'v', 'w', 'x', 'y', 'z' ]
+k
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+found at index: 1 3
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+[ 'q', 'r', 's', 't', 'u' ]
+[ 'v', 'w', 'x', 'y', 'z' ]
+s
+[ 'a', 'b', 'c/k', 'd', 'e' ]
+[ 'f', 'g', 'h', 'i', 'j' ]
+[ 'l', 'm', 'n', 'o', 'p' ]
+[ 'q', 'r', 's', 't', 'u' ]
+found at index: 4 3
+[ 'v', 'w', 'x', 'y', 'z' ]
+[ '. ...', '... ...', '... ....', '. ...', '. ...', '.... ...' ]
+. ... ... ... ... .... . ... . ... .... ...
     
     */
 
-// console.log();
+// console.log(tapCodeTranslation("knocks"));
+// console.log(tapCodeTranslation("agntz"));
+// console.log(tapCodeTranslation("chnsx"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function tapCodeTranslation7(text: string): string {
+    // ❗️❗️❗️ TUPLE ❗️❗️❗️
+    const table: (string | string[])[][] = [
+        ["a", "b", ["c", "k"], "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["l", "m", "n", "o", "p"],
+        ["q", "r", "s", "t", "u"],
+        ["v", "w", "x", "y", "z"],
+    ];
+    return text
+        .split("")
+        .map((l) => {
+            console.log(l);
+            const line = table.findIndex(
+                (line) =>
+                    line.includes(l) ||
+                    line.some((arr) => arr instanceof Array && arr.includes(l))
+            );
+            // ❗️❗️❗️ ARRAY.FINDINDEX() ❗️❗️❗️
+            const column = table[line].findIndex(
+                // ❗️❗️❗️ INSTANCEOF OPERATOR ❗️❗️❗️
+                (col) => col === l || (col instanceof Array && col.includes(l))
+            );
+            return [line + 1, column + 1];
+        })
+        .flat()
+        .map((c) => ".".repeat(c))
+        .join(" ");
+}
+
+function tapCodeTranslation2(text: string): string {
+    const dic = [
+        ["A", "B", "C", "D", "E"],
+        ["F", "G", "H", "I", "J"],
+        ["L", "M", "N", "O", "P"],
+        ["Q", "R", "S", "T", "U"],
+        ["V", "W", "X", "Y", "Z"],
+    ];
+
+    let out = "";
+    const arr = [...text.toUpperCase()];
+    arr.map((el) => {
+        if (el === "K") el = "C";
+
+        for (let i = 0; i < dic.length; i++) {
+            for (let j = 0; j < dic.length; j++) {
+                if (dic[i][j] == el) {
+                    out += `${".".repeat(i + 1)} ${".".repeat(j + 1)} `;
+                    break;
+                }
+            }
+        }
+    });
+    return out.trim();
+}
+
+function tapCodeTranslation3(text: string): string {
+    const code = [
+        ["A", "B", ".", "D", "E"],
+        ["F", "G", "H", "I", "J"],
+        ["L", "M", "N", "O", "P"],
+        ["Q", "R", "S", "T", "U"],
+        ["V", "W", "X", "Y", "Z"],
+    ];
+    return text
+        .split("")
+        .map((e) => {
+            for (const [index, row] of code.entries()) {
+                const elem = e.toUpperCase();
+                if (elem !== "C" && elem !== "K") {
+                    if (row.indexOf(elem) !== -1) {
+                        return `${".".repeat(index + 1)} ${".".repeat(
+                            row.indexOf(elem) + 1
+                        )}`;
+                    }
+                } else return ". ...";
+            }
+        })
+        .join(" ");
+}
+
+function tapCodeTranslation4(text: string): string {
+    const tapLetterMap: { [key: string]: string } = {
+        A: ". .",
+        B: ". ..",
+        C: ". ...",
+        K: ". ...",
+        D: ". ....",
+        E: ". .....",
+        F: ".. .",
+        G: ".. ..",
+        H: ".. ...",
+        I: ".. ....",
+        J: ".. .....",
+        L: "... .",
+        M: "... ..",
+        N: "... ...",
+        O: "... ....",
+        P: "... .....",
+        Q: ".... .",
+        R: ".... ..",
+        S: ".... ...",
+        T: ".... ....",
+        U: ".... .....",
+        V: "..... .",
+        W: "..... ..",
+        X: "..... ...",
+        Y: "..... ....",
+        Z: "..... .....",
+    };
+
+    return text
+        .toUpperCase()
+        .split("")
+        .map((letter) => tapLetterMap[letter])
+        .join(" ");
+}
+
+function tapCodeTranslation5(text: string): string {
+    return [...text]
+        .map((c) => {
+            const pos = c === "k" ? 2 : c.charCodeAt(0) - 97 - Number(c > "k");
+            return `${".".repeat((pos / 5 + 1) | 0)} ${".".repeat(
+                (pos % 5) + 1
+            )}`;
+        })
+        .join(" ");
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Simple Fun #88: Sort By Height
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
