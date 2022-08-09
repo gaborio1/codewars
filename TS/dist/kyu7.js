@@ -58,7 +58,6 @@ const baumSweet2 = (num) => {
             solution.push(1);
             continue;
         }
-        ;
         const binary = i.toString(2);
         const blocksOfZero = binary.match(/0+/g);
         if (blocksOfZero === null) {
@@ -86,7 +85,6 @@ function* baumSweet3() {
             yield 1;
             continue;
         }
-        ;
         const binary = i.toString(2);
         const blocksOfZero = binary.match(/0+/g);
         if (blocksOfZero === null) {
@@ -107,7 +105,12 @@ function* baumSweet3() {
 }
 function* baumSweet() {
     for (let i = 0; i < 1000000; i += 1) {
-        yield i.toString(2).split(/1+/).every(el => el.length % 2 === 0 || i === 0) ? 1 : 0;
+        yield i
+            .toString(2)
+            .split(/1+/)
+            .every((el) => el.length % 2 === 0 || i === 0)
+            ? 1
+            : 0;
     }
 }
 function* baumSweet4() {
@@ -115,7 +118,10 @@ function* baumSweet4() {
     let i = 0;
     while (true) {
         i += 1;
-        yield +i.toString(2).split(/1/g).every(el => el.length % 2 === 0);
+        yield +i
+            .toString(2)
+            .split(/1/g)
+            .every((el) => el.length % 2 === 0);
     }
 }
 function* baumSweet5() {
@@ -126,7 +132,10 @@ function* baumSweet5() {
 function* baumSweet6() {
     yield 1;
     for (let i = 1;; i++) {
-        if (i.toString(2).split(/1/g).some(el => el.length % 2 === 1)) {
+        if (i
+            .toString(2)
+            .split(/1/g)
+            .some((el) => el.length % 2 === 1)) {
             yield 0;
         }
         else {
@@ -138,7 +147,10 @@ function* baumSweet7() {
     yield 1;
     let num = 1;
     while (true) {
-        yield +(num++).toString(2).split('1').every((el) => el.length % 2 === 0);
+        yield +(num++)
+            .toString(2)
+            .split("1")
+            .every((el) => el.length % 2 === 0);
     }
 }
 function* baumSweet8() {
@@ -151,7 +163,10 @@ function* baumSweet9() {
     let i = 0;
     while (true) {
         i += 1;
-        yield +i.toString(2).split(/1/g).every(el => el.length % 2 === 0);
+        yield +i
+            .toString(2)
+            .split(/1/g)
+            .every((el) => el.length % 2 === 0);
     }
 }
 const time = (distance, boatSpeed, stream) => {
