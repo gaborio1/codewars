@@ -50,24 +50,110 @@ function authList(arr) {
 function f(x, y, z) {
     return 1;
 }
-const baumSweet = (num) => {
+const baumSweet2 = (num) => {
+    let solution = [];
     for (let i = 0; i < num; i += 1) {
-        console.log("iteration:", i);
+        console.log("\n ITERATION:", i);
+        if (i === 0) {
+            solution.push(1);
+            continue;
+        }
+        ;
         const binary = i.toString(2);
-        let currentVal = 0;
         const blocksOfZero = binary.match(/0+/g);
         if (blocksOfZero === null) {
-            console.log("NULL");
-            currentVal = 1;
+            console.log("   NO ZEROS");
+            solution.push(1);
             continue;
         }
         const hasOddLength = blocksOfZero.some((block) => (block.length & 1) === 1);
-        console.log(hasOddLength);
-        console.log("binary", binary, "blocksOfZero:", blocksOfZero, "hasOddLength", hasOddLength, "currentVAl:", currentVal);
+        console.log("  --- binary", binary, "blocksOfZero:", blocksOfZero, "hasOddLength", hasOddLength);
+        if (hasOddLength) {
+            solution.push(0);
+        }
+        else {
+            solution.push(1);
+        }
     }
-    return [1];
+    console.log("-----solution array:", solution);
+    return solution;
 };
-console.log(baumSweet(10));
+function* baumSweet3() {
+    let solution = [];
+    for (let i = 0; i < 1000000; i += 1) {
+        if (i === 0) {
+            solution.push(1);
+            yield 1;
+            continue;
+        }
+        ;
+        const binary = i.toString(2);
+        const blocksOfZero = binary.match(/0+/g);
+        if (blocksOfZero === null) {
+            solution.push(1);
+            yield 1;
+            continue;
+        }
+        const hasOddLength = blocksOfZero.some((block) => (block.length & 1) === 1);
+        if (hasOddLength) {
+            solution.push(0);
+            yield 0;
+        }
+        else {
+            solution.push(1);
+            yield 1;
+        }
+    }
+}
+function* baumSweet() {
+    for (let i = 0; i < 1000000; i += 1) {
+        yield i.toString(2).split(/1+/).every(el => el.length % 2 === 0 || i === 0) ? 1 : 0;
+    }
+}
+function* baumSweet4() {
+    yield 1;
+    let i = 0;
+    while (true) {
+        i += 1;
+        yield +i.toString(2).split(/1/g).every(el => el.length % 2 === 0);
+    }
+}
+function* baumSweet5() {
+    yield 1;
+    for (var i = 1;; i += 1)
+        yield +/^(1|00)+$/.test(i.toString(2));
+}
+function* baumSweet6() {
+    yield 1;
+    for (let i = 1;; i++) {
+        if (i.toString(2).split(/1/g).some(el => el.length % 2 === 1)) {
+            yield 0;
+        }
+        else {
+            yield 1;
+        }
+    }
+}
+function* baumSweet7() {
+    yield 1;
+    let num = 1;
+    while (true) {
+        yield +(num++).toString(2).split('1').every((el) => el.length % 2 === 0);
+    }
+}
+function* baumSweet8() {
+    yield 1;
+    for (let i = 1;; i++)
+        yield +/^(1|00)+$/.test(i.toString(2));
+}
+function* baumSweet9() {
+    yield 1;
+    let i = 0;
+    while (true) {
+        i += 1;
+        yield +i.toString(2).split(/1/g).every(el => el.length % 2 === 0);
+    }
+}
 const time = (distance, boatSpeed, stream) => {
     const streamArr = stream.split(" ");
     console.log(streamArr);
