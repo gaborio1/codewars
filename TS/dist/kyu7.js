@@ -34,9 +34,14 @@ function* allRationals() {
 }
 function anchorize(text) {
 }
-function startSmoking(bars, boxes) {
+const startSmoking = (bars, boxes) => {
+    const BAR = 180;
+    const BOX = 18;
+    const total = bars * BAR + boxes * BOX;
+    console.log(total);
     return 0;
-}
+};
+console.log(startSmoking(1, 1));
 const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
