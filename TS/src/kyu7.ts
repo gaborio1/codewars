@@ -1140,9 +1140,15 @@ const startSmoking = (bars: number, boxes: number): number => {
     const total: number = bars * BAR + boxes * BOX;
     console.log(total);
 
+    const multiplier: number = Math.floor(total / 4);
+    console.log(multiplier);
 
+    const leftover: number = total % 4;
+    console.log(leftover);
 
-    return 0;
+    const solution: number = multiplier * 5 + leftover;
+
+    return solution;
 }
 /*
 describe("Example Cases", function() {
@@ -1171,6 +1177,7 @@ describe("Example Cases", function() {
 */
 
 console.log(startSmoking(1, 1));
+console.log(startSmoking(10, 2));
 // console.log();
 // console.log();
 // console.log();

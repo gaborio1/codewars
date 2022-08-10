@@ -39,9 +39,15 @@ const startSmoking = (bars, boxes) => {
     const BOX = 18;
     const total = bars * BAR + boxes * BOX;
     console.log(total);
-    return 0;
+    const multiplier = Math.floor(total / 4);
+    console.log(multiplier);
+    const leftover = total % 4;
+    console.log(leftover);
+    const solution = multiplier * 5 + leftover;
+    return solution;
 };
 console.log(startSmoking(1, 1));
+console.log(startSmoking(10, 2));
 const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
