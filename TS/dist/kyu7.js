@@ -53,9 +53,23 @@ function sensorAnalysis(sensorData) {
 }
 function redistributeWealth(wealth) {
 }
-function authList(arr) {
-    return false;
-}
+const authList = (arr) => {
+    console.log(arr);
+    for (let i = 0; i < arr.length; i += 1) {
+        console.log(arr[i]);
+        if (arr[i].length < 6 || arr[i].length > 10
+            && /a-z/g.test(arr[i]))
+            return false;
+    }
+    return true;
+};
+const usernames1 = ['john123', 'alex222', 'sandra1'];
+const usernames2 = ['john123', 'alex222', 'sandraW'];
+const usernames3 = ['john_123', 'alex222', 'sandra1'];
+const usernames4 = [''];
+const usernames5 = ['123456'];
+const usernames6 = ['abcdef'];
+console.log(authList(usernames1));
 function f(x, y, z) {
     return 1;
 }
