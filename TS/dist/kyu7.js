@@ -37,17 +37,15 @@ function anchorize(text) {
 const startSmoking = (bars, boxes) => {
     const BAR = 180;
     const BOX = 18;
-    const total = bars * BAR + boxes * BOX;
-    console.log(total);
-    const multiplier = Math.floor(total / 4);
-    console.log(multiplier);
-    const leftover = total % 4;
-    console.log(leftover);
-    const solution = multiplier * 5 + leftover;
-    return solution;
+    const initialNum = bars * BAR + boxes * BOX;
+    console.log("initialNum", initialNum);
+    let total = initialNum;
+    console.log("total", total);
+    let current = Math.floor(total / 5) + (total % 5);
+    console.log("current:", current);
+    return 1000;
 };
-console.log(startSmoking(1, 1));
-console.log(startSmoking(10, 2));
+console.log(startSmoking(0, 1));
 const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
