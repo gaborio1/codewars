@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -54,9 +54,7 @@ function sensorAnalysis(sensorData) {
 function redistributeWealth(wealth) {
 }
 const authList = (arr) => {
-    console.log("---input:", arr);
     for (let i = 0; i < arr.length; i += 1) {
-        console.log(arr[i]);
         if (arr[i].length < 6 || arr[i].length > 10)
             return false;
         if (arr[i].match(/[a-z]{1,}[0-9]{1,}/g) === null)
@@ -66,6 +64,77 @@ const authList = (arr) => {
     }
     return true;
 };
+const authList2 = (arr) => arr.every((username) => /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/.test(username));
+const test = (s) => /[0-9]/.test(s) && /[a-z]/.test(s) && /^[a-z0-9]{6,10}$/.test(s);
+function authList3(arr) {
+    return arr.every(test);
+}
+let validUsername = /(^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$)/;
+function authList4(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let s = arr[i];
+        if (!validUsername.test(s))
+            return false;
+    }
+    return true;
+}
+exports.authList4 = authList4;
+const rules = [
+    (p) => {
+        const l = p.length;
+        return l >= 6 && l <= 10;
+    },
+    (p) => /[a-z]/.test(p),
+    (p) => /[0-9]/.test(p),
+    (p) => /^[a-z0-9]+$/.test(p),
+];
+function authList5(arr) {
+    return arr.every((p) => rules.every((fn) => fn(p)));
+}
+exports.authList5 = authList5;
+function authList6(arr) {
+    return (arr.map((it) => /^[a-z]+[0-9]+/g.test(it)).filter((it) => it).length ==
+        arr.length);
+}
+function authList7(arr) {
+    const betweenSixAndTen = arr.every((elem) => elem.length >= 6 && elem.length <= 10);
+    const containsLower = arr.every((elem) => /[a-z]/.test(elem));
+    const containsOneNumber = arr.every((elem) => /[0-9]/.test(elem));
+    const containsOnlyNumsAndLowerLetters = arr.every((elem) => (elem.match(/[0-9a-z]/g) || []).length === elem.length);
+    return (betweenSixAndTen &&
+        containsLower &&
+        containsOneNumber &&
+        containsOnlyNumsAndLowerLetters);
+}
+function auth(str) {
+    return /^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$/.test(str);
+}
+function authList8(arr) {
+    return arr.every(auth);
+}
+function authList9(arr) {
+    return arr.every(auth2);
+}
+function auth2(str) {
+    return /^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$/.test(str);
+}
+function authList10(arr) {
+    return arr.every((login) => {
+        return (login.length >= 6 &&
+            login.length <= 10 &&
+            login.match(/.*[0-9]+.*/) &&
+            login.match(/.*[a-z]+.*/) &&
+            login.match(/^[a-z0-9]{6,10}$/) &&
+            true);
+    });
+}
+const authList11 = (arr) => arr.every((name) => /^[a-z0-9]{6,10}$/.test(name) &&
+    /[a-z]/.test(name) &&
+    /\d/.test(name));
+exports.authList11 = authList11;
+function authList12(arr) {
+    return arr.every((v) => /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/.test(v));
+}
 function f(x, y, z) {
     return 1;
 }

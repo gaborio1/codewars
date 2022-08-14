@@ -1506,10 +1506,12 @@ describe("Example test cases", function(){
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE: Authenticate a list of usernames
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN REGEX ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: AUTHENTICATE A LIST OF USERNAMES
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ USERNAME AUTHENTICATION REGEX ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1540,10 +1542,10 @@ You will always be given an array with at least 1 string to check.
 // /[a-z]{1,}[0-9]{1,}/g
 
 const authList = (arr: string[]): boolean => {
-    console.log("---input:", arr);
+    // console.log("---input:", arr);
 
     for (let i = 0; i < arr.length; i += 1) {
-        console.log(arr[i]);
+        // console.log(arr[i]);
 
         // CHECK LENGTH
         if (arr[i].length < 6 || arr[i].length > 10) return false;
@@ -1599,6 +1601,121 @@ describe("solution", function(){
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+const authList2 = (arr: string[]): boolean =>
+    arr.every((username) =>
+        /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/.test(username)
+    );
+
+// ============================================================
+
+const test: any = (s: string): boolean =>
+    /[0-9]/.test(s) && /[a-z]/.test(s) && /^[a-z0-9]{6,10}$/.test(s);
+
+function authList3(arr: string[]): boolean {
+    return arr.every(test);
+}
+
+// ============================================================
+
+let validUsername = /(^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$)/;
+
+export function authList4(arr: string[]): boolean {
+    for (let i = 0; i < arr.length; i++) {
+        let s: string = arr[i];
+        if (!validUsername.test(s)) return false;
+    }
+    return true;
+}
+
+// ============================================================
+
+type tester = (a: string) => boolean;
+
+const rules: Array<tester> = [
+    (p) => {
+        const l = p.length;
+        return l >= 6 && l <= 10;
+    },
+    (p) => /[a-z]/.test(p),
+    (p) => /[0-9]/.test(p),
+    (p) => /^[a-z0-9]+$/.test(p),
+];
+
+export function authList5(arr: string[]): boolean {
+    return arr.every((p) => rules.every((fn) => fn(p)));
+}
+
+// ============================================================
+
+function authList6(arr: string[]): boolean {
+    return (
+        arr.map((it) => /^[a-z]+[0-9]+/g.test(it)).filter((it) => it).length ==
+        arr.length
+    );
+}
+
+function authList7(arr: string[]): boolean {
+    const betweenSixAndTen = arr.every(
+        (elem) => elem.length >= 6 && elem.length <= 10
+    );
+    const containsLower = arr.every((elem) => /[a-z]/.test(elem));
+    const containsOneNumber = arr.every((elem) => /[0-9]/.test(elem));
+    const containsOnlyNumsAndLowerLetters = arr.every(
+        (elem) => (elem.match(/[0-9a-z]/g) || []).length === elem.length
+    );
+    return (
+        betweenSixAndTen &&
+        containsLower &&
+        containsOneNumber &&
+        containsOnlyNumsAndLowerLetters
+    );
+}
+
+// ============================================================
+
+function auth(str: string): boolean {
+    return /^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$/.test(str);
+}
+
+function authList8(arr: string[]): boolean {
+    return arr.every(auth);
+}
+
+// ============================================================
+function authList9(arr: string[]): boolean {
+    return arr.every(auth2);
+}
+
+function auth2(str: string): boolean {
+    return /^(?=.*\d)(?=.*[a-z])[\da-z]{6,10}$/.test(str);
+}
+
+// ============================================================
+
+function authList10(arr: string[]) {
+    return arr.every((login) => {
+        return (
+            login.length >= 6 &&
+            login.length <= 10 &&
+            login.match(/.*[0-9]+.*/) &&
+            login.match(/.*[a-z]+.*/) &&
+            login.match(/^[a-z0-9]{6,10}$/) &&
+            true
+        );
+    });
+}
+export const authList11 = (arr: string[]): boolean =>
+    arr.every(
+        (name) =>
+            /^[a-z0-9]{6,10}$/.test(name) &&
+            /[a-z]/.test(name) &&
+            /\d/.test(name)
+    );
+
+function authList12(arr: string[]): boolean {
+    return arr.every((v) => /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/.test(v));
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Boxlines
