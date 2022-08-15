@@ -57,13 +57,24 @@ const redistributeWealth = (wealth) => {
     console.log(total);
     const average = total / wealth.length;
     console.log(average);
-    wealth.forEach((el) => {
-        el = average;
-    });
+    for (let i = 0; i < wealth.length; i += 1) {
+        wealth[i] = average;
+    }
     console.log("solution:", wealth);
 };
-let wealthFloat = [3, 2, 2];
-console.log(redistributeWealth(wealthFloat));
+function redistributeWealth2(wealth) {
+    const totalWealth = wealth.reduce((a, b) => a + b);
+    wealth.fill(totalWealth / wealth.length);
+}
+function redistributeWealth3(wealth) {
+    const sum = wealth.reduce((s, v) => s + v, 0);
+    const avg = sum / wealth.length;
+    wealth.fill(avg);
+}
+function redistributeWealth4(wealth) {
+    let totalWealth = wealth.reduce((acc, val) => acc + val, 0);
+    wealth.forEach((citizenWealth, ind) => wealth[ind] = totalWealth / wealth.length);
+}
 const authList = (arr) => {
     for (let i = 0; i < arr.length; i += 1) {
         if (arr[i].length < 6 || arr[i].length > 10)

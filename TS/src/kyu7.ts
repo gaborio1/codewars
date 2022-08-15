@@ -1436,10 +1436,12 @@ describe("solution", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ COMMENT ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Wealth equality, finally!
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ FILL() ❗️❗️❗️ FOR EACH WITH INDEX TO MUTATE ARRAY❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1482,9 +1484,14 @@ const redistributeWealth = (wealth: number[]): void => {
     const average: number = total / wealth.length;
     console.log(average);
 
-    wealth.forEach((el) => {
-        el = average;
-    })
+    // ❗️❗️❗️ FOR EACH WITH INDEX TO MUTATE ARRAY ❗️❗️❗️
+    // wealth.forEach((el) => {
+    //     el = average;
+    // })
+
+    for (let i = 0; i < wealth.length; i += 1) {
+        wealth[i] = average;
+    }
 
     console.log("solution:", wealth);
 }
@@ -1512,13 +1519,34 @@ describe("Example test cases", function(){
 
 */
 
-let wealthFloat = [3, 2, 2];
-console.log(redistributeWealth(wealthFloat));
+// let wealthFloat = [3, 2, 2];
+//  [ 2.3333333333333335, 2.3333333333333335, 2.3333333333333335 ]
+// console.log(redistributeWealth(wealthFloat));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️ FILL() ❗️❗️❗️
+function redistributeWealth2(wealth: number[]): void {
+    const totalWealth = wealth.reduce((a, b) => a + b);
+    wealth.fill(totalWealth / wealth.length)
+}
+
+// ❗️❗️❗️ FILL() ❗️❗️❗️
+function redistributeWealth3(wealth: number[]): void {
+    const sum = wealth.reduce((s, v) => s + v, 0)
+    const avg = sum / wealth.length
+
+    wealth.fill(avg)
+}
+
+// ❗️❗️❗️ FOR EACH WITH INDEX TO MUTATE ARRAY ❗️❗️❗️
+function redistributeWealth4(wealth: number[]): void {
+    let totalWealth: number = wealth.reduce((acc, val) => acc + val, 0);
+    wealth.forEach((citizenWealth, ind) => wealth[ind] = totalWealth / wealth.length);
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ INCLUDE THIS IN REGEX ❗️❗️❗️
