@@ -51,8 +51,19 @@ const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
     return [0, 0];
 }
-function redistributeWealth(wealth) {
-}
+const redistributeWealth = (wealth) => {
+    console.log(wealth);
+    const total = wealth.reduce((acc, curr) => acc + curr);
+    console.log(total);
+    const average = total / wealth.length;
+    console.log(average);
+    wealth.forEach((el) => {
+        el = average;
+    });
+    console.log("solution:", wealth);
+};
+let wealthFloat = [3, 2, 2];
+console.log(redistributeWealth(wealthFloat));
 const authList = (arr) => {
     for (let i = 0; i < arr.length; i += 1) {
         if (arr[i].length < 6 || arr[i].length > 10)
