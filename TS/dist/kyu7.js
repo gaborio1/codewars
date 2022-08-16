@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -17,6 +17,51 @@ function pingPong(startNumber, endNumber) {
 function rotations(dieArray) {
     return 1;
 }
+const state = {
+    modifier: 2,
+};
+const solution11 = (arr, options) => {
+    for (let i = 0; i < arr.length; i += 1) {
+        arr[i] += 2 * state.modifier;
+    }
+    console.log(arr);
+    return arr;
+};
+function solution12(arr, options) {
+    return arr.map((value) => value + 2 * options.modifier);
+}
+const solution13 = (arr, { modifier }) => arr.map((x) => x + modifier * 2);
+const state2 = { modifier: 2 };
+function solution14(arr, options) {
+    let myArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        myArr.push(arr[i] + 2 * options.modifier);
+    }
+    return myArr;
+}
+exports.solution14 = solution14;
+const solution15 = (arr, options) => arr.map((val) => (val += 2 * options.modifier));
+exports.solution15 = solution15;
+function solution16(arr, options) {
+    let newArr = [...arr];
+    for (let i = 0; i < newArr.length; ++i) {
+        newArr[i] += 2 * options.modifier;
+    }
+    return newArr;
+}
+exports.solution16 = solution16;
+function solution17(arr, options) {
+    let other = Object.assign([], arr);
+    for (let i = 0; i < other.length; ++i) {
+        other[i] += 2 * options.modifier;
+    }
+    return other;
+}
+exports.solution17 = solution17;
+function solution18(arr, options) {
+    return arr.map((item) => item + 2 * options.modifier);
+}
+exports.solution18 = solution18;
 const mergeStrings = (first, second) => {
     return "";
 };
@@ -73,7 +118,7 @@ function redistributeWealth3(wealth) {
 }
 function redistributeWealth4(wealth) {
     let totalWealth = wealth.reduce((acc, val) => acc + val, 0);
-    wealth.forEach((citizenWealth, ind) => wealth[ind] = totalWealth / wealth.length);
+    wealth.forEach((citizenWealth, ind) => (wealth[ind] = totalWealth / wealth.length));
 }
 const authList = (arr) => {
     for (let i = 0; i < arr.length; i += 1) {
