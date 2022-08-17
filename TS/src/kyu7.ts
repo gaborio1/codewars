@@ -617,6 +617,8 @@ describe("Solution", function () {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ NOT SOLVED ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: PURE FUNCTIONS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -644,19 +646,19 @@ Modifier = 5
 Should return = 11, 12, 13
 
 */
-const state = {
-    modifier: 2,
-};
+// const state = {
+//     modifier: 2,
+// };
 
-const solution11 = (arr: number[], options: number) => {
-    for (let i = 0; i < arr.length; i += 1) {
-        arr[i] += 2 * state.modifier;
-    }
+// const solution11 = (arr: number[], options: number) => {
+//     for (let i = 0; i < arr.length; i += 1) {
+//         arr[i] += 2 * state.modifier;
+//     }
 
-    console.log(arr);
+//     console.log(arr);
 
-    return arr;
-};
+//     return arr;
+// };
 
 /*
 describe('pure', () => {
@@ -783,7 +785,20 @@ NOTE: The algorithm should always use the longest possible overlap.
 "abaabaab" + "aabaabab" would be "abaabaabab" and not "abaabaabaabab"
 */
 const mergeStrings = (first: string, second: string): string => {
-    // Do your thing
+    let sub1: string = "",
+        sub2: string = "";
+
+    let idx: number = 0;
+
+    while (sub1 === sub2) {
+        sub1 = first.substring(first.length - 1 - idx);
+        sub2 = second.substring(0, idx + 1);
+        console.log("substrings:", sub1, sub2);
+        idx += 1;
+    }
+
+    console.log("substrings:", sub1, sub2);
+
     return "";
 };
 /*
@@ -803,7 +818,7 @@ describe("mergeStrings", function() {
 });
 */
 
-// console.log();
+console.log(mergeStrings("abcde", "cdefgh"));
 // console.log();
 // console.log();
 // console.log();

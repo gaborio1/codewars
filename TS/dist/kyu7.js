@@ -17,16 +17,6 @@ function pingPong(startNumber, endNumber) {
 function rotations(dieArray) {
     return 1;
 }
-const state = {
-    modifier: 2,
-};
-const solution11 = (arr, options) => {
-    for (let i = 0; i < arr.length; i += 1) {
-        arr[i] += 2 * state.modifier;
-    }
-    console.log(arr);
-    return arr;
-};
 function solution12(arr, options) {
     return arr.map((value) => value + 2 * options.modifier);
 }
@@ -63,8 +53,18 @@ function solution18(arr, options) {
 }
 exports.solution18 = solution18;
 const mergeStrings = (first, second) => {
+    let sub1 = "", sub2 = "";
+    let idx = 0;
+    while (sub1 === sub2) {
+        sub1 = first.substring(first.length - 1 - idx);
+        sub2 = second.substring(0, idx + 1);
+        console.log("substrings:", sub1, sub2);
+        idx += 1;
+    }
+    console.log("substrings:", sub1, sub2);
     return "";
 };
+console.log(mergeStrings("abcde", "cdefgh"));
 const comparator = function (a, b) {
     return 0;
 };
