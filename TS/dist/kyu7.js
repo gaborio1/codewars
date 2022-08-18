@@ -55,6 +55,8 @@ exports.solution18 = solution18;
 const mergeStrings = (first, second) => {
     let sub1 = "", sub2 = "";
     let idx = 0;
+    const length = Math.min(first.length, second.length);
+    console.log("length:", length);
     while (sub1 === sub2) {
         sub1 = first.substring(first.length - 1 - idx);
         sub2 = second.substring(0, idx + 1);
