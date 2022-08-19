@@ -765,7 +765,8 @@ export function solution18(arr: number[], options: State) {
     return arr.map((item) => item + 2 * options.modifier);
 }
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// COMMENT, REFACTOR
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Merge overlapping strings
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -788,50 +789,97 @@ const mergeStrings = (first: string, second: string): string => {
     let sub1: string = "",
         sub2: string = "";
 
-    let idx: number = 0;
+    // let idx: number = 0;
 
     const length: number = Math.min(first.length, second.length);
     console.log("length:", length);
 
+    let overlap: string = "";
+
     for (let i = 0; i < length; i += 1) {
-        // console.log();
+
+        sub1 = first.substring(first.length - 1 - i);
+        sub2 = second.substring(0, i + 1);
+        console.log("substrings:", sub1, sub2);
+        if (sub1 === sub2) {
+            console.log("   --match found:", sub1, sub2);
+            overlap = sub1;
+            // break;
+        }
     }
 
-    while (sub1 === sub2) {
-        sub1 = first.substring(first.length - 1 - idx);
-        sub2 = second.substring(0, idx + 1);
-        console.log("substrings:", sub1, sub2);
-        idx += 1;
-    }
+    console.log("   --overlap:", overlap);
 
     console.log("substrings:", sub1, sub2);
 
-    return "";
+    const solution: string = first + second.substring(overlap.length);
+
+    console.log("       --solution:", solution);
+
+    return solution;
 };
 /*
-describe("mergeStrings", function() {
-  it('"Example 1"', () => {
-    const expected = 'abcdefgh'
-    const actual = mergeStrings('abcde', 'cdefgh')
-    assert.equal(actual, expected)
-  })
+console.log(mergeStrings("abaabaab", "aabaabab"));
 
-  it('"Example 2"', () => {
-    const expected = 'abaabab'
-    const actual = mergeStrings('abaab', 'aabab')
-
-    assert.equal(actual, expected)
-  })
-});
+length: 8
+substrings: b a
+substrings: ab aa
+substrings: aab aab
+   --match found: aab aab
+substrings: baab aaba
+substrings: abaab aabaa
+substrings: aabaab aabaab
+   --match found: aabaab aabaab
+substrings: baabaab aabaaba
+substrings: abaabaab aabaabab
+   --overlap: aabaab
+substrings: abaabaab aabaabab
+       --solution: abaabaabab
+abaabaabab
 */
 
-console.log(mergeStrings("abcde", "cdefgh"));
+// console.log(mergeStrings("abcde", "cdefgh"));
+// 'abaabaabab'
+// console.log(mergeStrings("abaabaab", "aabaabab"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+const mergeStrings2 = (first: string, second: string) => (first + ' ' + second).replace(/(.*) \1/, '$1')
+
+const mergeStrings3 = (first: string, second: string): string => {
+    let countOverlap = first.length
+
+    while (first.slice(-countOverlap) !== second.slice(0, countOverlap) && countOverlap > 0) {
+        countOverlap -= 1;
+    }
+
+    return first + second.slice(countOverlap);
+}
+
+
+const mergeStrings4 = (first: string, second: string): string => {
+    for (let i = second.length + 1; i >= 0; i--) {
+        if (first.endsWith(second.slice(0, i))) return first + second.slice(i);
+    }
+    return '';
+}
+
+const mergeStrings5 = (first: string, second: string): string => {
+    let l1 = first.length, l = Math.min(l1, second.length)
+    while (second.substr(0, l) != first.substr(l1 - l)) l--
+    return first + second.substr(l)
+}
+
+const mergeStrings6 = (first: string, second: string): string => {
+    for (let i = 0; i < first.length; i++) {
+        if (second.startsWith(first.slice(i)))
+            return first + second.slice(first.length - i)
+    }
+    return first + second
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: The 12 Days of Christmas
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

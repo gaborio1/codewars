@@ -54,19 +54,52 @@ function solution18(arr, options) {
 exports.solution18 = solution18;
 const mergeStrings = (first, second) => {
     let sub1 = "", sub2 = "";
-    let idx = 0;
     const length = Math.min(first.length, second.length);
     console.log("length:", length);
-    while (sub1 === sub2) {
-        sub1 = first.substring(first.length - 1 - idx);
-        sub2 = second.substring(0, idx + 1);
+    let overlap = "";
+    for (let i = 0; i < length; i += 1) {
+        sub1 = first.substring(first.length - 1 - i);
+        sub2 = second.substring(0, i + 1);
         console.log("substrings:", sub1, sub2);
-        idx += 1;
+        if (sub1 === sub2) {
+            console.log("   --match found:", sub1, sub2);
+            overlap = sub1;
+        }
     }
+    console.log("   --overlap:", overlap);
     console.log("substrings:", sub1, sub2);
-    return "";
+    const solution = first + second.substring(overlap.length);
+    console.log("       --solution:", solution);
+    return solution;
 };
-console.log(mergeStrings("abcde", "cdefgh"));
+const mergeStrings2 = (first, second) => (first + ' ' + second).replace(/(.*) \1/, '$1');
+const mergeStrings3 = (first, second) => {
+    let countOverlap = first.length;
+    while (first.slice(-countOverlap) !== second.slice(0, countOverlap) && countOverlap > 0) {
+        countOverlap -= 1;
+    }
+    return first + second.slice(countOverlap);
+};
+const mergeStrings4 = (first, second) => {
+    for (let i = second.length + 1; i >= 0; i--) {
+        if (first.endsWith(second.slice(0, i)))
+            return first + second.slice(i);
+    }
+    return '';
+};
+const mergeStrings5 = (first, second) => {
+    let l1 = first.length, l = Math.min(l1, second.length);
+    while (second.substr(0, l) != first.substr(l1 - l))
+        l--;
+    return first + second.substr(l);
+};
+const mergeStrings6 = (first, second) => {
+    for (let i = 0; i < first.length; i++) {
+        if (second.startsWith(first.slice(i)))
+            return first + second.slice(first.length - i);
+    }
+    return first + second;
+};
 const comparator = function (a, b) {
     return 0;
 };
