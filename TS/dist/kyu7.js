@@ -53,29 +53,24 @@ function solution18(arr, options) {
 }
 exports.solution18 = solution18;
 const mergeStrings = (first, second) => {
-    let sub1 = "", sub2 = "";
+    let sub1 = "", sub2 = "", overlap = "";
     const length = Math.min(first.length, second.length);
-    console.log("length:", length);
-    let overlap = "";
     for (let i = 0; i < length; i += 1) {
         sub1 = first.substring(first.length - 1 - i);
         sub2 = second.substring(0, i + 1);
-        console.log("substrings:", sub1, sub2);
         if (sub1 === sub2) {
             console.log("   --match found:", sub1, sub2);
             overlap = sub1;
         }
     }
-    console.log("   --overlap:", overlap);
-    console.log("substrings:", sub1, sub2);
     const solution = first + second.substring(overlap.length);
-    console.log("       --solution:", solution);
     return solution;
 };
-const mergeStrings2 = (first, second) => (first + ' ' + second).replace(/(.*) \1/, '$1');
+const mergeStrings2 = (first, second) => (first + " " + second).replace(/(.*) \1/, "$1");
 const mergeStrings3 = (first, second) => {
     let countOverlap = first.length;
-    while (first.slice(-countOverlap) !== second.slice(0, countOverlap) && countOverlap > 0) {
+    while (first.slice(-countOverlap) !== second.slice(0, countOverlap) &&
+        countOverlap > 0) {
         countOverlap -= 1;
     }
     return first + second.slice(countOverlap);
@@ -85,7 +80,7 @@ const mergeStrings4 = (first, second) => {
         if (first.endsWith(second.slice(0, i)))
             return first + second.slice(i);
     }
-    return '';
+    return "";
 };
 const mergeStrings5 = (first, second) => {
     let l1 = first.length, l = Math.min(l1, second.length);
@@ -101,6 +96,20 @@ const mergeStrings6 = (first, second) => {
     return first + second;
 };
 const comparator = function (a, b) {
+    console.log("---a", a, "---b", b);
+    let num1 = 0, num2 = 0;
+    if (a.match(/\d+/g) === null) {
+        console.log("no digits found");
+        num1 = 0;
+    }
+    if (b.match(/\d+/g) === null) {
+        console.log("no digits found");
+        num2 = 0;
+    }
+    console.log(parseInt(a.match(/\d+/g)[0]), parseInt(b.match(/\d+/g)[0]));
+    num1 = parseInt(a.match(/\d+/g)[0]) || 0;
+    num2 = parseInt(b.match(/\d+/g)[0]) || 0;
+    console.log("   numbers:", num1, num2);
     return 0;
 };
 const decrypt = (str) => {
