@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -96,22 +96,200 @@ const mergeStrings6 = (first, second) => {
     return first + second;
 };
 const comparator = function (a, b) {
-    console.log("---a", a, "---b", b);
-    let num1 = 0, num2 = 0;
-    if (a.match(/\d+/g) === null) {
-        console.log("no digits found");
-        num1 = 0;
+    if (a[0] === "a" || b[0] === "O") {
+        return 1;
     }
-    if (b.match(/\d+/g) === null) {
-        console.log("no digits found");
-        num2 = 0;
+    if (a[0] === "O" || b[0] === "a") {
+        return -1;
     }
-    console.log(parseInt(a.match(/\d+/g)[0]), parseInt(b.match(/\d+/g)[0]));
-    num1 = parseInt(a.match(/\d+/g)[0]) || 0;
-    num2 = parseInt(b.match(/\d+/g)[0]) || 0;
-    console.log("   numbers:", num1, num2);
-    return 0;
+    if (Number.parseInt(a) < Number.parseInt(b)) {
+        return 1;
+    }
+    else {
+        return -1;
+    }
 };
+const comparator2 = function (A, Z) {
+    const dic = [
+        "On the 12th day of Christmas my true love gave to me",
+        "12 drummers drumming,",
+        "11 pipers piping,",
+        "10 lords a leaping,",
+        "9 ladies dancing,",
+        "8 maids a milking,",
+        "7 swans a swimming,",
+        "6 geese a laying,",
+        "5 golden rings,",
+        "4 calling birds,",
+        "3 French hens,",
+        "2 turtle doves and",
+        "a partridge in a pear tree.",
+    ];
+    return dic.indexOf(A) - dic.indexOf(Z);
+};
+const comparator3 = function (a, b) {
+    let aa = a.split(" ")[0] === "On"
+        ? 13
+        : a.split(" ")[0] === "a"
+            ? 1
+            : Number(a.split(" ")[0]);
+    let bb = b.split(" ")[0] === "On"
+        ? 13
+        : b.split(" ")[0] === "a"
+            ? 1
+            : Number(b.split(" ")[0]);
+    return bb - aa;
+};
+const comparator4 = function (a, b) {
+    const dic = [
+        "On the 12th day of Christmas my true love gave to me",
+        "12 drummers drumming,",
+        "11 pipers piping,",
+        "10 lords a leaping,",
+        "9 ladies dancing,",
+        "8 maids a milking,",
+        "7 swans a swimming,",
+        "6 geese a laying,",
+        "5 golden rings,",
+        "4 calling birds,",
+        "3 French hens,",
+        "2 turtle doves and",
+        "a partridge in a pear tree.",
+    ];
+    let aa = dic.indexOf(a) - dic.indexOf(b);
+    console.log(aa);
+    return aa;
+};
+const comparator5 = (a, b) => [
+    "On",
+    "12",
+    "11",
+    "10",
+    "9",
+    "8",
+    "7",
+    "6",
+    "5",
+    "4",
+    "3",
+    "2",
+    "a",
+].indexOf(a.split(" ")[0]) -
+    [
+        "On",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "7",
+        "6",
+        "5",
+        "4",
+        "3",
+        "2",
+        "a",
+    ].indexOf(b.split(" ")[0]);
+exports.comparator5 = comparator5;
+const comparator6 = function (a, b) {
+    const aFirstWord = a.split(" ")[0];
+    const bFirstWord = b.split(" ")[0];
+    const aNumeric = aFirstWord === "On"
+        ? Infinity
+        : aFirstWord === "a"
+            ? -Infinity
+            : Number(aFirstWord);
+    const bNumeric = bFirstWord === "On"
+        ? Infinity
+        : bFirstWord === "a"
+            ? -Infinity
+            : Number(bFirstWord);
+    return bNumeric - aNumeric;
+};
+const getLineNumber = (line) => {
+    if (/^O/.test(line)) {
+        return 13;
+    }
+    if (/^a/.test(line)) {
+        return 0;
+    }
+    return +(line.match(/^\d+/) || "")[0];
+};
+const comparator7 = (a, b) => {
+    return getLineNumber(b) - getLineNumber(a);
+};
+exports.comparator7 = comparator7;
+const S = "On1211109 8 7 6 5 4 3 2 a ";
+const comparator8 = function (a, b) {
+    return S.indexOf(a.slice(0, 2)) - S.indexOf(b.slice(0, 2));
+};
+exports.comparator8 = comparator8;
+const comparator9 = function (a, b) {
+    const splittedA = a.split(" ");
+    const splittedB = b.split(" ");
+    if (splittedA[0] === "On" || splittedB[0] === "a")
+        return -1;
+    if (splittedA[0] === "a" || splittedB[0] === "On")
+        return 1;
+    return +splittedB[0] - +splittedA[0];
+};
+const comparator10 = function (a, b) {
+    const order = "On|12|11|10|9|8|7|6|5|4|3|2|1|a".split("|");
+    return order.indexOf(a.split(" ")[0]) - order.indexOf(b.split(" ")[0]);
+};
+const comparator11 = function (a, b) {
+    if (a.startsWith("O")) {
+        return -1;
+    }
+    if (b.startsWith("O")) {
+        return 1;
+    }
+    if (a.startsWith("a")) {
+        return 1;
+    }
+    if (b.startsWith("b")) {
+        return -1;
+    }
+    const aNumber = a.match(/^\d{1,2}/);
+    const bNumber = b.match(/^\d{1,2}/);
+    if (Number(aNumber) > Number(bNumber)) {
+        return -1;
+    }
+    else {
+        return 1;
+    }
+};
+const comparator12 = function (a, b) {
+    let headA = a.split(" ")[0];
+    let headB = b.split(" ")[0];
+    if (headA === "On")
+        return -1;
+    if (headB === "On")
+        return 1;
+    if (headA === "a")
+        return 1;
+    if (headB === "a")
+        return -1;
+    if (Number(headA) > Number(headB))
+        return -1;
+    else
+        return 1;
+};
+const comparator13 = function (a, b) {
+    if (/On/.test(a))
+        return -1;
+    if (/On/.test(b))
+        return 1;
+    if (/pear/.test(a))
+        return 1;
+    if (/pear/.test(b))
+        return -1;
+    let num1 = +a.match(/\d+/)[0], num2 = +b.match(/\d+/)[0];
+    return num2 - num1;
+};
+const SORT = "a 2 3 4 5 6 7 8 9 101112On";
+const comparator14 = (a, b) => SORT.indexOf(b.slice(0, 2)) - SORT.indexOf(a.slice(0, 2));
+exports.comparator14 = comparator14;
 const decrypt = (str) => {
     return str;
 };
