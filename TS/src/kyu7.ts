@@ -897,6 +897,112 @@ const mergeStrings6 = (first: string, second: string): string => {
 // SOURCE: https://www.youtube.com/watch?v=nq34diZvqMo&ab_channel=codeManSjavaScript
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+
+/*
+
+SOURCE: https://non-traditional.dev/modernizing-javascript-code-the-comparator-function
+
+Comparator Functions vs Predicate Functions
+Before we go into the code, we need to go into some terminology. There are generally two ways to write functions that compare things. There is the intuitive way which is to take your inputs and return true or false, like this:
+
+
+COPY
+
+COPY
+function checkIsLessThan(x, y) {
+  return x < y;
+}
+❗️❗️❗️
+These functions are called predicates. Another comparing function will take two values and return a number greater than 0 if the first value is greater than the second, less than 0 if it is less than the second, and return 0 if they are equal. These functions are called comparators. It is common to see it used in the Array.sort method:
+❗️❗️❗️
+
+COPY
+
+COPY
+[5, 1, 3, 8].sort((a, b) => a - b);
+// [1, 3, 5, 8]
+The difficulty is that comparators are not always intuitive to write, especially when what you are comparing are not numbers but instead are objects of users. They are also not generally useful outside of those contexts that need them.
+
+In the book, Functional Javascript, we are given a function called comparator that takes a preditcate function and returns an comparator function that does the same logic. Here is that original code example:
+
+
+COPY
+
+COPY
+function comparator(pred) {
+  return function (x, y) {
+    if (pred(x, y)) return -1;
+    else if (pred(y, x)) return 1;
+    else return 0;
+  };
+}
+
+[5, 1, 2, 8].sort(comparator((a, b) => a < b));
+// [1, 2, 5, 8]
+
+[5, "1", "2", 8].sort(comparator(isString));
+// ["2", "1", 5, 8]
+(Technically, in the book, each of the pred calls are wrapped in a function called truthy, but that function is not really part of this discussion, so I am intentionally leaving that out. I think you can guess what the truthy function does on a high level.)
+
+The above code takes a predicate function, and it will return a function that takes two arguments. It will first pass the arguments to the predicate function in the order it received them. If it returns a true, the function will return -1. Otherwise, it will check the value in the predicate function again, but this time with arguments switched. Once again, if the value is true, the function will return 1. If neither function calls return true, it will return 0.
+
+So let's modernize it. In a previous post, I mention that I have two rules of function styles:
+
+I prefer the traditional syntax for top-level, named functions.
+I prefer the arrow syntax for anonymous functions, with implicit returns if the return is simple
+The other thing that I prefer, is to avoid the else statement in my if-blocks. Given those two things, we can refactor our comparator function like this:
+
+
+COPY
+
+COPY
+function comparator(pred) {
+  return (x, y) => {
+    if (pred(x, y)) return -1;
+    if (pred(y, x)) return 1;
+    return 0;
+  };
+}
+
+[5, 1, 2, 8].sort(comparator((a, b) => a < b));
+// [1, 2, 5, 8]
+
+[5, "1", "2", 8].sort(comparator(isString));
+// ["2", "1", 5, 8]
+Now let's add types. First of all, I think it is worth our time to define a PredicateFunction type and a ComparatorFunction type:
+
+
+COPY
+
+COPY
+type PredicateFunction = (x: unknown, y: unknown) => boolean;
+
+type ComparatorFunction = (x: unknown, y: unknown) => 1 | -1 | 0;
+In the above, we state that both functions take two unknown values and will either return a boolean if it is of a PredicateFunction type or 1 | -1 | 0 if it is of a ComparatorFunction type. One could argue that a ComparatorFunction type only needs to return a number, but I would prefer to be more specific if that is possible.
+
+So now the only thing we need to do is to add that to our function signature, like this:
+
+
+COPY
+
+COPY
+function comparator(pred: PredicateFunction): ComparatorFunction {
+  return (x, y) => {
+    if (pred(x, y)) return -1;
+    if (pred(y, x)) return 1;
+    return 0;
+  };
+}
+
+[5, 1, 2, 8].sort(comparator((a, b) => a < b));
+// [1, 2, 5, 8]
+
+[5, "1", "2", 8].sort(comparator(isString));
+// ["2", "1", 5, 8]
+Luckily, nothing else is needed. All other types can be inferred from these two types added to the function signature. We have a nice type-safe utility function that takes in a predicate function and returns a comparator function.
+*/
+
+
 /*
 Oh No!
 
@@ -1051,14 +1157,14 @@ const comparator3 = function (a: string, b: string): number {
         a.split(" ")[0] === "On"
             ? 13
             : a.split(" ")[0] === "a"
-            ? 1
-            : Number(a.split(" ")[0]);
+                ? 1
+                : Number(a.split(" ")[0]);
     let bb =
         b.split(" ")[0] === "On"
             ? 13
             : b.split(" ")[0] === "a"
-            ? 1
-            : Number(b.split(" ")[0]);
+                ? 1
+                : Number(b.split(" ")[0]);
 
     return bb - aa;
 };
@@ -1126,14 +1232,14 @@ const comparator6 = function (a: string, b: string): number {
         aFirstWord === "On"
             ? Infinity
             : aFirstWord === "a"
-            ? -Infinity
-            : Number(aFirstWord);
+                ? -Infinity
+                : Number(aFirstWord);
     const bNumeric =
         bFirstWord === "On"
             ? Infinity
             : bFirstWord === "a"
-            ? -Infinity
-            : Number(bFirstWord);
+                ? -Infinity
+                : Number(bFirstWord);
 
     return bNumeric - aNumeric;
 };
@@ -1613,7 +1719,7 @@ You are given two empty arrays (truthy and falsy) and you have to fill this arra
 
 
 */
-const truthy = [true, 1, "hello", [], {}, function () {}, Infinity, -Infinity];
+const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 
 /*
@@ -3868,9 +3974,9 @@ const ranking = (people: inputMan[]): outputMan[] => {
         if (idx > 0 && idx < sortedByPoints.length - 1) {
             if (
                 sortedByPoints[idx]["points"] ===
-                    sortedByPoints[idx - 1]["points"] ||
+                sortedByPoints[idx - 1]["points"] ||
                 sortedByPoints[idx]["points"] ===
-                    sortedByPoints[idx + 1]["points"]
+                sortedByPoints[idx + 1]["points"]
             ) {
                 console.log(
                     "equal points:",
@@ -4380,8 +4486,8 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 
 const say2 =
     ($: string) =>
-    (ﬂ: string): string =>
-        `${$} ${ﬂ}`;
+        (ﬂ: string): string =>
+            `${$} ${ﬂ}`;
 
 const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
@@ -6476,8 +6582,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                  sortedArr[sortedArr.length / 2 - 1]) /
-              2;
+                sortedArr[sortedArr.length / 2 - 1]) /
+            2;
 
     return solution;
 };
@@ -6517,8 +6623,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-              .slice(a.length / 2 - 1, a.length / 2 + 1)
-              .reduce((x, y) => x + y, 0) / 2;
+            .slice(a.length / 2 - 1, a.length / 2 + 1)
+            .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -7507,32 +7613,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-                ({
-                    G: "A",
-                    A: "G",
-                    g: "a",
-                    a: "g",
-                    D: "E",
-                    E: "D",
-                    d: "e",
-                    e: "d",
-                    R: "Y",
-                    Y: "R",
-                    r: "y",
-                    y: "r",
-                    P: "O",
-                    O: "P",
-                    p: "o",
-                    o: "p",
-                    L: "U",
-                    U: "L",
-                    l: "u",
-                    u: "l",
-                    K: "I",
-                    I: "K",
-                    k: "i",
-                    i: "k",
-                }[c] || c)
+            ({
+                G: "A",
+                A: "G",
+                g: "a",
+                a: "g",
+                D: "E",
+                E: "D",
+                d: "e",
+                e: "d",
+                R: "Y",
+                Y: "R",
+                r: "y",
+                y: "r",
+                P: "O",
+                O: "P",
+                p: "o",
+                o: "p",
+                L: "U",
+                U: "L",
+                l: "u",
+                u: "l",
+                K: "I",
+                I: "K",
+                k: "i",
+                i: "k",
+            }[c] || c)
         )
         .join("");
 }
@@ -8830,7 +8936,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void {}
+    strike(enemy: Warrior, swings: number): void { }
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -10187,16 +10293,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-              .join("\n");
+            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+            .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-              .join("\n");
+            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+            .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -11032,8 +11138,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-            ? "0" + String(date.getMonth() + 1)
-            : String(date.getMonth() + 1)) +
+                ? "0" + String(date.getMonth() + 1)
+                : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -11111,7 +11217,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -11823,10 +11929,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-        ? "subtraction"
-        : a * b === res
-        ? "multiplication"
-        : "division";
+            ? "subtraction"
+            : a * b === res
+                ? "multiplication"
+                : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -11936,8 +12042,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-        ? fusc($ / 2)
-        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+            ? fusc($ / 2)
+            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -13048,9 +13154,8 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
-        s < 10 ? "0" + s : s
-    }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
+        }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -13663,10 +13768,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -14119,7 +14224,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -14612,17 +14717,17 @@ function detectCardType(number: string) {
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -14759,13 +14864,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -17367,10 +17472,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -18483,7 +18588,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -19559,8 +19664,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -19710,10 +19815,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -20710,11 +20815,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -21509,9 +21614,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -21793,8 +21898,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
