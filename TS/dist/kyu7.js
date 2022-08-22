@@ -729,8 +729,58 @@ function countVegetables(s) {
 function getNewNotes(salary, bills) {
     return 0;
 }
-function equalize(array) {
-    return ["hello"];
+const equalize = (array) => {
+    const first = array[0];
+    let solution = [];
+    array.forEach((num, idx) => {
+        let currVal = array[idx] - first;
+        console.log(currVal);
+        const currSigned = currVal > -1 ? "+" + currVal : currVal.toString();
+        solution.push(currSigned);
+    });
+    return solution;
+};
+function equalize2(array) {
+    let result = array.map((element) => {
+        let delta = element - array[0];
+        return (delta >= 0 ? "+" : "") + delta;
+    });
+    return result;
+}
+function equalize3(array) {
+    return array
+        .map((a) => a - array[0])
+        .map((a) => (a < 0 ? "" + a : "+" + a));
+}
+function equalize4(array) {
+    return array.map((x) => (x - array[0] >= 0 ? "+" : "") + `${x - array[0]}`);
+}
+function equalize5(array) {
+    return array
+        .map((it) => it - array[0])
+        .map((it) => (it >= 0 ? `+${it}` : `${it}`));
+}
+function equalize6(array) {
+    return array.map((num) => {
+        const diff = num - array[0];
+        if (diff >= 0)
+            return `+${diff}`;
+        return String(diff);
+    });
+}
+function equalize7(array) {
+    let base = array[0];
+    let output = [];
+    for (let n of array) {
+        let sub = n - base;
+        if (sub >= 0) {
+            output.push(`+${sub}`);
+        }
+        else {
+            output.push(`${sub}`);
+        }
+    }
+    return output;
 }
 const sixBitNumber = (str) => {
     if ((str.startsWith("0") && str.length > 1) || !str.length)
