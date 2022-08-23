@@ -291,8 +291,20 @@ const SORT = "a 2 3 4 5 6 7 8 9 101112On";
 const comparator14 = (a, b) => SORT.indexOf(b.slice(0, 2)) - SORT.indexOf(a.slice(0, 2));
 exports.comparator14 = comparator14;
 const decrypt = (str) => {
-    return str;
+    console.log(str);
+    let solution = "";
+    const reversed = str.split("''").reverse();
+    console.log("   ---reversed:", reversed);
+    for (let i = 0; i < reversed.length; i += 1) {
+        console.log(reversed[i]);
+        console.log(reversed[i].replace(/['"]/g, ""));
+        console.log(String.fromCharCode(parseInt(reversed[i].replace(/['"]/g, ""))));
+        solution += String.fromCharCode(parseInt(reversed[i].replace(/['"]/g, "")));
+    }
+    console.log(solution);
+    return solution;
 };
+console.log(decrypt("30 71"));
 function mapVector(vector, circle1, circle2) {
     return [0, 0];
 }

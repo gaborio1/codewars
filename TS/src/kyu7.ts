@@ -1361,7 +1361,28 @@ Your task is to write function decrypt to get source messages from encrypted str
 
 */
 const decrypt = (str: string): string => {
-    return str;
+    console.log(str);
+
+    let solution: string = "";
+
+    const reversed: string[] = str.split("''").reverse();
+    console.log("   ---reversed:", reversed);
+
+    for (let i = 0; i < reversed.length; i += 1) {
+        console.log(reversed[i]);
+        console.log(reversed[i].replace(/['"]/g, ""));
+        console.log(
+            String.fromCharCode(parseInt(reversed[i].replace(/['"]/g, "")))
+        );
+
+        solution += String.fromCharCode(
+            parseInt(reversed[i].replace(/['"]/g, ""))
+        );
+    }
+
+    console.log(solution);
+
+    return solution;
 };
 
 /*
@@ -1375,7 +1396,10 @@ describe('decrypt', () => {
 
 */
 
-// console.log();
+//  "Alice"
+// console.log(decrypt("'101''99''105''108''65'"));
+// "17 03"
+console.log(decrypt("30 71"));
 // console.log();
 // console.log();
 // console.log();
