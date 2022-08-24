@@ -304,7 +304,7 @@ const decrypt = (str) => {
     console.log(solution);
     return solution;
 };
-console.log(decrypt("30 71"));
+console.log(decrypt("4'101''99''105''108''65' '105''72'9"));
 function mapVector(vector, circle1, circle2) {
     return [0, 0];
 }
@@ -324,7 +324,6 @@ const startSmoking = (bars, boxes) => {
     console.log("current:", current);
     return 1000;
 };
-console.log(startSmoking(0, 1));
 const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 function sensorAnalysis(sensorData) {
@@ -1258,7 +1257,6 @@ const lastChair = (num) => {
     console.log(chairsArr);
     return 1;
 };
-console.log(lastChair(10));
 const stackHeight2d = (layers) => {
     return !layers ? 0 : ((layers - 1) * Math.sqrt(3)) / 2 + 1;
 };
