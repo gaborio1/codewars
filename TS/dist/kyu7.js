@@ -291,20 +291,87 @@ const SORT = "a 2 3 4 5 6 7 8 9 101112On";
 const comparator14 = (a, b) => SORT.indexOf(b.slice(0, 2)) - SORT.indexOf(a.slice(0, 2));
 exports.comparator14 = comparator14;
 const decrypt = (str) => {
-    console.log(str);
     let solution = "";
-    const reversed = str.split("''").reverse();
-    console.log("   ---reversed:", reversed);
-    for (let i = 0; i < reversed.length; i += 1) {
-        console.log(reversed[i]);
-        console.log(reversed[i].replace(/['"]/g, ""));
-        console.log(String.fromCharCode(parseInt(reversed[i].replace(/['"]/g, ""))));
-        solution += String.fromCharCode(parseInt(reversed[i].replace(/['"]/g, "")));
+    if (!str.includes("'"))
+        return str.split("").reverse().join("");
+    const dataArr = str.match(/(('([^']*)')|\s|\d+)/g);
+    const revDataArr = dataArr.reverse();
+    console.log(revDataArr);
+    for (let i = 0; i < revDataArr.length; i += 1) {
+        console.log("value and type:", revDataArr[i], typeof revDataArr[i]);
+        let parsedEl = "";
+        if (revDataArr[i] === " ") {
+            parsedEl = " ";
+        }
+        else if (!revDataArr[i].includes("'")) {
+            parsedEl = revDataArr[i].split("").reverse().join("");
+        }
+        else {
+            parsedEl = String.fromCharCode(parseInt(revDataArr[i].replace(/['"]/g, "")));
+        }
+        solution += parsedEl;
     }
-    console.log(solution);
+    console.log("       ---solution:", solution);
     return solution;
 };
-console.log(decrypt("4'101''99''105''108''65' '105''72'9"));
+const decrypt2 = (str) => {
+    return [...str.replace(/'(\d+)'/g, (_, c) => String.fromCharCode(c))]
+        .reverse()
+        .join("");
+};
+function decrypt3(str) {
+    return str
+        .replace(/'\d+'/g, (x) => String.fromCharCode(+x.slice(1, -1)))
+        .split("")
+        .reverse()
+        .join("");
+}
+const decrypt4 = (str) => {
+    const resultArr = [];
+    while (str.length > 0) {
+        if (/^'/.test(str)) {
+            const numberWithQuotes = str.match(/'\d+'/)[0];
+            resultArr.push(parseInt(numberWithQuotes.slice(1)));
+            str = str.slice(numberWithQuotes.length);
+        }
+        else {
+            resultArr.push(str[0]);
+            str = str.slice(1);
+        }
+    }
+    return resultArr
+        .reverse()
+        .map((el) => {
+        return typeof el === "number" ? String.fromCharCode(el) : el;
+    })
+        .join("");
+};
+function decrypt5(str) {
+    return str
+        .replace(/'\d+'/g, (m) => String.fromCharCode(Number(/\d+/.exec(m)[0])))
+        .split("")
+        .reverse()
+        .join("");
+}
+const decrypt6 = (str) => {
+    let buf = [];
+    let ix = 0;
+    while (ix < str.length) {
+        if (str[ix] === "'") {
+            let ix2 = str.indexOf("'", ix + 1);
+            buf.push(String.fromCharCode(Number(str.substring(ix + 1, ix2))));
+            ix = ix2 + 1;
+        }
+        else {
+            buf.push(str[ix++]);
+        }
+    }
+    return buf.reverse().join("");
+};
+const decrypt7 = (str) => {
+    const replaced = str.replace(/'(\d+)'/g, (match, p1) => String.fromCharCode(p1));
+    return replaced.split("").reverse().join("");
+};
 function mapVector(vector, circle1, circle2) {
     return [0, 0];
 }
