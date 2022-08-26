@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle = exports.Square = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -14,6 +14,31 @@ function join(tokens, glue) {
 function pingPong(startNumber, endNumber) {
     return "";
 }
+class Square {
+    constructor(figure) {
+        this.figure = figure;
+    }
+    area() {
+        return Math.pow(this.figure, 2);
+    }
+    perimeter() {
+        return this.figure * 4;
+    }
+}
+exports.Square = Square;
+class Circle {
+    constructor(figure) {
+        this.figure = figure;
+    }
+    area() {
+        console.log("area:", this.figure * Math.PI);
+        return Math.pow(this.figure, 2) * Math.PI;
+    }
+    perimeter() {
+        return this.figure * 2 * Math.PI;
+    }
+}
+exports.Circle = Circle;
 function rotations(dieArray) {
     return 1;
 }
