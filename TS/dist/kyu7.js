@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle = exports.Square = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube = exports.Cuboid = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -14,6 +14,25 @@ function join(tokens, glue) {
 function pingPong(startNumber, endNumber) {
     return "";
 }
+class Cuboid {
+    constructor(l, w, h) {
+        this.length = l;
+        this.width = w;
+        this.height = h;
+    }
+    get surfaceArea() {
+        return (this.length * this.width * 2 +
+            this.length * this.height * 2 +
+            this.width * this.height * 2);
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid = Cuboid;
+class Cube extends Cuboid {
+}
+exports.Cube = Cube;
 class Square {
     constructor(figure) {
         this.figure = figure;
@@ -39,6 +58,151 @@ class Circle {
     }
 }
 exports.Circle = Circle;
+class GeometricShape {
+    constructor(area, perimeter) {
+        this._area = area;
+        this._perimeter = perimeter;
+    }
+    area() {
+        return this._area;
+    }
+    perimeter() {
+        return this._perimeter;
+    }
+}
+exports.GeometricShape = GeometricShape;
+class Square2 extends GeometricShape {
+    constructor(sideLength) {
+        super(sideLength * sideLength, 4.0 * sideLength);
+    }
+}
+exports.Square2 = Square2;
+class Circle2 extends GeometricShape {
+    constructor(radius) {
+        super(radius * radius * Math.PI, 2.0 * Math.PI * radius);
+    }
+}
+exports.Circle2 = Circle2;
+class Square3 {
+    constructor(length) {
+        this.length = length;
+    }
+    area() {
+        return this.length ** 2;
+    }
+    perimeter() {
+        return this.length * 4;
+    }
+}
+exports.Square3 = Square3;
+class Circle3 {
+    constructor(radius) {
+        this.radius = radius;
+        this.area = () => {
+            return this.radius ** 2 * Math.PI;
+        };
+        this.perimeter = () => {
+            return this.radius * 2 * Math.PI;
+        };
+    }
+}
+exports.Circle3 = Circle3;
+class Square5 {
+    constructor(side) {
+        this.side = side;
+    }
+    area() {
+        return this.side * this.side;
+    }
+    perimeter() {
+        return this.side * 4;
+    }
+}
+exports.Square5 = Square5;
+class Circle5 {
+    constructor(radius) {
+        this.radius = radius;
+    }
+    area() {
+        return Math.PI * (this.radius * this.radius);
+    }
+    perimeter() {
+        return 2 * Math.PI * this.radius;
+    }
+}
+exports.Circle5 = Circle5;
+class Square6 {
+    constructor(value) {
+        this.value = value;
+    }
+    area() {
+        return this.value ** 2;
+    }
+    perimeter() {
+        return this.value * 4;
+    }
+}
+exports.Square6 = Square6;
+class Circle6 {
+    constructor(value) {
+        this.value = value;
+    }
+    area() {
+        return this.value ** 2 * Math.PI;
+    }
+    perimeter() {
+        return this.value * 2 * Math.PI;
+    }
+}
+exports.Circle6 = Circle6;
+class Square7 {
+    constructor(value) {
+        this._value = value;
+    }
+    area() {
+        return this._value ** 2;
+    }
+    perimeter() {
+        return this._value * 4;
+    }
+}
+exports.Square7 = Square7;
+class Circle7 {
+    constructor(value) {
+        this._radius = value;
+    }
+    area() {
+        return this._radius ** 2 * Math.PI;
+    }
+    perimeter() {
+        return this._radius * 2 * Math.PI;
+    }
+}
+exports.Circle7 = Circle7;
+class Square8 {
+    constructor(s) {
+        this.s = s;
+    }
+    area() {
+        return this.s ** 2;
+    }
+    perimeter() {
+        return this.s * 4;
+    }
+}
+exports.Square8 = Square8;
+class Circle8 {
+    constructor(r) {
+        this.r = r;
+    }
+    area() {
+        return this.r ** 2 * Math.PI;
+    }
+    perimeter() {
+        return this.r * 2 * Math.PI;
+    }
+}
+exports.Circle8 = Circle8;
 function rotations(dieArray) {
     return 1;
 }
