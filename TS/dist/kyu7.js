@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube = exports.Cuboid = void 0;
+exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -33,6 +34,131 @@ exports.Cuboid = Cuboid;
 class Cube extends Cuboid {
 }
 exports.Cube = Cube;
+class Cuboid2 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return 2 * (this.length * this.width + this.width * this.height + this.height * this.length);
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid2 = Cuboid2;
+class Cube2 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+    }
+}
+exports.Cube2 = Cube2;
+class Cuboid3 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return 2 * (this.length * this.width + this.length * this.height + this.height * this.width);
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid3 = Cuboid3;
+class Cube3 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+    }
+}
+exports.Cube3 = Cube3;
+class Cuboid4 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return 2 * this.length * this.height + 2 * this.width * this.height + 2 * this.length * this.width;
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid4 = Cuboid4;
+class Cube4 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+        this.length = length;
+    }
+}
+exports.Cube4 = Cube4;
+class Cuboid5 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return (this.length * this.width + this.length * this.height + this.height * this.width) * 2;
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid5 = Cuboid5;
+class Cube5 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+    }
+}
+exports.Cube5 = Cube5;
+class Cuboid6 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return (2 * (this.height * this.length) +
+            2 * (this.length * this.width) +
+            2 * (this.height * this.width));
+    }
+    get volume() {
+        return this.length * this.width * this.height;
+    }
+}
+exports.Cuboid6 = Cuboid6;
+class Cube6 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+        this.length = length;
+    }
+}
+exports.Cube6 = Cube6;
+class Cuboid7 {
+    constructor(length, width, height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    get surfaceArea() {
+        return 2 * this.width * this.height +
+            2 * this.height * this.length +
+            2 * this.width * this.length;
+    }
+    get volume() {
+        return this.width * this.length * this.height;
+    }
+}
+class Cube7 extends Cuboid {
+    constructor(length) {
+        super(length, length, length);
+    }
+}
+exports.Cube7 = Cube7;
 class Square {
     constructor(figure) {
         this.figure = figure;
