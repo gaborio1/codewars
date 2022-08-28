@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = void 0;
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = void 0;
+exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -15,6 +15,120 @@ function join(tokens, glue) {
 function pingPong(startNumber, endNumber) {
     return "";
 }
+class Animal {
+    constructor(name, age, legs, species, status) {
+        this.name = name;
+        this.age = age;
+        this.legs = legs;
+        this.species = species;
+        this.status = status;
+    }
+    introduce() {
+        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+exports.Animal = Animal;
+class Shark extends Animal {
+    constructor(name, age, status) {
+        super(name, age, 0, "shark", status);
+    }
+}
+exports.Shark = Shark;
+class Cat extends Animal {
+    constructor(name, age, status) {
+        super(name, age, 4, "cat", status);
+    }
+    introduce() {
+        return `${super.introduce()}  Meow meow!`;
+    }
+}
+exports.Cat = Cat;
+class Dog extends Animal {
+    constructor(name, age, status, master) {
+        super(name, age, 4, "dog", status);
+        this.master = master;
+    }
+    greetMaster() {
+        return `Hello ${this.master}`;
+    }
+}
+exports.Dog = Dog;
+class Animal2 {
+    constructor(name, age, legs, species, status) {
+        this.name = name;
+        this.age = age;
+        this.legs = legs;
+        this.species = species;
+        this.status = status;
+    }
+    introduce() {
+        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+exports.Animal2 = Animal2;
+class Shark2 extends Animal2 {
+    constructor(name, age, status) {
+        super(name, age, 0, "shark", status);
+    }
+}
+exports.Shark2 = Shark2;
+class Cat2 extends Animal2 {
+    constructor(name, age, status) {
+        super(name, age, 4, "cat", status);
+    }
+    introduce() {
+        return `${super.introduce()}  Meow meow!`;
+    }
+}
+exports.Cat2 = Cat2;
+class Dog2 extends Animal2 {
+    constructor(name, age, status, master) {
+        super(name, age, 4, "dog", status);
+        this.master = master;
+    }
+    greetMaster() {
+        return `Hello ${this.master}`;
+    }
+}
+exports.Dog2 = Dog2;
+class Animal3 {
+    constructor(name, age, legs, species, status) {
+        this.name = name;
+        this.age = age;
+        this.legs = legs;
+        this.species = species;
+        this.status = status;
+    }
+    introduce() {
+        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+exports.Animal3 = Animal3;
+class Shark3 extends Animal3 {
+    constructor(name, age, status) {
+        super(name, age, 0, "shark", status);
+    }
+}
+exports.Shark3 = Shark3;
+class Cat3 extends Animal3 {
+    constructor(name, age, status) {
+        super(name, age, 4, "cat", status);
+    }
+    introduce() {
+        return `${super.introduce()}  Meow meow!`;
+    }
+}
+exports.Cat3 = Cat3;
+class Dog3 extends Animal3 {
+    constructor(name, age, status, master) {
+        super(name, age, 4, "dog", status);
+        this.master = master;
+    }
+    greetMaster() {
+        return `Hello ${this.master}`;
+    }
+}
+exports.Dog3 = Dog3;
 class Cuboid {
     constructor(l, w, h) {
         this.length = l;
@@ -41,7 +155,10 @@ class Cuboid2 {
         this.height = height;
     }
     get surfaceArea() {
-        return 2 * (this.length * this.width + this.width * this.height + this.height * this.length);
+        return (2 *
+            (this.length * this.width +
+                this.width * this.height +
+                this.height * this.length));
     }
     get volume() {
         return this.length * this.width * this.height;
@@ -61,7 +178,10 @@ class Cuboid3 {
         this.height = height;
     }
     get surfaceArea() {
-        return 2 * (this.length * this.width + this.length * this.height + this.height * this.width);
+        return (2 *
+            (this.length * this.width +
+                this.length * this.height +
+                this.height * this.width));
     }
     get volume() {
         return this.length * this.width * this.height;
@@ -81,7 +201,9 @@ class Cuboid4 {
         this.height = height;
     }
     get surfaceArea() {
-        return 2 * this.length * this.height + 2 * this.width * this.height + 2 * this.length * this.width;
+        return (2 * this.length * this.height +
+            2 * this.width * this.height +
+            2 * this.length * this.width);
     }
     get volume() {
         return this.length * this.width * this.height;
@@ -102,7 +224,10 @@ class Cuboid5 {
         this.height = height;
     }
     get surfaceArea() {
-        return (this.length * this.width + this.length * this.height + this.height * this.width) * 2;
+        return ((this.length * this.width +
+            this.length * this.height +
+            this.height * this.width) *
+            2);
     }
     get volume() {
         return this.length * this.width * this.height;
@@ -145,9 +270,9 @@ class Cuboid7 {
         this.height = height;
     }
     get surfaceArea() {
-        return 2 * this.width * this.height +
+        return (2 * this.width * this.height +
             2 * this.height * this.length +
-            2 * this.width * this.length;
+            2 * this.width * this.length);
     }
     get volume() {
         return this.width * this.length * this.height;
