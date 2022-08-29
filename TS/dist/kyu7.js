@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = void 0;
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = void 0;
+exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = exports.Cube13 = exports.Cube12 = exports.Cube11 = exports.Cube10 = exports.Cube9 = exports.Cube8 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -15,6 +15,106 @@ function join(tokens, glue) {
 function pingPong(startNumber, endNumber) {
     return "";
 }
+class Cube8 {
+    constructor(length) {
+        this.length = length;
+    }
+    get surfaceArea() {
+        return 6 * Math.pow(this.length, 2);
+    }
+    set surfaceArea(newSurfaceArea) {
+        this.length = Math.sqrt(newSurfaceArea / 6);
+    }
+    get volume() {
+        return Math.pow(this.length, 3);
+    }
+    set volume(newVolume) {
+        this.length = Math.round(Math.pow(newVolume, 1 / 3));
+    }
+}
+exports.Cube8 = Cube8;
+class Cube9 {
+    constructor(length) {
+        this.length = length;
+    }
+    get volume() { return this.length ** 3; }
+    get surfaceArea() { return 6 * this.length ** 2; }
+    set volume(v) { this.length = v ** (1 / 3); }
+    set surfaceArea(s) { this.length = (s / 6) ** .5; }
+}
+exports.Cube9 = Cube9;
+class Cube10 {
+    constructor(length) {
+        this.length = length;
+    }
+    get surfaceArea() {
+        return this.length ** 2 * 6;
+    }
+    get volume() {
+        return this.length ** 3;
+    }
+    set surfaceArea(ﬂ) {
+        this.length = (ﬂ / 6) ** (1 / 2);
+    }
+    set volume($) {
+        this.length = $ ** (1 / 3);
+    }
+}
+exports.Cube10 = Cube10;
+class Cube11 {
+    constructor(length) {
+        this.len = length;
+    }
+    get length() {
+        return this.len;
+    }
+    set length(length) {
+        this.len = length;
+    }
+    get surfaceArea() {
+        return 6 * this.length * this.length;
+    }
+    set surfaceArea(area) {
+        this.len = Math.sqrt(area / 6);
+    }
+    get volume() {
+        return this.length * this.length * this.length;
+    }
+    set volume(v) {
+        this.len = Math.cbrt(v);
+    }
+}
+exports.Cube11 = Cube11;
+class Cube12 {
+    constructor(_length) {
+        this._length = _length;
+    }
+    get length() { return this._length; }
+    set length(newLength) { this._length = newLength; }
+    get surfaceArea() { return this._length * this._length * 6; }
+    set surfaceArea(newSurfaceArea) { this._length = Math.sqrt(newSurfaceArea / 6); }
+    get volume() { return this._length * this._length * this._length; }
+    set volume(newVolume) { this._length = Math.pow(newVolume, 1.0 / 3.0); }
+}
+exports.Cube12 = Cube12;
+class Cube13 {
+    constructor(length) {
+        this.length = length;
+    }
+    get surfaceArea() {
+        return this.length ** 2 * 6;
+    }
+    set surfaceArea(n) {
+        this.length = Math.sqrt(n / 6);
+    }
+    get volume() {
+        return this.length ** 3;
+    }
+    set volume(n) {
+        this.length = Math.cbrt(n);
+    }
+}
+exports.Cube13 = Cube13;
 class Animal {
     constructor(name, age, legs, species, status) {
         this.name = name;
