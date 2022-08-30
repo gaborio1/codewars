@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = exports.Cube13 = exports.Cube12 = exports.Cube11 = exports.Cube10 = exports.Cube9 = exports.Cube8 = void 0;
-exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = void 0;
+exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = exports.Cube13 = exports.Cube12 = exports.Cube11 = exports.Cube10 = exports.Cube9 = exports.Cube8 = exports.Monkey6 = exports.Parrot6 = exports.Boa6 = exports.Animal10 = exports.Monkey5 = exports.Parrot5 = exports.Boa5 = exports.Animal9 = exports.Monkey4 = exports.Parrot4 = exports.Boa4 = exports.Animal7 = exports.Monkey3 = exports.Parrot3 = exports.Boa3 = exports.Animal6 = exports.Monkey2 = exports.Parrot2 = exports.Boa2 = exports.Animal5 = exports.Monkey = exports.Parrot = exports.Boa = exports.Animal4 = void 0;
+exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -15,6 +16,198 @@ function join(tokens, glue) {
 function pingPong(startNumber, endNumber) {
     return "";
 }
+class Animal4 {
+    constructor(value) {
+        this.value = value;
+    }
+    convertTo(someone) {
+        return this.value / someone.value;
+    }
+}
+exports.Animal4 = Animal4;
+class Boa extends Animal4 {
+    constructor() {
+        super(38);
+    }
+}
+exports.Boa = Boa;
+class Parrot extends Animal4 {
+    constructor() {
+        super(1);
+    }
+}
+exports.Parrot = Parrot;
+class Monkey extends Animal4 {
+    constructor() {
+        super(38 / 5);
+    }
+}
+exports.Monkey = Monkey;
+class Animal5 {
+    constructor(value) {
+        this.value = value;
+        this.value = value;
+    }
+    convertTo(someone) {
+        return someone.value / this.value;
+    }
+}
+exports.Animal5 = Animal5;
+class Boa2 extends Animal5 {
+    constructor() {
+        super(1);
+    }
+}
+exports.Boa2 = Boa2;
+class Parrot2 extends Animal5 {
+    constructor() {
+        super(38);
+    }
+}
+exports.Parrot2 = Parrot2;
+class Monkey2 extends Animal5 {
+    constructor() {
+        super(5);
+    }
+}
+exports.Monkey2 = Monkey2;
+class Animal6 {
+    constructor() { }
+    convertTo(someone) {
+        return this.value / someone.value;
+    }
+}
+exports.Animal6 = Animal6;
+class Boa3 extends Animal6 {
+    constructor() {
+        super(...arguments);
+        this.value = 38;
+    }
+}
+exports.Boa3 = Boa3;
+class Parrot3 extends Animal6 {
+    constructor() {
+        super(...arguments);
+        this.value = 1;
+    }
+}
+exports.Parrot3 = Parrot3;
+class Monkey3 extends Animal6 {
+    constructor() {
+        super(...arguments);
+        this.value = 38 / 5;
+    }
+}
+exports.Monkey3 = Monkey3;
+class Animal7 {
+    constructor(value) {
+        this.value = value;
+    }
+    convertTo(someone) {
+        return this.value / someone.value;
+    }
+}
+exports.Animal7 = Animal7;
+class Boa4 extends Animal7 {
+    constructor() {
+        super(38.0);
+    }
+}
+exports.Boa4 = Boa4;
+class Parrot4 extends Animal7 {
+    constructor() {
+        super(1.0);
+    }
+}
+exports.Parrot4 = Parrot4;
+class Monkey4 extends Animal7 {
+    constructor() {
+        super(7.6);
+    }
+}
+exports.Monkey4 = Monkey4;
+class Animal9 {
+    constructor(value) {
+        this.value = value;
+    }
+    convertTo(someone) {
+        return this.value / someone.value;
+    }
+}
+exports.Animal9 = Animal9;
+class Boa5 extends Animal9 {
+    constructor(value = 38.0) {
+        super(value);
+        this.value = value;
+    }
+}
+exports.Boa5 = Boa5;
+class Parrot5 extends Animal9 {
+    constructor(value = 1.0) {
+        super(value);
+        this.value = value;
+    }
+}
+exports.Parrot5 = Parrot5;
+class Monkey5 extends Animal9 {
+    constructor(value = 7.6) {
+        super(value);
+        this.value = value;
+    }
+}
+exports.Monkey5 = Monkey5;
+class Animal10 {
+    constructor(value) {
+        this.value = value;
+        this.value = value;
+    }
+}
+exports.Animal10 = Animal10;
+class Boa6 extends Animal10 {
+    constructor() {
+        super(38);
+    }
+    convertTo(someone) {
+        if (someone instanceof Boa6) {
+            return 1;
+        }
+        else if (someone instanceof Monkey) {
+            return 5;
+        }
+        return this.value;
+    }
+}
+exports.Boa6 = Boa6;
+class Parrot6 extends Animal10 {
+    constructor() {
+        super(1);
+    }
+    convertTo(someone) {
+        if (someone instanceof Monkey6) {
+            return 5 / 38;
+        }
+        else if (someone instanceof Boa6) {
+            return 1 / 38;
+        }
+        return this.value;
+    }
+}
+exports.Parrot6 = Parrot6;
+class Monkey6 extends Animal10 {
+    constructor() {
+        super(38 / 5);
+    }
+    convertTo(someone) {
+        if (someone instanceof Monkey6) {
+            return 1;
+        }
+        else if (someone instanceof Boa6) {
+            return 1 / 5;
+        }
+        return this.value;
+    }
+}
+exports.Monkey6 = Monkey6;
 class Cube8 {
     constructor(length) {
         this.length = length;
@@ -37,10 +230,18 @@ class Cube9 {
     constructor(length) {
         this.length = length;
     }
-    get volume() { return this.length ** 3; }
-    get surfaceArea() { return 6 * this.length ** 2; }
-    set volume(v) { this.length = v ** (1 / 3); }
-    set surfaceArea(s) { this.length = (s / 6) ** .5; }
+    get volume() {
+        return this.length ** 3;
+    }
+    get surfaceArea() {
+        return 6 * this.length ** 2;
+    }
+    set volume(v) {
+        this.length = v ** (1 / 3);
+    }
+    set surfaceArea(s) {
+        this.length = (s / 6) ** 0.5;
+    }
 }
 exports.Cube9 = Cube9;
 class Cube10 {
@@ -89,12 +290,24 @@ class Cube12 {
     constructor(_length) {
         this._length = _length;
     }
-    get length() { return this._length; }
-    set length(newLength) { this._length = newLength; }
-    get surfaceArea() { return this._length * this._length * 6; }
-    set surfaceArea(newSurfaceArea) { this._length = Math.sqrt(newSurfaceArea / 6); }
-    get volume() { return this._length * this._length * this._length; }
-    set volume(newVolume) { this._length = Math.pow(newVolume, 1.0 / 3.0); }
+    get length() {
+        return this._length;
+    }
+    set length(newLength) {
+        this._length = newLength;
+    }
+    get surfaceArea() {
+        return this._length * this._length * 6;
+    }
+    set surfaceArea(newSurfaceArea) {
+        this._length = Math.sqrt(newSurfaceArea / 6);
+    }
+    get volume() {
+        return this._length * this._length * this._length;
+    }
+    set volume(newVolume) {
+        this._length = Math.pow(newVolume, 1.0 / 3.0);
+    }
 }
 exports.Cube12 = Cube12;
 class Cube13 {
