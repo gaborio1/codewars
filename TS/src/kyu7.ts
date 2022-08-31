@@ -105,10 +105,10 @@ describe('Person', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Learning TypeScript. Advanced Types. Union Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: TERNARY OPERATOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -161,25 +161,26 @@ P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" colle
 */
 
 const join = (tokens: string | string[], glue?: string): string => {
-    console.log("tokens:", tokens);
+    // console.log("tokens:", tokens);
+
+    let solution: string | string[] = "";
+
+    // IF GLUE
     if (glue) {
         console.log("glue:", glue);
 
         if (typeof tokens === "string") {
-            return tokens + glue;
+            solution = tokens + glue;
         } else {
-            console.log("array");
+            // console.log("array");
+            solution = tokens.join(glue);
         }
-    } else {
-        console.log("no glue");
     }
 
-    // if (typeof tokens === "string") return tokens;
-    // else {
-    //     console.log("array input");
-    // }
+    // IF NO GLUE
+    if (typeof (tokens) === "string") solution = tokens;
+    return solution;
 
-    return "-----";
 };
 
 /*
@@ -197,13 +198,53 @@ describe('join', () => {
 
 // console.log(join(["hello", "world"], "-"));
 // console.log(join(["hello", "world"]));
-console.log(join("hello"));
+// console.log(join("hello"));
 // console.log(join("hello", "-"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function join2($: string | string[], ﬂ?: string): string {
+    return typeof $ === "string" ? $ : $.join(ﬂ || '');
+}
+
+function join3(tokens: string | string[], glue?: string): string {
+    return typeof tokens === "string" ? tokens : tokens.join(glue || "");
+}
+
+function join4(tokens: string | string[], glue?: string): string {
+    return typeof tokens === 'string'
+        ? tokens
+        : tokens.join(glue);
+}
+
+function join5(tokens: string | string[], glue?: string): string {
+    if (typeof tokens === 'string') return tokens;
+    return tokens.join(glue)
+}
+
+function join6(tokens: string | Array<string>, glue?: string): string {
+    if (typeof (tokens) === "string") return (tokens as string)
+    else return (tokens as Array<string>).join(glue)
+}
+
+function join7(tokens: string | string[], glue: string = ''): string {
+    if (Array.isArray(tokens)) {
+        return tokens.join(glue)
+    } else if (typeof tokens === 'string') {
+        return tokens + glue
+    }
+    throw new Error('Unknown tokens param type. Expexcted string or string[]')
+}
+
+function join8(tokens: string | string[], glue?: string): string {
+    if (typeof tokens === 'string') {
+        return '' + tokens
+    }
+    return (<string[]>tokens).join(glue)
+}
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Ping Pong
@@ -331,7 +372,7 @@ describe("Boa", () => {
 
 export abstract class Animal4 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) {}
+    protected constructor(public value: number) { }
 
     convertTo(someone: Animal4): number {
         return this.value / someone.value;
@@ -391,7 +432,7 @@ export class Monkey2 extends Animal5 {
 export abstract class Animal6 {
     abstract value: number;
 
-    constructor() {}
+    constructor() { }
 
     convertTo(someone: Animal6): number {
         return this.value / someone.value;
@@ -414,7 +455,7 @@ export class Monkey3 extends Animal6 {
 
 export abstract class Animal7 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) {}
+    protected constructor(public value: number) { }
 
     public convertTo(someone: Animal7): number {
         return this.value / someone.value;
@@ -443,7 +484,7 @@ export class Monkey4 extends Animal7 {
 
 export abstract class Animal9 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) {}
+    protected constructor(public value: number) { }
 
     convertTo(someone: Animal9): number {
         return this.value / someone.value;
@@ -630,7 +671,7 @@ describe("The Cube class", () => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 declare var ICuboid: {
-    new (length: number): ICuboid;
+    new(length: number): ICuboid;
 };
 
 interface ICuboid {
@@ -674,7 +715,7 @@ export class Cube8 implements ICuboid {
 // declare var ICuboid: (length: number) => ICuboid
 
 export class Cube9 implements ICuboid {
-    constructor(public length: number) {}
+    constructor(public length: number) { }
     get volume() {
         return this.length ** 3;
     }
@@ -692,7 +733,7 @@ export class Cube9 implements ICuboid {
 // ===========================================================
 
 export class Cube10 implements ICuboid {
-    constructor(public length: number) {}
+    constructor(public length: number) { }
     get surfaceArea() {
         return this.length ** 2 * 6;
     }
@@ -741,7 +782,7 @@ export class Cube11 implements ICuboid {
 // ===========================================================
 
 export class Cube12 implements ICuboid {
-    constructor(private _length: number) {}
+    constructor(private _length: number) { }
     get length(): number {
         return this._length;
     }
@@ -765,7 +806,7 @@ export class Cube12 implements ICuboid {
 // ===========================================================
 
 export class Cube13 implements ICuboid {
-    constructor(public length: number) {}
+    constructor(public length: number) { }
 
     get surfaceArea(): number {
         return this.length ** 2 * 6;
@@ -846,7 +887,7 @@ Dogs have an identical introduce() method as any other animal, but they have the
 // ============================================================
 
 declare var IAnimal: {
-    new (
+    new(
         name: string,
         age: number,
         legs: number,
@@ -872,7 +913,7 @@ export class Animal implements IAnimal {
         public legs: number,
         public species: string,
         public status: string
-    ) {}
+    ) { }
     introduce() {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
     }
@@ -966,7 +1007,7 @@ export class Animal3 implements IAnimal {
         public legs: number,
         public species: string,
         public status: string
-    ) {}
+    ) { }
     public introduce(): string {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
     }
@@ -1153,7 +1194,7 @@ export class Cuboid2 {
         public length: number,
         public width: number,
         public height: number
-    ) {}
+    ) { }
 
     public get surfaceArea(): number {
         return (
@@ -1215,7 +1256,7 @@ export class Cuboid4 {
         public length: number,
         public width: number,
         public height: number
-    ) {}
+    ) { }
     get surfaceArea(): number {
         return (
             2 * this.length * this.height +
@@ -1276,7 +1317,7 @@ export class Cuboid6 {
         public length: number,
         public width: number,
         public height: number
-    ) {}
+    ) { }
 
     get surfaceArea(): number {
         return (
@@ -1457,7 +1498,7 @@ export class Circle2 extends GeometricShape {
 
 // ============================================================
 export class Square3 implements IGeometricFigure {
-    constructor(public length: number) {}
+    constructor(public length: number) { }
     area(): number {
         return this.length ** 2;
     }
@@ -1467,7 +1508,7 @@ export class Square3 implements IGeometricFigure {
 }
 
 export class Circle3 implements IGeometricFigure {
-    constructor(public radius: number) {}
+    constructor(public radius: number) { }
     area = (): number => {
         return this.radius ** 2 * Math.PI;
     };
@@ -1522,7 +1563,7 @@ export class Circle5 implements IGeometricFigure {
 
 // ============================================================
 export class Square6 implements IGeometricFigure {
-    constructor(public value: number) {}
+    constructor(public value: number) { }
 
     area(): number {
         return this.value ** 2;
@@ -1534,7 +1575,7 @@ export class Square6 implements IGeometricFigure {
 }
 
 export class Circle6 implements IGeometricFigure {
-    constructor(public value: number) {}
+    constructor(public value: number) { }
 
     area(): number {
         return this.value ** 2 * Math.PI;
@@ -1572,7 +1613,7 @@ export class Circle7 implements IGeometricFigure {
 }
 // ============================================================
 export class Square8 implements IGeometricFigure {
-    constructor(private s: number) {}
+    constructor(private s: number) { }
     area() {
         return this.s ** 2;
     }
@@ -1582,7 +1623,7 @@ export class Square8 implements IGeometricFigure {
 }
 
 export class Circle8 implements IGeometricFigure {
-    constructor(private r: number) {}
+    constructor(private r: number) { }
     area() {
         return this.r ** 2 * Math.PI;
     }
@@ -2193,14 +2234,14 @@ const comparator3 = function (a: string, b: string): number {
         a.split(" ")[0] === "On"
             ? 13
             : a.split(" ")[0] === "a"
-            ? 1
-            : Number(a.split(" ")[0]);
+                ? 1
+                : Number(a.split(" ")[0]);
     let bb =
         b.split(" ")[0] === "On"
             ? 13
             : b.split(" ")[0] === "a"
-            ? 1
-            : Number(b.split(" ")[0]);
+                ? 1
+                : Number(b.split(" ")[0]);
 
     return bb - aa;
 };
@@ -2268,14 +2309,14 @@ const comparator6 = function (a: string, b: string): number {
         aFirstWord === "On"
             ? Infinity
             : aFirstWord === "a"
-            ? -Infinity
-            : Number(aFirstWord);
+                ? -Infinity
+                : Number(aFirstWord);
     const bNumeric =
         bFirstWord === "On"
             ? Infinity
             : bFirstWord === "a"
-            ? -Infinity
-            : Number(bFirstWord);
+                ? -Infinity
+                : Number(bFirstWord);
 
     return bNumeric - aNumeric;
 };
@@ -2909,7 +2950,7 @@ You are given two empty arrays (truthy and falsy) and you have to fill this arra
 
 
 */
-const truthy = [true, 1, "hello", [], {}, function () {}, Infinity, -Infinity];
+const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 
 /*
@@ -5233,9 +5274,9 @@ const ranking = (people: inputMan[]): outputMan[] => {
         if (idx > 0 && idx < sortedByPoints.length - 1) {
             if (
                 sortedByPoints[idx]["points"] ===
-                    sortedByPoints[idx - 1]["points"] ||
+                sortedByPoints[idx - 1]["points"] ||
                 sortedByPoints[idx]["points"] ===
-                    sortedByPoints[idx + 1]["points"]
+                sortedByPoints[idx + 1]["points"]
             ) {
                 console.log(
                     "equal points:",
@@ -5745,8 +5786,8 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 
 const say2 =
     ($: string) =>
-    (ﬂ: string): string =>
-        `${$} ${ﬂ}`;
+        (ﬂ: string): string =>
+            `${$} ${ﬂ}`;
 
 const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
@@ -7841,8 +7882,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                  sortedArr[sortedArr.length / 2 - 1]) /
-              2;
+                sortedArr[sortedArr.length / 2 - 1]) /
+            2;
 
     return solution;
 };
@@ -7882,8 +7923,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-              .slice(a.length / 2 - 1, a.length / 2 + 1)
-              .reduce((x, y) => x + y, 0) / 2;
+            .slice(a.length / 2 - 1, a.length / 2 + 1)
+            .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -8872,32 +8913,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-                ({
-                    G: "A",
-                    A: "G",
-                    g: "a",
-                    a: "g",
-                    D: "E",
-                    E: "D",
-                    d: "e",
-                    e: "d",
-                    R: "Y",
-                    Y: "R",
-                    r: "y",
-                    y: "r",
-                    P: "O",
-                    O: "P",
-                    p: "o",
-                    o: "p",
-                    L: "U",
-                    U: "L",
-                    l: "u",
-                    u: "l",
-                    K: "I",
-                    I: "K",
-                    k: "i",
-                    i: "k",
-                }[c] || c)
+            ({
+                G: "A",
+                A: "G",
+                g: "a",
+                a: "g",
+                D: "E",
+                E: "D",
+                d: "e",
+                e: "d",
+                R: "Y",
+                Y: "R",
+                r: "y",
+                y: "r",
+                P: "O",
+                O: "P",
+                p: "o",
+                o: "p",
+                L: "U",
+                U: "L",
+                l: "u",
+                u: "l",
+                K: "I",
+                I: "K",
+                k: "i",
+                i: "k",
+            }[c] || c)
         )
         .join("");
 }
@@ -10195,7 +10236,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void {}
+    strike(enemy: Warrior, swings: number): void { }
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -11552,16 +11593,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-              .join("\n");
+            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+            .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-              .join("\n");
+            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+            .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -12397,8 +12438,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-            ? "0" + String(date.getMonth() + 1)
-            : String(date.getMonth() + 1)) +
+                ? "0" + String(date.getMonth() + 1)
+                : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -12476,7 +12517,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -13188,10 +13229,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-        ? "subtraction"
-        : a * b === res
-        ? "multiplication"
-        : "division";
+            ? "subtraction"
+            : a * b === res
+                ? "multiplication"
+                : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -13301,8 +13342,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-        ? fusc($ / 2)
-        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+            ? fusc($ / 2)
+            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -14413,9 +14454,8 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
-        s < 10 ? "0" + s : s
-    }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
+        }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -15028,10 +15068,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-              match.length,
-              match.reduce((a, b) => a + b),
-              match.reduce((a, b) => a * b),
-          ]
+            match.length,
+            match.reduce((a, b) => a + b),
+            match.reduce((a, b) => a * b),
+        ]
         : [0, 0, 0];
 }
 
@@ -15484,7 +15524,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) {}
+    while ([...new Set(("" + ++year).split(""))].length < 4) { }
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -15977,17 +16017,17 @@ function detectCardType(number: string) {
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-    $.length === 15
+        $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-        ? "Discover"
-        : Number($.slice(0, 2)) > 50 &&
-          Number($.slice(0, 2)) < 56 &&
-          $.length === 16
-        ? "Mastercard"
-        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-        ? "VISA"
-        : "Unknown";
+            ? "Discover"
+            : Number($.slice(0, 2)) > 50 &&
+                Number($.slice(0, 2)) < 56 &&
+                $.length === 16
+                ? "Mastercard"
+                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+                    ? "VISA"
+                    : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -16124,13 +16164,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-        [
-            /^4\d{12}(\d{3})?$/,
-            /^3[47]\d{13}$/,
-            /^5[1-5]\d{14}$/,
-            /^6011\d{12}$/,
-            /.*/,
-        ].findIndex((p) => p.test(`${x}`))
+    [
+        /^4\d{12}(\d{3})?$/,
+        /^3[47]\d{13}$/,
+        /^5[1-5]\d{14}$/,
+        /^6011\d{12}$/,
+        /.*/,
+    ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -18732,10 +18772,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 const strongNumber4 = (num: number): string =>
     num ===
-    num
-        .toString()
-        .split("")
-        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+        num
+            .toString()
+            .split("")
+            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -19848,7 +19888,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -20924,8 +20964,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-              .map((item, index) => (item + numbers[index + 1]) / 2)
-              .slice(0, -1)
+            .map((item, index) => (item + numbers[index + 1]) / 2)
+            .slice(0, -1)
         : [];
 }
 
@@ -21075,10 +21115,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-                  1) %
-                  alphabet.length
-          ];
+        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+            1) %
+        alphabet.length
+        ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -22075,11 +22115,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-              .sort((a, b) => a - b)
-              .reverse()
-              .join("") === array.join("")
-        ? "yes, descending"
-        : "no";
+            .sort((a, b) => a - b)
+            .reverse()
+            .join("") === array.join("")
+            ? "yes, descending"
+            : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -22874,9 +22914,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                  Math.abs(shortest1 - longest2),
-                  Math.abs(longest1 - shortest2)
-              )
+                Math.abs(shortest1 - longest2),
+                Math.abs(longest1 - shortest2)
+            )
             : -1;
     };
 }
@@ -23158,8 +23198,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-            ? (result += 0)
-            : (result -= 1);
+                ? (result += 0)
+                : (result -= 1);
     });
 
     return Math.max(result, 0);
