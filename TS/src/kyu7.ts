@@ -160,9 +160,27 @@ P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" colle
 
 */
 
-function join(tokens: string | string[], glue?: string): string {
-    return "hello";
-}
+const join = (tokens: string | string[], glue?: string): string => {
+    console.log("tokens:", tokens);
+    if (glue) {
+        console.log("glue:", glue);
+
+        if (typeof tokens === "string") {
+            return tokens + glue;
+        } else {
+            console.log("array");
+        }
+    } else {
+        console.log("no glue");
+    }
+
+    // if (typeof tokens === "string") return tokens;
+    // else {
+    //     console.log("array input");
+    // }
+
+    return "-----";
+};
 
 /*
 describe('join', () => {
@@ -177,7 +195,10 @@ describe('join', () => {
 
 */
 
-// console.log();
+// console.log(join(["hello", "world"], "-"));
+// console.log(join(["hello", "world"]));
+console.log(join("hello"));
+// console.log(join("hello", "-"));
 // console.log();
 // console.log();
 // console.log();

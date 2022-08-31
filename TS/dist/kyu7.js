@@ -10,9 +10,23 @@ class Serializable {
     deserialize(source) {
     }
 }
-function join(tokens, glue) {
-    return "hello";
-}
+const join = (tokens, glue) => {
+    console.log("tokens:", tokens);
+    if (glue) {
+        console.log("glue:", glue);
+        if (typeof tokens === "string") {
+            return tokens + glue;
+        }
+        else {
+            console.log("array");
+        }
+    }
+    else {
+        console.log("no glue");
+    }
+    return "-----";
+};
+console.log(join("hello"));
 function pingPong(startNumber, endNumber) {
     return "";
 }
