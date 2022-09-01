@@ -3,6 +3,9 @@
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
+// NOT SOLVED
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ INCLUDE THIS IN TYPESCRIPT ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Learning TypeScript. Mixins
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -105,6 +108,93 @@ describe('Person', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+export class Serializable2 {
+    public serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    public deserialize(source: string): void {
+        Object.assign(this, JSON.parse(source));
+    }
+}
+
+export class Serializable3 {
+    serialize(): string {
+        return JSON.stringify(Object.entries(this));
+    }
+
+    deserialize($: string): void {
+        for (let [a, b] of JSON.parse($)) (this as any)[a] = b;
+    }
+}
+
+export class Serializable4 {
+    serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    deserialize(source: string): void {
+        try {
+            Object.assign(this, JSON.parse(source));
+        } catch (err) {
+            throw new Error("Deserialize error");
+        }
+    }
+}
+
+export class Serializable5 {
+    serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    deserialize(source: string): void {
+        const obj = JSON.parse(source);
+        const self: any = this;
+        for (const name of Object.getOwnPropertyNames(obj))
+            self[name] = obj[name];
+    }
+}
+
+export class Serializable6 {
+    serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    deserialize(source: string): void {
+        const target = JSON.parse(source);
+        for (let key in target) {
+            if (this.hasOwnProperty(key)) {
+                // @ts-ignore strictPropertyInitialization
+                this[key] = target[key];
+            }
+        }
+    }
+}
+
+export class Serializable7 {
+    serialize(): string {
+        return JSON.stringify(Object.entries(this));
+    }
+
+    deserialize(s: string): void {
+        for (let [x, y] of JSON.parse(s)) (this as any)[x] = y;
+    }
+}
+
+export class Serializable8 {
+    serialize(): string {
+        const out: string[] = [];
+        for (let k in this) out.push(`${k}:${this[k]}`);
+        return out.join(";");
+    }
+
+    deserialize(source: string): void {
+        source.split(";").forEach((x) => {
+            const [k, v] = x.split(":");
+            this[k as keyof this] = v as any;
+        });
+    }
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Learning TypeScript. Advanced Types. Union Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

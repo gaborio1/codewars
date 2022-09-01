@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = exports.Cube13 = exports.Cube12 = exports.Cube11 = exports.Cube10 = exports.Cube9 = exports.Cube8 = exports.Monkey6 = exports.Parrot6 = exports.Boa6 = exports.Animal10 = exports.Monkey5 = exports.Parrot5 = exports.Boa5 = exports.Animal9 = exports.Monkey4 = exports.Parrot4 = exports.Boa4 = exports.Animal7 = exports.Monkey3 = exports.Parrot3 = exports.Boa3 = exports.Animal6 = exports.Monkey2 = exports.Parrot2 = exports.Boa2 = exports.Animal5 = exports.Monkey = exports.Parrot = exports.Boa = exports.Animal4 = void 0;
-exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = void 0;
-exports.gematria2 = exports.counter20 = exports.counter19 = void 0;
+exports.Cuboid = exports.Dog3 = exports.Cat3 = exports.Shark3 = exports.Animal3 = exports.Dog2 = exports.Cat2 = exports.Shark2 = exports.Animal2 = exports.Dog = exports.Cat = exports.Shark = exports.Animal = exports.Cube13 = exports.Cube12 = exports.Cube11 = exports.Cube10 = exports.Cube9 = exports.Cube8 = exports.Monkey6 = exports.Parrot6 = exports.Boa6 = exports.Animal10 = exports.Monkey5 = exports.Parrot5 = exports.Boa5 = exports.Animal9 = exports.Monkey4 = exports.Parrot4 = exports.Boa4 = exports.Animal7 = exports.Monkey3 = exports.Parrot3 = exports.Boa3 = exports.Animal6 = exports.Monkey2 = exports.Parrot2 = exports.Boa2 = exports.Animal5 = exports.Monkey = exports.Parrot = exports.Boa = exports.Animal4 = exports.Serializable8 = exports.Serializable7 = exports.Serializable6 = exports.Serializable5 = exports.Serializable4 = exports.Serializable3 = exports.Serializable2 = void 0;
+exports.counter11 = exports.counter10 = exports.counter9 = exports.counter8 = exports.counter7 = exports.counter6 = exports.counter5 = exports.counter4 = exports.counter3 = exports.counter2 = exports.turn4 = exports.authList11 = exports.authList5 = exports.authList4 = exports.comparator14 = exports.comparator8 = exports.comparator7 = exports.comparator5 = exports.solution18 = exports.solution17 = exports.solution16 = exports.solution15 = exports.solution14 = exports.Circle8 = exports.Square8 = exports.Circle7 = exports.Square7 = exports.Circle6 = exports.Square6 = exports.Circle5 = exports.Square5 = exports.Circle3 = exports.Square3 = exports.Circle2 = exports.Square2 = exports.GeometricShape = exports.Circle = exports.Square = exports.Cube7 = exports.Cube6 = exports.Cuboid6 = exports.Cube5 = exports.Cuboid5 = exports.Cube4 = exports.Cuboid4 = exports.Cube3 = exports.Cuboid3 = exports.Cube2 = exports.Cuboid2 = exports.Cube = void 0;
+exports.gematria2 = exports.counter20 = exports.counter19 = exports.counter18 = exports.counter17 = exports.counter16 = exports.counter15 = exports.counter14 = exports.counter13 = exports.counter12 = void 0;
 class Serializable {
     serialize() {
         return "hello";
@@ -10,6 +10,90 @@ class Serializable {
     deserialize(source) {
     }
 }
+class Serializable2 {
+    serialize() {
+        return JSON.stringify(this);
+    }
+    deserialize(source) {
+        Object.assign(this, JSON.parse(source));
+    }
+}
+exports.Serializable2 = Serializable2;
+class Serializable3 {
+    serialize() {
+        return JSON.stringify(Object.entries(this));
+    }
+    deserialize($) {
+        for (let [a, b] of JSON.parse($))
+            this[a] = b;
+    }
+}
+exports.Serializable3 = Serializable3;
+class Serializable4 {
+    serialize() {
+        return JSON.stringify(this);
+    }
+    deserialize(source) {
+        try {
+            Object.assign(this, JSON.parse(source));
+        }
+        catch (err) {
+            throw new Error("Deserialize error");
+        }
+    }
+}
+exports.Serializable4 = Serializable4;
+class Serializable5 {
+    serialize() {
+        return JSON.stringify(this);
+    }
+    deserialize(source) {
+        const obj = JSON.parse(source);
+        const self = this;
+        for (const name of Object.getOwnPropertyNames(obj))
+            self[name] = obj[name];
+    }
+}
+exports.Serializable5 = Serializable5;
+class Serializable6 {
+    serialize() {
+        return JSON.stringify(this);
+    }
+    deserialize(source) {
+        const target = JSON.parse(source);
+        for (let key in target) {
+            if (this.hasOwnProperty(key)) {
+                this[key] = target[key];
+            }
+        }
+    }
+}
+exports.Serializable6 = Serializable6;
+class Serializable7 {
+    serialize() {
+        return JSON.stringify(Object.entries(this));
+    }
+    deserialize(s) {
+        for (let [x, y] of JSON.parse(s))
+            this[x] = y;
+    }
+}
+exports.Serializable7 = Serializable7;
+class Serializable8 {
+    serialize() {
+        const out = [];
+        for (let k in this)
+            out.push(`${k}:${this[k]}`);
+        return out.join(";");
+    }
+    deserialize(source) {
+        source.split(";").forEach((x) => {
+            const [k, v] = x.split(":");
+            this[k] = v;
+        });
+    }
+}
+exports.Serializable8 = Serializable8;
 const join = (tokens, glue) => {
     console.log("tokens:", tokens);
     if (glue) {
