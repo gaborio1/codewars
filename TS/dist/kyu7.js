@@ -105,44 +105,42 @@ const join = (tokens, glue) => {
             solution = tokens.join(glue);
         }
     }
-    if (typeof (tokens) === "string")
+    if (typeof tokens === "string")
         solution = tokens;
     return solution;
 };
 function join2($, ﬂ) {
-    return typeof $ === "string" ? $ : $.join(ﬂ || '');
+    return typeof $ === "string" ? $ : $.join(ﬂ || "");
 }
 function join3(tokens, glue) {
     return typeof tokens === "string" ? tokens : tokens.join(glue || "");
 }
 function join4(tokens, glue) {
-    return typeof tokens === 'string'
-        ? tokens
-        : tokens.join(glue);
+    return typeof tokens === "string" ? tokens : tokens.join(glue);
 }
 function join5(tokens, glue) {
-    if (typeof tokens === 'string')
+    if (typeof tokens === "string")
         return tokens;
     return tokens.join(glue);
 }
 function join6(tokens, glue) {
-    if (typeof (tokens) === "string")
+    if (typeof tokens === "string")
         return tokens;
     else
         return tokens.join(glue);
 }
-function join7(tokens, glue = '') {
+function join7(tokens, glue = "") {
     if (Array.isArray(tokens)) {
         return tokens.join(glue);
     }
-    else if (typeof tokens === 'string') {
+    else if (typeof tokens === "string") {
         return tokens + glue;
     }
-    throw new Error('Unknown tokens param type. Expexcted string or string[]');
+    throw new Error("Unknown tokens param type. Expexcted string or string[]");
 }
 function join8(tokens, glue) {
-    if (typeof tokens === 'string') {
-        return '' + tokens;
+    if (typeof tokens === "string") {
+        return "" + tokens;
     }
     return tokens.join(glue);
 }

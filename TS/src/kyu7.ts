@@ -17,19 +17,15 @@
 /*
 Overview
 Along with traditional object-oriented hierarchies, another popular way of building up classes from reusable components is to build them by combining simpler partial classes. You may be familiar with the idea of mixins or traits for languages like Scala, and the pattern has also reached some popularity in the JavaScript community.
-
 Introduction to mixins
 Generally speaking a mixin class is a class that implements a distinct aspect of functionality. Other classes can then include the mixin and access its methods and properties. That way, mixins provide a form of code reuse that is based on composing behavior.
-
 Now let’s see how you can model mixins in TypeScript. First of all we’ll define two classes Disposable and Activatable that will act as our mixins. You can see each one is focused on a particular activity or capability. We’ll later mix these together to form a new class from both capabilities.
-
 class Disposable {
     isDisposed: boolean;
     dispose() {
         this.isDisposed = true;
     }
 }
-
 class Activatable {
     isActive: boolean;
     activate() {
@@ -40,12 +36,9 @@ class Activatable {
     }
 }
 Next, we’ll create the class that will handle the combination of the two mixins. Let’s look at this in more detail to see how it does this:
-
 class SmartObject implements Disposable, Activatable {
 The first thing you may notice in the above is that instead of using extends, we use implements. This treats the classes as interfaces, and only uses the types behind Disposable and Activatable rather than the implementation. This means that we’ll have to provide the implementation in class. Except, that’s exactly what we want to avoid by using mixins.
-
 To satisfy this requirement, we create stand-in properties and their types for the members that will come from our mixins. This satisfies the compiler that these members will be available at runtime. This lets us still get the benefit of the mixins, albeit with some bookkeeping overhead.
-
 // Disposable
 isDisposed: boolean = false;
 dispose: () => void;
@@ -54,10 +47,8 @@ isActive: boolean = false;
 activate: () => void;
 deactivate: () => void;
 Finally, we mix our mixins into the class, creating the full implementation.
-
 applyMixins(SmartObject, [Disposable, Activatable]);
 Lastly, we create a helper function that will do the mixing for us. This will run through the properties of each of the mixins and copy them over to the target of the mixins, filling out the stand-in properties with their implementations.
-
 function applyMixins(derivedCtor: any, baseCtors: any[]) {
     baseCtors.forEach(baseCtor => {
         Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
@@ -66,15 +57,11 @@ function applyMixins(derivedCtor: any, baseCtors: any[]) {
     });
 }
 Hint: You can find the complete source code for this sample here: https://www.typescriptlang.org/docs/handbook/mixins.html
-
 Task
 You're required to implement mixin Serializable which should contain:
-
 method public serialize(): string - this method must serialize all properties of the object (i.e. return object converted to string).
 method public deserialize(source: string): void - this is the opposite method, that converts string to object properties and assigns them to current object.
 For simplicity's sake let's consider that objects won't contain any circular references. The function applyMixins is defined in tests and you don't need to change it.
-
-
 */
 
 class Serializable {
@@ -98,7 +85,6 @@ describe('Person', () => {
     expect(resultPerson.lastName).to.equal("Galt");
   });
 });
-
 */
 
 // console.log();
@@ -108,7 +94,6 @@ describe('Person', () => {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-<<<<<<< HEAD
 export class Serializable2 {
     public serialize(): string {
         return JSON.stringify(this);
@@ -196,10 +181,7 @@ export class Serializable8 {
         });
     }
 }
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-=======
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
->>>>>>> 70e0e4dc22fb29dbc1853be6ddabf8c7fbb2e2a9
 // TITLE: Learning TypeScript. Advanced Types. Union Types
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: TERNARY OPERATOR
@@ -210,7 +192,6 @@ export class Serializable8 {
 /*
 Overview
 Union types are closely related to intersection types, but they are used very differently. Occasionally, you’ll run into a library that expects a parameter to be either a number or a string. For instance, take the following function:
-
  function padLeft(value: string, padding: any) {
     if (typeof padding === "number") {
         return Array(padding + 1).join(" ") + value;
@@ -220,38 +201,26 @@ Union types are closely related to intersection types, but they are used very di
     }
     throw new Error(`Expected string or number, got '${padding}'.`);
 }
-
 padLeft("Hello world", 4); // returns "    Hello world"
 The problem with padLeft is that its padding parameter is typed as any. That means that we can call it with an argument that’s neither a number nor a string, but TypeScript will be okay with it.
-
 let indentedString = padLeft("Hello world", true); // passes at compile time, fails at runtime.
 In traditional object-oriented code, we might abstract over the two types by creating a hierarchy of types. While this is much more explicit, it’s also a little bit overkill. One of the nice things about the original version of padLeft was that we were able to just pass in primitives. That meant that usage was simple and concise. This new approach also wouldn’t help if we were just trying to use a function that already exists elsewhere.
-
 Instead of any, we can use a union type for the padding parameter:
-
-
 function padLeft(value: string, padding: string | number) {
     // ...
 }
-
 let indentedString = padLeft("Hello world", true); // errors during compilation
 A union type describes a value that can be one of several types. We use the vertical bar (|) to separate each type, so number | string | boolean is the type of a value that can be a number, a string, or a boolean.
-
 Task
 Let’s have a look at some properties of TypeScript union types:
-
 Identity: A|A is equivalent to A
 Commutativity: A|B is equivalent to B|A
 Associativity: (A|B)|C is equivalent to A|(B|C)
 Subtype collapsing: A|B is equivalent to A if B is a subtype of A
 I.e. if we have a value that has a union type, we can only access members that are common to all types in the union. If a value has the type A | B, we only know for certain that it has members that both A and B have.
-
 Your task is to create function join(tokens: string | string[], glue?: string): string which can accept both string and string[] and return one string in which tokens are concatenated with the glue.
-
 Hint: Use typeof before calling join method.
-
 P.S. Solved this kata? Take a look at other katas in "Learning TypeScript" collection.
-
 */
 
 const join = (tokens: string | string[], glue?: string): string => {
@@ -272,9 +241,8 @@ const join = (tokens: string | string[], glue?: string): string => {
     }
 
     // IF NO GLUE
-    if (typeof (tokens) === "string") solution = tokens;
+    if (typeof tokens === "string") solution = tokens;
     return solution;
-
 };
 
 /*
@@ -287,7 +255,6 @@ describe('join', () => {
     expect(join(arr, ", ")).to.equal("Hello, world!");
   });
 });
-
 */
 
 // console.log(join(["hello", "world"], "-"));
@@ -301,7 +268,7 @@ describe('join', () => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 function join2($: string | string[], ﬂ?: string): string {
-    return typeof $ === "string" ? $ : $.join(ﬂ || '');
+    return typeof $ === "string" ? $ : $.join(ﬂ || "");
 }
 
 function join3(tokens: string | string[], glue?: string): string {
@@ -309,35 +276,33 @@ function join3(tokens: string | string[], glue?: string): string {
 }
 
 function join4(tokens: string | string[], glue?: string): string {
-    return typeof tokens === 'string'
-        ? tokens
-        : tokens.join(glue);
+    return typeof tokens === "string" ? tokens : tokens.join(glue);
 }
 
 function join5(tokens: string | string[], glue?: string): string {
-    if (typeof tokens === 'string') return tokens;
-    return tokens.join(glue)
+    if (typeof tokens === "string") return tokens;
+    return tokens.join(glue);
 }
 
 function join6(tokens: string | Array<string>, glue?: string): string {
-    if (typeof (tokens) === "string") return (tokens as string)
-    else return (tokens as Array<string>).join(glue)
+    if (typeof tokens === "string") return tokens as string;
+    else return (tokens as Array<string>).join(glue);
 }
 
-function join7(tokens: string | string[], glue: string = ''): string {
+function join7(tokens: string | string[], glue: string = ""): string {
     if (Array.isArray(tokens)) {
-        return tokens.join(glue)
-    } else if (typeof tokens === 'string') {
-        return tokens + glue
+        return tokens.join(glue);
+    } else if (typeof tokens === "string") {
+        return tokens + glue;
     }
-    throw new Error('Unknown tokens param type. Expexcted string or string[]')
+    throw new Error("Unknown tokens param type. Expexcted string or string[]");
 }
 
 function join8(tokens: string | string[], glue?: string): string {
-    if (typeof tokens === 'string') {
-        return '' + tokens
+    if (typeof tokens === "string") {
+        return "" + tokens;
     }
-    return (<string[]>tokens).join(glue)
+    return (<string[]>tokens).join(glue);
 }
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -466,7 +431,7 @@ describe("Boa", () => {
 
 export abstract class Animal4 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) { }
+    protected constructor(public value: number) {}
 
     convertTo(someone: Animal4): number {
         return this.value / someone.value;
@@ -526,7 +491,7 @@ export class Monkey2 extends Animal5 {
 export abstract class Animal6 {
     abstract value: number;
 
-    constructor() { }
+    constructor() {}
 
     convertTo(someone: Animal6): number {
         return this.value / someone.value;
@@ -549,7 +514,7 @@ export class Monkey3 extends Animal6 {
 
 export abstract class Animal7 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) { }
+    protected constructor(public value: number) {}
 
     public convertTo(someone: Animal7): number {
         return this.value / someone.value;
@@ -578,7 +543,7 @@ export class Monkey4 extends Animal7 {
 
 export abstract class Animal9 {
     /** @param {number} value The length of the animal in parrots. */
-    protected constructor(public value: number) { }
+    protected constructor(public value: number) {}
 
     convertTo(someone: Animal9): number {
         return this.value / someone.value;
@@ -765,7 +730,7 @@ describe("The Cube class", () => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 declare var ICuboid: {
-    new(length: number): ICuboid;
+    new (length: number): ICuboid;
 };
 
 interface ICuboid {
@@ -809,7 +774,7 @@ export class Cube8 implements ICuboid {
 // declare var ICuboid: (length: number) => ICuboid
 
 export class Cube9 implements ICuboid {
-    constructor(public length: number) { }
+    constructor(public length: number) {}
     get volume() {
         return this.length ** 3;
     }
@@ -827,7 +792,7 @@ export class Cube9 implements ICuboid {
 // ===========================================================
 
 export class Cube10 implements ICuboid {
-    constructor(public length: number) { }
+    constructor(public length: number) {}
     get surfaceArea() {
         return this.length ** 2 * 6;
     }
@@ -876,7 +841,7 @@ export class Cube11 implements ICuboid {
 // ===========================================================
 
 export class Cube12 implements ICuboid {
-    constructor(private _length: number) { }
+    constructor(private _length: number) {}
     get length(): number {
         return this._length;
     }
@@ -900,7 +865,7 @@ export class Cube12 implements ICuboid {
 // ===========================================================
 
 export class Cube13 implements ICuboid {
-    constructor(public length: number) { }
+    constructor(public length: number) {}
 
     get surfaceArea(): number {
         return this.length ** 2 * 6;
@@ -981,7 +946,7 @@ Dogs have an identical introduce() method as any other animal, but they have the
 // ============================================================
 
 declare var IAnimal: {
-    new(
+    new (
         name: string,
         age: number,
         legs: number,
@@ -1007,7 +972,7 @@ export class Animal implements IAnimal {
         public legs: number,
         public species: string,
         public status: string
-    ) { }
+    ) {}
     introduce() {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
     }
@@ -1101,7 +1066,7 @@ export class Animal3 implements IAnimal {
         public legs: number,
         public species: string,
         public status: string
-    ) { }
+    ) {}
     public introduce(): string {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
     }
@@ -1288,7 +1253,7 @@ export class Cuboid2 {
         public length: number,
         public width: number,
         public height: number
-    ) { }
+    ) {}
 
     public get surfaceArea(): number {
         return (
@@ -1350,7 +1315,7 @@ export class Cuboid4 {
         public length: number,
         public width: number,
         public height: number
-    ) { }
+    ) {}
     get surfaceArea(): number {
         return (
             2 * this.length * this.height +
@@ -1411,7 +1376,7 @@ export class Cuboid6 {
         public length: number,
         public width: number,
         public height: number
-    ) { }
+    ) {}
 
     get surfaceArea(): number {
         return (
@@ -1592,7 +1557,7 @@ export class Circle2 extends GeometricShape {
 
 // ============================================================
 export class Square3 implements IGeometricFigure {
-    constructor(public length: number) { }
+    constructor(public length: number) {}
     area(): number {
         return this.length ** 2;
     }
@@ -1602,7 +1567,7 @@ export class Square3 implements IGeometricFigure {
 }
 
 export class Circle3 implements IGeometricFigure {
-    constructor(public radius: number) { }
+    constructor(public radius: number) {}
     area = (): number => {
         return this.radius ** 2 * Math.PI;
     };
@@ -1657,7 +1622,7 @@ export class Circle5 implements IGeometricFigure {
 
 // ============================================================
 export class Square6 implements IGeometricFigure {
-    constructor(public value: number) { }
+    constructor(public value: number) {}
 
     area(): number {
         return this.value ** 2;
@@ -1669,7 +1634,7 @@ export class Square6 implements IGeometricFigure {
 }
 
 export class Circle6 implements IGeometricFigure {
-    constructor(public value: number) { }
+    constructor(public value: number) {}
 
     area(): number {
         return this.value ** 2 * Math.PI;
@@ -1707,7 +1672,7 @@ export class Circle7 implements IGeometricFigure {
 }
 // ============================================================
 export class Square8 implements IGeometricFigure {
-    constructor(private s: number) { }
+    constructor(private s: number) {}
     area() {
         return this.s ** 2;
     }
@@ -1717,7 +1682,7 @@ export class Square8 implements IGeometricFigure {
 }
 
 export class Circle8 implements IGeometricFigure {
-    constructor(private r: number) { }
+    constructor(private r: number) {}
     area() {
         return this.r ** 2 * Math.PI;
     }
@@ -2328,14 +2293,14 @@ const comparator3 = function (a: string, b: string): number {
         a.split(" ")[0] === "On"
             ? 13
             : a.split(" ")[0] === "a"
-                ? 1
-                : Number(a.split(" ")[0]);
+            ? 1
+            : Number(a.split(" ")[0]);
     let bb =
         b.split(" ")[0] === "On"
             ? 13
             : b.split(" ")[0] === "a"
-                ? 1
-                : Number(b.split(" ")[0]);
+            ? 1
+            : Number(b.split(" ")[0]);
 
     return bb - aa;
 };
@@ -2403,14 +2368,14 @@ const comparator6 = function (a: string, b: string): number {
         aFirstWord === "On"
             ? Infinity
             : aFirstWord === "a"
-                ? -Infinity
-                : Number(aFirstWord);
+            ? -Infinity
+            : Number(aFirstWord);
     const bNumeric =
         bFirstWord === "On"
             ? Infinity
             : bFirstWord === "a"
-                ? -Infinity
-                : Number(bFirstWord);
+            ? -Infinity
+            : Number(bFirstWord);
 
     return bNumeric - aNumeric;
 };
@@ -3044,7 +3009,7 @@ You are given two empty arrays (truthy and falsy) and you have to fill this arra
 
 
 */
-const truthy = [true, 1, "hello", [], {}, function () { }, Infinity, -Infinity];
+const truthy = [true, 1, "hello", [], {}, function () {}, Infinity, -Infinity];
 const falsy = [false, 0, -0, "", null, undefined, NaN];
 
 /*
@@ -5368,9 +5333,9 @@ const ranking = (people: inputMan[]): outputMan[] => {
         if (idx > 0 && idx < sortedByPoints.length - 1) {
             if (
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx - 1]["points"] ||
+                    sortedByPoints[idx - 1]["points"] ||
                 sortedByPoints[idx]["points"] ===
-                sortedByPoints[idx + 1]["points"]
+                    sortedByPoints[idx + 1]["points"]
             ) {
                 console.log(
                     "equal points:",
@@ -5880,8 +5845,8 @@ assert.equal(solution.say('Hello')('World'), 'Hello World');
 
 const say2 =
     ($: string) =>
-        (ﬂ: string): string =>
-            `${$} ${ﬂ}`;
+    (ﬂ: string): string =>
+        `${$} ${ﬂ}`;
 
 const say3 = (xs: string) => (ys: string) => [xs, ys].join(" ");
 
@@ -7976,8 +7941,8 @@ const median = (numArr: number[]): number => {
         sortedArr.length & 1
             ? sortedArr[(sortedArr.length - 1) / 2]
             : (sortedArr[sortedArr.length / 2] +
-                sortedArr[sortedArr.length / 2 - 1]) /
-            2;
+                  sortedArr[sortedArr.length / 2 - 1]) /
+              2;
 
     return solution;
 };
@@ -8017,8 +7982,8 @@ function median3(array: number[]): number {
     return a.length % 2
         ? a[Math.floor(a.length / 2)]
         : a
-            .slice(a.length / 2 - 1, a.length / 2 + 1)
-            .reduce((x, y) => x + y, 0) / 2;
+              .slice(a.length / 2 - 1, a.length / 2 + 1)
+              .reduce((x, y) => x + y, 0) / 2;
 }
 
 function median4(n: number[]): number {
@@ -9007,32 +8972,32 @@ function encodeA1(s: String): String {
         .split("")
         .map(
             (c) =>
-            ({
-                G: "A",
-                A: "G",
-                g: "a",
-                a: "g",
-                D: "E",
-                E: "D",
-                d: "e",
-                e: "d",
-                R: "Y",
-                Y: "R",
-                r: "y",
-                y: "r",
-                P: "O",
-                O: "P",
-                p: "o",
-                o: "p",
-                L: "U",
-                U: "L",
-                l: "u",
-                u: "l",
-                K: "I",
-                I: "K",
-                k: "i",
-                i: "k",
-            }[c] || c)
+                ({
+                    G: "A",
+                    A: "G",
+                    g: "a",
+                    a: "g",
+                    D: "E",
+                    E: "D",
+                    d: "e",
+                    e: "d",
+                    R: "Y",
+                    Y: "R",
+                    r: "y",
+                    y: "r",
+                    P: "O",
+                    O: "P",
+                    p: "o",
+                    o: "p",
+                    L: "U",
+                    U: "L",
+                    l: "u",
+                    u: "l",
+                    K: "I",
+                    I: "K",
+                    k: "i",
+                    i: "k",
+                }[c] || c)
         )
         .join("");
 }
@@ -10330,7 +10295,7 @@ class Warrior2 implements IStrike {
         this.health = 100;
     }
 
-    strike(enemy: Warrior, swings: number): void { }
+    strike(enemy: Warrior, swings: number): void {}
 }
 
 Warrior2.prototype.strike = function (enemy: Warrior, swings: number) {
@@ -11687,16 +11652,16 @@ function sortVowels2(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : [...str]
-            .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
-            .join("\n");
+              .map((x) => (/[aeiou]/i.test(x) ? "|" + x : x + "|"))
+              .join("\n");
 }
 
 function sortVowels3(str?: number | string | null): string {
     return typeof str != "string"
         ? ""
         : Array.from(str)
-            .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
-            .join("\n");
+              .map((c) => (/[aeiou]/i.test(c) ? "|" + c : c + "|"))
+              .join("\n");
 }
 
 function sortVowels4(str?: string | number | null): string {
@@ -12532,8 +12497,8 @@ function driver4(data: Array<string>): string {
         (data[4] === "F"
             ? String(date.getMonth() + 51)
             : date.getMonth() + 1 < 10
-                ? "0" + String(date.getMonth() + 1)
-                : String(date.getMonth() + 1)) +
+            ? "0" + String(date.getMonth() + 1)
+            : String(date.getMonth() + 1)) +
         (date.getDate() < 10
             ? "0" + String(date.getDate())
             : String(date.getDate())) +
@@ -12611,7 +12576,7 @@ function driver6(data: Array<string>): string {
         String(new Date(birth).getDate()).padStart(2, "0"),
         birth.charAt(birth.length - 1),
         first_name.charAt(0) +
-        (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
+            (middle_name.charAt(0) ? middle_name.charAt(0) : 9),
         "9AA",
     ].join("");
 }
@@ -13323,10 +13288,10 @@ function calcType5(a: number, b: number, res: number): string {
     return a + b === res
         ? "addition"
         : a - b === res
-            ? "subtraction"
-            : a * b === res
-                ? "multiplication"
-                : "division";
+        ? "subtraction"
+        : a * b === res
+        ? "multiplication"
+        : "division";
 }
 
 function calcType6(a: number, b: number, res: number): string {
@@ -13436,8 +13401,8 @@ const fusc3 = ($: number): number =>
     $ < 2
         ? $
         : $ % 2 === 0
-            ? fusc($ / 2)
-            : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
+        ? fusc($ / 2)
+        : fusc(($ + 1) / 2) + fusc(($ - 1) / 2);
 
 function fusc4(n: number): number {
     if (n === 0 || n === 1) {
@@ -14548,8 +14513,9 @@ function timeCorrect4(timestring: string): string | null {
         h++;
     }
     h = h % 24;
-    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s
-        }`;
+    return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+        s < 10 ? "0" + s : s
+    }`;
 }
 
 const timeCorrect5 = (timestring: string | null): string | null => {
@@ -15162,10 +15128,10 @@ function numbersWithDigitInside6(x: number, d: number): number[] {
     );
     return match.length
         ? [
-            match.length,
-            match.reduce((a, b) => a + b),
-            match.reduce((a, b) => a * b),
-        ]
+              match.length,
+              match.reduce((a, b) => a + b),
+              match.reduce((a, b) => a * b),
+          ]
         : [0, 0, 0];
 }
 
@@ -15618,7 +15584,7 @@ function nextHappyYear7(year: number): number {
 }
 
 function nextHappyYear8(year: number) {
-    while ([...new Set(("" + ++year).split(""))].length < 4) { }
+    while ([...new Set(("" + ++year).split(""))].length < 4) {}
     return year;
 }
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -16111,17 +16077,17 @@ function detectCardType(number: string) {
 
 const getIssuer2 = (x: number, $: string = x.toString()) =>
     (Number($.slice(0, 2)) === 34 || Number($.slice(0, 2)) === 37) &&
-        $.length === 15
+    $.length === 15
         ? "AMEX"
         : Number($.slice(0, 4)) === 6011 && $.length === 16
-            ? "Discover"
-            : Number($.slice(0, 2)) > 50 &&
-                Number($.slice(0, 2)) < 56 &&
-                $.length === 16
-                ? "Mastercard"
-                : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
-                    ? "VISA"
-                    : "Unknown";
+        ? "Discover"
+        : Number($.slice(0, 2)) > 50 &&
+          Number($.slice(0, 2)) < 56 &&
+          $.length === 16
+        ? "Mastercard"
+        : Number($.slice(0, 1)) === 4 && ($.length === 13 || $.length === 16)
+        ? "VISA"
+        : "Unknown";
 
 const getIssuer3 = (x: number): Issuer => {
     let cn: string = x.toString();
@@ -16258,13 +16224,13 @@ const getIssuer10 = (x: number): Issuer => {
 
 const getIssuer8 = (x: number) =>
     Object.values(Issuer)[
-    [
-        /^4\d{12}(\d{3})?$/,
-        /^3[47]\d{13}$/,
-        /^5[1-5]\d{14}$/,
-        /^6011\d{12}$/,
-        /.*/,
-    ].findIndex((p) => p.test(`${x}`))
+        [
+            /^4\d{12}(\d{3})?$/,
+            /^3[47]\d{13}$/,
+            /^5[1-5]\d{14}$/,
+            /^6011\d{12}$/,
+            /.*/,
+        ].findIndex((p) => p.test(`${x}`))
     ];
 
 const getIssuer11 = (x: number): Issuer => {
@@ -18866,10 +18832,10 @@ const factorial3 = (n: number): number => (n === 0 ? 1 : n * factorial(n - 1));
 
 const strongNumber4 = (num: number): string =>
     num ===
-        num
-            .toString()
-            .split("")
-            .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
+    num
+        .toString()
+        .split("")
+        .reduce((acc, value) => acc + factorial(parseInt(value)), 0)
         ? "STRONG!!!!"
         : "Not Strong !!";
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -19982,7 +19948,7 @@ function balancedNum3(number: number): string {
     let n: number = Math.floor((s.length - 1) / 2);
     return !n ||
         [...s.slice(0, n)].reduce((a, b) => a + +b, 0) ==
-        [...s.slice(-n)].reduce((a, b) => a + +b, 0)
+            [...s.slice(-n)].reduce((a, b) => a + +b, 0)
         ? "Balanced"
         : "Not Balanced";
 }
@@ -21058,8 +21024,8 @@ function averages2(numbers: number[]): number[] {
 function averages3(numbers: number[]): number[] {
     return Array.isArray(numbers)
         ? numbers
-            .map((item, index) => (item + numbers[index + 1]) / 2)
-            .slice(0, -1)
+              .map((item, index) => (item + numbers[index + 1]) / 2)
+              .slice(0, -1)
         : [];
 }
 
@@ -21209,10 +21175,10 @@ const addLetters5 = (...letters: string[]): string =>
     letters.length === 0
         ? "z"
         : alphabet[
-        (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
-            1) %
-        alphabet.length
-        ];
+              (letters.reduce((acc, c) => acc + (alphabet.indexOf(c) + 1), 0) -
+                  1) %
+                  alphabet.length
+          ];
 
 function addLetters6(...letters: string[]) {
     // your code here
@@ -22209,11 +22175,11 @@ function isSortedAndHow4(array: number[]): string {
     return [...array].sort((a, b) => a - b).join("") === array.join("")
         ? "yes, ascending"
         : [...array]
-            .sort((a, b) => a - b)
-            .reverse()
-            .join("") === array.join("")
-            ? "yes, descending"
-            : "no";
+              .sort((a, b) => a - b)
+              .reverse()
+              .join("") === array.join("")
+        ? "yes, descending"
+        : "no";
 }
 
 function isSortedAndHow5(array: number[]): string {
@@ -23008,9 +22974,9 @@ class G964 {
 
         return a1.length && a2.length // (!a1.length || !a2.length)
             ? Math.max(
-                Math.abs(shortest1 - longest2),
-                Math.abs(longest1 - shortest2)
-            )
+                  Math.abs(shortest1 - longest2),
+                  Math.abs(longest1 - shortest2)
+              )
             : -1;
     };
 }
@@ -23292,8 +23258,8 @@ function checkExam2(array1: string[], array2: string[]): number {
         item === array1[index]
             ? (result += 4)
             : item === ""
-                ? (result += 0)
-                : (result -= 1);
+            ? (result += 0)
+            : (result -= 1);
     });
 
     return Math.max(result, 0);
