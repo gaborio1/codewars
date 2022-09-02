@@ -1,7 +1,211 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = void 0;
+const diag1Sym = (str) => {
+    let solutionArr = [];
+    const subArr = str.split("\n");
+    console.log(subArr);
+    const subLength = str.split("\n")[0].length;
+    console.log(subLength);
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub = "";
+        for (let j = 0; j < subLength; j += 1) {
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+const rot90Clock = (str) => {
+    let solutionArr = [];
+    const subArr = str.split("\n");
+    console.log(subArr);
+    const subLength = str.split("\n")[0].length;
+    console.log(subLength);
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub = "";
+        for (let j = subLength - 1; j >= 0; j -= 1) {
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+const selfieAndDiag1 = (str) => {
+    let solutionArr = [];
+    const subArr = str.split("\n");
+    console.log(subArr);
+    const subLength = str.split("\n")[0].length;
+    console.log(subLength);
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub = subArr[i] + "|";
+        for (let j = 0; j < subLength; j += 1) {
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+    const solution = solutionArr.join("\n");
+    return solution;
+};
+const oper5 = (func, str) => {
+    return func(str);
+};
+function diag1Sym6(strng) {
+    let arr = strng.split("\n");
+    return [...arr[0]].map((x, i) => arr.map((y, j) => arr[j][i]).join("")).join("\n");
+}
+exports.diag1Sym6 = diag1Sym6;
+function rot90Clock6(strng) {
+    return diag1Sym(strng).split("\n").map((x) => [...x].reverse().join("")).join("\n");
+}
+exports.rot90Clock6 = rot90Clock6;
+function selfieAndDiag16(strng) {
+    let arr = diag1Sym(strng).split("\n");
+    return strng.split("\n").map((x, i) => `${x}|${arr[i]}`).join("\n");
+}
+exports.selfieAndDiag16 = selfieAndDiag16;
+function oper6(fct, s) {
+    return fct(s);
+}
+exports.oper6 = oper6;
+function rot90Clock7(strng) {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).reverse().join('')).join('\n');
+}
+exports.rot90Clock7 = rot90Clock7;
+function diag1Sym7(strng) {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).join('')).join('\n');
+}
+exports.diag1Sym7 = diag1Sym7;
+function selfieAndDiag17(strng) {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => `${arr[i]}|${e.split('').map((letter, index) => arr[index][i]).join('')}`).join('\n');
+}
+exports.selfieAndDiag17 = selfieAndDiag17;
+function oper7(fct, s) {
+    return fct(s);
+}
+exports.oper7 = oper7;
+function rot90Clock8(str) {
+    let arr = str.split('\n').reverse(), length = arr.length, result = '';
+    let getDiagElement = (arr, n) => arr.reduce((acc, el) => acc + el[n], '');
+    for (let i = 0; i < length; i += 1) {
+        result = result + getDiagElement(arr, i) + '\n';
+    }
+    return result.slice(0, -1);
+}
+exports.rot90Clock8 = rot90Clock8;
+function diag1Sym8(str) {
+    let arr = str.split('\n'), length = arr.length, result = '';
+    let getDiagElement = (arr, n) => arr.reduce((acc, el) => acc + el[n], '');
+    for (let i = 0; i < length; i += 1) {
+        result = result + getDiagElement(arr, i) + '\n';
+    }
+    return result.slice(0, -1);
+}
+exports.diag1Sym8 = diag1Sym8;
+function selfieAndDiag18(str) {
+    let arr = str.split('\n'), length = arr.length - 1, result = '';
+    let getElement = (arr, n) => arr.reduce((acc, el) => acc + el[n], '');
+    for (let i = length; i >= 0; i -= 1) {
+        result = result + arr[i] + '|' + getElement(arr, i) + '\n';
+    }
+    return result.slice(0, -1).split('\n').reverse().join('\n');
+}
+exports.selfieAndDiag18 = selfieAndDiag18;
+function oper8(fct, s) {
+    return fct(s);
+}
+exports.oper8 = oper8;
+const parseToArray = (text) => {
+    return text.split('\n').map(text => text.split(""));
+};
+const parseToText = (arr) => {
+    return arr.map(text => text.join("")).join('\n');
+};
+const makeDiag1 = (arr) => {
+    const result = arr.map(() => []);
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr[i].length; j++) {
+            result[i][j] = arr[j][i];
+            if (i !== j) {
+                result[j][i] = arr[i][j];
+            }
+        }
+    }
+    return result;
+};
+function rot90Clock9(strng) {
+    const arr = parseToArray(strng);
+    const rot90 = makeDiag1(arr).map(arr => arr.reverse());
+    return parseToText(rot90);
+}
+exports.rot90Clock9 = rot90Clock9;
+function diag1Sym9(strng) {
+    const arr = parseToArray(strng);
+    const diag1 = makeDiag1(arr);
+    return parseToText(diag1);
+}
+exports.diag1Sym9 = diag1Sym9;
+function selfieAndDiag19(strng) {
+    const selfie = parseToArray(strng);
+    const diag1 = makeDiag1(selfie);
+    const merged = selfie.map((arr, i) => [...arr, '|', ...diag1[i]]);
+    return parseToText(merged);
+}
+exports.selfieAndDiag19 = selfieAndDiag19;
+function oper9(fct, s) {
+    return fct(s);
+}
+exports.oper9 = oper9;
+function rot90Clock10(s) {
+    return diag1Sym(s)
+        .split('\n')
+        .map((i) => [...i].reverse().join(''))
+        .join('\n');
+}
+exports.rot90Clock10 = rot90Clock10;
+function diag1Sym10(s) {
+    const a = s.split('\n').map(i => [...i]);
+    return a
+        .map((x, i) => {
+        let t = '';
+        x.map((_, j) => {
+            t += a[j][i];
+        });
+        return t;
+    })
+        .join('\n');
+}
+exports.diag1Sym10 = diag1Sym10;
+function selfieAndDiag110(s) {
+    const d = diag1Sym(s).split('\n');
+    return s
+        .split('\n')
+        .map((v, i) => `${v}|${d[i]}`)
+        .join('\n');
+}
+exports.selfieAndDiag110 = selfieAndDiag110;
+function oper10(fct, s) {
+    return fct(s);
+}
+exports.oper10 = oper10;
 const sortTwisted37 = (array) => {
     let valuesArr = [];
     array.forEach((num) => {

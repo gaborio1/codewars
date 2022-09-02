@@ -456,27 +456,424 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Moves in squared strings (III)
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️  NESTED MAP WITH INDEX ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a string of n lines, each substring being n characters long: For example:
 
+s = "abcd\nefgh\nijkl\nmnop"
+
+We will study some transformations of this square of strings.
+
+Symmetry with respect to the main diagonal: diag_1_sym (or diag1Sym or diag-1-sym)
+diag_1_sym(s) => "aeim\nbfjn\ncgko\ndhlp"
+Clockwise rotation 90 degrees: rot_90_clock (or rot90Clock or rot-90-clock)
+rot_90_clock(s) => "miea\nnjfb\nokgc\nplhd"
+selfie_and_diag1(s) (or selfieAndDiag1 or selfie-and-diag1) It is initial string + string obtained by symmetry with respect to the main diagonal.
+s = "abcd\nefgh\nijkl\nmnop" --> 
+"abcd|aeim\nefgh|bfjn\nijkl|cgko\nmnop|dhlp"
+or printed for the last:
+selfie_and_diag1
+abcd|aeim
+efgh|bfjn
+ijkl|cgko 
+mnop|dhlp
+Task:
+Write these functions diag_1_sym, rot_90_clock, selfie_and_diag1
+and
+
+high-order function oper(fct, s) where
+
+fct is the function of one variable f to apply to the string s (fct will be one of diag_1_sym, rot_90_clock, selfie_and_diag1)
+
+Examples:
+s = "abcd\nefgh\nijkl\nmnop"
+oper(diag_1_sym, s) => "aeim\nbfjn\ncgko\ndhlp"
+oper(rot_90_clock, s) => "miea\nnjfb\nokgc\nplhd"
+oper(selfie_and_diag1, s) => "abcd|aeim\nefgh|bfjn\nijkl|cgko\nmnop|dhlp"
+Notes:
+The form of the parameter fct in oper changes according to the language. You can see each form according to the language in "Your test cases".
+It could be easier to take these katas from number (I) to number (IV)
+Bash Note: The output strings should be separated by \r instead of \n. See "Sample Tests".
 */
+const diag1Sym = (str: string): string => {
+
+    let solutionArr: string[] = [];
+
+    const subArr: string[] = str.split("\n");
+    console.log(subArr);
+
+    // CALCULATE ITERATIONS BASED ON SUBSTRING LENGTH (4)
+    const subLength: number = str.split("\n")[0].length;
+    console.log(subLength);
+
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub: string = "";
+        for (let j = 0; j < subLength; j += 1) {
+            // console.log(subArr[i][j]);
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+
+    const solution: string = solutionArr.join("\n");
+
+    return solution;
+}
+
 /*
-
+[ 'abcd', 'efgh', 'ijkl', 'mnop' ]
+4
+a
+e
+i
+m
+aeim
+b
+f
+j
+n
+bfjn
+c
+g
+k
+o
+cgko
+d
+h
+l
+p
+dhlp
+[ 'aeim', 'bfjn', 'cgko', 'dhlp' ]
+aeim
+bfjn
+cgko
+dhlp
 */
 
-// console.log();
+const rot90Clock = (str: string): string => {
+
+    let solutionArr: string[] = [];
+
+    const subArr: string[] = str.split("\n");
+    console.log(subArr);
+
+    // CALCULATE ITERATIONS BASED ON SUBSTRING LENGTH (4)
+    const subLength: number = str.split("\n")[0].length;
+    console.log(subLength);
+
+    // for (let i = subLength - 1; i >= 0; i -= 1) {
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub: string = "";
+        // REVERSE INNER LOOP
+        for (let j = subLength - 1; j >= 0; j -= 1) {
+            // for (let j = 0; j < subLength; j += 1) {
+            // console.log(subArr[i][j]);
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+
+    const solution: string = solutionArr.join("\n");
+
+    return solution;
+
+
+}
+
+/*
+[ 'abcd', 'efgh', 'ijkl', 'mnop' ]
+4
+m
+i
+e
+a
+miea
+n
+j
+f
+b
+njfb
+o
+k
+g
+c
+okgc
+p
+l
+h
+d
+plhd
+[ 'miea', 'njfb', 'okgc', 'plhd' ]
+miea
+njfb
+okgc
+plhd
+*/
+
+const selfieAndDiag1 = (str: string): string => {
+
+    let solutionArr: string[] = [];
+
+    const subArr: string[] = str.split("\n");
+    console.log(subArr);
+
+    // CALCULATE ITERATIONS BASED ON SUBSTRING LENGTH (4)
+    const subLength: number = str.split("\n")[0].length;
+    console.log(subLength);
+
+    for (let i = 0; i < subLength; i += 1) {
+        let currentSub: string = subArr[i] + "|";
+        for (let j = 0; j < subLength; j += 1) {
+            // console.log(subArr[i][j]);
+            console.log(subArr[j][i]);
+            currentSub += subArr[j][i];
+        }
+        console.log(currentSub);
+        solutionArr.push(currentSub);
+    }
+
+    console.log(solutionArr);
+    console.log(solutionArr.join("\n"));
+
+    const solution: string = solutionArr.join("\n");
+
+    return solution;
+
+}
+
+const oper5 = (func: (s: string) => string, str: string): string => {
+    return func(str);
+}
+/*
+[ 'abcd', 'efgh', 'ijkl', 'mnop' ]
+4
+a
+e
+i
+m
+abcd|aeim
+b
+f
+j
+n
+efgh|bfjn
+c
+g
+k
+o
+ijkl|cgko
+d
+h
+l
+p
+mnop|dhlp
+[ 'abcd|aeim', 'efgh|bfjn', 'ijkl|cgko', 'mnop|dhlp' ]
+abcd|aeim
+efgh|bfjn
+ijkl|cgko
+mnop|dhlp
+*/
+
+// console.log(oper5(diag1Sym, "abcd\nefgh\nijkl\nmnop"));
+// console.log(oper5(rot90Clock, "abcd\nefgh\nijkl\nmnop"));
+// console.log(oper5(selfieAndDiag1, "abcd\nefgh\nijkl\nmnop"));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// ❗️❗️❗️  NESTED MAP WITH INDEX ❗️❗️❗️
+export function diag1Sym6(strng: string): string {
+    let arr: string[] = strng.split("\n")
+    return [...arr[0]].map((x, i) => arr.map((y, j) => arr[j][i]).join("")).join("\n")
+}
+
+export function rot90Clock6(strng: string): string {
+    return diag1Sym(strng).split("\n").map((x) => [...x].reverse().join("")).join("\n")
+}
+
+export function selfieAndDiag16(strng: string): string {
+    let arr: string[] = diag1Sym(strng).split("\n")
+    return strng.split("\n").map((x, i) => `${x}|${arr[i]}`).join("\n")
+}
+
+export function oper6(fct: (s: string) => string, s: string): string {
+    return fct(s)
+}
+
+// ============================================================
+
+export function rot90Clock7(strng: string): string {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).reverse().join('')).join('\n');
+}
+
+export function diag1Sym7(strng: string): string {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).join('')).join('\n')
+}
+
+export function selfieAndDiag17(strng: string): string {
+    const arr = strng.split('\n');
+    return arr.map((e, i) => `${arr[i]}|${e.split('').map((letter, index) => arr[index][i]).join('')}`).join('\n')
+}
+
+export function oper7(fct: (s: string) => string, s: string): string {
+    return fct(s);
+}
+
+
+// ============================================================
+
+export function rot90Clock8(str: string): string {
+    let arr: string[] = str.split('\n').reverse(),
+        length: number = arr.length,
+        result: string = ''
+
+    let getDiagElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+
+    for (let i = 0; i < length; i += 1) {
+        result = result + getDiagElement(arr, i) + '\n'
+    }
+
+    return result.slice(0, -1)
+}
+
+
+export function diag1Sym8(str: string): string {
+    let arr: string[] = str.split('\n'),
+        length: number = arr.length,
+        result: string = ''
+
+    let getDiagElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+
+    for (let i = 0; i < length; i += 1) {
+        result = result + getDiagElement(arr, i) + '\n'
+    }
+
+    return result.slice(0, -1)
+}
+
+export function selfieAndDiag18(str: string): string {
+    let arr: string[] = str.split('\n'),
+        length: number = arr.length - 1,
+        result: string = ''
+
+    let getElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+
+    for (let i = length; i >= 0; i -= 1) {
+        result = result + arr[i] + '|' + getElement(arr, i) + '\n'
+    }
+
+    return result.slice(0, -1).split('\n').reverse().join('\n')
+}
+
+
+export function oper8(fct: (s: string) => string, s: string): string {
+    return fct(s)
+}
+
+
+
+// ============================================================
+
+const parseToArray = (text: string) => {
+    return text.split('\n').map(text => text.split(""));
+}
+
+const parseToText = (arr: string[][]) => {
+    return arr.map(text => text.join("")).join('\n');
+}
+
+const makeDiag1 = (arr: string[][]) => {
+    const result: string[][] = arr.map(() => []);
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr[i].length; j++) {
+            result[i][j] = arr[j][i];
+            if (i !== j) {
+                result[j][i] = arr[i][j];
+            }
+        }
+    }
+    return result;
+}
+
+export function rot90Clock9(strng: string): string {
+    const arr = parseToArray(strng);
+    const rot90 = makeDiag1(arr).map(arr => arr.reverse());
+    return parseToText(rot90);
+}
+
+export function diag1Sym9(strng: string): string {
+    const arr = parseToArray(strng);
+    const diag1 = makeDiag1(arr);
+    return parseToText(diag1);
+}
+
+export function selfieAndDiag19(strng: string): string {
+    const selfie = parseToArray(strng);
+    const diag1 = makeDiag1(selfie);
+    const merged = selfie.map((arr, i) => [...arr, '|', ...diag1[i]]);
+    return parseToText(merged);
+}
+
+export function oper9(fct: (s: string) => string, s: string): string {
+    return fct(s);
+}
+
+
+
+// ============================================================
+
+export function rot90Clock10(s: string): string {
+    return diag1Sym(s)
+        .split('\n')
+        .map((i: string) => [...i].reverse().join(''))
+        .join('\n')
+}
+
+export function diag1Sym10(s: string): string {
+    const a: string[][] = s.split('\n').map(i => [...i])
+    return a
+        .map((x: string[], i: number) => {
+            let t: string = ''
+            x.map((_, j: number) => {
+                t += a[j][i]
+            })
+            return t
+        })
+        .join('\n')
+}
+
+export function selfieAndDiag110(s: string): string {
+    const d: string[] = diag1Sym(s).split('\n')
+    return s
+        .split('\n')
+        .map((v: string, i: number) => `${v}|${d[i]}`)
+        .join('\n')
+}
+
+export function oper10(fct: (s: string) => string, s: string): string {
+    return fct(s)
+}
 
 
 
@@ -1078,8 +1475,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-            ? 2
-            : 1;
+                ? 2
+                : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -3209,8 +3606,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                  w.slice(1, -1).split("").sort().reverse().join("") +
-                  w.slice(-1)
+                w.slice(1, -1).split("").sort().reverse().join("") +
+                w.slice(-1)
         )
         .join(" ");
 }
@@ -3222,8 +3619,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                  x.slice(1, -1).split("").sort().reverse().join("") +
-                  arr[i].slice(-1)
+                x.slice(1, -1).split("").sort().reverse().join("") +
+                arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -4627,9 +5024,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -5195,10 +5592,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -7591,7 +7988,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -7677,7 +8074,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -8538,15 +8935,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -8599,10 +8996,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -9178,7 +9575,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -9637,8 +10034,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -9931,7 +10328,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -10388,10 +10785,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -11691,9 +12088,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
