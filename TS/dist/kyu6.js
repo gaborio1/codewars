@@ -33,14 +33,10 @@ const getParticipants = (handshakes) => {
     }
     console.log(members);
     let pairsArr = [];
-    for (let i = 0; i < members.length; i += 1) {
-        for (let j = i + 1; j < members.length; j += 1) {
-            console.log(i, j);
+    for (let i = 1; i <= handshakes; i += 1) {
+        console.log("i:", i);
+        for (let j = i + 1; j <= handshakes; j += 1) {
             pairsArr.push([i, j]);
-            if (pairsArr.length === handshakes) {
-                console.log(pairsArr.length);
-                return pairsArr.length;
-            }
         }
     }
     console.log(pairsArr);
