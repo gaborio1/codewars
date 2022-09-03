@@ -414,7 +414,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Reducing by steps
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -422,9 +422,105 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Data: an array of integers, a function f of two variables and an init value.
+
+Example: a = [2, 4, 6, 8, 10, 20], f(x, y) = x + y; init = 0
+
+Output: an array of integers, say r, such that
+
+r = [r[0] = f(init, a[0]), r[1] = f(r[0], a[1]), r[2] = f(r[1], a[2]), ...]
+
+With our example: r = [2, 6, 12, 20, 30, 50]
+
+Task:
+Write the following functions of two variables
+
+som : (x, y) -> x + y
+mini : (x, y) -> min(x, y)
+maxi : (x, y) -> max(x, y)
+lcmu : (x, y) -> lcm(abs(x), abs(y) (see note for lcm)
+gcdi : (x, y) -> gcd(abs(x), abs(y) (see note for gcd)
+and
+
+function oper_array(fct, arr, init) (or operArray or oper-array) where
+
+fct is the function of two variables to apply to the array arr (fct will be one of som, mini, maxi, lcmu or gcdi)
+
+init is the initial value
+
+Examples:
+a = [18, 69, -90, -78, 65, 40]
+oper_array(gcd, a, a[0]) => [18, 3, 3, 3, 1, 1]
+oper_array(lcm, a, a[0]) => [18, 414, 2070, 26910, 26910, 107640]
+oper_array(sum, a, 0) => [18, 87, -3, -81, -16, 24]
+oper_array(min, a, a[0]) => [18, 18, -90, -90, -90, -90]
+oper_array(max, a, a[0]) => [18, 69, 69, 69, 69, 69]
+Notes:
+The form of the parameter fct in oper_array (or operArray or oper-array) changes according to the language. You can see each form according to the language in "Your test cases".
+
+AFAIK there are no corner cases, everything is as nice as possible.
+
+lcm and gcd see: https://en.wikipedia.org/wiki/Least_common_multiple https://en.wikipedia.org/wiki/Greatest_common_divisor
+
+you could google "reduce function (your language)" to have a general view about the reduce functions.
+
+In Shell bash, arrays are replaced by strings.
+
+In OCaml arrays are replaced by lists.
+
 
 */
+type BinOp = (a: number, b: number) => number;
+
+export const gcdi = (x: number, y: number): number => {
+    // Your code here
+    return -1;
+};
+export const lcmu = (a: number, b: number): number => {
+    // Your code here
+    return -1;
+};
+export const som = (a: number, b: number): number => {
+    // Your code here
+    return -1;
+};
+export const maxi = (a: number, b: number): number => {
+    // Your code here
+    return -1;
+};
+export const mini = (a: number, b: number): number => {
+    // Your code here
+    return -1;
+};
+export const operArray = (
+    fct: BinOp,
+    arr: number[],
+    init: number
+): number[] => {
+    // Your code here
+    return [];
+};
 /*
+describe("Fixed Tests gcdi, lcmu, som, mini, maxi", function() {
+    it("Basic tests", function() {        
+        let a = [ 18, 69, -90, -78, 65, 40 ];
+        let r = [ 18, 3, 3, 3, 1, 1 ];
+        let op = operArray(gcdi, a, a[0]);
+        testing(op, r);
+        r = [ 18, 414, 2070, 26910, 26910, 107640 ];
+        op = operArray(lcmu, a, a[0]);
+        testing(op, r);
+        r = [ 18, 87, -3, -81, -16, 24 ];
+        op = operArray(som, a, 0);
+        testing(op, r);
+        r = [ 18, 18, -90, -90, -90, -90 ];
+        op = operArray(mini, a, a[0]);
+        testing(op, r);
+        r = [ 18, 69, 69, 69, 69, 69 ];
+        op = operArray(maxi, a, a[0]);
+        testing(op, r);
+    });
+});
 
 */
 
@@ -435,7 +531,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Handshake problem
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -443,13 +539,69 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Johnny is a farmer and he annually holds a beet farmers convention "Drop the beet".
+
+Every year he takes photos of farmers handshaking. Johnny knows that no two farmers handshake more than once. He also knows that some of the possible handshake combinations may not happen.
+
+However, Johnny would like to know the minimal amount of people that participated this year just by counting all the handshakes.
+
+Help Johnny by writing a function, that takes the amount of handshakes and returns the minimal amount of people needed to perform these handshakes (a pair of farmers handshake only once).
+
 
 */
+const getParticipants = (handshakes: number): number => {
+    let members: number[] = [];
+
+    for (let i = 0; i < handshakes; i += 1) {
+        // console.log(i);
+        members.push(i);
+        // console.log(members);
+        // let currentPair = new Set;
+    }
+
+    console.log(members);
+
+    let pairsArr: number[][] = [];
+
+    // for (let i = 1; i < members.length; i += 1) {
+    //     let currentPair: number[] = [];
+    //     // currentPair.add(members[i]);
+    //     for (let j = i + 1; j < members.length; j += 1) {
+    //         currentPair.push(i, j);
+    //         console.log(currentPair);
+    //         pairs.push(currentPair);
+    //     }
+    // }
+
+    // console.log("pairs: ", pairs);
+
+    for (let i = 0; i < members.length; i += 1) {
+        for (let j = i + 1; j < members.length; j += 1) {
+            console.log(i, j);
+            pairsArr.push([i, j]);
+            if (pairsArr.length === handshakes) {
+                console.log(pairsArr.length);
+                return pairsArr.length;
+            }
+        }
+    }
+
+    console.log(pairsArr);
+
+    return 0;
+};
 /*
-
+ assert.strictEqual(getParticipants(0), 0)
+    assert.strictEqual(getParticipants(1), 2)
+    assert.strictEqual(getParticipants(3), 3)
+    assert.strictEqual(getParticipants(6), 4)
+    assert.strictEqual(getParticipants(7), 5)
 */
 
-// console.log();
+// console.log(getParticipants(0));
+// console.log(getParticipants(1));
+console.log(getParticipants(4));
+// console.log(getParticipants(6));
 // console.log();
 // console.log();
 // console.log();
@@ -503,7 +655,6 @@ It could be easier to take these katas from number (I) to number (IV)
 Bash Note: The output strings should be separated by \r instead of \n. See "Sample Tests".
 */
 const diag1Sym = (str: string): string => {
-
     let solutionArr: string[] = [];
 
     const subArr: string[] = str.split("\n");
@@ -530,7 +681,7 @@ const diag1Sym = (str: string): string => {
     const solution: string = solutionArr.join("\n");
 
     return solution;
-}
+};
 
 /*
 [ 'abcd', 'efgh', 'ijkl', 'mnop' ]
@@ -563,7 +714,6 @@ dhlp
 */
 
 const rot90Clock = (str: string): string => {
-
     let solutionArr: string[] = [];
 
     const subArr: string[] = str.split("\n");
@@ -593,9 +743,7 @@ const rot90Clock = (str: string): string => {
     const solution: string = solutionArr.join("\n");
 
     return solution;
-
-
-}
+};
 
 /*
 [ 'abcd', 'efgh', 'ijkl', 'mnop' ]
@@ -628,7 +776,6 @@ plhd
 */
 
 const selfieAndDiag1 = (str: string): string => {
-
     let solutionArr: string[] = [];
 
     const subArr: string[] = str.split("\n");
@@ -655,12 +802,11 @@ const selfieAndDiag1 = (str: string): string => {
     const solution: string = solutionArr.join("\n");
 
     return solution;
-
-}
+};
 
 const oper5 = (func: (s: string) => string, str: string): string => {
     return func(str);
-}
+};
 /*
 [ 'abcd', 'efgh', 'ijkl', 'mnop' ]
 4
@@ -702,106 +848,135 @@ mnop|dhlp
 
 // ❗️❗️❗️  NESTED MAP WITH INDEX ❗️❗️❗️
 export function diag1Sym6(strng: string): string {
-    let arr: string[] = strng.split("\n")
-    return [...arr[0]].map((x, i) => arr.map((y, j) => arr[j][i]).join("")).join("\n")
+    let arr: string[] = strng.split("\n");
+    return [...arr[0]]
+        .map((x, i) => arr.map((y, j) => arr[j][i]).join(""))
+        .join("\n");
 }
 
 export function rot90Clock6(strng: string): string {
-    return diag1Sym(strng).split("\n").map((x) => [...x].reverse().join("")).join("\n")
+    return diag1Sym(strng)
+        .split("\n")
+        .map((x) => [...x].reverse().join(""))
+        .join("\n");
 }
 
 export function selfieAndDiag16(strng: string): string {
-    let arr: string[] = diag1Sym(strng).split("\n")
-    return strng.split("\n").map((x, i) => `${x}|${arr[i]}`).join("\n")
+    let arr: string[] = diag1Sym(strng).split("\n");
+    return strng
+        .split("\n")
+        .map((x, i) => `${x}|${arr[i]}`)
+        .join("\n");
 }
 
 export function oper6(fct: (s: string) => string, s: string): string {
-    return fct(s)
+    return fct(s);
 }
 
 // ============================================================
 
 export function rot90Clock7(strng: string): string {
-    const arr = strng.split('\n');
-    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).reverse().join('')).join('\n');
+    const arr = strng.split("\n");
+    return arr
+        .map((e, i) =>
+            e
+                .split("")
+                .map((letter, index) => arr[index][i])
+                .reverse()
+                .join("")
+        )
+        .join("\n");
 }
 
 export function diag1Sym7(strng: string): string {
-    const arr = strng.split('\n');
-    return arr.map((e, i) => e.split('').map((letter, index) => arr[index][i]).join('')).join('\n')
+    const arr = strng.split("\n");
+    return arr
+        .map((e, i) =>
+            e
+                .split("")
+                .map((letter, index) => arr[index][i])
+                .join("")
+        )
+        .join("\n");
 }
 
 export function selfieAndDiag17(strng: string): string {
-    const arr = strng.split('\n');
-    return arr.map((e, i) => `${arr[i]}|${e.split('').map((letter, index) => arr[index][i]).join('')}`).join('\n')
+    const arr = strng.split("\n");
+    return arr
+        .map(
+            (e, i) =>
+                `${arr[i]}|${e
+                    .split("")
+                    .map((letter, index) => arr[index][i])
+                    .join("")}`
+        )
+        .join("\n");
 }
 
 export function oper7(fct: (s: string) => string, s: string): string {
     return fct(s);
 }
 
-
 // ============================================================
 
 export function rot90Clock8(str: string): string {
-    let arr: string[] = str.split('\n').reverse(),
+    let arr: string[] = str.split("\n").reverse(),
         length: number = arr.length,
-        result: string = ''
+        result: string = "";
 
-    let getDiagElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+    let getDiagElement = (arr: string[], n: number): string =>
+        arr.reduce((acc, el) => acc + el[n], "");
 
     for (let i = 0; i < length; i += 1) {
-        result = result + getDiagElement(arr, i) + '\n'
+        result = result + getDiagElement(arr, i) + "\n";
     }
 
-    return result.slice(0, -1)
+    return result.slice(0, -1);
 }
 
-
 export function diag1Sym8(str: string): string {
-    let arr: string[] = str.split('\n'),
+    let arr: string[] = str.split("\n"),
         length: number = arr.length,
-        result: string = ''
+        result: string = "";
 
-    let getDiagElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+    let getDiagElement = (arr: string[], n: number): string =>
+        arr.reduce((acc, el) => acc + el[n], "");
 
     for (let i = 0; i < length; i += 1) {
-        result = result + getDiagElement(arr, i) + '\n'
+        result = result + getDiagElement(arr, i) + "\n";
     }
 
-    return result.slice(0, -1)
+    return result.slice(0, -1);
 }
 
 export function selfieAndDiag18(str: string): string {
-    let arr: string[] = str.split('\n'),
+    let arr: string[] = str.split("\n"),
         length: number = arr.length - 1,
-        result: string = ''
+        result: string = "";
 
-    let getElement = (arr: string[], n: number): string => arr.reduce((acc, el) => acc + el[n], '')
+    let getElement = (arr: string[], n: number): string =>
+        arr.reduce((acc, el) => acc + el[n], "");
 
     for (let i = length; i >= 0; i -= 1) {
-        result = result + arr[i] + '|' + getElement(arr, i) + '\n'
+        result = result + arr[i] + "|" + getElement(arr, i) + "\n";
     }
 
-    return result.slice(0, -1).split('\n').reverse().join('\n')
+    return result.slice(0, -1).split("\n").reverse().join("\n");
 }
-
 
 export function oper8(fct: (s: string) => string, s: string): string {
-    return fct(s)
+    return fct(s);
 }
-
-
 
 // ============================================================
 
 const parseToArray = (text: string) => {
-    return text.split('\n').map(text => text.split(""));
-}
+    return text.split("\n").map((text) => text.split(""));
+};
 
 const parseToText = (arr: string[][]) => {
-    return arr.map(text => text.join("")).join('\n');
-}
+    return arr.map((text) => text.join("")).join("\n");
+};
 
 const makeDiag1 = (arr: string[][]) => {
     const result: string[][] = arr.map(() => []);
@@ -814,11 +989,11 @@ const makeDiag1 = (arr: string[][]) => {
         }
     }
     return result;
-}
+};
 
 export function rot90Clock9(strng: string): string {
     const arr = parseToArray(strng);
-    const rot90 = makeDiag1(arr).map(arr => arr.reverse());
+    const rot90 = makeDiag1(arr).map((arr) => arr.reverse());
     return parseToText(rot90);
 }
 
@@ -831,7 +1006,7 @@ export function diag1Sym9(strng: string): string {
 export function selfieAndDiag19(strng: string): string {
     const selfie = parseToArray(strng);
     const diag1 = makeDiag1(selfie);
-    const merged = selfie.map((arr, i) => [...arr, '|', ...diag1[i]]);
+    const merged = selfie.map((arr, i) => [...arr, "|", ...diag1[i]]);
     return parseToText(merged);
 }
 
@@ -839,43 +1014,39 @@ export function oper9(fct: (s: string) => string, s: string): string {
     return fct(s);
 }
 
-
-
 // ============================================================
 
 export function rot90Clock10(s: string): string {
     return diag1Sym(s)
-        .split('\n')
-        .map((i: string) => [...i].reverse().join(''))
-        .join('\n')
+        .split("\n")
+        .map((i: string) => [...i].reverse().join(""))
+        .join("\n");
 }
 
 export function diag1Sym10(s: string): string {
-    const a: string[][] = s.split('\n').map(i => [...i])
+    const a: string[][] = s.split("\n").map((i) => [...i]);
     return a
         .map((x: string[], i: number) => {
-            let t: string = ''
+            let t: string = "";
             x.map((_, j: number) => {
-                t += a[j][i]
-            })
-            return t
+                t += a[j][i];
+            });
+            return t;
         })
-        .join('\n')
+        .join("\n");
 }
 
 export function selfieAndDiag110(s: string): string {
-    const d: string[] = diag1Sym(s).split('\n')
+    const d: string[] = diag1Sym(s).split("\n");
     return s
-        .split('\n')
+        .split("\n")
         .map((v: string, i: number) => `${v}|${d[i]}`)
-        .join('\n')
+        .join("\n");
 }
 
 export function oper10(fct: (s: string) => string, s: string): string {
-    return fct(s)
+    return fct(s);
 }
-
-
 
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Sorting on planet Twisted-3-7
@@ -1475,8 +1646,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-                ? 2
-                : 1;
+            ? 2
+            : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -2230,7 +2401,7 @@ The Leibniz formula for
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: HOW MUCH?
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS: DECLARE MULTIPLE VARIABLES WITH ARRAY
+// KEYWORDS:❗️❗️❗️ DECLARE MULTIPLE VARIABLES WITH ARRAY ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -3606,8 +3777,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -3619,8 +3790,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5024,9 +5195,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -5592,10 +5763,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -7988,7 +8159,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8074,7 +8245,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -8935,15 +9106,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -8996,10 +9167,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -9575,7 +9746,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -10034,8 +10205,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -10328,7 +10499,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -10785,10 +10956,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -12088,8 +12259,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
