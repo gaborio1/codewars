@@ -37,12 +37,17 @@ const getParticipants = (handshakes) => {
         console.log("i:", i);
         for (let j = i + 1; j <= handshakes; j += 1) {
             pairsArr.push([i, j]);
+            console.log(pairsArr);
+            if (pairsArr.length === handshakes) {
+                console.log("--- stop: ", j);
+            }
         }
+        console.log("--- ", i, pairsArr.length);
     }
     console.log(pairsArr);
     return 0;
 };
-console.log(getParticipants(4));
+console.log(getParticipants(5));
 const diag1Sym = (str) => {
     let solutionArr = [];
     const subArr = str.split("\n");

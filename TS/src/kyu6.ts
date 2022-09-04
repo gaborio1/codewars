@@ -584,7 +584,17 @@ const getParticipants = (handshakes: number): number => {
             //     console.log(i);
             //     return i;
             // }
+            console.log(pairsArr);
+
+            if (pairsArr.length === handshakes) {
+                console.log("--- stop: ", j);
+            }
+            // if (pairsArr.length === handshakes) {
+            //     console.log("--- stop: ");
+            // break;
+            // return j;
         }
+        console.log("--- ", i, pairsArr.length);
     }
 
     console.log(pairsArr);
@@ -601,7 +611,7 @@ const getParticipants = (handshakes: number): number => {
 
 // console.log(getParticipants(0));
 // console.log(getParticipants(1));
-console.log(getParticipants(4));
+console.log(getParticipants(5));
 // console.log(getParticipants(6));
 // console.log();
 // console.log();
