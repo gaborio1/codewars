@@ -530,6 +530,10 @@ describe("Fixed Tests gcdi, lcmu, som, mini, maxi", function() {
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// TOO SLOW ON LARGE INPUTS 
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Handshake problem
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -550,69 +554,113 @@ Help Johnny by writing a function, that takes the amount of handshakes and retur
 
 */
 const getParticipants = (handshakes: number): number => {
-    let members: number[] = [];
 
-    for (let i = 0; i < handshakes; i += 1) {
-        // console.log(i);
-        members.push(i);
-        // console.log(members);
-        // let currentPair = new Set;
-    }
+    if (handshakes === 1) return 2;
+    if (handshakes === 2) return 3;
 
-    console.log(members);
 
-    let pairsArr: number[][] = [];
+    for (let counter = 1; counter <= handshakes; counter += 1) {
+        let pairsArr: number[][] = [];
+        console.log("           counter:", counter);
+        for (let i = 1; i <= counter; i += 1) {
 
-    // for (let i = 1; i < members.length; i += 1) {
-    //     let currentPair: number[] = [];
-    //     // currentPair.add(members[i]);
-    //     for (let j = i + 1; j < members.length; j += 1) {
-    //         currentPair.push(i, j);
-    //         console.log(currentPair);
-    //         pairs.push(currentPair);
-    //     }
-    // }
+            console.log("i:", i);
+            for (let j = i + 1; j <= counter; j += 1) {
+                // console.log(i, j);
+                pairsArr.push([i, j]);
 
-    // console.log("pairs: ", pairs);
-
-    for (let i = 1; i <= handshakes; i += 1) {
-        console.log("i:", i);
-        for (let j = i + 1; j <= handshakes; j += 1) {
-            // console.log(i, j);
-            pairsArr.push([i, j]);
-            // if (pairsArr.length === handshakes) {
-            //     console.log(i);
-            //     return i;
-            // }
-            console.log(pairsArr);
-
-            if (pairsArr.length === handshakes) {
-                console.log("--- stop: ", j);
             }
-            // if (pairsArr.length === handshakes) {
-            //     console.log("--- stop: ");
-            // break;
-            // return j;
+
         }
-        console.log("--- ", i, pairsArr.length);
+
+        console.log(pairsArr);
+        console.log("       ----- MAX: ", pairsArr.length, "\n");
+        if (handshakes <= pairsArr.length) {
+            console.log("                  MIN NUMBER OF PARTICIPANTS:", counter);
+            return counter;
+        }
     }
 
-    console.log(pairsArr);
 
     return 0;
 };
 /*
- assert.strictEqual(getParticipants(0), 0)
-    assert.strictEqual(getParticipants(1), 2)
-    assert.strictEqual(getParticipants(3), 3)
-    assert.strictEqual(getParticipants(6), 4)
-    assert.strictEqual(getParticipants(7), 5)
+console.log(getParticipants(11));
+
+
+           counter: 1
+i: 1
+[]
+       ----- MAX:  0 
+
+           counter: 2
+i: 1
+i: 2
+[ [ 1, 2 ] ]
+       ----- MAX:  1 
+
+           counter: 3
+i: 1
+i: 2
+i: 3
+[ [ 1, 2 ], [ 1, 3 ], [ 2, 3 ] ]
+       ----- MAX:  3 
+
+           counter: 4
+i: 1
+i: 2
+i: 3
+i: 4
+[ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 3 ], [ 2, 4 ], [ 3, 4 ] ]
+       ----- MAX:  6 
+
+           counter: 5
+i: 1
+i: 2
+i: 3
+i: 4
+i: 5
+[
+  [ 1, 2 ], [ 1, 3 ],
+  [ 1, 4 ], [ 1, 5 ],
+  [ 2, 3 ], [ 2, 4 ],
+  [ 2, 5 ], [ 3, 4 ],
+  [ 3, 5 ], [ 4, 5 ]
+]
+       ----- MAX:  10 
+
+           counter: 6
+i: 1
+i: 2
+i: 3
+i: 4
+i: 5
+i: 6
+[
+  [ 1, 2 ], [ 1, 3 ],
+  [ 1, 4 ], [ 1, 5 ],
+  [ 1, 6 ], [ 2, 3 ],
+  [ 2, 4 ], [ 2, 5 ],
+  [ 2, 6 ], [ 3, 4 ],
+  [ 3, 5 ], [ 3, 6 ],
+  [ 4, 5 ], [ 4, 6 ],
+  [ 5, 6 ]
+]
+       ----- MAX:  15 
+
+                  MIN NUMBER OF PARTICIPANTS: 6
+6
 */
 
 // console.log(getParticipants(0));
 // console.log(getParticipants(1));
-console.log(getParticipants(5));
+// console.log(getParticipants(2));
+// console.log(getParticipants(3));
+// console.log(getParticipants(4));
+// console.log(getParticipants(5));
 // console.log(getParticipants(6));
+// console.log(getParticipants(7));
+// console.log(getParticipants(11));
 // console.log();
 // console.log();
 // console.log();
@@ -1657,8 +1705,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-            ? 2
-            : 1;
+                ? 2
+                : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -3788,8 +3836,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                  w.slice(1, -1).split("").sort().reverse().join("") +
-                  w.slice(-1)
+                w.slice(1, -1).split("").sort().reverse().join("") +
+                w.slice(-1)
         )
         .join(" ");
 }
@@ -3801,8 +3849,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                  x.slice(1, -1).split("").sort().reverse().join("") +
-                  arr[i].slice(-1)
+                x.slice(1, -1).split("").sort().reverse().join("") +
+                arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5206,9 +5254,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -5774,10 +5822,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -8170,7 +8218,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8256,7 +8304,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -9117,15 +9165,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -9178,10 +9226,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -9757,7 +9805,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -10216,8 +10264,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -10510,7 +10558,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -10967,10 +11015,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -12270,9 +12318,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

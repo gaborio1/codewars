@@ -27,27 +27,28 @@ const operArray = (fct, arr, init) => {
 };
 exports.operArray = operArray;
 const getParticipants = (handshakes) => {
-    let members = [];
-    for (let i = 0; i < handshakes; i += 1) {
-        members.push(i);
-    }
-    console.log(members);
-    let pairsArr = [];
-    for (let i = 1; i <= handshakes; i += 1) {
-        console.log("i:", i);
-        for (let j = i + 1; j <= handshakes; j += 1) {
-            pairsArr.push([i, j]);
-            console.log(pairsArr);
-            if (pairsArr.length === handshakes) {
-                console.log("--- stop: ", j);
+    if (handshakes === 1)
+        return 2;
+    if (handshakes === 2)
+        return 3;
+    for (let counter = 1; counter <= handshakes; counter += 1) {
+        let pairsArr = [];
+        console.log("           counter:", counter);
+        for (let i = 1; i <= counter; i += 1) {
+            console.log("i:", i);
+            for (let j = i + 1; j <= counter; j += 1) {
+                pairsArr.push([i, j]);
             }
         }
-        console.log("--- ", i, pairsArr.length);
+        console.log(pairsArr);
+        console.log("       ----- MAX: ", pairsArr.length, "\n");
+        if (handshakes <= pairsArr.length) {
+            console.log("                  MIN NUMBER OF PARTICIPANTS:", counter);
+            return counter;
+        }
     }
-    console.log(pairsArr);
     return 0;
 };
-console.log(getParticipants(5));
 const diag1Sym = (str) => {
     let solutionArr = [];
     const subArr = str.split("\n");
