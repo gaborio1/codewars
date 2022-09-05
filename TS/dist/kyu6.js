@@ -1,7 +1,132 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = void 0;
+exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = exports.M7 = exports.F7 = exports.M6 = exports.F6 = exports.M5 = exports.F5 = exports.M4 = exports.F4 = exports.M3 = exports.F3 = exports.M2 = exports.F2 = exports.M1 = exports.F1 = void 0;
+exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = void 0;
+const F = (n) => {
+    const seq = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14, 14, 15];
+    return n < 1
+        ? 1
+        : seq[n];
+};
+const M = (n) => {
+    const seq = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13, 14, 14, 15];
+    return n < 0
+        ? 0
+        : seq[n];
+};
+function F1(n) {
+    return !n ? 1 : n - M(F(n - 1));
+}
+exports.F1 = F1;
+function M1(n) {
+    return !n ? n : n - F(M(n - 1));
+}
+exports.M1 = M1;
+function F2(n) {
+    return n == 0 ? 1 : n - M(F(n - 1));
+}
+exports.F2 = F2;
+function M2(n) {
+    return n == 0 ? 0 : n - F(M(n - 1));
+}
+exports.M2 = M2;
+const MF = (n) => {
+    const f = [1], m = [0];
+    for (let i = 1; i <= n; i++) {
+        m.push(i - f[m[i - 1]]);
+        f.push(i - m[f[i - 1]]);
+    }
+    return { m: m[n], f: f[n] };
+};
+const F3 = (n) => MF(n).f;
+exports.F3 = F3;
+const M3 = (n) => MF(n).m;
+exports.M3 = M3;
+const fInner = (n, lookup) => {
+    if (n === 0) {
+        return 1;
+    }
+    const k = `F${n}`;
+    if (lookup.has(k)) {
+        return lookup.get(k) || 0;
+    }
+    const result = n - mInner(fInner(n - 1, lookup), lookup);
+    lookup.set(k, result);
+    return result;
+};
+const mInner = (n, lookup) => {
+    if (n === 0) {
+        return 0;
+    }
+    const k = `M${n}`;
+    if (lookup.has(k)) {
+        return lookup.get(k) || 0;
+    }
+    const result = n - fInner(mInner(n - 1, lookup), lookup);
+    lookup.set(k, result);
+    return result;
+};
+function F4(n) {
+    const lookup = new Map();
+    return fInner(n, lookup);
+}
+exports.F4 = F4;
+function M4(n) {
+    const lookup = new Map();
+    return mInner(n, lookup);
+}
+exports.M4 = M4;
+function F5(n) {
+    let value = 1;
+    if (n > 0) {
+        value = n - M5(F5(n - 1));
+    }
+    return value;
+}
+exports.F5 = F5;
+function M5(n) {
+    let value = 0;
+    if (n > 0) {
+        value = n - F5(M5(n - 1));
+    }
+    return value;
+}
+exports.M5 = M5;
+const F6 = function (n) {
+    if (n === 0) {
+        return 1;
+    }
+    return n - (0, exports.M6)((0, exports.F6)(n - 1));
+};
+exports.F6 = F6;
+Object.freeze(exports.F6);
+const M6 = function (n) {
+    if (n === 0) {
+        return 0;
+    }
+    return n - (0, exports.F6)((0, exports.M6)(n - 1));
+};
+exports.M6 = M6;
+Object.freeze(exports.M6);
+function F7(n) {
+    if (n === 0) {
+        return 1;
+    }
+    else {
+        return n - M7(F7(n - 1));
+    }
+}
+exports.F7 = F7;
+function M7(n) {
+    if (n === 0) {
+        return 0;
+    }
+    else {
+        return n - F7(M7(n - 1));
+    }
+}
+exports.M7 = M7;
 const gcdi = (x, y) => {
     return -1;
 };

@@ -391,17 +391,49 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ❗️❗️❗️ REFACTOR ❗️❗️❗️ ALSO TRY TO GENERATE SEQUENCE ❗️❗️❗️
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Mutual Recursion
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ MUTUAL RECURSION ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: https://www.mathstat.dal.ca/FQ/Papers1/46_47-1/Stoll_11-08.pdf
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Mutual Recursion allows us to take the fun of regular recursion (where a function calls itself until a terminating condition) and apply it to multiple functions calling each other!
+
+Let's use the Hofstadter Female and Male sequences to demonstrate this technique. You'll want to create two functions F and M such that the following equations are true:
+
+F(0) = 1
+M(0) = 0
+F(n) = n - M(F(n - 1))
+M(n) = n - F(M(n - 1))
+Don't worry about negative numbers, n will always be greater than or equal to zero.
+
+Hofstadter Wikipedia Reference http://en.wikipedia.org/wiki/Hofstadter_sequence#Hofstadter_Female_and_Male_sequences
+
 
 */
+const F = (n: number): number => {
+    const seq: number[] = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14, 14, 15];
+
+    return n < 1
+        ? 1
+        : seq[n];
+}
+
+const M = (n: number): number => {
+    const seq: number[] = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13, 14, 14, 15];
+
+
+
+    return n < 0
+        ? 0
+        : seq[n];
+}
 /*
 
 */
@@ -412,6 +444,166 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+export function F1(n: number): number {
+    return !n ? 1 : n - M(F(n - 1))
+}
+
+export function M1(n: number): number {
+    return !n ? n : n - F(M(n - 1))
+}
+
+// ===========================================================
+
+export function F2(n: number): number {
+    return n == 0 ? 1 : n - M(F(n - 1));
+}
+
+export function M2(n: number): number {
+    return n == 0 ? 0 : n - F(M(n - 1));
+}
+
+// ===========================================================
+
+
+const MF = (n: number) => {
+    const f = [1], m = [0]
+    for (let i = 1; i <= n; i++) {
+        m.push(i - f[m[i - 1]])
+        f.push(i - m[f[i - 1]])
+    }
+    return { m: m[n], f: f[n] }
+}
+
+export const F3 = (n: number) => MF(n).f
+export const M3 = (n: number) => MF(n).m
+
+// ===========================================================
+
+const fInner = (n: number, lookup: Map<string, number>): number => {
+    if (n === 0) {
+        return 1;
+    }
+    const k = `F${n}`;
+    if (lookup.has(k)) {
+        return lookup.get(k) || 0;
+    }
+    const result = n - mInner(fInner(n - 1, lookup), lookup);
+    lookup.set(k, result);
+    return result;
+};
+
+const mInner = (n: number, lookup: Map<string, number>): number => {
+    if (n === 0) {
+        return 0;
+    }
+    const k = `M${n}`;
+    if (lookup.has(k)) {
+        return lookup.get(k) || 0;
+    }
+    const result = n - fInner(mInner(n - 1, lookup), lookup);
+    lookup.set(k, result);
+    return result;
+};
+
+export function F4(n: number): number {
+    const lookup = new Map<string, number>();
+    return fInner(n, lookup);
+}
+
+export function M4(n: number): number {
+    const lookup = new Map<string, number>();
+    return mInner(n, lookup);
+}
+
+
+
+// ===========================================================
+
+export function F5(n: number): number {
+
+    let value: number = 1
+    if (n > 0) {
+        value = n - M5(F5(n - 1));
+    }
+    return value;
+}
+
+export function M5(n: number): number {
+    let value: number = 0;
+    if (n > 0) {
+        value = n - F5(M5(n - 1));
+    }
+    return value;
+}
+
+
+
+// ===========================================================
+
+// "use strict";
+export const F6 = function (n: number): number {
+    if (n === 0) {
+        return 1;
+    }
+    return n - M6(F6(n - 1));
+}
+Object.freeze(F6);
+
+export const M6 = function (n: number): number {
+    if (n === 0) {
+        return 0;
+    }
+    return n - F6(M6(n - 1));
+};
+Object.freeze(M6);
+
+
+
+// ===========================================================
+
+
+export function F7(n: number): number {
+    if (n === 0) {
+        return 1
+    }
+    else {
+        return n - M7(F7(n - 1))
+    }
+}
+
+export function M7(n: number): number {
+    if (n === 0) {
+        return 0
+    }
+    else {
+        return n - F7(M7(n - 1))
+    }
+}
+
+
+// ===========================================================
+
+// export function F8(n:number):number { 
+//     if (n === 0) {
+//       return 1;
+//     } else {
+//       return n - this.M8(this.F8(n - 1));
+//     }
+
+//   }
+
+//   export function M8(n:number):number { 
+//     if (n === 0) {
+//       return 0;
+//     } else {
+//       return n - this.F8(this.M8(n - 1));
+//     }
+//   }
+
+
+
+// ===========================================================
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Reducing by steps
