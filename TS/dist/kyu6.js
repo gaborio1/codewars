@@ -3,17 +3,41 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = exports.M7 = exports.F7 = exports.M6 = exports.F6 = exports.M5 = exports.F5 = exports.M4 = exports.F4 = exports.M3 = exports.F3 = exports.M2 = exports.F2 = exports.M1 = exports.F1 = void 0;
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = void 0;
+const fortune = (deposit, rate, withdraw, term, inflation) => {
+    let balance = deposit;
+    for (let i = 1; i <= term; i += 1) {
+        console.log("YEAR", i);
+        let interest = (balance * rate) / 100;
+        console.log("   interest:", interest);
+        withdraw = withdraw + (withdraw * inflation) / 100;
+        console.log("   withdraw:", withdraw);
+        balance = balance + interest;
+        console.log("       balance:", balance);
+        balance = balance - withdraw;
+        console.log("       balance end of year:", balance);
+    }
+    return true;
+};
+console.log(fortune(100000, 1, 2000, 15, 1));
 const F = (n) => {
-    const seq = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14, 14, 15];
-    return n < 1
-        ? 1
-        : seq[n];
+    const seq = [
+        1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13,
+        14, 14, 15,
+    ];
+    return n < 1 ? 1 : seq[n];
 };
 const M = (n) => {
-    const seq = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13, 14, 14, 15];
-    return n < 0
-        ? 0
-        : seq[n];
+    const seq = [
+        0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13,
+        14, 14, 15,
+    ];
+    return n < 0 ? 0 : seq[n];
+};
+const F10 = (n) => {
+    return n < 1 ? 1 : n - M10(F10(n - 1));
+};
+const M10 = (n) => {
+    return n < 1 ? 0 : n - F10(M10(n - 1));
 };
 function F1(n) {
     return !n ? 1 : n - M(F(n - 1));

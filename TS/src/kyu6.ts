@@ -371,7 +371,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Banker's Plan
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -379,13 +379,74 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+John has some amount of money of which he wants to deposit a part f0 to the bank at the beginning of year 1. He wants to withdraw each year for his living an amount c0.
+
+Here is his banker plan:
+
+deposit f0 at beginning of year 1
+his bank account has an interest rate of p percent per year, constant over the years
+John can withdraw each year c0, taking it whenever he wants in the year; he must take account of an inflation of i percent per year in order to keep his quality of living. i is supposed to stay constant over the years.
+all amounts f0..fn-1, c0..cn-1 are truncated by the bank to their integral part
+Given f0, p, c0, i the banker guarantees that John will be able to go on that way until the nth year.
+Example:
+f0 = 100000, p = 1 percent, c0 = 2000, n = 15, i = 1 percent
+
+beginning of year 2 -> f1 = 100000 + 0.01*100000 - 2000 = 99000;  c1 = c0 + c0*0.01 = 2020 (with inflation of previous year)
+
+beginning of year 3 -> f2 =  99000 + 0.01*99000 - 2020  = 97970;  c2 = c1 + c1*0.01 = 2040.20 
+(with inflation of previous year, truncated to 2040)
+
+beginning of year 4 -> f3 =  97970 + 0.01*97970 - 2040  = 96909.7 (truncated to 96909); 
+c3 = c2 + c2*0.01 = 2060.4 (with inflation of previous year, truncated to 2060)
+and so on...
+
+John wants to know if the banker's plan is right or wrong. Given parameters f0, p, c0, n, i build a function fortune which returns true if John can make a living until the nth year and false if it is not possible.
+
+Some cases:
+fortune(100000, 1, 2000, 15, 1) -> True
+fortune(100000, 1, 10000, 10, 1) -> True
+fortune(100000, 1, 9185, 12, 1) -> False
+
+For the last case you can find below the amounts of his account at the beginning of each year:
+100000, 91815, 83457, 74923, 66211, 57318, 48241, 38977, 29523, 19877, 10035, -5
+f11 = -5 so he has no way to withdraw something for his living in year 12.
+Note:
+Don't forget to convert the percent parameters as percentages in the body of your function: if a parameter percent is 2 you have to convert it to 0.02.
+
 
 */
+const fortune = (
+    deposit: number,
+    rate: number,
+    withdraw: number,
+    term: number,
+    inflation: number
+): boolean => {
+    let balance: number = deposit;
+
+    for (let i = 1; i <= term; i += 1) {
+        console.log("YEAR", i);
+        let interest: number = (balance * rate) / 100;
+        console.log("   interest:", interest);
+        withdraw = withdraw + (withdraw * inflation) / 100;
+        console.log("   withdraw:", withdraw);
+        balance = balance + interest;
+        console.log("       balance:", balance);
+        balance = balance - withdraw;
+        console.log("       balance end of year:", balance);
+    }
+
+    return true;
+};
 /*
-
+assert.strictEqual(fortune(100000, 1, 2000, 15, 1), true);
+    assert.strictEqual(fortune(100000, 1, 9185, 12, 1), false);
+    assert.strictEqual(fortune(100000000, 1, 100000, 50, 1), true);
+    assert.strictEqual(fortune(100000000, 1.5, 10000000, 50, 1), false);
+    assert.strictEqual(fortune(100000000, 5, 1000000, 50, 1), true);
 */
 
-// console.log();
+console.log(fortune(100000, 1, 2000, 15, 1));
 // console.log();
 // console.log();
 // console.log();
@@ -417,23 +478,33 @@ Hofstadter Wikipedia Reference http://en.wikipedia.org/wiki/Hofstadter_sequence#
 
 
 */
+// 1️⃣ FIRST ATTEMPT ❗️❗️❗️ REFACTOR, HARD CODED SEQUENCE, NO RECURSION ❗️❗️❗️
 const F = (n: number): number => {
-    const seq: number[] = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13, 14, 14, 15];
+    const seq: number[] = [
+        1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13,
+        14, 14, 15,
+    ];
 
-    return n < 1
-        ? 1
-        : seq[n];
-}
+    return n < 1 ? 1 : seq[n];
+};
 
 const M = (n: number): number => {
-    const seq: number[] = [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13, 14, 14, 15];
+    const seq: number[] = [
+        0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12, 12, 13,
+        14, 14, 15,
+    ];
 
+    return n < 0 ? 0 : seq[n];
+};
 
+// 2️⃣ REFACTORED ✅
+const F10 = (n: number): number => {
+    return n < 1 ? 1 : n - M10(F10(n - 1));
+};
 
-    return n < 0
-        ? 0
-        : seq[n];
-}
+const M10 = (n: number): number => {
+    return n < 1 ? 0 : n - F10(M10(n - 1));
+};
 /*
 
 */
@@ -446,11 +517,11 @@ const M = (n: number): number => {
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 export function F1(n: number): number {
-    return !n ? 1 : n - M(F(n - 1))
+    return !n ? 1 : n - M(F(n - 1));
 }
 
 export function M1(n: number): number {
-    return !n ? n : n - F(M(n - 1))
+    return !n ? n : n - F(M(n - 1));
 }
 
 // ===========================================================
@@ -465,18 +536,18 @@ export function M2(n: number): number {
 
 // ===========================================================
 
-
 const MF = (n: number) => {
-    const f = [1], m = [0]
+    const f = [1],
+        m = [0];
     for (let i = 1; i <= n; i++) {
-        m.push(i - f[m[i - 1]])
-        f.push(i - m[f[i - 1]])
+        m.push(i - f[m[i - 1]]);
+        f.push(i - m[f[i - 1]]);
     }
-    return { m: m[n], f: f[n] }
-}
+    return { m: m[n], f: f[n] };
+};
 
-export const F3 = (n: number) => MF(n).f
-export const M3 = (n: number) => MF(n).m
+export const F3 = (n: number) => MF(n).f;
+export const M3 = (n: number) => MF(n).m;
 
 // ===========================================================
 
@@ -516,13 +587,10 @@ export function M4(n: number): number {
     return mInner(n, lookup);
 }
 
-
-
 // ===========================================================
 
 export function F5(n: number): number {
-
-    let value: number = 1
+    let value: number = 1;
     if (n > 0) {
         value = n - M5(F5(n - 1));
     }
@@ -537,8 +605,6 @@ export function M5(n: number): number {
     return value;
 }
 
-
-
 // ===========================================================
 
 // "use strict";
@@ -547,7 +613,7 @@ export const F6 = function (n: number): number {
         return 1;
     }
     return n - M6(F6(n - 1));
-}
+};
 Object.freeze(F6);
 
 export const M6 = function (n: number): number {
@@ -558,33 +624,27 @@ export const M6 = function (n: number): number {
 };
 Object.freeze(M6);
 
-
-
 // ===========================================================
-
 
 export function F7(n: number): number {
     if (n === 0) {
-        return 1
-    }
-    else {
-        return n - M7(F7(n - 1))
+        return 1;
+    } else {
+        return n - M7(F7(n - 1));
     }
 }
 
 export function M7(n: number): number {
     if (n === 0) {
-        return 0
-    }
-    else {
-        return n - F7(M7(n - 1))
+        return 0;
+    } else {
+        return n - F7(M7(n - 1));
     }
 }
 
-
 // ===========================================================
 
-// export function F8(n:number):number { 
+// export function F8(n:number):number {
 //     if (n === 0) {
 //       return 1;
 //     } else {
@@ -593,15 +653,13 @@ export function M7(n: number): number {
 
 //   }
 
-//   export function M8(n:number):number { 
+//   export function M8(n:number):number {
 //     if (n === 0) {
 //       return 0;
 //     } else {
 //       return n - this.F8(this.M8(n - 1));
 //     }
 //   }
-
-
 
 // ===========================================================
 
@@ -723,7 +781,7 @@ describe("Fixed Tests gcdi, lcmu, som, mini, maxi", function() {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// TOO SLOW ON LARGE INPUTS 
+// TOO SLOW ON LARGE INPUTS
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // ❗️❗️❗️ Execution Timed Out (12000 ms) ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
@@ -746,33 +804,30 @@ Help Johnny by writing a function, that takes the amount of handshakes and retur
 
 */
 const getParticipants = (handshakes: number): number => {
-
     if (handshakes === 1) return 2;
     if (handshakes === 2) return 3;
-
 
     for (let counter = 1; counter <= handshakes; counter += 1) {
         let pairsArr: number[][] = [];
         console.log("           counter:", counter);
         for (let i = 1; i <= counter; i += 1) {
-
             console.log("i:", i);
             for (let j = i + 1; j <= counter; j += 1) {
                 // console.log(i, j);
                 pairsArr.push([i, j]);
-
             }
-
         }
 
         console.log(pairsArr);
         console.log("       ----- MAX: ", pairsArr.length, "\n");
         if (handshakes <= pairsArr.length) {
-            console.log("                  MIN NUMBER OF PARTICIPANTS:", counter);
+            console.log(
+                "                  MIN NUMBER OF PARTICIPANTS:",
+                counter
+            );
             return counter;
         }
     }
-
 
     return 0;
 };
@@ -1897,8 +1952,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-                ? 2
-                : 1;
+            ? 2
+            : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -4028,8 +4083,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -4041,8 +4096,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5446,9 +5501,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -6014,10 +6069,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -8410,7 +8465,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8496,7 +8551,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -9357,15 +9412,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -9418,10 +9473,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -9997,7 +10052,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -10456,8 +10511,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -10750,7 +10805,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -11207,10 +11262,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -12510,8 +12565,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
