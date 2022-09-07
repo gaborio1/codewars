@@ -426,9 +426,13 @@ const fortune = (
 
     for (let i = 1; i <= term; i += 1) {
         console.log("YEAR", i);
-        let interest: number = (balance * rate) / 100;
+        let interest: number = Math.trunc(balance * rate / 100);
         console.log("   interest:", interest);
-        withdraw = withdraw + (withdraw * inflation) / 100;
+        if (i < 2) withdraw = Math.trunc(withdraw);
+        if (i >= 2) {
+            withdraw = Math.trunc(withdraw + withdraw * (inflation / 100));
+        }
+
         console.log("   withdraw:", withdraw);
         balance = balance + interest;
         console.log("       balance:", balance);
@@ -439,6 +443,17 @@ const fortune = (
     return true;
 };
 /*
+f0 = 100000, p = 1 percent, c0 = 2000, n = 15, i = 1 percent
+
+beginning of year 2 -> f1 = 100000 + 0.01*100000 - 2000 = 99000;  c1 = c0 + c0*0.01 = 2020 (with inflation of previous year)
+
+beginning of year 3 -> f2 =  99000 + 0.01*99000 - 2020  = 97970;  c2 = c1 + c1*0.01 = 2040.20 
+(with inflation of previous year, truncated to 2040)
+
+beginning of year 4 -> f3 =  97970 + 0.01*97970 - 2040  = 96909.7 (truncated to 96909); 
+c3 = c2 + c2*0.01 = 2060.4 (with inflation of previous year, truncated to 2060)
+
+
 assert.strictEqual(fortune(100000, 1, 2000, 15, 1), true);
     assert.strictEqual(fortune(100000, 1, 9185, 12, 1), false);
     assert.strictEqual(fortune(100000000, 1, 100000, 50, 1), true);
@@ -1952,8 +1967,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-            ? 2
-            : 1;
+                ? 2
+                : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -4083,8 +4098,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                  w.slice(1, -1).split("").sort().reverse().join("") +
-                  w.slice(-1)
+                w.slice(1, -1).split("").sort().reverse().join("") +
+                w.slice(-1)
         )
         .join(" ");
 }
@@ -4096,8 +4111,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                  x.slice(1, -1).split("").sort().reverse().join("") +
-                  arr[i].slice(-1)
+                x.slice(1, -1).split("").sort().reverse().join("") +
+                arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5501,9 +5516,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -6069,10 +6084,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -8465,7 +8480,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8551,7 +8566,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -9412,15 +9427,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -9473,10 +9488,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -10052,7 +10067,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -10511,8 +10526,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -10805,7 +10820,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -11262,10 +11277,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -12565,9 +12580,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 

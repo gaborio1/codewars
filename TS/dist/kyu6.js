@@ -7,9 +7,13 @@ const fortune = (deposit, rate, withdraw, term, inflation) => {
     let balance = deposit;
     for (let i = 1; i <= term; i += 1) {
         console.log("YEAR", i);
-        let interest = (balance * rate) / 100;
+        let interest = Math.trunc(balance * rate / 100);
         console.log("   interest:", interest);
-        withdraw = withdraw + (withdraw * inflation) / 100;
+        if (i < 2)
+            withdraw = Math.trunc(withdraw);
+        if (i >= 2) {
+            withdraw = Math.trunc(withdraw + withdraw * (inflation / 100));
+        }
         console.log("   withdraw:", withdraw);
         balance = balance + interest;
         console.log("       balance:", balance);
