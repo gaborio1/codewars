@@ -51,10 +51,30 @@ const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
 
 <prod><name>window fan</name><prx>62</prx><qty>8</qty></prod>`;
 const catalog = (str, article) => {
-    console.log(str);
-    return "hello";
+    let solutionArr = [];
+    const dataArr = str.split("\n");
+    console.log("dataArr:", dataArr);
+    const matches = dataArr.filter((product) => product.indexOf(article) > -1);
+    if (matches.length === 0)
+        return "Nothing";
+    console.log("   matches:", matches);
+    matches.forEach((match) => {
+        console.log("       match:", match);
+        const prodName = match.match(/(?<=<name>)(.*)(?=<\/name>)/g);
+        console.log("   PRODUCT NAME:", prodName[0]);
+        const digits = match.match(/\d+.?\d+|\d/g);
+        console.log("       digits:", digits);
+        let price = digits[0], quantity = digits[1];
+        console.log("           price and quantity:", price, "and ", quantity);
+        const current = `${prodName} > prx: $${price} qty: ${quantity}`;
+        console.log("               current prod string:", current);
+        solutionArr.push(current);
+    });
+    console.log("   SOLUTION ARR:", solutionArr);
+    const solution = solutionArr.join("\r\n");
+    return solution;
 };
-console.log(catalog(str, "ladder"));
+console.log(catalog(str, "saw"));
 function arrange(strng) {
     return "hello";
 }

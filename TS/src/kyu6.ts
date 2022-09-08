@@ -330,9 +330,10 @@
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Catalog
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS  ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
+// SOURCE: REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS
+// https://stackoverflow.com/questions/6109882/regex-match-all-characters-between-two-strings
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
@@ -412,9 +413,50 @@ const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
 <prod><name>window fan</name><prx>62</prx><qty>8</qty></prod>`;
 
 const catalog = (str: string, article: string): string => {
-    console.log(str);
+    let solutionArr: string[] = [];
+    // SPLIT STR INTO ARRAY OF SUBSTRINGS(PRODUCTS)
+    const dataArr: string[] = str.split("\n");
+    console.log("dataArr:", dataArr);
 
-    return "hello";
+    // IF PRODUCT LINE CONTAINS ARTICLE REDUCE DOWN TO IT
+    const matches: string[] = dataArr.filter(
+        (product) => product.indexOf(article) > -1
+    );
+
+    // RETURN EARLY IF NO MATCH
+    if (matches.length === 0) return "Nothing";
+
+    console.log("   matches:", matches);
+
+    // LOOP THROUGH EACH MATCH
+    matches.forEach((match) => {
+        console.log("       match:", match);
+
+        // EXTRACT NAME (MATCH STRING BETWEEN TWO STRINGS)
+        // ❗️❗️❗️ REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS  ❗️❗️❗️
+        const prodName: string[] = match.match(/(?<=<name>)(.*)(?=<\/name>)/g)!;
+        console.log("   PRODUCT NAME:", prodName[0]);
+
+        // EXTRACT DIGITS (DIGITS OR DIGITS FOLLOWED BY "." FOLLOWED BY DIGITS)
+        const digits: string[] = match.match(/\d+.?\d+|\d/g)!;
+        console.log("       digits:", digits);
+
+        // EXTRACT PRICE AND QUANTITY FROM DIGITS ARRAY
+        let price: string = digits[0],
+            quantity: string = digits[1];
+
+        console.log("           price and quantity:", price, "and ", quantity);
+
+        const current: string = `${prodName} > prx: $${price} qty: ${quantity}`;
+        console.log("               current prod string:", current);
+
+        solutionArr.push(current);
+    });
+
+    console.log("   SOLUTION ARR:", solutionArr);
+
+    const solution: string = solutionArr.join("\r\n");
+    return solution;
 };
 /*
 
@@ -439,7 +481,9 @@ describe("catalog", function() {
 
 */
 
-console.log(catalog(str, "ladder"));
+// <prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+// 'table saw > prx: $1099.99 qty: 5\r\nsaw > prx: $9 qty: 10\r\nsaw for metal > prx: $13.80 qty: 32');
+console.log(catalog(str, "saw"));
 // console.log();
 // console.log();
 // console.log();
