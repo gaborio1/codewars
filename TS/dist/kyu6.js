@@ -3,26 +3,110 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = exports.M7 = exports.F7 = exports.M6 = exports.F6 = exports.M5 = exports.F5 = exports.M4 = exports.F4 = exports.M3 = exports.F3 = exports.M2 = exports.F2 = exports.M1 = exports.F1 = void 0;
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = void 0;
+const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
+
+<prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>screwdriver</name><prx>5</prx><qty>51</qty></prod>
+
+<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+
+<prod><name>saw</name><prx>9</prx><qty>10</qty></prod>
+
+<prod><name>chair</name><prx>100</prx><qty>20</qty></prod>
+
+<prod><name>fan</name><prx>50</prx><qty>8</qty></prod>
+
+<prod><name>wire</name><prx>10.8</prx><qty>15</qty></prod>
+
+<prod><name>battery</name><prx>150</prx><qty>12</qty></prod>
+
+<prod><name>pallet</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>wheel</name><prx>8.80</prx><qty>32</qty></prod>
+
+<prod><name>extractor</name><prx>105</prx><qty>17</qty></prod>
+
+<prod><name>bumper</name><prx>150</prx><qty>3</qty></prod>
+
+<prod><name>ladder</name><prx>112</prx><qty>12</qty></prod>
+
+<prod><name>hoist</name><prx>13.80</prx><qty>32</qty></prod>
+
+<prod><name>platform</name><prx>65</prx><qty>21</qty></prod>
+
+<prod><name>car wheel</name><prx>505</prx><qty>7</qty></prod>
+
+<prod><name>bicycle wheel</name><prx>150</prx><qty>11</qty></prod>
+
+<prod><name>big hammer</name><prx>18</prx><qty>12</qty></prod>
+
+<prod><name>saw for metal</name><prx>13.80</prx><qty>32</qty></prod>
+
+<prod><name>wood pallet</name><prx>65</prx><qty>21</qty></prod>
+
+<prod><name>circular fan</name><prx>80</prx><qty>8</qty></prod>
+
+<prod><name>exhaust fan</name><prx>62</prx><qty>8</qty></prod>
+
+<prod><name>window fan</name><prx>62</prx><qty>8</qty></prod>`;
+const catalog = (str, article) => {
+    console.log(str);
+    return "hello";
+};
+console.log(catalog(str, "ladder"));
+function arrange(strng) {
+    return "hello";
+}
 const fortune = (deposit, rate, withdraw, term, inflation) => {
     let balance = deposit;
-    for (let i = 1; i <= term; i += 1) {
-        console.log("YEAR", i);
-        let interest = Math.trunc(balance * rate / 100);
-        console.log("   interest:", interest);
-        if (i < 2)
-            withdraw = Math.trunc(withdraw);
-        if (i >= 2) {
-            withdraw = Math.trunc(withdraw + withdraw * (inflation / 100));
-        }
-        console.log("   withdraw:", withdraw);
-        balance = balance + interest;
-        console.log("       balance:", balance);
-        balance = balance - withdraw;
-        console.log("       balance end of year:", balance);
+    for (let i = 1; i <= term - 1; i += 1) {
+        let interest = Math.trunc((balance * rate) / 100);
+        withdraw =
+            i < 2
+                ? Math.trunc(withdraw)
+                : Math.trunc(withdraw + withdraw * (inflation / 100));
+        balance = balance + interest - withdraw;
+    }
+    return balance >= 0;
+};
+function fortune2(f0, p, c0, n, inf) {
+    for (let i = n; i >= 1; i--) {
+        if (f0 < 0)
+            return false;
+        f0 = Math.trunc(f0 + (p / 100) * f0 - c0);
+        c0 = Math.trunc(c0 + (c0 * inf) / 100);
     }
     return true;
-};
-console.log(fortune(100000, 1, 2000, 15, 1));
+}
+function fortune3(f0, p, c0, n, i) {
+    var pp = p / 100.0, ii = i / 100.0;
+    var f = f0, c = c0;
+    for (let x = 1; x < n; x++) {
+        f += Math.floor(f * pp - c);
+        c += Math.floor(c * ii);
+    }
+    return f >= 0;
+}
+function fortune4(f0, p, c0, n, i) {
+    while (n > 1) {
+        f0 = Math.floor(f0 + (p / 100) * f0 - c0);
+        c0 = Math.floor(c0 + (c0 * i) / 100);
+        if (f0 < 0)
+            return false;
+        n--;
+    }
+    return true;
+}
+function fortune5(f0, p, c0, n, i) {
+    let deposit = f0;
+    let amount = c0;
+    for (let year = 0; year < n - 1 && deposit >= 0; year++) {
+        amount = year ? Math.floor(amount + (amount * i) / 100) : amount;
+        deposit += Math.floor((deposit * p) / 100) - amount;
+    }
+    return deposit >= 0;
+}
 const F = (n) => {
     const seq = [
         1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12, 13, 13,

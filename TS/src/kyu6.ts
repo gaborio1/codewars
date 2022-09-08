@@ -328,7 +328,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Catalog
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -336,10 +336,167 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+You are given a small extract of a catalog:
 
+s = "<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
+
+<prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>screwdriver</name><prx>5</prx><qty>51</qty></prod>
+
+<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+
+<prod><name>saw</name><prx>9</prx><qty>10</qty></prod>
+
+...
+(prx stands for price, qty for quantity) and an article i.e "saw".
+
+The function catalog(s, "saw") returns the line(s) corresponding to the article with $ before the prices:
+
+"table saw > prx: $1099.99 qty: 5\nsaw > prx: $9 qty: 10\n..."
+If the article is not in the catalog return "Nothing".
+
+Notes
+There is a blank line between two lines of the catalog.
+The same article may appear more than once. If that happens return all the lines concerned by the article (in the same order as in the catalog).
+The line separator of results may depend on the language \nor \r\n. In Pascal \n is replaced by LineEnding.
+in Perl use "£" instead of "$" before the prices.
+You can see examples in the "Sample tests".
 */
+const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
+
+<prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>screwdriver</name><prx>5</prx><qty>51</qty></prod>
+
+<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+
+<prod><name>saw</name><prx>9</prx><qty>10</qty></prod>
+
+<prod><name>chair</name><prx>100</prx><qty>20</qty></prod>
+
+<prod><name>fan</name><prx>50</prx><qty>8</qty></prod>
+
+<prod><name>wire</name><prx>10.8</prx><qty>15</qty></prod>
+
+<prod><name>battery</name><prx>150</prx><qty>12</qty></prod>
+
+<prod><name>pallet</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>wheel</name><prx>8.80</prx><qty>32</qty></prod>
+
+<prod><name>extractor</name><prx>105</prx><qty>17</qty></prod>
+
+<prod><name>bumper</name><prx>150</prx><qty>3</qty></prod>
+
+<prod><name>ladder</name><prx>112</prx><qty>12</qty></prod>
+
+<prod><name>hoist</name><prx>13.80</prx><qty>32</qty></prod>
+
+<prod><name>platform</name><prx>65</prx><qty>21</qty></prod>
+
+<prod><name>car wheel</name><prx>505</prx><qty>7</qty></prod>
+
+<prod><name>bicycle wheel</name><prx>150</prx><qty>11</qty></prod>
+
+<prod><name>big hammer</name><prx>18</prx><qty>12</qty></prod>
+
+<prod><name>saw for metal</name><prx>13.80</prx><qty>32</qty></prod>
+
+<prod><name>wood pallet</name><prx>65</prx><qty>21</qty></prod>
+
+<prod><name>circular fan</name><prx>80</prx><qty>8</qty></prod>
+
+<prod><name>exhaust fan</name><prx>62</prx><qty>8</qty></prod>
+
+<prod><name>window fan</name><prx>62</prx><qty>8</qty></prod>`;
+
+const catalog = (str: string, article: string): string => {
+    console.log(str);
+
+    return "hello";
+};
 /*
 
+
+describe("catalog", function() {
+
+    function testing(s: string, article: string, exp: string) {
+        console.log("Testing:\n", article);
+        let ans = catalog(s, article);
+        console.log("Actual:\n", ans);
+        console.log("Expect:\n", exp);
+        assert.equal(ans, exp);
+        console.log("-");
+    }
+    it("Basic tests", function() {
+        testing(s, 'ladder', 'ladder > prx: $112 qty: 12');
+        testing(s, 'saw', 'table saw > prx: $1099.99 qty: 5\r\nsaw > prx: $9 qty: 10\r\nsaw for metal > prx: $13.80 qty: 32');        
+        testing(s, 'nails', 'Nothing');
+        
+    })
+});
+
+*/
+
+console.log(catalog(str, "ladder"));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: up AND down
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Don't be afraid, the description is rather long but - hopefully - it is in order that the process be well understood.
+
+You are given a string s made up of substring s(1), s(2), ..., s(n) separated by whitespaces. Example: "after be arrived two My so"
+
+Task
+Return a string t having the following property:
+
+length t(O) <= length t(1) >= length t(2) <= length t(3) >= length t(4) .... (P)
+
+where the t(i) are the substring of s; you must respect the following rule:
+
+at each step from left to right, you can only move either already consecutive strings or strings that became consecutive after a previous move. The number of moves should be minimum.
+
+Let us go with our example:
+The length of "after" is greater than the length of "be". Let us move them ->"be after arrived two My so"
+
+The length of "after" is smaller than the length of "arrived". Let us move them -> "be arrived after two My so"
+
+The length of "after" is greater than the length of "two" ->"be arrived two after My so"
+
+The length of "after" is greater than the length of "My". Good! Finally the length of "My" and "so" are the same, nothing to do. At the end of the process, the substrings s(i) verify:
+
+length s(0) <= length s(1) >= length s(2) <= length s(3) >= length (s4) <= length (s5)
+
+Hence given a string s of substrings s(i) the function arrange with the previous process should return a unique string t having the property (P).
+
+It is kind of roller coaster or up and down. When you have property (P), to make the result more "up and down" visible t(0), t(2), ... will be lower cases and the others upper cases.
+
+arrange("after be arrived two My so") should return "be ARRIVED two AFTER my SO"
+Notes:
+The string "My after be arrived so two" has the property (P) but can't be obtained by the described process so it won't be accepted as a result. The property (P) doesn't give unicity by itself.
+Process: go from left to right, move only consecutive strings when needed.
+For the first fixed tests the needed number of moves to get property (P) is given as a comment so that you can know if your process follows the rule.
+
+*/
+function arrange(strng: string): string {
+    return "hello";
+}
+/*
+ assert.strictEqual(arrange(""), ""); // 0
+    assert.strictEqual(arrange("who hit retaining The That a we taken"), "who RETAINING hit THAT a THE we TAKEN"); // 3
+    assert.strictEqual(arrange("on I came up were so grandmothers"), "i CAME on WERE up GRANDMOTHERS so"); // 4
+    assert.strictEqual(arrange("way the my wall them him"), "way THE my WALL him THEM"); // 1
 */
 
 // console.log();
@@ -348,32 +505,12 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Banker's Plan
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS:  ❗️❗️❗️ BOOLEAN CONDITION IN FOR LOOP ❗️❗️❗️
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -424,49 +561,166 @@ const fortune = (
 ): boolean => {
     let balance: number = deposit;
 
-    for (let i = 1; i <= term; i += 1) {
-        console.log("YEAR", i);
-        let interest: number = Math.trunc(balance * rate / 100);
-        console.log("   interest:", interest);
-        if (i < 2) withdraw = Math.trunc(withdraw);
-        if (i >= 2) {
-            withdraw = Math.trunc(withdraw + withdraw * (inflation / 100));
-        }
+    for (let i = 1; i <= term - 1; i += 1) {
+        // console.log("YEAR", i);
+        let interest: number = Math.trunc((balance * rate) / 100);
+        // console.log("   interest:", interest);
 
-        console.log("   withdraw:", withdraw);
-        balance = balance + interest;
-        console.log("       balance:", balance);
-        balance = balance - withdraw;
-        console.log("       balance end of year:", balance);
+        // USE TERNARY INSTEAD OF IF/ELSE
+        // if (i < 2) withdraw = Math.trunc(withdraw);
+        // if (i >= 2) {
+        //     withdraw = Math.trunc(withdraw + withdraw * (inflation / 100));
+
+        // }
+
+        withdraw =
+            i < 2
+                ? Math.trunc(withdraw)
+                : Math.trunc(withdraw + withdraw * (inflation / 100));
+
+        // console.log("   withdraw:", withdraw);
+        balance = balance + interest - withdraw;
+        // console.log("       balance:", balance);
+        // balance = balance - withdraw;
+        // console.log("       balance end of year:", balance);
     }
 
-    return true;
+    return balance >= 0;
 };
 /*
-f0 = 100000, p = 1 percent, c0 = 2000, n = 15, i = 1 percent
-
-beginning of year 2 -> f1 = 100000 + 0.01*100000 - 2000 = 99000;  c1 = c0 + c0*0.01 = 2020 (with inflation of previous year)
-
-beginning of year 3 -> f2 =  99000 + 0.01*99000 - 2020  = 97970;  c2 = c1 + c1*0.01 = 2040.20 
-(with inflation of previous year, truncated to 2040)
-
-beginning of year 4 -> f3 =  97970 + 0.01*97970 - 2040  = 96909.7 (truncated to 96909); 
-c3 = c2 + c2*0.01 = 2060.4 (with inflation of previous year, truncated to 2060)
-
-
-assert.strictEqual(fortune(100000, 1, 2000, 15, 1), true);
-    assert.strictEqual(fortune(100000, 1, 9185, 12, 1), false);
-    assert.strictEqual(fortune(100000000, 1, 100000, 50, 1), true);
-    assert.strictEqual(fortune(100000000, 1.5, 10000000, 50, 1), false);
-    assert.strictEqual(fortune(100000000, 5, 1000000, 50, 1), true);
+YEAR 1
+   interest: 1000
+   withdraw: 9185
+       balance: 101000
+       balance end of year: 91815
+YEAR 2
+   interest: 918
+   withdraw: 9276
+       balance: 92733
+       balance end of year: 83457
+YEAR 3
+   interest: 834
+   withdraw: 9368
+       balance: 84291
+       balance end of year: 74923
+YEAR 4
+   interest: 749
+   withdraw: 9461
+       balance: 75672
+       balance end of year: 66211
+YEAR 5
+   interest: 662
+   withdraw: 9555
+       balance: 66873
+       balance end of year: 57318
+YEAR 6
+   interest: 573
+   withdraw: 9650
+       balance: 57891
+       balance end of year: 48241
+YEAR 7
+   interest: 482
+   withdraw: 9746
+       balance: 48723
+       balance end of year: 38977
+YEAR 8
+   interest: 389
+   withdraw: 9843
+       balance: 39366
+       balance end of year: 29523
+YEAR 9
+   interest: 295
+   withdraw: 9941
+       balance: 29818
+       balance end of year: 19877
+YEAR 10
+   interest: 198
+   withdraw: 10040
+       balance: 20075
+       balance end of year: 10035
+YEAR 11
+   interest: 100
+   withdraw: 10140
+       balance: 10135
+       balance end of year: -5
+false
 */
 
-console.log(fortune(100000, 1, 2000, 15, 1));
+// console.log(fortune(100000, 1, 2000, 15, 1));
+// 100000, 91815, 83457, 74923, 66211, 57318, 48241, 38977, 29523, 19877, 10035, -5
+
+// console.log(fortune(100000, 1, 9185, 12, 1));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function fortune2(
+    f0: number,
+    p: number,
+    c0: number,
+    n: number,
+    inf: number
+): boolean {
+    for (let i = n; i >= 1; i--) {
+        if (f0 < 0) return false;
+        f0 = Math.trunc(f0 + (p / 100) * f0 - c0);
+        c0 = Math.trunc(c0 + (c0 * inf) / 100);
+    }
+    return true;
+}
+
+function fortune3(
+    f0: number,
+    p: number,
+    c0: number,
+    n: number,
+    i: number
+): boolean {
+    var pp = p / 100.0,
+        ii = i / 100.0;
+    var f = f0,
+        c = c0;
+    for (let x = 1; x < n; x++) {
+        f += Math.floor(f * pp - c);
+        c += Math.floor(c * ii);
+    }
+    return f >= 0;
+}
+
+function fortune4(
+    f0: number,
+    p: number,
+    c0: number,
+    n: number,
+    i: number
+): boolean {
+    while (n > 1) {
+        f0 = Math.floor(f0 + (p / 100) * f0 - c0);
+        c0 = Math.floor(c0 + (c0 * i) / 100);
+        if (f0 < 0) return false;
+        n--;
+    }
+    return true;
+}
+
+function fortune5(
+    f0: number,
+    p: number,
+    c0: number,
+    n: number,
+    i: number
+): boolean {
+    let deposit = f0;
+    let amount = c0;
+    // ❗️❗️❗️ BOOLEAN CONDITION IN FOR LOOP ❗️❗️❗️
+    for (let year = 0; year < n - 1 && deposit >= 0; year++) {
+        amount = year ? Math.floor(amount + (amount * i) / 100) : amount;
+        deposit += Math.floor((deposit * p) / 100) - amount;
+    }
+    return deposit >= 0;
+}
 
 // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 // ❗️❗️❗️ REFACTOR ❗️❗️❗️ ALSO TRY TO GENERATE SEQUENCE ❗️❗️❗️
@@ -1967,8 +2221,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-                ? 2
-                : 1;
+            ? 2
+            : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -4098,8 +4352,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                w.slice(1, -1).split("").sort().reverse().join("") +
-                w.slice(-1)
+                  w.slice(1, -1).split("").sort().reverse().join("") +
+                  w.slice(-1)
         )
         .join(" ");
 }
@@ -4111,8 +4365,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                x.slice(1, -1).split("").sort().reverse().join("") +
-                arr[i].slice(-1)
+                  x.slice(1, -1).split("").sort().reverse().join("") +
+                  arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5516,9 +5770,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                word[word.length - 1] +
-                word.slice(2, word.length - 1) +
-                word[1]
+                  word[word.length - 1] +
+                  word.slice(2, word.length - 1) +
+                  word[1]
         )
         .join(" ");
 }
@@ -6084,10 +6338,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                    (numArr[numArr.length / 2] +
-                        numArr[numArr.length / 2 - 1]) /
-                    2
-                );
+                      (numArr[numArr.length / 2] +
+                          numArr[numArr.length / 2 - 1]) /
+                          2
+                  );
         };
 
         // 5554
@@ -8480,7 +8734,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) { }
+    constructor(private readonly groups: Array<FriendGroup>) {}
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8566,7 +8820,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) { }
+    constructor(private _first: string, private _last: string) {}
 
     public get first() {
         return this._first.toUpperCase();
@@ -9427,15 +9681,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) =>
-                word
-                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                    //   .toLowerCase()
-                    .replace(word[0], word[0].toUpperCase())
-            )
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) =>
+                  word
+                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                      //   .toLowerCase()
+                      .replace(word[0], word[0].toUpperCase())
+              )
+              .join("")
         : "";
 
     // return "hello";
@@ -9488,10 +9742,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-            .trim()
-            .split(" ")
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join("")
+              .trim()
+              .split(" ")
+              .map((word) => word[0].toUpperCase() + word.substring(1))
+              .join("")
         : "";
 }
 
@@ -10067,7 +10321,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-        initial);
+    initial);
     return result;
 }
 
@@ -10526,8 +10780,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-            str.charAt(i).toUpperCase() +
-            str.substring(i + 1)
+                str.charAt(i).toUpperCase() +
+                str.substring(i + 1)
         );
     }
     return result;
@@ -10820,7 +11074,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-        String([...a2].sort((a, b) => a - b));
+              String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -11277,10 +11531,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-        (braces = braces
-            .replace("()", "")
-            .replace("{}", "")
-            .replace("[]", ""))
+            (braces = braces
+                .replace("()", "")
+                .replace("{}", "")
+                .replace("[]", ""))
     );
     return !braces;
 }
@@ -12580,8 +12834,9 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${names.length - 2
-                } others like this`;
+            return `${names[0]}, ${names[1]} and ${
+                names.length - 2
+            } others like this`;
     }
 };
 
