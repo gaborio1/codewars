@@ -53,28 +53,81 @@ const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
 const catalog = (str, article) => {
     let solutionArr = [];
     const dataArr = str.split("\n");
-    console.log("dataArr:", dataArr);
     const matches = dataArr.filter((product) => product.indexOf(article) > -1);
     if (matches.length === 0)
         return "Nothing";
-    console.log("   matches:", matches);
     matches.forEach((match) => {
-        console.log("       match:", match);
         const prodName = match.match(/(?<=<name>)(.*)(?=<\/name>)/g);
-        console.log("   PRODUCT NAME:", prodName[0]);
         const digits = match.match(/\d+.?\d+|\d/g);
-        console.log("       digits:", digits);
         let price = digits[0], quantity = digits[1];
-        console.log("           price and quantity:", price, "and ", quantity);
         const current = `${prodName} > prx: $${price} qty: ${quantity}`;
-        console.log("               current prod string:", current);
         solutionArr.push(current);
     });
-    console.log("   SOLUTION ARR:", solutionArr);
     const solution = solutionArr.join("\r\n");
     return solution;
 };
 console.log(catalog(str, "saw"));
+function catalog2(s, article) {
+    let pattern = '<prod><name>(.*?' + article + '.*?)</name><prx>(.*?)</prx><qty>(.*?)</qty></prod>';
+    let match, regex = new RegExp(pattern, 'g');
+    let res = [];
+    while (match = regex.exec(s))
+        res.push(match[1] + ' > prx: $' + match[2] + ' qty: ' + match[3]);
+    return res.join("\r\n") || 'Nothing';
+}
+function catalog3(s, article) {
+    let prodArr = s.split(/<\/?prod>/).filter(line => line && line !== "\n\n");
+    let res = [];
+    prodArr.forEach(prod => {
+        if (prod.includes(article)) {
+            let [name, price, qty] = prod.split(/<\/?name>|<\/?prx>|<\/?qty>/).filter(line => line);
+            res.push(name + " > prx: $" + price + " qty: " + qty);
+        }
+    });
+    return res.length > 0 ? res.join("\r\n") : "Nothing";
+}
+function catalog4(s, article) {
+    const result = s
+        .split("\n\n")
+        .filter(value => value.includes(article))
+        .map(value => new Product(value))
+        .map(value => `${value.name} > prx: $${value.prx} qty: ${value.qty}`)
+        .join("\r\n");
+    return result.length === 0 ? "Nothing" : result;
+}
+class Product {
+    constructor(s) {
+        this.name = this.getName(s);
+        this.prx = this.getPrx(s);
+        this.qty = this.getQty(s);
+    }
+    getName(s) {
+        const start = s.indexOf("<name>") + 6;
+        const end = s.indexOf("</name>");
+        return s.substring(start, end);
+    }
+    getPrx(s) {
+        const start = s.indexOf("<prx>") + 5;
+        const end = s.indexOf("</prx>");
+        return s.substring(start, end);
+    }
+    getQty(s) {
+        const start = s.indexOf("<qty>") + 5;
+        const end = s.indexOf("</qty>");
+        return s.substring(start, end);
+    }
+}
+function catalog5(s, article) {
+    const catalogArr = s.split(/\n+/);
+    const products = catalogArr.filter((product) => product.includes(article));
+    const matchesArr = products.map((product) => {
+        const name = product.match(/<name>(.+)<\/name>/);
+        const price = product.match(/<prx>(.+)<\/prx>/);
+        const quantity = product.match(/<qty>(.+)<\/qty>/);
+        return `${name[1]} > prx: $${price[1]} qty: ${quantity[1]}`;
+    });
+    return matchesArr.join('\r\n') || 'Nothing';
+}
 function arrange(strng) {
     return "hello";
 }

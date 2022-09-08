@@ -331,6 +331,8 @@
 // TITLE: Catalog
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: ❗️❗️❗️ REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS  ❗️❗️❗️
+// ❗️❗️❗️ EXTRACT DIGITS (DIGITS OR DIGITS FOLLOWED BY "." FOLLOWED BY DIGITS) ❗️❗️❗️
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE: REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS
 // https://stackoverflow.com/questions/6109882/regex-match-all-characters-between-two-strings
@@ -416,7 +418,7 @@ const catalog = (str: string, article: string): string => {
     let solutionArr: string[] = [];
     // SPLIT STR INTO ARRAY OF SUBSTRINGS(PRODUCTS)
     const dataArr: string[] = str.split("\n");
-    console.log("dataArr:", dataArr);
+    // console.log("dataArr:", dataArr);
 
     // IF PRODUCT LINE CONTAINS ARTICLE REDUCE DOWN TO IT
     const matches: string[] = dataArr.filter(
@@ -426,58 +428,81 @@ const catalog = (str: string, article: string): string => {
     // RETURN EARLY IF NO MATCH
     if (matches.length === 0) return "Nothing";
 
-    console.log("   matches:", matches);
+    // console.log("   matches:", matches);
 
     // LOOP THROUGH EACH MATCH
     matches.forEach((match) => {
-        console.log("       match:", match);
+        // console.log("       match:", match);
 
         // EXTRACT NAME (MATCH STRING BETWEEN TWO STRINGS)
         // ❗️❗️❗️ REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS  ❗️❗️❗️
         const prodName: string[] = match.match(/(?<=<name>)(.*)(?=<\/name>)/g)!;
-        console.log("   PRODUCT NAME:", prodName[0]);
+        // console.log("   PRODUCT NAME:", prodName[0]);
 
-        // EXTRACT DIGITS (DIGITS OR DIGITS FOLLOWED BY "." FOLLOWED BY DIGITS)
+        // ❗️❗️❗️ EXTRACT DIGITS (DIGITS OR DIGITS FOLLOWED BY "." FOLLOWED BY DIGITS) ❗️❗️❗️
         const digits: string[] = match.match(/\d+.?\d+|\d/g)!;
-        console.log("       digits:", digits);
+        // console.log("       digits:", digits);
 
         // EXTRACT PRICE AND QUANTITY FROM DIGITS ARRAY
         let price: string = digits[0],
             quantity: string = digits[1];
 
-        console.log("           price and quantity:", price, "and ", quantity);
+        // console.log("           price and quantity:", price, "and ", quantity);
 
         const current: string = `${prodName} > prx: $${price} qty: ${quantity}`;
-        console.log("               current prod string:", current);
+        // console.log("               current prod string:", current);
 
         solutionArr.push(current);
     });
 
-    console.log("   SOLUTION ARR:", solutionArr);
+    // console.log("   SOLUTION ARR:", solutionArr);
 
     const solution: string = solutionArr.join("\r\n");
+
     return solution;
 };
 /*
 
-
-describe("catalog", function() {
-
-    function testing(s: string, article: string, exp: string) {
-        console.log("Testing:\n", article);
-        let ans = catalog(s, article);
-        console.log("Actual:\n", ans);
-        console.log("Expect:\n", exp);
-        assert.equal(ans, exp);
-        console.log("-");
-    }
-    it("Basic tests", function() {
-        testing(s, 'ladder', 'ladder > prx: $112 qty: 12');
-        testing(s, 'saw', 'table saw > prx: $1099.99 qty: 5\r\nsaw > prx: $9 qty: 10\r\nsaw for metal > prx: $13.80 qty: 32');        
-        testing(s, 'nails', 'Nothing');
-        
-    })
-});
+dataArr: [
+  '<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>',
+  '',
+  '<prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>',
+  '',
+  '<prod><name>screwdriver</name><prx>5</prx><qty>51</qty></prod>',
+  '',
+  '<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>',
+  '',
+  ...
+  ...
+]
+   matches: [
+  '<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>',
+  '<prod><name>saw</name><prx>9</prx><qty>10</qty></prod>',
+  '<prod><name>saw for metal</name><prx>13.80</prx><qty>32</qty></prod>'
+]
+       match: <prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+   PRODUCT NAME: table saw
+       digits: [ '1099.99', '5' ]
+           price and quantity: 1099.99 and  5
+               current prod string: table saw > prx: $1099.99 qty: 5
+       match: <prod><name>saw</name><prx>9</prx><qty>10</qty></prod>
+   PRODUCT NAME: saw
+       digits: [ '9', '10' ]
+           price and quantity: 9 and  10
+               current prod string: saw > prx: $9 qty: 10
+       match: <prod><name>saw for metal</name><prx>13.80</prx><qty>32</qty></prod>
+   PRODUCT NAME: saw for metal
+       digits: [ '13.80', '32' ]
+           price and quantity: 13.80 and  32
+               current prod string: saw for metal > prx: $13.80 qty: 32
+   SOLUTION ARR: [
+  'table saw > prx: $1099.99 qty: 5',
+  'saw > prx: $9 qty: 10',
+  'saw for metal > prx: $13.80 qty: 32'
+]
+table saw > prx: $1099.99 qty: 5
+saw > prx: $9 qty: 10
+saw for metal > prx: $13.80 qty: 32
 
 */
 
@@ -489,6 +514,87 @@ console.log(catalog(str, "saw"));
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+function catalog2(s: string, article: string): string {
+    let pattern = '<prod><name>(.*?' + article + '.*?)</name><prx>(.*?)</prx><qty>(.*?)</qty></prod>';
+    let match, regex = new RegExp(pattern, 'g');
+    let res: string[] = [];
+    while (match = regex.exec(s))
+        res.push(match[1] + ' > prx: $' + match[2] + ' qty: ' + match[3]);
+    return res.join("\r\n") || 'Nothing';
+}
+
+function catalog3(s: string, article: string): string {
+    let prodArr = s.split(/<\/?prod>/).filter(line => line && line !== "\n\n");
+
+    let res: string[] = [];
+
+    prodArr.forEach(prod => {
+        if (prod.includes(article)) {
+            let [name, price, qty] = prod.split(/<\/?name>|<\/?prx>|<\/?qty>/).filter(line => line);
+            res.push(name + " > prx: $" + price + " qty: " + qty);
+        }
+    })
+
+    return res.length > 0 ? res.join("\r\n") : "Nothing";
+}
+
+// ==========================================================
+function catalog4(s: string, article: string): string {
+    const result = s
+        .split("\n\n")
+        .filter(value => value.includes(article))
+        .map(value => new Product(value))
+        .map(value => `${value.name} > prx: $${value.prx} qty: ${value.qty}`)
+        .join("\r\n");
+    return result.length === 0 ? "Nothing" : result;
+}
+
+class Product {
+    name: string;
+    prx: string;
+    qty: string;
+
+    constructor(s: string) {
+        this.name = this.getName(s);
+        this.prx = this.getPrx(s);
+        this.qty = this.getQty(s);
+    }
+
+    private getName(s: string): string {
+        const start = s.indexOf("<name>") + 6;
+        const end = s.indexOf("</name>")
+        return s.substring(start, end);
+    }
+
+    private getPrx(s: string): string {
+        const start = s.indexOf("<prx>") + 5;
+        const end = s.indexOf("</prx>")
+        return s.substring(start, end);
+    }
+
+    private getQty(s: string): string {
+        const start = s.indexOf("<qty>") + 5;
+        const end = s.indexOf("</qty>")
+        return s.substring(start, end);
+    }
+}
+// ==========================================================
+
+function catalog5(s: string, article: string): string {
+    const catalogArr = s.split(/\n+/);
+    const products = catalogArr.filter((product) => product.includes(article));
+
+    const matchesArr = products.map((product) => {
+        const name = product.match(/<name>(.+)<\/name>/);
+        const price = product.match(/<prx>(.+)<\/prx>/);
+        const quantity = product.match(/<qty>(.+)<\/qty>/);
+        return `${name![1]} > prx: $${price![1]} qty: ${quantity![1]}`;
+    });
+
+    return matchesArr.join('\r\n') || 'Nothing';
+}
+
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: up AND down
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2265,8 +2371,8 @@ function fruit5(reels: string[][], spins: number[]): number {
         const multi = !test
             ? 0
             : spinStrings.includes("Wild") && spinStrings[ref] !== "Wild"
-            ? 2
-            : 1;
+                ? 2
+                : 1;
         return (orderPoints.indexOf(spinStrings[ref]) + 1) * multi;
     };
 
@@ -4396,8 +4502,8 @@ function sortTheInnerContent2(words: string): string {
             w.length < 2
                 ? w
                 : w[0] +
-                  w.slice(1, -1).split("").sort().reverse().join("") +
-                  w.slice(-1)
+                w.slice(1, -1).split("").sort().reverse().join("") +
+                w.slice(-1)
         )
         .join(" ");
 }
@@ -4409,8 +4515,8 @@ function sortTheInnerContent3(w: string): string {
             x.length < 2
                 ? x
                 : arr[i][0] +
-                  x.slice(1, -1).split("").sort().reverse().join("") +
-                  arr[i].slice(-1)
+                x.slice(1, -1).split("").sort().reverse().join("") +
+                arr[i].slice(-1)
         )
         .join(" ");
 }
@@ -5814,9 +5920,9 @@ function decipherThis4(str: string): string {
             word.length <= 2
                 ? word
                 : word[0] +
-                  word[word.length - 1] +
-                  word.slice(2, word.length - 1) +
-                  word[1]
+                word[word.length - 1] +
+                word.slice(2, word.length - 1) +
+                word[1]
         )
         .join(" ");
 }
@@ -6382,10 +6488,10 @@ class G9644 {
             return numArr.length & 1
                 ? numArr[(numArr.length - 1) / 2]
                 : Math.trunc(
-                      (numArr[numArr.length / 2] +
-                          numArr[numArr.length / 2 - 1]) /
-                          2
-                  );
+                    (numArr[numArr.length / 2] +
+                        numArr[numArr.length / 2 - 1]) /
+                    2
+                );
         };
 
         // 5554
@@ -8778,7 +8884,7 @@ type FriendGroup = Group<Friend>;
  * * Grouped friends
  */
 class FriendGrouped {
-    constructor(private readonly groups: Array<FriendGroup>) {}
+    constructor(private readonly groups: Array<FriendGroup>) { }
 
     /**
      * * Sort array of groups by key value by alphabet
@@ -8864,7 +8970,7 @@ class Attendee2 {
         return new Attendee2(firstName, lastName);
     }
 
-    constructor(private _first: string, private _last: string) {}
+    constructor(private _first: string, private _last: string) { }
 
     public get first() {
         return this._first.toUpperCase();
@@ -9725,15 +9831,15 @@ const camelCase = (str: string): string => {
 
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) =>
-                  word
-                      //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
-                      //   .toLowerCase()
-                      .replace(word[0], word[0].toUpperCase())
-              )
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) =>
+                word
+                    //   ❗️❗️❗️ DON'T NEED TO LOWERCASE, PRESERVE ORIGINAL FORMAT ❗️❗️❗️
+                    //   .toLowerCase()
+                    .replace(word[0], word[0].toUpperCase())
+            )
+            .join("")
         : "";
 
     // return "hello";
@@ -9786,10 +9892,10 @@ const camelCase6 = (str: string): string =>
 function camelCase7(str: string): string {
     return str
         ? str
-              .trim()
-              .split(" ")
-              .map((word) => word[0].toUpperCase() + word.substring(1))
-              .join("")
+            .trim()
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.substring(1))
+            .join("")
         : "";
 }
 
@@ -10365,7 +10471,7 @@ function solution14(roman: string): number {
             return valorAnterior - valorActual;
         }
     },
-    initial);
+        initial);
     return result;
 }
 
@@ -10824,8 +10930,8 @@ function wave3(str: string): Array<string> {
         }
         result.push(
             str.substring(0, i) +
-                str.charAt(i).toUpperCase() +
-                str.substring(i + 1)
+            str.charAt(i).toUpperCase() +
+            str.substring(i + 1)
         );
     }
     return result;
@@ -11118,7 +11224,7 @@ const comp = (a1: number[] | null, a2: number[] | null): boolean => {
     return a1 === null || a2 === null
         ? false
         : String([...a1].sort((a, b) => a - b).map((el) => Math.pow(el, 2))) ===
-              String([...a2].sort((a, b) => a - b));
+        String([...a2].sort((a, b) => a - b));
 };
 
 // 2️⃣
@@ -11575,10 +11681,10 @@ function validBraces3(braces: string): boolean {
 function validBrace4(braces: string): boolean {
     [...braces].forEach(
         () =>
-            (braces = braces
-                .replace("()", "")
-                .replace("{}", "")
-                .replace("[]", ""))
+        (braces = braces
+            .replace("()", "")
+            .replace("{}", "")
+            .replace("[]", ""))
     );
     return !braces;
 }
@@ -12878,9 +12984,8 @@ const likes = (names: string[]): string => {
         case 3:
             return `${names[0]}, ${names[1]} and ${names[2]} like this`;
         default:
-            return `${names[0]}, ${names[1]} and ${
-                names.length - 2
-            } others like this`;
+            return `${names[0]}, ${names[1]} and ${names.length - 2
+                } others like this`;
     }
 };
 
