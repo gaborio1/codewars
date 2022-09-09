@@ -262,8 +262,8 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// TITLE: Positions Average
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -271,10 +271,307 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Suppose you have 4 numbers: '0', '9', '6', '4' and 3 strings composed with them:
 
+s1 = "6900690040"
+s2 = "4690606946"
+s3 = "9990494604"
+Compare s1 and s2 to see how many positions they have in common: 0 at index 3, 6 at index 4, 4 at index 8 ie 3 common positions out of ten.
+
+Compare s1 and s3 to see how many positions they have in common: 9 at index 1, 0 at index 3, 9 at index 5 ie 3 common positions out of ten.
+
+Compare s2 and s3. We find 2 common positions out of ten.
+
+So for the 3 strings we have 8 common positions out of 30 ie 0.2666... or 26.666...%
+
+Given n substrings (n >= 2) in a string s our function pos_average will calculate the average percentage of positions that are the same between the (n * (n-1)) / 2 sets of substrings taken amongst the given n substrings. It can happen that some substrings are duplicate but since their ranks are not the same in s they are considered as different substrings.
+
+The function returns the percentage formatted as a float with 10 decimals but the result is tested at 1e.-9 (see function assertFuzzy in the tests).
+
+Example:
+Given string s = "444996, 699990, 666690, 096904, 600644, 640646, 606469, 409694, 666094, 606490" composing a set of n = 10 substrings (hence 45 combinations), pos_average returns 29.2592592593.
+
+In a set the n substrings will have the same length ( > 0 ).
+
+Notes
+You can see other examples in the "Sample tests".
 */
-/*
+const posAverage = (str: string): number => {
 
+    const strArr: string[] = str.split(", ");
+    console.log(strArr);
+
+
+    // ❗️❗️❗️ THIS IS NOT NECESSARY, DON'T GET INSTRUCTIONS ❗️❗️❗️
+    // const numSets: number = strArr.length;
+    // const numSubSets: number = numSets * (numSets - 1) / 2;
+    // console.log("numSubSets:", numSubSets);
+
+    // ALL POSSIBLE COMBINATIONS AND ACTUAL MATCHES
+    let combinations: number = 0;
+    let matches: number = 0;
+
+
+    for (let i = 0; i < strArr.length; i += 1) {
+        console.log(strArr[i]);
+        // console.log(strArr[0].length);
+        for (let j = i + 1; j < strArr.length; j += 1) {
+
+            console.log("   ", strArr[j]);
+            for (let k = 0; k < strArr[0].length; k += 1) {
+                // CALCULATE / INCREMENT COMBINATIONS FOR EACH NUMBER PAIR
+                // ALSO EQUALS strArr.length * strArr[0].length (3 * 4) !
+                combinations += 1;
+                if (strArr[i][k] === strArr[j][k]) {
+                    matches += 1;
+                }
+            }
+        }
+    }
+
+    // console.log("matches:", matches);
+    // console.log("combinations:", combinations);
+
+
+    const solution: number = Number((matches / combinations * 100).toFixed(10));
+    // console.log("SOLUTION:", solution);
+
+    return solution;
+}
+/*
+console.log(posAverage("466960, 069060, 494940, 060069, 060090, 640009, 496464, 606900, 004000, 944096"));
+
+
+ [
+  '466960', '069060',
+  '494940', '060069',
+  '060090', '640009',
+  '496464', '606900',
+  '004000', '944096'
+]
+numSubSets: 45
+466960
+    069060
+    494940
+    060069
+    060090
+    640009
+    496464
+    606900
+    004000
+    944096
+069060
+    494940
+    060069
+    060090
+    640009
+    496464
+    606900
+    004000
+    944096
+494940
+    060069
+    060090
+    640009
+    496464
+    606900
+    004000
+    944096
+060069
+    060090
+    640009
+    496464
+    606900
+    004000
+    944096
+060090
+    640009
+    496464
+    606900
+    004000
+    944096
+640009
+    496464
+    606900
+    004000
+    944096
+496464
+    606900
+    004000
+    944096
+606900
+    004000
+    944096
+004000
+    944096
+944096
+matches: 72
+combinations: 270
+SOLUTION: 26.6666666667
+*/
+
+// 26.6666666667
+// console.log(posAverage("466960, 069060, 494940, 060069, 060090, 640009, 496464, 606900, 004000, 944096"));
+// console.log(posAverage("1234, 1243, 1342"));
+// console.log(posAverage("0, 0, 1"));
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+function posAverage2(s: string): number {
+    let posAverage: number = 0;
+    let counterCommon: number = 0;
+    let counterCombi: number = 0;
+    const stringArr: string[] = s.split(",");
+
+    for (let i = 0; i < stringArr.length; i++) {
+        let elementArr: string = stringArr[i].trim();
+        for (let j = i + 1; j < stringArr.length; j++) {
+            if (i !== j && stringArr[j]) {
+                let secondElementArr: string = stringArr[j].trim();
+                for (let k = 0; k < elementArr.length; k++) {
+                    counterCombi++;
+                    if (elementArr[k] === secondElementArr[k]) {
+                        counterCommon++;
+                    }
+                }
+            }
+        }
+    }
+    posAverage = (counterCommon / counterCombi) * 100;
+    return posAverage;
+}
+
+function posAverage3(s: string): number {
+    function pairPercentage(s1: string, s2: string): number {
+        var lg = s1.length, count = 0;
+        for (let pos = 0; pos < lg; pos++) {
+            if (s1.charAt(pos) === s2.charAt(pos))
+                count += 1;
+        }
+        return count / lg;
+    }
+    var strings = s.split(", ");
+    var result = 0, cnt = 0, lg = strings.length;
+    for (let k = 0; k < lg; k++) {
+        for (let i = k + 1; i < lg; i++) {
+            result += pairPercentage(strings[k], strings[i]);
+            cnt += 1
+        }
+    }
+    result = 100.0 * result / cnt
+    return Math.floor(result * Math.pow(10.0, 10)) / Math.pow(10.0, 10);
+}
+
+function posAverage4(s: string): number {
+    const a = s.split(', ').map(n => n.split(''))
+    let c = 0
+    for (let i = 0; i < a.length; ++i) {
+        for (let j = i + 1; j < a.length; ++j) {
+            for (let k = 0; k < a[0].length; ++k) {
+                if (a[i][k] === a[j][k]) {
+                    c += 1
+                }
+            }
+        }
+    }
+    return 200 * c / (a.length * (a.length - 1) * a[0].length)
+}
+
+function posAverage5(s: string): number {
+    let average = 0
+    let length = 0
+    let positionMatch = 0
+    let comparisons = 0
+    let substrings = s.split(", ")
+
+    for (let i = 0; i < substrings.length - 1; i++) {
+        for (let j = i + 1; j < substrings.length; j++) {
+            for (let k = 0; k < substrings[i].length; k++) {
+                comparisons++
+                if (substrings[i][k] == substrings[j][k]) {
+                    positionMatch++
+                }
+            }
+        }
+    }
+    average = (positionMatch / comparisons) * 100
+
+    return average
+}
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Parabolic Arc Length
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+We want to approximate the length of a curve representing a function y = f(x) with  a <= x <= b. First, we split the interval [a, b] into n sub-intervals with widths h1, h2, ... , hn by defining points x1, x2 , ... , xn-1 between a and b. This defines points P0, P1, P2, ... , Pn on the curve whose x-coordinates are a, x1, x2 , ... , xn-1, b and y-coordinates f(a), f(x1), ..., f(xn-1), f(b) . By connecting these points, we obtain a polygonal path approximating the curve.
+
+Our task is to approximate the length of a parabolic arc representing the curve y = x * x with x in the interval [0, 1]. We will take a common step h between the points xi: h1, h2, ... , hn = h = 1/n and we will consider the points P0, P1, P2, ... , Pn on the curve. The coordinates of each Pi are (xi, yi = xi * xi).
+
+The function len_curve (or similar in other languages) takes n as parameter (number of sub-intervals) and returns the length of the curve.
+
+alternative text
+
+Note:
+When you "Attempt" tests are done with a tolerance of 1e-06 (except in PureScript where you must truncate your result to 9 decimal places)
+*/
+const lenCurve = (n: number): number => {
+    // your code
+    return -1
+}
+/*
+ testing(1, 1.414213562);
+        testing(10, 1.478197397);
+    });
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Crack the PIN
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+Given is a md5 hash of a five digits long PIN. It is given as string. Md5 is a function to hash your password: "password123" ===> "482c811da5d5b4bc6d497ffa98491e38"
+
+Why is this useful? Hash functions like md5 can create a hash from string in a short time and it is impossible to find out the password, if you only got the hash. The only way is cracking it, means try every combination, hash it and compare it with the hash you want to crack. (There are also other ways of attacking md5 but that's another story) Every Website and OS is storing their passwords as hashes, so if a hacker gets access to the database, he can do nothing, as long the password is safe enough.
+
+What is a hash?
+
+What is md5?
+
+Note: Many languages have build in tools to hash md5. If not, you can write your own md5 function or google for an example.
+
+Here is another kata on generating md5 hashes!
+
+Your task is to return the cracked PIN as string.
+
+This is a little fun kata, to show you, how weak PINs are and how important a bruteforce protection is, if you create your own login.
+*/
+function crack(hash: string): string {
+    // C0d3 g03s h3r3
+    return ""
+}
+/*
+it("Should work with simple PIN", function() {
+    assert.deepEqual(crack("827ccb0eea8a706c4c34a16891f84e7b"), "12345");
+  });
+  it("Should work with harder PIN", function() {
+    assert.deepEqual(crack("86aa400b65433b608a9db30070ec60cd"), "00078");
+  });
 */
 
 // console.log();
@@ -284,50 +581,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Catalog
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS: ❗️❗️❗️ REGEX MATCH ALL CHARACTERS BETWEEN TWO STRINGS  ❗️❗️❗️
@@ -508,7 +762,7 @@ saw for metal > prx: $13.80 qty: 32
 
 // <prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
 // 'table saw > prx: $1099.99 qty: 5\r\nsaw > prx: $9 qty: 10\r\nsaw for metal > prx: $13.80 qty: 32');
-console.log(catalog(str, "saw"));
+// console.log(catalog(str, "saw"));
 // console.log();
 // console.log();
 // console.log();

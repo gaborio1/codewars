@@ -97,7 +97,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Vector class
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -105,9 +105,70 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Create a Vector object that supports addition, subtraction, dot products, and norms. So, for example:
+
+a = new Vector([1, 2, 3])
+b = new Vector([3, 4, 5])
+c = new Vector([5, 6, 7, 8])
+
+a.add(b)      # should return a new Vector([4, 6, 8])
+a.subtract(b) # should return a new Vector([-2, -2, -2])
+a.dot(b)      # should return 1*3 + 2*4 + 3*5 = 26
+a.norm()      # should return sqrt(1^2 + 2^2 + 3^2) = sqrt(14)
+a.add(c)      # throws an error
+If you try to add, subtract, or dot two vectors with different lengths, you must throw an error!
+
+Also provide:
+
+a toString method, so that using the vectors from above, a.toString() === '(1,2,3)' (in Python, this is a __str__ method, so that str(a) == '(1,2,3)')
+an equals method, to check that two vectors that have the same components are equal
+Note: the test cases will utilize the user-provided equals method.
+
 
 */
+class Vector {
 
+    constructor(components: number[]) {
+        // Start here...
+    }
+};
+
+/*
+describe("Tests", () => {
+it("Simple Equality Test", () => {
+  let a = new Vector([1,2]);
+  let b = new Vector([3,4]);
+  assert.isFalse(a.equals(b));
+});
+ 
+it("Simple Add Test", function() {
+  let a = new Vector([1, 2, 3]);
+  let b = new Vector([3, 4, 5]);
+  assert.isTrue(a.add(b).equals(new Vector([4,6, 8])));
+})
+ 
+it("Simple Norm Test", function () {
+  assert.approximately(new Vector([1,2,3]).norm(), Math.sqrt(14),  0.1);
+});
+ 
+it("Simple Subtract Test", function() {
+  let a = new Vector([1, 2, 3]);
+  let b = new Vector([3, 4, 5]);
+  assert.isTrue(a.subtract(b).equals(new Vector([-2,-2,-2])));
+});
+ 
+it("Simple Dot Test", function() {
+  let a = new Vector([1, 2, 3]);
+  let b = new Vector([3, 4, 5]);
+  assert.strictEqual(a.dot(b), 26);
+})
+ 
+it("Simple ToString Test", function() {
+  let a = new Vector([1, 2, 3]);
+  assert.strictEqual(a.toString(), "(1,2,3)");
+})
+});
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -116,7 +177,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Esolang Interpreters #2 - Custom Smallfuck Interpreter
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -124,9 +185,60 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+Esolang Interpreters #2 - Custom Smallfuck Interpreter
+About this Kata Series
+"Esolang Interpreters" is a Kata Series that originally began as three separate, independent esolang interpreter Kata authored by @donaldsebleung which all shared a similar format and were all somewhat inter-related. Under the influence of a fellow Codewarrior, these three high-level inter-related Kata gradually evolved into what is known today as the "Esolang Interpreters" series.
 
+This series is a high-level Kata Series designed to challenge the minds of bright and daring programmers by implementing interpreters for various esoteric programming languages/Esolangs, mainly Brainfuck derivatives but not limited to them, given a certain specification for a certain Esolang. Perhaps the only exception to this rule is the very first Kata in this Series which is intended as an introduction/taster to the world of esoteric programming languages and writing interpreters for them.
+
+The Language
+Smallfuck is an esoteric programming language/Esolang invented in 2002 which is a sized-down variant of the famous Brainfuck Esolang. Key differences include:
+
+Smallfuck operates only on bits as opposed to bytes
+It has a limited data storage which varies from implementation to implementation depending on the size of the tape
+It does not define input or output - the "input" is encoded in the initial state of the data storage (tape) and the "output" should be decoded in the final state of the data storage (tape)
+Here are a list of commands in Smallfuck:
+
+> - Move pointer to the right (by 1 cell)
+< - Move pointer to the left (by 1 cell)
+* - Flip the bit at the current cell
+[ - Jump past matching ] if value at current cell is 0
+] - Jump back to matching [ (if value at current cell is nonzero)
+As opposed to Brainfuck where a program terminates only when all of the commands in the program have been considered (left to right), Smallfuck terminates when any of the two conditions mentioned below become true:
+
+All commands have been considered from left to right
+The pointer goes out-of-bounds (i.e. if it moves to the left of the first cell or to the right of the last cell of the tape)
+Smallfuck is considered to be Turing-complete if and only if it had a tape of infinite length; however, since the length of the tape is always defined as finite (as the interpreter cannot return a tape of infinite length), its computational class is of bounded-storage machines with bounded input.
+
+More information on this Esolang can be found here.
+
+The Task
+Implement a custom Smallfuck interpreter interpreter() (interpreter in Haskell and F#, Interpreter in C#, custom_small_fuck:interpreter/2 in Erlang) which accepts the following arguments:
+
+code - Required. The Smallfuck program to be executed, passed in as a string. May contain non-command characters. Your interpreter should simply ignore any non-command characters.
+tape - Required. The initial state of the data storage (tape), passed in as a string. For example, if the string "00101100" is passed in then it should translate to something of this form within your interpreter: [0, 0, 1, 0, 1, 1, 0, 0]. You may assume that all input strings for tape will be non-empty and will only contain "0"s and "1"s.
+Your interpreter should return the final state of the data storage (tape) as a string in the same format that it was passed in. For example, if the tape in your interpreter ends up being [1, 1, 1, 1, 1] then return the string "11111".
+
+NOTE: The pointer of the interpreter always starts from the first (leftmost) cell of the tape, same as in Brainfuck.
+
+Good luck :D
 */
+function interpreter(code: string, tape: string): string {
+    return "hello";
+}
 
+/*
+// Flips the leftmost cell of the tape
+    assert.equal(interpreter("*", "00101100"), "10101100");
+    // Flips the second and third cell of the tape
+    assert.equal(interpreter(">*>*", "00101100"), "01001100");
+    // Flips all the bits in the tape
+    assert.equal(interpreter("*>*>*>*>*>*>*>*", "00101100"), "11010011");
+    // Flips all the bits that are initialized to 0
+    assert.equal(interpreter("*>*>>*>>>*>*", "00101100"), "11111111");
+    // Goes somewhere to the right of the tape and then flips all bits that are initialized to 1, progressing leftwards through the tape
+    assert.equal(interpreter(">>>>>*<*<<*", "00101100"), "00000000");
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -342,7 +454,7 @@ console.log(parseMolecule("H2O"));
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // ❗️❗️❗️ Timed Out Passed: 9 Failed: 1+ ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: JOSEPHUS SURVIVOR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+class Vector {
+    constructor(components) {
+    }
+}
+;
+function interpreter(code, tape) {
+    return "hello";
+}
 function decomp(n) {
     return "your code";
 }

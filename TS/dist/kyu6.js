@@ -3,6 +3,107 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = exports.M7 = exports.F7 = exports.M6 = exports.F6 = exports.M5 = exports.F5 = exports.M4 = exports.F4 = exports.M3 = exports.F3 = exports.M2 = exports.F2 = exports.M1 = exports.F1 = void 0;
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = void 0;
+const posAverage = (str) => {
+    const strArr = str.split(", ");
+    console.log(strArr);
+    let combinations = 0;
+    let matches = 0;
+    for (let i = 0; i < strArr.length; i += 1) {
+        console.log(strArr[i]);
+        for (let j = i + 1; j < strArr.length; j += 1) {
+            console.log("   ", strArr[j]);
+            for (let k = 0; k < strArr[0].length; k += 1) {
+                combinations += 1;
+                if (strArr[i][k] === strArr[j][k]) {
+                    matches += 1;
+                }
+            }
+        }
+    }
+    const solution = Number((matches / combinations * 100).toFixed(10));
+    return solution;
+};
+function posAverage2(s) {
+    let posAverage = 0;
+    let counterCommon = 0;
+    let counterCombi = 0;
+    const stringArr = s.split(",");
+    for (let i = 0; i < stringArr.length; i++) {
+        let elementArr = stringArr[i].trim();
+        for (let j = i + 1; j < stringArr.length; j++) {
+            if (i !== j && stringArr[j]) {
+                let secondElementArr = stringArr[j].trim();
+                for (let k = 0; k < elementArr.length; k++) {
+                    counterCombi++;
+                    if (elementArr[k] === secondElementArr[k]) {
+                        counterCommon++;
+                    }
+                }
+            }
+        }
+    }
+    posAverage = (counterCommon / counterCombi) * 100;
+    return posAverage;
+}
+function posAverage3(s) {
+    function pairPercentage(s1, s2) {
+        var lg = s1.length, count = 0;
+        for (let pos = 0; pos < lg; pos++) {
+            if (s1.charAt(pos) === s2.charAt(pos))
+                count += 1;
+        }
+        return count / lg;
+    }
+    var strings = s.split(", ");
+    var result = 0, cnt = 0, lg = strings.length;
+    for (let k = 0; k < lg; k++) {
+        for (let i = k + 1; i < lg; i++) {
+            result += pairPercentage(strings[k], strings[i]);
+            cnt += 1;
+        }
+    }
+    result = 100.0 * result / cnt;
+    return Math.floor(result * Math.pow(10.0, 10)) / Math.pow(10.0, 10);
+}
+function posAverage4(s) {
+    const a = s.split(', ').map(n => n.split(''));
+    let c = 0;
+    for (let i = 0; i < a.length; ++i) {
+        for (let j = i + 1; j < a.length; ++j) {
+            for (let k = 0; k < a[0].length; ++k) {
+                if (a[i][k] === a[j][k]) {
+                    c += 1;
+                }
+            }
+        }
+    }
+    return 200 * c / (a.length * (a.length - 1) * a[0].length);
+}
+function posAverage5(s) {
+    let average = 0;
+    let length = 0;
+    let positionMatch = 0;
+    let comparisons = 0;
+    let substrings = s.split(", ");
+    for (let i = 0; i < substrings.length - 1; i++) {
+        for (let j = i + 1; j < substrings.length; j++) {
+            for (let k = 0; k < substrings[i].length; k++) {
+                comparisons++;
+                if (substrings[i][k] == substrings[j][k]) {
+                    positionMatch++;
+                }
+            }
+        }
+    }
+    average = (positionMatch / comparisons) * 100;
+    return average;
+}
+const lenCurve = (n) => {
+    return -1;
+};
+function crack(hash) {
+    return "";
+}
 const str = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
 
 <prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>
@@ -66,7 +167,6 @@ const catalog = (str, article) => {
     const solution = solutionArr.join("\r\n");
     return solution;
 };
-console.log(catalog(str, "saw"));
 function catalog2(s, article) {
     let pattern = '<prod><name>(.*?' + article + '.*?)</name><prx>(.*?)</prx><qty>(.*?)</qty></prod>';
     let match, regex = new RegExp(pattern, 'g');
