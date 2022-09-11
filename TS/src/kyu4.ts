@@ -12,7 +12,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -31,7 +33,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -50,7 +54,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -69,7 +75,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -88,7 +96,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -107,7 +117,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -126,7 +138,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -145,7 +159,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -164,7 +180,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -183,7 +201,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -202,7 +222,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -221,7 +243,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -240,7 +264,9 @@
 /*
 
 */
+/*
 
+*/
 // console.log();
 // console.log();
 // console.log();
@@ -259,64 +285,9 @@
 /*
 
 */
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
 /*
 
 */
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-
 // console.log();
 // console.log();
 // console.log();
@@ -369,7 +340,7 @@
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Getting along with Integer Partitions
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -377,10 +348,269 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+From wikipedia https://en.wikipedia.org/wiki/Partition_(number_theory)
+
+In number theory and combinatorics, a partition of a positive integer n, also called an integer partition, is a way of writing n as a sum of positive integers. Two sums that differ only in the order of their summands are considered the same partition.
+
+For example, 4 can be partitioned in five distinct ways:
+
+4, 3 + 1, 2 + 2, 2 + 1 + 1, 1 + 1 + 1 + 1.
+
+We can write:
+
+enum(4) -> [[4],[3,1],[2,2],[2,1,1],[1,1,1,1]] and
+
+enum(5) -> [[5],[4,1],[3,2],[3,1,1],[2,2,1],[2,1,1,1],[1,1,1,1,1]].
+
+The number of parts in a partition grows very fast. For n = 50 number of parts is 204226, for 80 it is 15,796,476 It would be too long to tests answers with arrays of such size. So our task is the following:
+
+1 - n being given (n integer, 1 <= n <= 50) calculate enum(n) ie the partition of n. We will obtain something like that:
+enum(n) -> [[n],[n-1,1],[n-2,2],...,[1,1,...,1]] (order of array and sub-arrays doesn't matter). This part is not tested.
+
+2 - For each sub-array of enum(n) calculate its product. If n = 5 we'll obtain after removing duplicates and sorting:
+
+prod(5) -> [1,2,3,4,5,6]
+
+prod(8) -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 18]
+
+If n = 40 prod(n) has a length of 2699 hence the tests will not verify such arrays. Instead our task number 3 is:
+
+3 - return the range, the average and the median of prod(n) in the following form (example for n = 5):
+
+"Range: 5 Average: 3.50 Median: 3.50"
+
+Range is an integer, Average and Median are float numbers rounded to two decimal places (".2f" in some languages).
+
+Notes:
+Range : difference between the highest and lowest values.
+
+Mean or Average : To calculate mean, add together all of the numbers in a set and then divide the sum by the total count of numbers.
+
+Median : The median is the number separating the higher half of a data sample from the lower half. (https://en.wikipedia.org/wiki/Median)
+
+Hints:
+Try to optimize your program to avoid timing out.
+
+Memoization can be helpful but it is not mandatory for being successful.
+
 
 */
+const part = (n: number): string => {
+    // your code
+    return "...";
+};
 /*
+  describe("Testing...", function() {
+  doBatch("Small numbers", [
+    [1, "Range: 0 Average: 1.00 Median: 1.00"],
+    [2, "Range: 1 Average: 1.50 Median: 1.50"],
+    [3, "Range: 2 Average: 2.00 Median: 2.00"],
+    [4, "Range: 3 Average: 2.50 Median: 2.50"],
+    [5, "Range: 5 Average: 3.50 Median: 3.50"],
+    [6, "Range: 8 Average: 4.75 Median: 4.50"],
+    [7, "Range: 11 Average: 6.09 Median: 6.00"],
+    [8, "Range: 17 Average: 8.29 Median: 7.50"],
+    [9, "Range: 26 Average: 11.17 Median: 9.50"],
+    [10, "Range: 35 Average: 15.00 Median: 14.00"],
+  ])
+});
+*/
 
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Esolang Interpreters #3 - Custom Paintf**k Interpreter
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+About this Kata Series
+"Esolang Interpreters" is a Kata Series that originally began as three separate, independent esolang interpreter Kata authored by @donaldsebleung which all shared a similar format and were all somewhat inter-related. Under the influence of a fellow Codewarrior, these three high-level inter-related Kata gradually evolved into what is known today as the "Esolang Interpreters" series.
+
+This series is a high-level Kata Series designed to challenge the minds of bright and daring programmers by implementing interpreters for various esoteric programming languages/Esolangs, mainly Brainfuck derivatives but not limited to them, given a certain specification for a certain Esolang. Perhaps the only exception to this rule is the very first Kata in this Series which is intended as an introduction/taster to the world of esoteric programming languages and writing interpreters for them.
+
+The Language
+Paintfuck is a borderline-esoteric programming language/Esolang which is a derivative of Smallfuck (itself a derivative of the famous Brainfuck) that uses a two-dimensional data grid instead of a one-dimensional tape.
+
+Valid commands in Paintfuck include:
+
+n - Move data pointer north (up)
+e - Move data pointer east (right)
+s - Move data pointer south (down)
+w - Move data pointer west (left)
+* - Flip the bit at the current cell (same as in Smallfuck)
+[ - Jump past matching ] if bit under current pointer is 0 (same as in Smallfuck)
+] - Jump back to the matching [ (if bit under current pointer is nonzero) (same as in Smallfuck)
+The specification states that any non-command character (i.e. any character other than those mentioned above) should simply be ignored. The output of the interpreter is the two-dimensional data grid itself, best as animation as the interpreter is running, but at least a representation of the data grid itself after a certain number of iterations (explained later in task).
+
+In current implementations, the 2D datagrid is finite in size with toroidal (wrapping) behaviour. This is one of the few major differences of Paintfuck from Smallfuck as Smallfuck terminates (normally) whenever the pointer exceeds the bounds of the tape.
+
+Similar to Smallfuck, Paintfuck is Turing-complete if and only if the 2D data grid/canvas were unlimited in size. However, since the size of the data grid is defined to be finite, it acts like a finite state machine.
+
+More info on this Esolang can be found here.
+
+The Task
+Your task is to implement a custom Paintfuck interpreter interpreter()/Interpret which accepts the following arguments in the specified order:
+
+code - Required. The Paintfuck code to be executed, passed in as a string. May contain comments (non-command characters), in which case your interpreter should simply ignore them. If empty, simply return the initial state of the data grid.
+iterations - Required. A non-negative integer specifying the number of iterations to be performed before the final state of the data grid is returned. See notes for definition of 1 iteration. If equal to zero, simply return the initial state of the data grid.
+width - Required. The width of the data grid in terms of the number of data cells in each row, passed in as a positive integer.
+height - Required. The height of the data grid in cells (i.e. number of rows) passed in as a positive integer.
+A few things to note:
+
+Your interpreter should treat all command characters as case-sensitive so N, E, S and W are not valid command characters
+Your interpreter should initialize all cells within the data grid to a value of 0 regardless of the width and height of the grid
+In this implementation, your pointer must always start at the top-left hand corner of the data grid (i.e. first row, first column). This is important as some implementations have the data pointer starting at the middle of the grid.
+One iteration is defined as one step in the program, i.e. the number of command characters evaluated. For example, given a program nessewnnnewwwsswse and an iteration count of 5, your interpreter should evaluate nesse before returning the final state of the data grid. Non-command characters should not count towards the number of iterations.
+Regarding iterations, the act of skipping to the matching ] when a [ is encountered (or vice versa) is considered to be one iteration regardless of the number of command characters in between. The next iteration then commences at the command right after the matching ] (or [).
+Your interpreter should terminate normally and return the final state of the 2D data grid whenever any of the mentioned conditions become true: (1) All commands have been considered left to right, or (2) Your interpreter has already performed the number of iterations specified in the second argument.
+The return value of your interpreter should be a representation of the final state of the 2D data grid where each row is separated from the next by a CRLF (\r\n). For example, if the final state of your datagrid is
+[
+  [1, 0, 0],
+  [0, 1, 0],
+  [0, 0, 1]
+]
+... then your return string should be "100\r\n010\r\n001".
+
+Good luck :D
+*/
+function interpreter(
+    code: string,
+    iterations: number,
+    width: number,
+    height: number
+): string {
+    return "hello";
+}
+/*
+ assert.equal(displayActual(interpreter("*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*", 0, 6, 9)), displayExpected("000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000"), "Your interpreter should initialize all cells in the datagrid to 0");
+    assert.equal(displayActual(interpreter("*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*", 7, 6, 9)), displayExpected("111100\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000\r\n000000"), "Your interpreter should adhere to the number of iterations specified");
+    assert.equal(displayActual(interpreter("*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*", 19, 6, 9)), displayExpected("111100\r\n000010\r\n000001\r\n000010\r\n000100\r\n000000\r\n000000\r\n000000\r\n000000"), "Your interpreter should traverse the 2D datagrid correctly");
+    assert.equal(displayActual(interpreter("*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*", 42, 6, 9)), displayExpected("111100\r\n100010\r\n100001\r\n100010\r\n111100\r\n100000\r\n100000\r\n100000\r\n100000"), "Your interpreter should traverse the 2D datagrid correctly for all of the \"n\", \"e\", \"s\" and \"w\" commands");
+    assert.equal(displayActual(interpreter("*e*e*e*es*es*ws*ws*w*w*w*n*n*n*ssss*s*s*s*", 100, 6, 9)), displayExpected("111100\r\n100010\r\n100001\r\n100010\r\n111100\r\n100000\r\n100000\r\n100000\r\n100000"), "Your interpreter should terminate normally and return a representation of the final state of the 2D datagrid when all commands have been considered from left to right even if the number of iterations specified have not been fully performed");
+  });
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Simple Fun #27: Rectangle Rotation
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+A rectangle with sides equal to even integers a and b is drawn on the Cartesian plane. Its center (the intersection point of its diagonals) coincides with the point (0, 0), but the sides of the rectangle are not parallel to the axes; instead, they are forming 45 degree angles with the axes.
+
+How many points with integer coordinates are located inside the given rectangle (including on its sides)?
+
+Example
+For a = 6 and b = 4, the output should be 23
+
+The following picture illustrates the example, and the 23 points are marked green.
+
+
+
+Input/Output
+[input] integer a
+
+A positive even integer.
+
+Constraints: 2 ≤ a ≤ 10000.
+
+[input] integer b
+
+A positive even integer.
+
+Constraints: 2 ≤ b ≤ 10000.
+
+[output] an integer
+
+The number of inner points with integer coordinates.
+
+
+*/
+function rectangleRotation(a: number, b: number): number {
+    return 1;
+}
+/*
+assert.strictEqual(rectangleRotation(6, 4), 23);
+    assert.strictEqual(rectangleRotation(30, 2), 65);
+    assert.strictEqual(rectangleRotation(8, 6), 49);
+    assert.strictEqual(rectangleRotation(16, 20), 333);
+*/
+
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// TITLE: Square into Squares. Protect trees!
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// KEYWORDS:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+// SOURCE:
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+/*
+My little sister came back home from school with the following task: given a squared sheet of paper she has to cut it in pieces which, when assembled, give squares the sides of which form an increasing sequence of numbers. At the beginning it was lot of fun but little by little we were tired of seeing the pile of torn paper. So we decided to write a program that could help us and protects trees.
+
+Task
+Given a positive integral number n, return a strictly increasing sequence (list/array/string depending on the language) of numbers, so that the sum of the squares is equal to n².
+
+If there are multiple solutions (and there will be), return as far as possible the result with the largest possible values:
+
+Examples
+decompose(11) must return [1,2,4,10]. Note that there are actually two ways to decompose 11², 11² = 121 = 1 + 4 + 16 + 100 = 1² + 2² + 4² + 10² but don't return [2,6,9], since 9 is smaller than 10.
+
+For decompose(50) don't return [1, 1, 4, 9, 49] but [1, 3, 5, 8, 49] since [1, 1, 4, 9, 49] doesn't form a strictly increasing sequence.
+
+Note
+Neither [n] nor [1,1,1,…,1] are valid solutions. If no valid solution exists, return nil, null, Nothing, None (depending on the language) or "[]" (C) ,{} (C++), [] (Swift, Go).
+
+The function "decompose" will take a positive integer n and return the decomposition of N = n² as:
+
+[x1 ... xk] or
+"x1 ... xk" or
+Just [x1 ... xk] or
+Some [x1 ... xk] or
+{x1 ... xk} or
+"[x1,x2, ... ,xk]"
+depending on the language (see "Sample tests")
+
+Note for Bash
+decompose 50 returns "1,3,5,8,49"
+decompose 4  returns "Nothing"
+Hint
+Very often xk will be n-1.
+
+
+*/
+const decompose = (n: number): null | number[] => {
+    // your code
+    return null;
+};
+/*
+testing(50, [1,3,5,8,49]);
+        testing(44, [2,3,5,7,43]);
 */
 
 // console.log();

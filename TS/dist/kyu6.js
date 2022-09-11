@@ -3,6 +3,24 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.streetFighterSelection8 = exports.myFirstInterpreter3 = exports.backwardsPrime8 = exports.backwardsPrime7 = exports.isPalindrome = exports.isPrime = exports.numPrimorial2 = exports.decod1e = exports.encode1 = exports.sortTwisted372 = exports.oper10 = exports.selfieAndDiag110 = exports.diag1Sym10 = exports.rot90Clock10 = exports.oper9 = exports.selfieAndDiag19 = exports.diag1Sym9 = exports.rot90Clock9 = exports.oper8 = exports.selfieAndDiag18 = exports.diag1Sym8 = exports.rot90Clock8 = exports.oper7 = exports.selfieAndDiag17 = exports.diag1Sym7 = exports.rot90Clock7 = exports.oper6 = exports.selfieAndDiag16 = exports.rot90Clock6 = exports.diag1Sym6 = exports.operArray = exports.mini = exports.maxi = exports.som = exports.lcmu = exports.gcdi = exports.M7 = exports.F7 = exports.M6 = exports.F6 = exports.M5 = exports.F5 = exports.M4 = exports.F4 = exports.M3 = exports.F3 = exports.M2 = exports.F2 = exports.M1 = exports.F1 = void 0;
 exports.countBits7 = exports.countBits6 = exports.countBits5 = exports.countBits4 = exports.countBits3 = exports.countBits2 = exports.findOutlier3 = exports.findOutlier2 = exports.solution5 = exports.streetFighterSelection9 = void 0;
+function hist(s) {
+    return "hello";
+}
+function deadAntCount(ants) {
+    return 0;
+}
+function mirror(text) {
+    return "hello";
+}
+function isSumOfCubes(s) {
+    return "";
+}
+function manhattanDistance(pointA, pointB) {
+    return 0;
+}
+function nextHigher(n) {
+    return 0;
+}
 const posAverage = (str) => {
     const strArr = str.split(", ");
     console.log(strArr);
@@ -20,7 +38,7 @@ const posAverage = (str) => {
             }
         }
     }
-    const solution = Number((matches / combinations * 100).toFixed(10));
+    const solution = Number(((matches / combinations) * 100).toFixed(10));
     return solution;
 };
 function posAverage2(s) {
@@ -62,11 +80,11 @@ function posAverage3(s) {
             cnt += 1;
         }
     }
-    result = 100.0 * result / cnt;
+    result = (100.0 * result) / cnt;
     return Math.floor(result * Math.pow(10.0, 10)) / Math.pow(10.0, 10);
 }
 function posAverage4(s) {
-    const a = s.split(', ').map(n => n.split(''));
+    const a = s.split(", ").map((n) => n.split(""));
     let c = 0;
     for (let i = 0; i < a.length; ++i) {
         for (let j = i + 1; j < a.length; ++j) {
@@ -77,7 +95,7 @@ function posAverage4(s) {
             }
         }
     }
-    return 200 * c / (a.length * (a.length - 1) * a[0].length);
+    return (200 * c) / (a.length * (a.length - 1) * a[0].length);
 }
 function posAverage5(s) {
     let average = 0;
@@ -168,19 +186,25 @@ const catalog = (str, article) => {
     return solution;
 };
 function catalog2(s, article) {
-    let pattern = '<prod><name>(.*?' + article + '.*?)</name><prx>(.*?)</prx><qty>(.*?)</qty></prod>';
-    let match, regex = new RegExp(pattern, 'g');
+    let pattern = "<prod><name>(.*?" +
+        article +
+        ".*?)</name><prx>(.*?)</prx><qty>(.*?)</qty></prod>";
+    let match, regex = new RegExp(pattern, "g");
     let res = [];
-    while (match = regex.exec(s))
-        res.push(match[1] + ' > prx: $' + match[2] + ' qty: ' + match[3]);
-    return res.join("\r\n") || 'Nothing';
+    while ((match = regex.exec(s)))
+        res.push(match[1] + " > prx: $" + match[2] + " qty: " + match[3]);
+    return res.join("\r\n") || "Nothing";
 }
 function catalog3(s, article) {
-    let prodArr = s.split(/<\/?prod>/).filter(line => line && line !== "\n\n");
+    let prodArr = s
+        .split(/<\/?prod>/)
+        .filter((line) => line && line !== "\n\n");
     let res = [];
-    prodArr.forEach(prod => {
+    prodArr.forEach((prod) => {
         if (prod.includes(article)) {
-            let [name, price, qty] = prod.split(/<\/?name>|<\/?prx>|<\/?qty>/).filter(line => line);
+            let [name, price, qty] = prod
+                .split(/<\/?name>|<\/?prx>|<\/?qty>/)
+                .filter((line) => line);
             res.push(name + " > prx: $" + price + " qty: " + qty);
         }
     });
@@ -189,9 +213,9 @@ function catalog3(s, article) {
 function catalog4(s, article) {
     const result = s
         .split("\n\n")
-        .filter(value => value.includes(article))
-        .map(value => new Product(value))
-        .map(value => `${value.name} > prx: $${value.prx} qty: ${value.qty}`)
+        .filter((value) => value.includes(article))
+        .map((value) => new Product(value))
+        .map((value) => `${value.name} > prx: $${value.prx} qty: ${value.qty}`)
         .join("\r\n");
     return result.length === 0 ? "Nothing" : result;
 }
@@ -226,7 +250,7 @@ function catalog5(s, article) {
         const quantity = product.match(/<qty>(.+)<\/qty>/);
         return `${name[1]} > prx: $${price[1]} qty: ${quantity[1]}`;
     });
-    return matchesArr.join('\r\n') || 'Nothing';
+    return matchesArr.join("\r\n") || "Nothing";
 }
 function arrange(strng) {
     return "hello";

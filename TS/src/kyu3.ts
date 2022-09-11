@@ -461,7 +461,7 @@ Good luck :D
 */
 
 function boolfuck(code: string, input: string = ""): string {
-    return "hello"
+    return "hello";
 }
 
 // "Hello, world!\n", "Your interpreter did not work with the code example provided on the official website")
@@ -577,8 +577,8 @@ Refer to the example test cases.
 
 const theLift = (queues: number[][], capacity: number): number[] => {
     // Your code here!
-    return [999]
-}
+    return [999];
+};
 
 var queues = [
     [], // G
@@ -653,7 +653,10 @@ Fun fact:
 In case you're wondering out of curiosity, for the Android lock screen, the valid patterns must have between 4 and 9 dots/points. There are 389112 possible valid patterns in total; that is, patterns with a length between 4 and 9 dots/points.
 */
 
-function calculateCombinations(startPosition: string, patternLength: number): number {
+function calculateCombinations(
+    startPosition: string,
+    patternLength: number
+): number {
     return -1;
 }
 

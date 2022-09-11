@@ -1,20 +1,65 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+function buddy(start, limit) {
+    return [1];
+}
+const phone = (strng, num) => {
+    return "...";
+};
+const movingShift = (s, shift) => {
+    return [];
+};
+const demovingShift = (arr, shift) => {
+    return "";
+};
+class G9640 {
+}
+G9640.dec2FactString = (nb) => {
+    return "hello";
+};
+G9640.factString2Dec = (str) => {
+    return 1;
+};
+function solequa(n) {
+    return [[1, 1]];
+}
+function smallest(n) {
+    return [1];
+}
+function going(n) {
+    return -1;
+}
+function findUniq(arr) {
+    return arr[0];
+}
 class Vector {
     constructor(components) {
     }
 }
-;
 function interpreter(code, tape) {
     return "hello";
 }
 function decomp(n) {
     return "your code";
 }
-function beeramid(bonus, price) {
-    return 0;
-}
+const beeramid = (bonus, price) => {
+    let totalDrinks = Math.trunc(bonus / price);
+    console.log("initial total drinks:", totalDrinks);
+    let levelCounter = 0;
+    for (let i = 1; i < 100; i += 1) {
+        console.log("LEVEL:", i);
+        console.log("   drinks left:", totalDrinks);
+        let currSquare = Math.pow(i, 2);
+        console.log("   current square:", currSquare);
+        if (totalDrinks < currSquare)
+            break;
+        levelCounter += 1;
+        totalDrinks -= currSquare;
+        console.log("       drinks left:", totalDrinks);
+    }
+    return levelCounter;
+};
 class SnakesLadders {
     constructor() {
     }
@@ -26,7 +71,6 @@ const parseMolecule = (formula) => {
     const elementMatch = /[A-Z]{1}[a-z]?/g;
     console.log(formula.match(elementMatch));
 };
-console.log(parseMolecule("H2O"));
 const josephusSurvivor = (num, gap) => {
     let items = [];
     for (let i = 1; i <= num; i += 1) {
