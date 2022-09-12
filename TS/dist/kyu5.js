@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = void 0;
+exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = void 0;
 function buddy(start, limit) {
     return [1];
 }
@@ -30,8 +30,88 @@ function smallest(n) {
 function going(n) {
     return -1;
 }
-function findUniq(arr) {
-    return arr[0];
+const findUniq = (arr) => {
+    let match = "";
+    let reducedStrArr = [];
+    for (let i = 0; i < arr.length; i += 1) {
+        const current = arr[i].replace(/\s/g, "").toLowerCase().split("").sort().join("");
+        const set = new Set(current);
+        const reduced = Array.from(current).join("");
+        reducedStrArr.push(reduced);
+    }
+    for (let i = 0; i < reducedStrArr.length; i += 1) {
+        let current = reducedStrArr[i];
+        if (i === 0) {
+            if (current !== reducedStrArr[i + 1] && current !== reducedStrArr[i + 2]) {
+                match = current;
+                break;
+            }
+        }
+        if (i > 0 && i < reducedStrArr.length - 1) {
+            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i + 1]) {
+                match = current;
+                break;
+            }
+        }
+        if (i === reducedStrArr.length - 1) {
+            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i - 2]) {
+                match = current;
+                break;
+            }
+        }
+    }
+    const matchIndex = reducedStrArr.indexOf(match);
+    const solution = arr[matchIndex];
+    return solution;
+};
+console.log(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']));
+function findUniq2(arr) {
+    const regx = new RegExp(`[${arr[0]}]`, "ig");
+    const resultArray = arr.map((value) => value.replace(regx, ""));
+    let trueCheck = false;
+    if (resultArray[1] === "" || resultArray[2] === "")
+        trueCheck = true;
+    if (trueCheck) {
+        for (let i = 1; i < resultArray.length; i++) {
+            if (resultArray[i] !== "")
+                return arr[i];
+        }
+        return "Log";
+    }
+    else {
+        return arr[0];
+    }
+}
+function findUniq3(arr) {
+    let newArr = arr.map(a => [...new Set(a.toLowerCase())].sort().join(''));
+    return arr.find((str, i) => newArr.indexOf(newArr[i]) === newArr.lastIndexOf(newArr[i]));
+}
+function findUniq4(arr) {
+    const isEqual = (a, b) => {
+        const aSet = new Set(a.toLowerCase());
+        const bSet = new Set(b.toLowerCase());
+        if (aSet.size !== bSet.size)
+            return false;
+        return [...aSet].every((letter) => bSet.has(letter));
+    };
+    const etalon = isEqual(arr[0], arr[1]) ? arr[0] : arr[2];
+    return arr.filter((str) => !isEqual(str, etalon))[0];
+}
+const findUniq5 = (arr) => arr.sort().filter((x, _, array) => x.match(new RegExp(`[^${array[1]}]`, `ig`)))[0] || `Log`;
+exports.findUniq5 = findUniq5;
+function findUniq6(arr) {
+    var _a;
+    function hash(value) {
+        return Array.from(new Set(value.split('').map(c => c.toLowerCase()))).sort().filter(c => c !== ' ').join('');
+    }
+    const x = hash(arr[hash(arr[0]) === hash(arr[1]) ? 0 : 2]);
+    return (_a = arr.find(v => hash(v) !== x)) !== null && _a !== void 0 ? _a : '';
+}
+function findUniq7(arr) {
+    const cleaned = arr.map(s => [...new Set(s.replace(/\s/g, '').toLowerCase().split(''))].sort().join(''));
+    const notUnique = cleaned[cleaned[0] === cleaned[1] ? 0 : 2];
+    const uniqueIndex = cleaned.findIndex(s => s !== notUnique);
+    return arr[uniqueIndex];
 }
 class Vector {
     constructor(components) {
@@ -45,21 +125,73 @@ function decomp(n) {
 }
 const beeramid = (bonus, price) => {
     let totalDrinks = Math.trunc(bonus / price);
-    console.log("initial total drinks:", totalDrinks);
     let levelCounter = 0;
-    for (let i = 1; i < 100; i += 1) {
-        console.log("LEVEL:", i);
-        console.log("   drinks left:", totalDrinks);
+    for (let i = 1; i <= Math.abs(bonus / price); i += 1) {
         let currSquare = Math.pow(i, 2);
-        console.log("   current square:", currSquare);
         if (totalDrinks < currSquare)
             break;
         levelCounter += 1;
         totalDrinks -= currSquare;
-        console.log("       drinks left:", totalDrinks);
     }
     return levelCounter;
 };
+function beeramid2(bonus, price) {
+    let level = 0;
+    let n = 1;
+    let i = 1;
+    while (n <= Math.floor(bonus / price)) {
+        i++;
+        n += i ** 2;
+        level++;
+    }
+    return level;
+}
+function beeramid3(bonus, price) {
+    let pyramidLevel = 1;
+    let remainingBonus = bonus;
+    let nextLevelCost = pyramidLevel * pyramidLevel * price;
+    while (remainingBonus >= nextLevelCost) {
+        remainingBonus -= nextLevelCost;
+        pyramidLevel++;
+        nextLevelCost = pyramidLevel * pyramidLevel * price;
+    }
+    return pyramidLevel - 1;
+}
+function beeramid6(bonus, price) {
+    let maxCan = Math.floor(bonus / price);
+    let result = 0;
+    while (Math.pow(result + 1, 2) <= maxCan) {
+        result++;
+        maxCan -= Math.pow(result, 2);
+    }
+    return result;
+}
+function beeramid7(bonus, price) {
+    let i = 1;
+    while (true) {
+        const total = i * (i + 1) * (2 * i + 1) / 6 * price;
+        if (total > bonus) {
+            return i - 1;
+        }
+        i++;
+    }
+}
+function beeramid8(bonus, price) {
+    const beer = Math.floor(bonus / price);
+    let num = 0;
+    let lvl = 0;
+    while (num < beer) {
+        num += lvl ** 2;
+        if (num == beer)
+            break;
+        if (num > beer) {
+            lvl--;
+            break;
+        }
+        lvl++;
+    }
+    return lvl;
+}
 class SnakesLadders {
     constructor() {
     }

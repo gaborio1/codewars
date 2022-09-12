@@ -41,7 +41,8 @@
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+//🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -60,178 +61,8 @@
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// SOURCE:
-// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
-/*
-
-*/
-/*
-
-*/
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+//🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Buddy Pairs
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -282,7 +113,8 @@ testing(10, 50, [48, 75] );
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+//🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Phone Directory
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -377,7 +209,8 @@ describe("Fixed Tests", function() {
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+//🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: First Variation on Caesar Cipher
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -449,7 +282,8 @@ it("movingShift, demovingShift", function() {
 // console.log();
 // console.log();
 
-//============= OTHER CODEWARS SOLUTIONS: =============// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+//============= OTHER CODEWARS SOLUTIONS: =============
+// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Decimal to Factorial and Back
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -659,27 +493,142 @@ It’s guaranteed that array contains more than 2 strings.
 
 This is the second kata in series:
 */
-function findUniq(arr: string[]): string {
-    // Do the magic
-    return arr[0];
+const findUniq = (arr: string[]): string => {
+
+    let match: string = "";
+
+    let reducedStrArr: string[] = [];
+
+    for (let i = 0; i < arr.length; i += 1) {
+        // DELETE SPACES, SORT APLHABETICALLY , !!! TOLOWERCASE HAS TO BE BEFORE SORT AS "M" WILL COME BEFORE "a" !!!
+        const current: string = arr[i].replace(/\s/g, "").toLowerCase().split("").sort().join("");
+
+        // console.log("original:", current);
+
+        // FILTER OUT DUPLICATES WITH SET
+        const set = new Set(current);
+        // console.log("   set:", set);
+
+        // CONVERT SET TO STRING
+        const reduced: string = Array.from(current).join("");
+
+        // reduced SIMPLIFIED:
+        // const reduced: string = Array.from(new Set(current)).join("");
+        // console.log("       reduced:", reduced);
+
+        reducedStrArr.push(reduced);
+    }
+
+    // console.log(reducedStrArr);
+
+    // COMPARE EACH STRING TO ITS NEIGHBOUR
+    for (let i = 0; i < reducedStrArr.length; i += 1) {
+        let current: string = reducedStrArr[i];
+        if (i === 0) {
+            if (current !== reducedStrArr[i + 1] && current !== reducedStrArr[i + 2]) {
+                match = current;
+                break;
+            }
+        }
+        if (i > 0 && i < reducedStrArr.length - 1) {
+            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i + 1]) {
+                match = current;
+                break;
+            }
+        }
+        if (i === reducedStrArr.length - 1) {
+            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i - 2]) {
+                match = current;
+                break;
+            }
+        }
+
+    }
+
+    const matchIndex: number = reducedStrArr.indexOf(match);
+    const solution: string = arr[matchIndex];
+
+    return solution;
+
 }
 /*
-it('should handle sample cases', () => {
-    assert.strictEqual(findUniq(['Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a']), 'BbBb');
-    assert.strictEqual(findUniq(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']), 'foo');
-    assert.strictEqual(findUniq(['silvia', 'vasili', 'victor']), 'victor');
-    assert.strictEqual(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']), 'Harry Potter');
-    assert.strictEqual(findUniq(['    ', 'a', ' ']), 'a');
-  });
+console.log(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']));
+
+
+original: addeillmmooorrtv
+   set: Set(10) { 'a', 'd', 'e', 'i', 'l', 'm', 'o', 'r', 't', 'v' }
+       reduced: adeilmortv
+original: addeillmmooorrtv
+   set: Set(10) { 'a', 'd', 'e', 'i', 'l', 'm', 'o', 'r', 't', 'v' }
+       reduced: adeilmortv
+original: aehoprrrtty
+   set: Set(8) { 'a', 'e', 'h', 'o', 'p', 'r', 't', 'y' }
+       reduced: aehoprty
+[ 'adeilmortv', 'adeilmortv', 'aehoprty' ]
+Harry Potter
 */
 
-// console.log();
+// console.log(findUniq(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']));
+// console.log(findUniq(['Aca', 'aaac', 'aaac   aaa', 'BbcBb', 'Acaaa', 'AaAaAac', 'ac']));
+console.log(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']));
+// console.log(findUniq(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function findUniq2(arr: string[]): string {
+    const regx = new RegExp(`[${arr[0]}]`, "ig");
+    const resultArray: string[] = arr.map((value: string): string => value.replace(regx, ""));
+    let trueCheck: boolean = false;
+
+    if (resultArray[1] === "" || resultArray[2] === "") trueCheck = true;
+
+    if (trueCheck) {
+        for (let i: number = 1; i < resultArray.length; i++) {
+            if (resultArray[i] !== "") return arr[i];
+        }
+        return "Log"; // it is error it tests!
+    } else {
+        return arr[0];
+    }
+}
+
+function findUniq3(arr: string[]): string {
+    let newArr = arr.map(a => [...new Set(a.toLowerCase())].sort().join(''));
+    return arr.find((str, i) => newArr.indexOf(newArr[i]) === newArr.lastIndexOf(newArr[i]))!;
+}
+
+
+function findUniq4(arr: string[]): string {
+    const isEqual = (a: string, b: string) => {
+        const aSet = new Set(a.toLowerCase());
+        const bSet = new Set(b.toLowerCase());
+        if (aSet.size !== bSet.size) return false;
+        return [...aSet].every((letter: string) => bSet.has(letter));
+    }
+    const etalon = isEqual(arr[0], arr[1]) ? arr[0] : arr[2];
+    return arr.filter((str) => !isEqual(str, etalon))[0];
+}
+
+export const findUniq5 = (arr: string[]) => arr.sort().filter((x, _, array) => x.match(new RegExp(`[^${array[1]}]`, `ig`)))[0] || `Log`
+
+
+function findUniq6(arr: string[]): string {
+    function hash(value: string) {
+        return Array.from(new Set(value.split('').map(c => c.toLowerCase()))).sort().filter(c => c !== ' ').join('')
+    }
+    const x = hash(arr[hash(arr[0]) === hash(arr[1]) ? 0 : 2])
+    return arr.find(v => hash(v) !== x) ?? '';
+}
+
+function findUniq7(arr: Array<string>): string {
+    const cleaned = arr.map(s => [...new Set(s.replace(/\s/g, '').toLowerCase().split(''))].sort().join(''));
+    const notUnique = cleaned[cleaned[0] === cleaned[1] ? 0 : 2];
+    const uniqueIndex = cleaned.findIndex(s => s !== notUnique);
+    return arr[uniqueIndex];
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Vector class
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -904,20 +853,24 @@ beeramid(5000, 3); // should === 16
 */
 const beeramid = (bonus: number, price: number): number => {
     let totalDrinks: number = Math.trunc(bonus / price);
-    console.log("initial total drinks:", totalDrinks);
+    // console.log("initial total drinks:", totalDrinks);
 
     let levelCounter: number = 0;
 
-    for (let i = 1; i < 100; i += 1) {
-        console.log("LEVEL:", i);
-        console.log("   drinks left:", totalDrinks);
+    // HARD CODED MAX ITERATION:
+    // for (let i = 1; i < 100; i += 1) {
+
+    // CALC MAX NUMBER OF ITERATIONS (MATH ABS WILL MAKE NEGATIVE BONUS WORK)
+    for (let i = 1; i <= Math.abs(bonus / price); i += 1) {
+        // console.log("LEVEL:", i);
+        // console.log("   drinks left:", totalDrinks);
 
         let currSquare: number = Math.pow(i, 2);
-        console.log("   current square:", currSquare);
+        // console.log("   current square:", currSquare);
         if (totalDrinks < currSquare) break;
         levelCounter += 1;
         totalDrinks -= currSquare;
-        console.log("       drinks left:", totalDrinks);
+        // console.log("       drinks left:", totalDrinks);
     }
 
     return levelCounter;
@@ -959,6 +912,93 @@ LEVEL: 4
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+function beeramid2(bonus: number, price: number): number {
+    let level: number = 0;
+    let n: number = 1;
+    let i: number = 1
+    while (n <= Math.floor(bonus / price)) {
+        i++;
+        n += i ** 2;
+        level++
+    }
+    return level
+}
+
+function beeramid3(bonus: number, price: number): number {
+
+    let pyramidLevel = 1;
+    let remainingBonus = bonus;
+    let nextLevelCost = pyramidLevel * pyramidLevel * price;
+    while (remainingBonus >= nextLevelCost) {
+        remainingBonus -= nextLevelCost;
+        pyramidLevel++;
+        nextLevelCost = pyramidLevel * pyramidLevel * price;
+    }
+
+    return pyramidLevel - 1;
+}
+
+// function beeramid4(bonus: number, price: number, level: number = 1): number {
+//     const cost = level * level * price;
+//     if (bonus < cost) return level - 1;
+//     return beeramid(bonus - cost, price, ++level);
+// }
+
+
+//   function beeramid5(bonus: number, price: number, level: number = 1): number {
+//     const costOfCurrentBeers = (level ** 2) * price;
+//     const remainingMoney = bonus - costOfCurrentBeers;
+
+//     if (remainingMoney < 0) return level - 1;
+
+//     return beeramid(remainingMoney, price, level + 1)
+//   }
+
+function beeramid6(bonus: number, price: number): number {
+    let maxCan: number = Math.floor(bonus / price);
+    let result = 0;
+
+    while (Math.pow(result + 1, 2) <= maxCan) {
+        result++;
+        maxCan -= Math.pow(result, 2);
+    }
+
+    return result;
+}
+
+function beeramid7(bonus: number, price: number): number {
+    let i: number = 1;
+
+    while (true) {
+        const total: number = i * (i + 1) * (2 * i + 1) / 6 * price;
+
+        if (total > bonus) {
+            return i - 1;
+        }
+
+        i++;
+    }
+}
+
+function beeramid8(bonus: number, price: number): number {
+
+    const beer = Math.floor(bonus / price);
+    let num = 0;
+    let lvl = 0;
+
+    while (num < beer) {
+
+        num += lvl ** 2;
+
+        if (num == beer) break;
+        if (num > beer) {
+            lvl--;
+            break;
+        }
+        lvl++;
+    }
+    return lvl;
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: SNAKES AND LADDERS
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
