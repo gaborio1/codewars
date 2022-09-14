@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = void 0;
+exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = void 0;
 function buddy(start, limit) {
     return [1];
 }
@@ -40,19 +40,110 @@ const phone = (str, num) => {
     const nameFormat = new RegExp(/(?<=<).*?(?=>)/g);
     const name = entryMatches[0].match(nameFormat)[0];
     console.log("   name:", name);
-    const address = entryMatches[0]
+    let address = entryMatches[0]
         .replace(/<.*?>/g, "")
         .replace(/\+\d{1,2}-\d{3}-\d{3}-\d{4}/g, "")
         .replace(/_/g, " ")
-        .replace(/[^a-zA-Z0-9 -]/g, "")
+        .replace(/\//g, "")
+        .replace(/[^a-zA-Z0-9 \- \.]/g, "")
         .replace(/\s{2,}/g, " ")
-        .replace(/^[ \t]+/, "");
-    console.log("   address:", address);
+        .trim();
     console.log(`Phone => ${phoneNum}, Name => ${name}, Address => ${address}`);
     const solution = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
     return solution;
 };
-console.log(phone(dr, "12-099-500-8000"));
+const phone2 = (str, num) => {
+    const dataArr = str.split("\n");
+    const entryMatches = dataArr.filter((entry) => entry.indexOf(num) > -1);
+    if (entryMatches.length === 0)
+        return `Error => Not found: ${num}`;
+    if (entryMatches.length > 1)
+        return `Error => Too many people: ${num}`;
+    const phoneFormat = new RegExp(/\d{1,2}-\d{3}-\d{3}-\d{4}/g);
+    const phoneNum = entryMatches[0].match(phoneFormat)[0];
+    const nameFormat = new RegExp(/(?<=<).*?(?=>)/g);
+    const name = entryMatches[0].match(nameFormat)[0];
+    let address = entryMatches[0]
+        .replace(nameFormat, "")
+        .replace(phoneFormat, "")
+        .replace(/_/g, " ")
+        .replace(/\//g, "")
+        .replace(/[^a-zA-Z0-9 \- \.]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .trim();
+    const solution = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
+    return solution;
+};
+const getName = (phoneData) => {
+    var _a;
+    return (_a = phoneData.match('<(.*?)>')) !== null && _a !== void 0 ? _a : ['', ''];
+};
+const getPhoneNumber = (phoneData) => {
+    var _a, _b;
+    return (_b = (_a = phoneData.match(/(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g)) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : '';
+};
+const cleanupAddress = (address) => {
+    return [...address].join('')
+        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, '')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+};
+const phone3 = (strng, num) => {
+    const matchingResults = strng.split(/\n/g).filter((a) => a.includes(num));
+    if (matchingResults.length === 0) {
+        return `Error => Not found: ${num}`;
+    }
+    if (matchingResults.length > 1) {
+        return `Error => Too many people: ${num}`;
+    }
+    const phoneData = matchingResults[0];
+    const [nameWithTags, name] = getName(phoneData);
+    const phoneNumber = getPhoneNumber(phoneData);
+    const address = [...phoneData]
+        .join('')
+        .replace(nameWithTags, '')
+        .replace(phoneNumber, '')
+        .trim();
+    const cleanedUpAddress = cleanupAddress(address);
+    return `Phone => ${num}, Name => ${name}, Address => ${cleanedUpAddress}`;
+};
+exports.phone3 = phone3;
+const phone4 = (strng, num) => {
+    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, 'gmi');
+    let s = strng.match(re);
+    if (!s) {
+        return `Error => Not found: ${num}`;
+    }
+    if (s.length > 1) {
+        return `Error => Too many people: ${num}`;
+    }
+    let str = s[0].replace('\n', '').trim();
+    const nameReg = str.match(/<(.*)>/gmi);
+    let name = nameReg ? nameReg[0] : '';
+    str = str.replace(name, '').replace(`+${num}`, '').replace(/[*|;|\/|\?|\$|,|\:]/g, '').replace(/\s\s+/g, ' ').replace('_', ' ');
+    name = name.replace(/[<|>]/g, '');
+    return `Phone => ${num}, Name => ${name.trim()}, Address => ${str.trim()}`;
+};
+const phone6 = (strng, num) => {
+    const lines = strng.split('\n');
+    const relevantLines = lines.filter(line => line.includes(num));
+    if (relevantLines.length === 0) {
+        return `Error => Not found: ${num}`;
+    }
+    if (relevantLines.length > 1) {
+        return `Error => Too many people: ${num}`;
+    }
+    const line = relevantLines[0];
+    const name = line.match(/<([^>]+)>/)[1];
+    const address = line
+        .replace(num, '')
+        .replace(name, '')
+        .replace(/[^a-z0-9\.\s\-_]/ig, '')
+        .replace(/[\s_]+/g, ' ')
+        .trim();
+    return `Phone => ${num}, Name => ${name}, Address => ${address}`;
+};
 const movingShift = (s, shift) => {
     return [];
 };

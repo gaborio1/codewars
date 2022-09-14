@@ -188,6 +188,7 @@ const dr =
 // + "15-098-512-2222,9-421-674-8974,3-498-512-2222,12-099-500-8000,8-931-512-4855,"
 // + "3-098-512-2222";
 
+// 1️⃣
 const phone = (str: string, num: string): string => {
     const dataArr: string[] = str.split("\n");
     // console.log(dataArr);
@@ -229,43 +230,54 @@ const phone = (str: string, num: string): string => {
     const name: string = entryMatches[0].match(nameFormat)![0];
     console.log("   name:", name);
 
-    /*
-    // THIS WORKS WITH FIXED TESTS:
-
-    // GET ADDRESS
-    // DELETE NAME AND PHONE NUMBER WITH "+, <, >" FROM STRING
-    const address: string = entryMatches[0]
-        .replace(/<.*?>/g, "")
-        .replace(/\+\d{1,2}-\d{3}-\d{3}-\d{4}/g, "")
-        // NON ALPHA NUMERIC CHARS AND "-"
-        .replace(/[^a-zA-Z0-9 -]/g, "")
-        // TWO OR MORE SPACES WITH ONE SPACE
-        .replace(/\s{2,}/g, " ")
-        // LEADING SPACES
-        .replace(/^[ \t]+/, "");
-    console.log("   address:", address);
-    */
-
-    const address: string = entryMatches[0]
+    let address: string = entryMatches[0]
         // DELETE NAME
         .replace(/<.*?>/g, "")
         // DELETE PHONE NUMBER
         .replace(/\+\d{1,2}-\d{3}-\d{3}-\d{4}/g, "")
-        // UNDERSCORE WITH SPACE
         .replace(/_/g, " ")
-        // NON ALPHA NUMERIC CHARS AND "-"
-        .replace(/[^a-zA-Z0-9 -]/g, "")
-        // TWO OR MORE SPACES WITH ONE SPACE
+        .replace(/\//g, "")
+        .replace(/[^a-zA-Z0-9 \- \.]/g, "")
         .replace(/\s{2,}/g, " ")
-        // LEADING SPACES
-        .replace(/^[ \t]+/, "");
-    console.log("   address:", address);
+        .trim();
 
     console.log(`Phone => ${phoneNum}, Name => ${name}, Address => ${address}`);
 
     const solution: string = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
 
     return solution;
+};
+
+// 2️⃣
+const phone2 = (str: string, num: string): string => {
+
+    const dataArr: string[] = str.split("\n");
+    const entryMatches: string[] = dataArr.filter(
+        (entry) => entry.indexOf(num) > -1
+    );
+
+    if (entryMatches.length === 0) return `Error => Not found: ${num}`;
+    if (entryMatches.length > 1) return `Error => Too many people: ${num}`;
+
+    const phoneFormat = new RegExp(/\d{1,2}-\d{3}-\d{3}-\d{4}/g);
+    const phoneNum: string = entryMatches[0].match(phoneFormat)![0];
+
+    const nameFormat = new RegExp(/(?<=<).*?(?=>)/g);
+    const name: string = entryMatches[0].match(nameFormat)![0];
+
+    let address: string = entryMatches[0]
+        .replace(nameFormat, "")
+        .replace(phoneFormat, "")
+        .replace(/_/g, " ")
+        .replace(/\//g, "")
+        .replace(/[^a-zA-Z0-9 \- \.]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .trim();
+
+    const solution: string = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
+
+    return solution;
+
 };
 /*
 expected 'Phone => 19-421-674-8974, Name => C Powel, Address => * Chateau des Fosses Strasbourg F-68000' to equal 'Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000'
@@ -286,16 +298,231 @@ entry matches: [ ' <Anastasia Via>  156 Alphandria Street.  +8-421-674-8974 ?' ]
    address: 156 Alphandria Street
 Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street
 expected 'Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street' to equal 'Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street.'
+// ============================================
+console.log(phone(dr, "1-541-754-3010 156"));
 
+entry matches: [ '/+1-541-754-3010 156 Alphand_St. <J Steeve>' ]
+   number: 1-541-754-3010
+   name: J Steeve
+   address: / 156 Alphand_St.  18
+   address: / 156 Alphand St.  18
+   address:  156 Alphand St.  17
+Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St. 
+Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St. 
 
 */
 
-console.log(phone(dr, "12-099-500-8000"));
-// console.log();
-// console.log();
-// console.log();
+// console.log(phone(dr, "1-541-754-3010 156"));
+
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// class G964phone {
+//     public static phone = (strng: string, num: string): string => {
+//       const phoneBook: string[] = strng.split('\n')
+
+//       const searchResults = phoneBook.filter(el => el.indexOf(num) > -1)
+
+//       if (!searchResults.length) return `Error => Not found: ${num}`
+//       if (searchResults.length > 1) return `Error => Too many people: ${num}`
+
+//       const currentContact = searchResults[0]
+
+//       const name = /\<(.*?)\>/.exec(currentContact)[0].trim()
+
+//       const address = currentContact
+//         .replace(name, '')
+//         .replace(num, '')
+//         .replace(/[+*;/?$,:]/g, '')
+//         .replace(/\s\s+/g, ' ')
+//         .replace(/_/g, ' ')
+//         .trim()
+
+//       return `Phone => ${num}, Name => ${name.replace(/[+*\/-<>]/g, '')}, Address => ${address}`
+//     }
+//   }
+
+// ===========================================================
+
+
+const getName = (phoneData: string) => {
+    return phoneData.match('<(.*?)>') ?? ['', ''];
+};
+
+const getPhoneNumber = (phoneData: string) => {
+    return phoneData.match(/(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g)?.[0] ?? '';
+};
+
+const cleanupAddress = (address: string) => {
+    return [...address].join('')
+        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, '')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+export const phone3 = (strng: string, num: string): string => {
+    const matchingResults = strng.split(/\n/g).filter((a) => a.includes(num));
+
+    if (matchingResults.length === 0) {
+        return `Error => Not found: ${num}`;
+    }
+
+    if (matchingResults.length > 1) {
+        return `Error => Too many people: ${num}`;
+    }
+
+    const phoneData = matchingResults[0];
+
+    const [nameWithTags, name] = getName(phoneData);
+    const phoneNumber = getPhoneNumber(phoneData);
+    const address = [...phoneData]
+        .join('')
+        .replace(nameWithTags, '')
+        .replace(phoneNumber, '')
+        .trim();
+
+    const cleanedUpAddress = cleanupAddress(address);
+
+    return `Phone => ${num}, Name => ${name}, Address => ${cleanedUpAddress}`;
+};
+
+
+// ===========================================================
+
+const phone4 = (strng: string, num: string): string => {
+    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, 'gmi')
+
+    let s = strng.match(re)
+
+    if (!s) {
+        return `Error => Not found: ${num}`
+    }
+
+    if (s.length > 1) {
+        return `Error => Too many people: ${num}`
+    }
+
+    let str = s[0].replace('\n', '').trim()
+
+    const nameReg = str.match(/<(.*)>/gmi)
+
+    let name = nameReg ? nameReg[0] : ''
+
+    str = str.replace(name, '').replace(`+${num}`, '').replace(/[*|;|\/|\?|\$|,|\:]/g, '').replace(/\s\s+/g, ' ').replace('_', ' ')
+
+    name = name.replace(/[<|>]/g, '')
+
+
+    return `Phone => ${num}, Name => ${name.trim()}, Address => ${str.trim()}`
+}
+
+
+
+// ===========================================================
+
+// function searchPhoneIndexInText(text: string, phoneNumber: string) {
+//     const searchValue = `+${phoneNumber}`;
+
+//     const firstIndex = text.indexOf(searchValue);
+//     if (firstIndex === -1) {
+//       throw new Error(`Error => Not found: ${phoneNumber}`);
+//     }
+
+//     const lastIndex = text.lastIndexOf(searchValue);
+//     if (firstIndex !== lastIndex) {
+//       throw new Error(`Error => Too many people: ${phoneNumber}`);
+//     }
+
+//     return firstIndex;
+//   }
+
+//   function extractLineFromPosition(text: string, position: number) {
+//     const LF = "\n"; // Qu'est ce qu'on ferait pas pour éviter un magic number ...
+//     const lineStart = text.slice(0, position).lastIndexOf(LF) + LF.length;
+//     const lineEnd = text.indexOf(LF, lineStart + LF.length);
+//     return text.slice(lineStart, lineEnd).trim();
+//   }
+
+//   function extractNameFromLine(line: string) {
+//     const LEFT_DELIMITER = "<";
+//     const RIGHT_DELIMITER = ">";
+//     const start = line.indexOf(LEFT_DELIMITER) + LEFT_DELIMITER.length;
+//     const end = line.lastIndexOf(RIGHT_DELIMITER);
+//     return {
+//       extractedValue: line.slice(start, end), // le nom sans les "< >"
+//       rest: (
+//         line.slice(0, start - LEFT_DELIMITER.length) +
+//         line.slice(end + RIGHT_DELIMITER.length)
+//       ).trim(), // "line" dont on a enlevé toute l'information concernant le nom du contact, y compris les "< >"
+//     };
+//   }
+
+//   function extractPhoneFromLine(line: string, phoneNumber: string) {
+//     const start = searchPhoneIndexInText(line, phoneNumber);
+//     const end = start + phoneNumber.length + 1;
+//     return {
+//       extractedValue: phoneNumber,
+//       rest: (line.slice(0, start) + line.slice(end)).trim(), // "line" dont on a enlevé toute l'information concernant le numéro de téléphone du contact
+//     };
+//   }
+
+//   function sanitizeAddress(address: string) {
+//     // On pourrait faire un truc plus smart, mais je considère qu'ici, on est juste en "best effort".
+//     // disclaimer, le phonebook de John est en Anglais, alors on va pas inventer des problèmes, c'est juste un kata ...
+//     return address
+//       .replace(/[_]/g, " ")
+//       .replace(/[^a-zA-Z0-9.\- ]/g, "") // remplacement de tous les caracteres autres que alphanum, espace, tiret et point par "rien"
+//       .replace(/  +/g, ' ').trim()
+//   }
+
+//   export const phone5 = (
+//     plaintext: string,
+//     phoneNumber: string
+//   ) => {
+//     try {
+//       const phoneNumberIndex = searchPhoneIndexInText(plaintext, phoneNumber);
+
+//       const extractedLine = extractLineFromPosition(plaintext, phoneNumberIndex);
+
+//       const name = extractNameFromLine(extractedLine);
+//       const phone = extractPhoneFromLine(name.rest, phoneNumber);
+//       const address = sanitizeAddress(phone.rest);
+
+//       return `Phone => ${phone.extractedValue}, Name => ${name.extractedValue}, Address => ${address}`;
+//     } catch (error) {
+//       return error.message;
+//     }
+//   };
+
+
+
+// ===========================================================
+
+const phone6 = (strng: string, num: string): string => {
+    const lines = strng.split('\n')
+    const relevantLines = lines.filter(line => line.includes(num))
+
+    if (relevantLines.length === 0) {
+        return `Error => Not found: ${num}`
+    }
+
+    if (relevantLines.length > 1) {
+        return `Error => Too many people: ${num}`
+    }
+
+    const line = relevantLines[0]
+    const name = line.match(/<([^>]+)>/)![1]
+    const address = line
+        .replace(num, '')
+        .replace(name, '')
+        .replace(/[^a-z0-9\.\s\-_]/ig, '')
+        .replace(/[\s_]+/g, ' ')
+        .trim()
+
+    return `Phone => ${num}, Name => ${name}, Address => ${address}`
+}
+
 //🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: First Variation on Caesar Cipher
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
