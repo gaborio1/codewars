@@ -4,45 +4,55 @@ exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertF
 function buddy(start, limit) {
     return [1];
 }
-const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n"
-    + "+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n"
-    + "+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n"
-    + "+1-111-544-8973 <Peter Pan> LA\n +1-921-512-2222 <Wilfrid Stevens> Wild Street AA-67209\n"
-    + "<Peter Gone> LA ?+1-121-544-8974 \n <R Steell> Quora Street AB-47209 +1-481-512-2222\n"
-    + "<Arthur Clarke> San Antonio $+1-121-504-8974 TT-45120\n <Ray Chandler> Teliman Pk. !+1-681-512-2222! AB-47209,\n"
-    + "<Sophia Loren> +1-421-674-8974 Bern TP-46017\n <Peter O'Brien> High Street +1-908-512-2222; CC-47209\n"
-    + "<Anastasia> +48-421-674-8974 Via Quirinal Roma\n <P Salinger> Main Street, +1-098-512-2222, Denver\n"
-    + "<C Powel> *+19-421-674-8974 Chateau des Fosses Strasbourg F-68000\n <Bernard Deltheil> +1-498-512-2222; Mount Av.  Eldorado\n"
-    + "+1-099-500-8000 <Peter Crush> Labrador Bd.\n +1-931-512-4855 <William Saurin> Bison Street CQ-23071\n"
-    + "<P Salinge> Main Street, +1-098-512-2222, Denve\n"
-    + "/+5-541-754-3010 156 Alphandria_Street. <Jr Part>\n 1333, Green, Road <F Fulgur> NW-46423 ;+6-541-914-3010!\n"
-    + "+5-541-984-3012 <Peter Reeves> /PO Box 5300; Albertville, SC-28573\n :+5-321-512-2222 <Paulo Divino> Boulder Alley ZQ-87209\n"
-    + "+3-741-984-3090 <F Flanaghan> _Chicago Av.\n :+3-921-333-2222 <Roland Scorsini> Bellevue_Street DA-67209\n"
-    + "+8-111-544-8973 <Laurence Pantow> SA\n +8-921-512-2222 <Raymond Stevenson> Joly Street EE-67209\n"
-    + "<John Freeland> Mantow ?+2-121-544-8974 \n <Robert Mitch> Eleonore Street QB-87209 +2-481-512-2222?\n"
-    + "<Arthur Paternos> San Antonio $+7-121-504-8974 TT-45121\n <Ray Charles> Stevenson Pk. !+7-681-512-2222! CB-47209,\n"
-    + "<JP Gorce> +9-421-674-8974 New-Bern TP-16017\n <P McDon> Revolution Street +2-908-512-2222; PP-47209\n"
-    + "<Elizabeth Corber> +8-421-674-8974 Via Papa Roma\n <C Saborn> Main Street, +15-098-512-2222, Boulder\n"
-    + "<Colin Marshall> *+9-421-674-8974 Edinburgh UK\n <Bernard Povit> +3-498-512-2222; Hill Av.  Cameron\n"
-    + "+12-099-500-8000 <Pete Highman> Ontario Bd.\n +8-931-512-4855 <W Mount> Oxford Street CQ-23071\n"
-    + "<Donald Drinkaw> Moon Street, +3-098-512-2222, Peterville\n";
+const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n" +
+    "+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n" +
+    "+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n" +
+    "+1-111-544-8973 <Peter Pan> LA\n +1-921-512-2222 <Wilfrid Stevens> Wild Street AA-67209\n" +
+    "<Peter Gone> LA ?+1-121-544-8974 \n <R Steell> Quora Street AB-47209 +1-481-512-2222\n" +
+    "<Arthur Clarke> San Antonio $+1-121-504-8974 TT-45120\n <Ray Chandler> Teliman Pk. !+1-681-512-2222! AB-47209,\n" +
+    "<Sophia Loren> +1-421-674-8974 Bern TP-46017\n <Peter O'Brien> High Street +1-908-512-2222; CC-47209\n" +
+    "<Anastasia> +48-421-674-8974 Via Quirinal Roma\n <P Salinger> Main Street, +1-098-512-2222, Denver\n" +
+    "<C Powel> *+19-421-674-8974 Chateau des Fosses Strasbourg F-68000\n <Bernard Deltheil> +1-498-512-2222; Mount Av.  Eldorado\n" +
+    "+1-099-500-8000 <Peter Crush> Labrador Bd.\n +1-931-512-4855 <William Saurin> Bison Street CQ-23071\n" +
+    "<P Salinge> Main Street, +1-098-512-2222, Denve\n" +
+    "/+5-541-754-3010 156 Alphandria_Street. <Jr Part>\n 1333, Green, Road <F Fulgur> NW-46423 ;+6-541-914-3010!\n" +
+    "+5-541-984-3012 <Peter Reeves> /PO Box 5300; Albertville, SC-28573\n :+5-321-512-2222 <Paulo Divino> Boulder Alley ZQ-87209\n" +
+    "+3-741-984-3090 <F Flanaghan> _Chicago Av.\n :+3-921-333-2222 <Roland Scorsini> Bellevue_Street DA-67209\n" +
+    "+8-111-544-8973 <Laurence Pantow> SA\n +8-921-512-2222 <Raymond Stevenson> Joly Street EE-67209\n" +
+    "<John Freeland> Mantow ?+2-121-544-8974 \n <Robert Mitch> Eleonore Street QB-87209 +2-481-512-2222?\n" +
+    "<Arthur Paternos> San Antonio $+7-121-504-8974 TT-45121\n <Ray Charles> Stevenson Pk. !+7-681-512-2222! CB-47209,\n" +
+    "<JP Gorce> +9-421-674-8974 New-Bern TP-16017\n <P McDon> Revolution Street +2-908-512-2222; PP-47209\n" +
+    "<Elizabeth Corber> +8-421-674-8974 Via Papa Roma\n <C Saborn> Main Street, +15-098-512-2222, Boulder\n" +
+    "<Colin Marshall> *+9-421-674-8974 Edinburgh UK\n <Bernard Povit> +3-498-512-2222; Hill Av.  Cameron\n" +
+    "+12-099-500-8000 <Pete Highman> Ontario Bd.\n +8-931-512-4855 <W Mount> Oxford Street CQ-23071\n" +
+    "<Donald Drinkaw> Moon Street, +3-098-512-2222, Peterville\n";
 const phone = (str, num) => {
     const dataArr = str.split("\n");
     const entryMatches = dataArr.filter((entry) => entry.indexOf(num) > -1);
     console.log("entry matches:", entryMatches);
     if (entryMatches.length === 0)
-        return "Error => Not found: " + num;
+        return `Error => Not found: ${num}`;
     if (entryMatches.length > 1)
-        return "Error => Too many people: " + num;
+        return `Error => Too many people: ${num}`;
     const phoneFormat = new RegExp(/\d{1,2}-\d{3}-\d{3}-\d{4}/g);
     const phoneNum = entryMatches[0].match(phoneFormat)[0];
-    console.log("number:", phoneNum);
+    console.log("   number:", phoneNum);
     const nameFormat = new RegExp(/(?<=<).*?(?=>)/g);
     const name = entryMatches[0].match(nameFormat)[0];
-    console.log("name:", name);
-    return "hello";
+    console.log("   name:", name);
+    const address = entryMatches[0]
+        .replace(/<.*?>/g, "")
+        .replace(/\+\d{1,2}-\d{3}-\d{3}-\d{4}/g, "")
+        .replace(/_/g, " ")
+        .replace(/[^a-zA-Z0-9 -]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .replace(/^[ \t]+/, "");
+    console.log("   address:", address);
+    console.log(`Phone => ${phoneNum}, Name => ${name}, Address => ${address}`);
+    const solution = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
+    return solution;
 };
-console.log(phone(dr, "48-421-674-8974"));
+console.log(phone(dr, "12-099-500-8000"));
 const movingShift = (s, shift) => {
     return [];
 };
@@ -70,7 +80,12 @@ const findUniq = (arr) => {
     let match = "";
     let reducedStrArr = [];
     for (let i = 0; i < arr.length; i += 1) {
-        const current = arr[i].replace(/\s/g, "").toLowerCase().split("").sort().join("");
+        const current = arr[i]
+            .replace(/\s/g, "")
+            .toLowerCase()
+            .split("")
+            .sort()
+            .join("");
         const set = new Set(current);
         const reduced = Array.from(current).join("");
         reducedStrArr.push(reduced);
@@ -78,19 +93,22 @@ const findUniq = (arr) => {
     for (let i = 0; i < reducedStrArr.length; i += 1) {
         let current = reducedStrArr[i];
         if (i === 0) {
-            if (current !== reducedStrArr[i + 1] && current !== reducedStrArr[i + 2]) {
+            if (current !== reducedStrArr[i + 1] &&
+                current !== reducedStrArr[i + 2]) {
                 match = current;
                 break;
             }
         }
         if (i > 0 && i < reducedStrArr.length - 1) {
-            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i + 1]) {
+            if (current !== reducedStrArr[i - 1] &&
+                current !== reducedStrArr[i + 1]) {
                 match = current;
                 break;
             }
         }
         if (i === reducedStrArr.length - 1) {
-            if (current !== reducedStrArr[i - 1] && current !== reducedStrArr[i - 2]) {
+            if (current !== reducedStrArr[i - 1] &&
+                current !== reducedStrArr[i - 2]) {
                 match = current;
                 break;
             }
@@ -118,7 +136,7 @@ function findUniq2(arr) {
     }
 }
 function findUniq3(arr) {
-    let newArr = arr.map(a => [...new Set(a.toLowerCase())].sort().join(''));
+    let newArr = arr.map((a) => [...new Set(a.toLowerCase())].sort().join(""));
     return arr.find((str, i) => newArr.indexOf(newArr[i]) === newArr.lastIndexOf(newArr[i]));
 }
 function findUniq4(arr) {
@@ -132,20 +150,27 @@ function findUniq4(arr) {
     const etalon = isEqual(arr[0], arr[1]) ? arr[0] : arr[2];
     return arr.filter((str) => !isEqual(str, etalon))[0];
 }
-const findUniq5 = (arr) => arr.sort().filter((x, _, array) => x.match(new RegExp(`[^${array[1]}]`, `ig`)))[0] || `Log`;
+const findUniq5 = (arr) => arr
+    .sort()
+    .filter((x, _, array) => x.match(new RegExp(`[^${array[1]}]`, `ig`)))[0] || `Log`;
 exports.findUniq5 = findUniq5;
 function findUniq6(arr) {
     var _a;
     function hash(value) {
-        return Array.from(new Set(value.split('').map(c => c.toLowerCase()))).sort().filter(c => c !== ' ').join('');
+        return Array.from(new Set(value.split("").map((c) => c.toLowerCase())))
+            .sort()
+            .filter((c) => c !== " ")
+            .join("");
     }
     const x = hash(arr[hash(arr[0]) === hash(arr[1]) ? 0 : 2]);
-    return (_a = arr.find(v => hash(v) !== x)) !== null && _a !== void 0 ? _a : '';
+    return (_a = arr.find((v) => hash(v) !== x)) !== null && _a !== void 0 ? _a : "";
 }
 function findUniq7(arr) {
-    const cleaned = arr.map(s => [...new Set(s.replace(/\s/g, '').toLowerCase().split(''))].sort().join(''));
+    const cleaned = arr.map((s) => [...new Set(s.replace(/\s/g, "").toLowerCase().split(""))]
+        .sort()
+        .join(""));
     const notUnique = cleaned[cleaned[0] === cleaned[1] ? 0 : 2];
-    const uniqueIndex = cleaned.findIndex(s => s !== notUnique);
+    const uniqueIndex = cleaned.findIndex((s) => s !== notUnique);
     return arr[uniqueIndex];
 }
 class Vector {
@@ -204,7 +229,7 @@ function beeramid6(bonus, price) {
 function beeramid7(bonus, price) {
     let i = 1;
     while (true) {
-        const total = i * (i + 1) * (2 * i + 1) / 6 * price;
+        const total = ((i * (i + 1) * (2 * i + 1)) / 6) * price;
         if (total > bonus) {
             return i - 1;
         }
