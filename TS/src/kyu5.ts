@@ -99,22 +99,75 @@ Notes
 for C: The returned string will be free'd.
 See more examples in "Sample Tests:" of your language.
 */
-function buddy(start: number, limit: number): number[] {
+const buddy = (start: number, limit: number): number[] => {
+    let solution: number[] = [];
+    // CALC SUM OF DIVISORS
+    for (let i = start; i <= limit; i += 1) {
+        console.log("number", i);
+        let divisors: number[] = [];
+        for (let j = 1; j <= i / 2; j += 1) {
+            if (Number.isInteger(i / j)) {
+                divisors.push(j);
+            }
+        }
+        // console.log("   divisors", divisors);
+        const currenSum: number = divisors.reduce((acc, curr) => acc + curr);
+        console.log("       current sum:", currenSum, "\n");
+
+        // START NEW LOOP TO FIND PAIR
+        // let k = i + 1;
+        let k = currenSum - 1;
+        while (true) {
+            console.log("           new loop:", k);
+            let buddyDivisors: number[] = [];
+            for (let l = 1; l <= k / 2; l += 1) {
+                if (Number.isInteger(k / l)) {
+                    buddyDivisors.push(l);
+                }
+            }
+            // k += 1;
+
+            // console.log(buddyDivisors);
+            const buddySum: number = buddyDivisors.reduce(
+                (acc, curr) => acc + curr
+            );
+            console.log("               buddySum:", buddySum);
+
+            // if (k === i + 3) break;
+
+            if (buddySum === i + 1) {
+                console.log("Match found:", i, k);
+                solution.push(i, k);
+                // !!!!!!!!!
+                return solution;
+                break;
+                // !!!!!!!!!
+            }
+
+            if (k > 90) break;
+
+            k += 1;
+        }
+    }
+
+    console.log("SOLUTION:", solution);
+
     return [1];
-}
+};
 /*
 testing(10, 50, [48, 75] );
         testing(1071625, 1103735, [1081184, 1331967] );
         testing(57345, 90061, [62744, 75495] );
         testing(2382, 3679, [] );
 */
-// console.log();
+// console.log(buddy(10, 50));
+console.log(buddy(48, 50));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-//🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Phone Directory
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -250,7 +303,6 @@ const phone = (str: string, num: string): string => {
 
 // 2️⃣
 const phone2 = (str: string, num: string): string => {
-
     const dataArr: string[] = str.split("\n");
     const entryMatches: string[] = dataArr.filter(
         (entry) => entry.indexOf(num) > -1
@@ -277,7 +329,6 @@ const phone2 = (str: string, num: string): string => {
     const solution: string = `Phone => ${phoneNum}, Name => ${name}, Address => ${address}`;
 
     return solution;
-
 };
 /*
 expected 'Phone => 19-421-674-8974, Name => C Powel, Address => * Chateau des Fosses Strasbourg F-68000' to equal 'Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000'
@@ -314,7 +365,6 @@ Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St.
 
 // console.log(phone(dr, "1-541-754-3010 156"));
 
-
 //============= OTHER CODEWARS SOLUTIONS: =============
 
 // class G964phone {
@@ -344,22 +394,26 @@ Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St.
 
 // ===========================================================
 
-
 const getName = (phoneData: string) => {
-    return phoneData.match('<(.*?)>') ?? ['', ''];
+    return phoneData.match("<(.*?)>") ?? ["", ""];
 };
 
 const getPhoneNumber = (phoneData: string) => {
-    return phoneData.match(/(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g)?.[0] ?? '';
+    return (
+        phoneData.match(
+            /(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g
+        )?.[0] ?? ""
+    );
 };
 
 const cleanupAddress = (address: string) => {
-    return [...address].join('')
-        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, '')
-        .replace(/_/g, ' ')
-        .replace(/\s+/g, ' ')
+    return [...address]
+        .join("")
+        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, "")
+        .replace(/_/g, " ")
+        .replace(/\s+/g, " ")
         .trim();
-}
+};
 
 export const phone3 = (strng: string, num: string): string => {
     const matchingResults = strng.split(/\n/g).filter((a) => a.includes(num));
@@ -377,9 +431,9 @@ export const phone3 = (strng: string, num: string): string => {
     const [nameWithTags, name] = getName(phoneData);
     const phoneNumber = getPhoneNumber(phoneData);
     const address = [...phoneData]
-        .join('')
-        .replace(nameWithTags, '')
-        .replace(phoneNumber, '')
+        .join("")
+        .replace(nameWithTags, "")
+        .replace(phoneNumber, "")
         .trim();
 
     const cleanedUpAddress = cleanupAddress(address);
@@ -387,37 +441,38 @@ export const phone3 = (strng: string, num: string): string => {
     return `Phone => ${num}, Name => ${name}, Address => ${cleanedUpAddress}`;
 };
 
-
 // ===========================================================
 
 const phone4 = (strng: string, num: string): string => {
-    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, 'gmi')
+    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, "gmi");
 
-    let s = strng.match(re)
+    let s = strng.match(re);
 
     if (!s) {
-        return `Error => Not found: ${num}`
+        return `Error => Not found: ${num}`;
     }
 
     if (s.length > 1) {
-        return `Error => Too many people: ${num}`
+        return `Error => Too many people: ${num}`;
     }
 
-    let str = s[0].replace('\n', '').trim()
+    let str = s[0].replace("\n", "").trim();
 
-    const nameReg = str.match(/<(.*)>/gmi)
+    const nameReg = str.match(/<(.*)>/gim);
 
-    let name = nameReg ? nameReg[0] : ''
+    let name = nameReg ? nameReg[0] : "";
 
-    str = str.replace(name, '').replace(`+${num}`, '').replace(/[*|;|\/|\?|\$|,|\:]/g, '').replace(/\s\s+/g, ' ').replace('_', ' ')
+    str = str
+        .replace(name, "")
+        .replace(`+${num}`, "")
+        .replace(/[*|;|\/|\?|\$|,|\:]/g, "")
+        .replace(/\s\s+/g, " ")
+        .replace("_", " ");
 
-    name = name.replace(/[<|>]/g, '')
+    name = name.replace(/[<|>]/g, "");
 
-
-    return `Phone => ${num}, Name => ${name.trim()}, Address => ${str.trim()}`
-}
-
-
+    return `Phone => ${num}, Name => ${name.trim()}, Address => ${str.trim()}`;
+};
 
 // ===========================================================
 
@@ -495,33 +550,31 @@ const phone4 = (strng: string, num: string): string => {
 //     }
 //   };
 
-
-
 // ===========================================================
 
 const phone6 = (strng: string, num: string): string => {
-    const lines = strng.split('\n')
-    const relevantLines = lines.filter(line => line.includes(num))
+    const lines = strng.split("\n");
+    const relevantLines = lines.filter((line) => line.includes(num));
 
     if (relevantLines.length === 0) {
-        return `Error => Not found: ${num}`
+        return `Error => Not found: ${num}`;
     }
 
     if (relevantLines.length > 1) {
-        return `Error => Too many people: ${num}`
+        return `Error => Too many people: ${num}`;
     }
 
-    const line = relevantLines[0]
-    const name = line.match(/<([^>]+)>/)![1]
+    const line = relevantLines[0];
+    const name = line.match(/<([^>]+)>/)![1];
     const address = line
-        .replace(num, '')
-        .replace(name, '')
-        .replace(/[^a-z0-9\.\s\-_]/ig, '')
-        .replace(/[\s_]+/g, ' ')
-        .trim()
+        .replace(num, "")
+        .replace(name, "")
+        .replace(/[^a-z0-9\.\s\-_]/gi, "")
+        .replace(/[\s_]+/g, " ")
+        .trim();
 
-    return `Phone => ${num}, Name => ${name}, Address => ${address}`
-}
+    return `Phone => ${num}, Name => ${name}, Address => ${address}`;
+};
 
 //🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: First Variation on Caesar Cipher

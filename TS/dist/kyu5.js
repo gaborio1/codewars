@@ -1,9 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = void 0;
-function buddy(start, limit) {
+const buddy = (start, limit) => {
+    let solution = [];
+    for (let i = start; i <= limit; i += 1) {
+        console.log("number", i);
+        let divisors = [];
+        for (let j = 1; j <= i / 2; j += 1) {
+            if (Number.isInteger(i / j)) {
+                divisors.push(j);
+            }
+        }
+        const currenSum = divisors.reduce((acc, curr) => acc + curr);
+        console.log("       current sum:", currenSum, "\n");
+        let k = currenSum - 1;
+        while (true) {
+            console.log("           new loop:", k);
+            let buddyDivisors = [];
+            for (let l = 1; l <= k / 2; l += 1) {
+                if (Number.isInteger(k / l)) {
+                    buddyDivisors.push(l);
+                }
+            }
+            const buddySum = buddyDivisors.reduce((acc, curr) => acc + curr);
+            console.log("               buddySum:", buddySum);
+            if (buddySum === i + 1) {
+                console.log("Match found:", i, k);
+                solution.push(i, k);
+                return solution;
+                break;
+            }
+            if (k > 90)
+                break;
+            k += 1;
+        }
+    }
+    console.log("SOLUTION:", solution);
     return [1];
-}
+};
+console.log(buddy(48, 50));
 const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n" +
     "+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n" +
     "+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n" +
@@ -76,17 +111,18 @@ const phone2 = (str, num) => {
 };
 const getName = (phoneData) => {
     var _a;
-    return (_a = phoneData.match('<(.*?)>')) !== null && _a !== void 0 ? _a : ['', ''];
+    return (_a = phoneData.match("<(.*?)>")) !== null && _a !== void 0 ? _a : ["", ""];
 };
 const getPhoneNumber = (phoneData) => {
     var _a, _b;
-    return (_b = (_a = phoneData.match(/(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g)) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : '';
+    return ((_b = (_a = phoneData.match(/(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/g)) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : "");
 };
 const cleanupAddress = (address) => {
-    return [...address].join('')
-        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, '')
-        .replace(/_/g, ' ')
-        .replace(/\s+/g, ' ')
+    return [...address]
+        .join("")
+        .replace(/[`~!@#$%^&*()|+\=?;:'",<>\{\}\[\]\\\/]/g, "")
+        .replace(/_/g, " ")
+        .replace(/\s+/g, " ")
         .trim();
 };
 const phone3 = (strng, num) => {
@@ -101,16 +137,16 @@ const phone3 = (strng, num) => {
     const [nameWithTags, name] = getName(phoneData);
     const phoneNumber = getPhoneNumber(phoneData);
     const address = [...phoneData]
-        .join('')
-        .replace(nameWithTags, '')
-        .replace(phoneNumber, '')
+        .join("")
+        .replace(nameWithTags, "")
+        .replace(phoneNumber, "")
         .trim();
     const cleanedUpAddress = cleanupAddress(address);
     return `Phone => ${num}, Name => ${name}, Address => ${cleanedUpAddress}`;
 };
 exports.phone3 = phone3;
 const phone4 = (strng, num) => {
-    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, 'gmi');
+    const re = new RegExp(`(?:\\n|\/)((?:.(?!\\n))*\\\+${num}.*?)\\n`, "gmi");
     let s = strng.match(re);
     if (!s) {
         return `Error => Not found: ${num}`;
@@ -118,16 +154,21 @@ const phone4 = (strng, num) => {
     if (s.length > 1) {
         return `Error => Too many people: ${num}`;
     }
-    let str = s[0].replace('\n', '').trim();
-    const nameReg = str.match(/<(.*)>/gmi);
-    let name = nameReg ? nameReg[0] : '';
-    str = str.replace(name, '').replace(`+${num}`, '').replace(/[*|;|\/|\?|\$|,|\:]/g, '').replace(/\s\s+/g, ' ').replace('_', ' ');
-    name = name.replace(/[<|>]/g, '');
+    let str = s[0].replace("\n", "").trim();
+    const nameReg = str.match(/<(.*)>/gim);
+    let name = nameReg ? nameReg[0] : "";
+    str = str
+        .replace(name, "")
+        .replace(`+${num}`, "")
+        .replace(/[*|;|\/|\?|\$|,|\:]/g, "")
+        .replace(/\s\s+/g, " ")
+        .replace("_", " ");
+    name = name.replace(/[<|>]/g, "");
     return `Phone => ${num}, Name => ${name.trim()}, Address => ${str.trim()}`;
 };
 const phone6 = (strng, num) => {
-    const lines = strng.split('\n');
-    const relevantLines = lines.filter(line => line.includes(num));
+    const lines = strng.split("\n");
+    const relevantLines = lines.filter((line) => line.includes(num));
     if (relevantLines.length === 0) {
         return `Error => Not found: ${num}`;
     }
@@ -137,10 +178,10 @@ const phone6 = (strng, num) => {
     const line = relevantLines[0];
     const name = line.match(/<([^>]+)>/)[1];
     const address = line
-        .replace(num, '')
-        .replace(name, '')
-        .replace(/[^a-z0-9\.\s\-_]/ig, '')
-        .replace(/[\s_]+/g, ' ')
+        .replace(num, "")
+        .replace(name, "")
+        .replace(/[^a-z0-9\.\s\-_]/gi, "")
+        .replace(/[\s_]+/g, " ")
         .trim();
     return `Phone => ${num}, Name => ${name}, Address => ${address}`;
 };
