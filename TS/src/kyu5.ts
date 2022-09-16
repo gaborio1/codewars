@@ -99,7 +99,11 @@ Notes
 for C: The returned string will be free'd.
 See more examples in "Sample Tests:" of your language.
 */
+
+/*
+// PASSED FIXED TESTS 1 AND 4
 const buddy = (start: number, limit: number): number[] => {
+
     let solution: number[] = [];
     // CALC SUM OF DIVISORS
     for (let i = start; i <= limit; i += 1) {
@@ -115,8 +119,8 @@ const buddy = (start: number, limit: number): number[] => {
         console.log("       current sum:", currenSum, "\n");
 
         // START NEW LOOP TO FIND PAIR
-        // let k = i + 1;
-        let k = currenSum - 1;
+        let k = i + 1;
+        // let k = currenSum - 1;
         while (true) {
             console.log("           new loop:", k);
             let buddyDivisors: number[] = [];
@@ -135,7 +139,8 @@ const buddy = (start: number, limit: number): number[] => {
 
             // if (k === i + 3) break;
 
-            if (buddySum === i + 1) {
+            // if (buddySum === i + 1) {
+            if (buddySum === i + 1 && currenSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
                 // !!!!!!!!!
@@ -152,7 +157,59 @@ const buddy = (start: number, limit: number): number[] => {
 
     console.log("SOLUTION:", solution);
 
-    return [1];
+    return solution;
+
+};
+*/
+
+// !!! TIMEOUT ON FIXED TEST 2 !!!
+const buddy = (start: number, limit: number): number[] => {
+
+    let solution: number[] = [];
+    // CALC SUM OF DIVISORS
+    for (let i = start; i <= limit; i += 1) {
+        console.log("number", i);
+        let divisorsSum: number = 0;
+        for (let j = 1; j <= i / 2; j += 1) {
+            if (Number.isInteger(i / j)) {
+                divisorsSum += j;
+            }
+        }
+
+        console.log("       current sum:", divisorsSum, "\n");
+
+        // START NEW LOOP TO FIND PAIR
+        let k = divisorsSum < i
+            ? i + 1
+            : divisorsSum - 1;
+
+        while (true) {
+            console.log("           new loop:", k);
+            let buddyDivisorsSum = 0;
+            for (let l = 1; l <= k / 2; l += 1) {
+                if (Number.isInteger(k / l)) {
+                    buddyDivisorsSum += l;
+                }
+            }
+
+            console.log("               buddySum:", buddyDivisorsSum);
+
+            if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
+                console.log("Match found:", i, k);
+                solution.push(i, k);
+                return solution;
+            }
+
+            if (k > 90) break;
+
+            k += 1;
+        }
+    }
+
+    console.log("SOLUTION:", solution);
+
+    return solution;
+
 };
 /*
 testing(10, 50, [48, 75] );
@@ -160,8 +217,10 @@ testing(10, 50, [48, 75] );
         testing(57345, 90061, [62744, 75495] );
         testing(2382, 3679, [] );
 */
-// console.log(buddy(10, 50));
-console.log(buddy(48, 50));
+console.log(buddy(10, 50));
+// console.log(buddy(48, 50));
+// console.log(buddy(2382, 3679));
+// console.log(buddy(62744, 62745));
 // console.log();
 // console.log();
 // console.log();
@@ -177,32 +236,32 @@ console.log(buddy(48, 50));
 
 /*
 John keeps a backup of his old personal phone book as a text file. On each line of the file he can find the phone number (formated as +X-abc-def-ghij where X stands for one or two digits), the corresponding name between < and > and the address.
-
+ 
 Unfortunately everything is mixed, things are not always in the same order; parts of lines are cluttered with non-alpha-numeric characters (except inside phone number and name).
-
+ 
 Examples of John's phone book lines:
-
+ 
 "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n"
-
+ 
 " 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010!\n"
-
+ 
 "<Anastasia> +48-421-674-8974 Via Quirinal Roma\n"
-
+ 
 Could you help John with a program that, given the lines of his phone book and a phone number num returns a string for this number : "Phone => num, Name => name, Address => adress"
-
+ 
 Examples:
 s = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010!\n"
-
+ 
 phone(s, "1-541-754-3010") should return "Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St."
 It can happen that there are many people for a phone number num, then return : "Error => Too many people: num"
-
+ 
 or it can happen that the number num is not in the phone book, in that case return: "Error => Not found: num"
-
+ 
 Notes
 Codewars stdout doesn't print part of a string when between < and >
-
+ 
 You can see other examples in the test cases.
-
+ 
 JavaScript random tests completed by @matt c.
 */
 
@@ -332,17 +391,17 @@ const phone2 = (str: string, num: string): string => {
 };
 /*
 expected 'Phone => 19-421-674-8974, Name => C Powel, Address => * Chateau des Fosses Strasbourg F-68000' to equal 'Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000'
-
+ 
 expected 'Phone => 1-098-512-2222, Name => Roland Scorsini, Address => PO Box 5300 Albertville SC-28573 ' to equal 'Phone => 1-098-512-2222, Name => Roland Scorsini, Address => PO Box 5300 Albertville SC-28573'
-
+ 
 entry matches: [ '/+1-541-754-3010 156 Alphand_St. <J Steeve>' ]
    number: 1-541-754-3010
    name: J Steeve
    address: 156 Alphand St
 Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St
 expected 'Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St' to equal 'Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St.'
-
-
+ 
+ 
 entry matches: [ ' <Anastasia Via>  156 Alphandria Street.  +8-421-674-8974 ?' ]
    number: 8-421-674-8974
    name: Anastasia Via
@@ -351,7 +410,7 @@ Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street
 expected 'Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street' to equal 'Phone => 8-421-674-8974, Name => Anastasia Via, Address => 156 Alphandria Street.'
 // ============================================
 console.log(phone(dr, "1-541-754-3010 156"));
-
+ 
 entry matches: [ '/+1-541-754-3010 156 Alphand_St. <J Steeve>' ]
    number: 1-541-754-3010
    name: J Steeve
@@ -360,7 +419,7 @@ entry matches: [ '/+1-541-754-3010 156 Alphand_St. <J Steeve>' ]
    address:  156 Alphand St.  17
 Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St. 
 Phone => 1-541-754-3010, Name => J Steeve, Address =>  156 Alphand St. 
-
+ 
 */
 
 // console.log(phone(dr, "1-541-754-3010 156"));
@@ -586,45 +645,45 @@ const phone6 = (strng: string, num: string): string => {
 
 /*
 The action of a Caesar cipher is to replace each plaintext letter (plaintext letters are from 'a' to 'z' or from 'A' to 'Z') with a different one a fixed number of places up or down the alphabet.
-
+ 
 This program performs a variation of the Caesar shift. The shift increases by 1 for each character (on each iteration).
-
+ 
 If the shift is initially 1, the first character of the message to be encoded will be shifted by 1, the second character will be shifted by 2, etc...
-
+ 
 Coding: Parameters and return of function "movingShift"
 param s: a string to be coded
-
+ 
 param shift: an integer giving the initial shift
-
+ 
 The function "movingShift" first codes the entire string and then returns an array of strings containing the coded string in 5 parts (five parts because, to avoid more risks, the coded message will be given to five runners, one piece for each runner).
-
+ 
 If possible the message will be equally divided by message length between the five runners. If this is not possible, parts 1 to 5 will have subsequently non-increasing lengths, such that parts 1 to 4 are at least as long as when evenly divided, but at most 1 longer. If the last part is the empty string this empty string must be shown in the resulting array.
-
+ 
 For example, if the coded message has a length of 17 the five parts will have lengths of 4, 4, 4, 4, 1. The parts 1, 2, 3, 4 are evenly split and the last part of length 1 is shorter. If the length is 16 the parts will be of lengths 4, 4, 4, 4, 0. Parts 1, 2, 3, 4 are evenly split and the fifth runner will stay at home since his part is the empty string. If the length is 11, equal parts would be of length 2.2, hence parts will be of lengths 3, 3, 3, 2, 0.
-
+ 
 You will also implement a "demovingShift" function with two parameters
-
+ 
 Decoding: parameters and return of function "demovingShift"
 an array of strings: s (possibly resulting from "movingShift", with 5 strings)
-
+ 
 an int shift
-
+ 
 "demovingShift" returns a string.
-
+ 
 Example:
 u = "I should have known that you would have a perfect answer for me!!!"
-
+ 
 movingShift(u, 1) returns :
-
+ 
 v = ["J vltasl rlhr ", "zdfog odxr ypw", " atasl rlhr p ", "gwkzzyq zntyhv", " lvz wp!!!"]
-
+ 
 (quotes added in order to see the strings and the spaces, your program won't write these quotes, see Example Test Cases)
-
+ 
 and demovingShift(v, 1) returns u. #Ref:
-
+ 
 Caesar Cipher : http://en.wikipedia.org/wiki/Caesar_cipher
-
-
+ 
+ 
 */
 const movingShift = (s: string, shift: number) => {
     return [];
@@ -659,23 +718,23 @@ it("movingShift, demovingShift", function() {
 
 /*
 Coding decimal numbers with factorials is a way of writing out numbers in a base system that depends on factorials, rather than powers of numbers.
-
+ 
 In this system, the last digit is always 0 and is in base 0!. The digit before that is either 0 or 1 and is in base 1!. The digit before that is either 0, 1, or 2 and is in base 2!, etc. More generally, the nth-to-last digit is always 0, 1, 2, ..., n and is in base n!.
-
+ 
 Read more about it at: http://en.wikipedia.org/wiki/Factorial_number_system
-
+ 
 Example
 The decimal number 463 is encoded as "341010", because:
-
+ 
 463 = 3×5! + 4×4! + 1×3! + 0×2! + 1×1! + 0×0!
-
+ 
 If we are limited to digits 0..9, the biggest number we can encode is 10!-1 (= 3628799). So we extend 0..9 with letters A..Z. With these 36 digits we can now encode numbers up to 36!-1 (= 3.72 × 1041)
-
+ 
 Task
 We will need two functions. The first one will receive a decimal number and return a string with the factorial representation.
-
+ 
 The second one will receive a string with a factorial representation and produce the decimal representation.
-
+ 
 Given numbers will always be positive.
 */
 class G9640 {
@@ -711,21 +770,21 @@ it("Basic tests dec2FactString", function() {
 
 /*
 In mathematics, a Diophantine equation is a polynomial equation, usually with two or more unknowns, such that only the integer solutions are sought or studied.
-
+ 
 In this kata we want to find all integers x, y (x >= 0, y >= 0) solutions of a diophantine equation of the form:
-
+ 
 x2 - 4 * y2 = n
 (where the unknowns are x and y, and n is a given positive number) in decreasing order of the positive xi.
-
+ 
 If there is no solution return [] or "[]" or "". (See "RUN SAMPLE TESTS" for examples of returns).
-
+ 
 Examples:
 solEquaStr(90005) --> "[[45003, 22501], [9003, 4499], [981, 467], [309, 37]]"
 solEquaStr(90002) --> "[]"
 Hint:
 x2 - 4 * y2 = (x - 2*y) * (x + 2*y)
-
-
+ 
+ 
 */
 function solequa(n: number): [number, number][] {
     return [[1, 1]];
@@ -753,23 +812,23 @@ function solequa(n: number): [number, number][] {
 
 /*
 You have a positive number n consisting of digits. You can do at most one operation: Choosing the index of a digit in the number, remove this digit at that index and insert it back to another or at the same place in the number in order to find the smallest number you can get.
-
+ 
 Task:
 Return an array or a tuple or a string depending on the language (see "Sample Tests") with
-
+ 
 the smallest number you got
 the index i of the digit d you took, i as small as possible
 the index j (as small as possible) where you insert this digit d to have the smallest number.
 Examples:
 smallest(261235) --> [126235, 2, 0] or (126235, 2, 0) or "126235, 2, 0"
 126235 is the smallest number gotten by taking 1 at index 2 and putting it at index 0
-
+ 
 smallest(209917) --> [29917, 0, 1] or ...
-
+ 
 [29917, 1, 0] could be a solution too but index `i` in [29917, 1, 0] is greater than 
 index `i` in [29917, 0, 1].
 29917 is the smallest number gotten by taking 2 at index 0 and putting it at index 1 which gave 029917 which is the number 29917.
-
+ 
 smallest(1000000) --> [1, 0, 6] or ...
 Note
 Have a look at "Sample Tests" to see the input and output in each language
@@ -801,26 +860,26 @@ assert.deepEqual(smallest(261235), [126235, 2, 0]);
 
 /*
 Consider the following numbers (where n! is factorial(n)):
-
+ 
 u1 = (1 / 1!) * (1!)
 u2 = (1 / 2!) * (1! + 2!)
 u3 = (1 / 3!) * (1! + 2! + 3!)
 ...
 un = (1 / n!) * (1! + 2! + 3! + ... + n!)
 Which will win: 1 / n! or (1! + 2! + 3! + ... + n!)?
-
+ 
 Are these numbers going to 0 because of 1/n! or to infinity due to the sum of factorials or to another number?
-
+ 
 Task
 Calculate (1 / n!) * (1! + 2! + 3! + ... + n!) for a given n, where n is an integer greater or equal to 1.
-
+ 
 To avoid discussions about rounding, return the result truncated to 6 decimal places, for example:
-
+ 
 1.0000989217538616 will be truncated to 1.000098
 1.2125000000000001 will be truncated to 1.2125
 Remark
 Keep in mind that factorials grow rather rapidly, and you need to handle large inputs.
-
+ 
 Hint
 You could try to simplify the expression.
 */
@@ -850,13 +909,13 @@ testing(5, 1.275);
 
 /*
 There is an array of strings. All strings contains similar letters except one. Try to find it!
-
+ 
 findUniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) === 'BbBb'
 findUniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) === 'foo'
 Strings may contain spaces. Spaces are not significant, only non-spaces symbols matters. E.g. string that contains only spaces is like empty string.
-
+ 
 It’s guaranteed that array contains more than 2 strings.
-
+ 
 This is the second kata in series:
 */
 const findUniq = (arr: string[]): string => {
@@ -930,8 +989,8 @@ const findUniq = (arr: string[]): string => {
 };
 /*
 console.log(findUniq(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']));
-
-
+ 
+ 
 original: addeillmmooorrtv
    set: Set(10) { 'a', 'd', 'e', 'i', 'l', 'm', 'o', 'r', 't', 'v' }
        reduced: adeilmortv
@@ -1030,25 +1089,25 @@ function findUniq7(arr: Array<string>): string {
 
 /*
 Create a Vector object that supports addition, subtraction, dot products, and norms. So, for example:
-
+ 
 a = new Vector([1, 2, 3])
 b = new Vector([3, 4, 5])
 c = new Vector([5, 6, 7, 8])
-
+ 
 a.add(b)      # should return a new Vector([4, 6, 8])
 a.subtract(b) # should return a new Vector([-2, -2, -2])
 a.dot(b)      # should return 1*3 + 2*4 + 3*5 = 26
 a.norm()      # should return sqrt(1^2 + 2^2 + 3^2) = sqrt(14)
 a.add(c)      # throws an error
 If you try to add, subtract, or dot two vectors with different lengths, you must throw an error!
-
+ 
 Also provide:
-
+ 
 a toString method, so that using the vectors from above, a.toString() === '(1,2,3)' (in Python, this is a __str__ method, so that str(a) == '(1,2,3)')
 an equals method, to check that two vectors that have the same components are equal
 Note: the test cases will utilize the user-provided equals method.
-
-
+ 
+ 
 */
 class Vector {
     constructor(components: number[]) {
@@ -1111,39 +1170,39 @@ it("Simple ToString Test", function() {
 Esolang Interpreters #2 - Custom Smallfuck Interpreter
 About this Kata Series
 "Esolang Interpreters" is a Kata Series that originally began as three separate, independent esolang interpreter Kata authored by @donaldsebleung which all shared a similar format and were all somewhat inter-related. Under the influence of a fellow Codewarrior, these three high-level inter-related Kata gradually evolved into what is known today as the "Esolang Interpreters" series.
-
+ 
 This series is a high-level Kata Series designed to challenge the minds of bright and daring programmers by implementing interpreters for various esoteric programming languages/Esolangs, mainly Brainfuck derivatives but not limited to them, given a certain specification for a certain Esolang. Perhaps the only exception to this rule is the very first Kata in this Series which is intended as an introduction/taster to the world of esoteric programming languages and writing interpreters for them.
-
+ 
 The Language
 Smallfuck is an esoteric programming language/Esolang invented in 2002 which is a sized-down variant of the famous Brainfuck Esolang. Key differences include:
-
+ 
 Smallfuck operates only on bits as opposed to bytes
 It has a limited data storage which varies from implementation to implementation depending on the size of the tape
 It does not define input or output - the "input" is encoded in the initial state of the data storage (tape) and the "output" should be decoded in the final state of the data storage (tape)
 Here are a list of commands in Smallfuck:
-
+ 
 > - Move pointer to the right (by 1 cell)
 < - Move pointer to the left (by 1 cell)
 * - Flip the bit at the current cell
 [ - Jump past matching ] if value at current cell is 0
 ] - Jump back to matching [ (if value at current cell is nonzero)
 As opposed to Brainfuck where a program terminates only when all of the commands in the program have been considered (left to right), Smallfuck terminates when any of the two conditions mentioned below become true:
-
+ 
 All commands have been considered from left to right
 The pointer goes out-of-bounds (i.e. if it moves to the left of the first cell or to the right of the last cell of the tape)
 Smallfuck is considered to be Turing-complete if and only if it had a tape of infinite length; however, since the length of the tape is always defined as finite (as the interpreter cannot return a tape of infinite length), its computational class is of bounded-storage machines with bounded input.
-
+ 
 More information on this Esolang can be found here.
-
+ 
 The Task
 Implement a custom Smallfuck interpreter interpreter() (interpreter in Haskell and F#, Interpreter in C#, custom_small_fuck:interpreter/2 in Erlang) which accepts the following arguments:
-
+ 
 code - Required. The Smallfuck program to be executed, passed in as a string. May contain non-command characters. Your interpreter should simply ignore any non-command characters.
 tape - Required. The initial state of the data storage (tape), passed in as a string. For example, if the string "00101100" is passed in then it should translate to something of this form within your interpreter: [0, 0, 1, 0, 1, 1, 0, 0]. You may assume that all input strings for tape will be non-empty and will only contain "0"s and "1"s.
 Your interpreter should return the final state of the data storage (tape) as a string in the same format that it was passed in. For example, if the tape in your interpreter ends up being [1, 1, 1, 1, 1] then return the string "11111".
-
+ 
 NOTE: The pointer of the interpreter always starts from the first (leftmost) cell of the tape, same as in Brainfuck.
-
+ 
 Good luck :D
 */
 function interpreter(code: string, tape: string): string {
@@ -1179,23 +1238,23 @@ function interpreter(code: string, tape: string): string {
 
 /*
 The aim of the kata is to decompose n! (factorial n) into its prime factors.
-
+ 
 Examples:
-
+ 
 n = 12; decomp(12) -> "2^10 * 3^5 * 5^2 * 7 * 11"
 since 12! is divisible by 2 ten times, by 3 five times, by 5 two times and by 7 and 11 only once.
-
+ 
 n = 22; decomp(22) -> "2^19 * 3^9 * 5^4 * 7^3 * 11^2 * 13 * 17 * 19"
-
+ 
 n = 25; decomp(25) -> 2^22 * 3^10 * 5^6 * 7^3 * 11^2 * 13 * 17 * 19 * 23
 Prime numbers should be in increasing order. When the exponent of a prime is 1 don't put the exponent.
-
+ 
 Notes
-
+ 
 the function is decomp(n) and should return the decomposition of n! into its prime factors in increasing order of the primes, as a string.
 factorial can be a very big number (4000! has 12674 digits, n can go from 300 to 4000).
 In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
-
+ 
 */
 function decomp(n: number): string {
     return "your code";
@@ -1227,20 +1286,20 @@ function decomp(n: number): string {
 
 /*
 Let's pretend your company just hired your friend from college and paid you a referral bonus. Awesome! To celebrate, you're taking your team out to the terrible dive bar next door and using the referral bonus to buy, and build, the largest three-dimensional beer can pyramid you can. And then probably drink those beers, because let's pretend it's Friday too.
-
+ 
 A beer can pyramid will square the number of cans in each level - 1 can in the top level, 4 in the second, 9 in the next, 16, 25...
-
+ 
 Complete the beeramid function to return the number of complete levels of a beer can pyramid you can make, given the parameters of:
-
+ 
 your referral bonus, and
-
+ 
 the price of a beer can
-
+ 
 For example:
-
+ 
 beeramid(1500, 2); // should === 12
 beeramid(5000, 3); // should === 16
-
+ 
 */
 const beeramid = (bonus: number, price: number): number => {
     let totalDrinks: number = Math.trunc(bonus / price);
@@ -1269,7 +1328,7 @@ const beeramid = (bonus: number, price: number): number => {
 
 /*
 console.log(beeramid(29, 1));
-
+ 
 max iterations: 29
 initial total drinks: 29
 LEVEL: 1
@@ -1397,32 +1456,32 @@ function beeramid8(bonus: number, price: number): number {
 /*
 ntroduction
 Snakes and Ladders is an ancient Indian board game regarded today as a worldwide classic. It is played between two or more players on a gameboard having numbered, gridded squares. A number of "ladders" and "snakes" are pictured on the board, each connecting two specific board squares. (Source Wikipedia)
-
+ 
 Task
 Your task is to make a simple class called SnakesLadders. The test cases will call the method play(die1, die2) independantly of the state of the game or the player turn. The variables die1 and die2 are the die thrown in a turn and are both integers between 1 and 6. The player will move the sum of die1 and die2.
 The Board
-
+ 
 Rules
 1.  There are two players and both start off the board on square 0.
-
+ 
 2.  Player 1 starts and alternates with player 2.
-
+ 
 3.  You follow the numbers up the board in order 1=>100
-
+ 
 4.  If the value of both die are the same then that player will have another go.
-
+ 
 5.  Climb up ladders. The ladders on the game board allow you to move upwards and get ahead faster. If you land exactly on a square that shows an image of the bottom of a ladder, then you may move the player all the way up to the square at the top of the ladder. (even if you roll a double).
-
+ 
 6.  Slide down snakes. Snakes move you back on the board because you have to slide down them. If you land exactly at the top of a snake, slide move the player all the way to the square at the bottom of the snake or chute. (even if you roll a double).
-
+ 
 7.  Land exactly on the last square to win. The first person to reach the highest square on the board wins. But there's a twist! If you roll too high, your player "bounces" off the last square and moves back. You can only win by rolling the exact number needed to land on the last square. For example, if you are on square 98 and roll a five, move your game piece to 100 (two moves), then "bounce" back to 99, 98, 97 (three, four then five moves.)
-
+ 
 8.  If the Player rolled a double and lands on the finish square “100” without any remaining moves then the Player wins the game and does not have to roll again.
 Returns
 Return Player n Wins!. Where n is winning player that has landed on square 100 without any remainding moves left.
-
+ 
 Return Game over! if a player has won and another player tries to play.
-
+ 
 Otherwise return Player n is on square x. Where n is the current player and x is the sqaure they are currently on.
 Good luck and enjoy!
 */
@@ -1460,22 +1519,22 @@ assert.equal(game.play(1, 1), "Player 1 is on square 38", "Should return: 'Playe
 
 /*
 For a given chemical formula represented by a string, count the number of atoms of each element contained in the molecule and return an object (associative array in PHP, Dictionary<string, int> in C#, Map<String,Integer> in Java).
-
+ 
 For example:
-
+ 
 var water = 'H2O';
 parseMolecule(water); // return {H: 2, O: 1}
-
+ 
 var magnesiumHydroxide = 'Mg(OH)2';
 parseMolecule(magnesiumHydroxide); // return {Mg: 1, O: 2, H: 2}
-
+ 
 var fremySalt = 'K4[ON(SO3)2]2';
 parseMolecule(fremySalt); // return {K: 4, O: 14, N: 2, S: 4}
 As you can see, some formulas have brackets in them. The index outside the brackets tells you that you have to multiply count of each atom inside the bracket on this index. For example, in Fe(NO3)2 you have one iron atom, two nitrogen atoms and six oxygen atoms.
-
+ 
 Note that brackets may be round, square or curly and can also be nested. Index after the braces is optional.
-
-
+ 
+ 
 */
 
 const parseMolecule = (formula: string) => {
@@ -1508,9 +1567,9 @@ const parseMolecule = (formula: string) => {
 
 /*
 In this kata you have to correctly return who is the "survivor", ie: the last element of a Josephus permutation.
-
+ 
 Basically you have to assume that n people are put into a circle and that they are eliminated in steps of k elements, like this:
-
+ 
 josephus_survivor(7,3) => means 7 people in a circle;
 one every 3 is eliminated until one remains
 [1,2,3,4,5,6,7] - initial sequence
@@ -1521,7 +1580,7 @@ one every 3 is eliminated until one remains
 [1,4] => 5 is counted out
 [4] => 1 counted out, 4 is the last element - the survivor!
 The above link about the "base" kata description will give you a more thorough insight about the origin of this kind of permutation, but basically that's all that there is to know to solve this kata.
-
+ 
 Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
 */
 
@@ -1589,17 +1648,17 @@ const josephusSurvivor = (num: number, gap: number): number => {
 
 /*
 This problem takes its name by arguably the most important event in the life of the ancient historian Josephus: according to his tale, he and his 40 soldiers were trapped in a cave by the Romans during a siege.
-
+ 
 Refusing to surrender to the enemy, they instead opted for mass suicide, with a twist: they formed a circle and proceeded to kill one man every three, until one last man was left (and that it was supposed to kill himself to end the act).
-
+ 
 Well, Josephus and another man were the last two and, as we now know every detail of the story, you may have correctly guessed that they didn't exactly follow through the original idea.
-
+ 
 You are now to create a function that returns a Josephus permutation, taking as parameters the initial array/list of items to be permuted as if they were in a circle and counted out every k places until none remained.
-
+ 
 Tips and notes: it helps to start counting from 1 up to n, instead of the usual range 0..n-1; k will always be >=1.
-
+ 
 For example, with n=7 and k=3 josephus(7,3) should act this way.
-
+ 
 [1,2,3,4,5,6,7] - initial sequence
 [1,2,4,5,6,7] => 3 is counted out and goes into the result [3]
 [1,2,4,5,7] => 6 is counted out and goes into the result [3,6]
@@ -1609,7 +1668,7 @@ For example, with n=7 and k=3 josephus(7,3) should act this way.
 [4] => 1 is counted out and goes into the result [3,6,2,7,5,1]
 [] => 4 is counted out and goes into the result [3,6,2,7,5,1,4]
 So our final result is:
-
+ 
 josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 */
 

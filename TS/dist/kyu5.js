@@ -5,30 +5,29 @@ const buddy = (start, limit) => {
     let solution = [];
     for (let i = start; i <= limit; i += 1) {
         console.log("number", i);
-        let divisors = [];
+        let divisorsSum = 0;
         for (let j = 1; j <= i / 2; j += 1) {
             if (Number.isInteger(i / j)) {
-                divisors.push(j);
+                divisorsSum += j;
             }
         }
-        const currenSum = divisors.reduce((acc, curr) => acc + curr);
-        console.log("       current sum:", currenSum, "\n");
-        let k = currenSum - 1;
+        console.log("       current sum:", divisorsSum, "\n");
+        let k = divisorsSum < i
+            ? i + 1
+            : divisorsSum - 1;
         while (true) {
             console.log("           new loop:", k);
-            let buddyDivisors = [];
+            let buddyDivisorsSum = 0;
             for (let l = 1; l <= k / 2; l += 1) {
                 if (Number.isInteger(k / l)) {
-                    buddyDivisors.push(l);
+                    buddyDivisorsSum += l;
                 }
             }
-            const buddySum = buddyDivisors.reduce((acc, curr) => acc + curr);
-            console.log("               buddySum:", buddySum);
-            if (buddySum === i + 1) {
+            console.log("               buddySum:", buddyDivisorsSum);
+            if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
                 return solution;
-                break;
             }
             if (k > 90)
                 break;
@@ -36,9 +35,9 @@ const buddy = (start, limit) => {
         }
     }
     console.log("SOLUTION:", solution);
-    return [1];
+    return solution;
 };
-console.log(buddy(48, 50));
+console.log(buddy(10, 50));
 const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n" +
     "+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n" +
     "+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n" +
