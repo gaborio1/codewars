@@ -162,6 +162,7 @@ const buddy = (start: number, limit: number): number[] => {
 };
 */
 
+/*
 // !!! TIMEOUT ON FIXED TEST 2 !!!
 const buddy = (start: number, limit: number): number[] => {
 
@@ -210,6 +211,73 @@ const buddy = (start: number, limit: number): number[] => {
 
     return solution;
 
+};
+*/
+
+const buddy = (start: number, limit: number): number[] => {
+    const divSum = (num: number): number => {
+        // Final result of summation of divisors
+        let result = 0;
+
+        // find all divisors which divides 'num'
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            // if 'i' is divisor of 'num'
+            if (num % i == 0) {
+                // if both divisors are same then add
+                // it only once else add both
+                if (i == num / i) result += i;
+                else result += i + num / i;
+            }
+        }
+
+        // Add 1 to the result as 1 is also a divisor
+        return result + 1;
+    };
+
+    let solution: number[] = [];
+    // CALC SUM OF DIVISORS
+    for (let i = start; i <= limit; i += 1) {
+        console.log("number", i);
+        // let divisorsSum: number = 0;
+        // for (let j = 1; j <= i / 2; j += 1) {
+        //     if (Number.isInteger(i / j)) {
+        //         divisorsSum += j;
+        //     }
+        // }
+        const divisorsSum = divSum(i);
+
+        console.log("       current sum:", divisorsSum, "\n");
+
+        // START NEW LOOP TO FIND PAIR
+        let k = divisorsSum < i ? i + 1 : divisorsSum - 1;
+
+        while (true) {
+            console.log("           new loop:", k);
+            // let buddyDivisorsSum = 0;
+            // for (let l = 1; l <= k / 2; l += 1) {
+            //     if (Number.isInteger(k / l)) {
+            //         buddyDivisorsSum += l;
+            //     }
+            // }
+            let buddyDivisorsSum = divSum(k);
+
+            console.log("               buddySum:", buddyDivisorsSum);
+
+            if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
+                console.log("Match found:", i, k);
+                solution.push(i, k);
+                return solution;
+            }
+
+            if (k > 90) break;
+
+            k += 1;
+        }
+    }
+
+    console.log("SOLUTION:", solution);
+
+    return solution;
 };
 /*
 testing(10, 50, [48, 75] );

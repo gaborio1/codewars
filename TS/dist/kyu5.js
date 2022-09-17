@@ -2,27 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = void 0;
 const buddy = (start, limit) => {
+    const divSum = (num) => {
+        let result = 0;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                if (i == num / i)
+                    result += i;
+                else
+                    result += i + num / i;
+            }
+        }
+        return result + 1;
+    };
     let solution = [];
     for (let i = start; i <= limit; i += 1) {
         console.log("number", i);
-        let divisorsSum = 0;
-        for (let j = 1; j <= i / 2; j += 1) {
-            if (Number.isInteger(i / j)) {
-                divisorsSum += j;
-            }
-        }
+        const divisorsSum = divSum(i);
         console.log("       current sum:", divisorsSum, "\n");
-        let k = divisorsSum < i
-            ? i + 1
-            : divisorsSum - 1;
+        let k = divisorsSum < i ? i + 1 : divisorsSum - 1;
         while (true) {
             console.log("           new loop:", k);
-            let buddyDivisorsSum = 0;
-            for (let l = 1; l <= k / 2; l += 1) {
-                if (Number.isInteger(k / l)) {
-                    buddyDivisorsSum += l;
-                }
-            }
+            let buddyDivisorsSum = divSum(k);
             console.log("               buddySum:", buddyDivisorsSum);
             if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
