@@ -27,11 +27,8 @@ const buddy = (start, limit) => {
             if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
-                return solution;
             }
-            if (k > 90)
-                break;
-            k += 1;
+            break;
         }
     }
     console.log("SOLUTION:", solution);

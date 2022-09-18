@@ -238,12 +238,7 @@ const buddy = (start: number, limit: number): number[] => {
     // CALC SUM OF DIVISORS
     for (let i = start; i <= limit; i += 1) {
         console.log("number", i);
-        // let divisorsSum: number = 0;
-        // for (let j = 1; j <= i / 2; j += 1) {
-        //     if (Number.isInteger(i / j)) {
-        //         divisorsSum += j;
-        //     }
-        // }
+
         const divisorsSum = divSum(i);
 
         console.log("       current sum:", divisorsSum, "\n");
@@ -253,12 +248,7 @@ const buddy = (start: number, limit: number): number[] => {
 
         while (true) {
             console.log("           new loop:", k);
-            // let buddyDivisorsSum = 0;
-            // for (let l = 1; l <= k / 2; l += 1) {
-            //     if (Number.isInteger(k / l)) {
-            //         buddyDivisorsSum += l;
-            //     }
-            // }
+
             let buddyDivisorsSum = divSum(k);
 
             console.log("               buddySum:", buddyDivisorsSum);
@@ -266,12 +256,14 @@ const buddy = (start: number, limit: number): number[] => {
             if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
-                return solution;
             }
 
-            if (k > 90) break;
+            // ❗️❗️❗️
+            // if (k > 90) break;
+            break;
+            // return solution;
 
-            k += 1;
+            // k += 1;
         }
     }
 
