@@ -1,7 +1,81 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = void 0;
-const buddy = (start, limit) => {
+exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = void 0;
+const closest = (str) => {
+    const numArr = str.split(" ").map((str) => Number(str));
+    console.log("numArr:", numArr);
+    if (numArr.length === 1)
+        return [];
+    const weigthArr = numArr.map((num) => num.toString().split("").map((str) => Number(str)).reduce((acc, curr) => acc + curr));
+    console.log("weightArr:", weigthArr);
+    const weightArrCopy = [...weigthArr];
+    const ascWeigthArr = weightArrCopy.sort((a, b) => a - b);
+    console.log(ascWeigthArr);
+    const diffArr = [];
+    for (let i = 1; i < ascWeigthArr.length; i += 1) {
+        const current = ascWeigthArr[i] - ascWeigthArr[i - 1];
+        diffArr.push(current);
+    }
+    console.log("diffArr:", diffArr);
+    const smallestDiff = Math.min(...diffArr);
+    console.log(smallestDiff);
+    let smallestIdx = 0;
+    for (let i = 0; i < diffArr.length; i += 1) {
+        if (diffArr[i] === smallestDiff) {
+            smallestIdx = i;
+            break;
+        }
+    }
+    console.log("smallestIdx:", smallestIdx);
+    const diffA = ascWeigthArr[smallestIdx];
+    const diffB = ascWeigthArr[smallestIdx + 1];
+    console.log("diffA:", diffA, "diffB:", diffB);
+    console.log("weightArr:", weigthArr);
+    const idxNumA = weigthArr.indexOf(diffA);
+    const idxNumB = weigthArr.indexOf(diffB);
+    console.log("idxNumA:", idxNumA, "idxNumB:", idxNumB);
+    console.log("numArr:", numArr);
+    const numA = numArr[idxNumA];
+    const numB = numArr[idxNumB];
+    console.log("numA:", numA, "numB", numB);
+    const solution = [[diffA, idxNumA, numA], [diffB, idxNumB, numB]];
+    console.log(solution);
+    return solution;
+};
+console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
+const countKprimes = (k, start, nd) => {
+    return [];
+};
+exports.countKprimes = countKprimes;
+const puzzle = (s) => {
+    return -1;
+};
+exports.puzzle = puzzle;
+function john(n) {
+    return [];
+}
+exports.john = john;
+function ann(n) {
+    return [];
+}
+exports.ann = ann;
+function sumJohn(n) {
+    return 0;
+}
+exports.sumJohn = sumJohn;
+function sumAnn(n) {
+    return 0;
+}
+exports.sumAnn = sumAnn;
+function toBase64(str) {
+    return "hello";
+}
+exports.toBase64 = toBase64;
+function fromBase64(str) {
+    return "hello";
+}
+exports.fromBase64 = fromBase64;
+const buddy5 = (start, limit) => {
     const divSum = (num) => {
         let result = 0;
         for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -16,25 +90,122 @@ const buddy = (start, limit) => {
     };
     let solution = [];
     for (let i = start; i <= limit; i += 1) {
-        console.log("number", i);
         const divisorsSum = divSum(i);
-        console.log("       current sum:", divisorsSum, "\n");
         let k = divisorsSum < i ? i + 1 : divisorsSum - 1;
-        while (true) {
-            console.log("           new loop:", k);
-            let buddyDivisorsSum = divSum(k);
-            console.log("               buddySum:", buddyDivisorsSum);
-            if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
-                console.log("Match found:", i, k);
-                solution.push(i, k);
-            }
-            break;
+        let buddyDivisorsSum = divSum(k);
+        if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
+            console.log("Match found:", i, k);
+            solution.push(i, k);
+            return solution;
         }
     }
-    console.log("SOLUTION:", solution);
     return solution;
 };
-console.log(buddy(10, 50));
+function sumFactor(n) {
+    let total = 1;
+    for (let i = 2; i <= Math.sqrt(n) + 1; i++) {
+        if (n % i == 0)
+            total += i + n / i;
+    }
+    return total;
+}
+function buddy2(start, limit) {
+    for (let i = start; i <= limit; i++) {
+        let a = sumFactor(i) - 1;
+        let b = sumFactor(a) - 1;
+        if (b == i && i < a)
+            return [i, a];
+    }
+    return [];
+}
+exports.buddy2 = buddy2;
+function buddy3(start, limit) {
+    function aux(n) {
+        var res = 1, i = 2;
+        for (; i * i < n; i++)
+            if (n % i === 0)
+                res += i + n / i;
+        if (i * i === n)
+            res += i;
+        return res;
+    }
+    for (let k = start; k <= limit; k++) {
+        let m = aux(k) - 1;
+        if (k === aux(m) - 1 && k < m)
+            return [k, m];
+    }
+    return [];
+}
+const divisors = (n) => {
+    let divisors = [];
+    for (let i = 1; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            if (i === n / i) {
+                divisors.push(n);
+            }
+            else {
+                divisors.push(i);
+                divisors.push(n / i);
+            }
+        }
+    }
+    return divisors;
+};
+const properDivisors = (num) => divisors(num).filter(n => n !== num);
+const sumOfProperDivisors = (num) => properDivisors(num).reduce((prev, curr) => prev + curr, 0);
+function buddy(start, limit) {
+    for (let n = start; n <= limit; n++) {
+        let m = sumOfProperDivisors(n) - 1;
+        if (m <= n)
+            continue;
+        if (sumOfProperDivisors(m) - 1 === n) {
+            return [n, m];
+        }
+    }
+    return [];
+}
+exports.buddy = buddy;
+const DUMMY = {
+    48: 75,
+    1050: 1925,
+    2024: 2295,
+    5775: 6128,
+    8892: 16587,
+    9504: 20735,
+    62744: 75495,
+    186615: 206504,
+    196664: 219975,
+    199760: 309135,
+    266000: 507759,
+    312620: 549219,
+    526575: 544784,
+    573560: 817479,
+    587460: 1057595,
+    1000824: 1902215,
+    1081184: 1331967,
+    1139144: 1159095,
+    1173704: 1341495,
+    1208504: 1348935,
+    1233056: 1524831,
+    1236536: 1459143,
+    1279950: 2576945,
+    1921185: 2226014,
+    2036420: 2681019,
+    2102750: 2142945,
+    2140215: 2421704,
+    2171240: 3220119,
+    2198504: 3123735,
+    2312024: 3010215,
+    2580864: 5644415,
+    2958500: 3676491,
+};
+const ARR = Object.keys(DUMMY).map(Number);
+function buddy4(start, limit) {
+    const v = ARR.find(v => v >= start) || -1;
+    const w = DUMMY[v];
+    return v != -1 && v <= limit ? [v, w] : [];
+}
+exports.buddy4 = buddy4;
 const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n" +
     "+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n" +
     "+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n" +
