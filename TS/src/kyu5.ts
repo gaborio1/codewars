@@ -799,9 +799,10 @@ assert.deepEqual(closest(""), []);
   });
 */
 // console.log(closest("103 123 4444 99 2000"));
+// expected [ [ 8, 5, 134 ], [ 8, 5, 134 ] ] to deeply equal [ [ 8, 5, 134 ], [ 8, 7, 62 ] ]
 console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
 // console.log();
-// console.log();
+// console.log(); 
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥

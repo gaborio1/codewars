@@ -909,12 +909,34 @@ Note:
 Focus attention on efficiency
 */
 
-function dblLinear(n: number): number {
-    return 1;
-}
+const dblLinear = (num: number): number => {
+    let sequence: number[] = [1];
+    // let ascSequence: number[] = unordededSeq.sort((a, b) => a - b);
 
-// 22
+    // GENERATE SEQUENCE
+    // START AT 1 AND CALCULATE Y AND Z
+    for (let i = 0; i < num / 2; i += 1) {
+        const y: number = sequence[i] * 2 + 1;
+        const z: number = sequence[i] * 3 + 1;
+        console.log(sequence[i], "- ", y, z);
+        sequence.push(y, z);
+        sequence.sort((a, b) => a - b);
+    }
+    console.log(sequence);
+    // ❗️❗️❗️ REMOVE DUPLICATES ❗️❗️❗️
+
+    const solution: number = sequence[num - 1];
+
+    return solution;
+};
+
+// 22, Ex: u = [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+
 // console.log(dblLinear(10));
+// 57
+// console.log(dblLinear(20));
+// 91
+console.log(dblLinear(30));
 // console.log();
 // console.log();
 // console.log();
