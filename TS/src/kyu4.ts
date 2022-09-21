@@ -881,6 +881,7 @@ const bits =
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ❗️❗️❗️ PASSED FIXED TESTS, TIMEOUT ON RANDOM TESTS ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: TWICE LINEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -915,17 +916,23 @@ const dblLinear = (num: number): number => {
 
     // GENERATE SEQUENCE
     // START AT 1 AND CALCULATE Y AND Z
-    for (let i = 0; i < num / 2; i += 1) {
+    // for (let i = 0; i < num / 2; i += 1) {
+    for (let i = 0; i < num * 2.5; i += 1) {
         const y: number = sequence[i] * 2 + 1;
         const z: number = sequence[i] * 3 + 1;
         console.log(sequence[i], "- ", y, z);
-        sequence.push(y, z);
-        sequence.sort((a, b) => a - b);
+        // ❗️❗️❗️ REMOVE DUPLICATES ❗️❗️❗️
+        if (!sequence.includes(y)) sequence.push(y);
+        if (!sequence.includes(z)) sequence.push(z);
+        // SORT ARRAY:
+        // sequence.sort((a, b) => a - b);
+        // console.log("sequence", sequence);
     }
-    console.log(sequence);
-    // ❗️❗️❗️ REMOVE DUPLICATES ❗️❗️❗️
+    sequence.sort((a, b) => a - b);
+    console.log("sequence", sequence);
 
-    const solution: number = sequence[num - 1];
+    // const solution: number = sequence[num - 1];
+    const solution: number = sequence[num];
 
     return solution;
 };
@@ -936,7 +943,10 @@ const dblLinear = (num: number): number => {
 // 57
 // console.log(dblLinear(20));
 // 91
-console.log(dblLinear(30));
+// console.log(dblLinear(30));
+
+// 447
+console.log(dblLinear(6000));
 // console.log();
 // console.log();
 // console.log();
@@ -1204,7 +1214,7 @@ function tryMergeInterval(intervals: [number, number][]): boolean {
 export function sumOfIntervals3(intervals: [number, number][]): number {
     const mergedIntervals = [...intervals];
 
-    while (tryMergeInterval(mergedIntervals)) {}
+    while (tryMergeInterval(mergedIntervals)) { }
 
     return mergedIntervals.reduce((a, b) => a + Math.abs(b[1] - b[0]), 0);
 }
