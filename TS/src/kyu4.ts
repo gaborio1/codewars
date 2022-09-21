@@ -881,7 +881,7 @@ const bits =
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ❗️❗️❗️ PASSED FIXED TESTS, TIMEOUT ON RANDOM TESTS ❗️❗️❗️
+// ❗️❗️❗️ PASSED FIXED TESTS, TIMEOUT ON RANDOM TESTS num: 60000❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: TWICE LINEAR
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -911,12 +911,13 @@ Focus attention on efficiency
 */
 
 const dblLinear = (num: number): number => {
+    console.log("--- input: ", num);
     let sequence: number[] = [1];
-    // let ascSequence: number[] = unordededSeq.sort((a, b) => a - b);
+    // let sequenceSet = new Set([1]);
+    // let sequence: number[] = Array.from(sequenceSet);
 
     // GENERATE SEQUENCE
     // START AT 1 AND CALCULATE Y AND Z
-    // for (let i = 0; i < num / 2; i += 1) {
     for (let i = 0; i < num * 2.5; i += 1) {
         const y: number = sequence[i] * 2 + 1;
         const z: number = sequence[i] * 3 + 1;
@@ -924,10 +925,15 @@ const dblLinear = (num: number): number => {
         // ❗️❗️❗️ REMOVE DUPLICATES ❗️❗️❗️
         if (!sequence.includes(y)) sequence.push(y);
         if (!sequence.includes(z)) sequence.push(z);
+        // sequenceSet.add(y);
+        // sequenceSet.add(z);
         // SORT ARRAY:
         // sequence.sort((a, b) => a - b);
         // console.log("sequence", sequence);
     }
+
+    // let sequence: number[] = Array.from(sequenceSet);
+    // console.log(sequenceSet);
     sequence.sort((a, b) => a - b);
     console.log("sequence", sequence);
 
