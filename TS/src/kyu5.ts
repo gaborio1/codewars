@@ -604,7 +604,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
-// TITLE:
+// TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -612,12 +612,190 @@
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 /*
+As you may see, we now have 16 characters on 3 rows. You might think: let's make an array of 3 arrays! But that's not enough.
 
+Empty space
+The first character of the first row (Ryu) is not aligned with the first of the second row (Balrog) but with the second (Ken) and the same goes with the other side; therefore we need to introduce something new, like an offset: the Empty Space.
+
+The empty space, represented as empty string "", will allow us to keep the grid aligned and rectangular, with spaces that won't be selectable. In this case we need 2 empty spaces (3 rows x 6 columns = 18 slots, 18 slots - 16 characters = 2 empty spaces). Like this:
+
+|        | Ryu    | E.Honda  | Blanka  | Guile   |         |
+| Balrog | Ken    | Chun Li  | Zangief | Dhalsim | Sagat   |
+| Vega   | T.Hawk | Fei Long | Deejay  | Cammy   | M.Bison |
+The moves of the selection cursor are the same as before: rotate horizontally but stop vertically. When you find empty spaces (1 or more) you need to skip them if you approach them horizontally and get to the next selectable slot with the next fighter on the left or right; and if you approach them vertically you need to just stop and stay where you are.
+
+Example: if you are on Ryu and move left, you must get to Guile; if you are on Balrog and move up, you must stay on Balrog.
+
+Notice: I might put empty spaces right in the middle and the rectangular grids can be any size, not only 3x6, deal with this too.
+
+What's new
+So, let's resume what are the new issues in this harder version of the Kata:
+
+The initial position might be any non-empty slot in the grid (given as input).
+The characters grid (also given as input) might have any rectangular layout, not only 3 rows.
+The grid might contain empty spaces, both on the borders or right in the middle.
+Input
+Fighters grid;
+Initial position;
+List of moves.
+The third input parameter is still the list of moves (all valid ones: left, right, up or down).
+
+Output
+The output is the same as before: the list of characters that have been hovered by the selection cursor after each move, successful or not.
+
+Hopefully test cases will complete my explanation.
 */
+
+let fighters = [
+    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+];
+let position: [number, number] = [1, 0];
+let moves = ["up"];
+
+const superStreetFighterSelection = (
+    fighters: string[][],
+    position: [number, number],
+    moves: string[]
+): string[] => {
+    console.log(fighters);
+    let solution: string[] = [];
+
+    for (let i = 0; i < moves.length; i += 1) {
+        let currentDir: string = moves[i];
+        console.log(currentDir);
+    }
+
+    return solution;
+};
 /*
+let fighters = [
+	[       "",    "Ryu",  "E.Honda",  "Blanka",   "Guile", ""       ],
+	[ "Balrog",    "Ken",  "Chun Li", "Zangief", "Dhalsim", "Sagat"  ],
+	[   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"]
+];
+let opts = ["up","down","right","left"];
 
+describe("Character selection", function(){
+
+  it("should work with no selection cursor moves", function(){
+    let moves:string[] =  [];
+    let position: [number,number]  = [0,0];
+    let solution:string[] = [];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+  
+  it("should stop on empty spaces vertically", function(){
+    let moves =  ["up"];
+    let position: [number,number]  = [1,0];
+    let solution = ['Balrog'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should stop on empty spaces vertically", function(){
+    let moves =  ["up","up","up","up"];
+    let position: [number,number]  = [1,0];
+    let solution = ['Balrog','Balrog','Balrog','Balrog'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should stop vertically", function(){
+    let moves =  ["down","down","down","down"];
+    let position: [number,number]  = [1,0];
+    let solution = ['Vega','Vega','Vega','Vega'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should stop on empty spaces vertically", function(){
+    let moves =  ["up","up","up","up"];
+    let position: [number,number]  = [1,5];
+    let solution = ['Sagat','Sagat','Sagat','Sagat'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should stop vertically", function(){
+    let moves =  ["down","down","down","down"];
+    let position: [number,number]  = [1,5];
+    let solution = ['M.Bison','M.Bison','M.Bison','M.Bison'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should rotate horizontally", function(){
+    let moves =  ["left","left","left","left","left","left","left","left"];
+    let position: [number,number]  = [0,2];
+    let solution = ['Ryu', 'Guile', 'Blanka', 'E.Honda', 'Ryu', 'Guile', 'Blanka', 'E.Honda'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should rotate horizontally", function(){
+    let moves =  ["left","left","left","left","left","left","left","left"];
+    let position: [number,number]  = [1,3];
+    let solution = ['Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should rotate horizontally with empty spaces", function(){
+    let moves =  ["right","right","right","right","right","right","right","right"];
+    let position: [number,number]  = [0,2];
+    let solution = ['Blanka', 'Guile', 'Ryu', 'E.Honda', 'Blanka', 'Guile', 'Ryu', 'E.Honda'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+  it("should rotate on all rows", function(){
+    let moves =  ["right","right","right","right","right","right","down","left","left","left","left","left","left","left","left","left","left","left","left","down","right","right","right","right","right","right","right","right","right","right","right","right"];
+    let position: [number,number]  = [0,2];
+    let solution = ['Blanka', 'Guile', 'Ryu', 'E.Honda', 'Blanka', 'Guile', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Cammy', 'M.Bison', 'Vega', 'T.Hawk', 'Fei Long', 'Deejay', 'Cammy', 'M.Bison', 'Vega', 'T.Hawk', 'Fei Long', 'Deejay', 'Cammy'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
+  });
+
+// DO NOT CHANGE THIS VARIABLE!
+// LIST WITH HOLES AND DUPLICATES
+let fighters3 = [
+	[       "",    "Ryu",  "E.Honda",  "Cammy",  "Blanka",   "Guile",        "", "Chun Li" ],
+	[ "Balrog",    "Ken",  "Chun Li",       "", "M.Bison", "Zangief", "Dhalsim", "Sagat"  ],
+	[   "Vega",       "", "Fei Long", "Balrog",  "Deejay",   "Cammy",        "", "T.Hawk"]
+];
+
+  it("should rotate on all rows", function(){
+    let moves =  ["right","right","right","right","right","right","down","left","left","left","left","left","left","left","left","left","left","left","left","down","right","right","right","right","right","right","right","right","right","right","right","right"];
+    let position: [number,number]  = [0,2];
+    let solution = ['Cammy', 'Blanka', 'Guile', 'Chun Li', 'Ryu', 'E.Honda', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'M.Bison', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Balrog', 'Deejay', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Balrog', 'Deejay', 'Cammy'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters3), position, moves),solution);
+  });
+
+  it("should work", function(){
+    let moves =  ["down","right","right","right","down","left","left","down","right","right","right","up"];
+    let position: [number,number]  = [0,3];
+    let solution = ['Cammy', 'Blanka', 'Guile', 'Chun Li', 'Sagat', 'Dhalsim', 'Zangief', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Chun Li'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters3), position, moves),solution);
+  });
+
+  // DO NOT CHANGE THIS VARIABLE!
+  let fighters4 = [
+    [        "",     "Ryu",  "E.Honda",  "Cammy" ],
+    [  "Balrog",     "Ken",  "Chun Li",       "" ],
+    [    "Vega",        "", "Fei Long", "Balrog",],
+      [  "Blanka",   "Guile",         "", "Chun Li"],
+      [ "M.Bison", "Zangief",  "Dhalsim", "Sagat"  ],
+      [  "Deejay",   "Cammy",         "", "T.Hawk" ]
+  ]
+
+  it("should work with longer grid", function(){
+    let moves =  ["left","left","down","right","right","right","right","down","left","left","left","left","down","right","right", "down","right","right","right","down","left","left","left","down","left","left","left"];
+    let position: [number,number]  = [0,3];
+    let solution = ['E.Honda', 'Ryu', 'Ken', 'Chun Li', 'Balrog', 'Ken', 'Chun Li', 'Fei Long', 'Vega', 'Balrog', 'Fei Long', 'Vega', 'Blanka', 'Guile', 'Chun Li', 'Sagat', 'M.Bison', 'Zangief', 'Dhalsim', 'Dhalsim', 'Zangief', 'M.Bison', 'Sagat', 'T.Hawk', 'Cammy', 'Deejay', 'T.Hawk'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters4), position, moves),solution);
+  });
+
+  it("should work with odd initial position", function(){
+    let moves =  ["left","left","down","right","right","right","right","down","left","left","left","left","up","right","right", "up","right","right","right"];
+    let position: [number,number]  = [3,3];
+    let solution = ['Guile', 'Blanka', 'M.Bison', 'Zangief', 'Dhalsim', 'Sagat', 'M.Bison', 'Deejay', 'T.Hawk', 'Cammy', 'Deejay', 'T.Hawk', 'Sagat', 'M.Bison', 'Zangief', 'Guile', 'Chun Li', 'Blanka', 'Guile'];
+    assert.deepEqual(superStreetFighterSelection(copy(fighters4), position, moves),solution);
+  });
 */
-// console.log();
+console.log(superStreetFighterSelection(fighters, position, moves));
 // console.log();
 // console.log();
 // console.log();
@@ -724,7 +902,6 @@ or "" in Perl.
 See Example tests for the format of the results in your language.
 */
 
-//❗️❗️❗️  PASSES FIXED TESTS 1, 2 AND 5 ❗️❗️❗️
 const closest = (str: string): number[][] => {
     // MIGHT NOT BE NECESSARY:
     const numArr: number[] = str.split(" ").map((str) => Number(str));
@@ -748,7 +925,7 @@ const closest = (str: string): number[][] => {
 
     // ASCENDING WEIGHTS:
     const ascWeigthArr: number[] = weightArrCopy.sort((a, b) => a - b);
-    console.log("ascWeigthArr:", ascWeigthArr);
+    // console.log("ascWeigthArr:", ascWeigthArr);
 
     // DIFFERENCES ARRAY:
     const diffArr: number[] = [];
@@ -756,11 +933,11 @@ const closest = (str: string): number[][] => {
         const current: number = ascWeigthArr[i] - ascWeigthArr[i - 1];
         diffArr.push(current);
     }
-    console.log("diffArr:", diffArr);
+    // console.log("diffArr:", diffArr);
 
     // FIND SMALLEST DIFFERENCE WITH SMALLEST INDEX:
     const smallestDiff: number = Math.min(...diffArr);
-    console.log("smallest difference:", smallestDiff);
+    // console.log("smallest difference:", smallestDiff);
 
     // FIND FIRST OCCURENCE OF smallestDiff IN diffArr:
     let smallestIdx: number = 0;
@@ -770,47 +947,51 @@ const closest = (str: string): number[][] => {
             break;
         }
     }
-    console.log("smallestIdx:", smallestIdx);
+    // console.log("smallestIdx:", smallestIdx);
+
     // RETRIEVE PAIR WITH SMALLEST INDEX:
     const diffA: number = ascWeigthArr[smallestIdx];
     const diffB: number = ascWeigthArr[smallestIdx + 1];
-    console.log("diffA:", diffA, "diffB:", diffB);
+    // console.log("diffA:", diffA, "diffB:", diffB);
 
+    //
     let idxNumA: number = 0;
     let idxNumB: number = 0;
 
+    // DUPLICATES (HAVE TO FIND ALL MATCHES AND USE THE FIRST TWO - WITH THE SAME INDEX)
     if (diffA === diffB) {
         let sameIndicesArr: number[] = [];
-        console.log("    ----- same weight! -----");
-        console.log("weightArr:", weigthArr);
+        // console.log("    ----- same weight! -----");
+        // console.log("weightArr:", weigthArr);
         for (let i = 0; i < weigthArr.length; i += 1) {
-            console.log(weigthArr[i], diffA);
+            // console.log(weigthArr[i], diffA);
             if (weigthArr[i] === diffA) {
-                console.log("----- DUPLICATE -----");
+                // console.log("----- DUPLICATE -----");
                 sameIndicesArr.push(i);
             }
         }
 
-        console.log("sameWeightsArr:", sameIndicesArr);
+        // console.log("sameWeightsArr:", sameIndicesArr);
 
         idxNumA = sameIndicesArr[0];
         idxNumB = sameIndicesArr[1];
+        // NO DUPLICATES (NUMBERS WILL BE NEXT TO EACH OTHER IN ORDERED ARR)
     } else {
         idxNumA = weigthArr.indexOf(diffA);
         idxNumB = weigthArr.indexOf(diffB);
     }
 
     // GET ACTUAL NUMBERS FROM numArr:
-    console.log("numArr:", numArr);
+    // console.log("numArr:", numArr);
     const numA: number = numArr[idxNumA];
     const numB: number = numArr[idxNumB];
-    console.log("numA:", numA, "numB", numB);
+    // console.log("numA:", numA, "numB", numB);
 
     const solution: number[][] = [
         [diffA, idxNumA, numA],
         [diffB, idxNumB, numB],
     ];
-    console.log(solution);
+    // console.log(solution);
 
     return solution;
 };

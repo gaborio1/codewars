@@ -1,6 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
+let fighters = [
+    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+];
+let position = [1, 0];
+let moves = ["up"];
+const superStreetFighterSelection = (fighters, position, moves) => {
+    console.log(fighters);
+    let solution = [];
+    for (let i = 0; i < moves.length; i += 1) {
+        let currentDir = moves[i];
+        console.log(currentDir);
+    }
+    return solution;
+};
+console.log(superStreetFighterSelection(fighters, position, moves));
 const closest = (str) => {
     const numArr = str.split(" ").map((str) => Number(str));
     console.log("numArr:", numArr);
@@ -14,15 +31,12 @@ const closest = (str) => {
     console.log("weightArr:", weigthArr);
     const weightArrCopy = [...weigthArr];
     const ascWeigthArr = weightArrCopy.sort((a, b) => a - b);
-    console.log("ascWeigthArr:", ascWeigthArr);
     const diffArr = [];
     for (let i = 1; i < ascWeigthArr.length; i += 1) {
         const current = ascWeigthArr[i] - ascWeigthArr[i - 1];
         diffArr.push(current);
     }
-    console.log("diffArr:", diffArr);
     const smallestDiff = Math.min(...diffArr);
-    console.log("smallest difference:", smallestDiff);
     let smallestIdx = 0;
     for (let i = 0; i < diffArr.length; i += 1) {
         if (diffArr[i] === smallestDiff) {
@@ -30,24 +44,17 @@ const closest = (str) => {
             break;
         }
     }
-    console.log("smallestIdx:", smallestIdx);
     const diffA = ascWeigthArr[smallestIdx];
     const diffB = ascWeigthArr[smallestIdx + 1];
-    console.log("diffA:", diffA, "diffB:", diffB);
     let idxNumA = 0;
     let idxNumB = 0;
     if (diffA === diffB) {
         let sameIndicesArr = [];
-        console.log("    ----- same weight! -----");
-        console.log("weightArr:", weigthArr);
         for (let i = 0; i < weigthArr.length; i += 1) {
-            console.log(weigthArr[i], diffA);
             if (weigthArr[i] === diffA) {
-                console.log("----- DUPLICATE -----");
                 sameIndicesArr.push(i);
             }
         }
-        console.log("sameWeightsArr:", sameIndicesArr);
         idxNumA = sameIndicesArr[0];
         idxNumB = sameIndicesArr[1];
     }
@@ -55,15 +62,12 @@ const closest = (str) => {
         idxNumA = weigthArr.indexOf(diffA);
         idxNumB = weigthArr.indexOf(diffB);
     }
-    console.log("numArr:", numArr);
     const numA = numArr[idxNumA];
     const numB = numArr[idxNumB];
-    console.log("numA:", numA, "numB", numB);
     const solution = [
         [diffA, idxNumA, numA],
         [diffB, idxNumB, numB],
     ];
-    console.log(solution);
     return solution;
 };
 function closest2(code) {
