@@ -624,8 +624,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Closest and Smallest
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -727,18 +726,21 @@ See Example tests for the format of the results in your language.
 
 //❗️❗️❗️  PASSES FIXED TESTS 1, 2 AND 5 ❗️❗️❗️
 const closest = (str: string): number[][] => {
-
     // MIGHT NOT BE NECESSARY:
     const numArr: number[] = str.split(" ").map((str) => Number(str));
     console.log("numArr:", numArr);
 
-
     // RETURN EMPTY ARRAY IF EMPTY STRING
     if (numArr.length === 1) return [];
 
-
     // WEIGHTS:
-    const weigthArr: number[] = numArr.map((num) => num.toString().split("").map((str) => Number(str)).reduce((acc, curr) => acc + curr));
+    const weigthArr: number[] = numArr.map((num) =>
+        num
+            .toString()
+            .split("")
+            .map((str) => Number(str))
+            .reduce((acc, curr) => acc + curr)
+    );
     console.log("weightArr:", weigthArr);
 
     // ❗️❗️❗️ MAKE COPY OF weigthArr FOR SORTED ARRAY BECAUSE WE NEED ORIGINAL (SORT() WILL MUTATE ORIGINAL) ❗️❗️❗️
@@ -746,7 +748,7 @@ const closest = (str: string): number[][] => {
 
     // ASCENDING WEIGHTS:
     const ascWeigthArr: number[] = weightArrCopy.sort((a, b) => a - b);
-    console.log(ascWeigthArr);
+    console.log("ascWeigthArr:", ascWeigthArr);
 
     // DIFFERENCES ARRAY:
     const diffArr: number[] = [];
@@ -758,7 +760,8 @@ const closest = (str: string): number[][] => {
 
     // FIND SMALLEST DIFFERENCE WITH SMALLEST INDEX:
     const smallestDiff: number = Math.min(...diffArr);
-    console.log(smallestDiff);
+    console.log("smallest difference:", smallestDiff);
+
     // FIND FIRST OCCURENCE OF smallestDiff IN diffArr:
     let smallestIdx: number = 0;
     for (let i = 0; i < diffArr.length; i += 1) {
@@ -773,11 +776,29 @@ const closest = (str: string): number[][] => {
     const diffB: number = ascWeigthArr[smallestIdx + 1];
     console.log("diffA:", diffA, "diffB:", diffB);
 
-    console.log("weightArr:", weigthArr);
-    // ❗️❗️❗️ sort() WILL MUTATE weigthArr AND WE'LL GET WRONG INDICES❗️❗️❗️
-    const idxNumA: number = weigthArr.indexOf(diffA);
-    const idxNumB: number = weigthArr.indexOf(diffB);
-    console.log("idxNumA:", idxNumA, "idxNumB:", idxNumB);
+    let idxNumA: number = 0;
+    let idxNumB: number = 0;
+
+    if (diffA === diffB) {
+        let sameIndicesArr: number[] = [];
+        console.log("    ----- same weight! -----");
+        console.log("weightArr:", weigthArr);
+        for (let i = 0; i < weigthArr.length; i += 1) {
+            console.log(weigthArr[i], diffA);
+            if (weigthArr[i] === diffA) {
+                console.log("----- DUPLICATE -----");
+                sameIndicesArr.push(i);
+            }
+        }
+
+        console.log("sameWeightsArr:", sameIndicesArr);
+
+        idxNumA = sameIndicesArr[0];
+        idxNumB = sameIndicesArr[1];
+    } else {
+        idxNumA = weigthArr.indexOf(diffA);
+        idxNumB = weigthArr.indexOf(diffB);
+    }
 
     // GET ACTUAL NUMBERS FROM numArr:
     console.log("numArr:", numArr);
@@ -785,26 +806,298 @@ const closest = (str: string): number[][] => {
     const numB: number = numArr[idxNumB];
     console.log("numA:", numA, "numB", numB);
 
-    const solution: number[][] = [[diffA, idxNumA, numA], [diffB, idxNumB, numB]];
+    const solution: number[][] = [
+        [diffA, idxNumA, numA],
+        [diffB, idxNumB, numB],
+    ];
     console.log(solution);
 
     return solution;
-}
+};
 /*
-assert.deepEqual(closest(""), []);
-    assert.deepEqual(closest("456899 50 11992 176 272293 163 389128 96 290193 85 52"), [[13, 9, 85], [14, 3, 176]]);
-    assert.deepEqual(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"), [[8, 5, 134], [8, 7, 62]]);
-    assert.deepEqual(closest("241259 154 155206 194 180502 147 300751 200 406683 37 57"), [[10, 1, 154], [10, 9, 37]]);
-    assert.deepEqual(closest("89998 187 126159 175 338292 89 39962 145 394230 167 1"), [[13, 3, 175], [14, 9, 167]]);
-  });
+
+console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
+
+numArr: [
+  239382,    162, 254765,
+     182, 485944,    134,
+  468751,     62,  49780,
+     108,     54
+]
+weightArr: [
+  27,  9, 29, 11, 34,
+   8, 31,  8, 28,  9,
+   9
+]
+ascWeigthArr: [
+   8,  8,  9,  9,  9,
+  11, 27, 28, 29, 31,
+  34
+]
+diffArr: [
+   0, 1, 0, 0, 2,
+  16, 1, 1, 2, 3
+]
+smallest difference: 0
+smallestIdx: 0
+diffA: 8 diffB: 8
+    ----- same weight! -----
+weightArr: [
+  27,  9, 29, 11, 34,
+   8, 31,  8, 28,  9,
+   9
+]
+27 8
+9 8
+29 8
+11 8
+34 8
+8 8
+----- DUPLICATE -----
+31 8
+8 8
+----- DUPLICATE -----
+28 8
+9 8
+9 8
+sameWeightsArr: [ 5, 7 ]
+numArr: [
+  239382,    162, 254765,
+     182, 485944,    134,
+  468751,     62,  49780,
+     108,     54
+]
+numA: 134 numB 62
+[ [ 8, 5, 134 ], [ 8, 7, 62 ] ]
+[ [ 8, 5, 134 ], [ 8, 7, 62 ] ]
 */
 // console.log(closest("103 123 4444 99 2000"));
 // expected [ [ 8, 5, 134 ], [ 8, 5, 134 ] ] to deeply equal [ [ 8, 5, 134 ], [ 8, 7, 62 ] ]
-console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
+// console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
+// [[10, 1, 154], [10, 9, 37]]
+// console.log(
+//     closest("241259 154 155206 194 180502 147 300751 200 406683 37 57")
+// );
 // console.log();
-// console.log(); 
+// console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+function closest2(code: string): number[][] {
+    if (!code) {
+        return [];
+    }
+
+    const arr = code
+        .split(" ")
+        .map((e, i) => [[...e].reduce((a, b) => +a + +b, 0), i, +e])
+        .sort(([a0, a1], [b0, b1]) => a0 - b0 || a1 - b1);
+
+    let findIndex = 0,
+        findDel = arr[1][0] - arr[0][0];
+
+    for (let i = 2; i < arr.length; i++) {
+        if (findDel > arr[i][0] - arr[i - 1][0]) {
+            findDel = arr[i][0] - arr[i - 1][0];
+            findIndex = i - 1;
+        }
+    }
+
+    return arr.slice(findIndex, findIndex + 2);
+}
+
+function closest3(s: string): number[][] {
+    if (s === "") return [];
+
+    const splitted = s.split(" ");
+    const positions = splitted.map((_, i) => i);
+    const values = splitted.map((x) => +x);
+    const weights = splitted.map((x) =>
+        x.split("").reduce((a, v) => a + +v, 0)
+    );
+    const ranks = splitted.map((_, i) => i);
+
+    ranks.sort(
+        (a, b) => weights[a] - weights[b] || positions[a] - positions[b]
+    );
+
+    let delta = Number.MAX_SAFE_INTEGER;
+    let best = 0;
+    for (let i = 1; i < ranks.length; i++) {
+        const d = weights[ranks[i]] - weights[ranks[i - 1]];
+        if (d < delta) {
+            delta = d;
+            best = i - 1;
+        }
+    }
+
+    const s1 = ranks[best];
+    const s2 = ranks[best + 1];
+
+    return [
+        [weights[s1], positions[s1], values[s1]],
+        [weights[s2], positions[s2], values[s2]],
+    ];
+}
+
+export const closest4 = (z: string): number[][] =>
+    z
+        ? z
+              .split(" ")
+              .map((s, i) => [
+                  s
+                      .split("")
+                      .map((c) => +c)
+                      .reduce((w, d) => (w += d)),
+                  i,
+                  +s,
+              ])
+              .sort(([a, b], [c, d]) => a - c || b - d)
+              .reduce(
+                  (d, w, i, [_, ...a]) =>
+                      a[i]
+                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                          : d,
+                  [] as [number, number, number[][]][]
+              )
+              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+        : [];
+
+function closest5(strng: string): number[][] {
+    let numbers = strng.split(" ");
+    let sumDigits = numbers.map((s) =>
+        s.split("").reduce((acc, d) => {
+            acc += parseInt(d);
+            return acc;
+        }, 0)
+    );
+
+    let diff = -1;
+    let res: number[][] = [];
+    for (let i = 0; i < sumDigits.length - 1; i++) {
+        for (let j = i + 1; j < sumDigits.length; j++) {
+            const currentDiff = Math.abs(sumDigits[i] - sumDigits[j]);
+
+            if (diff < 0 || currentDiff < diff) {
+                diff = currentDiff;
+                res = [
+                    [sumDigits[i], i, parseInt(numbers[i])],
+                    [sumDigits[j], j, parseInt(numbers[j])],
+                ];
+            } else if (currentDiff == diff) {
+                if (sumDigits[i] + sumDigits[j] < res[0][0] + res[1][0]) {
+                    diff = currentDiff;
+                    res = [
+                        [sumDigits[i], i, parseInt(numbers[i])],
+                        [sumDigits[j], j, parseInt(numbers[j])],
+                    ];
+                }
+            }
+        }
+    }
+
+    return res.sort((a, b) => {
+        if (a[0] === b[0]) {
+            return a[1] - b[1];
+        }
+
+        return a[0] - b[0];
+    });
+}
+// ============================================================
+class ClosestWeight {
+    inputNums: string;
+    nestedNums: number[][] = [];
+    weights: number[] = [];
+    weightsChart: Record<string, number> = {};
+    diffsChart: Record<string, number[][]> = {};
+    nums: number[] = [];
+    closestWeightsIndex: number = 0;
+    smallestWeghtDiff = 999999999;
+    num1_index = 0;
+    num2_index = 1;
+
+    constructor(inputNums: string) {
+        this.inputNums = inputNums;
+    }
+
+    parseInputs() {
+        this.nums = this.inputNums.split(" ").map((d) => parseInt(d));
+        console.log("nums", this.nums);
+    }
+
+    calcWeights() {
+        this.weights = this.nums.map((n) =>
+            n
+                .toString()
+                .split("")
+                .reduce((a, b) => a + parseInt(b), 0)
+        );
+        console.log("weights", this.weights);
+    }
+
+    saveClosestAndSmallest(
+        weightDiff: number,
+        num1_index: number,
+        num2_index: number
+    ) {
+        this.smallestWeghtDiff = weightDiff;
+        this.num1_index = num1_index;
+        this.num2_index = num2_index;
+    }
+
+    findClosestAndSmallest() {
+        this.smallestWeghtDiff = Math.abs(this.weights[0] - this.weights[1]);
+
+        for (let i = 0; i < this.nums.length - 1; i++) {
+            for (let j = i + 1; j < this.nums.length; j++) {
+                let weight_i = this.weights[i];
+                let weight_j = this.weights[j];
+                let weightdiff = Math.abs(this.weights[i] - this.weights[j]);
+
+                if (weightdiff < this.smallestWeghtDiff) {
+                    this.saveClosestAndSmallest(weightdiff, i, j);
+                } else if (weightdiff == this.smallestWeghtDiff) {
+                    let currentWeight = weight_i + weight_j;
+                    let smallestWeight =
+                        this.weights[this.num1_index] +
+                        this.weights[this.num2_index];
+                    if (currentWeight < smallestWeight) {
+                        this.saveClosestAndSmallest(weightdiff, i, j);
+                    } else if (currentWeight == smallestWeight) {
+                        if (i + j < this.num1_index + this.num2_index) {
+                            this.saveClosestAndSmallest(weightdiff, i, j);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    formatNum(index: number) {
+        return [this.weights[index], index, this.nums[index]];
+    }
+
+    run() {
+        this.parseInputs();
+        if (this.nums.length < 2) return [];
+        this.calcWeights();
+        this.findClosestAndSmallest();
+        if (this.weights[this.num1_index] > this.weights[this.num2_index])
+            [this.num1_index, this.num2_index] = [
+                this.num2_index,
+                this.num1_index,
+            ];
+
+        return [
+            this.formatNum(this.num1_index),
+            this.formatNum(this.num2_index),
+        ];
+    }
+}
+
+export function closest6(strng: string): number[][] {
+    return new ClosestWeight(strng).run();
+}
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: k-Primes
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -841,14 +1134,18 @@ puzzle(138)  -->  1  because [2 + 8 + 128] is the only solution
 puzzle(143)  -->  2  because [3 + 12 + 128] and [7 + 8 + 128] are the solutions
 
 */
-export const countKprimes = (k: number, start: number, nd: number): number[] => {
+export const countKprimes = (
+    k: number,
+    start: number,
+    nd: number
+): number[] => {
     // you code
-    return []
-}
+    return [];
+};
 export const puzzle = (s: number): number => {
     // you code
-    return -1
-}
+    return -1;
+};
 /*
 testing(countKprimes(2, 0, 100), [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39,  46, 49, 51, 55, 57, 58, 62, 65, 69, 74, 77, 82, 85, 86, 87, 91, 93, 94, 95]);
         testing(countKprimes(3, 0, 100), [8, 12, 18, 20, 27, 28, 30, 42, 44, 45, 50, 52, 63, 66, 68, 70, 75, 76, 78, 92, 98, 99]);
@@ -861,7 +1158,6 @@ testing(countKprimes(2, 0, 100), [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 3
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
-
 
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: John and Ann sign up for Codewars
@@ -1254,37 +1550,32 @@ testing(10, 50, [48, 75] );
 function sumFactor(n: number): number {
     let total: number = 1;
     for (let i: number = 2; i <= Math.sqrt(n) + 1; i++) {
-        if (n % i == 0)
-            total += i + n / i
+        if (n % i == 0) total += i + n / i;
     }
-    return total
+    return total;
 }
 
 export function buddy2(start: number, limit: number): number[] {
     for (let i: number = start; i <= limit; i++) {
-        let a: number = sumFactor(i) - 1
-        let b: number = sumFactor(a) - 1
-        if (b == i && i < a)
-            return [i, a]
+        let a: number = sumFactor(i) - 1;
+        let b: number = sumFactor(a) - 1;
+        if (b == i && i < a) return [i, a];
     }
-    return []
+    return [];
 }
 
 // ============================================================
 function buddy3(start: number, limit: number): number[] {
     function aux(n: number): number {
-        var res = 1, i = 2;
-        for (; i * i < n; i++)
-            if (n % i === 0)
-                res += i + n / i;
-        if (i * i === n)
-            res += i;
+        var res = 1,
+            i = 2;
+        for (; i * i < n; i++) if (n % i === 0) res += i + n / i;
+        if (i * i === n) res += i;
         return res;
     }
     for (let k = start; k <= limit; k++) {
         let m = aux(k) - 1;
-        if (k === aux(m) - 1 && k < m)
-            return [k, m];
+        if (k === aux(m) - 1 && k < m) return [k, m];
     }
     return [];
 }
@@ -1305,11 +1596,13 @@ const divisors = (n: number): number[] => {
         }
     }
     return divisors;
-}
+};
 
-const properDivisors = (num: number): number[] => divisors(num).filter(n => n !== num);
+const properDivisors = (num: number): number[] =>
+    divisors(num).filter((n) => n !== num);
 
-const sumOfProperDivisors = (num: number): number => properDivisors(num).reduce((prev, curr) => prev + curr, 0);
+const sumOfProperDivisors = (num: number): number =>
+    properDivisors(num).reduce((prev, curr) => prev + curr, 0);
 
 export function buddy(start: number, limit: number): number[] {
     for (let n = start; n <= limit; n++) {
@@ -1357,13 +1650,13 @@ const DUMMY: Record<number, number> = {
     2312024: 3010215,
     2580864: 5644415,
     2958500: 3676491,
-}
-const ARR: number[] = Object.keys(DUMMY).map(Number)
+};
+const ARR: number[] = Object.keys(DUMMY).map(Number);
 
 export function buddy4(start: number, limit: number): number[] {
-    const v = ARR.find(v => v >= start) || -1
-    const w = DUMMY[v]!
-    return v != -1 && v <= limit ? [v, w] : []
+    const v = ARR.find((v) => v >= start) || -1;
+    const w = DUMMY[v]!;
+    return v != -1 && v <= limit ? [v, w] : [];
 }
 // ============================================================
 
