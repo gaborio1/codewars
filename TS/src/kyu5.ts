@@ -651,7 +651,8 @@ let fighters = [
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position: [number, number] = [1, 0];
+let position: [number, number] = [1, 1];
+// let position: [number, number] = [0, 1];
 let moves = ["up"];
 
 const superStreetFighterSelection = (
@@ -660,20 +661,52 @@ const superStreetFighterSelection = (
     moves: string[]
 ): string[] => {
     console.log(fighters);
+    // const vertical: number = position[0];
+    // const horizontal: number = position[1];
+    let currentPlayer: string = fighters[position[0]][position[1]];
+    console.log(currentPlayer);
     let solution: string[] = [];
+
 
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir: string = moves[i];
         console.log(currentDir);
+
+        let vertical: number = position[0];
+        let horizontal: number = position[1];
+
+        // UP
+        if (currentDir === "up") {
+            // FIRST ROW, UNDEFINED ABOVE
+            if (vertical < 1) {
+                solution.push(currentPlayer);
+                console.log("UNDEFINED, STOP!");
+                // VALID ROW
+            } else {
+                // EMPTY ABOVE
+                if (fighters[vertical - 1][horizontal] === "") {
+                    solution.push(currentPlayer);
+                    console.log("EMPTY, STOP!");
+                    // VALID ABOVE
+                } else {
+                    vertical -= 1;
+                    solution.push(fighters[vertical][horizontal]);
+                }
+            }
+
+        }
     }
 
     return solution;
-};
+}
+
+
+
 /*
 let fighters = [
-	[       "",    "Ryu",  "E.Honda",  "Blanka",   "Guile", ""       ],
-	[ "Balrog",    "Ken",  "Chun Li", "Zangief", "Dhalsim", "Sagat"  ],
-	[   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"]
+    [       "",    "Ryu",  "E.Honda",  "Blanka",   "Guile", ""       ],
+    [ "Balrog",    "Ken",  "Chun Li", "Zangief", "Dhalsim", "Sagat"  ],
+    [   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"]
 ];
 let opts = ["up","down","right","left"];
 
@@ -686,6 +719,9 @@ describe("Character selection", function(){
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
   
+
+
+
   it("should stop on empty spaces vertically", function(){
     let moves =  ["up"];
     let position: [number,number]  = [1,0];
@@ -752,9 +788,9 @@ describe("Character selection", function(){
 // DO NOT CHANGE THIS VARIABLE!
 // LIST WITH HOLES AND DUPLICATES
 let fighters3 = [
-	[       "",    "Ryu",  "E.Honda",  "Cammy",  "Blanka",   "Guile",        "", "Chun Li" ],
-	[ "Balrog",    "Ken",  "Chun Li",       "", "M.Bison", "Zangief", "Dhalsim", "Sagat"  ],
-	[   "Vega",       "", "Fei Long", "Balrog",  "Deejay",   "Cammy",        "", "T.Hawk"]
+    [       "",    "Ryu",  "E.Honda",  "Cammy",  "Blanka",   "Guile",        "", "Chun Li" ],
+    [ "Balrog",    "Ken",  "Chun Li",       "", "M.Bison", "Zangief", "Dhalsim", "Sagat"  ],
+    [   "Vega",       "", "Fei Long", "Balrog",  "Deejay",   "Cammy",        "", "T.Hawk"]
 ];
 
   it("should rotate on all rows", function(){
@@ -1123,24 +1159,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-              .split(" ")
-              .map((s, i) => [
-                  s
-                      .split("")
-                      .map((c) => +c)
-                      .reduce((w, d) => (w += d)),
-                  i,
-                  +s,
-              ])
-              .sort(([a, b], [c, d]) => a - c || b - d)
-              .reduce(
-                  (d, w, i, [_, ...a]) =>
-                      a[i]
-                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                          : d,
-                  [] as [number, number, number[][]][]
-              )
-              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+            .split(" ")
+            .map((s, i) => [
+                s
+                    .split("")
+                    .map((c) => +c)
+                    .reduce((w, d) => (w += d)),
+                i,
+                +s,
+            ])
+            .sort(([a, b], [c, d]) => a - c || b - d)
+            .reduce(
+                (d, w, i, [_, ...a]) =>
+                    a[i]
+                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                        : d,
+                [] as [number, number, number[][]][]
+            )
+            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {

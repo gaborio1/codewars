@@ -6,14 +6,34 @@ let fighters = [
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position = [1, 0];
+let position = [1, 1];
 let moves = ["up"];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
+    let currentPlayer = fighters[position[0]][position[1]];
+    console.log(currentPlayer);
     let solution = [];
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir = moves[i];
         console.log(currentDir);
+        let vertical = position[0];
+        let horizontal = position[1];
+        if (currentDir === "up") {
+            if (vertical < 1) {
+                solution.push(currentPlayer);
+                console.log("UNDEFINED, STOP!");
+            }
+            else {
+                if (fighters[vertical - 1][horizontal] === "") {
+                    solution.push(currentPlayer);
+                    console.log("EMPTY, STOP!");
+                }
+                else {
+                    vertical -= 1;
+                    solution.push(fighters[vertical][horizontal]);
+                }
+            }
+        }
     }
     return solution;
 };
