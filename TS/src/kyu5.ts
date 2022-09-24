@@ -646,14 +646,22 @@ The output is the same as before: the list of characters that have been hovered 
 Hopefully test cases will complete my explanation.
 */
 
+// let fighters = [
+//     ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+//     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+//     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+// ];
 let fighters = [
-    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position: [number, number] = [1, 1];
+// let position: [number, number] = [1, 1];
+// let position: [number, number] = [2, 0];
+let position: [number, number] = [0, 0];
 // let position: [number, number] = [0, 1];
-let moves = ["up"];
+// let moves = ["up"];
+let moves = ["down"];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -665,8 +673,7 @@ const superStreetFighterSelection = (
     // const horizontal: number = position[1];
     let currentPlayer: string = fighters[position[0]][position[1]];
     console.log(currentPlayer);
-    let solution: string[] = [];
-
+    let solution: string[] = [currentPlayer];
 
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir: string = moves[i];
@@ -693,14 +700,38 @@ const superStreetFighterSelection = (
                     solution.push(fighters[vertical][horizontal]);
                 }
             }
-
+            // DOWN
+        } else if (currentDir === "down") {
+            console.log("down");
+            // BOTTOM ROW, UNDEFINED BELOW
+            if (vertical === fighters.length - 1) {
+                console.log("UNDEFINED, STOP!");
+            }
+            // VALID ROWS
+            else {
+                // EMPTY BELOW
+                if (fighters[vertical + 1][horizontal] === "") {
+                    console.log("EMPTY BELOW, STOP!");
+                }
+                // VALID BELOW
+                else {
+                    vertical += 1;
+                    solution.push(fighters[vertical][horizontal]);
+                }
+            }
+        }
+        // LEFT
+        else if (currentDir === "left") {
+            console.log("left");
+        }
+        // RIGHT
+        else {
+            console.log("right");
         }
     }
 
     return solution;
-}
-
-
+};
 
 /*
 let fighters = [
@@ -1159,24 +1190,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-            .split(" ")
-            .map((s, i) => [
-                s
-                    .split("")
-                    .map((c) => +c)
-                    .reduce((w, d) => (w += d)),
-                i,
-                +s,
-            ])
-            .sort(([a, b], [c, d]) => a - c || b - d)
-            .reduce(
-                (d, w, i, [_, ...a]) =>
-                    a[i]
-                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                        : d,
-                [] as [number, number, number[][]][]
-            )
-            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+              .split(" ")
+              .map((s, i) => [
+                  s
+                      .split("")
+                      .map((c) => +c)
+                      .reduce((w, d) => (w += d)),
+                  i,
+                  +s,
+              ])
+              .sort(([a, b], [c, d]) => a - c || b - d)
+              .reduce(
+                  (d, w, i, [_, ...a]) =>
+                      a[i]
+                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                          : d,
+                  [] as [number, number, number[][]][]
+              )
+              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {

@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
 let fighters = [
-    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position = [1, 1];
-let moves = ["up"];
+let position = [0, 0];
+let moves = ["down"];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
     let currentPlayer = fighters[position[0]][position[1]];
     console.log(currentPlayer);
-    let solution = [];
+    let solution = [currentPlayer];
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir = moves[i];
         console.log(currentDir);
@@ -33,6 +33,27 @@ const superStreetFighterSelection = (fighters, position, moves) => {
                     solution.push(fighters[vertical][horizontal]);
                 }
             }
+        }
+        else if (currentDir === "down") {
+            console.log("down");
+            if (vertical === fighters.length - 1) {
+                console.log("UNDEFINED, STOP!");
+            }
+            else {
+                if (fighters[vertical + 1][horizontal] === "") {
+                    console.log("EMPTY BELOW, STOP!");
+                }
+                else {
+                    vertical += 1;
+                    solution.push(fighters[vertical][horizontal]);
+                }
+            }
+        }
+        else if (currentDir === "left") {
+            console.log("left");
+        }
+        else {
+            console.log("right");
         }
     }
     return solution;
