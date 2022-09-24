@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
 let fighters = [
-    ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position = [0, 0];
-let moves = ["down"];
+let position = [1, 0];
+let moves = ["left"];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
     let currentPlayer = fighters[position[0]][position[1]];
@@ -51,6 +51,14 @@ const superStreetFighterSelection = (fighters, position, moves) => {
         }
         else if (currentDir === "left") {
             console.log("left");
+            if (fighters[horizontal - 1][vertical] === "") {
+                console.log("EMPTY LEFT, STOP!");
+            }
+            else {
+                if (horizontal - 1 < 0) {
+                    console.log("UNDEFINED LEFT, ROTATE!");
+                }
+            }
         }
         else {
             console.log("right");

@@ -646,22 +646,24 @@ The output is the same as before: the list of characters that have been hovered 
 Hopefully test cases will complete my explanation.
 */
 
-// let fighters = [
-//     ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
-//     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-//     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
-// ];
 let fighters = [
-    ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
+// let fighters = [
+//     ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+//     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+//     ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+// ];
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [2, 0];
-let position: [number, number] = [0, 0];
+// let position: [number, number] = [0, 0];
 // let position: [number, number] = [0, 1];
+let position: [number, number] = [1, 0];
 // let moves = ["up"];
-let moves = ["down"];
+// let moves = ["down"];
+let moves = ["left"];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -723,6 +725,17 @@ const superStreetFighterSelection = (
         // LEFT
         else if (currentDir === "left") {
             console.log("left");
+            // EMPTY TO LEFT
+            if (fighters[horizontal - 1][vertical] === "") {
+                console.log("EMPTY LEFT, STOP!");
+            }
+            // ROTATE LEFT
+            else {
+                // !!!!!!!
+                if (horizontal - 1 < 0) {
+                    console.log("UNDEFINED LEFT, ROTATE!");
+                }
+            }
         }
         // RIGHT
         else {
