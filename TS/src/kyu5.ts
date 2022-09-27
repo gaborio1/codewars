@@ -659,11 +659,14 @@ let fighters = [
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [2, 0];
 // let position: [number, number] = [0, 0];
-// let position: [number, number] = [0, 1];
-let position: [number, number] = [1, 0];
+// let position: [number, number] = [0, 4];
+// let position: [number, number] = [1, 1];
+let position: [number, number] = [1, 5];
+
 // let moves = ["up"];
 // let moves = ["down"];
-let moves = ["left"];
+// let moves = ["left"];
+let moves = ["right"];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -671,18 +674,22 @@ const superStreetFighterSelection = (
     moves: string[]
 ): string[] => {
     console.log(fighters);
+    console.log(moves);
     // const vertical: number = position[0];
     // const horizontal: number = position[1];
     let currentPlayer: string = fighters[position[0]][position[1]];
-    console.log(currentPlayer);
+    console.log("current player:", currentPlayer);
     let solution: string[] = [currentPlayer];
+
+    let vertical: number = position[0];
+    let horizontal: number = position[1];
 
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir: string = moves[i];
-        console.log(currentDir);
+        console.log("current direction:", currentDir);
 
-        let vertical: number = position[0];
-        let horizontal: number = position[1];
+        // let vertical: number = position[0];
+        // let horizontal: number = position[1];
 
         // UP
         if (currentDir === "up") {
@@ -704,7 +711,6 @@ const superStreetFighterSelection = (
             }
             // DOWN
         } else if (currentDir === "down") {
-            console.log("down");
             // BOTTOM ROW, UNDEFINED BELOW
             if (vertical === fighters.length - 1) {
                 console.log("UNDEFINED, STOP!");
@@ -724,22 +730,45 @@ const superStreetFighterSelection = (
         }
         // LEFT
         else if (currentDir === "left") {
-            console.log("left");
             // EMPTY TO LEFT
-            if (fighters[horizontal - 1][vertical] === "") {
+            if (fighters[vertical][horizontal - 1] === "") {
                 console.log("EMPTY LEFT, STOP!");
             }
             // ROTATE LEFT
             else {
-                // !!!!!!!
-                if (horizontal - 1 < 0) {
+                // FIRST COLUMN, GO TO LAST INDEX
+                if (horizontal === 0) {
                     console.log("UNDEFINED LEFT, ROTATE!");
+                    horizontal = fighters[horizontal].length - 1;
+                    solution.push(fighters[vertical][horizontal]);
+                    // continue;
+                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
+                    // } else if (horizontal > 0) {
+                } else {
+                    horizontal -= 1;
+                    solution.push(fighters[vertical][horizontal]);
+                    // continue;
                 }
             }
         }
         // RIGHT
         else {
-            console.log("right");
+            console.log("RIGHT");
+            // EMPTY TO RIGHT
+            if (fighters[vertical][horizontal + 1] === "") {
+                console.log("EMPTY RIGHT, STOP");
+            }
+            // ROTATE RIGHT
+            else {
+                // LAST COLUMN, GO TO FIRST INDEX
+                if (horizontal === fighters[vertical].length - 1) {
+                    console.log("UNDEFINED RIGHT, ROTATE!");
+                }
+                // NOT LAST COLUMN, GO TO NEXT INDEXS
+                else {
+                    horizontal += 1;
+                }
+            }
         }
     }
 

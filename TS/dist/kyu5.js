@@ -6,18 +6,19 @@ let fighters = [
     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
-let position = [1, 0];
-let moves = ["left"];
+let position = [1, 5];
+let moves = ["right"];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
+    console.log(moves);
     let currentPlayer = fighters[position[0]][position[1]];
-    console.log(currentPlayer);
+    console.log("current player:", currentPlayer);
     let solution = [currentPlayer];
+    let vertical = position[0];
+    let horizontal = position[1];
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir = moves[i];
-        console.log(currentDir);
-        let vertical = position[0];
-        let horizontal = position[1];
+        console.log("current direction:", currentDir);
         if (currentDir === "up") {
             if (vertical < 1) {
                 solution.push(currentPlayer);
@@ -35,7 +36,6 @@ const superStreetFighterSelection = (fighters, position, moves) => {
             }
         }
         else if (currentDir === "down") {
-            console.log("down");
             if (vertical === fighters.length - 1) {
                 console.log("UNDEFINED, STOP!");
             }
@@ -50,18 +50,31 @@ const superStreetFighterSelection = (fighters, position, moves) => {
             }
         }
         else if (currentDir === "left") {
-            console.log("left");
-            if (fighters[horizontal - 1][vertical] === "") {
+            if (fighters[vertical][horizontal - 1] === "") {
                 console.log("EMPTY LEFT, STOP!");
             }
             else {
-                if (horizontal - 1 < 0) {
+                if (horizontal === 0) {
                     console.log("UNDEFINED LEFT, ROTATE!");
+                    horizontal = fighters[horizontal].length - 1;
+                    solution.push(fighters[vertical][horizontal]);
+                }
+                else {
+                    horizontal -= 1;
+                    solution.push(fighters[vertical][horizontal]);
                 }
             }
         }
         else {
-            console.log("right");
+            console.log("RIGHT");
+            if (fighters[vertical][horizontal + 1] === "") {
+                console.log("EMPTY RIGHT, STOP");
+            }
+            else {
+                if (horizontal === fighters[vertical].length - 1) {
+                    console.log("UNDEFINED RIGHT, ROTATE!");
+                }
+            }
         }
     }
     return solution;
