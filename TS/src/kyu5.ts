@@ -603,6 +603,8 @@
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+
+// !!! Time: 3745ms Passed: 7Failed: 7 !!!
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -659,14 +661,17 @@ let fighters = [
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [2, 0];
 // let position: [number, number] = [0, 0];
-// let position: [number, number] = [0, 4];
+let position: [number, number] = [0, 2];
 // let position: [number, number] = [1, 1];
-let position: [number, number] = [1, 5];
+// let position: [number, number] = [1, 5];
 
 // let moves = ["up"];
 // let moves = ["down"];
 // let moves = ["left"];
-let moves = ["right"];
+let moves = ['left', 'left',
+    'left', 'left',
+    'left', 'left',
+    'left', 'left'];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -675,11 +680,17 @@ const superStreetFighterSelection = (
 ): string[] => {
     console.log(fighters);
     console.log(moves);
+
+    if (!fighters.length) return [];
+    if (!position.length) return [];
+    if (!moves.length) return [];
+
     // const vertical: number = position[0];
     // const horizontal: number = position[1];
     let currentPlayer: string = fighters[position[0]][position[1]];
     console.log("current player:", currentPlayer);
-    let solution: string[] = [currentPlayer];
+    //     let solution: string[] = [currentPlayer];
+    let solution: string[] = [];
 
     let vertical: number = position[0];
     let horizontal: number = position[1];
@@ -697,6 +708,7 @@ const superStreetFighterSelection = (
             if (vertical < 1) {
                 solution.push(currentPlayer);
                 console.log("UNDEFINED, STOP!");
+                solution.push(fighters[vertical][horizontal]);
                 // VALID ROW
             } else {
                 // EMPTY ABOVE
@@ -714,6 +726,7 @@ const superStreetFighterSelection = (
             // BOTTOM ROW, UNDEFINED BELOW
             if (vertical === fighters.length - 1) {
                 console.log("UNDEFINED, STOP!");
+                solution.push(fighters[vertical][horizontal]);
             }
             // VALID ROWS
             else {
@@ -733,6 +746,7 @@ const superStreetFighterSelection = (
             // EMPTY TO LEFT
             if (fighters[vertical][horizontal - 1] === "") {
                 console.log("EMPTY LEFT, STOP!");
+                solution.push(fighters[vertical][horizontal]);
             }
             // ROTATE LEFT
             else {
@@ -757,16 +771,21 @@ const superStreetFighterSelection = (
             // EMPTY TO RIGHT
             if (fighters[vertical][horizontal + 1] === "") {
                 console.log("EMPTY RIGHT, STOP");
+                solution.push(fighters[vertical][horizontal]);
             }
             // ROTATE RIGHT
             else {
                 // LAST COLUMN, GO TO FIRST INDEX
                 if (horizontal === fighters[vertical].length - 1) {
                     console.log("UNDEFINED RIGHT, ROTATE!");
+                    horizontal = 0;
+                    solution.push(fighters[vertical][horizontal]);
+
                 }
-                // NOT LAST COLUMN, GO TO NEXT INDEXS
+                // NOT LAST COLUMN, GO TO NEXT INDEX
                 else {
                     horizontal += 1;
+                    solution.push(fighters[vertical][horizontal]);
                 }
             }
         }
@@ -1232,24 +1251,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-              .split(" ")
-              .map((s, i) => [
-                  s
-                      .split("")
-                      .map((c) => +c)
-                      .reduce((w, d) => (w += d)),
-                  i,
-                  +s,
-              ])
-              .sort(([a, b], [c, d]) => a - c || b - d)
-              .reduce(
-                  (d, w, i, [_, ...a]) =>
-                      a[i]
-                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                          : d,
-                  [] as [number, number, number[][]][]
-              )
-              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+            .split(" ")
+            .map((s, i) => [
+                s
+                    .split("")
+                    .map((c) => +c)
+                    .reduce((w, d) => (w += d)),
+                i,
+                +s,
+            ])
+            .sort(([a, b], [c, d]) => a - c || b - d)
+            .reduce(
+                (d, w, i, [_, ...a]) =>
+                    a[i]
+                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                        : d,
+                [] as [number, number, number[][]][]
+            )
+            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {
