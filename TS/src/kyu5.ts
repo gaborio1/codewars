@@ -648,30 +648,8 @@ The output is the same as before: the list of characters that have been hovered 
 Hopefully test cases will complete my explanation.
 */
 
-let fighters = [
-    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
-    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
-];
-// let fighters = [
-//     ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
-//     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-//     ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
-// ];
-// let position: [number, number] = [1, 1];
-// let position: [number, number] = [2, 0];
-// let position: [number, number] = [0, 0];
-let position: [number, number] = [0, 2];
-// let position: [number, number] = [1, 1];
-// let position: [number, number] = [1, 5];
-
-// let moves = ["up"];
-// let moves = ["down"];
-// let moves = ["left"];
-let moves = ['left', 'left',
-    'left', 'left',
-    'left', 'left',
-    'left', 'left'];
+/*
+!!! Time: 3745ms Passed: 7Failed: 7 !!!
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -755,9 +733,7 @@ const superStreetFighterSelection = (
                     console.log("UNDEFINED LEFT, ROTATE!");
                     horizontal = fighters[horizontal].length - 1;
                     solution.push(fighters[vertical][horizontal]);
-                    // continue;
                     // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
-                    // } else if (horizontal > 0) {
                 } else {
                     horizontal -= 1;
                     solution.push(fighters[vertical][horizontal]);
@@ -780,12 +756,182 @@ const superStreetFighterSelection = (
                     console.log("UNDEFINED RIGHT, ROTATE!");
                     horizontal = 0;
                     solution.push(fighters[vertical][horizontal]);
-
                 }
                 // NOT LAST COLUMN, GO TO NEXT INDEX
                 else {
                     horizontal += 1;
                     solution.push(fighters[vertical][horizontal]);
+                }
+            }
+        }
+    }
+
+    return solution;
+};
+
+*/
+
+let fighters = [
+    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+];
+// let fighters = [
+//     ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
+//     ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
+//     ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+// ];
+// let position: [number, number] = [1, 1];
+// let position: [number, number] = [2, 0];
+// let position: [number, number] = [0, 0];
+let position: [number, number] = [0, 2];
+// let position: [number, number] = [1, 1];
+// let position: [number, number] = [1, 5];
+
+// let moves = ["up"];
+// let moves = ["down"];
+// let moves = ["left"];
+// let moves = ["left", "left", "left", "left", "left", "left", "left", "left"];
+let moves = ["left", "left"];
+
+const superStreetFighterSelection = (
+    fighters: string[][],
+    position: [number, number],
+    moves: string[]
+): string[] => {
+    console.log(fighters);
+    console.log(moves);
+
+    if (!fighters.length) return [];
+    if (!position.length) return [];
+    if (!moves.length) return [];
+
+    // const vertical: number = position[0];
+    // const horizontal: number = position[1];
+    const currentPlayer: string = fighters[position[0]][position[1]];
+    console.log("current player:", currentPlayer);
+    //     let solution: string[] = [currentPlayer];
+    let solution: string[] = [];
+
+    let row: number = position[0];
+    let column: number = position[1];
+
+    for (let i = 0; i < moves.length; i += 1) {
+        let currentDir: string = moves[i];
+        console.log("current direction:", currentDir);
+
+        // let vertical: number = position[0];
+        // let horizontal: number = position[1];
+
+        // UP
+        if (currentDir === "up") {
+            // FIRST ROW, UNDEFINED ABOVE
+            if (row < 1) {
+                solution.push(currentPlayer);
+                console.log("UNDEFINED, STOP!");
+                solution.push(fighters[row][column]);
+                // VALID ROW
+            } else {
+                // EMPTY ABOVE
+                if (fighters[row - 1][column] === "") {
+                    solution.push(currentPlayer);
+                    console.log("EMPTY, STOP!");
+                    // VALID ABOVE
+                } else {
+                    column -= 1;
+                    solution.push(fighters[row][column]);
+                }
+            }
+            // DOWN
+        } else if (currentDir === "down") {
+            // BOTTOM ROW, UNDEFINED BELOW
+            if (row === fighters.length - 1) {
+                console.log("UNDEFINED, STOP!");
+                solution.push(fighters[row][column]);
+            }
+            // VALID ROWS
+            else {
+                // EMPTY BELOW
+                if (fighters[row + 1][column] === "") {
+                    console.log("EMPTY BELOW, STOP!");
+                }
+                // VALID BELOW
+                else {
+                    row += 1;
+                    solution.push(fighters[row][column]);
+                }
+            }
+        }
+        // LEFT
+        else if (currentDir === "left") {
+            /*
+            // EMPTY TO LEFT
+            if (fighters[row][column - 1] === "") {
+                console.log("EMPTY LEFT, STOP!");
+                solution.push(fighters[row][column]);
+            }
+            // ROTATE LEFT
+            else {
+                // FIRST COLUMN, GO TO LAST INDEX 
+                if (column === 0) {
+                    console.log("UNDEFINED LEFT, ROTATE!");
+                    column = fighters[column].length - 1;
+                    solution.push(fighters[row][vertical]);
+                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
+                } else {
+                    horizontal -= 1;
+                    solution.push(fighters[row][column]);
+                    // continue;
+                }
+            }
+            
+            */
+            if (fighters[row][column] !== " ") {
+                solution.push(currentPlayer);
+            }
+            // LOOP IN REVERSE UNTIL VALID INDEX IS FOUND
+            let index: number = column;
+            for (let i = fighters[row].length; i >= 0; i -= 1) {
+                if (index > -1) {
+                    index -= 1;
+                } else {
+                    index = fighters[row].length - 1;
+                }
+                console.log(i, " - ", fighters[row][index]);
+                if (fighters[row][index] !== " ") {
+                    // solution.push(fighters[row][index]);
+                    // row = index;
+                }
+            }
+
+            // let index: number = column;
+            // while (true) {
+            //     if (index < 1) {
+            //         index = fighters[row].length - 1;
+            //     }
+            //     index -= 1;
+            // }
+        }
+        // RIGHT
+        else {
+            console.log("RIGHT");
+            // EMPTY TO RIGHT
+            if (fighters[row][column + 1] === "") {
+                console.log("EMPTY RIGHT, STOP");
+                solution.push(fighters[row][column]);
+            }
+            // ROTATE RIGHT
+            else {
+                // LAST COLUMN, GO TO FIRST INDEX
+                if (column === fighters[row].length - 1) {
+                    console.log("UNDEFINED RIGHT, ROTATE!");
+                    column = 0;
+                    solution.push(fighters[row][column]);
+                }
+                // NOT LAST COLUMN, GO TO NEXT INDEX
+                else {
+                    column += 1;
+                    solution.push(fighters[row][column]);
                 }
             }
         }
@@ -1251,24 +1397,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-            .split(" ")
-            .map((s, i) => [
-                s
-                    .split("")
-                    .map((c) => +c)
-                    .reduce((w, d) => (w += d)),
-                i,
-                +s,
-            ])
-            .sort(([a, b], [c, d]) => a - c || b - d)
-            .reduce(
-                (d, w, i, [_, ...a]) =>
-                    a[i]
-                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                        : d,
-                [] as [number, number, number[][]][]
-            )
-            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+              .split(" ")
+              .map((s, i) => [
+                  s
+                      .split("")
+                      .map((c) => +c)
+                      .reduce((w, d) => (w += d)),
+                  i,
+                  +s,
+              ])
+              .sort(([a, b], [c, d]) => a - c || b - d)
+              .reduce(
+                  (d, w, i, [_, ...a]) =>
+                      a[i]
+                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                          : d,
+                  [] as [number, number, number[][]][]
+              )
+              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {

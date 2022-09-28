@@ -7,10 +7,7 @@ let fighters = [
     ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 ];
 let position = [0, 2];
-let moves = ['left', 'left',
-    'left', 'left',
-    'left', 'left',
-    'left', 'left'];
+let moves = ["left", "left"];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
     console.log(moves);
@@ -20,78 +17,78 @@ const superStreetFighterSelection = (fighters, position, moves) => {
         return [];
     if (!moves.length)
         return [];
-    let currentPlayer = fighters[position[0]][position[1]];
+    const currentPlayer = fighters[position[0]][position[1]];
     console.log("current player:", currentPlayer);
-    let solution = [currentPlayer];
-    let vertical = position[0];
-    let horizontal = position[1];
+    let solution = [];
+    let row = position[0];
+    let column = position[1];
     for (let i = 0; i < moves.length; i += 1) {
         let currentDir = moves[i];
         console.log("current direction:", currentDir);
         if (currentDir === "up") {
-            if (vertical < 1) {
+            if (row < 1) {
                 solution.push(currentPlayer);
                 console.log("UNDEFINED, STOP!");
-                solution.push(fighters[vertical][horizontal]);
+                solution.push(fighters[row][column]);
             }
             else {
-                if (fighters[vertical - 1][horizontal] === "") {
+                if (fighters[row - 1][column] === "") {
                     solution.push(currentPlayer);
                     console.log("EMPTY, STOP!");
                 }
                 else {
-                    vertical -= 1;
-                    solution.push(fighters[vertical][horizontal]);
+                    column -= 1;
+                    solution.push(fighters[row][column]);
                 }
             }
         }
         else if (currentDir === "down") {
-            if (vertical === fighters.length - 1) {
+            if (row === fighters.length - 1) {
                 console.log("UNDEFINED, STOP!");
-                solution.push(fighters[vertical][horizontal]);
+                solution.push(fighters[row][column]);
             }
             else {
-                if (fighters[vertical + 1][horizontal] === "") {
+                if (fighters[row + 1][column] === "") {
                     console.log("EMPTY BELOW, STOP!");
                 }
                 else {
-                    vertical += 1;
-                    solution.push(fighters[vertical][horizontal]);
+                    row += 1;
+                    solution.push(fighters[row][column]);
                 }
             }
         }
         else if (currentDir === "left") {
-            if (fighters[vertical][horizontal - 1] === "") {
-                console.log("EMPTY LEFT, STOP!");
-                solution.push(fighters[vertical][horizontal]);
+            if (fighters[row][column] !== " ") {
+                solution.push(currentPlayer);
             }
-            else {
-                if (horizontal === 0) {
-                    console.log("UNDEFINED LEFT, ROTATE!");
-                    horizontal = fighters[horizontal].length - 1;
-                    solution.push(fighters[vertical][horizontal]);
+            let index = column;
+            for (let i = fighters[row].length; i >= 0; i -= 1) {
+                if (index > -1) {
+                    index -= 1;
                 }
                 else {
-                    horizontal -= 1;
-                    solution.push(fighters[vertical][horizontal]);
+                    index = fighters[row].length - 1;
+                }
+                console.log(i, " - ", fighters[row][index]);
+                if (fighters[row][index] !== " ") {
                 }
             }
         }
         else {
             console.log("RIGHT");
-            if (fighters[vertical][horizontal + 1] === "") {
+            if (fighters[row][column + 1] === "") {
                 console.log("EMPTY RIGHT, STOP");
-                solution.push(fighters[vertical][horizontal]);
+                solution.push(fighters[row][column]);
             }
             else {
-                if (horizontal === fighters[vertical].length - 1) {
+                if (column === fighters[row].length - 1) {
                     console.log("UNDEFINED RIGHT, ROTATE!");
-                    horizontal = 0;
-                    solution.push(fighters[vertical][horizontal]);
+                    column = 0;
+                    solution.push(fighters[row][column]);
                 }
                 else {
-                    horizontal += 1;
-                    solution.push(fighters[vertical][horizontal]);
+                    column += 1;
+                    solution.push(fighters[row][column]);
                 }
             }
         }
