@@ -604,7 +604,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// !!! Time: 3745ms Passed: 7Failed: 7 !!!
+// !!! Time: 3745ms Passed: 8 Failed: 7 !!!
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -798,7 +798,7 @@ let moves = ['right', 'right',
     'right', 'right'];
 // let moves = ["left", "left"];
 
-const superStreetFighterSelection = (
+const superStreetFighterSelection2 = (
     fighters: string[][],
     position: [number, number],
     moves: string[]
@@ -968,6 +968,161 @@ const superStreetFighterSelection = (
 
     return solution;
 };
+
+const superStreetFighterSelection = (
+    fighters: string[][],
+    position: [number, number],
+    moves: string[]
+): string[] => {
+    console.log(fighters);
+    console.log(moves);
+
+    if (!fighters.length) return [];
+    if (!position.length) return [];
+    if (!moves.length) return [];
+
+    // const vertical: number = position[0];
+    // const horizontal: number = position[1];
+    const firstPlayer: string = fighters[position[0]][position[1]];
+    console.log("current player:", firstPlayer);
+    let solution: string[] = [];
+    //     let solution: string[] = [firstPlayer];
+
+    let row: number = position[0];
+    let column: number = position[1];
+
+    for (let i = 0; i < moves.length; i += 1) {
+        let currentDir: string = moves[i];
+        console.log("current direction:", currentDir);
+
+        // let vertical: number = position[0];
+        // let horizontal: number = position[1];
+
+        // UP
+        if (currentDir === "up") {
+            // FIRST ROW, UNDEFINED ABOVE
+            if (row < 1) {
+                // solution.push(currentPlayer);
+                console.log("UNDEFINED, STOP!");
+                solution.push(fighters[row][column]);
+                // VALID ROW
+            } else {
+                // EMPTY ABOVE
+                if (fighters[row - 1][column] === "") {
+                    solution.push(firstPlayer);
+                    console.log("EMPTY, STOP!");
+                    // VALID ABOVE
+                } else {
+                    column -= 1;
+                    solution.push(fighters[row][column]);
+                }
+            }
+            // DOWN
+        } else if (currentDir === "down") {
+            // BOTTOM ROW, UNDEFINED BELOW
+            if (row === fighters.length - 1) {
+                console.log("UNDEFINED, STOP!");
+                solution.push(fighters[row][column]);
+            }
+            // VALID ROWS
+            else {
+                // EMPTY BELOW
+                if (fighters[row + 1][column] === "") {
+                    console.log("EMPTY BELOW, STOP!");
+                }
+                // VALID BELOW
+                else {
+                    row += 1;
+                    solution.push(fighters[row][column]);
+                }
+            }
+        }
+        // LEFT
+        else if (currentDir === "left") {
+            /*
+            // EMPTY TO LEFT
+            if (fighters[row][column - 1] === "") {
+                console.log("EMPTY LEFT, STOP!");
+                solution.push(fighters[row][column]);
+            }
+            // ROTATE LEFT
+            else {
+                // FIRST COLUMN, GO TO LAST INDEX 
+                if (column === 0) {
+                    console.log("UNDEFINED LEFT, ROTATE!");
+                    column = fighters[column].length - 1;
+                    solution.push(fighters[row][vertical]);
+                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
+                } else {
+                    horizontal -= 1;
+                    solution.push(fighters[row][column]);
+                    // continue;
+                }
+            }
+            
+            */
+
+            // if (fighters[row][column] !== "") {
+            //     solution.push(firstPlayer);
+            // }
+            // LOOP THROUGH ENTIRE LENGTH TO CURRENT INDEX IN REVERSE UNTIL VALID INDEX IS FOUND
+            let index: number = column;
+            for (let i = fighters[row].length; i >= 0; i -= 1) {
+                if (index > 0) {
+                    index -= 1;
+                } else {
+                    index = fighters[row].length - 1;
+                }
+                console.log(i, " - ", fighters[row][index]);
+                // if (fighters[row][index] === " ") {
+                // if (fighters[row][index].length < 2) {
+                //     console.log("empty");
+                // }
+                if (fighters[row][index] !== "") {
+                    console.log("player found: ", fighters[row][index]);
+                    solution.push(fighters[row][index]);
+                    column = index;
+                    break;
+                }
+            }
+
+            // let index: number = column;
+            // while (true) {
+            //     if (index < 1) {
+            //         index = fighters[row].length - 1;
+            //     }
+            //     index -= 1;
+            // }
+        }
+        // RIGHT
+        else {
+            console.log("RIGHT");
+            // EMPTY TO RIGHT
+            if (fighters[row][column + 1] === "") {
+                console.log("EMPTY RIGHT, STOP");
+                solution.push(fighters[row][column]);
+            }
+            // ROTATE RIGHT
+            else {
+                // LAST COLUMN, GO TO FIRST INDEX
+                if (column === fighters[row].length - 1) {
+                    console.log("UNDEFINED RIGHT, ROTATE!");
+                    column = 0;
+                    solution.push(fighters[row][column]);
+                }
+                // NOT LAST COLUMN, GO TO NEXT INDEX
+                else {
+                    column += 1;
+                    solution.push(fighters[row][column]);
+                }
+            }
+        }
+    }
+
+    return solution;
+};
+
+
 
 /*
 let fighters = [
