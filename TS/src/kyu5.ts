@@ -792,7 +792,11 @@ let position: [number, number] = [0, 2];
 // let moves = ["down"];
 // let moves = ["left"];
 // let moves = ["left", "left", "left", "left", "left", "left", "left", "left"];
-let moves = ["left", "left"];
+let moves = ['right', 'right',
+    'right', 'right',
+    'right', 'right',
+    'right', 'right'];
+// let moves = ["left", "left"];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -808,10 +812,10 @@ const superStreetFighterSelection = (
 
     // const vertical: number = position[0];
     // const horizontal: number = position[1];
-    const currentPlayer: string = fighters[position[0]][position[1]];
-    console.log("current player:", currentPlayer);
+    const firstPlayer: string = fighters[position[0]][position[1]];
+    console.log("current player:", firstPlayer);
     //     let solution: string[] = [currentPlayer];
-    let solution: string[] = [];
+    let solution: string[] = [firstPlayer];
 
     let row: number = position[0];
     let column: number = position[1];
@@ -827,14 +831,14 @@ const superStreetFighterSelection = (
         if (currentDir === "up") {
             // FIRST ROW, UNDEFINED ABOVE
             if (row < 1) {
-                solution.push(currentPlayer);
+                // solution.push(currentPlayer);
                 console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
                 // VALID ROW
             } else {
                 // EMPTY ABOVE
                 if (fighters[row - 1][column] === "") {
-                    solution.push(currentPlayer);
+                    solution.push(firstPlayer);
                     console.log("EMPTY, STOP!");
                     // VALID ABOVE
                 } else {
@@ -886,35 +890,36 @@ const superStreetFighterSelection = (
             }
             
             */
-            if (fighters[row][column] !== " ") {
-                solution.push(currentPlayer);
-            }
-            // LOOP IN REVERSE UNTIL VALID INDEX IS FOUND
+
+            // if (fighters[row][column] !== "") {
+            //     solution.push(firstPlayer);
+            // }
+            // LOOP THROUGH ENTIRE LENGTH TO CURRENT INDEX IN REVERSE UNTIL VALID INDEX IS FOUND
             let index: number = column;
             for (let i = fighters[row].length; i >= 0; i -= 1) {
-                if (index > -1) {
+                if (index > 0) {
                     index -= 1;
                 } else {
                     index = fighters[row].length - 1;
                 }
                 console.log(i, " - ", fighters[row][index]);
-                if (fighters[row][index] !== " ") {
-                    // solution.push(fighters[row][index]);
-                    // row = index;
+                // if (fighters[row][index] === " ") {
+                // if (fighters[row][index].length < 2) {
+                //     console.log("empty");
+                // }
+                if (fighters[row][index] !== "") {
+                    console.log("player found: ", fighters[row][index]);
+                    solution.push(fighters[row][index]);
+                    column = index;
+                    break;
                 }
             }
-
-            // let index: number = column;
-            // while (true) {
-            //     if (index < 1) {
-            //         index = fighters[row].length - 1;
-            //     }
-            //     index -= 1;
-            // }
         }
         // RIGHT
         else {
             console.log("RIGHT");
+
+            /*
             // EMPTY TO RIGHT
             if (fighters[row][column + 1] === "") {
                 console.log("EMPTY RIGHT, STOP");
@@ -934,6 +939,30 @@ const superStreetFighterSelection = (
                     solution.push(fighters[row][column]);
                 }
             }
+            */
+            let index: number = column;
+            // for (let i = fighters[row].length; i >= 0; i -= 1) {
+            for (let i = 0; i < fighters[row].length; i += 1) {
+                // console.log("------------", index);
+                if (index < fighters[row].length - 1) {
+                    index += 1;
+                } else {
+                    index = 0;
+                }
+                console.log("------------", index);
+                console.log(i, " - ", fighters[row][index]);
+                // if (fighters[row][index] === " ") {
+                // if (fighters[row][index].length < 2) {
+                //     console.log("empty");
+                // }
+                if (fighters[row][index] !== "") {
+                    console.log("player found: ", fighters[row][index]);
+                    solution.push(fighters[row][index]);
+                    column = index;
+                    break;
+                }
+            }
+
         }
     }
 
@@ -947,9 +976,9 @@ let fighters = [
     [   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"]
 ];
 let opts = ["up","down","right","left"];
-
+ 
 describe("Character selection", function(){
-
+ 
   it("should work with no selection cursor moves", function(){
     let moves:string[] =  [];
     let position: [number,number]  = [0,0];
@@ -957,72 +986,72 @@ describe("Character selection", function(){
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
   
-
-
-
+ 
+ 
+ 
   it("should stop on empty spaces vertically", function(){
     let moves =  ["up"];
     let position: [number,number]  = [1,0];
     let solution = ['Balrog'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should stop on empty spaces vertically", function(){
     let moves =  ["up","up","up","up"];
     let position: [number,number]  = [1,0];
     let solution = ['Balrog','Balrog','Balrog','Balrog'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should stop vertically", function(){
     let moves =  ["down","down","down","down"];
     let position: [number,number]  = [1,0];
     let solution = ['Vega','Vega','Vega','Vega'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should stop on empty spaces vertically", function(){
     let moves =  ["up","up","up","up"];
     let position: [number,number]  = [1,5];
     let solution = ['Sagat','Sagat','Sagat','Sagat'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should stop vertically", function(){
     let moves =  ["down","down","down","down"];
     let position: [number,number]  = [1,5];
     let solution = ['M.Bison','M.Bison','M.Bison','M.Bison'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should rotate horizontally", function(){
     let moves =  ["left","left","left","left","left","left","left","left"];
     let position: [number,number]  = [0,2];
     let solution = ['Ryu', 'Guile', 'Blanka', 'E.Honda', 'Ryu', 'Guile', 'Blanka', 'E.Honda'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should rotate horizontally", function(){
     let moves =  ["left","left","left","left","left","left","left","left"];
     let position: [number,number]  = [1,3];
     let solution = ['Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should rotate horizontally with empty spaces", function(){
     let moves =  ["right","right","right","right","right","right","right","right"];
     let position: [number,number]  = [0,2];
     let solution = ['Blanka', 'Guile', 'Ryu', 'E.Honda', 'Blanka', 'Guile', 'Ryu', 'E.Honda'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
   it("should rotate on all rows", function(){
     let moves =  ["right","right","right","right","right","right","down","left","left","left","left","left","left","left","left","left","left","left","left","down","right","right","right","right","right","right","right","right","right","right","right","right"];
     let position: [number,number]  = [0,2];
     let solution = ['Blanka', 'Guile', 'Ryu', 'E.Honda', 'Blanka', 'Guile', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Cammy', 'M.Bison', 'Vega', 'T.Hawk', 'Fei Long', 'Deejay', 'Cammy', 'M.Bison', 'Vega', 'T.Hawk', 'Fei Long', 'Deejay', 'Cammy'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters), position, moves),solution);
   });
-
+ 
 // DO NOT CHANGE THIS VARIABLE!
 // LIST WITH HOLES AND DUPLICATES
 let fighters3 = [
@@ -1030,21 +1059,21 @@ let fighters3 = [
     [ "Balrog",    "Ken",  "Chun Li",       "", "M.Bison", "Zangief", "Dhalsim", "Sagat"  ],
     [   "Vega",       "", "Fei Long", "Balrog",  "Deejay",   "Cammy",        "", "T.Hawk"]
 ];
-
+ 
   it("should rotate on all rows", function(){
     let moves =  ["right","right","right","right","right","right","down","left","left","left","left","left","left","left","left","left","left","left","left","down","right","right","right","right","right","right","right","right","right","right","right","right"];
     let position: [number,number]  = [0,2];
     let solution = ['Cammy', 'Blanka', 'Guile', 'Chun Li', 'Ryu', 'E.Honda', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'M.Bison', 'Chun Li', 'Ken', 'Balrog', 'Sagat', 'Dhalsim', 'Zangief', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Balrog', 'Deejay', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Balrog', 'Deejay', 'Cammy'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters3), position, moves),solution);
   });
-
+ 
   it("should work", function(){
     let moves =  ["down","right","right","right","down","left","left","down","right","right","right","up"];
     let position: [number,number]  = [0,3];
     let solution = ['Cammy', 'Blanka', 'Guile', 'Chun Li', 'Sagat', 'Dhalsim', 'Zangief', 'Cammy', 'T.Hawk', 'Vega', 'Fei Long', 'Chun Li'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters3), position, moves),solution);
   });
-
+ 
   // DO NOT CHANGE THIS VARIABLE!
   let fighters4 = [
     [        "",     "Ryu",  "E.Honda",  "Cammy" ],
@@ -1054,14 +1083,14 @@ let fighters3 = [
       [ "M.Bison", "Zangief",  "Dhalsim", "Sagat"  ],
       [  "Deejay",   "Cammy",         "", "T.Hawk" ]
   ]
-
+ 
   it("should work with longer grid", function(){
     let moves =  ["left","left","down","right","right","right","right","down","left","left","left","left","down","right","right", "down","right","right","right","down","left","left","left","down","left","left","left"];
     let position: [number,number]  = [0,3];
     let solution = ['E.Honda', 'Ryu', 'Ken', 'Chun Li', 'Balrog', 'Ken', 'Chun Li', 'Fei Long', 'Vega', 'Balrog', 'Fei Long', 'Vega', 'Blanka', 'Guile', 'Chun Li', 'Sagat', 'M.Bison', 'Zangief', 'Dhalsim', 'Dhalsim', 'Zangief', 'M.Bison', 'Sagat', 'T.Hawk', 'Cammy', 'Deejay', 'T.Hawk'];
     assert.deepEqual(superStreetFighterSelection(copy(fighters4), position, moves),solution);
   });
-
+ 
   it("should work with odd initial position", function(){
     let moves =  ["left","left","down","right","right","right","right","down","left","left","left","left","up","right","right", "up","right","right","right"];
     let position: [number,number]  = [3,3];
@@ -1088,33 +1117,33 @@ console.log(superStreetFighterSelection(fighters, position, moves));
 Input
 a string strng of n positive numbers (n = 0 or n >= 2)
 Let us call weight of a number the sum of its digits. For example 99 will have "weight" 18, 100 will have "weight" 1.
-
+ 
 Two numbers are "close" if the difference of their weights is small.
-
+ 
 Task:
 For each number in strng calculate its "weight" and then find two numbers of strng that have:
-
+ 
 the smallest difference of weights ie that are the closest
 with the smallest weights
 and with the smallest indices (or ranks, numbered from 0) in strng
 Output:
 an array of two arrays, each subarray in the following format:
 [number-weight, index in strng of the corresponding number, original corresponding number in strng]
-
+ 
 or a pair of two subarrays (Haskell, Clojure, FSharp) or an array of tuples (Elixir, C++)
-
+ 
 or a (char*) in C or a string in some other languages mimicking an array of two subarrays or a string
-
+ 
 or a matrix in R (2 rows, 3 columns, no columns names)
-
+ 
 The two subarrays are sorted in ascending order by their number weights if these weights are different, by their indexes in the string if they have the same weights.
-
+ 
 Examples:
 Let us call that function closest
-
+ 
 strng = "103 123 4444 99 2000"
 the weights are 4, 6, 16, 18, 2 (ie 2, 4, 6, 16, 18)
-
+ 
 closest should return [[2, 4, 2000], [4, 0, 103]] (or ([2, 4, 2000], [4, 0, 103])
 or [{2, 4, 2000}, {4, 0, 103}] or ... depending on the language)
 because 2000 and 103 have for weight 2 and 4, their indexes in strng are 4 and 0.
@@ -1122,7 +1151,7 @@ The smallest difference is 2.
 4 (for 103) and 6 (for 123) have a difference of 2 too but they are not 
 the smallest ones with a difference of 2 between their weights.
 ....................
-
+ 
 strng = "80 71 62 53"
 All the weights are 8.
 closest should return [[8, 0, 80], [8, 1, 71]]
@@ -1131,22 +1160,22 @@ closest should return [[8, 0, 80], [8, 1, 71]]
 - the smallest difference of weights (which is 0 for all pairs)
 - but not the smallest indices in strng.
 ....................
-
+ 
 strng = "444 2000 445 544"
 the weights are 12, 2, 13, 13 (ie 2, 12, 13, 13)
-
+ 
 closest should return [[13, 2, 445], [13, 3, 544]] or ([13, 2, 445], [13, 3, 544])
 or [{13, 2, 445}, {13, 3, 544}] or ...
 444 and 2000 have the smallest weights (12 and 2) but not the smallest difference of weights;
 they are not the closest.
 Here the smallest difference is 0 and in the result the indexes are in ascending order.
 ...................
-
+ 
 closest("444 2000 445 644 2001 1002") --> [[3, 4, 2001], [3, 5, 1002]] or ([3, 4, 2001], 
 [3, 5, 1002]]) or [{3, 4, 2001}, {3, 5, 1002}] or ...
 Here the smallest difference is 0 and in the result the indexes are in ascending order.
 ...................
-
+ 
 closest("239382 162 254765 182 485944 468751 49780 108 54")
 The weights are: 27, 9, 29, 11, 34, 31, 28, 9, 9.
 closest should return  [[9, 1, 162], [9, 7, 108]] or ([9, 1, 162], [9, 7, 108]) 
@@ -1154,25 +1183,25 @@ or [{9, 1, 162}, {9, 7, 108}] or ...
 108 and 54 have the smallest difference of weights too, they also have 
 the smallest weights but they don't have the smallest ranks in the original string.
 ..................
-
+ 
 closest("54 239382 162 254765 182 485944 468751 49780 108")
 closest should return  [[9, 0, 54], [9, 2, 162]] or ([9, 0, 54], [9, 2, 162])
 or [{9, 0, 54}, {9, 2, 162}] or ...
 Notes :
 If n == 0 closest("") should return []
-
+ 
 or ([], []) in Haskell, Clojure, FSharp
-
+ 
 or [{}, {}] in Elixir or '(() ()) in Racket
-
+ 
 or {{0,0,0}, {0,0,0}} in C++
-
+ 
 or "[(), ()]" in Go, Nim,
-
+ 
 or "{{0,0,0}, {0,0,0}}" in C, NULL in R
-
+ 
 or "" in Perl.
-
+ 
 See Example tests for the format of the results in your language.
 */
 
@@ -1270,9 +1299,9 @@ const closest = (str: string): number[][] => {
     return solution;
 };
 /*
-
+ 
 console.log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"));
-
+ 
 numArr: [
   239382,    162, 254765,
      182, 485944,    134,
@@ -1397,24 +1426,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-              .split(" ")
-              .map((s, i) => [
-                  s
-                      .split("")
-                      .map((c) => +c)
-                      .reduce((w, d) => (w += d)),
-                  i,
-                  +s,
-              ])
-              .sort(([a, b], [c, d]) => a - c || b - d)
-              .reduce(
-                  (d, w, i, [_, ...a]) =>
-                      a[i]
-                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                          : d,
-                  [] as [number, number, number[][]][]
-              )
-              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+            .split(" ")
+            .map((s, i) => [
+                s
+                    .split("")
+                    .map((c) => +c)
+                    .reduce((w, d) => (w += d)),
+                i,
+                +s,
+            ])
+            .sort(([a, b], [c, d]) => a - c || b - d)
+            .reduce(
+                (d, w, i, [_, ...a]) =>
+                    a[i]
+                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                        : d,
+                [] as [number, number, number[][]][]
+            )
+            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {
@@ -1563,31 +1592,31 @@ export function closest6(strng: string): number[][] {
 
 /*
 A natural number is called k-prime if it has exactly k prime factors, counted with multiplicity. For example:
-
+ 
 k = 2  -->  4, 6, 9, 10, 14, 15, 21, 22, ...
 k = 3  -->  8, 12, 18, 20, 27, 28, 30, ...
 k = 5  -->  32, 48, 72, 80, 108, 112, ...
 A natural number is thus prime if and only if it is 1-prime.
-
+ 
 Task:
 Complete the function count_Kprimes (or countKprimes, count-K-primes, kPrimes) which is given parameters k, start, end (or nd) and returns an array (or a list or a string depending on the language - see "Solution" and "Sample Tests") of the k-primes between start (inclusive) and end (inclusive).
-
+ 
 Example:
 countKprimes(5, 500, 600) --> [500, 520, 552, 567, 588, 592, 594]
 Notes:
-
+ 
 The first function would have been better named: findKprimes or kPrimes :-)
 In C some helper functions are given (see declarations in 'Solution').
 For Go: nil slice is expected when there are no k-primes between start and end.
 Second Task: puzzle (not for Shell)
 Given a positive integer s, find the total number of solutions of the equation a + b + c = s, where a is 1-prime, b is 3-prime, and c is 7-prime.
-
+ 
 Call this function puzzle(s).
-
+ 
 Examples:
 puzzle(138)  -->  1  because [2 + 8 + 128] is the only solution
 puzzle(143)  -->  2  because [3 + 12 + 128] and [7 + 8 + 128] are the solutions
-
+ 
 */
 export const countKprimes = (
     k: number,
@@ -1624,24 +1653,24 @@ testing(countKprimes(2, 0, 100), [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 3
 
 /*
 John and his wife Ann have decided to go to Codewars. On the first day Ann will do one kata and John - he wants to know how it is working - 0 kata.
-
+ 
 Let us call a(n) - and j(n) - the number of katas done by Ann - and John - at day n. We have a(0) = 1 and in the same manner j(0) = 0.
-
+ 
 They have chosen the following rules:
-
+ 
 On day n the number of katas done by Ann should be n minus the number of katas done by John at day t, t being equal to the number of katas done by Ann herself at day n - 1
-
+ 
 On day n the number of katas done by John should be n minus the number of katas done by Ann at day t, t being equal to the number of katas done by John himself at day n - 1
-
+ 
 Whoops! I think they need to lay out a little clearer exactly what there're getting themselves into!
-
+ 
 Could you write:
 functions ann(n) and john(n) that return the list of the number of katas Ann/John does on the first n days;
 functions sum_ann(n) and sum_john(n) that return the total number of katas done by Ann/John on the first n days
 Examples:
 john(11)  -->  [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]
 ann(6)    -->  [1, 1, 2, 2, 3, 3]
-
+ 
 sum_john(75)  -->  1720
 sum_ann(150)  -->  6930
 Note:
@@ -1678,7 +1707,7 @@ describe("Fixed tests",function() {
     it("sumJohn",function() {
         testSumJohn(75, 1720);
 })})
-
+ 
 */
 // console.log();
 // console.log();
@@ -1696,14 +1725,14 @@ describe("Fixed tests",function() {
 
 /*
 Extend the String object (JS) or create a function (Python, C#) that converts the value of the String to and from Base64 using the ASCII (UTF-8 for C#) character set.
-
+ 
 Example (input -> output):
 'this is a string!!' -> 'dGhpcyBpcyBhIHN0cmluZyEh'
 You can learn more about Base64 encoding and decoding here.
-
+ 
 Note: This kata uses the non-padding version ("=" is not added to the end).
-
-
+ 
+ 
 */
 export function toBase64(str: string): string {
     return "hello";
@@ -1734,23 +1763,23 @@ export function fromBase64(str: string): string {
 /*
 Buddy pairs
 You know what divisors of a number are. The divisors of a positive integer n are said to be proper when you consider only the divisors other than n itself. In the following description, divisors will mean proper divisors. For example for 100 they are 1, 2, 4, 5, 10, 20, 25, and 50.
-
+ 
 Let s(n) be the sum of these proper divisors of n. Call buddy two positive integers such that the sum of the proper divisors of each number is one more than the other number:
-
+ 
 (n, m) are a pair of buddy if s(m) = n + 1 and s(n) = m + 1
-
+ 
 For example 48 & 75 is such a pair:
-
+ 
 Divisors of 48 are: 1, 2, 3, 4, 6, 8, 12, 16, 24 --> sum: 76 = 75 + 1
 Divisors of 75 are: 1, 3, 5, 15, 25 --> sum: 49 = 48 + 1
 Task
 Given two positive integers start and limit, the function buddy(start, limit) should return the first pair (n m) of buddy pairs such that n (positive integer) is between start (inclusive) and limit (inclusive); m can be greater than limit and has to be greater than n
-
+ 
 If there is no buddy pair satisfying the conditions, then return "Nothing" or (for Go lang) nil or (for Dart) null; (for Lua, Pascal, Perl, D) [-1, -1]; (for Erlang {-1, -1}).
-
+ 
 Examples
 (depending on the languages)
-
+ 
 buddy(10, 50) returns [48, 75] 
 buddy(48, 50) returns [48, 75]
 or
@@ -1764,7 +1793,7 @@ See more examples in "Sample Tests:" of your language.
 /*
 // PASSED FIXED TESTS 1 AND 4
 const buddy = (start: number, limit: number): number[] => {
-
+ 
     let solution: number[] = [];
     // CALC SUM OF DIVISORS
     for (let i = start; i <= limit; i += 1) {
@@ -1778,7 +1807,7 @@ const buddy = (start: number, limit: number): number[] => {
         // console.log("   divisors", divisors);
         const currenSum: number = divisors.reduce((acc, curr) => acc + curr);
         console.log("       current sum:", currenSum, "\n");
-
+ 
         // START NEW LOOP TO FIND PAIR
         let k = i + 1;
         // let k = currenSum - 1;
@@ -1791,15 +1820,15 @@ const buddy = (start: number, limit: number): number[] => {
                 }
             }
             // k += 1;
-
+ 
             // console.log(buddyDivisors);
             const buddySum: number = buddyDivisors.reduce(
                 (acc, curr) => acc + curr
             );
             console.log("               buddySum:", buddySum);
-
+ 
             // if (k === i + 3) break;
-
+ 
             // if (buddySum === i + 1) {
             if (buddySum === i + 1 && currenSum === k + 1) {
                 console.log("Match found:", i, k);
@@ -1809,24 +1838,24 @@ const buddy = (start: number, limit: number): number[] => {
                 break;
                 // !!!!!!!!!
             }
-
+ 
             if (k > 90) break;
-
+ 
             k += 1;
         }
     }
-
+ 
     console.log("SOLUTION:", solution);
-
+ 
     return solution;
-
+ 
 };
 */
 
 /*
 // !!! TIMEOUT ON FIXED TEST 2 !!!
 const buddy = (start: number, limit: number): number[] => {
-
+ 
     let solution: number[] = [];
     // CALC SUM OF DIVISORS
     for (let i = start; i <= limit; i += 1) {
@@ -1837,14 +1866,14 @@ const buddy = (start: number, limit: number): number[] => {
                 divisorsSum += j;
             }
         }
-
+ 
         console.log("       current sum:", divisorsSum, "\n");
-
+ 
         // START NEW LOOP TO FIND PAIR
         let k = divisorsSum < i
             ? i + 1
             : divisorsSum - 1;
-
+ 
         while (true) {
             console.log("           new loop:", k);
             let buddyDivisorsSum = 0;
@@ -1853,25 +1882,25 @@ const buddy = (start: number, limit: number): number[] => {
                     buddyDivisorsSum += l;
                 }
             }
-
+ 
             console.log("               buddySum:", buddyDivisorsSum);
-
+ 
             if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
                 return solution;
             }
-
+ 
             if (k > 90) break;
-
+ 
             k += 1;
         }
     }
-
+ 
     console.log("SOLUTION:", solution);
-
+ 
     return solution;
-
+ 
 };
 */
 
@@ -1880,7 +1909,7 @@ const buddy = (start: number, limit: number): number[] => {
     const divSum = (num: number): number => {
         // Final result of summation of divisors
         let result = 0;
-
+ 
         // find all divisors which divides 'num'
         for (let i = 2; i <= Math.sqrt(num); i++) {
             // if 'i' is divisor of 'num'
@@ -1891,49 +1920,49 @@ const buddy = (start: number, limit: number): number[] => {
                 else result += i + num / i;
             }
         }
-
+ 
         // Add 1 to the result as 1 is also a divisor
         return result + 1;
     };
-
+ 
     let solution: number[] = [];
     // CALC SUM OF DIVISORS
     for (let i = start; i <= limit; i += 1) {
         console.log("number", i);
-
+ 
         const divisorsSum = divSum(i);
-
+ 
         console.log("       current sum:", divisorsSum, "\n");
-
+ 
         // START NEW LOOP TO FIND PAIR
         let k = divisorsSum < i ? i + 1 : divisorsSum - 1;
-
+ 
         while (true) {
             console.log("           new loop:", k);
-
+ 
             let buddyDivisorsSum = divSum(k);
-
+ 
             console.log("               buddySum:", buddyDivisorsSum);
-
+ 
             if (buddyDivisorsSum === i + 1 && divisorsSum === k + 1) {
                 console.log("Match found:", i, k);
                 solution.push(i, k);
                 // ❗️❗️❗️
                 return solution;
             }
-
-
+ 
+ 
             // if (k > 90) break;
             // ❗️❗️❗️
             break;
             // return solution;
-
+ 
             // k += 1;
         }
     }
-
+ 
     console.log("SOLUTION:", solution);
-
+ 
     return solution;
 };
 */
