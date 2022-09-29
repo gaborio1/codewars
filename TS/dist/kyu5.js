@@ -2,16 +2,40 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
 let fighters = [
-    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
-    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["", "Ryu", "E.Honda", "Cammy", "Blanka", "Guile", "", "Chun Li"],
+    ["Balrog", "Ken", "Chun Li", "", "M.Bison", "Zangief", "Dhalsim", "Sagat"],
+    ["Vega", "", "Fei Long", "Balrog", "Deejay", "Cammy", "", "T.Hawk"],
 ];
-let position = [0, 2];
-let moves = ['right', 'right',
-    'right', 'right',
-    'right', 'right',
-    'right', 'right'];
-const superStreetFighterSelection2 = (fighters, position, moves) => {
+let position = [0, 3];
+let moves = [
+    "down",
+    "right",
+    "right",
+    "right",
+    "down",
+    "left",
+    "left",
+    "down",
+    "right",
+    "right",
+    "right",
+    "up",
+];
+let seq = [
+    "Cammy",
+    "Blanka",
+    "Guile",
+    "Chun Li",
+    "Sagat",
+    "Dhalsim",
+    "Zangief",
+    "Cammy",
+    "T.Hawk",
+    "Vega",
+    "Fei Long",
+    "Chun Li",
+];
+const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
     console.log(moves);
     if (!fighters.length)
@@ -21,8 +45,8 @@ const superStreetFighterSelection2 = (fighters, position, moves) => {
     if (!moves.length)
         return [];
     const firstPlayer = fighters[position[0]][position[1]];
-    console.log("current player:", firstPlayer);
-    let solution = [firstPlayer];
+    console.log("first player:", firstPlayer);
+    let solution = [];
     let row = position[0];
     let column = position[1];
     for (let i = 0; i < moves.length; i += 1) {
@@ -98,93 +122,7 @@ const superStreetFighterSelection2 = (fighters, position, moves) => {
             }
         }
     }
-    return solution;
-};
-const superStreetFighterSelection = (fighters, position, moves) => {
-    console.log(fighters);
-    console.log(moves);
-    if (!fighters.length)
-        return [];
-    if (!position.length)
-        return [];
-    if (!moves.length)
-        return [];
-    const firstPlayer = fighters[position[0]][position[1]];
-    console.log("current player:", firstPlayer);
-    let solution = [];
-    let row = position[0];
-    let column = position[1];
-    for (let i = 0; i < moves.length; i += 1) {
-        let currentDir = moves[i];
-        console.log("current direction:", currentDir);
-        if (currentDir === "up") {
-            if (row < 1) {
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[row][column]);
-            }
-            else {
-                if (fighters[row - 1][column] === "") {
-                    solution.push(firstPlayer);
-                    console.log("EMPTY, STOP!");
-                }
-                else {
-                    column -= 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-        }
-        else if (currentDir === "down") {
-            if (row === fighters.length - 1) {
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[row][column]);
-            }
-            else {
-                if (fighters[row + 1][column] === "") {
-                    console.log("EMPTY BELOW, STOP!");
-                }
-                else {
-                    row += 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-        }
-        else if (currentDir === "left") {
-            let index = column;
-            for (let i = fighters[row].length; i >= 0; i -= 1) {
-                if (index > 0) {
-                    index -= 1;
-                }
-                else {
-                    index = fighters[row].length - 1;
-                }
-                console.log(i, " - ", fighters[row][index]);
-                if (fighters[row][index] !== "") {
-                    console.log("player found: ", fighters[row][index]);
-                    solution.push(fighters[row][index]);
-                    column = index;
-                    break;
-                }
-            }
-        }
-        else {
-            console.log("RIGHT");
-            if (fighters[row][column + 1] === "") {
-                console.log("EMPTY RIGHT, STOP");
-                solution.push(fighters[row][column]);
-            }
-            else {
-                if (column === fighters[row].length - 1) {
-                    console.log("UNDEFINED RIGHT, ROTATE!");
-                    column = 0;
-                    solution.push(fighters[row][column]);
-                }
-                else {
-                    column += 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-        }
-    }
+    console.log(solution.length, solution);
     return solution;
 };
 console.log(superStreetFighterSelection(fighters, position, moves));

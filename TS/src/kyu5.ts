@@ -772,9 +772,9 @@ const superStreetFighterSelection = (
 */
 
 let fighters = [
-    ["", "Ryu", "E.Honda", "Blanka", "Guile", ""],
-    ["Balrog", "Ken", "Chun Li", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
+    ["", "Ryu", "E.Honda", "Cammy", "Blanka", "Guile", "", "Chun Li"],
+    ["Balrog", "Ken", "Chun Li", "", "M.Bison", "Zangief", "Dhalsim", "Sagat"],
+    ["Vega", "", "Fei Long", "Balrog", "Deejay", "Cammy", "", "T.Hawk"],
 ];
 // let fighters = [
 //     ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
@@ -784,7 +784,7 @@ let fighters = [
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [2, 0];
 // let position: [number, number] = [0, 0];
-let position: [number, number] = [0, 2];
+let position: [number, number] = [0, 3];
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [1, 5];
 
@@ -792,182 +792,36 @@ let position: [number, number] = [0, 2];
 // let moves = ["down"];
 // let moves = ["left"];
 // let moves = ["left", "left", "left", "left", "left", "left", "left", "left"];
-let moves = ['right', 'right',
-    'right', 'right',
-    'right', 'right',
-    'right', 'right'];
+let moves = [
+    "down",
+    "right",
+    "right",
+    "right",
+    "down",
+    "left",
+    "left",
+    "down",
+    "right",
+    "right",
+    "right",
+    "up",
+];
 // let moves = ["left", "left"];
 
-const superStreetFighterSelection2 = (
-    fighters: string[][],
-    position: [number, number],
-    moves: string[]
-): string[] => {
-    console.log(fighters);
-    console.log(moves);
-
-    if (!fighters.length) return [];
-    if (!position.length) return [];
-    if (!moves.length) return [];
-
-    // const vertical: number = position[0];
-    // const horizontal: number = position[1];
-    const firstPlayer: string = fighters[position[0]][position[1]];
-    console.log("current player:", firstPlayer);
-    //     let solution: string[] = [currentPlayer];
-    let solution: string[] = [firstPlayer];
-
-    let row: number = position[0];
-    let column: number = position[1];
-
-    for (let i = 0; i < moves.length; i += 1) {
-        let currentDir: string = moves[i];
-        console.log("current direction:", currentDir);
-
-        // let vertical: number = position[0];
-        // let horizontal: number = position[1];
-
-        // UP
-        if (currentDir === "up") {
-            // FIRST ROW, UNDEFINED ABOVE
-            if (row < 1) {
-                // solution.push(currentPlayer);
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[row][column]);
-                // VALID ROW
-            } else {
-                // EMPTY ABOVE
-                if (fighters[row - 1][column] === "") {
-                    solution.push(firstPlayer);
-                    console.log("EMPTY, STOP!");
-                    // VALID ABOVE
-                } else {
-                    column -= 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-            // DOWN
-        } else if (currentDir === "down") {
-            // BOTTOM ROW, UNDEFINED BELOW
-            if (row === fighters.length - 1) {
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[row][column]);
-            }
-            // VALID ROWS
-            else {
-                // EMPTY BELOW
-                if (fighters[row + 1][column] === "") {
-                    console.log("EMPTY BELOW, STOP!");
-                }
-                // VALID BELOW
-                else {
-                    row += 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-        }
-        // LEFT
-        else if (currentDir === "left") {
-            /*
-            // EMPTY TO LEFT
-            if (fighters[row][column - 1] === "") {
-                console.log("EMPTY LEFT, STOP!");
-                solution.push(fighters[row][column]);
-            }
-            // ROTATE LEFT
-            else {
-                // FIRST COLUMN, GO TO LAST INDEX 
-                if (column === 0) {
-                    console.log("UNDEFINED LEFT, ROTATE!");
-                    column = fighters[column].length - 1;
-                    solution.push(fighters[row][vertical]);
-                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
-                } else {
-                    horizontal -= 1;
-                    solution.push(fighters[row][column]);
-                    // continue;
-                }
-            }
-            
-            */
-
-            // if (fighters[row][column] !== "") {
-            //     solution.push(firstPlayer);
-            // }
-            // LOOP THROUGH ENTIRE LENGTH TO CURRENT INDEX IN REVERSE UNTIL VALID INDEX IS FOUND
-            let index: number = column;
-            for (let i = fighters[row].length; i >= 0; i -= 1) {
-                if (index > 0) {
-                    index -= 1;
-                } else {
-                    index = fighters[row].length - 1;
-                }
-                console.log(i, " - ", fighters[row][index]);
-                // if (fighters[row][index] === " ") {
-                // if (fighters[row][index].length < 2) {
-                //     console.log("empty");
-                // }
-                if (fighters[row][index] !== "") {
-                    console.log("player found: ", fighters[row][index]);
-                    solution.push(fighters[row][index]);
-                    column = index;
-                    break;
-                }
-            }
-        }
-        // RIGHT
-        else {
-            console.log("RIGHT");
-
-            /*
-            // EMPTY TO RIGHT
-            if (fighters[row][column + 1] === "") {
-                console.log("EMPTY RIGHT, STOP");
-                solution.push(fighters[row][column]);
-            }
-            // ROTATE RIGHT
-            else {
-                // LAST COLUMN, GO TO FIRST INDEX
-                if (column === fighters[row].length - 1) {
-                    console.log("UNDEFINED RIGHT, ROTATE!");
-                    column = 0;
-                    solution.push(fighters[row][column]);
-                }
-                // NOT LAST COLUMN, GO TO NEXT INDEX
-                else {
-                    column += 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-            */
-            let index: number = column;
-            // for (let i = fighters[row].length; i >= 0; i -= 1) {
-            for (let i = 0; i < fighters[row].length; i += 1) {
-                // console.log("------------", index);
-                if (index < fighters[row].length - 1) {
-                    index += 1;
-                } else {
-                    index = 0;
-                }
-                console.log("------------", index);
-                console.log(i, " - ", fighters[row][index]);
-                // if (fighters[row][index] === " ") {
-                // if (fighters[row][index].length < 2) {
-                //     console.log("empty");
-                // }
-                if (fighters[row][index] !== "") {
-                    console.log("player found: ", fighters[row][index]);
-                    solution.push(fighters[row][index]);
-                    column = index;
-                    break;
-                }
-            }
-
-        }
-    }
-
-    return solution;
-};
+let seq = [
+    "Cammy",
+    "Blanka",
+    "Guile",
+    "Chun Li",
+    "Sagat",
+    "Dhalsim",
+    "Zangief",
+    "Cammy",
+    "T.Hawk",
+    "Vega",
+    "Fei Long",
+    "Chun Li",
+];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -984,7 +838,7 @@ const superStreetFighterSelection = (
     // const vertical: number = position[0];
     // const horizontal: number = position[1];
     const firstPlayer: string = fighters[position[0]][position[1]];
-    console.log("current player:", firstPlayer);
+    console.log("first player:", firstPlayer);
     let solution: string[] = [];
     //     let solution: string[] = [firstPlayer];
 
@@ -1097,6 +951,7 @@ const superStreetFighterSelection = (
         // RIGHT
         else {
             console.log("RIGHT");
+            /*
             // EMPTY TO RIGHT
             if (fighters[row][column + 1] === "") {
                 console.log("EMPTY RIGHT, STOP");
@@ -1116,13 +971,35 @@ const superStreetFighterSelection = (
                     solution.push(fighters[row][column]);
                 }
             }
+            */
+            let index: number = column;
+            // for (let i = fighters[row].length; i >= 0; i -= 1) {
+            for (let i = 0; i < fighters[row].length; i += 1) {
+                // console.log("------------", index);
+                if (index < fighters[row].length - 1) {
+                    index += 1;
+                } else {
+                    index = 0;
+                }
+                console.log("------------", index);
+                console.log(i, " - ", fighters[row][index]);
+                // if (fighters[row][index] === " ") {
+                // if (fighters[row][index].length < 2) {
+                //     console.log("empty");
+                // }
+                if (fighters[row][index] !== "") {
+                    console.log("player found: ", fighters[row][index]);
+                    solution.push(fighters[row][index]);
+                    column = index;
+                    break;
+                }
+            }
         }
     }
 
+    console.log(solution.length, solution);
     return solution;
 };
-
-
 
 /*
 let fighters = [
@@ -1581,24 +1458,24 @@ function closest3(s: string): number[][] {
 export const closest4 = (z: string): number[][] =>
     z
         ? z
-            .split(" ")
-            .map((s, i) => [
-                s
-                    .split("")
-                    .map((c) => +c)
-                    .reduce((w, d) => (w += d)),
-                i,
-                +s,
-            ])
-            .sort(([a, b], [c, d]) => a - c || b - d)
-            .reduce(
-                (d, w, i, [_, ...a]) =>
-                    a[i]
-                        ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
-                        : d,
-                [] as [number, number, number[][]][]
-            )
-            .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
+              .split(" ")
+              .map((s, i) => [
+                  s
+                      .split("")
+                      .map((c) => +c)
+                      .reduce((w, d) => (w += d)),
+                  i,
+                  +s,
+              ])
+              .sort(([a, b], [c, d]) => a - c || b - d)
+              .reduce(
+                  (d, w, i, [_, ...a]) =>
+                      a[i]
+                          ? ([...d, [a[i][0] - w[0], i, [w, a[i]]]] as typeof d)
+                          : d,
+                  [] as [number, number, number[][]][]
+              )
+              .sort(([a, b], [c, d]) => a - c || b - d)[0][2]
         : [];
 
 function closest5(strng: string): number[][] {
