@@ -2,38 +2,36 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
 let fighters = [
-    ["", "Ryu", "E.Honda", "Cammy", "Blanka", "Guile", "", "Chun Li"],
-    ["Balrog", "Ken", "Chun Li", "", "M.Bison", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "", "Fei Long", "Balrog", "Deejay", "Cammy", "", "T.Hawk"],
+    ["", "Ryu", "E.Honda", "Cammy"],
+    ["Balrog", "Ken", "Chun Li", ""],
+    ["Vega", "", "Fei Long", "Balrog"],
+    ["Blanka", "Guile", "", "Chun Li"],
+    ["M.Bison", "Zangief", "Dhalsim", "Sagat"],
+    ["Deejay", "Cammy", "", "T.Hawk"],
 ];
-let position = [0, 3];
+let position = [0, 2];
 let moves = [
     "down",
     "right",
     "right",
+    "up",
     "right",
     "down",
     "left",
+    "up",
+    "down",
+    "down",
+    "up",
+    "right",
     "left",
+    "up",
     "down",
     "right",
-    "right",
+    "down",
     "right",
     "up",
-];
-let seq = [
-    "Cammy",
-    "Blanka",
-    "Guile",
-    "Chun Li",
-    "Sagat",
-    "Dhalsim",
-    "Zangief",
-    "Cammy",
-    "T.Hawk",
-    "Vega",
-    "Fei Long",
-    "Chun Li",
+    "left",
+    "up",
 ];
 const superStreetFighterSelection = (fighters, position, moves) => {
     console.log(fighters);
@@ -53,6 +51,7 @@ const superStreetFighterSelection = (fighters, position, moves) => {
         let currentDir = moves[i];
         console.log("current direction:", currentDir);
         if (currentDir === "up") {
+            console.log("UP", fighters[row][column]);
             if (row < 1) {
                 console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
@@ -63,7 +62,8 @@ const superStreetFighterSelection = (fighters, position, moves) => {
                     console.log("EMPTY, STOP!");
                 }
                 else {
-                    column -= 1;
+                    console.log("VALID ABOVE");
+                    row -= 1;
                     solution.push(fighters[row][column]);
                 }
             }
@@ -76,6 +76,7 @@ const superStreetFighterSelection = (fighters, position, moves) => {
             else {
                 if (fighters[row + 1][column] === "") {
                     console.log("EMPTY BELOW, STOP!");
+                    solution.push(fighters[row][column]);
                 }
                 else {
                     row += 1;

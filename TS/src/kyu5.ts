@@ -604,7 +604,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// !!! Time: 3745ms Passed: 8 Failed: 7 !!!
+// !!! PASSES ALL FIXED TESTS BUT STILL FAILS ON RANDOM TESTS !!!
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -772,9 +772,12 @@ const superStreetFighterSelection = (
 */
 
 let fighters = [
-    ["", "Ryu", "E.Honda", "Cammy", "Blanka", "Guile", "", "Chun Li"],
-    ["Balrog", "Ken", "Chun Li", "", "M.Bison", "Zangief", "Dhalsim", "Sagat"],
-    ["Vega", "", "Fei Long", "Balrog", "Deejay", "Cammy", "", "T.Hawk"],
+    ["", "Ryu", "E.Honda", "Cammy"],
+    ["Balrog", "Ken", "Chun Li", ""],
+    ["Vega", "", "Fei Long", "Balrog"],
+    ["Blanka", "Guile", "", "Chun Li"],
+    ["M.Bison", "Zangief", "Dhalsim", "Sagat"],
+    ["Deejay", "Cammy", "", "T.Hawk"],
 ];
 // let fighters = [
 //     ["Vega", "Ryu", "E.Honda", "Blanka", "Guile", ""],
@@ -782,9 +785,10 @@ let fighters = [
 //     ["", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison"],
 // ];
 // let position: [number, number] = [1, 1];
-// let position: [number, number] = [2, 0];
+// let position: [number, number] = [2, 2];
 // let position: [number, number] = [0, 0];
-let position: [number, number] = [0, 3];
+// !!!
+let position: [number, number] = [0, 2];
 // let position: [number, number] = [1, 1];
 // let position: [number, number] = [1, 5];
 
@@ -796,32 +800,42 @@ let moves = [
     "down",
     "right",
     "right",
+    "up",
     "right",
     "down",
     "left",
+    "up",
+    "down",
+    "down",
+    "up",
+    "right",
     "left",
+    "up",
     "down",
     "right",
-    "right",
+    "down",
     "right",
     "up",
+    "left",
+    "up",
 ];
-// let moves = ["left", "left"];
 
-let seq = [
-    "Cammy",
-    "Blanka",
-    "Guile",
-    "Chun Li",
-    "Sagat",
-    "Dhalsim",
-    "Zangief",
-    "Cammy",
-    "T.Hawk",
-    "Vega",
-    "Fei Long",
-    "Chun Li",
-];
+// moves = ["up"];
+
+// let seq = [
+//     "Cammy",
+//     "Blanka",
+//     "Guile",
+//     "Chun Li",
+//     "Sagat",
+//     "Dhalsim",
+//     "Zangief",
+//     "Cammy",
+//     "T.Hawk",
+//     "Vega",
+//     "Fei Long",
+//     "Chun Li",
+// ];
 
 const superStreetFighterSelection = (
     fighters: string[][],
@@ -854,6 +868,7 @@ const superStreetFighterSelection = (
 
         // UP
         if (currentDir === "up") {
+            console.log("UP", fighters[row][column]);
             // FIRST ROW, UNDEFINED ABOVE
             if (row < 1) {
                 // solution.push(currentPlayer);
@@ -867,10 +882,18 @@ const superStreetFighterSelection = (
                     console.log("EMPTY, STOP!");
                     // VALID ABOVE
                 } else {
-                    column -= 1;
+                    console.log("VALID ABOVE");
+                    row -= 1;
                     solution.push(fighters[row][column]);
                 }
             }
+
+            // !!!!!!!!!!!!!!!!!!!!!
+            // if (i === moves.length - 1) {
+            //     console.log("LAST ITERATION");
+            //     solution.push(fighters[row][column]);
+            // }
+
             // DOWN
         } else if (currentDir === "down") {
             // BOTTOM ROW, UNDEFINED BELOW
@@ -883,6 +906,7 @@ const superStreetFighterSelection = (
                 // EMPTY BELOW
                 if (fighters[row + 1][column] === "") {
                     console.log("EMPTY BELOW, STOP!");
+                    solution.push(fighters[row][column]);
                 }
                 // VALID BELOW
                 else {
