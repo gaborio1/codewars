@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = void 0;
+exports.humanReadable2 = exports.G9642 = exports.convertFrac5 = exports.convertFrac4 = exports.findUniq5 = exports.phone3 = exports.buddy4 = exports.buddy = exports.buddy2 = exports.fromBase64 = exports.toBase64 = exports.sumAnn = exports.sumJohn = exports.ann = exports.john = exports.puzzle = exports.countKprimes = exports.closest6 = exports.closest4 = exports.superStreetFighterSelection3 = void 0;
 let fighters = [
     ["", "Ryu", "E.Honda", "Cammy"],
     ["Balrog", "Ken", "Chun Li", ""],
@@ -43,7 +43,6 @@ const superStreetFighterSelection = (fighters, position, moves) => {
     if (!moves.length)
         return [];
     const firstPlayer = fighters[position[0]][position[1]];
-    console.log("first player:", firstPlayer);
     let solution = [];
     let row = position[0];
     let column = position[1];
@@ -53,13 +52,11 @@ const superStreetFighterSelection = (fighters, position, moves) => {
         if (currentDir === "up") {
             console.log("UP", fighters[row][column]);
             if (row < 1) {
-                console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
             }
             else {
                 if (fighters[row - 1][column] === "") {
-                    solution.push(firstPlayer);
-                    console.log("EMPTY, STOP!");
+                    solution.push(fighters[row][column]);
                 }
                 else {
                     console.log("VALID ABOVE");
@@ -70,12 +67,10 @@ const superStreetFighterSelection = (fighters, position, moves) => {
         }
         else if (currentDir === "down") {
             if (row === fighters.length - 1) {
-                console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
             }
             else {
                 if (fighters[row + 1][column] === "") {
-                    console.log("EMPTY BELOW, STOP!");
                     solution.push(fighters[row][column]);
                 }
                 else {
@@ -93,7 +88,6 @@ const superStreetFighterSelection = (fighters, position, moves) => {
                 else {
                     index = fighters[row].length - 1;
                 }
-                console.log(i, " - ", fighters[row][index]);
                 if (fighters[row][index] !== "") {
                     console.log("player found: ", fighters[row][index]);
                     solution.push(fighters[row][index]);
@@ -103,7 +97,6 @@ const superStreetFighterSelection = (fighters, position, moves) => {
             }
         }
         else {
-            console.log("RIGHT");
             let index = column;
             for (let i = 0; i < fighters[row].length; i += 1) {
                 if (index < fighters[row].length - 1) {
@@ -112,10 +105,7 @@ const superStreetFighterSelection = (fighters, position, moves) => {
                 else {
                     index = 0;
                 }
-                console.log("------------", index);
-                console.log(i, " - ", fighters[row][index]);
                 if (fighters[row][index] !== "") {
-                    console.log("player found: ", fighters[row][index]);
                     solution.push(fighters[row][index]);
                     column = index;
                     break;
@@ -123,10 +113,185 @@ const superStreetFighterSelection = (fighters, position, moves) => {
             }
         }
     }
-    console.log(solution.length, solution);
     return solution;
 };
-console.log(superStreetFighterSelection(fighters, position, moves));
+const MOVES = {
+    up: [-1, 0],
+    down: [1, 0],
+    left: [0, -1],
+    right: [0, 1],
+};
+function superStreetFighterSelection3(fighters, [x, y], moves) {
+    const X = fighters.length;
+    const Y = fighters[0].length;
+    const out = [];
+    for (const m of moves) {
+        const [dx, dy] = MOVES[m];
+        y = (y + dy + Y) % Y;
+        if (x + dx >= 0 && x + dx != X && fighters[x + dx][y]) {
+            x += dx;
+        }
+        while (!fighters[x][y]) {
+            y = (y + dy + Y) % Y;
+        }
+        out.push(fighters[x][y]);
+    }
+    return out;
+}
+exports.superStreetFighterSelection3 = superStreetFighterSelection3;
+function superStreetFighterSelection4(fighters, position, moves) {
+    let characters = [];
+    let pos = position;
+    for (let move of moves) {
+        const previousPos = [...pos];
+        pos = doMove(pos, move, fighters);
+        while (isEmpty(fighters, pos)) {
+            if (["left", "right"].indexOf(move) !== -1) {
+                pos = doMove(pos, move, fighters);
+            }
+            else {
+                pos = previousPos;
+                break;
+            }
+        }
+        characters.push(fighters[pos[0]][pos[1]]);
+    }
+    return characters;
+}
+function isEmpty(fighters, position) {
+    return fighters[position[0]][position[1]] === "";
+}
+function doMove(position, move, fighters) {
+    let newPos = position;
+    switch (move) {
+        case "left":
+            newPos[1] =
+                newPos[1] === 0 ? fighters[0].length - 1 : newPos[1] - 1;
+            break;
+        case "right":
+            newPos[1] =
+                newPos[1] === fighters[0].length - 1 ? 0 : newPos[1] + 1;
+            break;
+        case "up":
+            newPos[0] = newPos[0] === 0 ? 0 : newPos[0] - 1;
+            break;
+        case "down":
+            newPos[0] =
+                newPos[0] < fighters.length - 1
+                    ? newPos[0] + 1
+                    : fighters.length - 1;
+            break;
+    }
+    return newPos;
+}
+function superStreetFighterSelection5(fighters, position, moves) {
+    const characterSelector = new CharacterSelector(fighters, {
+        x: position[1],
+        y: position[0],
+    });
+    const charactersResult = [];
+    for (const move of moves) {
+        characterSelector.changeSelectorPosition(move);
+        const character = characterSelector.getSelectedCharacter();
+        if (character)
+            charactersResult.push(character);
+    }
+    return charactersResult;
+}
+class CharacterSelector {
+    constructor(charactersTable, position) {
+        this.getSelectedCharacter = () => {
+            return this.charactersTable[this.selectorPosition.y][this.selectorPosition.x];
+        };
+        this.getSelectorBoundary = () => {
+            return this.selectorBoundary;
+        };
+        this.changeSelectorPosition = (move) => {
+            switch (move) {
+                case "up":
+                    if (this.selectorPosition.y - 1 < this.selectorBoundary.y.min)
+                        return;
+                    this.selectorPosition.y -= 1;
+                    !this.getSelectedCharacter()
+                        ? this.changeSelectorPosition("down")
+                        : null;
+                    break;
+                case "down":
+                    if (this.selectorPosition.y + 1 > this.selectorBoundary.y.max)
+                        return;
+                    this.selectorPosition.y += 1;
+                    !this.getSelectedCharacter()
+                        ? this.changeSelectorPosition("up")
+                        : null;
+                    break;
+                case "left":
+                    this.selectorPosition.x =
+                        this.selectorPosition.x - 1 < this.selectorBoundary.x.min
+                            ? this.selectorBoundary.x.max
+                            : this.selectorPosition.x - 1;
+                    !this.getSelectedCharacter()
+                        ? this.changeSelectorPosition("left")
+                        : null;
+                    break;
+                case "right":
+                    this.selectorPosition.x =
+                        this.selectorPosition.x + 1 > this.selectorBoundary.x.max
+                            ? this.selectorBoundary.x.min
+                            : this.selectorPosition.x + 1;
+                    !this.getSelectedCharacter()
+                        ? this.changeSelectorPosition("right")
+                        : null;
+                    break;
+                default:
+                    break;
+            }
+        };
+        this.charactersTable = charactersTable;
+        this.selectorPosition = position;
+        this.selectorBoundary = {
+            x: {
+                min: 0,
+                max: charactersTable[0].length - 1,
+            },
+            y: {
+                min: 0,
+                max: charactersTable.length - 1,
+            },
+        };
+    }
+}
+function superStreetFighterSelection6(fighters, position, moves) {
+    let lst = [];
+    let s = fighters[0].length;
+    let [y, x] = position;
+    for (let c of moves) {
+        switch (c) {
+            case "up":
+                y = y - 1 >= 0 && fighters[y - 1][x] != "" ? y - 1 : y;
+                break;
+            case "down":
+                y =
+                    y + 1 < fighters.length && fighters[y + 1][x] !== ""
+                        ? y + 1
+                        : y;
+                break;
+            case "left":
+                while (fighters[y][(x + s - 1) % s] == "")
+                    x = (x + s - 1) % s;
+                if (fighters[y][(x + s - 1) % s] != "")
+                    x = (x + s - 1) % s;
+                break;
+            case "right":
+                while (fighters[y][(x + 1) % s] == "")
+                    x = (x + 1) % s;
+                if (fighters[y][(x + 1) % s] != "")
+                    x = (x + 1) % s;
+                break;
+        }
+        lst.push(fighters[y][x]);
+    }
+    return lst;
+}
 const closest = (str) => {
     const numArr = str.split(" ").map((str) => Number(str));
     console.log("numArr:", numArr);

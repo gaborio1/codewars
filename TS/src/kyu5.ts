@@ -604,8 +604,7 @@
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// !!! PASSES ALL FIXED TESTS BUT STILL FAILS ON RANDOM TESTS !!!
-// 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // KEYWORDS:
@@ -845,16 +844,14 @@ const superStreetFighterSelection = (
     console.log(fighters);
     console.log(moves);
 
+    // RETURN EARLY IF INVALID INPUT
     if (!fighters.length) return [];
     if (!position.length) return [];
     if (!moves.length) return [];
 
-    // const vertical: number = position[0];
-    // const horizontal: number = position[1];
     const firstPlayer: string = fighters[position[0]][position[1]];
-    console.log("first player:", firstPlayer);
+    // console.log("first player:", firstPlayer);
     let solution: string[] = [];
-    //     let solution: string[] = [firstPlayer];
 
     let row: number = position[0];
     let column: number = position[1];
@@ -863,23 +860,19 @@ const superStreetFighterSelection = (
         let currentDir: string = moves[i];
         console.log("current direction:", currentDir);
 
-        // let vertical: number = position[0];
-        // let horizontal: number = position[1];
-
         // UP
         if (currentDir === "up") {
             console.log("UP", fighters[row][column]);
             // FIRST ROW, UNDEFINED ABOVE
             if (row < 1) {
-                // solution.push(currentPlayer);
-                console.log("UNDEFINED, STOP!");
+                // console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
                 // VALID ROW
             } else {
                 // EMPTY ABOVE
                 if (fighters[row - 1][column] === "") {
-                    solution.push(firstPlayer);
-                    console.log("EMPTY, STOP!");
+                    solution.push(fighters[row][column]);
+                    // console.log("EMPTY, STOP!");
                     // VALID ABOVE
                 } else {
                     console.log("VALID ABOVE");
@@ -888,24 +881,18 @@ const superStreetFighterSelection = (
                 }
             }
 
-            // !!!!!!!!!!!!!!!!!!!!!
-            // if (i === moves.length - 1) {
-            //     console.log("LAST ITERATION");
-            //     solution.push(fighters[row][column]);
-            // }
-
             // DOWN
         } else if (currentDir === "down") {
             // BOTTOM ROW, UNDEFINED BELOW
             if (row === fighters.length - 1) {
-                console.log("UNDEFINED, STOP!");
+                // console.log("UNDEFINED, STOP!");
                 solution.push(fighters[row][column]);
             }
             // VALID ROWS
             else {
                 // EMPTY BELOW
                 if (fighters[row + 1][column] === "") {
-                    console.log("EMPTY BELOW, STOP!");
+                    // console.log("EMPTY BELOW, STOP!");
                     solution.push(fighters[row][column]);
                 }
                 // VALID BELOW
@@ -917,32 +904,6 @@ const superStreetFighterSelection = (
         }
         // LEFT
         else if (currentDir === "left") {
-            /*
-            // EMPTY TO LEFT
-            if (fighters[row][column - 1] === "") {
-                console.log("EMPTY LEFT, STOP!");
-                solution.push(fighters[row][column]);
-            }
-            // ROTATE LEFT
-            else {
-                // FIRST COLUMN, GO TO LAST INDEX 
-                if (column === 0) {
-                    console.log("UNDEFINED LEFT, ROTATE!");
-                    column = fighters[column].length - 1;
-                    solution.push(fighters[row][vertical]);
-                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
-                } else {
-                    horizontal -= 1;
-                    solution.push(fighters[row][column]);
-                    // continue;
-                }
-            }
-            
-            */
-
-            // if (fighters[row][column] !== "") {
-            //     solution.push(firstPlayer);
-            // }
             // LOOP THROUGH ENTIRE LENGTH TO CURRENT INDEX IN REVERSE UNTIL VALID INDEX IS FOUND
             let index: number = column;
             for (let i = fighters[row].length; i >= 0; i -= 1) {
@@ -951,11 +912,8 @@ const superStreetFighterSelection = (
                 } else {
                     index = fighters[row].length - 1;
                 }
-                console.log(i, " - ", fighters[row][index]);
-                // if (fighters[row][index] === " ") {
-                // if (fighters[row][index].length < 2) {
-                //     console.log("empty");
-                // }
+                // console.log(i, " - ", fighters[row][index]);
+
                 if (fighters[row][index] !== "") {
                     console.log("player found: ", fighters[row][index]);
                     solution.push(fighters[row][index]);
@@ -963,39 +921,10 @@ const superStreetFighterSelection = (
                     break;
                 }
             }
-
-            // let index: number = column;
-            // while (true) {
-            //     if (index < 1) {
-            //         index = fighters[row].length - 1;
-            //     }
-            //     index -= 1;
-            // }
         }
         // RIGHT
         else {
-            console.log("RIGHT");
-            /*
-            // EMPTY TO RIGHT
-            if (fighters[row][column + 1] === "") {
-                console.log("EMPTY RIGHT, STOP");
-                solution.push(fighters[row][column]);
-            }
-            // ROTATE RIGHT
-            else {
-                // LAST COLUMN, GO TO FIRST INDEX
-                if (column === fighters[row].length - 1) {
-                    console.log("UNDEFINED RIGHT, ROTATE!");
-                    column = 0;
-                    solution.push(fighters[row][column]);
-                }
-                // NOT LAST COLUMN, GO TO NEXT INDEX
-                else {
-                    column += 1;
-                    solution.push(fighters[row][column]);
-                }
-            }
-            */
+            // console.log("RIGHT");
             let index: number = column;
             // for (let i = fighters[row].length; i >= 0; i -= 1) {
             for (let i = 0; i < fighters[row].length; i += 1) {
@@ -1005,14 +934,10 @@ const superStreetFighterSelection = (
                 } else {
                     index = 0;
                 }
-                console.log("------------", index);
-                console.log(i, " - ", fighters[row][index]);
-                // if (fighters[row][index] === " ") {
-                // if (fighters[row][index].length < 2) {
-                //     console.log("empty");
-                // }
+                // console.log(i, " - ", fighters[row][index]);
+
                 if (fighters[row][index] !== "") {
-                    console.log("player found: ", fighters[row][index]);
+                    // console.log("player found: ", fighters[row][index]);
                     solution.push(fighters[row][index]);
                     column = index;
                     break;
@@ -1021,7 +946,7 @@ const superStreetFighterSelection = (
         }
     }
 
-    console.log(solution.length, solution);
+    // console.log(solution.length, solution);
     return solution;
 };
 
@@ -1154,13 +1079,284 @@ let fighters3 = [
     assert.deepEqual(superStreetFighterSelection(copy(fighters4), position, moves),solution);
   });
 */
-console.log(superStreetFighterSelection(fighters, position, moves));
+// console.log(superStreetFighterSelection(fighters, position, moves));
 // console.log();
 // console.log();
 // console.log();
 
 //============= OTHER CODEWARS SOLUTIONS: =============
+/*
+function superStreetFighterSelection2(fighters: Array<string[]>, position: number[], moves: string[]) {
+    const selectedCharacters = [];
+    const isEmpty = (x, y) => {
+      return fighters[x][y] === '';
+    }
+    const makeMove = (move) => {
+      switch (move) {
+        case 'up':
+          const newposUP = position[0] === 0 ? position[0] : position[0] - 1;
+          position[0] = !isEmpty(newposUP, position[1]) ? newposUP : position[0];
+          break;
+        case 'down':
+          const newposDown = position[0] === fighters.length - 1 ? position[0] : position[0] + 1;
+          if (!isEmpty(newposDown, position[1])) {position[0] = newposDown}
+          break;
+        case 'left':
+          do {
+           position[1] = position[1] === 0 ? fighters[0].length - 1 : position[1] - 1;
+          } while (isEmpty(position[0], position[1]))
+          break;
+        case 'right':
+          do {
+            position[1] === fighters[0].length - 1 ? position[1] = 0 : position[1]++;
+          } while (isEmpty(position[0], position[1]))
+          break;
+        default:
+          break;
+      }
+    }
 
+    moves.map(move => {
+      makeMove(move);
+      selectedCharacters.push(fighters[position[0]][position[1]]);
+    });
+
+    return selectedCharacters;
+  }
+  */
+const MOVES: Record<string, [number, number]> = {
+    up: [-1, 0],
+    down: [1, 0],
+    left: [0, -1],
+    right: [0, 1],
+};
+
+export function superStreetFighterSelection3(
+    fighters: string[][],
+    [x, y]: [number, number],
+    moves: string[]
+) {
+    const X = fighters.length;
+    const Y = fighters[0].length;
+
+    const out: string[] = [];
+    for (const m of moves) {
+        const [dx, dy] = MOVES[m]!;
+        y = (y + dy + Y) % Y;
+        if (x + dx >= 0 && x + dx != X && fighters[x + dx][y]) {
+            x += dx;
+        }
+        while (!fighters[x][y]) {
+            y = (y + dy + Y) % Y;
+        }
+        out.push(fighters[x][y]);
+    }
+    return out;
+}
+//   ==========================================================
+
+function superStreetFighterSelection4(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
+    let characters: string[] = [];
+    let pos = position;
+
+    for (let move of moves) {
+        const previousPos = [...pos];
+        pos = doMove(pos, move, fighters);
+        while (isEmpty(fighters, pos)) {
+            if (["left", "right"].indexOf(move) !== -1) {
+                pos = doMove(pos, move, fighters);
+            } else {
+                pos = previousPos;
+                break;
+            }
+        }
+        characters.push(fighters[pos[0]][pos[1]]);
+    }
+    return characters;
+}
+
+function isEmpty(fighters: Array<string[]>, position: number[]): boolean {
+    return fighters[position[0]][position[1]] === "";
+}
+
+function doMove(
+    position: number[],
+    move: string,
+    fighters: Array<string[]>
+): number[] {
+    let newPos = position;
+
+    switch (move) {
+        case "left":
+            newPos[1] =
+                newPos[1] === 0 ? fighters[0].length - 1 : newPos[1] - 1;
+            break;
+        case "right":
+            newPos[1] =
+                newPos[1] === fighters[0].length - 1 ? 0 : newPos[1] + 1;
+            break;
+        case "up":
+            newPos[0] = newPos[0] === 0 ? 0 : newPos[0] - 1;
+            break;
+        case "down":
+            newPos[0] =
+                newPos[0] < fighters.length - 1
+                    ? newPos[0] + 1
+                    : fighters.length - 1;
+            break;
+    }
+    return newPos;
+}
+
+//   ==========================================================
+
+function superStreetFighterSelection5(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+) {
+    const characterSelector = new CharacterSelector(fighters, {
+        x: position[1],
+        y: position[0],
+    });
+    const charactersResult: string[] = [];
+
+    for (const move of moves) {
+        characterSelector.changeSelectorPosition(move as Move);
+        const character = characterSelector.getSelectedCharacter();
+
+        if (character) charactersResult.push(character);
+    }
+
+    return charactersResult;
+}
+
+interface Position {
+    x: number;
+    y: number;
+}
+
+interface Boundary {
+    min: number;
+    max: number;
+}
+
+type Move = "up" | "down" | "left" | "right";
+
+class CharacterSelector {
+    readonly charactersTable: string[][];
+    readonly selectorBoundary: { x: Boundary; y: Boundary };
+    selectorPosition: Position;
+
+    constructor(charactersTable: string[][], position: Position) {
+        this.charactersTable = charactersTable;
+        this.selectorPosition = position;
+        this.selectorBoundary = {
+            x: {
+                min: 0,
+                max: charactersTable[0].length - 1,
+            },
+            y: {
+                min: 0,
+                max: charactersTable.length - 1,
+            },
+        };
+    }
+
+    getSelectedCharacter = () => {
+        return this.charactersTable[this.selectorPosition.y][
+            this.selectorPosition.x
+        ];
+    };
+
+    getSelectorBoundary = () => {
+        return this.selectorBoundary;
+    };
+
+    changeSelectorPosition = (move: Move) => {
+        switch (move) {
+            case "up":
+                if (this.selectorPosition.y - 1 < this.selectorBoundary.y.min)
+                    return;
+
+                this.selectorPosition.y -= 1;
+                !this.getSelectedCharacter()
+                    ? this.changeSelectorPosition("down")
+                    : null;
+                break;
+            case "down":
+                if (this.selectorPosition.y + 1 > this.selectorBoundary.y.max)
+                    return;
+
+                this.selectorPosition.y += 1;
+                !this.getSelectedCharacter()
+                    ? this.changeSelectorPosition("up")
+                    : null;
+                break;
+            case "left":
+                this.selectorPosition.x =
+                    this.selectorPosition.x - 1 < this.selectorBoundary.x.min
+                        ? this.selectorBoundary.x.max
+                        : this.selectorPosition.x - 1;
+
+                !this.getSelectedCharacter()
+                    ? this.changeSelectorPosition("left")
+                    : null;
+                break;
+            case "right":
+                this.selectorPosition.x =
+                    this.selectorPosition.x + 1 > this.selectorBoundary.x.max
+                        ? this.selectorBoundary.x.min
+                        : this.selectorPosition.x + 1;
+
+                !this.getSelectedCharacter()
+                    ? this.changeSelectorPosition("right")
+                    : null;
+                break;
+            default:
+                break;
+        }
+    };
+}
+
+// ============================================================
+// ❗️❗️❗️
+function superStreetFighterSelection6(
+    fighters: Array<string[]>,
+    position: number[],
+    moves: string[]
+): string[] {
+    let lst: string[] = [];
+    let s: number = fighters[0].length;
+    let [y, x] = position;
+    for (let c of moves) {
+        switch (c) {
+            case "up":
+                y = y - 1 >= 0 && fighters[y - 1][x] != "" ? y - 1 : y;
+                break;
+            case "down":
+                y =
+                    y + 1 < fighters.length && fighters[y + 1][x] !== ""
+                        ? y + 1
+                        : y;
+                break;
+            case "left":
+                while (fighters[y][(x + s - 1) % s] == "") x = (x + s - 1) % s;
+                if (fighters[y][(x + s - 1) % s] != "") x = (x + s - 1) % s;
+                break;
+            case "right":
+                while (fighters[y][(x + 1) % s] == "") x = (x + 1) % s;
+                if (fighters[y][(x + 1) % s] != "") x = (x + 1) % s;
+                break;
+        }
+        lst.push(fighters[y][x]);
+    }
+    return lst;
+}
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Closest and Smallest
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
