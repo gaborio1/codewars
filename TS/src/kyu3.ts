@@ -576,7 +576,21 @@ Refer to the example test cases.
 */
 
 const theLift = (queues: number[][], capacity: number): number[] => {
-    // Your code here!
+    // console.log(queues.length);
+    const levels: number = queues.length;
+    console.log(levels);
+
+    // CREATE EMTPY BUILDING
+    // let result: number[][] = [Array(levels)].map((el) => Array(el));
+    let building: number[][] = [];
+    for (let i = 0; i < levels; i += 1) {
+        building.push([]);
+    }
+    console.log(building);
+
+    // LIFT STARTS AT GROUND LEVEL
+    let currLevel: number = 0;
+
     return [999];
 };
 
@@ -593,18 +607,18 @@ var queues = [
 //   [0,2,5,0]
 // console.log(theLift(queues,5);
 
-var queues = [
-    [], // G
-    [3], // 1
-    [4], // 2
-    [], // 3
-    [5], // 4
-    [], // 5
-    [], // 6
-];
+// var queues = [
+//     [], // G
+//     [3], // 1
+//     [4], // 2
+//     [], // 3
+//     [5], // 4
+//     [], // 5
+//     [], // 6
+// ];
 
 // [0,1,2,3,4,5,0]
-// console.log(theLift(queues,5));
+console.log(theLift(queues, 5));
 // console.log();
 // console.log();
 

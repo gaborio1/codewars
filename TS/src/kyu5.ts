@@ -607,7 +607,7 @@
 // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 // TITLE: Street Fighter 2 - Character Selection - Part 2
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ CLASS PROPERTIES - READONLY
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -645,129 +645,6 @@ Output
 The output is the same as before: the list of characters that have been hovered by the selection cursor after each move, successful or not.
 
 Hopefully test cases will complete my explanation.
-*/
-
-/*
-!!! Time: 3745ms Passed: 7Failed: 7 !!!
-
-const superStreetFighterSelection = (
-    fighters: string[][],
-    position: [number, number],
-    moves: string[]
-): string[] => {
-    console.log(fighters);
-    console.log(moves);
-
-    if (!fighters.length) return [];
-    if (!position.length) return [];
-    if (!moves.length) return [];
-
-    // const vertical: number = position[0];
-    // const horizontal: number = position[1];
-    let currentPlayer: string = fighters[position[0]][position[1]];
-    console.log("current player:", currentPlayer);
-    //     let solution: string[] = [currentPlayer];
-    let solution: string[] = [];
-
-    let vertical: number = position[0];
-    let horizontal: number = position[1];
-
-    for (let i = 0; i < moves.length; i += 1) {
-        let currentDir: string = moves[i];
-        console.log("current direction:", currentDir);
-
-        // let vertical: number = position[0];
-        // let horizontal: number = position[1];
-
-        // UP
-        if (currentDir === "up") {
-            // FIRST ROW, UNDEFINED ABOVE
-            if (vertical < 1) {
-                solution.push(currentPlayer);
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[vertical][horizontal]);
-                // VALID ROW
-            } else {
-                // EMPTY ABOVE
-                if (fighters[vertical - 1][horizontal] === "") {
-                    solution.push(currentPlayer);
-                    console.log("EMPTY, STOP!");
-                    // VALID ABOVE
-                } else {
-                    vertical -= 1;
-                    solution.push(fighters[vertical][horizontal]);
-                }
-            }
-            // DOWN
-        } else if (currentDir === "down") {
-            // BOTTOM ROW, UNDEFINED BELOW
-            if (vertical === fighters.length - 1) {
-                console.log("UNDEFINED, STOP!");
-                solution.push(fighters[vertical][horizontal]);
-            }
-            // VALID ROWS
-            else {
-                // EMPTY BELOW
-                if (fighters[vertical + 1][horizontal] === "") {
-                    console.log("EMPTY BELOW, STOP!");
-                }
-                // VALID BELOW
-                else {
-                    vertical += 1;
-                    solution.push(fighters[vertical][horizontal]);
-                }
-            }
-        }
-        // LEFT
-        else if (currentDir === "left") {
-            // EMPTY TO LEFT
-            if (fighters[vertical][horizontal - 1] === "") {
-                console.log("EMPTY LEFT, STOP!");
-                solution.push(fighters[vertical][horizontal]);
-            }
-            // ROTATE LEFT
-            else {
-                // FIRST COLUMN, GO TO LAST INDEX
-                if (horizontal === 0) {
-                    console.log("UNDEFINED LEFT, ROTATE!");
-                    horizontal = fighters[horizontal].length - 1;
-                    solution.push(fighters[vertical][horizontal]);
-                    // NOT FIRST COLUMN, GO TO PREVIOUS INDEX
-                } else {
-                    horizontal -= 1;
-                    solution.push(fighters[vertical][horizontal]);
-                    // continue;
-                }
-            }
-        }
-        // RIGHT
-        else {
-            console.log("RIGHT");
-            // EMPTY TO RIGHT
-            if (fighters[vertical][horizontal + 1] === "") {
-                console.log("EMPTY RIGHT, STOP");
-                solution.push(fighters[vertical][horizontal]);
-            }
-            // ROTATE RIGHT
-            else {
-                // LAST COLUMN, GO TO FIRST INDEX
-                if (horizontal === fighters[vertical].length - 1) {
-                    console.log("UNDEFINED RIGHT, ROTATE!");
-                    horizontal = 0;
-                    solution.push(fighters[vertical][horizontal]);
-                }
-                // NOT LAST COLUMN, GO TO NEXT INDEX
-                else {
-                    horizontal += 1;
-                    solution.push(fighters[vertical][horizontal]);
-                }
-            }
-        }
-    }
-
-    return solution;
-};
-
 */
 
 let fighters = [
@@ -1214,6 +1091,7 @@ function doMove(
 
 //   ==========================================================
 
+// ❗️❗️❗️ CLASS PROPERTIES - READONLY ❗️❗️❗️
 function superStreetFighterSelection5(
     fighters: Array<string[]>,
     position: number[],
