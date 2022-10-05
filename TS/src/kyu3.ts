@@ -492,7 +492,7 @@ function boolfuck(code: string, input: string = ""): string {
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:   THE LIFT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// KEYWORDS:
+// KEYWORDS: ❗️❗️❗️ ARRAY.FILL() ❗️❗️❗️
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // SOURCE:
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -578,18 +578,38 @@ Refer to the example test cases.
 const theLift = (queues: number[][], capacity: number): number[] => {
     // console.log(queues.length);
     const levels: number = queues.length;
-    console.log(levels);
+    console.log("levels:", levels);
 
-    // CREATE EMTPY BUILDING
-    // let result: number[][] = [Array(levels)].map((el) => Array(el));
-    let building: number[][] = [];
-    for (let i = 0; i < levels; i += 1) {
-        building.push([]);
-    }
-    console.log(building);
+    // COUNT ALL PEOPLE IN BUILDING
+    let numWaiting: number = 0;
+    queues.forEach((level) => {
+        numWaiting += level.length;
+    });
+    console.log("people in building:", numWaiting);
+
+    // CREATE EMTPY BUILDING - NESTED ARRAY
+
+    // 1️⃣ WITH LOOP
+    // let building: number[][] = [];
+    // for (let i = 0; i < levels; i += 1) {
+    //     building.push([]);
+    // }
+
+    // 2️⃣ ❗️❗️❗️ WITH ARRAY.FILL() ❗️❗️❗️
+    let building: number[][] = Array(levels);
+    building = building.fill([], 0, levels);
+    console.log("building copy:", building);
 
     // LIFT STARTS AT GROUND LEVEL
     let currLevel: number = 0;
+
+    // TRACK NUMBER OF PEOPLE IN LIFT
+    let passengers: number = 0;
+
+    // SOLUTION ARRAY
+    let solution: number[] = [];
+
+    // while ()
 
     return [999];
 };

@@ -5,13 +5,18 @@ function boolfuck(code, input = "") {
 }
 const theLift = (queues, capacity) => {
     const levels = queues.length;
-    console.log(levels);
-    let building = [];
-    for (let i = 0; i < levels; i += 1) {
-        building.push([]);
-    }
-    console.log(building);
+    console.log("levels:", levels);
+    let numPeople = 0;
+    queues.forEach((level) => {
+        numPeople += level.length;
+    });
+    console.log("people in building:", numPeople);
+    let building = Array(levels);
+    building = building.fill([], 0, levels);
+    console.log("building copy:", building);
     let currLevel = 0;
+    let passengers = 0;
+    let solution = [];
     return [999];
 };
 var queues = [
