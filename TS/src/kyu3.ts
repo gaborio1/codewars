@@ -580,12 +580,12 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     const levels: number = queues.length;
     console.log("levels:", levels);
 
-    // COUNT ALL PEOPLE IN BUILDING
+    // NUMBER OF PEOPLE WAITING
     let numWaiting: number = 0;
     queues.forEach((level) => {
         numWaiting += level.length;
     });
-    console.log("people in building:", numWaiting);
+    console.log("people waiting:", numWaiting);
 
     // CREATE EMTPY BUILDING - NESTED ARRAY
 
@@ -600,6 +600,13 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     building = building.fill([], 0, levels);
     console.log("building copy:", building);
 
+    // NUMBER OF PEOPLE AT DESTINATION
+    let numArrived: number = 0;
+    building.forEach((level) => {
+        numArrived += level.length;
+    });
+    console.log("people arrived:", numArrived);
+
     // LIFT STARTS AT GROUND LEVEL
     let currLevel: number = 0;
 
@@ -609,7 +616,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     // SOLUTION ARRAY
     let solution: number[] = [];
 
-    // while ()
+    // while (numWaiting < numArrived) {
+
+    // }
 
     return [999];
 };
