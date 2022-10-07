@@ -607,6 +607,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     });
     console.log("people arrived:", numArrived);
 
+    // DIRECTION
+    let direction: string = "up";
+
     // LIFT STARTS AT GROUND LEVEL
     let currLevel: number = 0;
 
@@ -617,7 +620,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     let solution: number[] = [];
 
     // while (numWaiting < numArrived) {
-
+    //     if (direction === "up") {
+    //         for (let i = 0; i < queues.length; )
+    //     }
     // }
 
     return [999];
