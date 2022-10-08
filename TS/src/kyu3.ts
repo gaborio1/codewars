@@ -617,7 +617,8 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     let currLevel: number = 0;
 
     // TRACK NUMBER OF PEOPLE IN LIFT
-    let passengers: number = 0;
+    let passengers: number[] = [];
+    let numPassengers: number = passengers.length;
 
     // SOLUTION ARRAY
     let solution: number[] = [0];
@@ -625,19 +626,37 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     // while (numWaiting < numArrived) {
     if (direction === "up") {
         for (let i = 0; i < queues.length; i += 1) {
-            const currentWaiting: number[] = queues[i];
+            let currentWaiting: number[] = queues[i];
             console.log("current level:", currentWaiting);
+            // IF PEOPLE ARE WAITING, STOP
             if (currentWaiting.length) {
                 console.log("people waiting, stop!:", currentWaiting);
+                // IF FREE SPACES IN LIFT
                 if (!isFull) {
                     console.log("free spaces in lift");
+                    // ALL PEOPLE CAN GET IN LIFT
                     if (currentWaiting.length <= capacity) {
-                        console.log("all people can enter lift");
+                        console.log("all people can get in lift");
+                        // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
+                        for (let j = 0; j < currentWaiting.length; j += 1) {
+                            if (currentWaiting[j] > i) {
+                                console.log("destination above:", currentWaiting[j]);
+                                // GET PEOPLE IN LIFT
+                                passengers.push(currentWaiting[j]);
+                                console.log("   passengers:", passengers);
+                                // REMOVE THEM FROM WAITING LIST
+                                // queues[i].splice(j, 1);
+                                // console.log("   remaining on floor:", queues[j]);
+                            }
+                            // console.log("remaining on floor:", queues[i]);
+                        }
                     }
                 }
                 break;
             }
         }
+        console.log("passengers:", passengers);
+
     }
     // }
 
@@ -647,7 +666,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 var queues = [
     [], // G
     [], // 1
-    [5, 5, 5], // 2
+    [5, 1, 5, 1, 5], // 2
     [], // 3
     [], // 4
     [], // 5

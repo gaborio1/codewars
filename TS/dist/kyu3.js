@@ -23,30 +23,39 @@ const theLift = (queues, capacity) => {
     let direction = "up";
     let isFull = false;
     let currLevel = 0;
-    let passengers = 0;
+    let passengers = [];
+    let numPassengers = passengers.length;
     let solution = [0];
     if (direction === "up") {
         for (let i = 0; i < queues.length; i += 1) {
-            const currentWaiting = queues[i];
+            let currentWaiting = queues[i];
             console.log("current level:", currentWaiting);
             if (currentWaiting.length) {
                 console.log("people waiting, stop!:", currentWaiting);
                 if (!isFull) {
                     console.log("free spaces in lift");
                     if (currentWaiting.length <= capacity) {
-                        console.log("all people can enter lift");
+                        console.log("all people can get in lift");
+                        for (let j = 0; j < currentWaiting.length; j += 1) {
+                            if (currentWaiting[j] > i) {
+                                console.log("destination above:", currentWaiting[j]);
+                                passengers.push(currentWaiting[j]);
+                                console.log("   passengers:", passengers);
+                            }
+                        }
                     }
                 }
                 break;
             }
         }
+        console.log("passengers:", passengers);
     }
     return [999];
 };
 var queues = [
     [],
     [],
-    [5, 5, 5],
+    [5, 1, 5, 1, 5],
     [],
     [],
     [],
