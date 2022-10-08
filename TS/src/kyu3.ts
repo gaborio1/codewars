@@ -576,7 +576,7 @@ Refer to the example test cases.
 */
 
 const theLift = (queues: number[][], capacity: number): number[] => {
-    // console.log(queues.length);
+    console.log(queues);
     const levels: number = queues.length;
     console.log("levels:", levels);
 
@@ -610,6 +610,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     // DIRECTION
     let direction: string = "up";
 
+    // LIFT CAPACITY
+    let isFull: boolean = false;
+
     // LIFT STARTS AT GROUND LEVEL
     let currLevel: number = 0;
 
@@ -617,12 +620,25 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     let passengers: number = 0;
 
     // SOLUTION ARRAY
-    let solution: number[] = [];
+    let solution: number[] = [0];
 
     // while (numWaiting < numArrived) {
-    //     if (direction === "up") {
-    //         for (let i = 0; i < queues.length; )
-    //     }
+    if (direction === "up") {
+        for (let i = 0; i < queues.length; i += 1) {
+            const currentWaiting: number[] = queues[i];
+            console.log("current level:", currentWaiting);
+            if (currentWaiting.length) {
+                console.log("people waiting, stop!:", currentWaiting);
+                if (!isFull) {
+                    console.log("free spaces in lift");
+                    if (currentWaiting.length <= capacity) {
+                        console.log("all people can enter lift");
+                    }
+                }
+                break;
+            }
+        }
+    }
     // }
 
     return [999];
