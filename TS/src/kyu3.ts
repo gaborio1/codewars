@@ -639,6 +639,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                         console.log(" all people can get in lift");
                         // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
                         for (let j = 0; j < currentWaiting.length; j += 1) {
+                            console.log("INNER LOOP:", j)
                             if (currentWaiting[j] > i) {
                                 console.log(
                                     "   destination above:",
@@ -646,10 +647,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 );
                                 // GET PEOPLE IN LIFT
                                 passengers.push(currentWaiting[j]);
-                                console.log("         passengers:", passengers);
+                                console.log("     passengers:", passengers);
                                 // REMOVE THEM FROM WAITING LIST
                                 console.log(
-                                    "         passenger to delete:",
+                                    "     passenger to delete:",
                                     queues[i][j]
                                 );
                                 queues[i].splice(j, 1);
@@ -657,13 +658,22 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                     "   remaining on floor:",
                                     queues[i]
                                 );
+                                // !!! DECREMENT j AFTER DELETING PASSENGER !!!
+                                j -= 1;
                             }
-                            console.log("remaining on floor:", queues[i]);
                         }
+                        console.log("remaining on floor:", queues[i]);
                     }
                 }
-                break;
+                // THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
+                // break;
+
+                // IF EMPTY FLOOR, CHECK IF ANY PASSENGER WANTS TO GET OFF
+            } else {
+                console.log("empty floor:", i);
             }
+            // CHANGE DIRECTION AT TOP FLOOR
+            direction = "down";
         }
         console.log("passengers:", passengers);
     }
@@ -675,7 +685,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 var queues = [
     [], // G
     [], // 1
-    [4, 1, 5, 1, 6], // 2
+    [5, 6, 7], // 2
     [], // 3
     [], // 4
     [], // 5

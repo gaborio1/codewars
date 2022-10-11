@@ -37,20 +37,25 @@ const theLift = (queues, capacity) => {
                     if (currentWaiting.length <= capacity) {
                         console.log(" all people can get in lift");
                         for (let j = 0; j < currentWaiting.length; j += 1) {
+                            console.log("INNER LOOP:", j);
                             if (currentWaiting[j] > i) {
                                 console.log("   destination above:", currentWaiting[j]);
                                 passengers.push(currentWaiting[j]);
-                                console.log("         passengers:", passengers);
-                                console.log("         passenger to delete:", queues[i][j]);
+                                console.log("     passengers:", passengers);
+                                console.log("     passenger to delete:", queues[i][j]);
                                 queues[i].splice(j, 1);
                                 console.log("   remaining on floor:", queues[i]);
+                                j -= 1;
                             }
-                            console.log("remaining on floor:", queues[i]);
                         }
+                        console.log("remaining on floor:", queues[i]);
                     }
                 }
-                break;
             }
+            else {
+                console.log("empty floor:", i);
+            }
+            direction = "down";
         }
         console.log("passengers:", passengers);
     }
@@ -59,7 +64,7 @@ const theLift = (queues, capacity) => {
 var queues = [
     [],
     [],
-    [4, 1, 5, 1, 6],
+    [5, 6, 7],
     [],
     [],
     [],
