@@ -636,19 +636,29 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                     console.log("free spaces in lift");
                     // ALL PEOPLE CAN GET IN LIFT
                     if (currentWaiting.length <= capacity) {
-                        console.log("all people can get in lift");
+                        console.log(" all people can get in lift");
                         // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
                         for (let j = 0; j < currentWaiting.length; j += 1) {
                             if (currentWaiting[j] > i) {
-                                console.log("destination above:", currentWaiting[j]);
+                                console.log(
+                                    "   destination above:",
+                                    currentWaiting[j]
+                                );
                                 // GET PEOPLE IN LIFT
                                 passengers.push(currentWaiting[j]);
-                                console.log("   passengers:", passengers);
+                                console.log("         passengers:", passengers);
                                 // REMOVE THEM FROM WAITING LIST
-                                // queues[i].splice(j, 1);
-                                // console.log("   remaining on floor:", queues[j]);
+                                console.log(
+                                    "         passenger to delete:",
+                                    queues[i][j]
+                                );
+                                queues[i].splice(j, 1);
+                                console.log(
+                                    "   remaining on floor:",
+                                    queues[i]
+                                );
                             }
-                            // console.log("remaining on floor:", queues[i]);
+                            console.log("remaining on floor:", queues[i]);
                         }
                     }
                 }
@@ -656,7 +666,6 @@ const theLift = (queues: number[][], capacity: number): number[] => {
             }
         }
         console.log("passengers:", passengers);
-
     }
     // }
 
@@ -666,7 +675,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 var queues = [
     [], // G
     [], // 1
-    [5, 1, 5, 1, 5], // 2
+    [4, 1, 5, 1, 6], // 2
     [], // 3
     [], // 4
     [], // 5
