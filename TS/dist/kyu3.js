@@ -12,14 +12,15 @@ const theLift = (queues, capacity) => {
         numWaiting += level.length;
     });
     console.log("people waiting:", numWaiting);
-    let building = Array(levels);
-    building = building.fill([], 0, levels);
-    console.log("building copy:", building);
+    let building = [];
+    for (let i = 0; i < levels; i += 1) {
+        building.push([]);
+    }
     let numArrived = 0;
     building.forEach((level) => {
         numArrived += level.length;
     });
-    console.log("people arrived:", numArrived);
+    console.log("people arrived:", numArrived, "\n");
     let direction = "up";
     let isFull = false;
     let currLevel = 0;
@@ -28,6 +29,7 @@ const theLift = (queues, capacity) => {
     let solution = [0];
     if (direction === "up") {
         for (let i = 0; i < queues.length; i += 1) {
+            console.log("------ LEVEL:", i, " ------");
             let currentWaiting = queues[i];
             console.log("current level:", currentWaiting);
             if (currentWaiting.length) {
@@ -48,12 +50,23 @@ const theLift = (queues, capacity) => {
                                 j -= 1;
                             }
                         }
-                        console.log("remaining on floor:", queues[i]);
+                        console.log("remaining on floor:", queues[i], "\n");
                     }
                 }
             }
             else {
-                console.log("empty floor:", i);
+                console.log("empty floor:", i, "\n");
+                if (passengers.includes(i)) {
+                    console.log("passenger wants off at floor:", i);
+                    console.log("     building copy:", building);
+                    passengers.forEach((passenger) => {
+                        if (passenger === i) {
+                            building[i].push(passenger);
+                            console.log("HELLO", passenger, " to go to ", building[i]);
+                        }
+                        console.log("     building copy:", building);
+                    });
+                }
             }
             direction = "down";
         }
@@ -64,7 +77,7 @@ const theLift = (queues, capacity) => {
 var queues = [
     [],
     [],
-    [5, 6, 7],
+    [5, 5, 5],
     [],
     [],
     [],

@@ -590,22 +590,26 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     // CREATE EMTPY BUILDING - NESTED ARRAY
 
     // 1️⃣ WITH LOOP
-    // let building: number[][] = [];
-    // for (let i = 0; i < levels; i += 1) {
-    //     building.push([]);
-    // }
+    let building: number[][] = [];
+    for (let i = 0; i < levels; i += 1) {
+        building.push([]);
+    }
 
     // 2️⃣ ❗️❗️❗️ WITH ARRAY.FILL() ❗️❗️❗️
-    let building: number[][] = Array(levels);
-    building = building.fill([], 0, levels);
-    console.log("building copy:", building);
+    // let building: number[][] = Array(levels);
+    // building = building.fill([], 0, levels);
+    // console.log("building copy:", building);
+    // TEST
+    // let building: number[][] = [[], [], [], [], [], [], []];
+    // building[5].push(123);
+    // console.log("building copy:", building);
 
     // NUMBER OF PEOPLE AT DESTINATION
     let numArrived: number = 0;
     building.forEach((level) => {
         numArrived += level.length;
     });
-    console.log("people arrived:", numArrived);
+    console.log("people arrived:", numArrived, "\n");
 
     // DIRECTION
     let direction: string = "up";
@@ -626,6 +630,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     // while (numWaiting < numArrived) {
     if (direction === "up") {
         for (let i = 0; i < queues.length; i += 1) {
+            console.log("------ LEVEL:", i, " ------");
             let currentWaiting: number[] = queues[i];
             console.log("current level:", currentWaiting);
             // IF PEOPLE ARE WAITING, STOP
@@ -639,7 +644,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                         console.log(" all people can get in lift");
                         // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
                         for (let j = 0; j < currentWaiting.length; j += 1) {
-                            console.log("INNER LOOP:", j)
+                            console.log("INNER LOOP:", j);
                             if (currentWaiting[j] > i) {
                                 console.log(
                                     "   destination above:",
@@ -662,15 +667,33 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 j -= 1;
                             }
                         }
-                        console.log("remaining on floor:", queues[i]);
+                        console.log("remaining on floor:", queues[i], "\n");
                     }
                 }
-                // THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
+                // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
                 // break;
 
-                // IF EMPTY FLOOR, CHECK IF ANY PASSENGER WANTS TO GET OFF
+                // IF EMPTY FLOOR
             } else {
-                console.log("empty floor:", i);
+                console.log("empty floor:", i, "\n");
+                // CHECK IF ANY PASSENGER WANT TO GET OFF
+                if (passengers.includes(i)) {
+                    console.log("passenger wants off at floor:", i);
+                    console.log("     building copy:", building);
+                    passengers.forEach((passenger) => {
+                        if (passenger === i) {
+                            building[i].push(passenger);
+                            // building[5].push(123);
+                            console.log(
+                                "HELLO",
+                                passenger,
+                                " to go to ",
+                                building[i]
+                            );
+                        }
+                        console.log("     building copy:", building);
+                    });
+                }
             }
             // CHANGE DIRECTION AT TOP FLOOR
             direction = "down";
@@ -685,7 +708,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 var queues = [
     [], // G
     [], // 1
-    [5, 6, 7], // 2
+    [5, 5, 5], // 2
     [], // 3
     [], // 4
     [], // 5
