@@ -48,9 +48,12 @@ const theLift = (queues, capacity) => {
                                 queues[i].splice(j, 1);
                                 console.log("   remaining on floor:", queues[i]);
                                 j -= 1;
+                                solution.push(i);
+                            }
+                            else {
+                                console.log("  destination below, do not stop!");
                             }
                         }
-                        solution.push(i);
                         console.log("remaining on floor:", queues[i], "\n");
                     }
                 }
@@ -92,7 +95,7 @@ const theLift = (queues, capacity) => {
                         console.log(" all people can get in lift");
                         for (let j = 0; j < currentWaiting.length; j += 1) {
                             console.log("INNER LOOP:", j);
-                            if (currentWaiting[j] > i) {
+                            if (currentWaiting[j] < i) {
                                 console.log("   destination above:", currentWaiting[j]);
                                 passengers.push(currentWaiting[j]);
                                 console.log("     passengers:", passengers);
@@ -100,9 +103,12 @@ const theLift = (queues, capacity) => {
                                 queues[i].splice(j, 1);
                                 console.log("   remaining on floor:", queues[i]);
                                 j -= 1;
+                                solution.push(i);
+                            }
+                            else {
+                                console.log("  destination above, do not stop!");
                             }
                         }
-                        solution.push(i);
                         console.log("remaining on floor:", queues[i], "\n");
                     }
                 }
@@ -137,11 +143,11 @@ const theLift = (queues, capacity) => {
 };
 var queues = [
     [],
+    [0],
     [],
     [],
-    [5, 5, 5],
-    [],
-    [],
+    [2],
+    [3],
     [],
 ];
 console.log(theLift(queues, 5));
