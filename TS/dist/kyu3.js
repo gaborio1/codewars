@@ -63,15 +63,16 @@ const theLift = (queues, capacity) => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
+                    passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
                             building[i].push(passenger);
                             numArrived += 1;
                             console.log("HELLO", passenger, " to go to ", building[i]);
+                            passengers.splice(idx, 1);
+                            idx -= 1;
                         }
                         console.log("     building copy:", building);
                     });
-                    passengers = [];
                     console.log("lift emptied: ", passengers);
                     solution.push(i);
                 }
@@ -118,15 +119,16 @@ const theLift = (queues, capacity) => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
+                    passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
                             building[i].push(passenger);
                             numArrived += 1;
                             console.log("HELLO", passenger, " to go to ", building[i]);
+                            passengers.splice(idx, 1);
+                            idx -= 1;
                         }
                         console.log("     building copy:", building);
                     });
-                    passengers = [];
                     console.log("lift emptied: ", passengers);
                     solution.push(i);
                 }
@@ -136,18 +138,20 @@ const theLift = (queues, capacity) => {
         console.log("people waiting:", numWaiting);
         console.log("people arrived:", numArrived, "\n");
         direction = "up";
-        solution.push(0);
+        if (solution[solution.length - 1] !== 0) {
+            solution.push(0);
+        }
     }
     console.log("SOLUTION ARRAY:", solution);
     return [999];
 };
 var queues = [
     [],
-    [0],
     [],
     [],
-    [2],
-    [3],
+    [5, 5, 5],
+    [],
+    [],
     [],
 ];
 console.log(theLift(queues, 5));

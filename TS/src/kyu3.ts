@@ -489,7 +489,6 @@ function boolfuck(code: string, input: string = ""): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
-// ❗️❗️❗️ NEXT TASK: EMPTY LIFT ONE BY ONE❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:   THE LIFT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -673,9 +672,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                             }
                             // IF DESTINATION IS BELOW
                             else {
-                                console.log("  destination below, do not stop!");
+                                console.log(
+                                    "  destination below, do not stop!"
+                                );
                             }
-
                         }
                         // ADD CURRENT FLOOR (i) TO SOLUTION
                         // solution.push(i);
@@ -693,7 +693,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
+                    passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
                             // PUSH PASSENGER TO DESTINATION FLOOR
                             building[i].push(passenger);
@@ -706,11 +706,14 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 " to go to ",
                                 building[i]
                             );
+
+                            passengers.splice(idx, 1);
+                            idx -= 1;
                         }
                         console.log("     building copy:", building);
                     });
-                    // EMPTY LIFT
-                    passengers = [];
+                    // 🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
+                    // passengers = [];
                     console.log("lift emptied: ", passengers);
                     // ADD CURRENT FLOOR (i) TO SOLUTION
                     solution.push(i);
@@ -765,14 +768,13 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 j -= 1;
 
                                 solution.push(i);
-
                             }
                             // IF DESTINATION IS ABOVE
                             else {
-                                console.log("  destination above, do not stop!")
+                                console.log(
+                                    "  destination above, do not stop!"
+                                );
                             }
-
-
                         }
                         // ADD CURRENT FLOOR (i) TO SOLUTION
                         // solution.push(i);
@@ -790,7 +792,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
+                    passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
                             // PUSH PASSENGER TO DESTINATION FLOOR
                             building[i].push(passenger);
@@ -803,11 +805,14 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 " to go to ",
                                 building[i]
                             );
+
+                            passengers.splice(idx, 1);
+                            idx -= 1;
                         }
                         console.log("     building copy:", building);
                     });
-                    // EMPTY LIFT
-                    passengers = [];
+                    //  🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
+                    // passengers = [];
                     console.log("lift emptied: ", passengers);
                     // ADD CURRENT FLOOR (i) TO SOLUTION
                     solution.push(i);
@@ -822,7 +827,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
         // SWITCH DIRECTION AT GROUND FLOOR
         direction = "up";
         // PUSH GROUND FLOOR INTO SOLUTION ARRAY
-        solution.push(0);
+        // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH IF NO PASSENGERS ARE GETTING OFF ON GROUND FLOOR ❗️❗️❗️ 🟨🟨🟨
+        if (solution[solution.length - 1] !== 0) {
+            solution.push(0);
+        }
     }
     // }
 
@@ -831,24 +839,24 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 };
 
 // [0,5,4,3,2,1,0]
-var queues = [
-    [], // G
-    [0], // 1
-    [], // 2
-    [], // 3
-    [2], // 4
-    [3], // 5
-    [], // 6
-];
 // var queues = [
 //     [], // G
-//     [], // 1
+//     [0], // 1
 //     [], // 2
-//     [5, 5, 5], // 3
-//     [], // 4
-//     [], // 5
+//     [], // 3
+//     [2], // 4
+//     [3], // 5
 //     [], // 6
 // ];
+var queues = [
+    [], // G
+    [], // 1
+    [], // 2
+    [5, 5, 5], // 3
+    [], // 4
+    [], // 5
+    [], // 6
+];
 
 //   [0,2,5,0]
 // console.log(theLift(queues,5);
