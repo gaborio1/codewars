@@ -26,6 +26,7 @@ const theLift = (queues, capacity) => {
     let currLevel = 0;
     let passengers = [];
     let numPassengers = passengers.length;
+    let hasLiftStopped = false;
     let solution = [0];
     if (direction === "up") {
         for (let i = 0; i < queues.length; i += 1) {
@@ -48,11 +49,15 @@ const theLift = (queues, capacity) => {
                                 queues[i].splice(j, 1);
                                 console.log("   remaining on floor:", queues[i]);
                                 j -= 1;
-                                solution.push(i);
+                                hasLiftStopped = true;
                             }
                             else {
                                 console.log("  destination below, do not stop!");
                             }
+                        }
+                        if (hasLiftStopped) {
+                            solution.push(i);
+                            hasLiftStopped = false;
                         }
                         console.log("remaining on floor:", queues[i], "\n");
                     }
@@ -60,15 +65,17 @@ const theLift = (queues, capacity) => {
             }
             else {
                 console.log("empty floor:", i, "\n");
+                console.log("passengers in lift when arriving at empty floor:", passengers);
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
                     passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
+                            console.log("HELLO", passenger, " to go to floor:", building[i]);
                             building[i].push(passenger);
                             numArrived += 1;
-                            console.log("HELLO", passenger, " to go to ", building[i]);
                             passengers.splice(idx, 1);
+                            console.log("   passengers after deleting current:", passengers);
                             idx -= 1;
                         }
                         console.log("     building copy:", building);
@@ -104,11 +111,15 @@ const theLift = (queues, capacity) => {
                                 queues[i].splice(j, 1);
                                 console.log("   remaining on floor:", queues[i]);
                                 j -= 1;
-                                solution.push(i);
+                                hasLiftStopped = true;
                             }
                             else {
                                 console.log("  destination above, do not stop!");
                             }
+                        }
+                        if (hasLiftStopped) {
+                            solution.push(i);
+                            hasLiftStopped = false;
                         }
                         console.log("remaining on floor:", queues[i], "\n");
                     }

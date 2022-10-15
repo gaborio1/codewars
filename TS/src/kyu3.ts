@@ -624,6 +624,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     let passengers: number[] = [];
     let numPassengers: number = passengers.length;
 
+    // BOOLEAN VARIABLE TO CHECK IF CURRENT FLOOR NEEDS TO BE ADDED TO SOLUTION (TRUE IF ANY PASSENGERS GET ON OR OFF)
+    let hasLiftStopped: boolean = false;
+
     // SOLUTION ARRAY
     let solution: number[] = [0];
 
@@ -668,7 +671,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 // !!! DECREMENT j AFTER DELETING PASSENGER !!!
                                 j -= 1;
 
-                                solution.push(i);
+                                // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE ❗️❗️❗️ 🟨🟨🟨
+                                // solution.push(i);
+                                hasLiftStopped = true;
                             }
                             // IF DESTINATION IS BELOW
                             else {
@@ -677,8 +682,13 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 );
                             }
                         }
+
                         // ADD CURRENT FLOOR (i) TO SOLUTION
                         // solution.push(i);
+                        if (hasLiftStopped) {
+                            solution.push(i);
+                            hasLiftStopped = false;
+                        }
 
                         console.log("remaining on floor:", queues[i], "\n");
                     }
@@ -690,24 +700,33 @@ const theLift = (queues: number[][], capacity: number): number[] => {
             } else {
                 console.log("empty floor:", i, "\n");
                 // CHECK IF ANY PASSENGER WANT TO GET OFF
+                console.log(
+                    "passengers in lift when arriving at empty floor:",
+                    passengers
+                );
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
+                    // 🟨🟨🟨 ❗️❗️❗️ THIS LOOP ONLY ITERATERS TWICE OUT OF THREE ❗️❗️❗️ 🟨🟨🟨
                     passengers.forEach((passenger, idx) => {
                         if (passenger === i) {
+                            console.log(
+                                "HELLO",
+                                passenger,
+                                " to go to floor:",
+                                building[i]
+                            );
                             // PUSH PASSENGER TO DESTINATION FLOOR
                             building[i].push(passenger);
                             // INCREMENT NUMBER OF ARRIVED AT DESTINATION
                             numArrived += 1;
                             // building[5].push(123);
-                            console.log(
-                                "HELLO",
-                                passenger,
-                                " to go to ",
-                                building[i]
-                            );
 
                             passengers.splice(idx, 1);
+                            console.log(
+                                "   passengers after deleting current:",
+                                passengers
+                            );
                             idx -= 1;
                         }
                         console.log("     building copy:", building);
@@ -767,7 +786,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 // !!! DECREMENT j AFTER DELETING PASSENGER !!!
                                 j -= 1;
 
-                                solution.push(i);
+                                // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE, CREATE A BOOLEAN VARIABLE hasStopped ❗️❗️❗️ 🟨🟨🟨
+                                // solution.push(i);
+
+                                hasLiftStopped = true;
                             }
                             // IF DESTINATION IS ABOVE
                             else {
@@ -777,7 +799,11 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                             }
                         }
                         // ADD CURRENT FLOOR (i) TO SOLUTION
-                        // solution.push(i);
+                        // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE, CREATE A BOOLEAN VARIABLE hasStopped ❗️❗️❗️ 🟨🟨🟨
+                        if (hasLiftStopped) {
+                            solution.push(i);
+                            hasLiftStopped = false;
+                        }
 
                         console.log("remaining on floor:", queues[i], "\n");
                     }
@@ -848,6 +874,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 //     [3], // 5
 //     [], // 6
 // ];
+
 var queues = [
     [], // G
     [], // 1
