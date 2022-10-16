@@ -55,34 +55,33 @@ const theLift = (queues, capacity) => {
                                 console.log("  destination below, do not stop!");
                             }
                         }
-                        if (hasLiftStopped) {
-                            solution.push(i);
-                            hasLiftStopped = false;
-                        }
                         console.log("remaining on floor:", queues[i], "\n");
                     }
                 }
             }
-            else {
+            if (!currentWaiting.length) {
                 console.log("empty floor:", i, "\n");
                 console.log("passengers in lift when arriving at empty floor:", passengers);
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
-                    console.log("     building copy:", building);
-                    passengers.forEach((passenger, idx) => {
-                        if (passenger === i) {
-                            console.log("HELLO", passenger, " to go to floor:", building[i]);
-                            building[i].push(passenger);
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
+                            console.log("HELLO", passengers[k], " to go to floor:", building[i], "idx:", k);
+                            building[i].push(passengers[k]);
                             numArrived += 1;
-                            passengers.splice(idx, 1);
+                            passengers.splice(k, 1);
                             console.log("   passengers after deleting current:", passengers);
-                            idx -= 1;
+                            k -= 1;
+                            hasLiftStopped = true;
                         }
                         console.log("     building copy:", building);
-                    });
+                    }
                     console.log("lift emptied: ", passengers);
-                    solution.push(i);
                 }
+            }
+            if (hasLiftStopped) {
+                solution.push(i);
+                hasLiftStopped = false;
             }
             direction = "down";
         }
@@ -130,16 +129,17 @@ const theLift = (queues, capacity) => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger, idx) => {
-                        if (passenger === i) {
-                            building[i].push(passenger);
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
+                            building[i].push(passengers[k]);
                             numArrived += 1;
-                            console.log("HELLO", passenger, " to go to ", building[i]);
-                            passengers.splice(idx, 1);
-                            idx -= 1;
+                            console.log("HELLO", passengers[k], " to go to ", building[i]);
+                            passengers.splice(k, 1);
+                            k -= 1;
                         }
                         console.log("     building copy:", building);
-                    });
+                        console.log("     building copy:", building);
+                    }
                     console.log("lift emptied: ", passengers);
                     solution.push(i);
                 }
@@ -158,10 +158,10 @@ const theLift = (queues, capacity) => {
 };
 var queues = [
     [],
+    [3],
+    [4],
     [],
-    [],
-    [5, 5, 5],
-    [],
+    [5],
     [],
     [],
 ];

@@ -685,10 +685,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 
                         // ADD CURRENT FLOOR (i) TO SOLUTION
                         // solution.push(i);
-                        if (hasLiftStopped) {
-                            solution.push(i);
-                            hasLiftStopped = false;
-                        }
+                        // if (hasLiftStopped) {
+                        //     solution.push(i);
+                        //     hasLiftStopped = false;
+                        // }
 
                         console.log("remaining on floor:", queues[i], "\n");
                     }
@@ -697,7 +697,10 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 // break;
 
                 // IF EMPTY FLOOR
-            } else {
+            }
+            // else
+            if (!currentWaiting.length) {
+
                 console.log("empty floor:", i, "\n");
                 // CHECK IF ANY PASSENGER WANT TO GET OFF
                 console.log(
@@ -706,38 +709,50 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 );
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
-                    console.log("     building copy:", building);
-                    // 🟨🟨🟨 ❗️❗️❗️ THIS LOOP ONLY ITERATERS TWICE OUT OF THREE ❗️❗️❗️ 🟨🟨🟨
-                    passengers.forEach((passenger, idx) => {
-                        if (passenger === i) {
+
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
                             console.log(
                                 "HELLO",
-                                passenger,
+                                passengers[k],
                                 " to go to floor:",
-                                building[i]
+                                building[i], "idx:", k
                             );
                             // PUSH PASSENGER TO DESTINATION FLOOR
-                            building[i].push(passenger);
+                            building[i].push(passengers[k]);
                             // INCREMENT NUMBER OF ARRIVED AT DESTINATION
                             numArrived += 1;
                             // building[5].push(123);
 
-                            passengers.splice(idx, 1);
+                            passengers.splice(k, 1);
                             console.log(
                                 "   passengers after deleting current:",
                                 passengers
                             );
-                            idx -= 1;
+                            k -= 1;
+
+                            hasLiftStopped = true;
                         }
                         console.log("     building copy:", building);
-                    });
+                    }
+
+
                     // 🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
                     // passengers = [];
                     console.log("lift emptied: ", passengers);
                     // ADD CURRENT FLOOR (i) TO SOLUTION
-                    solution.push(i);
+                    // solution.push(i);
+
                 }
             }
+
+            // ONLY PUSH CURRENT TO SOLUTION AFTER PASSENGERS GET ON AND OFF, GET RID OF ELSE 
+            // ❗️❗️❗️ DO THE SAME FOR "down" ❗️❗️❗️
+            if (hasLiftStopped) {
+                solution.push(i);
+                hasLiftStopped = false;
+            }
+
             // SWITCH DIRECTION AT TOP FLOOR
             direction = "down";
         }
@@ -818,25 +833,29 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
-                    passengers.forEach((passenger, idx) => {
-                        if (passenger === i) {
+
+
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
                             // PUSH PASSENGER TO DESTINATION FLOOR
-                            building[i].push(passenger);
+                            building[i].push(passengers[k]);
                             // INCREMENT NUMBER OF ARRIVED AT DESTINATION
                             numArrived += 1;
                             // building[5].push(123);
                             console.log(
                                 "HELLO",
-                                passenger,
+                                passengers[k],
                                 " to go to ",
                                 building[i]
                             );
 
-                            passengers.splice(idx, 1);
-                            idx -= 1;
+                            passengers.splice(k, 1);
+                            k -= 1;
                         }
                         console.log("     building copy:", building);
-                    });
+                        console.log("     building copy:", building);
+                    }
+
                     //  🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
                     // passengers = [];
                     console.log("lift emptied: ", passengers);
@@ -864,7 +883,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
     return [999];
 };
 
-// [0,5,4,3,2,1,0]
+// [0, 5, 4, 3, 2, 1, 0]
 // var queues = [
 //     [], // G
 //     [0], // 1
@@ -875,30 +894,31 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 //     [], // 6
 // ];
 
-var queues = [
-    [], // G
-    [], // 1
-    [], // 2
-    [5, 5, 5], // 3
-    [], // 4
-    [], // 5
-    [], // 6
-];
-
-//   [0,2,5,0]
-// console.log(theLift(queues,5);
-
 // var queues = [
 //     [], // G
-//     [3], // 1
-//     [4], // 2
-//     [], // 3
-//     [5], // 4
+//     [], // 1
+//     [], // 2
+//     [5, 5, 5], // 3
+//     [], // 4
 //     [], // 5
 //     [], // 6
 // ];
 
+//   [0,2,5,0]
+// console.log(theLift(queues,5);
+
 // [0,1,2,3,4,5,0]
+var queues = [
+    [], // G
+    [3], // 1
+    [4], // 2
+    [], // 3
+    [5], // 4
+    [], // 5
+    [], // 6
+];
+
+
 console.log(theLift(queues, 5));
 // console.log();
 // console.log();
