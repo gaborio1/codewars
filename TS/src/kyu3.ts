@@ -489,6 +489,8 @@ function boolfuck(code: string, input: string = ""): string {
 
 //============= OTHER CODEWARS SOLUTIONS: =============
 
+// ALL FIXED TESTS ARE NOW PASSED
+// ❗️❗️❗️ Time: 3841ms Passed: 24Failed: 10Exit Code: 10 ❗️❗️❗️
 // 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 // TITLE:   THE LIFT
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -698,9 +700,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
 
                 // IF EMPTY FLOOR
             }
+            // 🟨🟨🟨 ❗️❗️❗️ IF (LENGTH), STILL CHECK IF PASSENGERS WANT TO GET OFF ❗️❗️❗️ 🟨🟨🟨
             // else
             if (!currentWaiting.length) {
-
                 console.log("empty floor:", i, "\n");
                 // CHECK IF ANY PASSENGER WANT TO GET OFF
                 console.log(
@@ -716,7 +718,9 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 "HELLO",
                                 passengers[k],
                                 " to go to floor:",
-                                building[i], "idx:", k
+                                building[i],
+                                "idx:",
+                                k
                             );
                             // PUSH PASSENGER TO DESTINATION FLOOR
                             building[i].push(passengers[k]);
@@ -736,17 +740,361 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                         console.log("     building copy:", building);
                     }
 
+                    // 🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
+                    // passengers = [];
+                    console.log("lift emptied: ", passengers);
+                    // ADD CURRENT FLOOR (i) TO SOLUTION
+                    // solution.push(i);
+                }
+            }
+
+            // ONLY PUSH CURRENT TO SOLUTION AFTER PASSENGERS GET ON AND OFF, GET RID OF ELSE
+            // ❗️❗️❗️ DO THE SAME FOR "down" ❗️❗️❗️
+            if (hasLiftStopped) {
+                solution.push(i);
+                hasLiftStopped = false;
+            }
+
+            // SWITCH DIRECTION AT TOP FLOOR
+            direction = "down";
+        }
+        console.log("passengers:", passengers, "\n");
+
+        console.log("people waiting:", numWaiting);
+        console.log("people arrived:", numArrived, "\n");
+    }
+
+    if (direction === "down") {
+        for (let i = queues.length - 1; i >= 0; i -= 1) {
+            console.log("------ LEVEL:", i, " ------");
+            let currentWaiting: number[] = queues[i];
+            console.log("current level:", currentWaiting);
+            // IF PEOPLE ARE WAITING, STOP
+            if (currentWaiting.length) {
+                console.log("people waiting, stop!:", currentWaiting);
+                // IF FREE SPACES IN LIFT
+                if (!isFull) {
+                    console.log("free spaces in lift");
+                    // ALL PEOPLE CAN GET IN LIFT
+                    if (currentWaiting.length <= capacity) {
+                        console.log(" all people can get in lift");
+                        // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR BELOW
+                        for (let j = 0; j < currentWaiting.length; j += 1) {
+                            console.log("INNER LOOP:", j);
+                            // IF CHECK DISABLED FOR FIXED TESTS:
+                            if (currentWaiting[j] < i) {
+                                console.log(
+                                    "   destination above:",
+                                    currentWaiting[j]
+                                );
+                                // GET PEOPLE IN LIFT
+                                passengers.push(currentWaiting[j]);
+                                console.log("     passengers:", passengers);
+                                // REMOVE THEM FROM WAITING LIST
+                                console.log(
+                                    "     passenger to delete:",
+                                    queues[i][j]
+                                );
+                                queues[i].splice(j, 1);
+                                console.log(
+                                    "   remaining on floor:",
+                                    queues[i]
+                                );
+                                // !!! DECREMENT j AFTER DELETING PASSENGER !!!
+                                j -= 1;
+
+                                // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE, CREATE A BOOLEAN VARIABLE hasStopped ❗️❗️❗️ 🟨🟨🟨
+                                // solution.push(i);
+
+                                hasLiftStopped = true;
+                            }
+                            // IF DESTINATION IS ABOVE
+                            else {
+                                console.log(
+                                    "  destination above, do not stop!"
+                                );
+                            }
+                        }
+                        // ADD CURRENT FLOOR (i) TO SOLUTION
+                        // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE, CREATE A BOOLEAN VARIABLE hasStopped ❗️❗️❗️ 🟨🟨🟨
+                        if (hasLiftStopped) {
+                            solution.push(i);
+                            hasLiftStopped = false;
+                        }
+
+                        console.log("remaining on floor:", queues[i], "\n");
+                    }
+                }
+                // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
+                // break;
+
+                // IF EMPTY FLOOR
+            }
+            if (!currentWaiting.length) {
+                console.log("empty floor:", i, "\n");
+                // CHECK IF ANY PASSENGER WANT TO GET OFF
+                if (passengers.includes(i)) {
+                    console.log("passenger wants off at floor:", i);
+                    console.log("     building copy:", building);
+
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
+                            // PUSH PASSENGER TO DESTINATION FLOOR
+                            building[i].push(passengers[k]);
+                            // INCREMENT NUMBER OF ARRIVED AT DESTINATION
+                            numArrived += 1;
+                            // building[5].push(123);
+                            console.log(
+                                "HELLO",
+                                passengers[k],
+                                " to go to ",
+                                building[i]
+                            );
+
+                            passengers.splice(k, 1);
+                            k -= 1;
+                        }
+                        console.log("     building copy:", building);
+                        console.log("     building copy:", building);
+                    }
+
+                    console.log("lift emptied: ", passengers);
+                    // ADD CURRENT FLOOR (i) TO SOLUTION
+                    // solution.push(i);
+                }
+            }
+
+            // ONLY PUSH CURRENT TO SOLUTION AFTER PASSENGERS GET ON AND OFF, GET RID OF ELSE
+            if (hasLiftStopped) {
+                solution.push(i);
+                hasLiftStopped = false;
+            }
+        }
+        console.log("passengers:", passengers, "\n");
+
+        console.log("people waiting:", numWaiting);
+        console.log("people arrived:", numArrived, "\n");
+
+        // SWITCH DIRECTION AT GROUND FLOOR
+        direction = "up";
+        // PUSH GROUND FLOOR INTO SOLUTION ARRAY
+        // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH IF NO PASSENGERS ARE GETTING OFF ON GROUND FLOOR ❗️❗️❗️ 🟨🟨🟨
+        if (solution[solution.length - 1] !== 0) {
+            solution.push(0);
+        }
+    }
+    // }
+
+    console.log("SOLUTION ARRAY:", solution);
+    return solution;
+};
+
+// [0, 5, 4, 3, 2, 1, 0]
+// var queues = [
+//     [], // G
+//     [0], // 1
+//     [], // 2
+//     [], // 3
+//     [2], // 4
+//     [3], // 5
+//     [], // 6
+// ];
+
+// var queues = [
+//     [], // G
+//     [], // 1
+//     [], // 2
+//     [5, 5, 5], // 3
+//     [], // 4
+//     [], // 5
+//     [], // 6
+// ];
+
+//   [0,2,5,0]
+// console.log(theLift(queues,5);
+
+// [ 0, 1, 2, 3, 6, 5, 3, 2, 0 ]
+var queues = [[3], [2], [0], [2], [], [], [5]];
+
+console.log(theLift(queues, 5));
+// console.log();
+// console.log();
+
+//============= OTHER CODEWARS SOLUTIONS: =============
+
+/*
+
+const theLift = (queues: number[][], capacity: number): number[] => {
+    console.log(queues);
+    const levels: number = queues.length;
+    console.log("levels:", levels);
+
+    // NUMBER OF PEOPLE WAITING
+    let numWaiting: number = 0;
+    queues.forEach((level) => {
+        numWaiting += level.length;
+    });
+    console.log("people waiting:", numWaiting);
+
+    // CREATE EMTPY BUILDING - NESTED ARRAY
+
+    // 1️⃣ WITH LOOP
+    let building: number[][] = [];
+    for (let i = 0; i < levels; i += 1) {
+        building.push([]);
+    }
+
+    // 2️⃣ ❗️❗️❗️ NOT WORKING WITH ARRAY.FILL(), ALL SUB ARRAYS WILL BE THE SAME WHEN PUSHING ELEMENTS INTO ONE ❗️❗️❗️
+    // let building: number[][] = Array(levels);
+    // building = building.fill([], 0, levels);
+    // console.log("building copy:", building);
+    // TEST
+    // let building: number[][] = [[], [], [], [], [], [], []];
+    // building[5].push(123);
+    // console.log("building copy:", building);
+
+    // NUMBER OF PEOPLE AT DESTINATION
+    let numArrived: number = 0;
+    building.forEach((level) => {
+        numArrived += level.length;
+    });
+    console.log("people arrived:", numArrived, "\n");
+
+    // DIRECTION
+    let direction: string = "up";
+
+    // LIFT CAPACITY
+    let isFull: boolean = false;
+
+    // LIFT STARTS AT GROUND LEVEL
+    let currLevel: number = 0;
+
+    // TRACK NUMBER OF PEOPLE IN LIFT
+    let passengers: number[] = [];
+    let numPassengers: number = passengers.length;
+
+    // BOOLEAN VARIABLE TO CHECK IF CURRENT FLOOR NEEDS TO BE ADDED TO SOLUTION (TRUE IF ANY PASSENGERS GET ON OR OFF)
+    let hasLiftStopped: boolean = false;
+
+    // SOLUTION ARRAY
+    let solution: number[] = [0];
+
+    // while (numWaiting < numArrived) {
+    if (direction === "up") {
+        for (let i = 0; i < queues.length; i += 1) {
+            console.log("------ LEVEL:", i, " ------");
+            let currentWaiting: number[] = queues[i];
+            console.log("current level:", currentWaiting);
+            // IF PEOPLE ARE WAITING, STOP
+            if (currentWaiting.length) {
+                console.log("people waiting, stop!:", currentWaiting);
+                // IF FREE SPACES IN LIFT
+                if (!isFull) {
+                    console.log("free spaces in lift");
+                    // ALL PEOPLE CAN GET IN LIFT
+                    if (currentWaiting.length <= capacity) {
+                        console.log(" all people can get in lift");
+                        // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
+                        for (let j = 0; j < currentWaiting.length; j += 1) {
+                            console.log("INNER LOOP:", j);
+
+                            // IF CHECK DISABLED FOR FIXED TESTS:
+                            if (currentWaiting[j] > i) {
+                                console.log(
+                                    "   destination above:",
+                                    currentWaiting[j]
+                                );
+                                // GET PEOPLE IN LIFT
+                                passengers.push(currentWaiting[j]);
+                                console.log("     passengers:", passengers);
+                                // REMOVE THEM FROM WAITING LIST
+                                console.log(
+                                    "     passenger to delete:",
+                                    queues[i][j]
+                                );
+                                queues[i].splice(j, 1);
+                                console.log(
+                                    "   remaining on floor:",
+                                    queues[i]
+                                );
+                                // !!! DECREMENT j AFTER DELETING PASSENGER !!!
+                                j -= 1;
+
+                                // 🟨🟨🟨 ❗️❗️❗️ ONLY PUSH ONCE ❗️❗️❗️ 🟨🟨🟨
+                                // solution.push(i);
+                                hasLiftStopped = true;
+                            }
+                            // IF DESTINATION IS BELOW
+                            else {
+                                console.log(
+                                    "  destination below, do not stop!"
+                                );
+                            }
+                        }
+
+                        // ADD CURRENT FLOOR (i) TO SOLUTION
+                        // solution.push(i);
+                        // if (hasLiftStopped) {
+                        //     solution.push(i);
+                        //     hasLiftStopped = false;
+                        // }
+
+                        console.log("remaining on floor:", queues[i], "\n");
+                    }
+                }
+                // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
+                // break;
+
+                // IF EMPTY FLOOR
+            }
+            // else
+            if (!currentWaiting.length) {
+                console.log("empty floor:", i, "\n");
+                // CHECK IF ANY PASSENGER WANT TO GET OFF
+                console.log(
+                    "passengers in lift when arriving at empty floor:",
+                    passengers
+                );
+                if (passengers.includes(i)) {
+                    console.log("passenger wants off at floor:", i);
+
+                    for (let k = 0; k < passengers.length; k += 1) {
+                        if (passengers[k] === i) {
+                            console.log(
+                                "HELLO",
+                                passengers[k],
+                                " to go to floor:",
+                                building[i],
+                                "idx:",
+                                k
+                            );
+                            // PUSH PASSENGER TO DESTINATION FLOOR
+                            building[i].push(passengers[k]);
+                            // INCREMENT NUMBER OF ARRIVED AT DESTINATION
+                            numArrived += 1;
+                            // building[5].push(123);
+
+                            passengers.splice(k, 1);
+                            console.log(
+                                "   passengers after deleting current:",
+                                passengers
+                            );
+                            k -= 1;
+
+                            hasLiftStopped = true;
+                        }
+                        console.log("     building copy:", building);
+                    }
 
                     // 🟨🟨🟨 ❗️❗️❗️ EMPTY LIFT ONE BY ONE ❗️❗️❗️ 🟨🟨🟨
                     // passengers = [];
                     console.log("lift emptied: ", passengers);
                     // ADD CURRENT FLOOR (i) TO SOLUTION
                     // solution.push(i);
-
                 }
             }
 
-            // ONLY PUSH CURRENT TO SOLUTION AFTER PASSENGERS GET ON AND OFF, GET RID OF ELSE 
+            // ONLY PUSH CURRENT TO SOLUTION AFTER PASSENGERS GET ON AND OFF, GET RID OF ELSE
             // ❗️❗️❗️ DO THE SAME FOR "down" ❗️❗️❗️
             if (hasLiftStopped) {
                 solution.push(i);
@@ -834,7 +1182,6 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                     console.log("passenger wants off at floor:", i);
                     console.log("     building copy:", building);
 
-
                     for (let k = 0; k < passengers.length; k += 1) {
                         if (passengers[k] === i) {
                             // PUSH PASSENGER TO DESTINATION FLOOR
@@ -876,291 +1223,6 @@ const theLift = (queues: number[][], capacity: number): number[] => {
         if (solution[solution.length - 1] !== 0) {
             solution.push(0);
         }
-    }
-    // }
-
-    console.log("SOLUTION ARRAY:", solution);
-    return [999];
-};
-
-// [0, 5, 4, 3, 2, 1, 0]
-// var queues = [
-//     [], // G
-//     [0], // 1
-//     [], // 2
-//     [], // 3
-//     [2], // 4
-//     [3], // 5
-//     [], // 6
-// ];
-
-// var queues = [
-//     [], // G
-//     [], // 1
-//     [], // 2
-//     [5, 5, 5], // 3
-//     [], // 4
-//     [], // 5
-//     [], // 6
-// ];
-
-//   [0,2,5,0]
-// console.log(theLift(queues,5);
-
-// [0,1,2,3,4,5,0]
-var queues = [
-    [], // G
-    [3], // 1
-    [4], // 2
-    [], // 3
-    [5], // 4
-    [], // 5
-    [], // 6
-];
-
-
-console.log(theLift(queues, 5));
-// console.log();
-// console.log();
-
-//============= OTHER CODEWARS SOLUTIONS: =============
-
-// FIXED TESTS: PASSED 3 FAILED 1 (DOWN AND DOWN)
-/*
-
-const theLift = (queues: number[][], capacity: number): number[] => {
-    console.log(queues);
-    const levels: number = queues.length;
-    console.log("levels:", levels);
-
-    // NUMBER OF PEOPLE WAITING
-    let numWaiting: number = 0;
-    queues.forEach((level) => {
-        numWaiting += level.length;
-    });
-    console.log("people waiting:", numWaiting);
-
-    // CREATE EMTPY BUILDING - NESTED ARRAY
-
-    // 1️⃣ WITH LOOP
-    let building: number[][] = [];
-    for (let i = 0; i < levels; i += 1) {
-        building.push([]);
-    }
-
-    // 2️⃣ ❗️❗️❗️ NOT WORKING WITH ARRAY.FILL(), ALL SUB ARRAYS WILL BE THE SAME WHEN PUSHING ELEMENTS INTO ONE ❗️❗️❗️
-    // let building: number[][] = Array(levels);
-    // building = building.fill([], 0, levels);
-    // console.log("building copy:", building);
-    // TEST
-    // let building: number[][] = [[], [], [], [], [], [], []];
-    // building[5].push(123);
-    // console.log("building copy:", building);
-
-    // NUMBER OF PEOPLE AT DESTINATION
-    let numArrived: number = 0;
-    building.forEach((level) => {
-        numArrived += level.length;
-    });
-    console.log("people arrived:", numArrived, "\n");
-
-    // DIRECTION
-    let direction: string = "up";
-
-    // LIFT CAPACITY
-    let isFull: boolean = false;
-
-    // LIFT STARTS AT GROUND LEVEL
-    let currLevel: number = 0;
-
-    // TRACK NUMBER OF PEOPLE IN LIFT
-    let passengers: number[] = [];
-    let numPassengers: number = passengers.length;
-
-    // SOLUTION ARRAY
-    let solution: number[] = [0];
-
-    // while (numWaiting < numArrived) {
-    if (direction === "up") {
-        for (let i = 0; i < queues.length; i += 1) {
-            console.log("------ LEVEL:", i, " ------");
-            let currentWaiting: number[] = queues[i];
-            console.log("current level:", currentWaiting);
-            // IF PEOPLE ARE WAITING, STOP
-            if (currentWaiting.length) {
-                console.log("people waiting, stop!:", currentWaiting);
-                // IF FREE SPACES IN LIFT
-                if (!isFull) {
-                    console.log("free spaces in lift");
-                    // ALL PEOPLE CAN GET IN LIFT
-                    if (currentWaiting.length <= capacity) {
-                        console.log(" all people can get in lift");
-                        // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
-                        for (let j = 0; j < currentWaiting.length; j += 1) {
-                            console.log("INNER LOOP:", j);
-
-                            // IF CHECK DISABLED FOR FIXED TESTS:
-                            // if (currentWaiting[j] > i) {
-                            console.log(
-                                "   destination above:",
-                                currentWaiting[j]
-                            );
-                            // GET PEOPLE IN LIFT
-                            passengers.push(currentWaiting[j]);
-                            console.log("     passengers:", passengers);
-                            // REMOVE THEM FROM WAITING LIST
-                            console.log(
-                                "     passenger to delete:",
-                                queues[i][j]
-                            );
-                            queues[i].splice(j, 1);
-                            console.log(
-                                "   remaining on floor:",
-                                queues[i]
-                            );
-                            // !!! DECREMENT j AFTER DELETING PASSENGER !!!
-                            j -= 1;
-                            // }
-
-                        }
-                        // ADD CURRENT FLOOR (i) TO SOLUTION
-                        solution.push(i);
-
-                        console.log("remaining on floor:", queues[i], "\n");
-                    }
-                }
-                // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
-                // break;
-
-                // IF EMPTY FLOOR
-            } else {
-                console.log("empty floor:", i, "\n");
-                // CHECK IF ANY PASSENGER WANT TO GET OFF
-                if (passengers.includes(i)) {
-                    console.log("passenger wants off at floor:", i);
-                    console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
-                        if (passenger === i) {
-                            // PUSH PASSENGER TO DESTINATION FLOOR
-                            building[i].push(passenger);
-                            // INCREMENT NUMBER OF ARRIVED AT DESTINATION
-                            numArrived += 1;
-                            // building[5].push(123);
-                            console.log(
-                                "HELLO",
-                                passenger,
-                                " to go to ",
-                                building[i]
-                            );
-                        }
-                        console.log("     building copy:", building);
-                    });
-                    // EMPTY LIFT
-                    passengers = [];
-                    console.log("lift emptied: ", passengers);
-                    // ADD CURRENT FLOOR (i) TO SOLUTION
-                    solution.push(i);
-                }
-            }
-            // SWITCH DIRECTION AT TOP FLOOR
-            direction = "down";
-        }
-        console.log("passengers:", passengers, "\n");
-
-        console.log("people waiting:", numWaiting);
-        console.log("people arrived:", numArrived, "\n");
-    }
-
-    if (direction === "down") {
-        for (let i = queues.length - 1; i >= 0; i -= 1) {
-            console.log("------ LEVEL:", i, " ------");
-            let currentWaiting: number[] = queues[i];
-            console.log("current level:", currentWaiting);
-            // IF PEOPLE ARE WAITING, STOP
-            if (currentWaiting.length) {
-                console.log("people waiting, stop!:", currentWaiting);
-                // IF FREE SPACES IN LIFT
-                if (!isFull) {
-                    console.log("free spaces in lift");
-                    // ALL PEOPLE CAN GET IN LIFT
-                    if (currentWaiting.length <= capacity) {
-                        console.log(" all people can get in lift");
-                        // CHECK IF ANY PASSENGERS ARE GOING TO FLOOR ABOVE
-                        for (let j = 0; j < currentWaiting.length; j += 1) {
-                            console.log("INNER LOOP:", j);
-                            // IF CHECK DISABLED FOR FIXED TESTS:
-                            // if (currentWaiting[j] > i) {
-                            console.log(
-                                "   destination above:",
-                                currentWaiting[j]
-                            );
-                            // GET PEOPLE IN LIFT
-                            passengers.push(currentWaiting[j]);
-                            console.log("     passengers:", passengers);
-                            // REMOVE THEM FROM WAITING LIST
-                            console.log(
-                                "     passenger to delete:",
-                                queues[i][j]
-                            );
-                            queues[i].splice(j, 1);
-                            console.log(
-                                "   remaining on floor:",
-                                queues[i]
-                            );
-                            // !!! DECREMENT j AFTER DELETING PASSENGER !!!
-                            j -= 1;
-                            // }
-
-                        }
-                        // ADD CURRENT FLOOR (i) TO SOLUTION
-                        solution.push(i);
-
-                        console.log("remaining on floor:", queues[i], "\n");
-                    }
-                }
-                // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
-                // break;
-
-                // IF EMPTY FLOOR
-            } else {
-                console.log("empty floor:", i, "\n");
-                // CHECK IF ANY PASSENGER WANT TO GET OFF
-                if (passengers.includes(i)) {
-                    console.log("passenger wants off at floor:", i);
-                    console.log("     building copy:", building);
-                    passengers.forEach((passenger) => {
-                        if (passenger === i) {
-                            // PUSH PASSENGER TO DESTINATION FLOOR
-                            building[i].push(passenger);
-                            // INCREMENT NUMBER OF ARRIVED AT DESTINATION
-                            numArrived += 1;
-                            // building[5].push(123);
-                            console.log(
-                                "HELLO",
-                                passenger,
-                                " to go to ",
-                                building[i]
-                            );
-                        }
-                        console.log("     building copy:", building);
-                    });
-                    // EMPTY LIFT
-                    passengers = [];
-                    console.log("lift emptied: ", passengers);
-                    // ADD CURRENT FLOOR (i) TO SOLUTION
-                    solution.push(i);
-                }
-            }
-        }
-        console.log("passengers:", passengers, "\n");
-
-        console.log("people waiting:", numWaiting);
-        console.log("people arrived:", numArrived, "\n");
-
-        // SWITCH DIRECTION AT GROUND FLOOR
-        direction = "up";
-        // PUSH GROUND FLOOR INTO SOLUTION ARRAY
-        solution.push(0);
     }
     // }
 

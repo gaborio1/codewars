@@ -124,7 +124,7 @@ const theLift = (queues, capacity) => {
                     }
                 }
             }
-            else {
+            if (!currentWaiting.length) {
                 console.log("empty floor:", i, "\n");
                 if (passengers.includes(i)) {
                     console.log("passenger wants off at floor:", i);
@@ -141,8 +141,11 @@ const theLift = (queues, capacity) => {
                         console.log("     building copy:", building);
                     }
                     console.log("lift emptied: ", passengers);
-                    solution.push(i);
                 }
+            }
+            if (hasLiftStopped) {
+                solution.push(i);
+                hasLiftStopped = false;
             }
         }
         console.log("passengers:", passengers, "\n");
@@ -154,17 +157,9 @@ const theLift = (queues, capacity) => {
         }
     }
     console.log("SOLUTION ARRAY:", solution);
-    return [999];
+    return solution;
 };
-var queues = [
-    [],
-    [3],
-    [4],
-    [],
-    [5],
-    [],
-    [],
-];
+var queues = [[3], [2], [0], [2], [], [], [5]];
 console.log(theLift(queues, 5));
 function calculateCombinations(startPosition, patternLength) {
     return -1;
