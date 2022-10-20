@@ -670,21 +670,15 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 queues[i][j]
                             );
                             queues[i].splice(j, 1);
-                            console.log(
-                                "   remaining on floor:",
-                                queues[i]
-                            );
+                            console.log("   remaining on floor:", queues[i]);
                             // !!! DECREMENT j AFTER DELETING PASSENGER !!!
                             j -= 1;
-
 
                             hasLiftStopped = true;
                         }
                         // IF DESTINATION IS BELOW
                         else {
-                            console.log(
-                                "  destination below, do not stop!"
-                            );
+                            console.log("  destination below, do not stop!");
                         }
                     }
 
@@ -727,6 +721,42 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 // NOT ENOUGH ROOM FOR ALL
                 else {
                     console.log("not enough room for all!");
+                    // DUPLICATED CODE FROM ABOVE (FOR LOOP)
+                    for (let j = 0; j < currentWaiting.length; j += 1) {
+                        console.log("INNER LOOP:", j);
+
+                        // IF CHECK DISABLED FOR FIXED TESTS:
+                        if (currentWaiting[j] > i) {
+                            console.log(
+                                "   destination above:",
+                                currentWaiting[j]
+                            );
+                            // GET PEOPLE IN LIFT
+                            passengers.push(currentWaiting[j]);
+                            console.log("     passengers:", passengers);
+                            // REMOVE THEM FROM WAITING LIST
+                            console.log(
+                                "     passenger to delete:",
+                                queues[i][j]
+                            );
+                            queues[i].splice(j, 1);
+                            console.log("   remaining on floor:", queues[i]);
+                            // !!! DECREMENT j AFTER DELETING PASSENGER !!!
+                            j -= 1;
+
+                            hasLiftStopped = true;
+                        }
+                        // IF DESTINATION IS BELOW
+                        else {
+                            console.log("  destination below, do not stop!");
+                        }
+                        // CHECK CAPACITY
+                        if (passengers.length === capacity) {
+                            console.log("LIFT FULL! ", capacity, " PASSENGERS");
+                            isFull = true;
+                            break;
+                        }
+                    }
                 }
                 // }
                 // IF LIFT IS FULL
@@ -780,7 +810,6 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                     }
 
                     console.log("lift emptied: ", passengers);
-
                 }
             }
 
@@ -898,7 +927,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 }
                 // IF LIFT IS FULL
                 else {
-                    console.log("lift is full!")
+                    console.log("lift is full!");
                 }
                 // TEST PURPOSES ONLY: THIS break IS NOT NEEDED AS LOOP WILL STOP AFTER FIRST VALID FLOOR
                 // break;
@@ -954,7 +983,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
         // SWITCH DIRECTION AT GROUND FLOOR
         direction = "up";
         // PUSH GROUND FLOOR INTO SOLUTION ARRAY
-        //  ❗️❗️❗️ ONLY PUSH IF NO PASSENGERS ARE GETTING OFF ON GROUND FLOOR ❗️❗️❗️ 
+        //  ❗️❗️❗️ ONLY PUSH IF NO PASSENGERS ARE GETTING OFF ON GROUND FLOOR ❗️❗️❗️
         if (solution[solution.length - 1] !== 0) {
             solution.push(0);
         }

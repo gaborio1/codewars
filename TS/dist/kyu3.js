@@ -74,6 +74,26 @@ const theLift = (queues, capacity) => {
                 }
                 else {
                     console.log("not enough room for all!");
+                    for (let j = 0; j < currentWaiting.length; j += 1) {
+                        console.log("INNER LOOP:", j);
+                        if (currentWaiting[j] > i) {
+                            console.log("   destination above:", currentWaiting[j]);
+                            passengers.push(currentWaiting[j]);
+                            console.log("     passengers:", passengers);
+                            console.log("     passenger to delete:", queues[i][j]);
+                            queues[i].splice(j, 1);
+                            console.log("   remaining on floor:", queues[i]);
+                            j -= 1;
+                            hasLiftStopped = true;
+                        }
+                        else {
+                            console.log("  destination below, do not stop!");
+                        }
+                        if (passengers.length === capacity) {
+                            console.log("LIFT FULL! ", capacity, " PASSENGERS");
+                            break;
+                        }
+                    }
                 }
             }
             if (!currentWaiting.length) {
