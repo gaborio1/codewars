@@ -647,7 +647,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                 console.log("people waiting, stop!:", currentWaiting);
                 // IF FREE SPACES IN LIFT
                 // if (!isFull) {
-                console.log("free spaces in lift");
+                // console.log("free spaces in lift");
                 // ALL PEOPLE CAN GET IN LIFT
                 if (currentWaiting.length <= capacity) {
                     console.log(" all people can get in lift");
@@ -675,6 +675,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                             j -= 1;
 
                             hasLiftStopped = true;
+                            isFull = false;
                         }
                         // IF DESTINATION IS BELOW
                         else {
@@ -711,6 +712,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                                 k -= 1;
 
                                 hasLiftStopped = true;
+                                isFull = false;
                             }
                             console.log("     building copy:", building);
                         }
@@ -724,6 +726,39 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                     // DUPLICATED CODE FROM ABOVE (FOR LOOP)
                     for (let j = 0; j < currentWaiting.length; j += 1) {
                         console.log("INNER LOOP:", j);
+
+                        if (passengers.includes(i)) {
+                            console.log("passenger wants off at floor:", i);
+
+                            for (let k = 0; k < passengers.length; k += 1) {
+                                if (passengers[k] === i) {
+                                    console.log(
+                                        "HELLO",
+                                        passengers[k],
+                                        " to go to floor:",
+                                        building[i],
+                                        "idx:",
+                                        k
+                                    );
+                                    // PUSH PASSENGER TO DESTINATION FLOOR
+                                    building[i].push(passengers[k]);
+                                    // INCREMENT NUMBER OF ARRIVED AT DESTINATION
+                                    numArrived += 1;
+                                    // building[5].push(123);
+
+                                    passengers.splice(k, 1);
+                                    console.log(
+                                        "   passengers after deleting current:",
+                                        passengers
+                                    );
+                                    k -= 1;
+
+                                    hasLiftStopped = true;
+                                    isFull = false;
+                                }
+                                console.log("     building copy:", building);
+                            }
+                        }
 
                         // IF CHECK DISABLED FOR FIXED TESTS:
                         if (currentWaiting[j] > i) {
@@ -745,6 +780,7 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                             j -= 1;
 
                             hasLiftStopped = true;
+                            isFull = false;
                         }
                         // IF DESTINATION IS BELOW
                         else {
@@ -923,6 +959,88 @@ const theLift = (queues: number[][], capacity: number): number[] => {
                     // NOT ENOUGH ROOM FOR ALL
                     else {
                         console.log("not enough room for all!");
+                        // DUPLICATED CODE FROM ABOVE (FOR LOOP)
+                        for (let j = 0; j < currentWaiting.length; j += 1) {
+                            console.log("INNER LOOP:", j);
+
+                            if (passengers.includes(i)) {
+                                console.log("passenger wants off at floor:", i);
+
+                                for (let k = 0; k < passengers.length; k += 1) {
+                                    if (passengers[k] === i) {
+                                        console.log(
+                                            "HELLO",
+                                            passengers[k],
+                                            " to go to floor:",
+                                            building[i],
+                                            "idx:",
+                                            k
+                                        );
+                                        // PUSH PASSENGER TO DESTINATION FLOOR
+                                        building[i].push(passengers[k]);
+                                        // INCREMENT NUMBER OF ARRIVED AT DESTINATION
+                                        numArrived += 1;
+                                        // building[5].push(123);
+
+                                        passengers.splice(k, 1);
+                                        console.log(
+                                            "   passengers after deleting current:",
+                                            passengers
+                                        );
+                                        k -= 1;
+
+                                        hasLiftStopped = true;
+                                        isFull = false;
+                                    }
+                                    console.log(
+                                        "     building copy:",
+                                        building
+                                    );
+                                }
+                            }
+
+                            // IF CHECK DISABLED FOR FIXED TESTS:
+                            if (currentWaiting[j] < i) {
+                                console.log(
+                                    "   destination below:",
+                                    currentWaiting[j]
+                                );
+                                // GET PEOPLE IN LIFT
+                                passengers.push(currentWaiting[j]);
+                                console.log("     passengers:", passengers);
+                                // REMOVE THEM FROM WAITING LIST
+                                console.log(
+                                    "     passenger to delete:",
+                                    queues[i][j]
+                                );
+                                queues[i].splice(j, 1);
+                                console.log(
+                                    "   remaining on floor:",
+                                    queues[i]
+                                );
+                                // !!! DECREMENT j AFTER DELETING PASSENGER !!!
+                                j -= 1;
+
+                                hasLiftStopped = true;
+                                isFull = false;
+                            }
+                            // IF DESTINATION IS BELOW
+                            else {
+                                console.log(
+                                    "  destination above, do not stop!"
+                                );
+                            }
+                            // CHECK CAPACITY
+                            if (passengers.length === capacity) {
+                                console.log(
+                                    "LIFT FULL! ",
+                                    capacity,
+                                    " PASSENGERS"
+                                );
+                                isFull = true;
+                                break;
+                            }
+                        }
                     }
                 }
                 // IF LIFT IS FULL
